@@ -1,0 +1,7 @@
+[
+  { "nome": "Arco", "anno": 1962, "designer": "Achille Castiglioni", "azienda": "Flos", "foto": "arco.jpg" },
+  { "nome": "Snoopy", "anno": 1967, "designer": "Achille Castiglioni", "azienda": "Flos", "foto": "snoopy.jpg" },
+  { "nome": "Taccia", "anno": 1962, "designer": "Achille Castiglioni", "azienda": "Flos", "foto": "taccia.jpg" },
+  { "nome": "Valentine", "anno": 1969, "designer": "Ettore Sottsass", "azienda": "Olivetti", "foto": "valentine.jpg" },
+  { "nome": "Ettore", "anno": 1976, "designer": "Ettore Sottsass", "azienda": "Alessi", "foto": "ettore.jpg" }
+]

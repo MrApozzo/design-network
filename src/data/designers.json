@@ -1,0 +1,18 @@
+[
+  {
+    "nome": "Achille Castiglioni",
+    "nato": 1918,
+    "morto": 2002,
+    "nazionalità": "italiana",
+    "bio": "Uno dei maestri del design italiano, noto per il design funzionale e ironico.",
+    "foto": "castiglioni.jpg"
+  },
+  {
+    "nome": "Ettore Sottsass",
+    "nato": 1917,
+    "morto": 2007,
+    "nazionalità": "italiana",
+    "bio": "Fondatore del gruppo Memphis, pioniere del design radicale.",
+    "foto": "sottsass.jpg"
+  }
+]   
