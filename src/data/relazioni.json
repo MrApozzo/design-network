@@ -1,0 +1,14 @@
+[
+  {
+    "designer_a": "Vico Magistretti",
+    "designer_b": "Nathan Rogers",
+    "tipo": "collaborazione",
+    "descrizione": "Si sono conosciuti in Svizzera nel dopoguerra"
+  },
+  {
+    "designer_a": "Renzo Piano",
+    "designer_b": "Franco Albini",
+    "tipo": "mentore",
+    "descrizione": "Piano ha lavorato nello studio di Albini"
+  }
+]
