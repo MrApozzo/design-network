@@ -1,7 +1,546 @@
 [
-  { "nome": "Arco", "anno": 1962, "designer": "Achille Castiglioni", "azienda": "Flos", "foto": "arco.jpg" },
-  { "nome": "Snoopy", "anno": 1967, "designer": "Achille Castiglioni", "azienda": "Flos", "foto": "snoopy.jpg" },
-  { "nome": "Taccia", "anno": 1962, "designer": "Achille Castiglioni", "azienda": "Flos", "foto": "taccia.jpg" },
-  { "nome": "Valentine", "anno": 1969, "designer": "Ettore Sottsass", "azienda": "Olivetti", "foto": "valentine.jpg" },
-  { "nome": "Ettore", "anno": 1976, "designer": "Ettore Sottsass", "azienda": "Alessi", "foto": "ettore.jpg" }
+  {
+    "nome": "Arco",
+    "anno": 1962,
+    "designer": "Achille Castiglioni",
+    "azienda": "Flos",
+    "categoria": "lampada",
+    "foto": "arco.jpg"
+  },
+  {
+    "nome": "Snoopy",
+    "anno": 1967,
+    "designer": "Achille Castiglioni",
+    "azienda": "Flos",
+    "categoria": "lampada",
+    "foto": "snoopy.jpg"
+  },
+  {
+    "nome": "Taccia",
+    "anno": 1962,
+    "designer": "Achille Castiglioni",
+    "azienda": "Flos",
+    "categoria": "lampada",
+    "foto": "taccia.jpg"
+  },
+  {
+    "nome": "Toio",
+    "anno": 1962,
+    "designer": "Achille Castiglioni",
+    "azienda": "Flos",
+    "categoria": "lampada",
+    "foto": "toio.jpg"
+  },
+  {
+    "nome": "Mezzadro",
+    "anno": 1957,
+    "designer": "Achille Castiglioni",
+    "azienda": "Zanotta",
+    "categoria": "sgabello",
+    "foto": "mezzadro.jpg"
+  },
+  {
+    "nome": "Sella",
+    "anno": 1957,
+    "designer": "Achille Castiglioni",
+    "azienda": "Zanotta",
+    "categoria": "sgabello",
+    "foto": "sella.jpg"
+  },
+  {
+    "nome": "Spalter",
+    "anno": 1962,
+    "designer": "Achille Castiglioni",
+    "azienda": "Flos",
+    "categoria": "lampada",
+    "foto": "spalter.jpg"
+  },
+  {
+    "nome": "Biagio",
+    "anno": 1968,
+    "designer": "Achille Castiglioni",
+    "azienda": "Flos",
+    "categoria": "lampada",
+    "foto": "biagio.jpg"
+  },
+  {
+    "nome": "Parentesi",
+    "anno": 1971,
+    "designer": "Achille Castiglioni",
+    "azienda": "Flos",
+    "categoria": "lampada",
+    "foto": "parentesi.jpg"
+  },
+  {
+    "nome": "Noce",
+    "anno": 1972,
+    "designer": "Achille Castiglioni",
+    "azienda": "Flos",
+    "categoria": "lampada",
+    "foto": "noce.jpg"
+  },
+  {
+    "nome": "Gibigiana",
+    "anno": 1980,
+    "designer": "Achille Castiglioni",
+    "azienda": "Flos",
+    "categoria": "lampada",
+    "foto": "gibigiana.jpg"
+  },
+  {
+    "nome": "Dry",
+    "anno": 1966,
+    "designer": "Achille Castiglioni",
+    "azienda": "Alessi",
+    "categoria": "posate",
+    "foto": "dry.jpg"
+  },
+  {
+    "nome": "Cumano",
+    "anno": 1979,
+    "designer": "Achille Castiglioni",
+    "azienda": "Zanotta",
+    "categoria": "tavolo",
+    "foto": "cumano.jpg"
+  },
+  {
+    "nome": "Servomuto",
+    "anno": 1971,
+    "designer": "Achille Castiglioni",
+    "azienda": "Zanotta",
+    "categoria": "appendiabiti",
+    "foto": "servomuto.jpg"
+  },
+  {
+    "nome": "Frisbi",
+    "anno": 1978,
+    "designer": "Achille Castiglioni",
+    "azienda": "Flos",
+    "categoria": "lampada",
+    "foto": "frisbi.jpg"
+  },
+  {
+    "nome": "Ventosa",
+    "anno": 1968,
+    "designer": "Achille Castiglioni",
+    "azienda": "Flos",
+    "categoria": "lampada",
+    "foto": "ventosa.jpg"
+  },
+  {
+    "nome": "Taraxacum",
+    "anno": 1960,
+    "designer": "Achille Castiglioni",
+    "azienda": "Flos",
+    "categoria": "lampadario",
+    "foto": "taraxacum.jpg"
+  },
+  {
+    "nome": "Sleek",
+    "anno": 1983,
+    "designer": "Achille Castiglioni",
+    "azienda": "Zanotta",
+    "categoria": "sgabello",
+    "foto": "sleek.jpg"
+  },
+  {
+    "nome": "Valentine",
+    "anno": 1969,
+    "designer": "Ettore Sottsass",
+    "azienda": "Olivetti",
+    "categoria": "macchina da scrivere",
+    "foto": "valentine.jpg"
+  },
+  {
+    "nome": "Carlton",
+    "anno": 1981,
+    "designer": "Ettore Sottsass",
+    "azienda": "Memphis",
+    "categoria": "libreria",
+    "foto": "carlton.jpg"
+  },
+  {
+    "nome": "Tahiti",
+    "anno": 1981,
+    "designer": "Ettore Sottsass",
+    "azienda": "Memphis",
+    "categoria": "lampada",
+    "foto": "tahiti.jpg"
+  },
+  {
+    "nome": "Terrazzo Flooring",
+    "anno": 1983,
+    "designer": "Ettore Sottsass",
+    "azienda": "Memphis",
+    "categoria": "superficie",
+    "foto": "terrazzo.jpg"
+  },
+  {
+    "nome": "Selene",
+    "anno": 1969,
+    "designer": "Vico Magistretti",
+    "azienda": "Artemide",
+    "categoria": "sedia",
+    "foto": "selene.jpg"
+  },
+  {
+    "nome": "Eclisse",
+    "anno": 1967,
+    "designer": "Vico Magistretti",
+    "azienda": "Artemide",
+    "categoria": "lampada",
+    "foto": "eclisse.jpg"
+  },
+  {
+    "nome": "Maralunga",
+    "anno": 1973,
+    "designer": "Vico Magistretti",
+    "azienda": "Cassina",
+    "categoria": "divano",
+    "foto": "maralunga.jpg"
+  },
+  {
+    "nome": "Atollo",
+    "anno": 1977,
+    "designer": "Vico Magistretti",
+    "azienda": "O Luce",
+    "categoria": "lampada",
+    "foto": "atollo.jpg"
+  },
+  {
+    "nome": "Superleggera",
+    "anno": 1957,
+    "designer": "Gio Ponti",
+    "azienda": "Cassina",
+    "categoria": "sedia",
+    "foto": "superleggera.jpg"
+  },
+  {
+    "nome": "La Pavoni",
+    "anno": 1948,
+    "designer": "Gio Ponti",
+    "azienda": "La Pavoni",
+    "categoria": "macchina caffè",
+    "foto": "lapavoni.jpg"
+  },
+  {
+    "nome": "Lady",
+    "anno": 1951,
+    "designer": "Marco Zanuso",
+    "azienda": "Arflex",
+    "categoria": "poltrona",
+    "foto": "lady.jpg"
+  },
+  {
+    "nome": "Lambda",
+    "anno": 1963,
+    "designer": "Marco Zanuso",
+    "azienda": "Gavina",
+    "categoria": "sedia",
+    "foto": "lambda.jpg"
+  },
+  {
+    "nome": "Grillo",
+    "anno": 1965,
+    "designer": "Marco Zanuso",
+    "azienda": "Siemens",
+    "categoria": "telefono",
+    "foto": "grillo.jpg"
+  },
+  {
+    "nome": "Margherita",
+    "anno": 1950,
+    "designer": "Franco Albini",
+    "azienda": "Bonacina",
+    "categoria": "poltrona",
+    "foto": "margherita.jpg"
+  },
+  {
+    "nome": "Luisa",
+    "anno": 1955,
+    "designer": "Franco Albini",
+    "azienda": "Poggi",
+    "categoria": "sedia",
+    "foto": "luisa.jpg"
+  },
+  {
+    "nome": "Abitacolo",
+    "anno": 1971,
+    "designer": "Bruno Munari",
+    "azienda": "Robots",
+    "categoria": "letto",
+    "foto": "abitacolo.jpg"
+  },
+  {
+    "nome": "Falkland",
+    "anno": 1964,
+    "designer": "Bruno Munari",
+    "azienda": "Danese",
+    "categoria": "lampada",
+    "foto": "falkland.jpg"
+  },
+  {
+    "nome": "Boby",
+    "anno": 1969,
+    "designer": "Joe Colombo",
+    "azienda": "Bieffeplast",
+    "categoria": "carrello",
+    "foto": "boby.jpg"
+  },
+  {
+    "nome": "Tube Chair",
+    "anno": 1969,
+    "designer": "Joe Colombo",
+    "azienda": "Flexform",
+    "categoria": "sedia",
+    "foto": "tubechair.jpg"
+  },
+  {
+    "nome": "Spider",
+    "anno": 1965,
+    "designer": "Joe Colombo",
+    "azienda": "O Luce",
+    "categoria": "lampada",
+    "foto": "spider.jpg"
+  },
+  {
+    "nome": "Eros",
+    "anno": 1971,
+    "designer": "Angelo Mangiarotti",
+    "azienda": "Skipper",
+    "categoria": "tavolo",
+    "foto": "eros.jpg"
+  },
+  {
+    "nome": "Lesbo",
+    "anno": 1969,
+    "designer": "Angelo Mangiarotti",
+    "azienda": "Artemide",
+    "categoria": "lampada",
+    "foto": "lesbo.jpg"
+  },
+  {
+    "nome": "Pipistrello",
+    "anno": 1965,
+    "designer": "Gae Aulenti",
+    "azienda": "Martinelli Luce",
+    "categoria": "lampada",
+    "foto": "pipistrello.jpg"
+  },
+  {
+    "nome": "April",
+    "anno": 1964,
+    "designer": "Gae Aulenti",
+    "azienda": "Zanotta",
+    "categoria": "sedia",
+    "foto": "april.jpg"
+  },
+  {
+    "nome": "Tizio",
+    "anno": 1972,
+    "designer": "Richard Sapper",
+    "azienda": "Artemide",
+    "categoria": "lampada",
+    "foto": "tizio.jpg"
+  },
+  {
+    "nome": "Bollitore 9091",
+    "anno": 1983,
+    "designer": "Richard Sapper",
+    "azienda": "Alessi",
+    "categoria": "bollitore",
+    "foto": "bollitore9091.jpg"
+  },
+  {
+    "nome": "Sintesi",
+    "anno": 1974,
+    "designer": "Richard Sapper",
+    "azienda": "Artemide",
+    "categoria": "lampada",
+    "foto": "sintesi.jpg"
+  },
+  {
+    "nome": "Cab",
+    "anno": 1977,
+    "designer": "Mario Bellini",
+    "azienda": "Cassina",
+    "categoria": "sedia",
+    "foto": "cab.jpg"
+  },
+  {
+    "nome": "Divisumma 18",
+    "anno": 1973,
+    "designer": "Mario Bellini",
+    "azienda": "Olivetti",
+    "categoria": "calcolatrice",
+    "foto": "divisumma.jpg"
+  },
+  {
+    "nome": "Proust",
+    "anno": 1978,
+    "designer": "Alessandro Mendini",
+    "azienda": "Studio Alchimia",
+    "categoria": "poltrona",
+    "foto": "proust.jpg"
+  },
+  {
+    "nome": "Anna G.",
+    "anno": 1994,
+    "designer": "Alessandro Mendini",
+    "azienda": "Alessi",
+    "categoria": "cavatappi",
+    "foto": "annag.jpg"
+  },
+  {
+    "nome": "Up 5",
+    "anno": 1969,
+    "designer": "Gaetano Pesce",
+    "azienda": "B&B Italia",
+    "categoria": "poltrona",
+    "foto": "up5.jpg"
+  },
+  {
+    "nome": "Feltri",
+    "anno": 1987,
+    "designer": "Gaetano Pesce",
+    "azienda": "Cassina",
+    "categoria": "poltrona",
+    "foto": "feltri.jpg"
+  },
+  {
+    "nome": "Strips",
+    "anno": 1968,
+    "designer": "Cini Boeri",
+    "azienda": "Arflex",
+    "categoria": "divano",
+    "foto": "strips.jpg"
+  },
+  {
+    "nome": "Ghost",
+    "anno": 1987,
+    "designer": "Cini Boeri",
+    "azienda": "Fiam",
+    "categoria": "sedia",
+    "foto": "ghost.jpg"
+  },
+  {
+    "nome": "Tema e Variazioni",
+    "anno": 1950,
+    "designer": "Piero Fornasetti",
+    "azienda": "Fornasetti",
+    "categoria": "piatto decorativo",
+    "foto": "temavariazioni.jpg"
+  },
+  {
+    "nome": "Architettura",
+    "anno": 1955,
+    "designer": "Piero Fornasetti",
+    "azienda": "Fornasetti",
+    "categoria": "cassettiera",
+    "foto": "architettura.jpg"
+  },
+  {
+    "nome": "Arabesco",
+    "anno": 1949,
+    "designer": "Carlo Mollino",
+    "azienda": "Apelli & Varesio",
+    "categoria": "tavolo",
+    "foto": "arabesco.jpg"
+  },
+  {
+    "nome": "Bastiano",
+    "anno": 1960,
+    "designer": "Afra e Tobia Scarpa",
+    "azienda": "Cassina",
+    "categoria": "divano",
+    "foto": "bastiano.jpg"
+  },
+  {
+    "nome": "Soriana",
+    "anno": 1969,
+    "designer": "Afra e Tobia Scarpa",
+    "azienda": "Cassina",
+    "categoria": "poltrona",
+    "foto": "soriana.jpg"
+  },
+  {
+    "nome": "4870",
+    "anno": 1987,
+    "designer": "Anna Castelli Ferrieri",
+    "azienda": "Kartell",
+    "categoria": "sedia",
+    "foto": "4870.jpg"
+  },
+  {
+    "nome": "Componibili",
+    "anno": 1969,
+    "designer": "Anna Castelli Ferrieri",
+    "azienda": "Kartell",
+    "categoria": "contenitore",
+    "foto": "componibili.jpg"
+  },
+  {
+    "nome": "Pesciera",
+    "anno": 1957,
+    "designer": "Roberto Sambonet",
+    "azienda": "Sambonet",
+    "categoria": "vassoio",
+    "foto": "pesciera.jpg"
+  },
+  {
+    "nome": "Lettera 22",
+    "anno": 1950,
+    "designer": "Marcello Nizzoli",
+    "azienda": "Olivetti",
+    "categoria": "macchina da scrivere",
+    "foto": "lettera22.jpg"
+  },
+  {
+    "nome": "Mirella",
+    "anno": 1957,
+    "designer": "Marcello Nizzoli",
+    "azienda": "Necchi",
+    "categoria": "macchina da cucire",
+    "foto": "mirella.jpg"
+  },
+  {
+    "nome": "P40",
+    "anno": 1955,
+    "designer": "Osvaldo Borsani",
+    "azienda": "Tecno",
+    "categoria": "poltrona",
+    "foto": "p40.jpg"
+  },
+  {
+    "nome": "T90",
+    "anno": 1956,
+    "designer": "Osvaldo Borsani",
+    "azienda": "Tecno",
+    "categoria": "scrivania",
+    "foto": "t90.jpg"
+  },
+  {
+    "nome": "2097",
+    "anno": 1958,
+    "designer": "Gino Sarfatti",
+    "azienda": "Arteluce",
+    "categoria": "lampadario",
+    "foto": "2097.jpg"
+  },
+  {
+    "nome": "1063",
+    "anno": 1954,
+    "designer": "Gino Sarfatti",
+    "azienda": "Arteluce",
+    "categoria": "lampada",
+    "foto": "1063.jpg"
+  },
+  {
+    "nome": "Sacco",
+    "anno": 1968,
+    "designer": "Piero Gatti",
+    "azienda": "Zanotta",
+    "categoria": "poltrona",
+    "foto": "sacco.jpg"
+  }
 ]

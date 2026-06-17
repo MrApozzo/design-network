@@ -1,0 +1,176 @@
+[
+  {
+    "nome": "Flos",
+    "paese": "Italia",
+    "fondata": 1962,
+    "settore": "illuminazione"
+  },
+  {
+    "nome": "Artemide",
+    "paese": "Italia",
+    "fondata": 1960,
+    "settore": "illuminazione"
+  },
+  {
+    "nome": "Cassina",
+    "paese": "Italia",
+    "fondata": 1927,
+    "settore": "arredo"
+  },
+  {
+    "nome": "Zanotta",
+    "paese": "Italia",
+    "fondata": 1954,
+    "settore": "arredo"
+  },
+  {
+    "nome": "Arflex",
+    "paese": "Italia",
+    "fondata": 1947,
+    "settore": "arredo"
+  },
+  {
+    "nome": "Olivetti",
+    "paese": "Italia",
+    "fondata": 1908,
+    "settore": "elettronica, ufficio"
+  },
+  {
+    "nome": "Kartell",
+    "paese": "Italia",
+    "fondata": 1949,
+    "settore": "plastica, arredo"
+  },
+  {
+    "nome": "Alessi",
+    "paese": "Italia",
+    "fondata": 1921,
+    "settore": "oggetti da tavola"
+  },
+  {
+    "nome": "B&B Italia",
+    "paese": "Italia",
+    "fondata": 1966,
+    "settore": "arredo"
+  },
+  {
+    "nome": "Memphis",
+    "paese": "Italia",
+    "fondata": 1981,
+    "settore": "design sperimentale"
+  },
+  {
+    "nome": "Bieffeplast",
+    "paese": "Italia",
+    "fondata": 1960,
+    "settore": "accessori ufficio"
+  },
+  {
+    "nome": "Danese",
+    "paese": "Italia",
+    "fondata": 1957,
+    "settore": "oggetti design"
+  },
+  {
+    "nome": "O Luce",
+    "paese": "Italia",
+    "fondata": 1945,
+    "settore": "illuminazione"
+  },
+  {
+    "nome": "Martinelli Luce",
+    "paese": "Italia",
+    "fondata": 1962,
+    "settore": "illuminazione"
+  },
+  {
+    "nome": "Arteluce",
+    "paese": "Italia",
+    "fondata": 1939,
+    "settore": "illuminazione"
+  },
+  {
+    "nome": "Tecno",
+    "paese": "Italia",
+    "fondata": 1953,
+    "settore": "arredo ufficio"
+  },
+  {
+    "nome": "Sambonet",
+    "paese": "Italia",
+    "fondata": 1856,
+    "settore": "oggetti da tavola"
+  },
+  {
+    "nome": "Poggi",
+    "paese": "Italia",
+    "fondata": 1946,
+    "settore": "arredo"
+  },
+  {
+    "nome": "Bonacina",
+    "paese": "Italia",
+    "fondata": 1889,
+    "settore": "arredo vimini"
+  },
+  {
+    "nome": "Gavina",
+    "paese": "Italia",
+    "fondata": 1960,
+    "settore": "arredo"
+  },
+  {
+    "nome": "Siemens",
+    "paese": "Germania",
+    "fondata": 1847,
+    "settore": "elettronica"
+  },
+  {
+    "nome": "Flexform",
+    "paese": "Italia",
+    "fondata": 1959,
+    "settore": "arredo"
+  },
+  {
+    "nome": "Skipper",
+    "paese": "Italia",
+    "fondata": 1970,
+    "settore": "arredo"
+  },
+  {
+    "nome": "Fiam",
+    "paese": "Italia",
+    "fondata": 1973,
+    "settore": "vetro, arredo"
+  },
+  {
+    "nome": "Fornasetti",
+    "paese": "Italia",
+    "fondata": 1946,
+    "settore": "decorazione"
+  },
+  {
+    "nome": "Necchi",
+    "paese": "Italia",
+    "fondata": 1919,
+    "settore": "macchine da cucire"
+  },
+  {
+    "nome": "La Pavoni",
+    "paese": "Italia",
+    "fondata": 1905,
+    "settore": "macchine caffè"
+  },
+  {
+    "nome": "Studio Alchimia",
+    "paese": "Italia",
+    "fondata": 1976,
+    "settore": "design sperimentale"
+  },
+  {
+    "nome": "Robots",
+    "paese": "Italia",
+    "fondata": 1970,
+    "settore": "arredo bambini"
+  }
+]

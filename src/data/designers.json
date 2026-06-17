@@ -1,42 +1,242 @@
 [
   {
-    "nome": "Franco Albini",
-    "nato": 1905,
-    "morto": 1977,
-    "bio": "Architetto e designer razionalista milanese.",
-    "foto": "franco albini.jpg",
+    "nome": "Achille Castiglioni",
+    "nato": 1918,
+    "morto": 2002,
+    "bio": "Maestro del design italiano, noto per il riuso creativo di oggetti quotidiani e il design funzionale e ironico.",
+    "foto": "castiglioni.jpg",
+    "y": null
+  },
+  {
+    "nome": "Ettore Sottsass",
+    "nato": 1917,
+    "morto": 2007,
+    "bio": "Fondatore del gruppo Memphis, pioniere del design radicale e postmoderno. Figura centrale del design italiano del dopoguerra.",
+    "foto": "sottsass.jpg",
     "y": null
   },
   {
     "nome": "Vico Magistretti",
     "nato": 1920,
     "morto": 2006,
-    "bio": "Designer e architetto milanese.",
-    "foto": "vico magistretti.jpg",
+    "bio": "Architetto e designer milanese, noto per la semplicità formale e l'uso innovativo dei materiali plastici.",
+    "foto": "magistretti.jpg",
     "y": null
   },
   {
-    "nome": "Achille Castiglioni",
-    "nato": 1918,
-    "morto": 2002,
-    "bio": "Maestro del design funzionale e ironico.",
-    "foto": "achille castiglioni.jpg",
+    "nome": "Gio Ponti",
+    "nato": 1891,
+    "morto": 1979,
+    "bio": "Architetto e designer, fondatore della rivista Domus. Figura fondamentale del design e dell'architettura italiana del '900.",
+    "foto": "ponti.jpg",
     "y": null
   },
   {
-    "nome": "Renzo Piano",
+    "nome": "Marco Zanuso",
+    "nato": 1916,
+    "morto": 2001,
+    "bio": "Designer e architetto, pioniere nell'uso di nuovi materiali come la schiuma poliuretanica nel design del mobile.",
+    "foto": "zanuso.jpg",
+    "y": null
+  },
+  {
+    "nome": "Franco Albini",
+    "nato": 1905,
+    "morto": 1977,
+    "bio": "Architetto razionalista milanese, noto per il rigore strutturale e la raffinatezza formale dei suoi arredi.",
+    "foto": "albini.jpg",
+    "y": null
+  },
+  {
+    "nome": "Bruno Munari",
+    "nato": 1907,
+    "morto": 1998,
+    "bio": "Designer, artista e scrittore. Figura poliedrica che ha esplorato il design, l'arte visiva e la didattica creativa.",
+    "foto": "munari.jpg",
+    "y": null
+  },
+  {
+    "nome": "Joe Colombo",
+    "nato": 1930,
+    "morto": 1971,
+    "bio": "Designer visionario degli anni '60, noto per l'approccio futurista e l'uso di materiali plastici innovativi.",
+    "foto": "colombo.jpg",
+    "y": null
+  },
+  {
+    "nome": "Angelo Mangiarotti",
+    "nato": 1921,
+    "morto": 2012,
+    "bio": "Architetto e designer noto per la ricerca strutturale e l'uso innovativo di materiali come marmo, vetro e cemento.",
+    "foto": "mangiarotti.jpg",
+    "y": null
+  },
+  {
+    "nome": "Gae Aulenti",
+    "nato": 1927,
+    "morto": 2012,
+    "bio": "Architetta e designer, nota per grandi progetti museali e per un approccio colto e sofisticato al design d'interni.",
+    "foto": "aulenti.jpg",
+    "y": null
+  },
+  {
+    "nome": "Richard Sapper",
+    "nato": 1932,
+    "morto": 2015,
+    "bio": "Designer tedesco naturalizzato italiano, noto per il rigore funzionale e la precisione tecnica dei suoi prodotti.",
+    "foto": "sapper.jpg",
+    "y": null
+  },
+  {
+    "nome": "Mario Bellini",
+    "nato": 1935,
+    "morto": null,
+    "bio": "Architetto e designer, noto per i suoi contributi al design industriale italiano, in particolare per Olivetti e B&B Italia.",
+    "foto": "bellini.jpg",
+    "y": null
+  },
+  {
+    "nome": "Alessandro Mendini",
+    "nato": 1931,
+    "morto": 2019,
+    "bio": "Designer e teorico del design, fondatore della rivista Modo e figura chiave del postmodernismo italiano.",
+    "foto": "mendini.jpg",
+    "y": null
+  },
+  {
+    "nome": "Gaetano Pesce",
+    "nato": 1939,
+    "morto": 2024,
+    "bio": "Designer e architetto sperimentale, noto per l'uso di materiali insoliti e per un approccio personale e narrativo al design.",
+    "foto": "pesce.jpg",
+    "y": null
+  },
+  {
+    "nome": "Cini Boeri",
+    "nato": 1924,
+    "morto": 2020,
+    "bio": "Architetta e designer, allieva di Marco Zanuso. Nota per l'attenzione alla dimensione umana e psicologica degli spazi.",
+    "foto": "boeri.jpg",
+    "y": null
+  },
+  {
+    "nome": "Piero Fornasetti",
+    "nato": 1913,
+    "morto": 1988,
+    "bio": "Designer e artista noto per le decorazioni surreali e il repertorio iconografico ossessivo, in particolare il volto di Lina Cavalieri.",
+    "foto": "fornasetti.jpg",
+    "y": null
+  },
+  {
+    "nome": "Carlo Mollino",
+    "nato": 1905,
+    "morto": 1973,
+    "bio": "Architetto e designer torinese, figura eccentrica e visionaria nota per le forme organiche e sensuali dei suoi arredi.",
+    "foto": "mollino.jpg",
+    "y": null
+  },
+  {
+    "nome": "Afra e Tobia Scarpa",
     "nato": 1937,
     "morto": null,
-    "bio": "Architetto, ha lavorato nello studio di Albini.",
-    "foto": "renzo piano.jpg",
+    "bio": "Coppia di designer veneziani, figli di Carlo Scarpa. Noti per l'artigianato raffinato e la collaborazione con Cassina e Flos.",
+    "foto": "scarpa.jpg",
     "y": null
   },
   {
-    "nome": "Nathan Rogers",
-    "nato": 1912,
+    "nome": "Nanda Vigo",
+    "nato": 1936,
+    "morto": 2020,
+    "bio": "Designer e artista milanese, nota per le installazioni luminose e la collaborazione con Gio Ponti e Piero Manzoni.",
+    "foto": "vigo.jpg",
+    "y": null
+  },
+  {
+    "nome": "Anna Castelli Ferrieri",
+    "nato": 1920,
+    "morto": 2006,
+    "bio": "Designer e architetta, prima donna a iscriversi al Politecnico di Milano. Nota per i contenitori modulari in plastica per Kartell.",
+    "foto": "castelliferrieri.jpg",
+    "y": null
+  },
+  {
+    "nome": "Rodolfo Bonetto",
+    "nato": 1929,
+    "morto": 1991,
+    "bio": "Designer industriale milanese, noto per il design di prodotti tecnici e strumenti di precisione.",
+    "foto": "bonetto.jpg",
+    "y": null
+  },
+  {
+    "nome": "Sergio Mazza",
+    "nato": 1931,
+    "morto": null,
+    "bio": "Designer milanese, noto per la collaborazione con Artemide e per il design di lampade e arredi degli anni '60 e '70.",
+    "foto": "mazza.jpg",
+    "y": null
+  },
+  {
+    "nome": "Ennio Chiggio",
+    "nato": 1938,
+    "morto": null,
+    "bio": "Designer e artista, membro del Gruppo N. Noto per la ricerca visiva e il design grafico sperimentale.",
+    "foto": "chiggio.jpg",
+    "y": null
+  },
+  {
+    "nome": "Roberto Sambonet",
+    "nato": 1924,
+    "morto": 1995,
+    "bio": "Designer e artista, noto per il design di oggetti da tavola e posaterie per la famiglia Sambonet.",
+    "foto": "sambonet.jpg",
+    "y": null
+  },
+  {
+    "nome": "Marcello Nizzoli",
+    "nato": 1887,
     "morto": 1969,
-    "bio": "Critico e designer, fondatore di Casabella.",
-    "foto": "rogers.jpg",
+    "bio": "Designer e grafico, noto per il design delle macchine da scrivere Olivetti e per le sue ricerche nel design industriale.",
+    "foto": "nizzoli.jpg",
+    "y": null
+  },
+  {
+    "nome": "Ico Parisi",
+    "nato": 1916,
+    "morto": 1996,
+    "bio": "Designer e architetto comasco, noto per gli arredi organici e la collaborazione con le principali aziende del design italiano.",
+    "foto": "parisi.jpg",
+    "y": null
+  },
+  {
+    "nome": "Osvaldo Borsani",
+    "nato": 1911,
+    "morto": 1985,
+    "bio": "Designer e imprenditore, fondatore di Tecno. Noto per i mobili trasformabili e l'attenzione alla funzionalità.",
+    "foto": "borsani.jpg",
+    "y": null
+  },
+  {
+    "nome": "Ignazio Gardella",
+    "nato": 1905,
+    "morto": 1999,
+    "bio": "Architetto e designer razionalista milanese, noto per l'equilibrio tra tradizione e modernità nei suoi progetti.",
+    "foto": "gardella.jpg",
+    "y": null
+  },
+  {
+    "nome": "Gino Sarfatti",
+    "nato": 1912,
+    "morto": 1985,
+    "bio": "Designer di lampade, fondatore di Arteluce. Considerato il padre del design della luce italiano.",
+    "foto": "sarfatti.jpg",
+    "y": null
+  },
+  {
+    "nome": "Piero Gatti",
+    "nato": 1940,
+    "morto": null,
+    "bio": "Designer torinese, noto soprattutto per il Sacco, la prima poltrona a sacchetto, creata con Cesare Paolini e Franco Teodoro.",
+    "foto": "gatti.jpg",
     "y": null
   }
 ]
