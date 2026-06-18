@@ -28,8 +28,9 @@ const STILE = {
   label_prodotto_anno_colore: "#aaaaaa",
 
   // --- Dimensioni fisse ---
-  griglia_pallino_raggio: 1.2,
-  edge_prodotto_size: 0.2,
+  l1_griglia_pallino_raggio: 1.2,
+  l2_griglia_pallino_raggio: 2.5,
+  edge_prodotto_size: 0,
   edge_relazione_size: 1,
   designer_size: 8,
   prodotto_size: 5,
@@ -49,16 +50,20 @@ const STILE = {
 
   // Livello 2 (vicino, ratio < zoom_soglia)
   l2_designer_px: 18,        // raggio pallino designer (px)
-  l2_prodotto_px: 40,        // raggio pallino prodotto (px)
+  l2_prodotto_px: 36,        // raggio pallino prodotto (px)
   l2_label_designer: 14,     // font size label designer (px)
   l2_label_prodotto: 10,     // font size label prodotto (px)
+
+  // --- Transizione tra viste ---
+  transizione_stagger: 4,    // ritardo tra un prodotto e l'altro (ms)
+  transizione_durata: 1200,    // durata animazione per prodotto (ms)
 
   // --- Scala base (compensazione zoom automatica) ---
   scala_nodi_max: 2,
   scala_testo_max: 1.5,
 
   // --- Hover / interazione ---
-  hover_scala: 1.3,
+  hover_scala: 2,
   hover_opacita_altri: 0.05,
   lerp_velocita: 0.15,
 
@@ -75,15 +80,15 @@ const STILE = {
 }
 
 const ANNO_MIN = 1880
-const ANNO_MAX = 1980
+const ANNO_MAX = 2020
 const X_MIN = -60
 const X_MAX = 60
-const DECENNI = [1880,1890,1900,1910,1920,1930,1940,1950,1960,1970,1980]
-const ANNI_SINGOLI = Array.from({length: (1980-1880)+1}, (_, i) => 1880 + i)
+const DECENNI = [1880,1890,1900,1910,1920,1930,1940,1950,1960,1970,1980,1990,2000,2010,2020]
+const ANNI_SINGOLI = Array.from({length: (2020-1880)+1}, (_, i) => 1880 + i)
 const MARGINE_X = 2
 const MARGINE_Y = 2
-const Y_MIN = -8
-const Y_MAX = 8
+const Y_MIN = -20
+const Y_MAX = 20
 const MAX_CAMERA_RATIO = 1.2
 const MIN_CAMERA_RATIO = 0.05
 
@@ -123,6 +128,8 @@ function App() {
   const [pannelloVisibile, setPannelloVisibile] = useState(false)
   const [tooltipRelazione, setTooltipRelazione] = useState(null)
   const [designerAttivo, setDesignerAttivo] = useState(null)
+  const [vistaCorrente, setVistaCorrente] = useState("designer")
+  const [animaTransizioneFn, setAnimaTransizioneFn] = useState(null)
 
   useEffect(() => {
     document.body.style.margin = "0"
@@ -226,22 +233,38 @@ function App() {
       const indiciAngolari = listaOrdinata.map((_, i) => i)
       indiciAngolari.sort((a, b) => hashStr(listaOrdinata[a].nome) - hashStr(listaOrdinata[b].nome))
 
+      const conteggioPerAnno = {}
+      listaOrdinata.forEach((p) => {
+        const a = p.anno || 1900
+        conteggioPerAnno[a] = (conteggioPerAnno[a] || 0) + 1
+      })
+      const indiceCorrentePerAnno = {}
+
       listaOrdinata.forEach((p, i) => {
         const t = annoMax === annoMin ? 0.5 : (p.anno - annoMin) / (annoMax - annoMin)
         const raggio = raggioMax * (STILE.anello_raggio_interno + t * (STILE.anello_raggio_esterno - STILE.anello_raggio_interno))
         const posAng = indiciAngolari.indexOf(i)
         const angolo = arcoInizio + sliceAngolo * posAng + sliceAngolo * 0.5 + (hashStr(p.nome) - 0.5) * sliceAngolo * STILE.arco_perturbazione
 
-        // L'ID del nodo deve essere univoco. Usare solo p.nome può mandare
-        // Graphology in errore quando due prodotti hanno lo stesso nome.
         const prodottoId = `prodotto:${designer}:${p.nome}:${i}`
+
+        const orbitaX = dx + Math.cos(angolo) * raggio
+        const orbitaY = dy + Math.sin(angolo) * raggio
+
+        const anno = p.anno || 1900
+        const nStessoAnno = conteggioPerAnno[anno]
+        const idxAnno = indiceCorrentePerAnno[anno] || 0
+        indiceCorrentePerAnno[anno] = idxAnno + 1
+        const offset45 = nStessoAnno > 1 ? (idxAnno - (nStessoAnno - 1) / 2) * 0.5 : 0
+        const timelineX = annoToX(anno) + offset45
+        const timelineY = dy - offset45
 
         graph.addNode(prodottoId, {
           label: p.nome, size: STILE.prodotto_size,
-          x: dx + Math.cos(angolo) * raggio,
-          y: dy + Math.sin(angolo) * raggio,
+          x: orbitaX, y: orbitaY,
           color: STILE.prodotto_colore, tipo: "prodotto",
           imgSrc: `/immagini/${p.foto}`, dati: p,
+          orbitaX, orbitaY, timelineX, timelineY,
         })
         graph.addEdge(designer, prodottoId, {
           color: STILE.edge_prodotto_colore,
@@ -357,6 +380,8 @@ function App() {
       const collegati = nodiCollegatiAlHover(nodoAttivo)
       const hoverAttivo = nodoAttivo !== null
 
+      const sn = scalaNodi()
+      const grigliaRaggio = lerp(STILE.l1_griglia_pallino_raggio, STILE.l2_griglia_pallino_raggio, t)
       const yGrafoMin = Math.min(Y_MIN, contenutoYMin) - MARGINE_Y
       const yGrafoMax = Math.max(Y_MAX, contenutoYMax) + MARGINE_Y
       ANNI_SINGOLI.forEach((anno) => {
@@ -365,7 +390,7 @@ function App() {
           const screen = renderer.graphToViewport({ x: gx, y: gy })
           if (screen.x < -2 || screen.x > w + 2 || screen.y < -2 || screen.y > h + 2) continue
           ctx.beginPath()
-          ctx.arc(screen.x, screen.y, STILE.griglia_pallino_raggio, 0, Math.PI * 2)
+          ctx.arc(screen.x, screen.y, grigliaRaggio, 0, Math.PI * 2)
           ctx.fillStyle = STILE.griglia_pallino_colore
           ctx.fill()
         }
@@ -382,7 +407,15 @@ function App() {
       graph.forEachNode((node, attr) => {
         if (!animated[node]) animated[node] = { r: STILE.l1_prodotto_px, alpha: 1 }
         const rTarget = calcolaRTarget(node, attr, nodoAttivo)
-        const alphaTarget = hoverAttivo ? (collegati.has(node) ? 1 : STILE.hover_opacita_altri) : 1
+        let alphaTarget = 1
+        if (prodottoHoverAttivo) {
+          const designerDelProdotto = prodottoHoverAttivo && graph.hasNode(prodottoHoverAttivo)
+            ? graph.neighbors(prodottoHoverAttivo).find(n => graph.getNodeAttribute(n, "tipo") === "designer")
+            : null
+          alphaTarget = (node === prodottoHoverAttivo || node === designerDelProdotto) ? 1 : 0.2
+        } else if (hoverAttivo) {
+          alphaTarget = collegati.has(node) ? 1 : STILE.hover_opacita_altri
+        }
         animated[node].r = lerp(animated[node].r, rTarget, STILE.lerp_velocita)
         animated[node].alpha = lerp(animated[node].alpha, alphaTarget, STILE.lerp_velocita)
       })
@@ -529,6 +562,57 @@ function App() {
     renderer.refresh()
     richiediDisegnoOverlay(2)
 
+    let vistaInterna = "designer"
+    let transizioneAttiva = false
+
+    function raccogliProdotti() {
+      const lista = []
+      graph.forEachNode((node, attr) => {
+        if (attr.tipo === "prodotto") lista.push(node)
+      })
+      lista.sort((a, b) => {
+        const pa = graph.getNodeAttribute(a, "dati")
+        const pb = graph.getNodeAttribute(b, "dati")
+        return (pa.anno || 0) - (pb.anno || 0)
+      })
+      return lista
+    }
+
+    function animaTransizione(vista) {
+      if (transizioneAttiva || vista === vistaInterna) return
+      transizioneAttiva = true
+      vistaInterna = vista
+      const prodottiList = raccogliProdotti()
+      const staggerMs = STILE.transizione_stagger
+      const durata = STILE.transizione_durata
+
+      prodottiList.forEach((node, idx) => {
+        const attr = graph.getNodeAttributes(node)
+        const daX = attr.x
+        const daY = attr.y
+        const aX = vista === "timeline" ? attr.timelineX : attr.orbitaX
+        const aY = vista === "timeline" ? attr.timelineY : attr.orbitaY
+        const ritardo = idx * staggerMs
+        const inizio = performance.now() + ritardo
+
+        function step(now) {
+          const t = Math.min(1, Math.max(0, (now - inizio) / durata))
+          const ease = t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2
+          graph.setNodeAttribute(node, "x", lerp(daX, aX, ease))
+          graph.setNodeAttribute(node, "y", lerp(daY, aY, ease))
+          richiediDisegnoOverlay(2)
+          if (t < 1) {
+            requestAnimationFrame(step)
+          } else if (idx === prodottiList.length - 1) {
+            transizioneAttiva = false
+          }
+        }
+        requestAnimationFrame(step)
+      })
+    }
+
+    setAnimaTransizioneFn(() => animaTransizione)
+
     const sigmaCanvas = container
     if (sigmaCanvas) {
       sigmaCanvas.addEventListener("mousedown", (e) => {
@@ -585,7 +669,7 @@ function App() {
           setTooltipRelazione(null)
         }
 
-        if (cameraRatio < STILE.zoom_soglia) {
+        if (cameraRatio < STILE.zoom_soglia || vistaInterna === "timeline") {
           let prodottoHover = null
           graph.forEachNode((node, attr) => {
             if (attr.tipo !== "prodotto") return
@@ -673,6 +757,12 @@ function App() {
     }
   }, [])
 
+  function cambiaVista(vista) {
+    if (vista === vistaCorrente) return
+    setVistaCorrente(vista)
+    if (animaTransizioneFn) animaTransizioneFn(vista)
+  }
+
   return (
     <>
       <div style={{ position: "fixed", top: 20, left: 24, fontFamily: "Roboto, sans-serif", zIndex: 20, pointerEvents: "none" }}>
@@ -680,8 +770,19 @@ function App() {
         <div style={{ fontSize: 12, fontWeight: 300, color: "#888888", marginTop: 2 }}>Designer e prodotti — 1880/1980</div>
       </div>
 
+      <div style={{ position: "fixed", bottom: 24, left: "50%", transform: "translateX(-50%)", zIndex: 20, fontFamily: "Roboto, sans-serif", display: "flex", gap: 0, background: "white", borderRadius: 20, boxShadow: "0 2px 12px rgba(0,0,0,0.1)", overflow: "hidden" }}>
+        <button onClick={() => cambiaVista("designer")}
+          style={{ padding: "8px 18px", border: "none", cursor: "pointer", fontSize: 11, fontWeight: vistaCorrente === "designer" ? 600 : 300, fontFamily: "Roboto, sans-serif", color: vistaCorrente === "designer" ? "#1a1a1a" : "#999", background: vistaCorrente === "designer" ? "#f0f0f0" : "white", transition: "all 0.2s" }}>
+          Designer
+        </button>
+        <button onClick={() => cambiaVista("timeline")}
+          style={{ padding: "8px 18px", border: "none", cursor: "pointer", fontSize: 11, fontWeight: vistaCorrente === "timeline" ? 600 : 300, fontFamily: "Roboto, sans-serif", color: vistaCorrente === "timeline" ? "#1a1a1a" : "#999", background: vistaCorrente === "timeline" ? "#f0f0f0" : "white", transition: "all 0.2s" }}>
+          Linea del tempo
+        </button>
+      </div>
+
       {designerAttivo && (
-        <div style={{ position: "fixed", bottom: 20, left: "50%", transform: "translateX(-50%)", background: "rgba(0,0,0,0.06)", borderRadius: 20, padding: "6px 16px", fontSize: 11, fontWeight: 300, color: "#888", fontFamily: "Roboto, sans-serif", zIndex: 20, pointerEvents: "none" }}>
+        <div style={{ position: "fixed", bottom: 64, left: "50%", transform: "translateX(-50%)", background: "rgba(0,0,0,0.06)", borderRadius: 20, padding: "6px 16px", fontSize: 11, fontWeight: 300, color: "#888", fontFamily: "Roboto, sans-serif", zIndex: 20, pointerEvents: "none" }}>
           Hover sui collegamenti — clicca su area vuota per uscire
         </div>
       )}
