@@ -8,14 +8,19 @@ import relazioni from "./data/relazioni.json"
 const STILE = {
   // --- Colori ---
   designer_colore: "#090e54",
+  cursore_colore: "#1a2a8a",
+  cursore_alone_colore: "#4466dd",
+  cursore_raggio: 4,
+  cursore_alone_raggio: 14,
+  cursore_alone_velocita: 0.12,
   prodotto_colore: "#cccccc",
   bordo_colore: "#222222",
   bordo_spessore: 0.2,
-  griglia_pallino_colore: "#e0e0e0",
+  griglia_pallino_colore: "#d8d8d8",
   griglia_label_colore: "#aaaaaa",
   edge_prodotto_colore: "#dddddd",
   edge_relazione_colore: "#888888",
-  sfondo_colore: "#f5f5f0",
+  sfondo_colore: "#f0f0f0",
   prodotto_multi_bordo: "#999999",
 
   // --- Label (stile) ---
@@ -30,39 +35,37 @@ const STILE = {
   label_prodotto_anno_colore: "#aaaaaa",
 
   // --- Dimensioni fisse ---
-  l1_griglia_pallino_raggio: 1.2,
-  l2_griglia_pallino_raggio: 5,
   edge_prodotto_size: 0.5,
   edge_relazione_size: 1,
   designer_size: 8,
   prodotto_size: 5,
 
   // =============================================
-  //  ZOOM A 2 LIVELLI
-  //  soglia = camera ratio sotto cui scatta il livello 2
-  //  transizione graduale (lerp) tra i due livelli
+  //  ZOOM UNIFICATO (responsive)
+  //  Scala logaritmica da lontano (min) a vicino (max).
+  //  Tutti i valori in px, riferiti a un viewport di 800px.
+  //  Su schermi più piccoli/grandi scalano automaticamente.
+  //
+  //  zoom_*_min        → dimensione a zoom completamente out
+  //  zoom_*_max        → dimensione a zoom completamente in
+  //  zoom_label_soglia → punto (0–1) in cui appaiono le label prodotti
+  //  zoom_viewport_ref → viewport di riferimento per il ridimensionamento
   // =============================================
-  zoom_soglia: 0.2,
-
-  // Livello 1 (lontano, ratio >= zoom_soglia)
-  l1_designer_px: 3,         // raggio pallino designer (px)
-  l1_prodotto_px: 2,         // raggio pallino prodotto (px)
-  l1_label_designer: 8,      // font size label designer (px)
-  l1_label_prodotto: 0,      // font size label prodotto (0 = nascosto)
-
-  // Livello 2 (vicino, ratio < zoom_soglia)
-  l2_designer_px: 18,        // raggio pallino designer (px)
-  l2_prodotto_px: 36,        // raggio pallino prodotto (px)
-  l2_label_designer: 14,     // font size label designer (px)
-  l2_label_prodotto: 10,     // font size label prodotto (px)
+  zoom_designer_min: 3,
+  zoom_designer_max: 18,
+  zoom_prodotto_min: 2,
+  zoom_prodotto_max: 36,
+  zoom_label_designer_min: 8,
+  zoom_label_designer_max: 14,
+  zoom_label_prodotto_max: 10,
+  zoom_label_soglia: 0.4,
+  zoom_griglia_min: 1.2,
+  zoom_griglia_max: 5,
+  zoom_viewport_ref: 800,
 
   // --- Transizione tra viste ---
   transizione_stagger: 4,    // ritardo tra un prodotto e l'altro (ms)
   transizione_durata: 1200,    // durata animazione per prodotto (ms)
-
-  // --- Scala base (compensazione zoom automatica) ---
-  scala_nodi_max: 2,
-  scala_testo_max: 1.5,
 
   // --- Hover / interazione ---
   hover_scala: 2,
@@ -187,10 +190,11 @@ function App() {
     document.body.style.margin = "0"
     document.body.style.padding = "0"
     document.body.style.overflow = "hidden"
+    document.body.style.background = STILE.sfondo_colore
     document.documentElement.style.overflow = "hidden"
 
     const container = document.createElement("div")
-    container.style.cssText = "position:fixed;inset:0;z-index:1;"
+    container.style.cssText = "position:fixed;top:0;right:0;bottom:0;left:200px;z-index:1;cursor:none;"
     document.body.appendChild(container)
 
     const graph = new Graph()
@@ -204,6 +208,11 @@ function App() {
     let mouseDownPos = null
     let isDragging = false
     const animated = {}
+    const dpr = window.devicePixelRatio || 1
+    let viewportMin = Math.min(window.innerWidth, window.innerHeight)
+    let mouseX = -100, mouseY = -100
+    let mouseTrailX = -100, mouseTrailY = -100
+    let mouseNelCanvas = false
 
     const imgPaths = [
       ...designers.map((d) => `/immagini/${d.foto}`),
@@ -353,7 +362,7 @@ function App() {
         color: STILE.designer_colore, tipo: "designer",
         imgSrc: `/immagini/${d.foto}`, dati: d,
       })
-      animated[d.nome] = { r: STILE.l1_designer_px, alpha: 1 }
+      animated[d.nome] = { r: STILE.zoom_designer_min, alpha: 1 }
     })
 
     relazioni.forEach((r) => {
@@ -433,7 +442,7 @@ function App() {
           color: STILE.edge_prodotto_colore,
           size: STILE.edge_prodotto_size, tipo: "prodotto"
         })
-        animated[prodottoId] = { r: STILE.l1_prodotto_px, alpha: 1 }
+        animated[prodottoId] = { r: STILE.zoom_prodotto_min, alpha: 1 }
       })
     })
 
@@ -498,7 +507,7 @@ function App() {
             size: STILE.edge_prodotto_size, tipo: "prodotto"
           })
         })
-        animated[prodottoId] = { r: STILE.l1_prodotto_px, alpha: 1 }
+        animated[prodottoId] = { r: STILE.zoom_prodotto_min, alpha: 1 }
         if (nomeGruppo) gruppoNodi.push(prodottoId)
       })
       if (nomeGruppo && gruppoNodi.length > 0) {
@@ -510,6 +519,10 @@ function App() {
       renderEdgeLabels: false,
       maxCameraRatio: MAX_CAMERA_RATIO,
       minCameraRatio: MIN_CAMERA_RATIO,
+      zoomingRatio: 1.7,
+      zoomDuration: 150,
+      inertiaDuration: 400,
+      inertiaRatio: 0.6,
       nodeReducer: (node, data) => ({
         ...data, hidden: false, label: "",
         highlighted: false,
@@ -549,8 +562,9 @@ function App() {
 
     function ridimensionaOverlay() {
       const rect = container.getBoundingClientRect()
-      overlayCanvas.width = Math.max(1, Math.round(rect.width))
-      overlayCanvas.height = Math.max(1, Math.round(rect.height))
+      overlayCanvas.width = Math.max(1, Math.round(rect.width * dpr))
+      overlayCanvas.height = Math.max(1, Math.round(rect.height * dpr))
+      viewportMin = Math.min(rect.width, rect.height)
     }
 
     ridimensionaOverlay()
@@ -568,55 +582,54 @@ function App() {
       return s
     }
 
-    function scalaNodi() {
-      const ratio = Math.max(MIN_CAMERA_RATIO, Math.min(MAX_CAMERA_RATIO, cameraRatio))
-      return Math.min(1 / ratio, STILE.scala_nodi_max)
-    }
-
-    function scalaTesto() {
-      const ratio = Math.max(MIN_CAMERA_RATIO, Math.min(MAX_CAMERA_RATIO, cameraRatio))
-      return Math.min(1 / ratio, STILE.scala_testo_max)
-    }
-
     function zoomT() {
-      if (cameraRatio >= STILE.zoom_soglia) return 0
-      return Math.min(1, (STILE.zoom_soglia - cameraRatio) / (STILE.zoom_soglia - MIN_CAMERA_RATIO))
+      const ratio = Math.max(MIN_CAMERA_RATIO, Math.min(MAX_CAMERA_RATIO, cameraRatio))
+      const logMax = Math.log(MAX_CAMERA_RATIO)
+      const logMin = Math.log(MIN_CAMERA_RATIO)
+      return (logMax - Math.log(ratio)) / (logMax - logMin)
+    }
+
+    function vScale() {
+      return Math.max(0.5, viewportMin / STILE.zoom_viewport_ref)
     }
 
     function calcolaRTarget(node, attr, nodoAttivo) {
-      const s = scalaNodi()
       const t = zoomT()
+      const vs = vScale()
       if (attr.tipo === "designer") {
-        const base = lerp(STILE.l1_designer_px, STILE.l2_designer_px, t) * s
+        const tCurved = Math.pow(t, 1.2)
+        const base = lerp(STILE.zoom_designer_min, STILE.zoom_designer_max, tCurved) * vs
         return node === nodoAttivo ? base * STILE.hover_scala : base
       }
       if (attr.tipo === "prodotto") {
-        const base = lerp(STILE.l1_prodotto_px, STILE.l2_prodotto_px, t) * s
+        const tDelayed = Math.max(0, (t - 0.2) / 0.8)
+        const base = lerp(STILE.zoom_prodotto_min, STILE.zoom_prodotto_max, tDelayed * tDelayed) * vs
         if (node === prodottoCliccato) return base * 1.2
         if (node === prodottoHoverAttivo) return base * STILE.hover_scala
         return base
       }
-      return lerp(STILE.l1_prodotto_px, STILE.l2_prodotto_px, t) * s
+      return lerp(STILE.zoom_prodotto_min, STILE.zoom_prodotto_max, Math.pow(t, 1.2)) * vs
     }
 
     function disegnaTutto() {
       const ctx = overlayCanvas.getContext("2d")
-      const w = overlayCanvas.width
-      const h = overlayCanvas.height
-      ctx.clearRect(0, 0, w, h)
+      ctx.setTransform(1, 0, 0, 1, 0, 0)
+      ctx.clearRect(0, 0, overlayCanvas.width, overlayCanvas.height)
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0)
+      const w = overlayCanvas.width / dpr
+      const h = overlayCanvas.height / dpr
 
-      const st = scalaTesto()
       const t = zoomT()
-      const labelDesignerSize = Math.max(STILE.label_min, lerp(STILE.l1_label_designer, STILE.l2_label_designer, t) * st)
-      const labelProdottoBase = lerp(STILE.l1_label_prodotto, STILE.l2_label_prodotto, t)
-      const mostraLabelProdotti = labelProdottoBase > 0.5
-      const labelProdottoSize = mostraLabelProdotti ? Math.max(STILE.label_min, labelProdottoBase * st) : 0
+      const vs = vScale()
+      const labelDesignerSize = Math.max(STILE.label_min, lerp(STILE.zoom_label_designer_min, STILE.zoom_label_designer_max, Math.pow(t, 1.2)) * vs)
+      const tLabel = Math.max(0, (t - STILE.zoom_label_soglia) / (1 - STILE.zoom_label_soglia))
+      const mostraLabelProdotti = t > STILE.zoom_label_soglia
+      const labelProdottoSize = mostraLabelProdotti ? Math.max(STILE.label_min, STILE.zoom_label_prodotto_max * tLabel * vs) : 0
       const nodoAttivo = designerCliccato || nodoHoverAttivo
       const collegati = nodiCollegatiAlHover(nodoAttivo)
       const hoverAttivo = nodoAttivo !== null
 
-      const sn = scalaNodi()
-      const grigliaRaggio = lerp(STILE.l1_griglia_pallino_raggio, STILE.l2_griglia_pallino_raggio, t)
+      const grigliaRaggio = lerp(STILE.zoom_griglia_min, STILE.zoom_griglia_max, t)
       const yGrafoMin = Math.min(Y_MIN, contenutoYMin) - MARGINE_Y
       const yGrafoMax = Math.max(Y_MAX, contenutoYMax) + MARGINE_Y
       ANNI_SINGOLI.forEach((anno) => {
@@ -645,7 +658,7 @@ function App() {
           .map((n) => {
             const a = graph.getNodeAttributes(n)
             const p = renderer.graphToViewport({ x: a.x, y: a.y })
-            const r = animated[n]?.r ?? STILE.l1_prodotto_px
+            const r = animated[n]?.r ?? STILE.zoom_prodotto_min
             return { x: p.x, y: p.y, r }
           })
         if (punti.length < 2) return
@@ -691,7 +704,7 @@ function App() {
       })
 
       graph.forEachNode((node, attr) => {
-        if (!animated[node]) animated[node] = { r: STILE.l1_prodotto_px, alpha: 1 }
+        if (!animated[node]) animated[node] = { r: STILE.zoom_prodotto_min, alpha: 1 }
         const rTarget = calcolaRTarget(node, attr, nodoAttivo)
         let alphaTarget = 1
         if (vistaInterna === "timeline" && annoBloccato) {
@@ -803,33 +816,45 @@ function App() {
           nodiProdotti.push(item)
         }
       }
-      const nodiFiltrati = [...nodiProdotti, ...nodiDesigner]
+      const prodottoInPrimoPiano = prodottoCliccato || prodottoHoverAttivo
+      const nodiFiltrati = prodottoInPrimoPiano
+        ? [...nodiDesigner, ...nodiProdotti]
+        : [...nodiProdotti, ...nodiDesigner]
 
       nodiFiltrati.forEach(({ node, attr }) => {
         const pos = renderer.graphToViewport({ x: attr.x, y: attr.y })
-        const r = animated[node]?.r ?? STILE.l1_prodotto_px
+        const r = animated[node]?.r ?? STILE.zoom_prodotto_min
         const alpha = animated[node]?.alpha ?? 1
         const isAttivo = node === nodoAttivo
 
         ctx.globalAlpha = alpha
+        ctx.beginPath()
+        ctx.arc(pos.x, pos.y, r, 0, Math.PI * 2)
+        ctx.fillStyle = attr.tipo === "designer" ? STILE.designer_colore : "#ffffff"
+        ctx.fill()
         ctx.save()
         ctx.beginPath()
         ctx.arc(pos.x, pos.y, r, 0, Math.PI * 2)
         ctx.clip()
         const img = imgCache[attr.imgSrc]
         if (img && img.complete && img.naturalWidth > 0) {
-          ctx.drawImage(img, pos.x - r, pos.y - r, r * 2, r * 2)
+          const iw = img.naturalWidth, ih = img.naturalHeight
+          const scale = Math.max(r * 2 / iw, r * 2 / ih)
+          const sw = iw * scale, sh = ih * scale
+          ctx.drawImage(img, pos.x - sw / 2, pos.y - sh / 2, sw, sh)
         } else {
-          ctx.fillStyle = attr.color
+          ctx.fillStyle = "#ffffff"
           ctx.fill()
         }
         ctx.restore()
 
-        ctx.beginPath()
-        ctx.arc(pos.x, pos.y, r, 0, Math.PI * 2)
-        ctx.strokeStyle = isAttivo && attr.tipo === "designer" ? "#000000" : (attr.multi ? STILE.prodotto_multi_bordo : STILE.bordo_colore)
-        ctx.lineWidth = isAttivo && attr.tipo === "designer" ? 1.5 : STILE.bordo_spessore
-        ctx.stroke()
+        if (attr.tipo === "designer") {
+          ctx.beginPath()
+          ctx.arc(pos.x, pos.y, r, 0, Math.PI * 2)
+          ctx.strokeStyle = isAttivo ? "#000000" : STILE.bordo_colore
+          ctx.lineWidth = isAttivo ? 1.5 : STILE.bordo_spessore
+          ctx.stroke()
+        }
 
         if (attr.tipo === "designer") {
           const parti = attr.label.split(" ")
@@ -884,6 +909,30 @@ function App() {
         }
         ctx.globalAlpha = 1
       })
+
+      if (mouseNelCanvas) {
+        mouseTrailX = lerp(mouseTrailX, mouseX, STILE.cursore_alone_velocita)
+        mouseTrailY = lerp(mouseTrailY, mouseY, STILE.cursore_alone_velocita)
+        const suElemento = !!(prodottoHoverAttivo || nodoHoverAttivo)
+        if (suElemento) {
+          ctx.globalAlpha = 0.35
+          ctx.beginPath()
+          ctx.arc(mouseTrailX, mouseTrailY, STILE.cursore_alone_raggio, 0, Math.PI * 2)
+          ctx.fillStyle = STILE.cursore_alone_colore
+          ctx.fill()
+          ctx.globalAlpha = 1
+        } else {
+          ctx.beginPath()
+          ctx.arc(mouseTrailX, mouseTrailY, STILE.cursore_alone_raggio, 0, Math.PI * 2)
+          ctx.strokeStyle = STILE.cursore_alone_colore
+          ctx.lineWidth = 1
+          ctx.stroke()
+          ctx.beginPath()
+          ctx.arc(mouseX, mouseY, STILE.cursore_raggio, 0, Math.PI * 2)
+          ctx.fillStyle = STILE.cursore_colore
+          ctx.fill()
+        }
+      }
     }
 
     // Il canvas overlay ha una propria animazione. In questo modo il primo frame
@@ -914,6 +963,7 @@ function App() {
 
     const camera = renderer.getCamera()
     let clamping = false
+    let clampAnimId = null
     camera.on("updated", (state) => {
       cameraRatio = state.ratio
       if (clamping) { richiediDisegnoOverlay(2); return }
@@ -929,8 +979,9 @@ function App() {
 
       if (cx !== state.x || cy !== state.y) {
         clamping = true
-        camera.setState({ x: cx, y: cy })
-        clamping = false
+        camera.animate({ x: cx, y: cy }, { duration: 150 })
+        if (clampAnimId) clearTimeout(clampAnimId)
+        clampAnimId = setTimeout(() => { clamping = false; clampAnimId = null }, 200)
       }
 
       try { localStorage.setItem("dn-camera", JSON.stringify({ x: state.x, y: state.y, ratio: state.ratio })) } catch {}
@@ -951,11 +1002,24 @@ function App() {
     })
 
     // Primo render: ora l'overlay esiste già e l'evento afterRender è collegato.
+    renderer.refresh()
+
+    let cameraImpostata = false
     try {
       const saved = JSON.parse(localStorage.getItem("dn-camera"))
-      if (saved) camera.setState({ x: saved.x, y: saved.y, ratio: saved.ratio })
+      if (saved) { camera.setState({ x: saved.x, y: saved.y, ratio: saved.ratio }); cameraImpostata = true }
     } catch {}
-    renderer.refresh()
+
+    if (!cameraImpostata) {
+      const bboxX = [X_MIN - MARGINE_X, X_MAX + MARGINE_X]
+      const bboxY = [Math.min(Y_MIN, contenutoYMin) - MARGINE_Y, Math.max(Y_MAX, contenutoYMax) + MARGINE_Y]
+      if (graph.hasNode("Achille Castiglioni")) {
+        const cAttr = graph.getNodeAttributes("Achille Castiglioni")
+        const cx = (cAttr.x - bboxX[0]) / (bboxX[1] - bboxX[0])
+        const cy = (cAttr.y - bboxY[0]) / (bboxY[1] - bboxY[0])
+        camera.setState({ ratio: 0.25, x: cx + 0.05, y: cy })
+      }
+    }
     richiediDisegnoOverlay(2)
 
     let vistaInterna = "designer"
@@ -1012,6 +1076,9 @@ function App() {
 
     const sigmaCanvas = container
     if (sigmaCanvas) {
+      sigmaCanvas.addEventListener("mouseenter", () => { mouseNelCanvas = true })
+      sigmaCanvas.addEventListener("mouseleave", () => { mouseNelCanvas = false; richiediDisegnoOverlay(18) })
+
       sigmaCanvas.addEventListener("mousedown", (e) => {
         mouseDownPos = { x: e.clientX, y: e.clientY }
         isDragging = false
@@ -1027,15 +1094,31 @@ function App() {
         const rect = sigmaCanvas.getBoundingClientRect()
         const mx = e.clientX - rect.left
         const my = e.clientY - rect.top
+        mouseX = mx; mouseY = my
+        if (!mouseNelCanvas) { mouseTrailX = mx; mouseTrailY = my; mouseNelCanvas = true }
+        richiediDisegnoOverlay(18)
+
+        let prodottoHover = null
+        if (zoomT() > STILE.zoom_label_soglia - 0.1 || vistaInterna === "timeline") {
+          graph.forEachNode((node, attr) => {
+            if (attr.tipo !== "prodotto") return
+            const pos = renderer.graphToViewport({ x: attr.x, y: attr.y })
+            const r = animated[node]?.r ?? STILE.zoom_prodotto_min
+            if (Math.sqrt((mx - pos.x) ** 2 + (my - pos.y) ** 2) < r) prodottoHover = node
+          })
+          if (prodottoHover !== prodottoHoverAttivo) { prodottoHoverAttivo = prodottoHover; if (prodottoHover) ultimoProdottoHover = prodottoHover; richiediDisegnoOverlay(18) }
+        } else if (prodottoHoverAttivo !== null) { prodottoHoverAttivo = null; richiediDisegnoOverlay(18) }
 
         if (!designerCliccato) {
           let nodoHover = null
-          graph.forEachNode((node, attr) => {
-            if (attr.tipo !== "designer") return
-            const pos = renderer.graphToViewport({ x: attr.x, y: attr.y })
-            const r = animated[node]?.r ?? STILE.l1_designer_px
-            if (Math.sqrt((mx - pos.x) ** 2 + (my - pos.y) ** 2) < r) nodoHover = node
-          })
+          if (!prodottoHoverAttivo) {
+            graph.forEachNode((node, attr) => {
+              if (attr.tipo !== "designer") return
+              const pos = renderer.graphToViewport({ x: attr.x, y: attr.y })
+              const r = animated[node]?.r ?? STILE.zoom_designer_min
+              if (Math.sqrt((mx - pos.x) ** 2 + (my - pos.y) ** 2) < r) nodoHover = node
+            })
+          }
           if (nodoHover !== nodoHoverAttivo) {
             nodoHoverAttivo = nodoHover
             graph.forEachEdge((edge, attr) => { if (attr.tipo === "relazione") graph.setEdgeAttribute(edge, "attivo", false) })
@@ -1059,23 +1142,16 @@ function App() {
             if (len2 === 0) return
             const t = Math.max(0, Math.min(1, ((mx - posS.x) * dx + (my - posS.y) * dy) / len2))
             const px = posS.x + t * dx - mx, py = posS.y + t * dy - my
-            if (Math.sqrt(px * px + py * py) < 10) relazioneHover = { dati: attr.dati, x: e.clientX, y: e.clientY }
+            if (Math.sqrt(px * px + py * py) < 10) {
+              const d = attr.dati
+              const dOrd = designerCliccato === d.designer_b ? { ...d, designer_a: d.designer_b, designer_b: d.designer_a } : d
+              relazioneHover = { dati: dOrd, x: e.clientX, y: e.clientY }
+            }
           })
           setTooltipRelazione(relazioneHover)
         } else {
           setTooltipRelazione(null)
         }
-
-        if (cameraRatio < STILE.zoom_soglia || vistaInterna === "timeline") {
-          let prodottoHover = null
-          graph.forEachNode((node, attr) => {
-            if (attr.tipo !== "prodotto") return
-            const pos = renderer.graphToViewport({ x: attr.x, y: attr.y })
-            const r = animated[node]?.r ?? STILE.l1_prodotto_px
-            if (Math.sqrt((mx - pos.x) ** 2 + (my - pos.y) ** 2) < r) prodottoHover = node
-          })
-          if (prodottoHover !== prodottoHoverAttivo) { prodottoHoverAttivo = prodottoHover; if (prodottoHover) ultimoProdottoHover = prodottoHover; richiediDisegnoOverlay(18) }
-        } else if (prodottoHoverAttivo !== null) { prodottoHoverAttivo = null; richiediDisegnoOverlay(18) }
       })
 
       sigmaCanvas.addEventListener("mouseup", (e) => {
@@ -1097,7 +1173,10 @@ function App() {
             if (len2 === 0) return
             const t = Math.max(0, Math.min(1, ((mx - posS.x) * dx + (my - posS.y) * dy) / len2))
             const px = posS.x + t * dx - mx, py = posS.y + t * dy - my
-            if (Math.sqrt(px * px + py * py) < 8) relazioneCliccata = attr.dati
+            if (Math.sqrt(px * px + py * py) < 8) {
+              const d = attr.dati
+              relazioneCliccata = designerCliccato === d.designer_b ? { ...d, designer_a: d.designer_b, designer_b: d.designer_a } : d
+            }
           })
         }
         if (relazioneCliccata) { setPopup({ tipo: "relazione", dati: relazioneCliccata, colore: "#888888" }); return }
@@ -1105,7 +1184,7 @@ function App() {
         let trovato = null
         graph.forEachNode((node, attr) => {
           const pos = renderer.graphToViewport({ x: attr.x, y: attr.y })
-          const r = animated[node]?.r ?? (attr.tipo === "designer" ? STILE.l1_designer_px : STILE.l1_prodotto_px)
+          const r = animated[node]?.r ?? (attr.tipo === "designer" ? STILE.zoom_designer_min : STILE.zoom_prodotto_min)
           if (Math.sqrt((mx - pos.x) ** 2 + (my - pos.y) ** 2) < r) trovato = { node, attr }
         })
 
@@ -1121,7 +1200,7 @@ function App() {
             } else {
               designerCliccato = trovato.node
               setDesignerAttivo(trovato.node)
-              setPannelloDesigner(trovato.attr.dati)
+              setPannelloDesigner({ ...trovato.attr.dati, _tipo: "designer" })
               requestAnimationFrame(() => setPannelloVisibile(true))
               graph.forEachEdge((edge, attr) => { if (attr.tipo === "relazione") graph.setEdgeAttribute(edge, "attivo", false) })
               graph.forEachEdge(trovato.node, (edge, edgeAttr) => { if (edgeAttr.tipo === "relazione") graph.setEdgeAttribute(edge, "attivo", true) })
@@ -1133,7 +1212,8 @@ function App() {
               annoBloccato = annoBloccato === anno ? null : anno
             }
             prodottoCliccato = trovato.node
-            setPopup({ tipo: trovato.attr.tipo, dati: trovato.attr.dati, colore: trovato.attr.color })
+            setPannelloDesigner({ ...trovato.attr.dati, _tipo: "prodotto" })
+            requestAnimationFrame(() => setPannelloVisibile(true))
             richiediDisegnoOverlay(18)
           }
         } else {
@@ -1152,6 +1232,7 @@ function App() {
     return () => {
       resizeObserver.disconnect()
       if (overlayAnimationFrame !== null) cancelAnimationFrame(overlayAnimationFrame)
+      if (clampAnimId) clearTimeout(clampAnimId)
       renderer.kill()
       if (container.parentNode) container.parentNode.removeChild(container)
       document.body.style.overflow = ""
@@ -1167,9 +1248,21 @@ function App() {
 
   return (
     <>
-      <div style={{ position: "fixed", top: 20, left: 24, fontFamily: "Roboto, sans-serif", zIndex: 20, pointerEvents: "none" }}>
-        <div style={{ fontSize: 20, fontWeight: 600, color: "#1a1a1a", letterSpacing: 1 }}>Design italiano</div>
-        <div style={{ fontSize: 12, fontWeight: 300, color: "#888888", marginTop: 2 }}>Designer e prodotti — 1880/1980</div>
+      <div style={{ position: "fixed", top: 0, left: 0, bottom: 0, width: 200, zIndex: 20, pointerEvents: "none", padding: "20px 16px", boxSizing: "border-box", display: "flex", flexDirection: "column", justifyContent: "flex-end" }}>
+        <div style={{ fontFamily: "'Roboto Serif', serif", fontWeight: 500, fontStyle: "italic", fontSize: 13, color: "#1a1a1a", letterSpacing: 0.3, lineHeight: 1.3 }}>
+          Design — encyclopédie visuelle 1880–1980
+        </div>
+        <div style={{ fontFamily: "'Roboto Serif', serif", fontWeight: 400, fontStyle: "italic", fontSize: 13, color: "#1a1a1a", marginTop: 2, lineHeight: 1.3 }}>
+          Un secolo di oggetti, forme e idee.
+        </div>
+        <div style={{ display: "flex", flexDirection: "column", gap: 8, marginTop: 10 }}>
+          <p style={{ fontFamily: "Roboto, sans-serif", fontWeight: 300, fontSize: 11, color: "#888", lineHeight: 1.35, margin: 0 }}>
+            Questa mappa rappresenta un secolo di design occidentale — i suoi protagonisti, le loro opere e i legami invisibili che li uniscono. Ogni nodo è un designer o un oggetto; ogni connessione, una relazione di collaborazione, influenza o formazione.
+          </p>
+          <p style={{ fontFamily: "Roboto, sans-serif", fontWeight: 300, fontSize: 11, color: "#888", lineHeight: 1.35, margin: 0 }}>
+            La posizione orizzontale segue una cronologia rigorosa, dal 1880 al 1980. Esplorando la mappa si scoprono le grandi concentrazioni del movimento moderno, le filiazioni tra maestri e allievi, e le convergenze tra discipline e nazionalità.
+          </p>
+        </div>
       </div>
 
       <div style={{ position: "fixed", bottom: 24, left: "50%", transform: "translateX(-50%)", zIndex: 20, fontFamily: "Roboto, sans-serif", display: "flex", gap: 0, background: "white", borderRadius: 20, boxShadow: "0 2px 12px rgba(0,0,0,0.1)", overflow: "hidden" }}>
@@ -1203,10 +1296,16 @@ function App() {
         </div>
       )}
 
-      {pannelloDesigner && (
+      {pannelloDesigner && (() => {
+        const scuro = pannelloDesigner._tipo === "designer"
+        const designerProdotto = pannelloDesigner._tipo === "prodotto"
+          ? getDesigners(pannelloDesigner).join(", ")
+          : ""
+        return (
         <div style={{
           position: "fixed", top: 0, right: 0, bottom: 0, width: 340,
-          background: "white", boxShadow: "-4px 0 32px rgba(0,0,0,0.12)",
+          background: scuro ? "#1a1a1a" : "#ffffff",
+          boxShadow: `-4px 0 32px rgba(0,0,0,${scuro ? 0.3 : 0.12})`,
           fontFamily: "Roboto, sans-serif", zIndex: 100,
           transform: pannelloVisibile ? "translateX(0)" : "translateX(100%)",
           transition: "transform 0.35s cubic-bezier(0.4, 0, 0.2, 1)",
@@ -1215,56 +1314,75 @@ function App() {
           <div style={{ padding: "32px 28px 0", flexShrink: 0 }}>
             <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start" }}>
               <div>
-                <div style={{ fontSize: 20, fontWeight: 600, color: "#1a1a1a", lineHeight: 1.2 }}>{pannelloDesigner.nome}</div>
-                <div style={{ fontSize: 13, fontWeight: 300, color: "#999", marginTop: 4 }}>
-                  {pannelloDesigner.nato}{pannelloDesigner.morto ? ` — ${pannelloDesigner.morto}` : ""}
+                <div style={{ fontFamily: "'Roboto Serif', serif", fontWeight: 500, fontStyle: "italic", fontSize: 20, color: scuro ? "#ffffff" : "#1a1a1a", lineHeight: 1.2 }}>
+                  {pannelloDesigner.nome}
+                </div>
+                <div style={{ fontFamily: "'Roboto Serif', serif", fontWeight: 400, fontStyle: "italic", fontSize: 13, color: "#888", marginTop: 4 }}>
+                  {pannelloDesigner._tipo === "designer"
+                    ? `${pannelloDesigner.nato}${pannelloDesigner.morto ? ` — ${pannelloDesigner.morto}` : ""}`
+                    : `${pannelloDesigner.anno || ""}${designerProdotto ? ` — ${designerProdotto}` : ""}`
+                  }
                 </div>
               </div>
               <button onClick={() => { setPannelloVisibile(false); setTimeout(() => setPannelloDesigner(null), 350) }}
-                style={{ background: "none", border: "none", cursor: "pointer", fontSize: 20, color: "#aaa", padding: "0 4px", lineHeight: 1 }}>
+                style={{ background: "none", border: "none", cursor: "pointer", fontSize: 20, color: scuro ? "#666" : "#aaa", padding: "0 4px", lineHeight: 1 }}>
                 &times;
               </button>
             </div>
           </div>
           <div style={{ flex: 1, overflowY: "auto", padding: "20px 28px 32px" }}>
             <div style={{
-              width: "100%", aspectRatio: "1", borderRadius: 12, overflow: "hidden",
-              background: "#f5f5f5", marginBottom: 20,
+              width: "100%", aspectRatio: "1", overflow: "hidden",
+              background: scuro ? "#2a2a2a" : "#f5f5f5", marginBottom: 20,
             }}>
               <img src={`/immagini/${pannelloDesigner.foto}`} alt={pannelloDesigner.nome}
                 style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
                 onError={(e) => { e.target.style.display = "none" }} />
             </div>
-            <p style={{ fontSize: 13, fontWeight: 300, color: "#555", lineHeight: 1.6, margin: 0 }}>
-              {pannelloDesigner.bio}
-            </p>
+            {pannelloDesigner._tipo === "designer" && pannelloDesigner.bio && (
+              <p style={{ fontSize: 13, fontWeight: 300, color: "#999", lineHeight: 1.6, margin: 0 }}>
+                {pannelloDesigner.bio}
+              </p>
+            )}
+            {pannelloDesigner._tipo === "prodotto" && (
+              <div style={{ fontSize: 13, fontWeight: 300, color: "#555", lineHeight: 1.6 }}>
+                {pannelloDesigner.azienda && <p style={{ margin: "0 0 8px" }}>{pannelloDesigner.azienda}</p>}
+                {pannelloDesigner.categoria && <p style={{ margin: 0, color: "#888", fontStyle: "italic" }}>{pannelloDesigner.categoria}</p>}
+              </div>
+            )}
           </div>
         </div>
-      )}
+        )
+      })()}
 
       {popup && (
-        <div style={{ position: "fixed", top: 30, right: 30, background: "white", borderRadius: 12, padding: 24, width: 280, boxShadow: "0 8px 32px rgba(0,0,0,0.18)", fontFamily: "Roboto, sans-serif", zIndex: 100 }}>
-          <div style={{ width: 8, height: 8, borderRadius: "50%", background: popup.colore, display: "inline-block", marginRight: 8 }} />
-          <strong style={{ fontSize: 15, fontWeight: 600 }}>
-            {popup.tipo === "relazione" ? `${popup.dati.designer_a} — ${popup.dati.designer_b}` : popup.dati.nome}
-          </strong>
-          <hr style={{ margin: "12px 0", border: "none", borderTop: "1px solid #eee" }} />
-          {popup.tipo === "relazione" && (
-            <>
-              <p style={{ margin: "4px 0", fontSize: 11, fontWeight: 600, color: "#999", textTransform: "uppercase", letterSpacing: 1 }}>{popup.dati.tipo}</p>
-              <p style={{ margin: "8px 0", fontSize: 12, fontWeight: 300, color: "#555" }}>{popup.dati.descrizione}</p>
-            </>
-          )}
-          {popup.tipo === "prodotto" && (
-            <>
-              <p style={{ margin: "4px 0", fontSize: 12, fontWeight: 300 }}><span style={{ fontWeight: 600 }}>Anno:</span> {popup.dati.anno}</p>
-              <p style={{ margin: "4px 0", fontSize: 12, fontWeight: 300 }}><span style={{ fontWeight: 600 }}>Designer:</span> {popup.dati.designer}</p>
-              <p style={{ margin: "4px 0", fontSize: 12, fontWeight: 300 }}><span style={{ fontWeight: 600 }}>Azienda:</span> {popup.dati.azienda}</p>
-            </>
-          )}
-          <button onClick={() => setPopup(null)} style={{ marginTop: 16, padding: "6px 14px", border: "none", borderRadius: 6, background: "#2d2d2d", color: "white", cursor: "pointer", fontSize: 12, fontFamily: "Roboto, sans-serif", fontWeight: 300 }}>
-            Chiudi
-          </button>
+        <div style={{
+          position: "fixed", top: 0, right: 0, bottom: 0, width: 340,
+          background: "#1a1a1a", boxShadow: "-4px 0 32px rgba(0,0,0,0.3)",
+          fontFamily: "Roboto, sans-serif", zIndex: 100,
+          display: "flex", flexDirection: "column", overflow: "hidden",
+        }}>
+          <div style={{ padding: "32px 28px 0", flexShrink: 0 }}>
+            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start" }}>
+              <div>
+                <div style={{ fontFamily: "'Roboto Serif', serif", fontWeight: 500, fontStyle: "italic", fontSize: 20, color: "#ffffff", lineHeight: 1.2 }}>
+                  {popup.dati.designer_a} — {popup.dati.designer_b}
+                </div>
+                <div style={{ fontFamily: "'Roboto Serif', serif", fontWeight: 400, fontStyle: "italic", fontSize: 13, color: "#888", marginTop: 4 }}>
+                  {popup.dati.tipo}
+                </div>
+              </div>
+              <button onClick={() => setPopup(null)}
+                style={{ background: "none", border: "none", cursor: "pointer", fontSize: 20, color: "#666", padding: "0 4px", lineHeight: 1 }}>
+                &times;
+              </button>
+            </div>
+          </div>
+          <div style={{ flex: 1, overflowY: "auto", padding: "20px 28px 32px" }}>
+            <p style={{ fontSize: 13, fontWeight: 300, color: "#999", lineHeight: 1.6, margin: 0 }}>
+              {popup.dati.descrizione}
+            </p>
+          </div>
         </div>
       )}
     </>
