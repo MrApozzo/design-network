@@ -15,6 +15,7 @@ const STILE = {
   griglia_label_colore: "#aaaaaa",
   edge_prodotto_colore: "#dddddd",
   edge_relazione_colore: "#888888",
+  sfondo_colore: "#f5f5f0",
 
   // --- Label (stile) ---
   label_min: 5,
@@ -29,8 +30,8 @@ const STILE = {
 
   // --- Dimensioni fisse ---
   l1_griglia_pallino_raggio: 1.2,
-  l2_griglia_pallino_raggio: 2.5,
-  edge_prodotto_size: 0,
+  l2_griglia_pallino_raggio: 5,
+  edge_prodotto_size: 0.5,
   edge_relazione_size: 1,
   designer_size: 8,
   prodotto_size: 5,
@@ -40,7 +41,7 @@ const STILE = {
   //  soglia = camera ratio sotto cui scatta il livello 2
   //  transizione graduale (lerp) tra i due livelli
   // =============================================
-  zoom_soglia: 0.3,
+  zoom_soglia: 0.2,
 
   // Livello 1 (lontano, ratio >= zoom_soglia)
   l1_designer_px: 6,         // raggio pallino designer (px)
@@ -67,9 +68,16 @@ const STILE = {
   hover_opacita_altri: 0.05,
   lerp_velocita: 0.15,
 
-  // --- Layout ---
-  diagonale_inclinazione: 0.15,
-  min_distanza_y: 0.5,
+  // --- Layout force-directed Y ---
+  peso_collettivo: 0.8,
+  peso_coprogettazione: 0.9,
+  peso_relazione_personale: 1.0,
+  peso_relazione_professionale: 0.5,
+  peso_scuola: 0.4,
+  force_iterazioni: 200,
+  force_repulsione: 4.0,
+  force_attrazione: 0.1,
+  min_distanza_y: 5.0,
   orbita_raggio_min: 0.3,
   orbita_spazio_per_prodotto: 0.08,
   anello_raggio_interno: 0.8,
@@ -112,6 +120,10 @@ function lerp(a, b, t) {
   return a + (b - a) * t
 }
 
+function getDesigners(p) {
+  return Array.isArray(p.designer) ? p.designer : [p.designer]
+}
+
 function preloadImages(paths) {
   const cache = {}
   paths.forEach((src) => {
@@ -148,6 +160,7 @@ function App() {
     let ultimoProdottoHover = null
     let prodottoCliccato = null
     let designerCliccato = null
+    let annoBloccato = null
     let mouseDownPos = null
     let isDragging = false
     const animated = {}
@@ -160,34 +173,90 @@ function App() {
 
     const nProdottiPerDesigner = {}
     prodotti.forEach((p) => {
-      nProdottiPerDesigner[p.designer] = (nProdottiPerDesigner[p.designer] || 0) + 1
+      getDesigners(p).forEach((d) => {
+        nProdottiPerDesigner[d] = (nProdottiPerDesigner[d] || 0) + 1
+      })
     })
 
     const designerOrdinati = [...designers].sort((a, b) => a.nato - b.nato)
-    const posizioniCalcolate = designerOrdinati.map((d) => {
-      const x = annoToX(d.nato)
-      const yDiagonale = -(x * STILE.diagonale_inclinazione)
-      return {
-        d, x,
-        y: d.y !== null && d.y !== undefined ? d.y : yDiagonale,
-        manuale: d.y !== null && d.y !== undefined,
-        raggio: calcolaRaggio(nProdottiPerDesigner[d.nome] || 0),
-      }
+
+    const pesiCoppie = {}
+    function aggiungiPeso(a, b, peso) {
+      if (a === b) return
+      const key = [a, b].sort().join("|")
+      pesiCoppie[key] = (pesiCoppie[key] || 0) + peso
+    }
+
+    relazioni.forEach((r) => {
+      const peso = r.categoria === "personale" ? STILE.peso_relazione_personale : STILE.peso_relazione_professionale
+      aggiungiPeso(r.designer_a, r.designer_b, peso)
     })
 
-    let offsetCumulativo = 0
-    for (let i = 1; i < posizioniCalcolate.length; i++) {
-      const prev = posizioniCalcolate[i - 1]
-      const curr = posizioniCalcolate[i]
-      if (!curr.manuale) curr.y -= offsetCumulativo
-      const re1 = prev.raggio * STILE.anello_raggio_esterno
-      const re2 = curr.raggio * STILE.anello_raggio_esterno
-      const distMin = re1 + re2 + 0.3
-      if (Math.abs(curr.x - prev.x) < (re1 + re2) * 4) {
-        const distY = Math.abs(curr.y - prev.y)
-        if (distY < distMin) {
-          const delta = distMin - distY
-          if (!curr.manuale) { curr.y -= delta; offsetCumulativo += delta }
+    prodotti.forEach((p) => {
+      const ds = getDesigners(p)
+      for (let a = 0; a < ds.length; a++)
+        for (let b = a + 1; b < ds.length; b++)
+          aggiungiPeso(ds[a], ds[b], STILE.peso_coprogettazione)
+    })
+
+    const scuoleMap = {}
+    const collettiviMap = {}
+    designers.forEach((d) => {
+      ;(d.scuole || []).forEach((s) => {
+        if (!scuoleMap[s]) scuoleMap[s] = []
+        scuoleMap[s].push(d.nome)
+      })
+      ;(d.collettivi || []).forEach((c) => {
+        if (!collettiviMap[c]) collettiviMap[c] = []
+        collettiviMap[c].push(d.nome)
+      })
+    })
+    Object.values(scuoleMap).forEach((membri) => {
+      for (let a = 0; a < membri.length; a++)
+        for (let b = a + 1; b < membri.length; b++)
+          aggiungiPeso(membri[a], membri[b], STILE.peso_scuola)
+    })
+    Object.values(collettiviMap).forEach((membri) => {
+      for (let a = 0; a < membri.length; a++)
+        for (let b = a + 1; b < membri.length; b++)
+          aggiungiPeso(membri[a], membri[b], STILE.peso_collettivo)
+    })
+
+    const posizioniCalcolate = designerOrdinati.map((d, i) => ({
+      d,
+      x: annoToX(d.nato),
+      y: (d.y !== null && d.y !== undefined) ? d.y : (designerOrdinati.length / 2 - i) * 0.5,
+      manuale: d.y !== null && d.y !== undefined,
+      raggio: calcolaRaggio(nProdottiPerDesigner[d.nome] || 0),
+    }))
+
+    for (let iter = 0; iter < STILE.force_iterazioni; iter++) {
+      const forze = posizioniCalcolate.map(() => 0)
+      for (let i = 0; i < posizioniCalcolate.length; i++) {
+        if (posizioniCalcolate[i].manuale) continue
+        for (let j = 0; j < posizioniCalcolate.length; j++) {
+          if (i === j) continue
+          const a = posizioniCalcolate[i]
+          const b = posizioniCalcolate[j]
+          const dy = a.y - b.y
+          const dist = Math.abs(dy) || 0.01
+
+          const key = [a.d.nome, b.d.nome].sort().join("|")
+          const peso = pesiCoppie[key] || 0
+          if (peso > 0) {
+            forze[i] -= STILE.force_attrazione * peso * dy / dist
+          }
+
+          const minDist = (a.raggio + b.raggio) * STILE.anello_raggio_esterno + STILE.min_distanza_y
+          if (dist < minDist) {
+            const repulsione = STILE.force_repulsione * (minDist - dist) / minDist
+            forze[i] += dy > 0 ? repulsione : -repulsione
+          }
+        }
+      }
+      for (let i = 0; i < posizioniCalcolate.length; i++) {
+        if (!posizioniCalcolate[i].manuale) {
+          posizioniCalcolate[i].y += forze[i] * 0.1
         }
       }
     }
@@ -213,9 +282,16 @@ function App() {
     })
 
     const prodottiPerDesigner = {}
+    const prodottiMultiDesigner = []
     prodotti.forEach((p) => {
-      if (!prodottiPerDesigner[p.designer]) prodottiPerDesigner[p.designer] = []
-      prodottiPerDesigner[p.designer].push(p)
+      const ds = getDesigners(p)
+      if (ds.length > 1) {
+        prodottiMultiDesigner.push(p)
+      } else {
+        const d = ds[0]
+        if (!prodottiPerDesigner[d]) prodottiPerDesigner[d] = []
+        prodottiPerDesigner[d].push(p)
+      }
     })
 
     Object.entries(prodottiPerDesigner).forEach(([designer, lista]) => {
@@ -274,6 +350,60 @@ function App() {
       })
     })
 
+    const multiPerGruppo = {}
+    prodottiMultiDesigner.forEach((p) => {
+      const key = getDesigners(p).sort().join("|")
+      if (!multiPerGruppo[key]) multiPerGruppo[key] = []
+      multiPerGruppo[key].push(p)
+    })
+
+    Object.entries(multiPerGruppo).forEach(([key, lista]) => {
+      const ds = key.split("|").filter((d) => graph.hasNode(d))
+      if (ds.length === 0) return
+      const coords = ds.map((d) => ({ x: graph.getNodeAttribute(d, "x"), y: graph.getNodeAttribute(d, "y") }))
+      const centroX = coords.reduce((s, c) => s + c.x, 0) / coords.length - 3
+      const centroY = coords.reduce((s, c) => s + c.y, 0) / coords.length
+
+      const n = lista.length
+      const raggioMax = calcolaRaggio(n)
+      const listaOrdinata = [...lista].sort((a, b) => (a.anno || 0) - (b.anno || 0))
+      const annoMin = listaOrdinata[0]?.anno || 1900
+      const annoMax = listaOrdinata[listaOrdinata.length - 1]?.anno || 1980
+      const arcoInizio = Math.PI * STILE.arco_inizio
+      const arcoFine = Math.PI * STILE.arco_fine
+      const sliceAngolo = (arcoFine - arcoInizio) / n
+      const indiciAngolari = listaOrdinata.map((_, i) => i)
+      indiciAngolari.sort((a, b) => hashStr(listaOrdinata[a].nome) - hashStr(listaOrdinata[b].nome))
+
+      listaOrdinata.forEach((p, i) => {
+        const t = annoMax === annoMin ? 0.5 : (p.anno - annoMin) / (annoMax - annoMin)
+        const raggio = raggioMax * (STILE.anello_raggio_interno + t * (STILE.anello_raggio_esterno - STILE.anello_raggio_interno))
+        const posAng = indiciAngolari.indexOf(i)
+        const angolo = arcoInizio + sliceAngolo * posAng + sliceAngolo * 0.5 + (hashStr(p.nome) - 0.5) * sliceAngolo * STILE.arco_perturbazione
+
+        const prodottoId = `prodotto:multi:${p.nome}:${i}`
+        const orbitaX = centroX + Math.cos(angolo) * raggio
+        const orbitaY = centroY + Math.sin(angolo) * raggio
+        const timelineX = annoToX(p.anno || 1900)
+        const timelineY = centroY
+
+        graph.addNode(prodottoId, {
+          label: p.nome, size: STILE.prodotto_size,
+          x: orbitaX, y: orbitaY,
+          color: STILE.prodotto_colore, tipo: "prodotto",
+          imgSrc: `/immagini/${p.foto}`, dati: p,
+          orbitaX, orbitaY, timelineX, timelineY,
+        })
+        ds.forEach((d) => {
+          graph.addEdge(d, prodottoId, {
+            color: STILE.edge_prodotto_colore,
+            size: STILE.edge_prodotto_size, tipo: "prodotto"
+          })
+        })
+        animated[prodottoId] = { r: STILE.l1_prodotto_px, alpha: 1 }
+      })
+    })
+
     const renderer = new Sigma(graph, container, {
       renderEdgeLabels: false,
       maxCameraRatio: MAX_CAMERA_RATIO,
@@ -284,6 +414,9 @@ function App() {
         color: "rgba(0,0,0,0)",
         borderColor: "rgba(0,0,0,0)",
         size: 0.001,
+      }),
+      edgeReducer: (edge, data) => ({
+        ...data, hidden: true,
       }),
       labelRenderer: () => {},
       hoverRenderer: () => {},
@@ -408,11 +541,21 @@ function App() {
         if (!animated[node]) animated[node] = { r: STILE.l1_prodotto_px, alpha: 1 }
         const rTarget = calcolaRTarget(node, attr, nodoAttivo)
         let alphaTarget = 1
-        if (prodottoHoverAttivo) {
-          const designerDelProdotto = prodottoHoverAttivo && graph.hasNode(prodottoHoverAttivo)
-            ? graph.neighbors(prodottoHoverAttivo).find(n => graph.getNodeAttribute(n, "tipo") === "designer")
-            : null
-          alphaTarget = (node === prodottoHoverAttivo || node === designerDelProdotto) ? 1 : 0.2
+        if (vistaInterna === "timeline" && annoBloccato) {
+          if (attr.tipo === "prodotto") {
+            alphaTarget = attr.dati && attr.dati.anno === annoBloccato ? 1 : 0.2
+          } else if (attr.tipo === "designer") {
+            const haProdottoAnno = graph.neighbors(node).some(n => {
+              const na = graph.getNodeAttribute(n, "dati")
+              return na && na.anno === annoBloccato
+            })
+            alphaTarget = haProdottoAnno ? 1 : 0.2
+          }
+        } else if (prodottoHoverAttivo) {
+          const designersDelProdotto = prodottoHoverAttivo && graph.hasNode(prodottoHoverAttivo)
+            ? graph.neighbors(prodottoHoverAttivo).filter(n => graph.getNodeAttribute(n, "tipo") === "designer")
+            : []
+          alphaTarget = (node === prodottoHoverAttivo || designersDelProdotto.includes(node)) ? 1 : 0.2
         } else if (hoverAttivo) {
           alphaTarget = collegati.has(node) ? 1 : STILE.hover_opacita_altri
         }
@@ -421,27 +564,86 @@ function App() {
       })
 
       graph.forEachEdge((edge, attr, source, target) => {
-        if (attr.tipo !== "relazione" || !attr.attivo) return
         const posS = renderer.graphToViewport({ x: graph.getNodeAttribute(source, "x"), y: graph.getNodeAttribute(source, "y") })
         const posT = renderer.graphToViewport({ x: graph.getNodeAttribute(target, "x"), y: graph.getNodeAttribute(target, "y") })
-        ctx.beginPath()
-        ctx.moveTo(posS.x, posS.y)
-        ctx.lineTo(posT.x, posT.y)
-        ctx.strokeStyle = STILE.edge_relazione_colore
-        ctx.lineWidth = STILE.edge_relazione_size
-        ctx.setLineDash([5, 5])
-        ctx.stroke()
-        ctx.setLineDash([])
+
+        if (attr.tipo === "relazione" && attr.attivo) {
+          ctx.globalAlpha = 1
+          ctx.beginPath()
+          ctx.moveTo(posS.x, posS.y)
+          ctx.lineTo(posT.x, posT.y)
+          ctx.strokeStyle = STILE.edge_relazione_colore
+          ctx.lineWidth = STILE.edge_relazione_size
+          ctx.setLineDash([5, 5])
+          ctx.stroke()
+          ctx.setLineDash([])
+        }
+
+        if (attr.tipo === "prodotto") {
+          let edgeColor = STILE.edge_prodotto_colore
+          let edgeWidth = STILE.edge_prodotto_size
+          let edgeAlpha = 1
+          if (prodottoHoverAttivo) {
+            if (source === prodottoHoverAttivo || target === prodottoHoverAttivo) {
+              edgeColor = "#000000"
+              edgeWidth = 0.5
+            } else {
+              edgeAlpha = 0
+            }
+          } else if (hoverAttivo) {
+            if (!collegati.has(source) || !collegati.has(target)) {
+              edgeAlpha = 0.06
+            }
+          }
+          ctx.globalAlpha = edgeAlpha
+          ctx.beginPath()
+          ctx.moveTo(posS.x, posS.y)
+          ctx.lineTo(posT.x, posT.y)
+          ctx.strokeStyle = edgeColor
+          ctx.lineWidth = edgeWidth
+          ctx.stroke()
+          ctx.globalAlpha = 1
+        }
+        ctx.globalAlpha = 1
       })
 
-      const nodiFiltrati = []
+      if (vistaInterna === "timeline") {
+        const annoLinea = annoBloccato || (prodottoHoverAttivo && graph.hasNode(prodottoHoverAttivo) ? graph.getNodeAttribute(prodottoHoverAttivo, "dati").anno : null)
+        if (annoLinea) {
+          const lineaX = renderer.graphToViewport({ x: annoToX(annoLinea), y: 0 }).x
+          ctx.beginPath()
+          ctx.moveTo(lineaX, 0)
+          ctx.lineTo(lineaX, h)
+          ctx.strokeStyle = STILE.edge_relazione_colore
+          ctx.lineWidth = STILE.edge_relazione_size
+          ctx.setLineDash([5, 5])
+          ctx.stroke()
+          ctx.setLineDash([])
+          ctx.font = "600 14px Roboto"
+          ctx.fillStyle = "#555"
+          ctx.textAlign = "center"
+          ctx.fillText(annoLinea, lineaX, 18)
+        }
+      }
+
+      const nodiProdotti = []
+      const nodiDesigner = []
       const inPrimoPiano = prodottoCliccato || ultimoProdottoHover
       graph.forEachNode((node, attr) => {
-        if (node !== inPrimoPiano) nodiFiltrati.push({ node, attr })
+        if (attr.tipo === "designer") {
+          nodiDesigner.push({ node, attr })
+        } else {
+          nodiProdotti.push({ node, attr })
+        }
       })
-      if (inPrimoPiano && graph.hasNode(inPrimoPiano)) {
-        nodiFiltrati.push({ node: inPrimoPiano, attr: graph.getNodeAttributes(inPrimoPiano) })
+      if (inPrimoPiano) {
+        const idx = nodiProdotti.findIndex((n) => n.node === inPrimoPiano)
+        if (idx !== -1) {
+          const [item] = nodiProdotti.splice(idx, 1)
+          nodiProdotti.push(item)
+        }
       }
+      const nodiFiltrati = [...nodiProdotti, ...nodiDesigner]
 
       nodiFiltrati.forEach(({ node, attr }) => {
         const pos = renderer.graphToViewport({ x: attr.x, y: attr.y })
@@ -470,14 +672,43 @@ function App() {
         ctx.stroke()
 
         if (attr.tipo === "designer") {
-          ctx.font = `${STILE.label_designer_peso} ${labelDesignerSize}px Roboto`
-          ctx.fillStyle = STILE.label_designer_colore
-          ctx.textAlign = "left"
-          ctx.fillText(attr.label, pos.x + r + STILE.label_offset, pos.y + labelDesignerSize / 3)
+          const parti = attr.label.split(" ")
+          const cognome = parti.pop()
+          const nome = parti.join(" ")
+          const lx = pos.x + r + STILE.label_offset
+          const altezzaBlocco = labelDesignerSize * 2 + 5 + (labelDesignerSize - 1)
+          const lyStart = pos.y - altezzaBlocco / 2 + labelDesignerSize
+
           const date = attr.dati.morto ? `${attr.dati.nato} — ${attr.dati.morto}` : `${attr.dati.nato}`
+          const pad = 3
+          const bgColor = STILE.sfondo_colore || "#f5f5f0"
+
+          ctx.font = `400 ${labelDesignerSize}px Roboto`
+          const wNome = ctx.measureText(nome).width
+          ctx.font = `700 ${labelDesignerSize}px Roboto`
+          const wCognome = ctx.measureText(cognome).width
+          ctx.font = `${STILE.label_date_peso} ${labelDesignerSize - 1}px Roboto`
+          const wDate = ctx.measureText(date).width
+
+          let ly = lyStart
+          ctx.globalAlpha = 0.85 * alpha
+          ctx.fillStyle = bgColor
+          ctx.fillRect(lx - pad, ly - labelDesignerSize, wNome + pad * 2, labelDesignerSize + pad)
+          ctx.fillRect(lx - pad, ly + 1, wCognome + pad * 2, labelDesignerSize + pad)
+          ctx.fillRect(lx - pad, ly + labelDesignerSize + 6, wDate + pad * 2, (labelDesignerSize - 1) + pad)
+          ctx.globalAlpha = alpha
+
+          ctx.textAlign = "left"
+          ctx.fillStyle = STILE.label_designer_colore
+          ctx.font = `400 ${labelDesignerSize}px Roboto`
+          ctx.fillText(nome, lx, ly)
+          ly += labelDesignerSize + 1
+          ctx.font = `700 ${labelDesignerSize}px Roboto`
+          ctx.fillText(cognome, lx, ly)
+          ly += labelDesignerSize + 5
           ctx.font = `${STILE.label_date_peso} ${labelDesignerSize - 1}px Roboto`
           ctx.fillStyle = STILE.label_date_colore
-          ctx.fillText(date, pos.x + r + STILE.label_offset, pos.y + labelDesignerSize / 3 + labelDesignerSize + 1)
+          ctx.fillText(date, lx, ly)
         }
 
         if (attr.tipo === "prodotto" && mostraLabelProdotti) {
@@ -542,6 +773,7 @@ function App() {
         clamping = false
       }
 
+      try { localStorage.setItem("dn-camera", JSON.stringify({ x: state.x, y: state.y, ratio: state.ratio })) } catch {}
       richiediDisegnoOverlay(2)
     })
 
@@ -559,6 +791,10 @@ function App() {
     })
 
     // Primo render: ora l'overlay esiste già e l'evento afterRender è collegato.
+    try {
+      const saved = JSON.parse(localStorage.getItem("dn-camera"))
+      if (saved) camera.setState({ x: saved.x, y: saved.y, ratio: saved.ratio })
+    } catch {}
     renderer.refresh()
     richiediDisegnoOverlay(2)
 
@@ -582,6 +818,7 @@ function App() {
       if (transizioneAttiva || vista === vistaInterna) return
       transizioneAttiva = true
       vistaInterna = vista
+      annoBloccato = null
       const prodottiList = raccogliProdotti()
       const staggerMs = STILE.transizione_stagger
       const durata = STILE.transizione_durata
@@ -731,12 +968,17 @@ function App() {
             }
             richiediDisegnoOverlay(18)
           } else {
+            if (vistaInterna === "timeline" && trovato.attr.dati && trovato.attr.dati.anno) {
+              const anno = trovato.attr.dati.anno
+              annoBloccato = annoBloccato === anno ? null : anno
+            }
             prodottoCliccato = trovato.node
             setPopup({ tipo: trovato.attr.tipo, dati: trovato.attr.dati, colore: trovato.attr.color })
             richiediDisegnoOverlay(18)
           }
         } else {
           designerCliccato = null; prodottoCliccato = null
+          annoBloccato = null
           setDesignerAttivo(null)
           setPannelloVisibile(false)
           setTimeout(() => setPannelloDesigner(null), 350)

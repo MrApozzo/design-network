@@ -1,92 +1,135 @@
 [
   {
     "designer_a": "Achille Castiglioni",
+    "designer_b": "Pier Giacomo Castiglioni",
+    "tipo": "fratelli",
+    "categoria": "personale",
+    "descrizione": "Fratelli, hanno collaborato su quasi tutti i progetti fino alla morte di Pier Giacomo nel 1968"
+  },
+  {
+    "designer_a": "Achille Castiglioni",
     "designer_b": "Marco Zanuso",
     "tipo": "collaborazione",
+    "categoria": "professionale",
     "descrizione": "Entrambi protagonisti del design milanese del dopoguerra, spesso esposti insieme alla Triennale di Milano"
   },
   {
     "designer_a": "Gio Ponti",
     "designer_b": "Franco Albini",
     "tipo": "stesso_periodo",
+    "categoria": "professionale",
     "descrizione": "Entrambi figure fondamentali del razionalismo e del design italiano degli anni '40 e '50"
   },
   {
     "designer_a": "Marco Zanuso",
     "designer_b": "Richard Sapper",
     "tipo": "collaborazione",
+    "categoria": "professionale",
     "descrizione": "Hanno collaborato per anni progettando insieme prodotti iconici come il telefono Grillo per Siemens"
   },
   {
     "designer_a": "Ettore Sottsass",
     "designer_b": "Alessandro Mendini",
     "tipo": "collaborazione",
+    "categoria": "professionale",
     "descrizione": "Figure centrali del design radicale e postmoderno italiano, fondatori di movimenti culturali affini"
   },
   {
     "designer_a": "Vico Magistretti",
     "designer_b": "Cini Boeri",
     "tipo": "stesso_studio",
+    "categoria": "professionale",
     "descrizione": "Entrambi formatisi nell'ambiente del design milanese, allievi di maestri razionalisti"
   },
   {
     "designer_a": "Franco Albini",
     "designer_b": "Gae Aulenti",
     "tipo": "mentore",
+    "categoria": "professionale",
     "descrizione": "Aulenti si è formata nell'ambiente professionale milanese vicino ad Albini"
   },
   {
     "designer_a": "Achille Castiglioni",
     "designer_b": "Bruno Munari",
     "tipo": "amicizia",
+    "categoria": "personale",
     "descrizione": "Entrambi legati alla Triennale di Milano e alla ricerca sul design come cultura visiva"
   },
   {
     "designer_a": "Gio Ponti",
     "designer_b": "Piero Fornasetti",
     "tipo": "collaborazione",
+    "categoria": "professionale",
     "descrizione": "Hanno collaborato intensamente per decenni, Fornasetti decorava gli oggetti disegnati da Ponti"
   },
   {
     "designer_a": "Joe Colombo",
     "designer_b": "Gaetano Pesce",
     "tipo": "stesso_periodo",
+    "categoria": "professionale",
     "descrizione": "Entrambi designer visionari degli anni '60, protagonisti del design sperimentale italiano"
   },
   {
     "designer_a": "Ettore Sottsass",
     "designer_b": "Mario Bellini",
     "tipo": "collaborazione",
+    "categoria": "professionale",
     "descrizione": "Entrambi hanno lavorato per Olivetti come consulenti del design negli stessi anni"
   },
   {
     "designer_a": "Gino Sarfatti",
     "designer_b": "Achille Castiglioni",
     "tipo": "stesso_settore",
+    "categoria": "professionale",
     "descrizione": "Entrambi hanno rivoluzionato il design della luce italiana, con approcci diversi ma complementari"
   },
   {
     "designer_a": "Anna Castelli Ferrieri",
     "designer_b": "Marco Zanuso",
     "tipo": "collaborazione",
+    "categoria": "professionale",
     "descrizione": "Entrambi hanno esplorato le possibilità del design in plastica nel dopoguerra italiano"
   },
   {
     "designer_a": "Osvaldo Borsani",
     "designer_b": "Marco Zanuso",
     "tipo": "stesso_periodo",
+    "categoria": "professionale",
     "descrizione": "Entrambi protagonisti del design italiano degli anni '50, interessati alla funzionalità e alla trasformabilità"
   },
   {
     "designer_a": "Carlo Mollino",
     "designer_b": "Gio Ponti",
     "tipo": "stesso_periodo",
+    "categoria": "professionale",
     "descrizione": "Figure eccentriche e visionarie del design italiano, attive nello stesso periodo storico"
   },
   {
     "designer_a": "Marcello Nizzoli",
     "designer_b": "Mario Bellini",
     "tipo": "successione",
+    "categoria": "professionale",
     "descrizione": "Bellini ha raccolto l'eredità di Nizzoli come principale designer di Olivetti"
+  },
+  {
+    "designer_a": "Cini Boeri",
+    "designer_b": "Marco Zanuso",
+    "tipo": "mentore",
+    "categoria": "professionale",
+    "descrizione": "Boeri è stata allieva e collaboratrice di Zanuso"
+  },
+  {
+    "designer_a": "Afra Bianchin",
+    "designer_b": "Tobia Scarpa",
+    "tipo": "coniugi",
+    "categoria": "personale",
+    "descrizione": "Marito e moglie, hanno collaborato su tutti i progetti dal 1957 fino alla morte di Afra nel 2011"
+  },
+  {
+    "designer_a": "Tobia Scarpa",
+    "designer_b": "Angelo Mangiarotti",
+    "tipo": "stesso_periodo",
+    "categoria": "professionale",
+    "descrizione": "Entrambi veneti, entrambi interessati all'artigianalità e alla ricerca sui materiali"
   }
 ]

@@ -2,7 +2,7 @@
   {
     "nome": "Arco",
     "anno": 1962,
-    "designer": "Achille Castiglioni",
+    "designer": ["Achille Castiglioni", "Pier Giacomo Castiglioni"],
     "azienda": "Flos",
     "categoria": "lampada",
     "foto": "arco.jpg"
@@ -10,7 +10,7 @@
   {
     "nome": "Snoopy",
     "anno": 1967,
-    "designer": "Achille Castiglioni",
+    "designer": ["Achille Castiglioni", "Pier Giacomo Castiglioni"],
     "azienda": "Flos",
     "categoria": "lampada",
     "foto": "snoopy.jpg"
@@ -18,7 +18,7 @@
   {
     "nome": "Taccia",
     "anno": 1962,
-    "designer": "Achille Castiglioni",
+    "designer": ["Achille Castiglioni", "Pier Giacomo Castiglioni"],
     "azienda": "Flos",
     "categoria": "lampada",
     "foto": "taccia.jpg"
@@ -26,7 +26,7 @@
   {
     "nome": "Toio",
     "anno": 1962,
-    "designer": "Achille Castiglioni",
+    "designer": ["Achille Castiglioni", "Pier Giacomo Castiglioni"],
     "azienda": "Flos",
     "categoria": "lampada",
     "foto": "toio.jpg"
@@ -34,7 +34,7 @@
   {
     "nome": "Mezzadro",
     "anno": 1957,
-    "designer": "Achille Castiglioni",
+    "designer": ["Achille Castiglioni", "Pier Giacomo Castiglioni"],
     "azienda": "Zanotta",
     "categoria": "sgabello",
     "foto": "mezzadro.jpg"
@@ -42,7 +42,7 @@
   {
     "nome": "Sella",
     "anno": 1957,
-    "designer": "Achille Castiglioni",
+    "designer": ["Achille Castiglioni", "Pier Giacomo Castiglioni"],
     "azienda": "Zanotta",
     "categoria": "sgabello",
     "foto": "sella.jpg"
@@ -50,7 +50,7 @@
   {
     "nome": "Spalter",
     "anno": 1962,
-    "designer": "Achille Castiglioni",
+    "designer": ["Achille Castiglioni", "Pier Giacomo Castiglioni"],
     "azienda": "Flos",
     "categoria": "lampada",
     "foto": "spalter.jpg"
@@ -58,7 +58,7 @@
   {
     "nome": "Biagio",
     "anno": 1968,
-    "designer": "Achille Castiglioni",
+    "designer": ["Afra Bianchin", "Tobia Scarpa"],
     "azienda": "Flos",
     "categoria": "lampada",
     "foto": "biagio.jpg"
@@ -122,18 +122,26 @@
   {
     "nome": "Ventosa",
     "anno": 1968,
-    "designer": "Achille Castiglioni",
+    "designer": ["Achille Castiglioni", "Pier Giacomo Castiglioni"],
     "azienda": "Flos",
     "categoria": "lampada",
     "foto": "ventosa.jpg"
   },
   {
-    "nome": "Taraxacum",
+    "nome": "Taraxacum 1",
     "anno": 1960,
+    "designer": ["Achille Castiglioni", "Pier Giacomo Castiglioni"],
+    "azienda": "Flos",
+    "categoria": "lampadario",
+    "foto": "taraxacum1.jpg"
+  },
+  {
+    "nome": "Taraxacum 88",
+    "anno": 1988,
     "designer": "Achille Castiglioni",
     "azienda": "Flos",
     "categoria": "lampadario",
-    "foto": "taraxacum.jpg"
+    "foto": "taraxacum88.jpg"
   },
   {
     "nome": "Sleek",
@@ -450,7 +458,7 @@
   {
     "nome": "Bastiano",
     "anno": 1960,
-    "designer": "Afra e Tobia Scarpa",
+    "designer": ["Afra Bianchin", "Tobia Scarpa"],
     "azienda": "Cassina",
     "categoria": "divano",
     "foto": "bastiano.jpg"
@@ -458,7 +466,7 @@
   {
     "nome": "Soriana",
     "anno": 1969,
-    "designer": "Afra e Tobia Scarpa",
+    "designer": ["Afra Bianchin", "Tobia Scarpa"],
     "azienda": "Cassina",
     "categoria": "poltrona",
     "foto": "soriana.jpg"
