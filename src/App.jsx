@@ -16,6 +16,7 @@ const STILE = {
   edge_prodotto_colore: "#dddddd",
   edge_relazione_colore: "#888888",
   sfondo_colore: "#f5f5f0",
+  prodotto_multi_bordo: "#999999",
 
   // --- Label (stile) ---
   label_min: 5,
@@ -44,8 +45,8 @@ const STILE = {
   zoom_soglia: 0.2,
 
   // Livello 1 (lontano, ratio >= zoom_soglia)
-  l1_designer_px: 6,         // raggio pallino designer (px)
-  l1_prodotto_px: 4,         // raggio pallino prodotto (px)
+  l1_designer_px: 3,         // raggio pallino designer (px)
+  l1_prodotto_px: 2,         // raggio pallino prodotto (px)
   l1_label_designer: 8,      // font size label designer (px)
   l1_label_prodotto: 0,      // font size label prodotto (0 = nascosto)
 
@@ -70,21 +71,60 @@ const STILE = {
 
   // --- Layout force-directed Y ---
   peso_collettivo: 0.8,
-  peso_coprogettazione: 0.9,
+  peso_coprogettazione: 1.0,
   peso_relazione_personale: 1.0,
   peso_relazione_professionale: 0.5,
   peso_scuola: 0.4,
-  force_iterazioni: 200,
-  force_repulsione: 4.0,
-  force_attrazione: 0.1,
-  min_distanza_y: 5.0,
+  force_iterazioni: 500,
+  force_repulsione: 0.8,
+  force_attrazione: 0.8,
+  min_distanza_y: 0.5,
   orbita_raggio_min: 0.3,
   orbita_spazio_per_prodotto: 0.08,
   anello_raggio_interno: 0.8,
-  anello_raggio_esterno: 1.6,
+  anello_raggio_esterno: 1.5,
   arco_inizio: 0.15,
   arco_fine: 1.85,
-  arco_perturbazione: 0.6,
+  arco_perturbazione: 0.4,
+}
+
+const MACRO_CATEGORIE = {
+  illuminazione: ["lampada", "lampadario"],
+  sedute: ["sedia", "poltrona", "sgabello", "divano"],
+  mobili: ["tavolo", "scrivania", "libreria", "cassettiera", "letto", "carrello", "contenitore", "appendiabiti"],
+  oggetti: [],
+}
+
+const ORDINE_SETTORI = ["illuminazione", "sedute", "mobili", "oggetti"]
+
+function getMacro(categoria) {
+  for (const [macro, cats] of Object.entries(MACRO_CATEGORIE)) {
+    if (cats.includes(categoria)) return macro
+  }
+  return "oggetti"
+}
+
+function calcolaSettoriDinamici(lista) {
+  const gruppi = {}
+  lista.forEach((p, i) => {
+    const m = getMacro(p.categoria)
+    if (!gruppi[m]) gruppi[m] = []
+    gruppi[m].push({ p, i })
+  })
+  const settoriPresenti = ORDINE_SETTORI.filter((s) => gruppi[s])
+  const totale = lista.length
+  const arcoInizio = Math.PI * STILE.arco_inizio
+  const arcoFine = Math.PI * STILE.arco_fine
+  const arcoTotale = arcoFine - arcoInizio
+  const settori = {}
+  let cursore = arcoInizio
+  settoriPresenti.forEach((s) => {
+    const n = gruppi[s].length
+    const ampiezza = arcoTotale * (n / totale)
+    settori[s] = { inizio: cursore, fine: cursore + ampiezza, prodotti: gruppi[s] }
+    cursore += ampiezza
+  })
+  return settori
 }
 
 const ANNO_MIN = 1880
@@ -261,6 +301,52 @@ function App() {
       }
     }
 
+    const coprogettiGruppi = {}
+    prodotti.forEach((p) => {
+      const ds = getDesigners(p)
+      if (ds.length < 2) return
+      const key = ds.sort().join("|")
+      if (!coprogettiGruppi[key]) coprogettiGruppi[key] = ds
+    })
+    const vincolato = {}
+    Object.values(coprogettiGruppi).forEach((gruppo) => {
+      gruppo.forEach((nome) => {
+        if (!vincolato[nome]) vincolato[nome] = new Set()
+        gruppo.forEach((altro) => { if (altro !== nome) vincolato[nome].add(altro) })
+      })
+    })
+
+    posizioniCalcolate.sort((a, b) => b.y - a.y)
+    const inseriti = new Set()
+    const ordinato = []
+    posizioniCalcolate.forEach((p) => {
+      if (inseriti.has(p.d.nome)) return
+      ordinato.push(p)
+      inseriti.add(p.d.nome)
+      if (vincolato[p.d.nome]) {
+        vincolato[p.d.nome].forEach((partner) => {
+          if (inseriti.has(partner)) return
+          const pp = posizioniCalcolate.find((q) => q.d.nome === partner)
+          if (pp) { ordinato.push(pp); inseriti.add(partner) }
+        })
+      }
+    })
+
+    for (let i = 1; i < ordinato.length; i++) {
+      const prev = ordinato[i - 1]
+      const curr = ordinato[i]
+      if (curr.manuale) continue
+      const minGap = (prev.raggio + curr.raggio) * STILE.anello_raggio_esterno + STILE.min_distanza_y
+      if (prev.y - curr.y < minGap) {
+        curr.y = prev.y - minGap
+      }
+    }
+
+    ordinato.forEach((p, i) => {
+      const idx = posizioniCalcolate.indexOf(p)
+      if (idx !== -1) posizioniCalcolate[idx] = p
+    })
+
     posizioniCalcolate.forEach(({ d, x, y }) => {
       graph.addNode(d.nome, {
         label: d.nome, size: STILE.designer_size, x, y,
@@ -303,11 +389,7 @@ function App() {
       const listaOrdinata = [...lista].sort((a, b) => (a.anno || 0) - (b.anno || 0))
       const annoMin = listaOrdinata[0]?.anno || 1900
       const annoMax = listaOrdinata[listaOrdinata.length - 1]?.anno || 1980
-      const arcoInizio = Math.PI * STILE.arco_inizio
-      const arcoFine = Math.PI * STILE.arco_fine
-      const sliceAngolo = (arcoFine - arcoInizio) / n
-      const indiciAngolari = listaOrdinata.map((_, i) => i)
-      indiciAngolari.sort((a, b) => hashStr(listaOrdinata[a].nome) - hashStr(listaOrdinata[b].nome))
+      const settori = calcolaSettoriDinamici(listaOrdinata)
 
       const conteggioPerAnno = {}
       listaOrdinata.forEach((p) => {
@@ -317,10 +399,15 @@ function App() {
       const indiceCorrentePerAnno = {}
 
       listaOrdinata.forEach((p, i) => {
+        const macro = getMacro(p.categoria)
+        const sett = settori[macro]
+        const idxInSettore = sett.prodotti.findIndex((g) => g.i === i)
+        const nInSettore = sett.prodotti.length
+        const sliceAngolo = (sett.fine - sett.inizio) / Math.max(1, nInSettore)
+        const angolo = sett.inizio + sliceAngolo * idxInSettore + sliceAngolo * 0.5 + (hashStr(p.nome) - 0.5) * sliceAngolo * STILE.arco_perturbazione
+
         const t = annoMax === annoMin ? 0.5 : (p.anno - annoMin) / (annoMax - annoMin)
         const raggio = raggioMax * (STILE.anello_raggio_interno + t * (STILE.anello_raggio_esterno - STILE.anello_raggio_interno))
-        const posAng = indiciAngolari.indexOf(i)
-        const angolo = arcoInizio + sliceAngolo * posAng + sliceAngolo * 0.5 + (hashStr(p.nome) - 0.5) * sliceAngolo * STILE.arco_perturbazione
 
         const prodottoId = `prodotto:${designer}:${p.nome}:${i}`
 
@@ -357,29 +444,40 @@ function App() {
       multiPerGruppo[key].push(p)
     })
 
+    const gruppiCollettivi = []
+
     Object.entries(multiPerGruppo).forEach(([key, lista]) => {
       const ds = key.split("|").filter((d) => graph.hasNode(d))
       if (ds.length === 0) return
       const coords = ds.map((d) => ({ x: graph.getNodeAttribute(d, "x"), y: graph.getNodeAttribute(d, "y") }))
-      const centroX = coords.reduce((s, c) => s + c.x, 0) / coords.length - 3
+      const centroX = coords.reduce((s, c) => s + c.x, 0) / coords.length - 6
       const centroY = coords.reduce((s, c) => s + c.y, 0) / coords.length
+
+      const dsData = ds.map((nome) => designers.find((d) => d.nome === nome)).filter(Boolean)
+      const collettiviComuni = dsData.length > 0 && dsData[0].collettivi
+        ? dsData[0].collettivi.filter((c) => dsData.every((d) => d.collettivi && d.collettivi.includes(c)))
+        : []
+      const nomeGruppo = collettiviComuni[0] || null
+      const gruppoNodi = []
 
       const n = lista.length
       const raggioMax = calcolaRaggio(n)
       const listaOrdinata = [...lista].sort((a, b) => (a.anno || 0) - (b.anno || 0))
       const annoMin = listaOrdinata[0]?.anno || 1900
       const annoMax = listaOrdinata[listaOrdinata.length - 1]?.anno || 1980
-      const arcoInizio = Math.PI * STILE.arco_inizio
-      const arcoFine = Math.PI * STILE.arco_fine
-      const sliceAngolo = (arcoFine - arcoInizio) / n
-      const indiciAngolari = listaOrdinata.map((_, i) => i)
-      indiciAngolari.sort((a, b) => hashStr(listaOrdinata[a].nome) - hashStr(listaOrdinata[b].nome))
+
+      const settoriM = calcolaSettoriDinamici(listaOrdinata)
 
       listaOrdinata.forEach((p, i) => {
+        const macro = getMacro(p.categoria)
+        const sett = settoriM[macro]
+        const idxInSettore = sett.prodotti.findIndex((g) => g.i === i)
+        const nInSettore = sett.prodotti.length
+        const sliceAngolo = (sett.fine - sett.inizio) / Math.max(1, nInSettore)
+        const angolo = sett.inizio + sliceAngolo * idxInSettore + sliceAngolo * 0.5 + (hashStr(p.nome) - 0.5) * sliceAngolo * STILE.arco_perturbazione
+
         const t = annoMax === annoMin ? 0.5 : (p.anno - annoMin) / (annoMax - annoMin)
         const raggio = raggioMax * (STILE.anello_raggio_interno + t * (STILE.anello_raggio_esterno - STILE.anello_raggio_interno))
-        const posAng = indiciAngolari.indexOf(i)
-        const angolo = arcoInizio + sliceAngolo * posAng + sliceAngolo * 0.5 + (hashStr(p.nome) - 0.5) * sliceAngolo * STILE.arco_perturbazione
 
         const prodottoId = `prodotto:multi:${p.nome}:${i}`
         const orbitaX = centroX + Math.cos(angolo) * raggio
@@ -390,7 +488,7 @@ function App() {
         graph.addNode(prodottoId, {
           label: p.nome, size: STILE.prodotto_size,
           x: orbitaX, y: orbitaY,
-          color: STILE.prodotto_colore, tipo: "prodotto",
+          color: STILE.prodotto_colore, tipo: "prodotto", multi: true,
           imgSrc: `/immagini/${p.foto}`, dati: p,
           orbitaX, orbitaY, timelineX, timelineY,
         })
@@ -401,7 +499,11 @@ function App() {
           })
         })
         animated[prodottoId] = { r: STILE.l1_prodotto_px, alpha: 1 }
+        if (nomeGruppo) gruppoNodi.push(prodottoId)
       })
+      if (nomeGruppo && gruppoNodi.length > 0) {
+        gruppiCollettivi.push({ nome: nomeGruppo, nodi: gruppoNodi })
+      }
     })
 
     const renderer = new Sigma(graph, container, {
@@ -537,6 +639,57 @@ function App() {
         ctx.fillText(anno, screen.x, 30)
       })
 
+      gruppiCollettivi.forEach(({ nome, nodi }) => {
+        const punti = nodi
+          .filter((n) => graph.hasNode(n))
+          .map((n) => {
+            const a = graph.getNodeAttributes(n)
+            const p = renderer.graphToViewport({ x: a.x, y: a.y })
+            const r = animated[n]?.r ?? STILE.l1_prodotto_px
+            return { x: p.x, y: p.y, r }
+          })
+        if (punti.length < 2) return
+
+        const cx = punti.reduce((s, p) => s + p.x, 0) / punti.length
+        const cy = punti.reduce((s, p) => s + p.y, 0) / punti.length
+        const pad = 20
+
+        const angolati = punti.map((p) => ({
+          ...p,
+          angolo: Math.atan2(p.y - cy, p.x - cx),
+        }))
+        angolati.sort((a, b) => a.angolo - b.angolo)
+
+        const espansi = angolati.map((p) => {
+          const dx = p.x - cx, dy = p.y - cy
+          const dist = Math.sqrt(dx * dx + dy * dy)
+          const scala = (dist + p.r + pad) / Math.max(dist, 0.01)
+          return { x: cx + dx * scala, y: cy + dy * scala }
+        })
+
+        ctx.globalAlpha = 0.4
+        ctx.beginPath()
+        const primo = espansi[0]
+        const ultimo = espansi[espansi.length - 1]
+        ctx.moveTo((ultimo.x + primo.x) / 2, (ultimo.y + primo.y) / 2)
+        for (let i = 0; i < espansi.length; i++) {
+          const curr = espansi[i]
+          const next = espansi[(i + 1) % espansi.length]
+          ctx.quadraticCurveTo(curr.x, curr.y, (curr.x + next.x) / 2, (curr.y + next.y) / 2)
+        }
+        ctx.closePath()
+        ctx.strokeStyle = "#222222"
+        ctx.lineWidth = 0.5
+        ctx.stroke()
+
+        const sinistraX = Math.min(...espansi.map((p) => p.x)) - 8
+        ctx.font = "300 10px Roboto"
+        ctx.fillStyle = "#aaaaaa"
+        ctx.textAlign = "right"
+        ctx.fillText(nome, sinistraX, cy + 3)
+        ctx.globalAlpha = 1
+      })
+
       graph.forEachNode((node, attr) => {
         if (!animated[node]) animated[node] = { r: STILE.l1_prodotto_px, alpha: 1 }
         const rTarget = calcolaRTarget(node, attr, nodoAttivo)
@@ -598,7 +751,14 @@ function App() {
           ctx.globalAlpha = edgeAlpha
           ctx.beginPath()
           ctx.moveTo(posS.x, posS.y)
-          ctx.lineTo(posT.x, posT.y)
+          const prodottoNode = graph.getNodeAttribute(source, "tipo") === "prodotto" ? source : target
+          const nDesigners = graph.neighbors(prodottoNode).filter(n => graph.getNodeAttribute(n, "tipo") === "designer").length
+          if (vistaInterna === "timeline" && nDesigners > 1) {
+            const midX = (posS.x + posT.x) / 2
+            ctx.bezierCurveTo(midX, posS.y, midX, posT.y, posT.x, posT.y)
+          } else {
+            ctx.lineTo(posT.x, posT.y)
+          }
           ctx.strokeStyle = edgeColor
           ctx.lineWidth = edgeWidth
           ctx.stroke()
@@ -667,7 +827,7 @@ function App() {
 
         ctx.beginPath()
         ctx.arc(pos.x, pos.y, r, 0, Math.PI * 2)
-        ctx.strokeStyle = isAttivo && attr.tipo === "designer" ? "#000000" : STILE.bordo_colore
+        ctx.strokeStyle = isAttivo && attr.tipo === "designer" ? "#000000" : (attr.multi ? STILE.prodotto_multi_bordo : STILE.bordo_colore)
         ctx.lineWidth = isAttivo && attr.tipo === "designer" ? 1.5 : STILE.bordo_spessore
         ctx.stroke()
 

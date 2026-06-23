@@ -48,14 +48,6 @@
     "foto": "sella.jpg"
   },
   {
-    "nome": "Spalter",
-    "anno": 1962,
-    "designer": ["Achille Castiglioni", "Pier Giacomo Castiglioni"],
-    "azienda": "Flos",
-    "categoria": "lampada",
-    "foto": "spalter.jpg"
-  },
-  {
     "nome": "Biagio",
     "anno": 1968,
     "designer": ["Afra Bianchin", "Tobia Scarpa"],
@@ -142,6 +134,14 @@
     "azienda": "Flos",
     "categoria": "lampadario",
     "foto": "taraxacum88.jpg"
+  },
+  {
+    "nome": "Gatto",
+    "anno": 1960,
+    "designer": ["Achille Castiglioni", "Pier Giacomo Castiglioni"],
+    "azienda": "Flos",
+    "categoria": "lampada",
+    "foto": "gatto.jpg"
   },
   {
     "nome": "Sleek",
@@ -242,7 +242,7 @@
   {
     "nome": "Lambda",
     "anno": 1963,
-    "designer": "Marco Zanuso",
+    "designer": ["Marco Zanuso", "Richard Sapper"],
     "azienda": "Gavina",
     "categoria": "sedia",
     "foto": "lambda.jpg"
@@ -250,7 +250,7 @@
   {
     "nome": "Grillo",
     "anno": 1965,
-    "designer": "Marco Zanuso",
+    "designer": ["Marco Zanuso", "Richard Sapper"],
     "azienda": "Siemens",
     "categoria": "telefono",
     "foto": "grillo.jpg"
@@ -550,5 +550,213 @@
     "azienda": "Zanotta",
     "categoria": "poltrona",
     "foto": "sacco.jpg"
+  },
+  {
+    "nome": "Libreria mod. 1955.DB3",
+    "anno": 1955,
+    "designer": "Ico Parisi",
+    "azienda": "Stildomus",
+    "categoria": "libreria",
+    "foto": "mod1955db3.jpg"
+  },
+  {
+    "nome": "875",
+    "anno": 1960,
+    "designer": "Ico Parisi",
+    "azienda": "Cassina",
+    "categoria": "sedia",
+    "foto": "875.jpg"
+  },
+  {
+    "nome": "LB7",
+    "anno": 1957,
+    "designer": ["Franco Albini", "Franca Helg"],
+    "azienda": "Poggi",
+    "categoria": "libreria",
+    "foto": "lb7.jpg"
+  },
+  {
+    "nome": "Veliero",
+    "anno": 1940,
+    "designer": "Franco Albini",
+    "azienda": "produzione propria",
+    "categoria": "libreria",
+    "foto": "veliero.jpg"
+  },
+  {
+    "nome": "Radio in Cristallo",
+    "anno": 1938,
+    "designer": "Franco Albini",
+    "azienda": "CGE",
+    "categoria": "radio",
+    "foto": "radioincristallo.jpg"
+  },
+  {
+    "nome": "Stadera",
+    "anno": 1940,
+    "designer": "Franco Albini",
+    "azienda": "produzione propria",
+    "categoria": "lampada",
+    "foto": "stadera.jpg"
+  },
+  {
+    "nome": "TL3",
+    "anno": 1951,
+    "designer": "Franco Albini",
+    "azienda": "Poggi",
+    "categoria": "tavolo",
+    "foto": "tl3.jpg"
+  },
+  {
+    "nome": "Tre Pezzi",
+    "anno": 1959,
+    "designer": "Franco Albini",
+    "azienda": "Poggi",
+    "categoria": "poltrona",
+    "foto": "trepezzi.jpg"
+  },
+  {
+    "nome": "Cavalletto",
+    "anno": 1940,
+    "designer": "Franco Albini",
+    "azienda": "produzione propria",
+    "categoria": "tavolo",
+    "foto": "cavalletto.jpg"
+  },
+  {
+    "nome": "PA 1947",
+    "anno": 1947,
+    "designer": "Franco Albini",
+    "azienda": "Poggi",
+    "categoria": "poltrona",
+    "foto": "pa1947.jpg"
+  },
+  {
+    "nome": "Dalù",
+    "anno": 1969,
+    "designer": "Vico Magistretti",
+    "azienda": "Artemide",
+    "categoria": "lampada",
+    "foto": "dalu.jpg"
+  },
+  {
+    "nome": "Olimpino",
+    "anno": 1954,
+    "designer": "Marco Zanuso",
+    "azienda": "Poggi",
+    "categoria": "sedia",
+    "foto": "olimpino.jpg"
+  },
+  {
+    "nome": "Tolomeo",
+    "anno": 1987,
+    "designer": "Michele De Lucchi",
+    "azienda": "Artemide",
+    "categoria": "lampada",
+    "foto": "tolomeo.jpg"
+  },
+  {
+    "nome": "Elettra",
+    "anno": 1953,
+    "designer": ["Lodovico Belgiojoso", "Enrico Peressutti", "Ernesto Nathan Rogers"],
+    "azienda": "Arflex",
+    "categoria": "sedia",
+    "foto": "elettra.jpg"
+  },
+  {
+    "nome": "Torre Velasca (modello)",
+    "anno": 1958,
+    "designer": ["Lodovico Belgiojoso", "Enrico Peressutti", "Ernesto Nathan Rogers"],
+    "azienda": "BBPR",
+    "categoria": "architettura",
+    "foto": "torrevelasca.jpg"
+  },
+  {
+    "nome": "Allestimento Castello Sforzesco",
+    "anno": 1956,
+    "designer": ["Lodovico Belgiojoso", "Enrico Peressutti", "Ernesto Nathan Rogers"],
+    "azienda": "BBPR",
+    "categoria": "allestimento",
+    "foto": "castellosforzesco.jpg"
+  },
+  {
+    "nome": "Lampada Neon",
+    "anno": 1954,
+    "designer": ["Lodovico Belgiojoso", "Enrico Peressutti", "Ernesto Nathan Rogers"],
+    "azienda": "BBPR",
+    "categoria": "lampada",
+    "foto": "lampadaneon.jpg"
+  },
+  {
+    "nome": "Poltrona di Proust (Alchimia)",
+    "anno": 1978,
+    "designer": "Alessandro Mendini",
+    "azienda": "Studio Alchimia",
+    "categoria": "poltrona",
+    "foto": "proustalchimia.jpg"
+  },
+  {
+    "nome": "Kandissi",
+    "anno": 1978,
+    "designer": "Alessandro Mendini",
+    "azienda": "Studio Alchimia",
+    "categoria": "divano",
+    "foto": "kandissi.jpg"
+  },
+  {
+    "nome": "Sinerpica",
+    "anno": 1978,
+    "designer": "Michele De Lucchi",
+    "azienda": "Studio Alchimia",
+    "categoria": "lampada",
+    "foto": "sinerpica.jpg"
+  },
+  {
+    "nome": "Animali Domestici",
+    "anno": 1985,
+    "designer": "Andrea Branzi",
+    "azienda": "Zabro",
+    "categoria": "libreria",
+    "foto": "animalidomestici.jpg"
+  },
+  {
+    "nome": "Grandi Legni",
+    "anno": 2009,
+    "designer": "Andrea Branzi",
+    "azienda": "Edra",
+    "categoria": "libreria",
+    "foto": "grandilegni.jpg"
+  },
+  {
+    "nome": "No-Stop City",
+    "anno": 1969,
+    "designer": ["Andrea Branzi", "Gilberto Corretti", "Paolo Deganello", "Massimo Morozzi"],
+    "azienda": "Archizoom",
+    "categoria": "progetto teorico",
+    "foto": "nostopcity.jpg"
+  },
+  {
+    "nome": "Superonda",
+    "anno": 1966,
+    "designer": ["Andrea Branzi", "Gilberto Corretti", "Paolo Deganello", "Massimo Morozzi"],
+    "azienda": "Poltronova",
+    "categoria": "divano",
+    "foto": "superonda.jpg"
+  },
+  {
+    "nome": "Mies",
+    "anno": 1969,
+    "designer": ["Andrea Branzi", "Gilberto Corretti", "Paolo Deganello", "Massimo Morozzi"],
+    "azienda": "Poltronova",
+    "categoria": "sedia",
+    "foto": "mies.jpg"
+  },
+  {
+    "nome": "AEO",
+    "anno": 1973,
+    "designer": "Paolo Deganello",
+    "azienda": "Cassina",
+    "categoria": "poltrona",
+    "foto": "aeo.jpg"
   }
 ]

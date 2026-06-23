@@ -131,5 +131,33 @@
     "tipo": "stesso_periodo",
     "categoria": "professionale",
     "descrizione": "Entrambi veneti, entrambi interessati all'artigianalità e alla ricerca sui materiali"
+  },
+  {
+    "designer_a": "Franco Albini",
+    "designer_b": "Franca Helg",
+    "tipo": "collaborazione",
+    "categoria": "professionale",
+    "descrizione": "Collaborazione ventennale nello Studio Albini-Helg, firmando insieme architetture, allestimenti e arredi"
+  },
+  {
+    "designer_a": "Michele De Lucchi",
+    "designer_b": "Ettore Sottsass",
+    "tipo": "collaborazione",
+    "categoria": "professionale",
+    "descrizione": "Entrambi fondatori del gruppo Memphis, De Lucchi è stato tra i principali protagonisti del movimento"
+  },
+  {
+    "designer_a": "Andrea Branzi",
+    "designer_b": "Alessandro Mendini",
+    "tipo": "collaborazione",
+    "categoria": "professionale",
+    "descrizione": "Entrambi protagonisti di Studio Alchimia e del design radicale, hanno condiviso visione e percorso culturale"
+  },
+  {
+    "designer_a": "Andrea Branzi",
+    "designer_b": "Ettore Sottsass",
+    "tipo": "collaborazione",
+    "categoria": "professionale",
+    "descrizione": "Entrambi esponenti del design radicale, hanno partecipato insieme a Studio Alchimia prima della nascita di Memphis"
   }
 ]

@@ -5,8 +5,8 @@
     "morto": 2002,
     "bio": "Maestro del design italiano, noto per il riuso creativo di oggetti quotidiani e il design funzionale e ironico.",
     "foto": "castiglioni.jpg",
-    "y": 4,
-    "scuole": ["Industrial Design italiano"],
+    "y": null,
+    "scuole": [],
     "collettivi": []
   },
   {
@@ -15,8 +15,8 @@
     "morto": 1968,
     "bio": "Architetto e designer, fratello maggiore di Achille. Insieme hanno firmato capolavori come Arco, Mezzadro e Sella, unendo ingegneria e ironia progettuale.",
     "foto": "piergiacomo.jpg",
-    "y": 4,
-    "scuole": ["Industrial Design italiano"],
+    "y": null,
+    "scuole": [],
     "collettivi": []
   },
   {
@@ -26,8 +26,14 @@
     "bio": "Fondatore del gruppo Memphis, pioniere del design radicale e postmoderno. Figura centrale del design italiano del dopoguerra.",
     "foto": "sottsass.jpg",
     "y": null,
-    "scuole": ["Postmodernismo", "Design Radicale"],
-    "collettivi": ["Memphis"]
+    "scuole": [
+      "Postmodernismo",
+      "Design Radicale"
+    ],
+    "collettivi": [
+      "Memphis",
+      "Studio Alchimia"
+    ]
   },
   {
     "nome": "Vico Magistretti",
@@ -36,7 +42,9 @@
     "bio": "Architetto e designer milanese, noto per la semplicità formale e l'uso innovativo dei materiali plastici.",
     "foto": "magistretti.jpg",
     "y": null,
-    "scuole": ["Razionalismo"],
+    "scuole": [
+      "Razionalismo"
+    ],
     "collettivi": []
   },
   {
@@ -46,7 +54,10 @@
     "bio": "Architetto e designer, fondatore della rivista Domus. Figura fondamentale del design e dell'architettura italiana del '900.",
     "foto": "ponti.jpg",
     "y": null,
-    "scuole": ["Razionalismo", "Neoclassicismo"],
+    "scuole": [
+      "Razionalismo",
+      "Neoclassicismo"
+    ],
     "collettivi": []
   },
   {
@@ -56,7 +67,7 @@
     "bio": "Designer e architetto, pioniere nell'uso di nuovi materiali come la schiuma poliuretanica nel design del mobile.",
     "foto": "zanuso.jpg",
     "y": null,
-    "scuole": ["Industrial Design italiano"],
+    "scuole": [],
     "collettivi": []
   },
   {
@@ -66,7 +77,21 @@
     "bio": "Architetto razionalista milanese, noto per il rigore strutturale e la raffinatezza formale dei suoi arredi.",
     "foto": "albini.jpg",
     "y": null,
-    "scuole": ["Razionalismo"],
+    "scuole": [
+      "Razionalismo"
+    ],
+    "collettivi": []
+  },
+  {
+    "nome": "Franca Helg",
+    "nato": 1920,
+    "morto": 1989,
+    "bio": "Architetta e designer milanese, collaboratrice storica di Franco Albini. Insieme hanno progettato arredi, allestimenti museali e architetture.",
+    "foto": "helg.jpg",
+    "y": null,
+    "scuole": [
+      "Razionalismo"
+    ],
     "collettivi": []
   },
   {
@@ -76,8 +101,12 @@
     "bio": "Designer, artista e scrittore. Figura poliedrica che ha esplorato il design, l'arte visiva e la didattica creativa.",
     "foto": "munari.jpg",
     "y": null,
-    "scuole": ["Arte Concreta", "Industrial Design italiano"],
-    "collettivi": ["MAC"]
+    "scuole": [
+      "Arte Concreta"
+    ],
+    "collettivi": [
+      "MAC"
+    ]
   },
   {
     "nome": "Joe Colombo",
@@ -86,7 +115,9 @@
     "bio": "Designer visionario degli anni '60, noto per l'approccio futurista e l'uso di materiali plastici innovativi.",
     "foto": "colombo.jpg",
     "y": null,
-    "scuole": ["Space Age"],
+    "scuole": [
+      "Space Age"
+    ],
     "collettivi": []
   },
   {
@@ -96,7 +127,9 @@
     "bio": "Architetto e designer noto per la ricerca strutturale e l'uso innovativo di materiali come marmo, vetro e cemento.",
     "foto": "mangiarotti.jpg",
     "y": null,
-    "scuole": ["Razionalismo"],
+    "scuole": [
+      "Razionalismo"
+    ],
     "collettivi": []
   },
   {
@@ -106,7 +139,9 @@
     "bio": "Architetta e designer, nota per grandi progetti museali e per un approccio colto e sofisticato al design d'interni.",
     "foto": "aulenti.jpg",
     "y": null,
-    "scuole": ["Razionalismo"],
+    "scuole": [
+      "Razionalismo"
+    ],
     "collettivi": []
   },
   {
@@ -115,8 +150,8 @@
     "morto": 2015,
     "bio": "Designer tedesco naturalizzato italiano, noto per il rigore funzionale e la precisione tecnica dei suoi prodotti.",
     "foto": "sapper.jpg",
-    "y": 3.19,
-    "scuole": ["Industrial Design italiano"],
+    "y": null,
+    "scuole": [],
     "collettivi": []
   },
   {
@@ -126,7 +161,7 @@
     "bio": "Architetto e designer, noto per i suoi contributi al design industriale italiano, in particolare per Olivetti e B&B Italia.",
     "foto": "bellini.jpg",
     "y": null,
-    "scuole": ["Industrial Design italiano"],
+    "scuole": [],
     "collettivi": []
   },
   {
@@ -136,8 +171,14 @@
     "bio": "Designer e teorico del design, fondatore della rivista Modo e figura chiave del postmodernismo italiano.",
     "foto": "mendini.jpg",
     "y": null,
-    "scuole": ["Postmodernismo", "Design Radicale"],
-    "collettivi": ["Studio Alchimia"]
+    "scuole": [
+      "Postmodernismo",
+      "Design Radicale"
+    ],
+    "collettivi": [
+      "Studio Alchimia",
+      "Memphis"
+    ]
   },
   {
     "nome": "Gaetano Pesce",
@@ -145,8 +186,10 @@
     "morto": 2024,
     "bio": "Designer e architetto sperimentale, noto per l'uso di materiali insoliti e per un approccio personale e narrativo al design.",
     "foto": "pesce.jpg",
-    "y": -9.15,
-    "scuole": ["Design Radicale"],
+    "y": null,
+    "scuole": [
+      "Design Radicale"
+    ],
     "collettivi": []
   },
   {
@@ -156,7 +199,9 @@
     "bio": "Architetta e designer, allieva di Marco Zanuso. Nota per l'attenzione alla dimensione umana e psicologica degli spazi.",
     "foto": "boeri.jpg",
     "y": null,
-    "scuole": ["Razionalismo"],
+    "scuole": [
+      "Razionalismo"
+    ],
     "collettivi": []
   },
   {
@@ -166,7 +211,9 @@
     "bio": "Designer e artista noto per le decorazioni surreali e il repertorio iconografico ossessivo, in particolare il volto di Lina Cavalieri.",
     "foto": "fornasetti.jpg",
     "y": null,
-    "scuole": ["Surrealismo"],
+    "scuole": [
+      "Surrealismo"
+    ],
     "collettivi": []
   },
   {
@@ -176,7 +223,9 @@
     "bio": "Architetto e designer torinese, figura eccentrica e visionaria nota per le forme organiche e sensuali dei suoi arredi.",
     "foto": "mollino.jpg",
     "y": null,
-    "scuole": ["Organicismo"],
+    "scuole": [
+      "Organicismo"
+    ],
     "collettivi": []
   },
   {
@@ -185,8 +234,8 @@
     "morto": 2011,
     "bio": "Architetta e designer veneziana, moglie di Tobia Scarpa. Insieme hanno firmato capolavori per Cassina, Flos e B&B Italia.",
     "foto": "afrascarpa.jpg",
-    "y": -23.82,
-    "scuole": ["Industrial Design italiano"],
+    "y": null,
+    "scuole": [],
     "collettivi": []
   },
   {
@@ -196,7 +245,7 @@
     "bio": "Architetto e designer veneziano, figlio di Carlo Scarpa. Con la moglie Afra ha creato arredi iconici per Cassina e Flos.",
     "foto": "tobiascarpa.jpg",
     "y": null,
-    "scuole": ["Industrial Design italiano"],
+    "scuole": [],
     "collettivi": []
   },
   {
@@ -206,7 +255,9 @@
     "bio": "Designer e artista milanese, nota per le installazioni luminose e la collaborazione con Gio Ponti e Piero Manzoni.",
     "foto": "vigo.jpg",
     "y": null,
-    "scuole": ["Arte Programmata"],
+    "scuole": [
+      "Arte Programmata"
+    ],
     "collettivi": []
   },
   {
@@ -216,7 +267,9 @@
     "bio": "Designer e architetta, prima donna a iscriversi al Politecnico di Milano. Nota per i contenitori modulari in plastica per Kartell.",
     "foto": "castelliferrieri.jpg",
     "y": null,
-    "scuole": ["Razionalismo"],
+    "scuole": [
+      "Razionalismo"
+    ],
     "collettivi": []
   },
   {
@@ -226,7 +279,7 @@
     "bio": "Designer industriale milanese, noto per il design di prodotti tecnici e strumenti di precisione.",
     "foto": "bonetto.jpg",
     "y": null,
-    "scuole": ["Industrial Design italiano"],
+    "scuole": [],
     "collettivi": []
   },
   {
@@ -236,7 +289,7 @@
     "bio": "Designer milanese, noto per la collaborazione con Artemide e per il design di lampade e arredi degli anni '60 e '70.",
     "foto": "mazza.jpg",
     "y": null,
-    "scuole": ["Industrial Design italiano"],
+    "scuole": [],
     "collettivi": []
   },
   {
@@ -246,8 +299,12 @@
     "bio": "Designer e artista, membro del Gruppo N. Noto per la ricerca visiva e il design grafico sperimentale.",
     "foto": "chiggio.jpg",
     "y": null,
-    "scuole": ["Arte Programmata"],
-    "collettivi": ["Gruppo N"]
+    "scuole": [
+      "Arte Programmata"
+    ],
+    "collettivi": [
+      "Gruppo N"
+    ]
   },
   {
     "nome": "Roberto Sambonet",
@@ -256,7 +313,7 @@
     "bio": "Designer e artista, noto per il design di oggetti da tavola e posaterie per la famiglia Sambonet.",
     "foto": "sambonet.jpg",
     "y": null,
-    "scuole": ["Industrial Design italiano"],
+    "scuole": [],
     "collettivi": []
   },
   {
@@ -266,7 +323,7 @@
     "bio": "Designer e grafico, noto per il design delle macchine da scrivere Olivetti e per le sue ricerche nel design industriale.",
     "foto": "nizzoli.jpg",
     "y": null,
-    "scuole": ["Industrial Design italiano"],
+    "scuole": [],
     "collettivi": []
   },
   {
@@ -276,7 +333,10 @@
     "bio": "Designer e architetto comasco, noto per gli arredi organici e la collaborazione con le principali aziende del design italiano.",
     "foto": "parisi.jpg",
     "y": null,
-    "scuole": ["Razionalismo", "Organicismo"],
+    "scuole": [
+      "Razionalismo",
+      "Organicismo"
+    ],
     "collettivi": []
   },
   {
@@ -286,7 +346,7 @@
     "bio": "Designer e imprenditore, fondatore di Tecno. Noto per i mobili trasformabili e l'attenzione alla funzionalità.",
     "foto": "borsani.jpg",
     "y": null,
-    "scuole": ["Industrial Design italiano"],
+    "scuole": [],
     "collettivi": []
   },
   {
@@ -296,7 +356,9 @@
     "bio": "Architetto e designer razionalista milanese, noto per l'equilibrio tra tradizione e modernità nei suoi progetti.",
     "foto": "gardella.jpg",
     "y": null,
-    "scuole": ["Razionalismo"],
+    "scuole": [
+      "Razionalismo"
+    ],
     "collettivi": []
   },
   {
@@ -306,7 +368,7 @@
     "bio": "Designer di lampade, fondatore di Arteluce. Considerato il padre del design della luce italiano.",
     "foto": "sarfatti.jpg",
     "y": null,
-    "scuole": ["Industrial Design italiano"],
+    "scuole": [],
     "collettivi": []
   },
   {
@@ -316,7 +378,104 @@
     "bio": "Designer torinese, noto soprattutto per il Sacco, la prima poltrona a sacchetto, creata con Cesare Paolini e Franco Teodoro.",
     "foto": "gatti.jpg",
     "y": null,
-    "scuole": ["Design Radicale"],
+    "scuole": [
+      "Design Radicale"
+    ],
     "collettivi": []
+  },
+  {
+    "nome": "Michele De Lucchi",
+    "nato": 1951,
+    "morto": null,
+    "bio": "Architetto e designer, membro fondatore di Memphis. Noto per la lampada Tolomeo e per un approccio sperimentale tra artigianato e industria.",
+    "foto": "delucchi.jpg",
+    "y": null,
+    "scuole": [
+      "Postmodernismo"
+    ],
+    "collettivi": [
+      "Memphis",
+      "Studio Alchimia"
+    ]
+  },
+  {
+    "nome": "Gianluigi Banfi",
+    "nato": 1910,
+    "morto": 1945,
+    "bio": "Architetto milanese, cofondatore dello studio BBPR. Morto nel campo di concentramento di Mauthausen-Gusen.",
+    "foto": "banfi.jpg",
+    "y": null,
+    "scuole": ["Razionalismo"],
+    "collettivi": ["BBPR"]
+  },
+  {
+    "nome": "Lodovico Belgiojoso",
+    "nato": 1909,
+    "morto": 2004,
+    "bio": "Architetto milanese, cofondatore dello studio BBPR. Protagonista dell'architettura razionalista e della ricostruzione postbellica.",
+    "foto": "belgiojoso.jpg",
+    "y": null,
+    "scuole": ["Razionalismo"],
+    "collettivi": ["BBPR"]
+  },
+  {
+    "nome": "Enrico Peressutti",
+    "nato": 1908,
+    "morto": 1976,
+    "bio": "Architetto milanese, cofondatore dello studio BBPR. Noto per il rigore progettuale e l'impegno nella cultura architettonica italiana.",
+    "foto": "peressutti.jpg",
+    "y": null,
+    "scuole": ["Razionalismo"],
+    "collettivi": ["BBPR"]
+  },
+  {
+    "nome": "Ernesto Nathan Rogers",
+    "nato": 1909,
+    "morto": 1969,
+    "bio": "Architetto e teorico, cofondatore dello studio BBPR. Direttore di Domus e Casabella, figura chiave del dibattito architettonico italiano.",
+    "foto": "rogers.jpg",
+    "y": null,
+    "scuole": ["Razionalismo"],
+    "collettivi": ["BBPR"]
+  },
+  {
+    "nome": "Andrea Branzi",
+    "nato": 1938,
+    "morto": 2023,
+    "bio": "Architetto, designer e teorico. Cofondatore di Archizoom, poi protagonista di Studio Alchimia e del dibattito sul design radicale e postmoderno.",
+    "foto": "branzi.jpg",
+    "y": null,
+    "scuole": ["Design Radicale", "Postmodernismo"],
+    "collettivi": ["Studio Alchimia", "Archizoom"]
+  },
+  {
+    "nome": "Gilberto Corretti",
+    "nato": 1941,
+    "morto": null,
+    "bio": "Architetto e designer fiorentino, cofondatore di Archizoom Associati. Protagonista del design radicale italiano.",
+    "foto": "corretti.jpg",
+    "y": null,
+    "scuole": ["Design Radicale"],
+    "collettivi": ["Archizoom"]
+  },
+  {
+    "nome": "Paolo Deganello",
+    "nato": 1940,
+    "morto": null,
+    "bio": "Architetto e designer, cofondatore di Archizoom. Noto per un approccio politico e sociale al design.",
+    "foto": "deganello.jpg",
+    "y": null,
+    "scuole": ["Design Radicale"],
+    "collettivi": ["Archizoom"]
+  },
+  {
+    "nome": "Massimo Morozzi",
+    "nato": 1941,
+    "morto": 2014,
+    "bio": "Architetto e designer, cofondatore di Archizoom. Ha poi collaborato con Cassina, Driade e Edra.",
+    "foto": "morozzi.jpg",
+    "y": null,
+    "scuole": ["Design Radicale"],
+    "collettivi": ["Archizoom"]
   }
 ]
