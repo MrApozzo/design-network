@@ -20,7 +20,8 @@ const STILE = {
   griglia_label_colore: "#aaaaaa",
   edge_prodotto_colore: "#dddddd",
   edge_relazione_colore: "#888888",
-  sfondo_colore: "#f0f0f0",
+  sfondo_colore: "#e8e8e8",
+  label_sfondo_colore: "#f0f0f0",
   prodotto_multi_bordo: "#999999",
 
   // --- Label (stile) ---
@@ -55,12 +56,12 @@ const STILE = {
   zoom_designer_max: 18,
   zoom_prodotto_min: 2,
   zoom_prodotto_max: 36,
-  zoom_label_designer_min: 8,
+  zoom_label_designer_min: 4,
   zoom_label_designer_max: 14,
   zoom_label_prodotto_max: 10,
   zoom_label_soglia: 0.4,
-  zoom_griglia_min: 1.2,
-  zoom_griglia_max: 5,
+  zoom_griglia_min: 1.4,
+  zoom_griglia_max: 3,
   zoom_viewport_ref: 800,
 
   // --- Transizione tra viste ---
@@ -82,10 +83,10 @@ const STILE = {
   force_repulsione: 0.8,
   force_attrazione: 0.8,
   min_distanza_y: 0.5,
-  orbita_raggio_min: 0.3,
+  orbita_raggio_min: 0.5,
   orbita_spazio_per_prodotto: 0.08,
-  anello_raggio_interno: 0.8,
-  anello_raggio_esterno: 1.5,
+  anello_raggio_interno: 1.0,
+  anello_raggio_esterno: 1.8,
   arco_inizio: 0.15,
   arco_fine: 1.85,
   arco_perturbazione: 0.4,
@@ -271,6 +272,14 @@ function App() {
           aggiungiPeso(membri[a], membri[b], STILE.peso_collettivo)
     })
 
+    const multiCount = {}
+    prodotti.forEach((p) => {
+      const ds = getDesigners(p)
+      if (ds.length < 2) return
+      const key = ds.sort().join("|")
+      multiCount[key] = (multiCount[key] || 0) + 1
+    })
+
     const posizioniCalcolate = designerOrdinati.map((d, i) => ({
       d,
       x: annoToX(d.nato),
@@ -296,7 +305,9 @@ function App() {
             forze[i] -= STILE.force_attrazione * peso * dy / dist
           }
 
-          const minDist = (a.raggio + b.raggio) * STILE.anello_raggio_esterno + STILE.min_distanza_y
+          const nMulti = multiCount[key] || 0
+          const extraMulti = nMulti > 0 ? calcolaRaggio(nMulti) * 1.5 * STILE.anello_raggio_esterno : 0
+          const minDist = (a.raggio + b.raggio) * STILE.anello_raggio_esterno + STILE.min_distanza_y + extraMulti
           if (dist < minDist) {
             const repulsione = STILE.force_repulsione * (minDist - dist) / minDist
             forze[i] += dy > 0 ? repulsione : -repulsione
@@ -322,6 +333,12 @@ function App() {
       gruppo.forEach((nome) => {
         if (!vincolato[nome]) vincolato[nome] = new Set()
         gruppo.forEach((altro) => { if (altro !== nome) vincolato[nome].add(altro) })
+      })
+    })
+    Object.values(collettiviMap).forEach((membri) => {
+      membri.forEach((nome) => {
+        if (!vincolato[nome]) vincolato[nome] = new Set()
+        membri.forEach((altro) => { if (altro !== nome) vincolato[nome].add(altro) })
       })
     })
 
@@ -459,8 +476,19 @@ function App() {
       const ds = key.split("|").filter((d) => graph.hasNode(d))
       if (ds.length === 0) return
       const coords = ds.map((d) => ({ x: graph.getNodeAttribute(d, "x"), y: graph.getNodeAttribute(d, "y") }))
-      const centroX = coords.reduce((s, c) => s + c.x, 0) / coords.length - 6
-      const centroY = coords.reduce((s, c) => s + c.y, 0) / coords.length
+      let centroX = coords.reduce((s, c) => s + c.x, 0) / coords.length
+      let centroY = coords.reduce((s, c) => s + c.y, 0) / coords.length
+      const n = lista.length
+      const raggioShift = calcolaRaggio(n) * STILE.anello_raggio_esterno + 1
+      if (ds.length === 2) {
+        const dx = coords[1].x - coords[0].x
+        const dy = coords[1].y - coords[0].y
+        const len = Math.sqrt(dx * dx + dy * dy) || 1
+        centroX += (-dy / len) * raggioShift
+        centroY += (dx / len) * raggioShift
+      } else if (ds.length > 2) {
+        centroX -= raggioShift
+      }
 
       const dsData = ds.map((nome) => designers.find((d) => d.nome === nome)).filter(Boolean)
       const collettiviComuni = dsData.length > 0 && dsData[0].collettivi
@@ -469,7 +497,6 @@ function App() {
       const nomeGruppo = collettiviComuni[0] || null
       const gruppoNodi = []
 
-      const n = lista.length
       const raggioMax = calcolaRaggio(n)
       const listaOrdinata = [...lista].sort((a, b) => (a.anno || 0) - (b.anno || 0))
       const annoMin = listaOrdinata[0]?.anno || 1900
@@ -632,13 +659,17 @@ function App() {
       const grigliaRaggio = lerp(STILE.zoom_griglia_min, STILE.zoom_griglia_max, t)
       const yGrafoMin = Math.min(Y_MIN, contenutoYMin) - MARGINE_Y
       const yGrafoMax = Math.max(Y_MAX, contenutoYMax) + MARGINE_Y
-      ANNI_SINGOLI.forEach((anno) => {
+      const ogniN = t < 0.3 ? 2 : 1
+      const grigliaRaggioEffettivo = t < 0.3 ? grigliaRaggio * 0.7 : grigliaRaggio
+      ANNI_SINGOLI.forEach((anno, ai) => {
+        if (ogniN > 1 && ai % ogniN !== 0) return
         const gx = annoToX(anno)
         for (let gy = Math.ceil(yGrafoMin); gy <= Math.floor(yGrafoMax); gy++) {
+          if (ogniN > 1 && ((gy + ai) % 2 !== 0)) continue
           const screen = renderer.graphToViewport({ x: gx, y: gy })
           if (screen.x < -2 || screen.x > w + 2 || screen.y < -2 || screen.y > h + 2) continue
           ctx.beginPath()
-          ctx.arc(screen.x, screen.y, grigliaRaggio, 0, Math.PI * 2)
+          ctx.arc(screen.x, screen.y, grigliaRaggioEffettivo, 0, Math.PI * 2)
           ctx.fillStyle = STILE.griglia_pallino_colore
           ctx.fill()
         }
@@ -825,7 +856,6 @@ function App() {
         const pos = renderer.graphToViewport({ x: attr.x, y: attr.y })
         const r = animated[node]?.r ?? STILE.zoom_prodotto_min
         const alpha = animated[node]?.alpha ?? 1
-        const isAttivo = node === nodoAttivo
 
         ctx.globalAlpha = alpha
         ctx.beginPath()
@@ -848,11 +878,18 @@ function App() {
         }
         ctx.restore()
 
+        if (attr.tipo === "prodotto") {
+          ctx.beginPath()
+          ctx.arc(pos.x, pos.y, r, 0, Math.PI * 2)
+          ctx.strokeStyle = "#ffffff"
+          ctx.lineWidth = 3
+          ctx.stroke()
+        }
         if (attr.tipo === "designer") {
           ctx.beginPath()
           ctx.arc(pos.x, pos.y, r, 0, Math.PI * 2)
-          ctx.strokeStyle = isAttivo ? "#000000" : STILE.bordo_colore
-          ctx.lineWidth = isAttivo ? 1.5 : STILE.bordo_spessore
+          ctx.strokeStyle = "#000000"
+          ctx.lineWidth = 2
           ctx.stroke()
         }
 
@@ -866,7 +903,7 @@ function App() {
 
           const date = attr.dati.morto ? `${attr.dati.nato} — ${attr.dati.morto}` : `${attr.dati.nato}`
           const pad = 3
-          const bgColor = STILE.sfondo_colore || "#f5f5f0"
+          const bgColor = STILE.label_sfondo_colore || STILE.sfondo_colore
 
           ctx.font = `400 ${labelDesignerSize}px Roboto`
           const wNome = ctx.measureText(nome).width

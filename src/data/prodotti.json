@@ -2,7 +2,10 @@
   {
     "nome": "Arco",
     "anno": 1962,
-    "designer": ["Achille Castiglioni", "Pier Giacomo Castiglioni"],
+    "designer": [
+      "Achille Castiglioni",
+      "Pier Giacomo Castiglioni"
+    ],
     "azienda": "Flos",
     "categoria": "lampada",
     "foto": "arco.jpg"
@@ -10,7 +13,10 @@
   {
     "nome": "Snoopy",
     "anno": 1967,
-    "designer": ["Achille Castiglioni", "Pier Giacomo Castiglioni"],
+    "designer": [
+      "Achille Castiglioni",
+      "Pier Giacomo Castiglioni"
+    ],
     "azienda": "Flos",
     "categoria": "lampada",
     "foto": "snoopy.jpg"
@@ -18,7 +24,10 @@
   {
     "nome": "Taccia",
     "anno": 1962,
-    "designer": ["Achille Castiglioni", "Pier Giacomo Castiglioni"],
+    "designer": [
+      "Achille Castiglioni",
+      "Pier Giacomo Castiglioni"
+    ],
     "azienda": "Flos",
     "categoria": "lampada",
     "foto": "taccia.jpg"
@@ -26,7 +35,10 @@
   {
     "nome": "Toio",
     "anno": 1962,
-    "designer": ["Achille Castiglioni", "Pier Giacomo Castiglioni"],
+    "designer": [
+      "Achille Castiglioni",
+      "Pier Giacomo Castiglioni"
+    ],
     "azienda": "Flos",
     "categoria": "lampada",
     "foto": "toio.jpg"
@@ -34,7 +46,10 @@
   {
     "nome": "Mezzadro",
     "anno": 1957,
-    "designer": ["Achille Castiglioni", "Pier Giacomo Castiglioni"],
+    "designer": [
+      "Achille Castiglioni",
+      "Pier Giacomo Castiglioni"
+    ],
     "azienda": "Zanotta",
     "categoria": "sgabello",
     "foto": "mezzadro.jpg"
@@ -42,7 +57,10 @@
   {
     "nome": "Sella",
     "anno": 1957,
-    "designer": ["Achille Castiglioni", "Pier Giacomo Castiglioni"],
+    "designer": [
+      "Achille Castiglioni",
+      "Pier Giacomo Castiglioni"
+    ],
     "azienda": "Zanotta",
     "categoria": "sgabello",
     "foto": "sella.jpg"
@@ -50,7 +68,10 @@
   {
     "nome": "Biagio",
     "anno": 1968,
-    "designer": ["Afra Bianchin", "Tobia Scarpa"],
+    "designer": [
+      "Afra Bianchin",
+      "Tobia Scarpa"
+    ],
     "azienda": "Flos",
     "categoria": "lampada",
     "foto": "biagio.jpg"
@@ -114,7 +135,10 @@
   {
     "nome": "Ventosa",
     "anno": 1968,
-    "designer": ["Achille Castiglioni", "Pier Giacomo Castiglioni"],
+    "designer": [
+      "Achille Castiglioni",
+      "Pier Giacomo Castiglioni"
+    ],
     "azienda": "Flos",
     "categoria": "lampada",
     "foto": "ventosa.jpg"
@@ -122,7 +146,10 @@
   {
     "nome": "Taraxacum 1",
     "anno": 1960,
-    "designer": ["Achille Castiglioni", "Pier Giacomo Castiglioni"],
+    "designer": [
+      "Achille Castiglioni",
+      "Pier Giacomo Castiglioni"
+    ],
     "azienda": "Flos",
     "categoria": "lampadario",
     "foto": "taraxacum1.jpg"
@@ -138,7 +165,10 @@
   {
     "nome": "Gatto",
     "anno": 1960,
-    "designer": ["Achille Castiglioni", "Pier Giacomo Castiglioni"],
+    "designer": [
+      "Achille Castiglioni",
+      "Pier Giacomo Castiglioni"
+    ],
     "azienda": "Flos",
     "categoria": "lampada",
     "foto": "gatto.jpg"
@@ -242,7 +272,10 @@
   {
     "nome": "Lambda",
     "anno": 1963,
-    "designer": ["Marco Zanuso", "Richard Sapper"],
+    "designer": [
+      "Marco Zanuso",
+      "Richard Sapper"
+    ],
     "azienda": "Gavina",
     "categoria": "sedia",
     "foto": "lambda.jpg"
@@ -250,7 +283,10 @@
   {
     "nome": "Grillo",
     "anno": 1965,
-    "designer": ["Marco Zanuso", "Richard Sapper"],
+    "designer": [
+      "Marco Zanuso",
+      "Richard Sapper"
+    ],
     "azienda": "Siemens",
     "categoria": "telefono",
     "foto": "grillo.jpg"
@@ -458,7 +494,10 @@
   {
     "nome": "Bastiano",
     "anno": 1960,
-    "designer": ["Afra Bianchin", "Tobia Scarpa"],
+    "designer": [
+      "Afra Bianchin",
+      "Tobia Scarpa"
+    ],
     "azienda": "Cassina",
     "categoria": "divano",
     "foto": "bastiano.jpg"
@@ -466,7 +505,10 @@
   {
     "nome": "Soriana",
     "anno": 1969,
-    "designer": ["Afra Bianchin", "Tobia Scarpa"],
+    "designer": [
+      "Afra Bianchin",
+      "Tobia Scarpa"
+    ],
     "azienda": "Cassina",
     "categoria": "poltrona",
     "foto": "soriana.jpg"
@@ -570,7 +612,10 @@
   {
     "nome": "LB7",
     "anno": 1957,
-    "designer": ["Franco Albini", "Franca Helg"],
+    "designer": [
+      "Franco Albini",
+      "Franca Helg"
+    ],
     "azienda": "Poggi",
     "categoria": "libreria",
     "foto": "lb7.jpg"
@@ -658,7 +703,11 @@
   {
     "nome": "Elettra",
     "anno": 1953,
-    "designer": ["Lodovico Belgiojoso", "Enrico Peressutti", "Ernesto Nathan Rogers"],
+    "designer": [
+      "Lodovico Belgiojoso",
+      "Enrico Peressutti",
+      "Ernesto Nathan Rogers"
+    ],
     "azienda": "Arflex",
     "categoria": "sedia",
     "foto": "elettra.jpg"
@@ -666,7 +715,11 @@
   {
     "nome": "Torre Velasca (modello)",
     "anno": 1958,
-    "designer": ["Lodovico Belgiojoso", "Enrico Peressutti", "Ernesto Nathan Rogers"],
+    "designer": [
+      "Lodovico Belgiojoso",
+      "Enrico Peressutti",
+      "Ernesto Nathan Rogers"
+    ],
     "azienda": "BBPR",
     "categoria": "architettura",
     "foto": "torrevelasca.jpg"
@@ -674,7 +727,11 @@
   {
     "nome": "Allestimento Castello Sforzesco",
     "anno": 1956,
-    "designer": ["Lodovico Belgiojoso", "Enrico Peressutti", "Ernesto Nathan Rogers"],
+    "designer": [
+      "Lodovico Belgiojoso",
+      "Enrico Peressutti",
+      "Ernesto Nathan Rogers"
+    ],
     "azienda": "BBPR",
     "categoria": "allestimento",
     "foto": "castellosforzesco.jpg"
@@ -682,7 +739,11 @@
   {
     "nome": "Lampada Neon",
     "anno": 1954,
-    "designer": ["Lodovico Belgiojoso", "Enrico Peressutti", "Ernesto Nathan Rogers"],
+    "designer": [
+      "Lodovico Belgiojoso",
+      "Enrico Peressutti",
+      "Ernesto Nathan Rogers"
+    ],
     "azienda": "BBPR",
     "categoria": "lampada",
     "foto": "lampadaneon.jpg"
@@ -730,7 +791,12 @@
   {
     "nome": "No-Stop City",
     "anno": 1969,
-    "designer": ["Andrea Branzi", "Gilberto Corretti", "Paolo Deganello", "Massimo Morozzi"],
+    "designer": [
+      "Andrea Branzi",
+      "Gilberto Corretti",
+      "Paolo Deganello",
+      "Massimo Morozzi"
+    ],
     "azienda": "Archizoom",
     "categoria": "progetto teorico",
     "foto": "nostopcity.jpg"
@@ -738,7 +804,12 @@
   {
     "nome": "Superonda",
     "anno": 1966,
-    "designer": ["Andrea Branzi", "Gilberto Corretti", "Paolo Deganello", "Massimo Morozzi"],
+    "designer": [
+      "Andrea Branzi",
+      "Gilberto Corretti",
+      "Paolo Deganello",
+      "Massimo Morozzi"
+    ],
     "azienda": "Poltronova",
     "categoria": "divano",
     "foto": "superonda.jpg"
@@ -746,7 +817,12 @@
   {
     "nome": "Mies",
     "anno": 1969,
-    "designer": ["Andrea Branzi", "Gilberto Corretti", "Paolo Deganello", "Massimo Morozzi"],
+    "designer": [
+      "Andrea Branzi",
+      "Gilberto Corretti",
+      "Paolo Deganello",
+      "Massimo Morozzi"
+    ],
     "azienda": "Poltronova",
     "categoria": "sedia",
     "foto": "mies.jpg"
@@ -758,5 +834,39 @@
     "azienda": "Cassina",
     "categoria": "poltrona",
     "foto": "aeo.jpg"
+  },
+  {
+    "nome": "Viscontea",
+    "anno": 1961,
+    "designer": [
+      "Achille Castiglioni",
+      "Pier Giacomo Castiglioni"
+    ],
+    "azienda": "Flos",
+    "categoria": "lampada",
+    "foto": "viscontea.jpg"
+  },
+  {
+    "nome": "Cactus",
+    "anno": 1972,
+    "designer": [
+      "Guido Drocco",
+      "Franco Mello"
+    ],
+    "azienda": "Gufram",
+    "categoria": "appendiabiti",
+    "foto": "cactus.jpg"
+  },
+  {
+    "nome": "Urania",
+    "anno": 1954,
+    "designer": [
+      "Lodovico Belgiojoso",
+      "Enrico Peressutti",
+      "Ernesto Nathan Rogers"
+    ],
+    "azienda": "Arflex",
+    "categoria": "sedia",
+    "foto": "urania.jpg"
   }
 ]

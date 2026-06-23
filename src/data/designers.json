@@ -405,8 +405,12 @@
     "bio": "Architetto milanese, cofondatore dello studio BBPR. Morto nel campo di concentramento di Mauthausen-Gusen.",
     "foto": "banfi.jpg",
     "y": null,
-    "scuole": ["Razionalismo"],
-    "collettivi": ["BBPR"]
+    "scuole": [
+      "Razionalismo"
+    ],
+    "collettivi": [
+      "BBPR"
+    ]
   },
   {
     "nome": "Lodovico Belgiojoso",
@@ -415,8 +419,12 @@
     "bio": "Architetto milanese, cofondatore dello studio BBPR. Protagonista dell'architettura razionalista e della ricostruzione postbellica.",
     "foto": "belgiojoso.jpg",
     "y": null,
-    "scuole": ["Razionalismo"],
-    "collettivi": ["BBPR"]
+    "scuole": [
+      "Razionalismo"
+    ],
+    "collettivi": [
+      "BBPR"
+    ]
   },
   {
     "nome": "Enrico Peressutti",
@@ -425,8 +433,12 @@
     "bio": "Architetto milanese, cofondatore dello studio BBPR. Noto per il rigore progettuale e l'impegno nella cultura architettonica italiana.",
     "foto": "peressutti.jpg",
     "y": null,
-    "scuole": ["Razionalismo"],
-    "collettivi": ["BBPR"]
+    "scuole": [
+      "Razionalismo"
+    ],
+    "collettivi": [
+      "BBPR"
+    ]
   },
   {
     "nome": "Ernesto Nathan Rogers",
@@ -435,8 +447,12 @@
     "bio": "Architetto e teorico, cofondatore dello studio BBPR. Direttore di Domus e Casabella, figura chiave del dibattito architettonico italiano.",
     "foto": "rogers.jpg",
     "y": null,
-    "scuole": ["Razionalismo"],
-    "collettivi": ["BBPR"]
+    "scuole": [
+      "Razionalismo"
+    ],
+    "collettivi": [
+      "BBPR"
+    ]
   },
   {
     "nome": "Andrea Branzi",
@@ -445,8 +461,14 @@
     "bio": "Architetto, designer e teorico. Cofondatore di Archizoom, poi protagonista di Studio Alchimia e del dibattito sul design radicale e postmoderno.",
     "foto": "branzi.jpg",
     "y": null,
-    "scuole": ["Design Radicale", "Postmodernismo"],
-    "collettivi": ["Studio Alchimia", "Archizoom"]
+    "scuole": [
+      "Design Radicale",
+      "Postmodernismo"
+    ],
+    "collettivi": [
+      "Studio Alchimia",
+      "Archizoom"
+    ]
   },
   {
     "nome": "Gilberto Corretti",
@@ -455,8 +477,12 @@
     "bio": "Architetto e designer fiorentino, cofondatore di Archizoom Associati. Protagonista del design radicale italiano.",
     "foto": "corretti.jpg",
     "y": null,
-    "scuole": ["Design Radicale"],
-    "collettivi": ["Archizoom"]
+    "scuole": [
+      "Design Radicale"
+    ],
+    "collettivi": [
+      "Archizoom"
+    ]
   },
   {
     "nome": "Paolo Deganello",
@@ -465,8 +491,12 @@
     "bio": "Architetto e designer, cofondatore di Archizoom. Noto per un approccio politico e sociale al design.",
     "foto": "deganello.jpg",
     "y": null,
-    "scuole": ["Design Radicale"],
-    "collettivi": ["Archizoom"]
+    "scuole": [
+      "Design Radicale"
+    ],
+    "collettivi": [
+      "Archizoom"
+    ]
   },
   {
     "nome": "Massimo Morozzi",
@@ -475,7 +505,35 @@
     "bio": "Architetto e designer, cofondatore di Archizoom. Ha poi collaborato con Cassina, Driade e Edra.",
     "foto": "morozzi.jpg",
     "y": null,
-    "scuole": ["Design Radicale"],
-    "collettivi": ["Archizoom"]
+    "scuole": [
+      "Design Radicale"
+    ],
+    "collettivi": [
+      "Archizoom"
+    ]
+  },
+  {
+    "nome": "Guido Drocco",
+    "nato": 1942,
+    "morto": 2019,
+    "bio": "Designer e architetto torinese. Con Franco Mello ha firmato il Cactus per Gufram, icona del design radicale italiano.",
+    "foto": "drocco.jpg",
+    "y": null,
+    "scuole": [
+      "Design radicale"
+    ],
+    "collettivi": []
+  },
+  {
+    "nome": "Franco Mello",
+    "nato": 1945,
+    "morto": 2022,
+    "bio": "Architetto e designer torinese legato al design radicale. Con Guido Drocco ha creato il Cactus per Gufram.",
+    "foto": "mello.jpg",
+    "y": null,
+    "scuole": [
+      "Design radicale"
+    ],
+    "collettivi": []
   }
 ]

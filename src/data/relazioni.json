@@ -159,5 +159,47 @@
     "tipo": "collaborazione",
     "categoria": "professionale",
     "descrizione": "Entrambi esponenti del design radicale, hanno partecipato insieme a Studio Alchimia prima della nascita di Memphis"
+  },
+  {
+    "designer_a": "Gianluigi Banfi",
+    "designer_b": "Lodovico Belgiojoso",
+    "tipo": "fondatori studio BBPR",
+    "categoria": "professionale",
+    "descrizione": "Co-fondatori dello studio BBPR nel 1932 insieme a Peressutti e Rogers"
+  },
+  {
+    "designer_a": "Gianluigi Banfi",
+    "designer_b": "Enrico Peressutti",
+    "tipo": "fondatori studio BBPR",
+    "categoria": "professionale",
+    "descrizione": "Co-fondatori dello studio BBPR nel 1932 insieme a Belgiojoso e Rogers"
+  },
+  {
+    "designer_a": "Gianluigi Banfi",
+    "designer_b": "Ernesto Nathan Rogers",
+    "tipo": "fondatori studio BBPR",
+    "categoria": "professionale",
+    "descrizione": "Co-fondatori dello studio BBPR nel 1932 insieme a Belgiojoso e Peressutti"
+  },
+  {
+    "designer_a": "Lodovico Belgiojoso",
+    "designer_b": "Enrico Peressutti",
+    "tipo": "fondatori studio BBPR",
+    "categoria": "professionale",
+    "descrizione": "Co-fondatori dello studio BBPR nel 1932 insieme a Banfi e Rogers"
+  },
+  {
+    "designer_a": "Lodovico Belgiojoso",
+    "designer_b": "Ernesto Nathan Rogers",
+    "tipo": "fondatori studio BBPR",
+    "categoria": "professionale",
+    "descrizione": "Co-fondatori dello studio BBPR nel 1932 insieme a Banfi e Peressutti"
+  },
+  {
+    "designer_a": "Enrico Peressutti",
+    "designer_b": "Ernesto Nathan Rogers",
+    "tipo": "fondatori studio BBPR",
+    "categoria": "professionale",
+    "descrizione": "Co-fondatori dello studio BBPR nel 1932 insieme a Banfi e Belgiojoso"
   }
 ]
