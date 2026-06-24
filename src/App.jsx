@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useEffect, useState, useRef } from "react"
 import Graph from "graphology"
 import Sigma from "sigma"
 import designers from "./data/designers.json"
@@ -133,15 +133,15 @@ function calcolaSettoriDinamici(lista) {
 
 const ANNO_MIN = 1880
 const ANNO_MAX = 2020
-const X_MIN = -60
-const X_MAX = 60
+const X_MIN = -120
+const X_MAX = 120
 const DECENNI = [1880,1890,1900,1910,1920,1930,1940,1950,1960,1970,1980,1990,2000,2010,2020]
 const ANNI_SINGOLI = Array.from({length: (2020-1880)+1}, (_, i) => 1880 + i)
 const MARGINE_X = 2
 const MARGINE_Y = 2
 const Y_MIN = -20
 const Y_MAX = 20
-const MAX_CAMERA_RATIO = 1.2
+const MAX_CAMERA_RATIO = window.innerWidth < 768 ? 0.6 : 1.2
 const MIN_CAMERA_RATIO = 0.05
 
 function annoToX(anno) {
@@ -186,6 +186,8 @@ function App() {
   const [designerAttivo, setDesignerAttivo] = useState(null)
   const [vistaCorrente, setVistaCorrente] = useState("designer")
   const [animaTransizioneFn, setAnimaTransizioneFn] = useState(null)
+  const [haInteragito, setHaInteragito] = useState(false)
+  const haInteragitoRef = useRef(false)
 
   useEffect(() => {
     document.body.style.margin = "0"
@@ -194,8 +196,11 @@ function App() {
     document.body.style.background = STILE.sfondo_colore
     document.documentElement.style.overflow = "hidden"
 
+    const isMobile = window.innerWidth < 768
     const container = document.createElement("div")
-    container.style.cssText = "position:fixed;top:0;right:0;bottom:0;left:200px;z-index:1;cursor:none;"
+    container.style.cssText = isMobile
+      ? "position:fixed;top:0;right:0;bottom:0;left:0;z-index:1;cursor:none;"
+      : "position:fixed;top:0;right:0;bottom:0;left:200px;z-index:1;cursor:none;"
     document.body.appendChild(container)
 
     const graph = new Graph()
@@ -683,6 +688,59 @@ function App() {
         ctx.fillText(anno, screen.x, 30)
       })
 
+      if (vistaInterna === "timeline") {
+        graph.forEachNode((node, attr) => {
+          if (attr.tipo !== "designer") return
+          const dati = attr.dati
+          const morto = dati.morto || 2025
+          if (!animated[node]) animated[node] = { r: STILE.zoom_designer_min, alpha: 1 }
+          animated[node].vita = lerp(animated[node].vita ?? 0, 1, STILE.lerp_velocita * 0.7)
+          const vitaT = animated[node].vita
+          const nascitaX = annoToX(dati.nato)
+          const vitaEndX = nascitaX + (annoToX(morto) - nascitaX) * vitaT
+          const posNascita = renderer.graphToViewport({ x: nascitaX, y: attr.y })
+          const posMorte = renderer.graphToViewport({ x: vitaEndX, y: attr.y })
+          const r = (animated[node]?.r ?? STILE.zoom_designer_min) * 0.8
+          ctx.globalAlpha = 0.06 * vitaT
+          ctx.fillStyle = "#000000"
+          ctx.beginPath()
+          ctx.moveTo(posNascita.x, posNascita.y - r)
+          ctx.lineTo(posMorte.x, posMorte.y - r)
+          ctx.arc(posMorte.x, posMorte.y, r, -Math.PI / 2, Math.PI / 2)
+          ctx.lineTo(posNascita.x, posNascita.y + r)
+          ctx.arc(posNascita.x, posNascita.y, r, Math.PI / 2, -Math.PI / 2)
+          ctx.closePath()
+          ctx.fill()
+          ctx.globalAlpha = 1
+        })
+      } else {
+        graph.forEachNode((node, attr) => {
+          if (attr.tipo !== "designer" || !animated[node]) return
+          if (animated[node].vita > 0.01) {
+            animated[node].vita = lerp(animated[node].vita, 0, STILE.lerp_velocita * 0.7)
+            const dati = attr.dati
+            const morto = dati.morto || 2025
+            const vitaT = animated[node].vita
+            const nascitaX = annoToX(dati.nato)
+            const vitaEndX = nascitaX + (annoToX(morto) - nascitaX) * vitaT
+            const posNascita = renderer.graphToViewport({ x: nascitaX, y: attr.y })
+            const posMorte = renderer.graphToViewport({ x: vitaEndX, y: attr.y })
+            const r = (animated[node]?.r ?? STILE.zoom_designer_min) * 0.8
+            ctx.globalAlpha = 0.06 * vitaT
+            ctx.fillStyle = "#000000"
+            ctx.beginPath()
+            ctx.moveTo(posNascita.x, posNascita.y - r)
+            ctx.lineTo(posMorte.x, posMorte.y - r)
+            ctx.arc(posMorte.x, posMorte.y, r, -Math.PI / 2, Math.PI / 2)
+            ctx.lineTo(posNascita.x, posNascita.y + r)
+            ctx.arc(posNascita.x, posNascita.y, r, Math.PI / 2, -Math.PI / 2)
+            ctx.closePath()
+            ctx.fill()
+            ctx.globalAlpha = 1
+          }
+        })
+      }
+
       gruppiCollettivi.forEach(({ nome, nodi }) => {
         const punti = nodi
           .filter((n) => graph.hasNode(n))
@@ -1021,6 +1079,10 @@ function App() {
         clampAnimId = setTimeout(() => { clamping = false; clampAnimId = null }, 200)
       }
 
+      const zoomOut = state.ratio > MAX_CAMERA_RATIO * 0.85
+      if (zoomOut && haInteragitoRef.current) { haInteragitoRef.current = false; setHaInteragito(false) }
+      else if (!zoomOut && !haInteragitoRef.current) { haInteragitoRef.current = true; setHaInteragito(true) }
+
       try { localStorage.setItem("dn-camera", JSON.stringify({ x: state.x, y: state.y, ratio: state.ratio })) } catch {}
       richiediDisegnoOverlay(2)
     })
@@ -1119,7 +1181,11 @@ function App() {
       sigmaCanvas.addEventListener("mousedown", (e) => {
         mouseDownPos = { x: e.clientX, y: e.clientY }
         isDragging = false
+        if (!haInteragitoRef.current) { haInteragitoRef.current = true; setHaInteragito(true) }
       })
+      sigmaCanvas.addEventListener("wheel", () => {
+        if (!haInteragitoRef.current) { haInteragitoRef.current = true; setHaInteragito(true) }
+      }, { passive: true })
 
       sigmaCanvas.addEventListener("mousemove", (e) => {
         if (mouseDownPos) {
@@ -1285,14 +1351,23 @@ function App() {
 
   return (
     <>
-      <div style={{ position: "fixed", top: 0, left: 0, bottom: 0, width: 200, zIndex: 20, pointerEvents: "none", padding: "20px 16px", boxSizing: "border-box", display: "flex", flexDirection: "column", justifyContent: "flex-end" }}>
+      <div style={{
+        position: "fixed", zIndex: 20, pointerEvents: "none", boxSizing: "border-box",
+        ...(window.innerWidth < 768
+          ? { top: 0, left: 0, right: 0, padding: "16px 20px", background: STILE.sfondo_colore }
+          : { top: 0, left: 0, bottom: 0, width: 200, padding: "20px 16px", display: "flex", flexDirection: "column", justifyContent: "flex-end" })
+      }}>
         <div style={{ fontFamily: "'Roboto Serif', serif", fontWeight: 500, fontStyle: "italic", fontSize: 13, color: "#1a1a1a", letterSpacing: 0.3, lineHeight: 1.3 }}>
           Design — encyclopédie visuelle 1880–1980
         </div>
-        <div style={{ fontFamily: "'Roboto Serif', serif", fontWeight: 400, fontStyle: "italic", fontSize: 13, color: "#1a1a1a", marginTop: 2, lineHeight: 1.3 }}>
+        <div style={{ fontFamily: "'Roboto Serif', serif", fontWeight: 400, fontStyle: "italic", fontSize: 13, color: "#1a1a1a", marginTop: 6, lineHeight: 1.3 }}>
           Un secolo di oggetti, forme e idee.
         </div>
-        <div style={{ display: "flex", flexDirection: "column", gap: 8, marginTop: 10 }}>
+        <div style={{
+          display: "flex", flexDirection: "column", gap: 8, marginTop: 10,
+          opacity: haInteragito ? 0 : 1, maxHeight: haInteragito ? 0 : 300,
+          overflow: "hidden", transition: "opacity 0.6s ease, max-height 0.6s ease",
+        }}>
           <p style={{ fontFamily: "Roboto, sans-serif", fontWeight: 300, fontSize: 11, color: "#888", lineHeight: 1.35, margin: 0 }}>
             Questa mappa rappresenta un secolo di design occidentale — i suoi protagonisti, le loro opere e i legami invisibili che li uniscono. Ogni nodo è un designer o un oggetto; ogni connessione, una relazione di collaborazione, influenza o formazione.
           </p>
