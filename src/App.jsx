@@ -86,7 +86,7 @@ const STILE = {
   orbita_raggio_min: 0.5,
   orbita_spazio_per_prodotto: 0.08,
   anello_raggio_interno: 1.0,
-  anello_raggio_esterno: 1.8,
+  anello_raggio_esterno: 2.0,
   arco_inizio: 0.15,
   arco_fine: 1.85,
   arco_perturbazione: 0.4,
@@ -125,7 +125,11 @@ function calcolaSettoriDinamici(lista) {
   settoriPresenti.forEach((s) => {
     const n = gruppi[s].length
     const ampiezza = arcoTotale * (n / totale)
-    settori[s] = { inizio: cursore, fine: cursore + ampiezza, prodotti: gruppi[s] }
+    const ordinati = [...gruppi[s]].sort((a, b) => {
+      if (a.p.categoria !== b.p.categoria) return a.p.categoria.localeCompare(b.p.categoria)
+      return (a.p.anno || 0) - (b.p.anno || 0)
+    })
+    settori[s] = { inizio: cursore, fine: cursore + ampiezza, prodotti: ordinati }
     cursore += ampiezza
   })
   return settori
@@ -553,8 +557,9 @@ function App() {
       minCameraRatio: MIN_CAMERA_RATIO,
       zoomingRatio: 1.7,
       zoomDuration: 150,
-      inertiaDuration: 400,
-      inertiaRatio: 0.6,
+      inertiaDuration: 5,
+      inertiaRatio: 0.2,  
+      enableCameraRotation: false,
       nodeReducer: (node, data) => ({
         ...data, hidden: false, label: "",
         highlighted: false,
@@ -1058,30 +1063,28 @@ function App() {
 
     const camera = renderer.getCamera()
     let clamping = false
-    let clampAnimId = null
     camera.on("updated", (state) => {
       cameraRatio = state.ratio
-      if (clamping) { richiediDisegnoOverlay(2); return }
-
-      const r = state.ratio
-      const pad = 0.05
-      const xLo = Math.min(0.5, r / 2 - pad)
-      const xHi = Math.max(0.5, 1 - r / 2 + pad)
-      const yLo = Math.min(0.5, r / 2 - pad)
-      const yHi = Math.max(0.5, 1 - r / 2 + pad)
-      const cx = Math.max(xLo, Math.min(xHi, state.x))
-      const cy = Math.max(yLo, Math.min(yHi, state.y))
-
-      if (cx !== state.x || cy !== state.y) {
-        clamping = true
-        camera.animate({ x: cx, y: cy }, { duration: 150 })
-        if (clampAnimId) clearTimeout(clampAnimId)
-        clampAnimId = setTimeout(() => { clamping = false; clampAnimId = null }, 200)
+      if (!clamping) {
+        const r = state.ratio
+        const xLo = Math.min(0.5, r / 2)
+        const xHi = Math.max(0.5, 1 - r / 2)
+        const yLo = Math.min(0.5, r / 2)
+        const yHi = Math.max(0.5, 1 - r / 2)
+        const cx = Math.max(xLo, Math.min(xHi, state.x))
+        const cy = Math.max(yLo, Math.min(yHi, state.y))
+        if (Math.abs(cx - state.x) > 0.001 || Math.abs(cy - state.y) > 0.001) {
+          clamping = true
+          camera.setState({ x: cx, y: cy })
+          clamping = false
+        }
       }
 
-      const zoomOut = state.ratio > MAX_CAMERA_RATIO * 0.85
-      if (zoomOut && haInteragitoRef.current) { haInteragitoRef.current = false; setHaInteragito(false) }
-      else if (!zoomOut && !haInteragitoRef.current) { haInteragitoRef.current = true; setHaInteragito(true) }
+      if (isMobile) {
+        const zoomOut = state.ratio > MAX_CAMERA_RATIO * 0.85
+        if (zoomOut && haInteragitoRef.current) { haInteragitoRef.current = false; setHaInteragito(false) }
+        else if (!zoomOut && !haInteragitoRef.current) { haInteragitoRef.current = true; setHaInteragito(true) }
+      }
 
       try { localStorage.setItem("dn-camera", JSON.stringify({ x: state.x, y: state.y, ratio: state.ratio })) } catch {}
       richiediDisegnoOverlay(2)
@@ -1119,6 +1122,11 @@ function App() {
         camera.setState({ ratio: 0.25, x: cx + 0.05, y: cy })
       }
     }
+    graph.forEachNode((node, attr) => {
+      if (!animated[node]) return
+      const nodoAttivo = null
+      animated[node].r = calcolaRTarget(node, attr, nodoAttivo)
+    })
     richiediDisegnoOverlay(2)
 
     let vistaInterna = "designer"
@@ -1181,10 +1189,10 @@ function App() {
       sigmaCanvas.addEventListener("mousedown", (e) => {
         mouseDownPos = { x: e.clientX, y: e.clientY }
         isDragging = false
-        if (!haInteragitoRef.current) { haInteragitoRef.current = true; setHaInteragito(true) }
+        if (isMobile && !haInteragitoRef.current) { haInteragitoRef.current = true; setHaInteragito(true) }
       })
       sigmaCanvas.addEventListener("wheel", () => {
-        if (!haInteragitoRef.current) { haInteragitoRef.current = true; setHaInteragito(true) }
+        if (isMobile && !haInteragitoRef.current) { haInteragitoRef.current = true; setHaInteragito(true) }
       }, { passive: true })
 
       sigmaCanvas.addEventListener("mousemove", (e) => {
@@ -1258,7 +1266,7 @@ function App() {
       })
 
       sigmaCanvas.addEventListener("mouseup", (e) => {
-        if (isDragging) { mouseDownPos = null; isDragging = false; return }
+        if (isDragging) { mouseDownPos = null; isDragging = false; richiediDisegnoOverlay(3); return }
         mouseDownPos = null; isDragging = false
 
         const rect = sigmaCanvas.getBoundingClientRect()
@@ -1335,7 +1343,6 @@ function App() {
     return () => {
       resizeObserver.disconnect()
       if (overlayAnimationFrame !== null) cancelAnimationFrame(overlayAnimationFrame)
-      if (clampAnimId) clearTimeout(clampAnimId)
       renderer.kill()
       if (container.parentNode) container.parentNode.removeChild(container)
       document.body.style.overflow = ""
@@ -1365,7 +1372,7 @@ function App() {
         </div>
         <div style={{
           display: "flex", flexDirection: "column", gap: 8, marginTop: 10,
-          opacity: haInteragito ? 0 : 1, maxHeight: haInteragito ? 0 : 300,
+          opacity: (haInteragito && window.innerWidth < 768) ? 0 : 1, maxHeight: (haInteragito && window.innerWidth < 768) ? 0 : 300,
           overflow: "hidden", transition: "opacity 0.6s ease, max-height 0.6s ease",
         }}>
           <p style={{ fontFamily: "Roboto, sans-serif", fontWeight: 300, fontSize: 11, color: "#888", lineHeight: 1.35, margin: 0 }}>

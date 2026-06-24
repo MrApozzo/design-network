@@ -535,5 +535,15 @@
       "Design radicale"
     ],
     "collettivi": []
+  },
+  {
+    "nome": "Enzo Mari",
+    "nato": 1932,
+    "morto": 2020,
+    "bio": "Designer, artista e teorico. Figura radicale del design italiano, noto per la ricerca sulla democratizzazione del progetto e per oggetti iconici per Danese e Alessi.",
+    "foto": "mari.jpg",
+    "y": null,
+    "scuole": ["Arte Concreta", "Design Radicale"],
+    "collettivi": []
   }
 ]

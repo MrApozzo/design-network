@@ -201,5 +201,19 @@
     "tipo": "fondatori studio BBPR",
     "categoria": "professionale",
     "descrizione": "Co-fondatori dello studio BBPR nel 1932 insieme a Banfi e Belgiojoso"
+  },
+  {
+    "designer_a": "Enzo Mari",
+    "designer_b": "Bruno Munari",
+    "tipo": "amicizia",
+    "categoria": "personale",
+    "descrizione": "Entrambi legati a Danese e alla ricerca sulla semplicità, il gioco e la didattica nel design"
+  },
+  {
+    "designer_a": "Enzo Mari",
+    "designer_b": "Andrea Branzi",
+    "tipo": "stesso_periodo",
+    "categoria": "professionale",
+    "descrizione": "Entrambi figure del design radicale italiano, con approcci diversi ma complementari alla critica del consumismo"
   }
 ]

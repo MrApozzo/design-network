@@ -868,5 +868,125 @@
     "azienda": "Arflex",
     "categoria": "sedia",
     "foto": "urania.jpg"
+  },
+  {
+    "nome": "Chimera",
+    "anno": 1969,
+    "designer": "Vico Magistretti",
+    "azienda": "Artemide",
+    "categoria": "lampada",
+    "foto": "chimera.jpg"
+  },
+  {
+    "nome": "Sindbad",
+    "anno": 1981,
+    "designer": "Vico Magistretti",
+    "azienda": "Cassina",
+    "categoria": "divano",
+    "foto": "sindbad.jpg"
+  },
+  {
+    "nome": "Veranda",
+    "anno": 1983,
+    "designer": "Vico Magistretti",
+    "azienda": "Cassina",
+    "categoria": "poltrona",
+    "foto": "veranda.jpg"
+  },
+  {
+    "nome": "Marocca",
+    "anno": 1987,
+    "designer": "Vico Magistretti",
+    "azienda": "dePadova",
+    "categoria": "sedia",
+    "foto": "marocca.jpg"
+  },
+  {
+    "nome": "Incisa",
+    "anno": 1992,
+    "designer": "Vico Magistretti",
+    "azienda": "dePadova",
+    "categoria": "sedia",
+    "foto": "incisa.jpg"
+  },
+  {
+    "nome": "Vidun",
+    "anno": 1987,
+    "designer": "Vico Magistretti",
+    "azienda": "dePadova",
+    "categoria": "tavolo",
+    "foto": "vidun.jpg"
+  },
+  {
+    "nome": "Nathalie",
+    "anno": 1978,
+    "designer": "Vico Magistretti",
+    "azienda": "Flou",
+    "categoria": "letto",
+    "foto": "nathalie.jpg"
+  },
+  {
+    "nome": "Tadao",
+    "anno": 1993,
+    "designer": "Vico Magistretti",
+    "azienda": "Flou",
+    "categoria": "letto",
+    "foto": "tadao.jpg"
+  },
+  {
+    "nome": "Autoprogettazione",
+    "anno": 1974,
+    "designer": "Enzo Mari",
+    "azienda": "Simon International",
+    "categoria": "tavolo",
+    "foto": "autoprogettazione.jpg"
+  },
+  {
+    "nome": "Putrella",
+    "anno": 1958,
+    "designer": "Enzo Mari",
+    "azienda": "Danese",
+    "categoria": "fermacarte",
+    "foto": "putrella.jpg"
+  },
+  {
+    "nome": "16 Animali",
+    "anno": 1957,
+    "designer": "Enzo Mari",
+    "azienda": "Danese",
+    "categoria": "gioco",
+    "foto": "16animali.jpg"
+  },
+  {
+    "nome": "Timor",
+    "anno": 1967,
+    "designer": "Enzo Mari",
+    "azienda": "Danese",
+    "categoria": "calendario",
+    "foto": "timor.jpg"
+  },
+  {
+    "nome": "Tonetta",
+    "anno": 1985,
+    "designer": "Enzo Mari",
+    "azienda": "Zanotta",
+    "categoria": "sedia",
+    "foto": "tonetta.jpg"
+  },
+  {
+    "nome": "Ecolo",
+    "anno": 1995,
+    "designer": "Enzo Mari",
+    "azienda": "Alessi",
+    "categoria": "vassoio",
+    "foto": "ecolo.jpg"
+  },
+  {
+    "nome": "Carimate",
+    "anno": 1959,
+    "designer": "Vico Magistretti",
+    "azienda": "Cassina",
+    "categoria": "sedia",
+    "foto": "carimate.jpg"
   }
 ]
