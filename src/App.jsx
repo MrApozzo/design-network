@@ -190,7 +190,11 @@ function App() {
   const [designerAttivo, setDesignerAttivo] = useState(null)
   const [vistaCorrente, setVistaCorrente] = useState("designer")
   const [animaTransizioneFn, setAnimaTransizioneFn] = useState(null)
+  const [ridisegnaFn, setRidisegnaFn] = useState(null)
   const [haInteragito, setHaInteragito] = useState(false)
+  const [bioEspansa, setBioEspansa] = useState(false)
+  const [aziendaAttiva, setAziendaAttiva] = useState(null)
+  const aziendaAttivaRef = useRef(null)
   const haInteragitoRef = useRef(false)
 
   useEffect(() => {
@@ -225,8 +229,8 @@ function App() {
     let mouseNelCanvas = false
 
     const imgPaths = [
-      ...designers.map((d) => `/immagini/${d.foto}`),
-      ...prodotti.map((p) => `/immagini/${p.foto}`),
+      ...designers.map((d) => `${import.meta.env.BASE_URL}immagini/${d.foto}`),
+      ...prodotti.map((p) => `${import.meta.env.BASE_URL}immagini/${p.foto}`),
     ]
     const imgCache = preloadImages(imgPaths)
 
@@ -386,7 +390,7 @@ function App() {
       graph.addNode(d.nome, {
         label: d.nome, size: STILE.designer_size, x, y,
         color: STILE.designer_colore, tipo: "designer",
-        imgSrc: `/immagini/${d.foto}`, dati: d,
+        imgSrc: `${import.meta.env.BASE_URL}immagini/${d.foto}`, dati: d,
       })
       animated[d.nome] = { r: STILE.zoom_designer_min, alpha: 1 }
     })
@@ -461,7 +465,7 @@ function App() {
           label: p.nome, size: STILE.prodotto_size,
           x: orbitaX, y: orbitaY,
           color: STILE.prodotto_colore, tipo: "prodotto",
-          imgSrc: `/immagini/${p.foto}`, dati: p,
+          imgSrc: `${import.meta.env.BASE_URL}immagini/${p.foto}`, dati: p,
           orbitaX, orbitaY, timelineX, timelineY,
         })
         graph.addEdge(designer, prodottoId, {
@@ -534,7 +538,7 @@ function App() {
           label: p.nome, size: STILE.prodotto_size,
           x: orbitaX, y: orbitaY,
           color: STILE.prodotto_colore, tipo: "prodotto", multi: true,
-          imgSrc: `/immagini/${p.foto}`, dati: p,
+          imgSrc: `${import.meta.env.BASE_URL}immagini/${p.foto}`, dati: p,
           orbitaX, orbitaY, timelineX, timelineY,
         })
         ds.forEach((d) => {
@@ -801,7 +805,14 @@ function App() {
         if (!animated[node]) animated[node] = { r: STILE.zoom_prodotto_min, alpha: 1 }
         const rTarget = calcolaRTarget(node, attr, nodoAttivo)
         let alphaTarget = 1
-        if (vistaInterna === "timeline" && annoBloccato) {
+        const azFiltro = aziendaAttivaRef.current
+        if (azFiltro) {
+          if (attr.tipo === "prodotto") {
+            alphaTarget = attr.dati && attr.dati.azienda === azFiltro ? 1 : 0.1
+          } else if (attr.tipo === "designer") {
+            alphaTarget = 1
+          }
+        } else if (vistaInterna === "timeline" && annoBloccato) {
           if (attr.tipo === "prodotto") {
             alphaTarget = attr.dati && attr.dati.anno === annoBloccato ? 1 : 0.2
           } else if (attr.tipo === "designer") {
@@ -1004,7 +1015,7 @@ function App() {
           if (attr.dati.anno) {
             ctx.font = `300 ${labelProdottoSize - 1}px Roboto`
             ctx.fillStyle = STILE.label_prodotto_anno_colore
-            ctx.fillText(attr.dati.anno, pos.x + r + STILE.label_offset, pos.y + labelProdottoSize / 3 + labelProdottoSize + 1)
+            ctx.fillText(attr.dati.anno_label || attr.dati.anno, pos.x + r + STILE.label_offset, pos.y + labelProdottoSize / 3 + labelProdottoSize + 1)
           }
         }
         ctx.globalAlpha = 1
@@ -1180,6 +1191,7 @@ function App() {
     }
 
     setAnimaTransizioneFn(() => animaTransizione)
+    setRidisegnaFn(() => () => richiediDisegnoOverlay(18))
 
     const sigmaCanvas = container
     if (sigmaCanvas) {
@@ -1311,7 +1323,7 @@ function App() {
             } else {
               designerCliccato = trovato.node
               setDesignerAttivo(trovato.node)
-              setPannelloDesigner({ ...trovato.attr.dati, _tipo: "designer" })
+              setPannelloDesigner({ ...trovato.attr.dati, _tipo: "designer" }); setBioEspansa(false); setAziendaAttiva(null)
               requestAnimationFrame(() => setPannelloVisibile(true))
               graph.forEachEdge((edge, attr) => { if (attr.tipo === "relazione") graph.setEdgeAttribute(edge, "attivo", false) })
               graph.forEachEdge(trovato.node, (edge, edgeAttr) => { if (edgeAttr.tipo === "relazione") graph.setEdgeAttribute(edge, "attivo", true) })
@@ -1328,11 +1340,21 @@ function App() {
             richiediDisegnoOverlay(18)
           }
         } else {
+          const avevaPannello = designerCliccato !== null
           designerCliccato = null; prodottoCliccato = null
           annoBloccato = null
           setDesignerAttivo(null)
-          setPannelloVisibile(false)
-          setTimeout(() => setPannelloDesigner(null), 350)
+          if (isMobile && aziendaAttivaRef.current && avevaPannello) {
+            setPannelloVisibile(false)
+            setTimeout(() => setPannelloDesigner(null), 350)
+          } else if (isMobile && aziendaAttivaRef.current) {
+            aziendaAttivaRef.current = null; setAziendaAttiva(null)
+            richiediDisegnoOverlay(18)
+          } else {
+            setPannelloVisibile(false)
+            setTimeout(() => setPannelloDesigner(null), 350)
+            aziendaAttivaRef.current = null; setAziendaAttiva(null)
+          }
           graph.forEachEdge((edge, attr) => { if (attr.tipo === "relazione") graph.setEdgeAttribute(edge, "attivo", false) })
           setPopup(null); setTooltipRelazione(null)
           richiediDisegnoOverlay(18)
@@ -1350,11 +1372,20 @@ function App() {
     }
   }, [])
 
+  function toggleAzienda(az) {
+    const nuova = aziendaAttiva === az ? null : az
+    setAziendaAttiva(nuova)
+    aziendaAttivaRef.current = nuova
+    if (ridisegnaFn) ridisegnaFn()
+  }
+
   function cambiaVista(vista) {
     if (vista === vistaCorrente) return
     setVistaCorrente(vista)
     if (animaTransizioneFn) animaTransizioneFn(vista)
   }
+
+  const uiScale = 0.6 + (window.innerWidth / 1440) * 0.4
 
   return (
     <>
@@ -1362,23 +1393,23 @@ function App() {
         position: "fixed", zIndex: 20, pointerEvents: "none", boxSizing: "border-box",
         ...(window.innerWidth < 768
           ? { top: 0, left: 0, right: 0, padding: "16px 20px", background: STILE.sfondo_colore }
-          : { top: 0, left: 0, bottom: 0, width: 200, padding: "20px 16px", display: "flex", flexDirection: "column", justifyContent: "flex-end" })
+          : { top: 0, left: 0, bottom: 0, width: 240 * uiScale, padding: `${20 * uiScale}px ${16 * uiScale}px`, display: "flex", flexDirection: "column", justifyContent: "flex-end" })
       }}>
-        <div style={{ fontFamily: "'Roboto Serif', serif", fontWeight: 500, fontStyle: "italic", fontSize: 13, color: "#1a1a1a", letterSpacing: 0.3, lineHeight: 1.3 }}>
+        <div style={{ fontFamily: "'Roboto Serif', serif", fontWeight: 500, fontStyle: "italic", fontSize: 13 * uiScale, color: "#1a1a1a", letterSpacing: 0.3, lineHeight: 1.3 }}>
           Design — encyclopédie visuelle 1880–1980
         </div>
-        <div style={{ fontFamily: "'Roboto Serif', serif", fontWeight: 400, fontStyle: "italic", fontSize: 13, color: "#1a1a1a", marginTop: 6, lineHeight: 1.3 }}>
+        <div style={{ fontFamily: "'Roboto Serif', serif", fontWeight: 400, fontStyle: "italic", fontSize: 13 * uiScale, color: "#1a1a1a", marginTop: 6 * uiScale, lineHeight: 1.3 }}>
           Un secolo di oggetti, forme e idee.
         </div>
         <div style={{
-          display: "flex", flexDirection: "column", gap: 8, marginTop: 10,
+          display: "flex", flexDirection: "column", gap: 8 * uiScale, marginTop: 10 * uiScale,
           opacity: (haInteragito && window.innerWidth < 768) ? 0 : 1, maxHeight: (haInteragito && window.innerWidth < 768) ? 0 : 300,
           overflow: "hidden", transition: "opacity 0.6s ease, max-height 0.6s ease",
         }}>
-          <p style={{ fontFamily: "Roboto, sans-serif", fontWeight: 300, fontSize: 11, color: "#888", lineHeight: 1.35, margin: 0 }}>
+          <p style={{ fontFamily: "Roboto, sans-serif", fontWeight: 300, fontSize: 11 * uiScale, color: "#888", lineHeight: 1.35, margin: 0 }}>
             Questa mappa rappresenta un secolo di design occidentale — i suoi protagonisti, le loro opere e i legami invisibili che li uniscono. Ogni nodo è un designer o un oggetto; ogni connessione, una relazione di collaborazione, influenza o formazione.
           </p>
-          <p style={{ fontFamily: "Roboto, sans-serif", fontWeight: 300, fontSize: 11, color: "#888", lineHeight: 1.35, margin: 0 }}>
+          <p style={{ fontFamily: "Roboto, sans-serif", fontWeight: 300, fontSize: 11 * uiScale, color: "#888", lineHeight: 1.35, margin: 0 }}>
             La posizione orizzontale segue una cronologia rigorosa, dal 1880 al 1980. Esplorando la mappa si scoprono le grandi concentrazioni del movimento moderno, le filiazioni tra maestri e allievi, e le convergenze tra discipline e nazionalità.
           </p>
         </div>
@@ -1422,7 +1453,7 @@ function App() {
           : ""
         return (
         <div style={{
-          position: "fixed", top: 0, right: 0, bottom: 0, width: 340,
+          position: "fixed", top: 0, right: 0, bottom: 0, width: 340 * uiScale,
           background: scuro ? "#1a1a1a" : "#ffffff",
           boxShadow: `-4px 0 32px rgba(0,0,0,${scuro ? 0.3 : 0.12})`,
           fontFamily: "Roboto, sans-serif", zIndex: 100,
@@ -1436,7 +1467,7 @@ function App() {
                 <div style={{ fontFamily: "'Roboto Serif', serif", fontWeight: 500, fontStyle: "italic", fontSize: 20, color: scuro ? "#ffffff" : "#1a1a1a", lineHeight: 1.2 }}>
                   {pannelloDesigner.nome}
                 </div>
-                <div style={{ fontFamily: "'Roboto Serif', serif", fontWeight: 400, fontStyle: "italic", fontSize: 13, color: "#888", marginTop: 4 }}>
+                <div style={{ fontFamily: "'Roboto Serif', serif", fontWeight: 400, fontStyle: "italic", fontSize: 14, color: "#888", marginTop: 4 }}>
                   {pannelloDesigner._tipo === "designer"
                     ? `${pannelloDesigner.nato}${pannelloDesigner.morto ? ` — ${pannelloDesigner.morto}` : ""}`
                     : `${pannelloDesigner.anno || ""}${designerProdotto ? ` — ${designerProdotto}` : ""}`
@@ -1452,17 +1483,63 @@ function App() {
           <div style={{ flex: 1, overflowY: "auto", padding: "20px 28px 32px" }}>
             <div style={{
               width: "100%", aspectRatio: "1", overflow: "hidden",
-              background: scuro ? "#2a2a2a" : "#f5f5f5", marginBottom: 20,
+              background: scuro ? "#2a2a2a" : "#f5f5f5", marginBottom: 24,
             }}>
-              <img src={`/immagini/${pannelloDesigner.foto}`} alt={pannelloDesigner.nome}
+              <img src={`${import.meta.env.BASE_URL}immagini/${pannelloDesigner.foto}`} alt={pannelloDesigner.nome}
                 style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
                 onError={(e) => { e.target.style.display = "none" }} />
             </div>
+
             {pannelloDesigner._tipo === "designer" && pannelloDesigner.bio && (
-              <p style={{ fontSize: 13, fontWeight: 300, color: "#999", lineHeight: 1.6, margin: 0 }}>
-                {pannelloDesigner.bio}
-              </p>
+              <div style={{ marginBottom: 0 }}>
+                <div style={{ fontSize: 9, fontWeight: 600, color: scuro ? "#555" : "#aaa", textTransform: "uppercase", letterSpacing: 1.5, marginBottom: 8 }}>Biografia</div>
+                <p style={{
+                  fontSize: 13, fontWeight: 300, color: scuro ? "#999" : "#666", lineHeight: 1.6, margin: 0,
+                  maxHeight: bioEspansa ? "none" : "4.8em", overflow: "hidden",
+                }}>
+                  {pannelloDesigner.bio}
+                </p>
+                {pannelloDesigner.bio.length > 150 && (
+                  <button onClick={() => setBioEspansa(!bioEspansa)} style={{
+                    background: "none", border: "none", cursor: "pointer", padding: 0, marginTop: 6,
+                    fontSize: 11, fontWeight: 400, color: scuro ? "#666" : "#aaa", fontFamily: "Roboto, sans-serif",
+                  }}>
+                    {bioEspansa ? "— Riduci" : "+ Leggi tutto"}
+                  </button>
+                )}
+              </div>
             )}
+
+            {pannelloDesigner._tipo === "designer" && (() => {
+              const aziende = [...new Set(prodotti.filter(p => {
+                const ds = getDesigners(p)
+                return ds.includes(pannelloDesigner.nome)
+              }).map(p => p.azienda).filter(Boolean))]
+              if (aziende.length === 0) return null
+              return (
+                <div>
+                  <hr style={{ border: "none", borderTop: `1px solid ${scuro ? "#333" : "#eee"}`, margin: "20px 0" }} />
+                  <div style={{ fontSize: 9, fontWeight: 600, color: scuro ? "#555" : "#aaa", textTransform: "uppercase", letterSpacing: 1.5, marginBottom: 10 }}>Aziende</div>
+                  <div style={{ display: "flex", flexWrap: "wrap", gap: 6 }}>
+                    {aziende.map((az) => {
+                      const attiva = aziendaAttiva === az
+                      return (
+                        <button key={az} onClick={() => toggleAzienda(az)} style={{
+                          fontSize: 11, fontWeight: attiva ? 600 : 400,
+                          color: attiva ? "#fff" : (scuro ? "#888" : "#555"),
+                          background: attiva ? "#ff6b2b" : "transparent",
+                          border: `1px solid ${attiva ? "#ff6b2b" : (scuro ? "#333" : "#ddd")}`,
+                          borderRadius: 20, padding: "4px 12px",
+                          fontFamily: "Roboto, sans-serif", cursor: "pointer",
+                          transition: "all 0.2s",
+                        }}>{az}</button>
+                      )
+                    })}
+                  </div>
+                </div>
+              )
+            })()}
+
             {pannelloDesigner._tipo === "prodotto" && (
               <div style={{ fontSize: 13, fontWeight: 300, color: "#555", lineHeight: 1.6 }}>
                 {pannelloDesigner.azienda && <p style={{ margin: "0 0 8px" }}>{pannelloDesigner.azienda}</p>}
@@ -1476,7 +1553,7 @@ function App() {
 
       {popup && (
         <div style={{
-          position: "fixed", top: 0, right: 0, bottom: 0, width: 340,
+          position: "fixed", top: 0, right: 0, bottom: 0, width: 340 * uiScale,
           background: "#1a1a1a", boxShadow: "-4px 0 32px rgba(0,0,0,0.3)",
           fontFamily: "Roboto, sans-serif", zIndex: 100,
           display: "flex", flexDirection: "column", overflow: "hidden",

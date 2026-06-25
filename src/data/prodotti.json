@@ -68,10 +68,7 @@
   {
     "nome": "Biagio",
     "anno": 1968,
-    "designer": [
-      "Afra Bianchin",
-      "Tobia Scarpa"
-    ],
+    "designer": "Tobia Scarpa",
     "azienda": "Flos",
     "categoria": "lampada",
     "foto": "biagio.jpg"
@@ -177,8 +174,8 @@
     "nome": "Sleek",
     "anno": 1983,
     "designer": "Achille Castiglioni",
-    "azienda": "Zanotta",
-    "categoria": "sgabello",
+    "azienda": "Alessi",
+    "categoria": "posate",
     "foto": "sleek.jpg"
   },
   {
@@ -272,10 +269,7 @@
   {
     "nome": "Lambda",
     "anno": 1963,
-    "designer": [
-      "Marco Zanuso",
-      "Richard Sapper"
-    ],
+    "designer": "Marco Zanuso",
     "azienda": "Gavina",
     "categoria": "sedia",
     "foto": "lambda.jpg"
@@ -396,12 +390,12 @@
     "foto": "bollitore9091.jpg"
   },
   {
-    "nome": "Sintesi",
-    "anno": 1974,
+    "nome": "Halley",
+    "anno": 2005,
     "designer": "Richard Sapper",
     "azienda": "Artemide",
     "categoria": "lampada",
-    "foto": "sintesi.jpg"
+    "foto": "halley.jpg"
   },
   {
     "nome": "Cab",
@@ -988,5 +982,254 @@
     "azienda": "Cassina",
     "categoria": "sedia",
     "foto": "carimate.jpg"
+  },
+  {
+    "nome": "Lampadina",
+    "anno": 1972,
+    "designer": "Achille Castiglioni",
+    "azienda": "Flos",
+    "categoria": "lampada",
+    "foto": "lampadina.jpg"
+  },
+  {
+    "nome": "Light Ball",
+    "anno": 1965,
+    "designer": ["Achille Castiglioni", "Pier Giacomo Castiglioni"],
+    "azienda": "Flos",
+    "categoria": "lampada",
+    "foto": "lightball.jpg"
+  },
+  {
+    "nome": "Secticon",
+    "anno": 1956,
+    "designer": "Angelo Mangiarotti",
+    "azienda": "Le Porte",
+    "categoria": "orologio",
+    "foto": "secticon.jpg"
+  },
+  {
+    "nome": "Incas",
+    "anno": 1978,
+    "designer": "Angelo Mangiarotti",
+    "azienda": "Skipper",
+    "categoria": "tavolo",
+    "foto": "incas.jpg"
+  },
+  {
+    "nome": "Eccentrico",
+    "anno": 1979,
+    "designer": "Angelo Mangiarotti",
+    "azienda": "Agapecasa",
+    "categoria": "tavolo",
+    "foto": "eccentrico.jpg"
+  },
+  {
+    "nome": "Giogali",
+    "anno": 1967,
+    "designer": "Angelo Mangiarotti",
+    "azienda": "Vistosi",
+    "categoria": "lampadario",
+    "foto": "giogali.jpg"
+  },
+  {
+    "nome": "De Nos",
+    "anno": 1987,
+    "designer": "Angelo Mangiarotti",
+    "azienda": "Skipper",
+    "categoria": "sedia",
+    "foto": "denossedia.jpg"
+  },
+  {
+    "nome": "De Nos",
+    "anno": 1987,
+    "designer": "Angelo Mangiarotti",
+    "azienda": "Skipper",
+    "categoria": "tavolo",
+    "foto": "denostavolo.jpg"
+  },
+  {
+    "nome": "Egina",
+    "anno": 1966,
+    "designer": "Angelo Mangiarotti",
+    "azienda": "Artemide",
+    "categoria": "lampada",
+    "foto": "egina.jpg"
+  },
+  {
+    "nome": "Tre 3",
+    "anno": 1978,
+    "designer": "Angelo Mangiarotti",
+    "azienda": "Skipper",
+    "categoria": "tavolo",
+    "foto": "tre3.jpg"
+  },
+  {
+    "nome": "Bibulo",
+    "anno": 1969,
+    "designer": "Angelo Mangiarotti",
+    "azienda": "Skipper",
+    "categoria": "portaombrelli",
+    "foto": "bibulo.jpg"
+  },
+  {
+    "nome": "Cap 53",
+    "anno": 1953,
+    "designer": "Angelo Mangiarotti",
+    "azienda": "produzione propria",
+    "categoria": "sedia",
+    "foto": "cap53.jpg"
+  },
+  {
+    "nome": "Clizia",
+    "anno": 1966,
+    "designer": "Angelo Mangiarotti",
+    "azienda": "Artemide",
+    "categoria": "lampada",
+    "foto": "clizia.jpg"
+  },
+  {
+    "nome": "Ice Stopper",
+    "anno": 1972,
+    "designer": "Angelo Mangiarotti",
+    "azienda": "Colle",
+    "categoria": "bottiglia",
+    "foto": "icestopper.jpg"
+  },
+  {
+    "nome": "Saffo",
+    "anno": 1966,
+    "designer": "Angelo Mangiarotti",
+    "azienda": "Artemide",
+    "categoria": "lampada",
+    "foto": "saffo.jpg"
+  },
+  {
+    "nome": "SK 207",
+    "anno": 1968,
+    "designer": "Angelo Mangiarotti",
+    "azienda": "Bernini",
+    "categoria": "contenitore",
+    "foto": "sk207.jpg"
+  },
+  {
+    "nome": "K4999",
+    "anno": 1960,
+    "anno_label": "1960–1964",
+    "designer": ["Marco Zanuso", "Richard Sapper"],
+    "azienda": "Kartell",
+    "categoria": "sedia",
+    "foto": "k4999.jpg"
+  },
+  {
+    "nome": "Martingala",
+    "anno": 1954,
+    "designer": "Marco Zanuso",
+    "azienda": "Arflex",
+    "categoria": "sedia",
+    "foto": "martingala.jpg"
+  },
+  {
+    "nome": "Woodline",
+    "anno": 1964,
+    "designer": "Marco Zanuso",
+    "azienda": "Arflex",
+    "categoria": "poltrona",
+    "foto": "woodline.jpg"
+  },
+  {
+    "nome": "TS 502",
+    "anno": 1964,
+    "designer": ["Marco Zanuso", "Richard Sapper"],
+    "azienda": "Brionvega",
+    "categoria": "radio",
+    "foto": "ts502.jpg"
+  },
+  {
+    "nome": "Quadrata",
+    "anno": 1966,
+    "designer": "Marco Zanuso",
+    "azienda": "Techniform",
+    "categoria": "poltrona",
+    "foto": "quadrata.jpg"
+  },
+  {
+    "nome": "Celestina",
+    "anno": 1978,
+    "designer": "Marco Zanuso",
+    "azienda": "Zanotta",
+    "categoria": "sedia",
+    "foto": "celestina.jpg"
+  },
+  {
+    "nome": "Maggiolina",
+    "anno": 1947,
+    "designer": "Marco Zanuso",
+    "azienda": "Zanotta",
+    "categoria": "poltrona",
+    "foto": "maggiolina.jpg"
+  },
+  {
+    "nome": "Fourline",
+    "anno": 1964,
+    "designer": "Marco Zanuso",
+    "azienda": "Poltronova",
+    "categoria": "divano",
+    "foto": "fourline.jpg"
+  },
+  {
+    "nome": "Algol 11",
+    "anno": 1964,
+    "designer": ["Marco Zanuso", "Richard Sapper"],
+    "azienda": "Brionvega",
+    "categoria": "televisore",
+    "foto": "algol11.jpg"
+  },
+  {
+    "nome": "Black 201",
+    "anno": 1969,
+    "designer": ["Marco Zanuso", "Richard Sapper"],
+    "azienda": "Brionvega",
+    "categoria": "televisore",
+    "foto": "black201.jpg"
+  },
+  {
+    "nome": "Doney 14",
+    "anno": 1962,
+    "designer": ["Marco Zanuso", "Richard Sapper"],
+    "azienda": "Brionvega",
+    "categoria": "televisore",
+    "foto": "doney14.jpg"
+  },
+  {
+    "nome": "Orologio da tavolo",
+    "anno": 1962,
+    "designer": ["Marco Zanuso", "Richard Sapper"],
+    "azienda": "Lorenz",
+    "categoria": "orologio",
+    "foto": "orologiodatavolo.jpg"
+  },
+  {
+    "nome": "Antropus",
+    "anno": 1949,
+    "designer": "Marco Zanuso",
+    "azienda": "Arflex",
+    "categoria": "sedia",
+    "foto": "antropus.jpg"
+  },
+  {
+    "nome": "Sleep-o-matic",
+    "anno": 1954,
+    "designer": "Marco Zanuso",
+    "azienda": "Arflex",
+    "categoria": "divano",
+    "foto": "sleepomatic.jpg"
+  },
+  {
+    "nome": "Macchina per cucire",
+    "anno": 1956,
+    "designer": "Marco Zanuso",
+    "azienda": "Borletti",
+    "categoria": "macchina da cucire",
+    "foto": "borletti.jpg"
   }
 ]
