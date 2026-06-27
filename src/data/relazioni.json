@@ -229,5 +229,12 @@
     "tipo": "fratelli",
     "categoria": "personale",
     "descrizione": "Fratelli, hanno collaborato nei primi anni dello studio Castiglioni"
+  },
+  {
+    "designer_a": "Philippe Starck",
+    "designer_b": "Alessandro Mendini",
+    "tipo": "collaborazione",
+    "categoria": "professionale",
+    "descrizione": "Entrambi hanno lavorato per Alessi ridefinendo il design dell'oggetto domestico, Mendini come direttore artistico e Starck come progettista"
   }
 ]

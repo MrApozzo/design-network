@@ -1499,5 +1499,165 @@
     "azienda": "Artemide",
     "categoria": "lampada",
     "foto": "toga.jpg"
+  },
+  {
+    "nome": "Juicy Salif",
+    "anno": 1990,
+    "designer": "Philippe Starck",
+    "azienda": "Alessi",
+    "categoria": "spremiagrumi",
+    "foto": "juicysalif.jpg"
+  },
+  {
+    "nome": "Louis Ghost",
+    "anno": 2002,
+    "designer": "Philippe Starck",
+    "azienda": "Kartell",
+    "categoria": "sedia",
+    "foto": "louisghost.jpg"
+  },
+  {
+    "nome": "Ara",
+    "anno": 1988,
+    "designer": "Philippe Starck",
+    "azienda": "Flos",
+    "categoria": "lampada",
+    "foto": "ara.jpg"
+  },
+  {
+    "nome": "Miss Sissi",
+    "anno": 1991,
+    "designer": "Philippe Starck",
+    "azienda": "Flos",
+    "categoria": "lampada",
+    "foto": "misssissi.jpg"
+  },
+  {
+    "nome": "Gun Lamp",
+    "anno": 2005,
+    "designer": "Philippe Starck",
+    "azienda": "Flos",
+    "categoria": "lampada",
+    "foto": "gunlamp.jpg"
+  },
+  {
+    "nome": "Masters",
+    "anno": 2010,
+    "designer": "Philippe Starck",
+    "azienda": "Kartell",
+    "categoria": "sedia",
+    "foto": "masters.jpg"
+  },
+  {
+    "nome": "Costes",
+    "anno": 1984,
+    "designer": "Philippe Starck",
+    "azienda": "Driade",
+    "categoria": "sedia",
+    "foto": "costes.jpg"
+  },
+  {
+    "nome": "La Marie",
+    "anno": 1999,
+    "designer": "Philippe Starck",
+    "azienda": "Kartell",
+    "categoria": "sedia",
+    "foto": "lamarie.jpg"
+  },
+  {
+    "nome": "Romeo Moon",
+    "anno": 1996,
+    "designer": "Philippe Starck",
+    "azienda": "Flos",
+    "categoria": "lampada",
+    "foto": "romeomoon.jpg"
+  },
+  {
+    "nome": "Dr. Glob",
+    "anno": 1988,
+    "designer": "Philippe Starck",
+    "azienda": "Kartell",
+    "categoria": "sedia",
+    "foto": "drglob.jpg"
+  },
+  {
+    "nome": "Macchine Inutili",
+    "anno": 1934,
+    "designer": "Bruno Munari",
+    "azienda": "produzione propria",
+    "categoria": "scultura",
+    "foto": "macchineinutili.jpg"
+  },
+  {
+    "nome": "Concavo-Convesso",
+    "anno": 1947,
+    "designer": "Bruno Munari",
+    "azienda": "produzione propria",
+    "categoria": "scultura",
+    "foto": "concavoconvesso.jpg"
+  },
+  {
+    "nome": "Libri Illeggibili",
+    "anno": 1949,
+    "designer": "Bruno Munari",
+    "azienda": "Corraini",
+    "categoria": "libro",
+    "foto": "libriilleggibili.jpg"
+  },
+  {
+    "nome": "Sculture da Viaggio",
+    "anno": 1958,
+    "designer": "Bruno Munari",
+    "azienda": "produzione propria",
+    "categoria": "scultura",
+    "foto": "scultureviaggio.jpg"
+  },
+  {
+    "nome": "Aconà Biconbì",
+    "anno": 1961,
+    "designer": "Bruno Munari",
+    "azienda": "Danese",
+    "categoria": "gioco",
+    "foto": "aconabiconbi.jpg"
+  },
+  {
+    "nome": "Flexy",
+    "anno": 1968,
+    "designer": "Bruno Munari",
+    "azienda": "Danese",
+    "categoria": "scultura",
+    "foto": "flexy.jpg"
+  },
+  {
+    "nome": "Zizì",
+    "anno": 1953,
+    "designer": "Bruno Munari",
+    "azienda": "Pigomma",
+    "categoria": "gioco",
+    "foto": "zizi.jpg"
+  },
+  {
+    "nome": "Ora X",
+    "anno": 1945,
+    "designer": "Bruno Munari",
+    "azienda": "Danese",
+    "categoria": "orologio",
+    "foto": "orax.jpg"
+  },
+  {
+    "nome": "Più e Meno",
+    "anno": 1968,
+    "designer": "Bruno Munari",
+    "azienda": "Corraini",
+    "categoria": "gioco",
+    "foto": "piumeno.jpg"
+  },
+  {
+    "nome": "Nella Nebbia di Milano",
+    "anno": 1968,
+    "designer": "Bruno Munari",
+    "azienda": "Emme Edizioni",
+    "categoria": "libro",
+    "foto": "nellanebbia.jpg"
   }
 ]

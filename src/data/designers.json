@@ -588,5 +588,15 @@
     "y": null,
     "scuole": [],
     "collettivi": []
+  },
+  {
+    "nome": "Philippe Starck",
+    "nato": 1949,
+    "morto": null,
+    "bio": "Designer e architetto francese, tra i più prolifici e influenti del design contemporaneo. Ha ridefinito il rapporto tra oggetto quotidiano e forma, lavorando per Kartell, Flos, Alessi, Driade e molti altri.",
+    "foto": "starck.jpg",
+    "y": null,
+    "scuole": [],
+    "collettivi": []
   }
 ]

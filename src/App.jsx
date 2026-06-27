@@ -108,7 +108,7 @@ function getMacro(categoria) {
   return "oggetti"
 }
 
-function calcolaSettoriDinamici(lista) {
+function calcolaSettoriDinamici(lista, arco360 = false) {
   const gruppi = {}
   lista.forEach((p, i) => {
     const m = getMacro(p.categoria)
@@ -117,8 +117,8 @@ function calcolaSettoriDinamici(lista) {
   })
   const settoriPresenti = ORDINE_SETTORI.filter((s) => gruppi[s])
   const totale = lista.length
-  const arcoInizio = Math.PI * STILE.arco_inizio
-  const arcoFine = Math.PI * STILE.arco_fine
+  const arcoInizio = arco360 ? 0 : Math.PI * STILE.arco_inizio
+  const arcoFine = arco360 ? Math.PI * 2 : Math.PI * STILE.arco_fine
   const arcoTotale = arcoFine - arcoInizio
   const settori = {}
   let cursore = arcoInizio
@@ -515,7 +515,7 @@ function App() {
       const annoMin = listaOrdinata[0]?.anno || 1900
       const annoMax = listaOrdinata[listaOrdinata.length - 1]?.anno || 1980
 
-      const settoriM = calcolaSettoriDinamici(listaOrdinata)
+      const settoriM = calcolaSettoriDinamici(listaOrdinata, true)
 
       listaOrdinata.forEach((p, i) => {
         const macro = getMacro(p.categoria)
