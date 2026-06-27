@@ -994,7 +994,10 @@
   {
     "nome": "Light Ball",
     "anno": 1965,
-    "designer": ["Achille Castiglioni", "Pier Giacomo Castiglioni"],
+    "designer": [
+      "Achille Castiglioni",
+      "Pier Giacomo Castiglioni"
+    ],
     "azienda": "Flos",
     "categoria": "lampada",
     "foto": "lightball.jpg"
@@ -1038,14 +1041,6 @@
     "azienda": "Skipper",
     "categoria": "sedia",
     "foto": "denossedia.jpg"
-  },
-  {
-    "nome": "De Nos",
-    "anno": 1987,
-    "designer": "Angelo Mangiarotti",
-    "azienda": "Skipper",
-    "categoria": "tavolo",
-    "foto": "denostavolo.jpg"
   },
   {
     "nome": "Egina",
@@ -1115,7 +1110,10 @@
     "nome": "K4999",
     "anno": 1960,
     "anno_label": "1960–1964",
-    "designer": ["Marco Zanuso", "Richard Sapper"],
+    "designer": [
+      "Marco Zanuso",
+      "Richard Sapper"
+    ],
     "azienda": "Kartell",
     "categoria": "sedia",
     "foto": "k4999.jpg"
@@ -1139,7 +1137,10 @@
   {
     "nome": "TS 502",
     "anno": 1964,
-    "designer": ["Marco Zanuso", "Richard Sapper"],
+    "designer": [
+      "Marco Zanuso",
+      "Richard Sapper"
+    ],
     "azienda": "Brionvega",
     "categoria": "radio",
     "foto": "ts502.jpg"
@@ -1179,7 +1180,10 @@
   {
     "nome": "Algol 11",
     "anno": 1964,
-    "designer": ["Marco Zanuso", "Richard Sapper"],
+    "designer": [
+      "Marco Zanuso",
+      "Richard Sapper"
+    ],
     "azienda": "Brionvega",
     "categoria": "televisore",
     "foto": "algol11.jpg"
@@ -1187,7 +1191,10 @@
   {
     "nome": "Black 201",
     "anno": 1969,
-    "designer": ["Marco Zanuso", "Richard Sapper"],
+    "designer": [
+      "Marco Zanuso",
+      "Richard Sapper"
+    ],
     "azienda": "Brionvega",
     "categoria": "televisore",
     "foto": "black201.jpg"
@@ -1195,7 +1202,10 @@
   {
     "nome": "Doney 14",
     "anno": 1962,
-    "designer": ["Marco Zanuso", "Richard Sapper"],
+    "designer": [
+      "Marco Zanuso",
+      "Richard Sapper"
+    ],
     "azienda": "Brionvega",
     "categoria": "televisore",
     "foto": "doney14.jpg"
@@ -1203,7 +1213,10 @@
   {
     "nome": "Orologio da tavolo",
     "anno": 1962,
-    "designer": ["Marco Zanuso", "Richard Sapper"],
+    "designer": [
+      "Marco Zanuso",
+      "Richard Sapper"
+    ],
     "azienda": "Lorenz",
     "categoria": "orologio",
     "foto": "orologiodatavolo.jpg"
@@ -1225,11 +1238,266 @@
     "foto": "sleepomatic.jpg"
   },
   {
-    "nome": "Macchina per cucire",
-    "anno": 1956,
-    "designer": "Marco Zanuso",
-    "azienda": "Borletti",
-    "categoria": "macchina da cucire",
-    "foto": "borletti.jpg"
+    "nome": "D.153.1",
+    "anno": 1953,
+    "designer": "Gio Ponti",
+    "azienda": "Molteni&C",
+    "categoria": "poltrona",
+    "foto": "d153.jpg"
+  },
+  {
+    "nome": "D.270.2",
+    "anno": 1970,
+    "designer": "Gio Ponti",
+    "azienda": "Molteni&C",
+    "categoria": "sedia",
+    "foto": "d270.jpg"
+  },
+  {
+    "nome": "Luminator",
+    "anno": 1955,
+    "designer": [
+      "Achille Castiglioni",
+      "Pier Giacomo Castiglioni"
+    ],
+    "azienda": "Flos",
+    "categoria": "lampada",
+    "foto": "luminator.jpg"
+  },
+  {
+    "nome": "Tubino",
+    "anno": 1951,
+    "designer": [
+      "Achille Castiglioni",
+      "Pier Giacomo Castiglioni"
+    ],
+    "azienda": "Flos",
+    "categoria": "lampada",
+    "foto": "tubino.jpg"
+  },
+  {
+    "nome": "Boalum",
+    "anno": 1970,
+    "designer": [
+      "Livio Castiglioni",
+      "Gianfranco Frattini"
+    ],
+    "azienda": "Artemide",
+    "categoria": "lampada",
+    "foto": "boalum.jpg"
+  },
+  {
+    "nome": "Mod. 238/1",
+    "anno": 1952,
+    "designer": "Gino Sarfatti",
+    "azienda": "Astep",
+    "categoria": "lampada",
+    "foto": "238.jpg"
+  },
+  {
+    "nome": "Algol",
+    "anno": 1964,
+    "designer": [
+      "Marco Zanuso",
+      "Richard Sapper"
+    ],
+    "azienda": "Brionvega",
+    "categoria": "televisore",
+    "foto": "algol.jpg"
+  },
+  {
+    "nome": "Black ST 201",
+    "anno": 1969,
+    "designer": [
+      "Marco Zanuso",
+      "Richard Sapper"
+    ],
+    "azienda": "Brionvega",
+    "categoria": "televisore",
+    "foto": "blackst201.jpg"
+  },
+  {
+    "nome": "Elda",
+    "anno": 1963,
+    "designer": "Joe Colombo",
+    "azienda": "Comfort",
+    "categoria": "poltrona",
+    "foto": "elda.jpg"
+  },
+  {
+    "nome": "Universale 4867",
+    "anno": 1967,
+    "designer": "Joe Colombo",
+    "azienda": "Kartell",
+    "categoria": "sedia",
+    "foto": "universale.jpg"
+  },
+  {
+    "nome": "Camaleonda",
+    "anno": 1970,
+    "designer": "Mario Bellini",
+    "azienda": "B&B Italia",
+    "categoria": "divano",
+    "foto": "camaleonda.jpg"
+  },
+  {
+    "nome": "Le Bambole",
+    "anno": 1972,
+    "designer": "Mario Bellini",
+    "azienda": "B&B Italia",
+    "categoria": "poltrona",
+    "foto": "lebambole.jpg"
+  },
+  {
+    "nome": "Pratt",
+    "anno": 1983,
+    "designer": "Gaetano Pesce",
+    "azienda": "Cassina",
+    "categoria": "tavolo",
+    "foto": "pratt.jpg"
+  },
+  {
+    "nome": "Nobody's Perfect",
+    "anno": 2003,
+    "designer": "Gaetano Pesce",
+    "azienda": "Zerodisegno",
+    "categoria": "sedia",
+    "foto": "nobodysperfect.jpg"
+  },
+  {
+    "nome": "Ultrafragola",
+    "anno": 1970,
+    "designer": "Ettore Sottsass",
+    "azienda": "Poltronova",
+    "categoria": "specchio",
+    "foto": "ultrafragola.jpg"
+  },
+  {
+    "nome": "Shiva",
+    "anno": 1973,
+    "designer": "Ettore Sottsass",
+    "azienda": "Poltronova",
+    "categoria": "contenitore",
+    "foto": "shiva.jpg"
+  },
+  {
+    "nome": "Reale",
+    "anno": 1946,
+    "designer": "Carlo Mollino",
+    "azienda": "Zanotta",
+    "categoria": "tavolo",
+    "foto": "reale.jpg"
+  },
+  {
+    "nome": "Jumbo",
+    "anno": 1965,
+    "designer": "Gae Aulenti",
+    "azienda": "Knoll",
+    "categoria": "tavolo",
+    "foto": "jumbo.jpg"
+  },
+  {
+    "nome": "D70",
+    "anno": 1954,
+    "designer": "Osvaldo Borsani",
+    "azienda": "Tecno",
+    "categoria": "divano",
+    "foto": "d70.jpg"
+  },
+  {
+    "nome": "M1",
+    "anno": 1969,
+    "designer": "Angelo Mangiarotti",
+    "azienda": "Skipper",
+    "categoria": "tavolo",
+    "foto": "m1.jpg"
+  },
+  {
+    "nome": "First",
+    "anno": 1983,
+    "designer": "Michele De Lucchi",
+    "azienda": "Memphis",
+    "categoria": "sedia",
+    "foto": "first.jpg"
+  },
+  {
+    "nome": "Kartell 4675",
+    "anno": 1971,
+    "designer": "Giotto Stoppino",
+    "azienda": "Kartell",
+    "categoria": "contenitore",
+    "foto": "4675.jpg"
+  },
+  {
+    "nome": "Delfina",
+    "anno": 1974,
+    "designer": "Enzo Mari",
+    "azienda": "Driade",
+    "categoria": "sedia",
+    "foto": "delfina.jpg"
+  },
+  {
+    "nome": "Leggera",
+    "anno": 1951,
+    "designer": "Gio Ponti",
+    "azienda": "Cassina",
+    "categoria": "sedia",
+    "foto": "leggera.jpg"
+  },
+  {
+    "nome": "Digamma",
+    "anno": 1957,
+    "designer": "Ignazio Gardella",
+    "azienda": "Gavina",
+    "categoria": "poltrona",
+    "foto": "digamma.jpg"
+  },
+  {
+    "nome": "Plia",
+    "anno": 1969,
+    "designer": "Giancarlo Piretti",
+    "azienda": "Castelli",
+    "categoria": "sedia",
+    "foto": "plia.jpg"
+  },
+  {
+    "nome": "Quattro Gatti",
+    "anno": 1971,
+    "designer": "Rodolfo Bonetto",
+    "azienda": "B-Line",
+    "categoria": "tavolo",
+    "foto": "quattrogatti.jpg"
+  },
+  {
+    "nome": "Centro Tavola",
+    "anno": 1957,
+    "designer": "Roberto Sambonet",
+    "azienda": "Sambonet",
+    "categoria": "vassoio",
+    "foto": "centrotavola.jpg"
+  },
+  {
+    "nome": "Cubo",
+    "anno": 1957,
+    "designer": "Bruno Munari",
+    "azienda": "Danese",
+    "categoria": "posacenere",
+    "foto": "cubo.jpg"
+  },
+  {
+    "nome": "Golden Gate",
+    "anno": 1970,
+    "designer": "Nanda Vigo",
+    "azienda": "Arredoluce",
+    "categoria": "lampada",
+    "foto": "goldengate.jpg"
+  },
+  {
+    "nome": "Toga",
+    "anno": 1968,
+    "designer": "Sergio Mazza",
+    "azienda": "Artemide",
+    "categoria": "lampada",
+    "foto": "toga.jpg"
   }
 ]

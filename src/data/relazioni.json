@@ -215,5 +215,19 @@
     "tipo": "stesso_periodo",
     "categoria": "professionale",
     "descrizione": "Entrambi figure del design radicale italiano, con approcci diversi ma complementari alla critica del consumismo"
+  },
+  {
+    "designer_a": "Livio Castiglioni",
+    "designer_b": "Achille Castiglioni",
+    "tipo": "fratelli",
+    "categoria": "personale",
+    "descrizione": "Fratelli, Livio era il maggiore dei tre fratelli Castiglioni"
+  },
+  {
+    "designer_a": "Livio Castiglioni",
+    "designer_b": "Pier Giacomo Castiglioni",
+    "tipo": "fratelli",
+    "categoria": "personale",
+    "descrizione": "Fratelli, hanno collaborato nei primi anni dello studio Castiglioni"
   }
 ]

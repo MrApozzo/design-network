@@ -543,7 +543,50 @@
     "bio": "Designer, artista e teorico. Figura radicale del design italiano, noto per la ricerca sulla democratizzazione del progetto e per oggetti iconici per Danese e Alessi.",
     "foto": "mari.jpg",
     "y": null,
-    "scuole": ["Arte Concreta", "Design Radicale"],
+    "scuole": [
+      "Arte Concreta",
+      "Design Radicale"
+    ],
+    "collettivi": []
+  },
+  {
+    "nome": "Giancarlo Piretti",
+    "nato": 1940,
+    "morto": null,
+    "bio": "Designer bolognese, inventore della sedia Plia, capolavoro di ingegneria e design pieghevole.",
+    "foto": "piretti.jpg",
+    "y": null,
+    "scuole": [],
+    "collettivi": []
+  },
+  {
+    "nome": "Livio Castiglioni",
+    "nato": 1911,
+    "morto": 1979,
+    "bio": "Fratello maggiore di Achille e Pier Giacomo, pioniere del design della luce e dell'illuminazione architettonica.",
+    "foto": "liviocastiglioni.jpg",
+    "y": null,
+    "scuole": [],
+    "collettivi": []
+  },
+  {
+    "nome": "Giotto Stoppino",
+    "nato": 1926,
+    "morto": 2011,
+    "bio": "Architetto e designer piemontese, autore di oggetti dalla geometria essenziale e rigorosa.",
+    "foto": "stoppino.jpg",
+    "y": null,
+    "scuole": [],
+    "collettivi": []
+  },
+  {
+    "nome": "Cesare Casati",
+    "nato": 1936,
+    "morto": 2023,
+    "bio": "Architetto e designer milanese, co-autore con Emanuele Ponzio della lampada Pillola.",
+    "foto": "casati.jpg",
+    "y": null,
+    "scuole": [],
     "collettivi": []
   }
 ]
