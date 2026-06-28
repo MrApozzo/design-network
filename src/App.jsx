@@ -221,6 +221,34 @@ function App() {
     let annoBloccato = null
     let mouseDownPos = null
     let isDragging = false
+    let cameraPrimaDiClick = null
+    let cameraAnimId = null
+
+    function animaCamera(target, durata, callback) {
+      if (cameraAnimId) cancelAnimationFrame(cameraAnimId)
+      const start = camera.getState()
+      const inizio = performance.now()
+      clamping = true
+      function step(now) {
+        const t = Math.min(1, (now - inizio) / durata)
+        const ease = t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2
+        camera.setState({
+          x: lerp(start.x, target.x, ease),
+          y: lerp(start.y, target.y, ease),
+          ratio: lerp(start.ratio, target.ratio, ease),
+          angle: start.angle,
+        })
+        richiediDisegnoOverlay(2)
+        if (t < 1) {
+          cameraAnimId = requestAnimationFrame(step)
+        } else {
+          cameraAnimId = null
+          clamping = false
+          if (callback) callback()
+        }
+      }
+      cameraAnimId = requestAnimationFrame(step)
+    }
     const animated = {}
     const dpr = window.devicePixelRatio || 1
     let viewportMin = Math.min(window.innerWidth, window.innerHeight)
@@ -646,6 +674,7 @@ function App() {
         const tDelayed = Math.max(0, (t - 0.2) / 0.8)
         const base = lerp(STILE.zoom_prodotto_min, STILE.zoom_prodotto_max, tDelayed * tDelayed) * vs
         if (node === prodottoCliccato) return base * 1.2
+        if (prodottoCliccato) return base
         if (node === prodottoHoverAttivo) return base * STILE.hover_scala
         return base
       }
@@ -822,6 +851,11 @@ function App() {
             })
             alphaTarget = haProdottoAnno ? 1 : 0.2
           }
+        } else if (prodottoCliccato) {
+          const designersDelCliccato = graph.hasNode(prodottoCliccato)
+            ? graph.neighbors(prodottoCliccato).filter(n => graph.getNodeAttribute(n, "tipo") === "designer")
+            : []
+          alphaTarget = (node === prodottoCliccato || designersDelCliccato.includes(node)) ? 1 : 0.1
         } else if (prodottoHoverAttivo) {
           const designersDelProdotto = prodottoHoverAttivo && graph.hasNode(prodottoHoverAttivo)
             ? graph.neighbors(prodottoHoverAttivo).filter(n => graph.getNodeAttribute(n, "tipo") === "designer")
@@ -1221,36 +1255,38 @@ function App() {
         if (!mouseNelCanvas) { mouseTrailX = mx; mouseTrailY = my; mouseNelCanvas = true }
         richiediDisegnoOverlay(18)
 
-        let prodottoHover = null
-        if (zoomT() > STILE.zoom_label_soglia - 0.1 || vistaInterna === "timeline") {
-          graph.forEachNode((node, attr) => {
-            if (attr.tipo !== "prodotto") return
-            const pos = renderer.graphToViewport({ x: attr.x, y: attr.y })
-            const r = animated[node]?.r ?? STILE.zoom_prodotto_min
-            if (Math.sqrt((mx - pos.x) ** 2 + (my - pos.y) ** 2) < r) prodottoHover = node
-          })
-          if (prodottoHover !== prodottoHoverAttivo) { prodottoHoverAttivo = prodottoHover; if (prodottoHover) ultimoProdottoHover = prodottoHover; richiediDisegnoOverlay(18) }
-        } else if (prodottoHoverAttivo !== null) { prodottoHoverAttivo = null; richiediDisegnoOverlay(18) }
-
-        if (!designerCliccato) {
-          let nodoHover = null
-          if (!prodottoHoverAttivo) {
+        if (!prodottoCliccato) {
+          let prodottoHover = null
+          if (zoomT() > STILE.zoom_label_soglia - 0.1 || vistaInterna === "timeline") {
             graph.forEachNode((node, attr) => {
-              if (attr.tipo !== "designer") return
+              if (attr.tipo !== "prodotto") return
               const pos = renderer.graphToViewport({ x: attr.x, y: attr.y })
-              const r = animated[node]?.r ?? STILE.zoom_designer_min
-              if (Math.sqrt((mx - pos.x) ** 2 + (my - pos.y) ** 2) < r) nodoHover = node
+              const r = animated[node]?.r ?? STILE.zoom_prodotto_min
+              if (Math.sqrt((mx - pos.x) ** 2 + (my - pos.y) ** 2) < r) prodottoHover = node
             })
-          }
-          if (nodoHover !== nodoHoverAttivo) {
-            nodoHoverAttivo = nodoHover
-            graph.forEachEdge((edge, attr) => { if (attr.tipo === "relazione") graph.setEdgeAttribute(edge, "attivo", false) })
-            if (nodoHover) {
-              graph.forEachEdge(nodoHover, (edge, edgeAttr) => {
-                if (edgeAttr.tipo === "relazione") graph.setEdgeAttribute(edge, "attivo", true)
+            if (prodottoHover !== prodottoHoverAttivo) { prodottoHoverAttivo = prodottoHover; if (prodottoHover) ultimoProdottoHover = prodottoHover; richiediDisegnoOverlay(18) }
+          } else if (prodottoHoverAttivo !== null) { prodottoHoverAttivo = null; richiediDisegnoOverlay(18) }
+
+          if (!designerCliccato) {
+            let nodoHover = null
+            if (!prodottoHoverAttivo) {
+              graph.forEachNode((node, attr) => {
+                if (attr.tipo !== "designer") return
+                const pos = renderer.graphToViewport({ x: attr.x, y: attr.y })
+                const r = animated[node]?.r ?? STILE.zoom_designer_min
+                if (Math.sqrt((mx - pos.x) ** 2 + (my - pos.y) ** 2) < r) nodoHover = node
               })
             }
-            richiediDisegnoOverlay(18)
+            if (nodoHover !== nodoHoverAttivo) {
+              nodoHoverAttivo = nodoHover
+              graph.forEachEdge((edge, attr) => { if (attr.tipo === "relazione") graph.setEdgeAttribute(edge, "attivo", false) })
+              if (nodoHover) {
+                graph.forEachEdge(nodoHover, (edge, edgeAttr) => {
+                  if (edgeAttr.tipo === "relazione") graph.setEdgeAttribute(edge, "attivo", true)
+                })
+              }
+              richiediDisegnoOverlay(18)
+            }
           }
         }
 
@@ -1337,10 +1373,24 @@ function App() {
             prodottoCliccato = trovato.node
             setPannelloDesigner({ ...trovato.attr.dati, _tipo: "prodotto" })
             requestAnimationFrame(() => setPannelloVisibile(true))
+            cameraPrimaDiClick = camera.getState()
+            const pAttr = graph.getNodeAttributes(trovato.node)
+            const bx = [X_MIN - MARGINE_X, X_MAX + MARGINE_X]
+            const by = [Math.min(Y_MIN, contenutoYMin) - MARGINE_Y, Math.max(Y_MAX, contenutoYMax) + MARGINE_Y]
+            animaCamera({
+              ratio: 0.08,
+              x: (pAttr.x - bx[0]) / (bx[1] - bx[0]) + 0.015,
+              y: (pAttr.y - by[0]) / (by[1] - by[0]) - 0.075,
+            }, 500)
             richiediDisegnoOverlay(18)
           }
         } else {
-          const avevaPannello = designerCliccato !== null
+          const avevaPannello = designerCliccato !== null || prodottoCliccato !== null
+          if (cameraPrimaDiClick && prodottoCliccato) {
+            animaCamera(cameraPrimaDiClick, 500)
+            cameraPrimaDiClick = null
+          }
+          prodottoHoverAttivo = null; nodoHoverAttivo = null
           designerCliccato = null; prodottoCliccato = null
           annoBloccato = null
           setDesignerAttivo(null)
@@ -1365,6 +1415,7 @@ function App() {
     return () => {
       resizeObserver.disconnect()
       if (overlayAnimationFrame !== null) cancelAnimationFrame(overlayAnimationFrame)
+      if (cameraAnimId) cancelAnimationFrame(cameraAnimId)
       renderer.kill()
       if (container.parentNode) container.parentNode.removeChild(container)
       document.body.style.overflow = ""
