@@ -1110,7 +1110,7 @@ function App() {
     let clamping = false
     camera.on("updated", (state) => {
       cameraRatio = state.ratio
-      if (!clamping) {
+      if (!clamping && !prodottoCliccato) {
         const r = state.ratio
         const xLo = Math.min(0.5, r / 2)
         const xHi = Math.max(0.5, 1 - r / 2)
@@ -1375,13 +1375,27 @@ function App() {
             requestAnimationFrame(() => setPannelloVisibile(true))
             cameraPrimaDiClick = camera.getState()
             const pAttr = graph.getNodeAttributes(trovato.node)
-            const bx = [X_MIN - MARGINE_X, X_MAX + MARGINE_X]
-            const by = [Math.min(Y_MIN, contenutoYMin) - MARGINE_Y, Math.max(Y_MAX, contenutoYMax) + MARGINE_Y]
-            animaCamera({
-              ratio: 0.08,
-              x: (pAttr.x - bx[0]) / (bx[1] - bx[0]) + 0.015,
-              y: (pAttr.y - by[0]) / (by[1] - by[0]) - 0.075,
-            }, 500)
+            const cRect = container.getBoundingClientRect()
+            const sState = camera.getState()
+            const tRatio = 0.08
+            clamping = true
+            camera.setState({ x: sState.x, y: sState.y, ratio: tRatio, angle: sState.angle })
+            renderer.refresh()
+            const p0 = renderer.graphToViewport({ x: pAttr.x, y: pAttr.y })
+            camera.setState({ x: sState.x + 0.01, y: sState.y, ratio: tRatio, angle: sState.angle })
+            renderer.refresh()
+            const pX = renderer.graphToViewport({ x: pAttr.x, y: pAttr.y })
+            camera.setState({ x: sState.x, y: sState.y + 0.01, ratio: tRatio, angle: sState.angle })
+            renderer.refresh()
+            const pY = renderer.graphToViewport({ x: pAttr.x, y: pAttr.y })
+            const ppuX = (p0.x - pX.x) / 0.01
+            const ppuY = (p0.y - pY.y) / 0.01
+            const tX = sState.x + (p0.x - cRect.width / 2) / ppuX
+            const tY = sState.y + (p0.y - cRect.height / 2) / ppuY
+            camera.setState(sState)
+            renderer.refresh()
+            clamping = false
+            animaCamera({ ratio: tRatio, x: tX + 0.02, y: tY }, 500)
             richiediDisegnoOverlay(18)
           }
         } else {
