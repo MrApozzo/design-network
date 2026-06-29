@@ -195,6 +195,10 @@ function App() {
   const [bioEspansa, setBioEspansa] = useState(false)
   const [aziendaAttiva, setAziendaAttiva] = useState(null)
   const aziendaAttivaRef = useRef(null)
+  const [ricerca, setRicerca] = useState("")
+  const [nodoEvidenziato, setNodoEvidenziato] = useState(null)
+  const nodoEvidenziatoRef = useRef(null)
+  const [centraFn, setCentraFn] = useState(null)
   const haInteragitoRef = useRef(false)
 
   useEffect(() => {
@@ -834,12 +838,30 @@ function App() {
         if (!animated[node]) animated[node] = { r: STILE.zoom_prodotto_min, alpha: 1 }
         const rTarget = calcolaRTarget(node, attr, nodoAttivo)
         let alphaTarget = 1
+        const evid = nodoEvidenziatoRef.current
         const azFiltro = aziendaAttivaRef.current
-        if (azFiltro) {
+        const designerAttuale = evid || designerCliccato
+        if (azFiltro && designerAttuale) {
           if (attr.tipo === "prodotto") {
-            alphaTarget = attr.dati && attr.dati.azienda === azFiltro ? 1 : 0.1
+            const isDelDesigner = graph.hasNode(designerAttuale) && graph.neighbors(designerAttuale).includes(node)
+            alphaTarget = (attr.dati && (attr.dati.azienda === azFiltro || attr.dati.azienda_attuale === azFiltro) && isDelDesigner) ? 1 : 0.08
           } else if (attr.tipo === "designer") {
-            alphaTarget = 1
+            alphaTarget = node === designerAttuale ? 1 : 0.08
+          }
+        } else if (evid) {
+          const evidTipo = graph.hasNode(evid) ? graph.getNodeAttribute(evid, "tipo") : null
+          if (evidTipo === "designer") {
+            const evidCollegati = nodiCollegatiAlHover(evid)
+            alphaTarget = evidCollegati.has(node) ? 1 : 0.15
+          } else {
+            alphaTarget = node === evid ? 1 : 0.15
+          }
+        } else if (azFiltro) {
+          if (attr.tipo === "prodotto") {
+            const isDelDesigner = designerCliccato && graph.hasNode(designerCliccato) && graph.neighbors(designerCliccato).includes(node)
+            alphaTarget = (attr.dati && (attr.dati.azienda === azFiltro || attr.dati.azienda_attuale === azFiltro) && isDelDesigner) ? 1 : 0.08
+          } else if (attr.tipo === "designer") {
+            alphaTarget = node === designerCliccato ? 1 : 0.08
           }
         } else if (vistaInterna === "timeline" && annoBloccato) {
           if (attr.tipo === "prodotto") {
@@ -968,7 +990,7 @@ function App() {
         ctx.globalAlpha = alpha
         ctx.beginPath()
         ctx.arc(pos.x, pos.y, r, 0, Math.PI * 2)
-        ctx.fillStyle = attr.tipo === "designer" ? STILE.designer_colore : "#ffffff"
+        ctx.fillStyle = "#cccccc"
         ctx.fill()
         ctx.save()
         ctx.beginPath()
@@ -1226,6 +1248,35 @@ function App() {
 
     setAnimaTransizioneFn(() => animaTransizione)
     setRidisegnaFn(() => () => richiediDisegnoOverlay(18))
+    setCentraFn(() => (cercaNome, tipo) => {
+      let nodeId = null
+      graph.forEachNode((node, attr) => {
+        if (nodeId) return
+        if (tipo === "designer" && attr.tipo === "designer" && attr.dati.nome === cercaNome) nodeId = node
+        if (tipo === "prodotto" && attr.tipo === "prodotto" && attr.dati.nome === cercaNome) nodeId = node
+      })
+      if (!nodeId || !graph.hasNode(nodeId)) return
+      const attr = graph.getNodeAttributes(nodeId)
+      const bbox = renderer.getCustomBBox() || renderer.getBBox()
+      const cx = (attr.x - bbox.x[0]) / (bbox.x[1] - bbox.x[0])
+      const cy = (attr.y - bbox.y[0]) / (bbox.y[1] - bbox.y[0])
+      animaCamera({ x: cx, y: cy, ratio: 0.15 }, 600)
+      nodoEvidenziatoRef.current = nodeId
+      setNodoEvidenziato(nodeId)
+      if (tipo === "designer") {
+        designerCliccato = nodeId
+        setDesignerAttivo(nodeId)
+        setPannelloDesigner({ ...attr.dati, _tipo: "designer" }); setBioEspansa(false); setAziendaAttiva(null)
+        requestAnimationFrame(() => setPannelloVisibile(true))
+        graph.forEachEdge((edge, eAttr) => { if (eAttr.tipo === "relazione") graph.setEdgeAttribute(edge, "attivo", false) })
+        graph.forEachEdge(nodeId, (edge, eAttr) => { if (eAttr.tipo === "relazione") graph.setEdgeAttribute(edge, "attivo", true) })
+      } else {
+        prodottoCliccato = nodeId
+        setPannelloDesigner({ ...attr.dati, _tipo: "prodotto" })
+        requestAnimationFrame(() => setPannelloVisibile(true))
+      }
+      richiediDisegnoOverlay(18)
+    })
 
     const sigmaCanvas = container
     if (sigmaCanvas) {
@@ -1407,6 +1458,7 @@ function App() {
           prodottoHoverAttivo = null; nodoHoverAttivo = null
           designerCliccato = null; prodottoCliccato = null
           annoBloccato = null
+          nodoEvidenziatoRef.current = null; setNodoEvidenziato(null)
           setDesignerAttivo(null)
           if (isMobile && aziendaAttivaRef.current && avevaPannello) {
             setPannelloVisibile(false)
@@ -1480,15 +1532,64 @@ function App() {
         </div>
       </div>
 
-      <div style={{ position: "fixed", bottom: 24, left: "50%", transform: "translateX(-50%)", zIndex: 20, fontFamily: "Roboto, sans-serif", display: "flex", gap: 0, background: "white", borderRadius: 20, boxShadow: "0 2px 12px rgba(0,0,0,0.1)", overflow: "hidden" }}>
-        <button onClick={() => cambiaVista("designer")}
-          style={{ padding: "8px 18px", border: "none", cursor: "pointer", fontSize: 11, fontWeight: vistaCorrente === "designer" ? 600 : 300, fontFamily: "Roboto, sans-serif", color: vistaCorrente === "designer" ? "#1a1a1a" : "#999", background: vistaCorrente === "designer" ? "#f0f0f0" : "white", transition: "all 0.2s" }}>
-          Designer
-        </button>
-        <button onClick={() => cambiaVista("timeline")}
-          style={{ padding: "8px 18px", border: "none", cursor: "pointer", fontSize: 11, fontWeight: vistaCorrente === "timeline" ? 600 : 300, fontFamily: "Roboto, sans-serif", color: vistaCorrente === "timeline" ? "#1a1a1a" : "#999", background: vistaCorrente === "timeline" ? "#f0f0f0" : "white", transition: "all 0.2s" }}>
-          Linea del tempo
-        </button>
+      <div style={{ position: "fixed", bottom: 24, left: "50%", transform: "translateX(-50%)", zIndex: 20, fontFamily: "Roboto, sans-serif", display: "flex", gap: 8, alignItems: "flex-end" }}>
+        <div style={{ display: "flex", gap: 0, background: "white", borderRadius: 20, boxShadow: "0 2px 12px rgba(0,0,0,0.1)", overflow: "hidden" }}>
+          <button onClick={() => cambiaVista("designer")}
+            style={{ padding: "8px 18px", border: "none", cursor: "pointer", fontSize: 11, fontWeight: vistaCorrente === "designer" ? 600 : 300, fontFamily: "Roboto, sans-serif", color: vistaCorrente === "designer" ? "#1a1a1a" : "#999", background: vistaCorrente === "designer" ? "#f0f0f0" : "white", transition: "all 0.2s" }}>
+            Designer
+          </button>
+          <button onClick={() => cambiaVista("timeline")}
+            style={{ padding: "8px 18px", border: "none", cursor: "pointer", fontSize: 11, fontWeight: vistaCorrente === "timeline" ? 600 : 300, fontFamily: "Roboto, sans-serif", color: vistaCorrente === "timeline" ? "#1a1a1a" : "#999", background: vistaCorrente === "timeline" ? "#f0f0f0" : "white", transition: "all 0.2s" }}>
+            Linea del tempo
+          </button>
+        </div>
+        <div style={{ position: "relative" }}>
+          <input
+            type="text"
+            value={ricerca}
+            onChange={(e) => setRicerca(e.target.value)}
+            placeholder="Cerca..."
+            style={{
+              padding: "8px 14px", border: "none", borderRadius: 20, fontSize: 11, fontWeight: 300,
+              fontFamily: "Roboto, sans-serif", background: "white", boxShadow: "0 2px 12px rgba(0,0,0,0.1)",
+              outline: "none", width: 160, color: "#1a1a1a",
+            }}
+          />
+          {ricerca.length > 1 && (() => {
+            const q = ricerca.toLowerCase()
+            const risultati = [
+              ...designers.filter(d => d.nome.toLowerCase().includes(q)).map(d => ({ tipo: "designer", nome: d.nome, id: d.nome })),
+              ...prodotti.filter(p => p.nome.toLowerCase().includes(q)).map(p => {
+                const ds = getDesigners(p)
+                const id = ds.length > 1 ? `prodotto:multi:${p.nome}:0` : `prodotto:${ds[0]}:${p.nome}:0`
+                return { tipo: "prodotto", nome: p.nome, sub: ds.join(", "), id }
+              }),
+            ].slice(0, 8)
+            if (risultati.length === 0) return null
+            return (
+              <div style={{
+                position: "absolute", bottom: "100%", left: 0, right: 0, marginBottom: 4,
+                background: "white", borderRadius: 12, boxShadow: "0 4px 16px rgba(0,0,0,0.12)",
+                overflow: "hidden", maxHeight: 240, overflowY: "auto",
+              }}>
+                {risultati.map((r, i) => (
+                  <button key={i} onClick={() => {
+                    setRicerca("")
+                    if (centraFn) centraFn(r.nome, r.tipo)
+                  }} style={{
+                    display: "block", width: "100%", padding: "8px 14px", border: "none", background: "white",
+                    cursor: "pointer", textAlign: "left", fontFamily: "Roboto, sans-serif", fontSize: 11,
+                    borderBottom: "1px solid #f0f0f0",
+                  }}>
+                    <span style={{ fontWeight: 500, color: "#1a1a1a" }}>{r.nome}</span>
+                    {r.sub && <span style={{ fontWeight: 300, color: "#999", marginLeft: 6 }}>{r.sub}</span>}
+                    <span style={{ fontWeight: 300, color: "#ccc", marginLeft: 6, fontSize: 9, textTransform: "uppercase" }}>{r.tipo}</span>
+                  </button>
+                ))}
+              </div>
+            )
+          })()}
+        </div>
       </div>
 
       {designerAttivo && (
@@ -1579,7 +1680,7 @@ function App() {
               const aziende = [...new Set(prodotti.filter(p => {
                 const ds = getDesigners(p)
                 return ds.includes(pannelloDesigner.nome)
-              }).map(p => p.azienda).filter(Boolean))]
+              }).flatMap(p => [p.azienda, p.azienda_attuale]).filter(Boolean))]
               if (aziende.length === 0) return null
               return (
                 <div>

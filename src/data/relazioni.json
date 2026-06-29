@@ -236,5 +236,26 @@
     "tipo": "collaborazione",
     "categoria": "professionale",
     "descrizione": "Entrambi hanno lavorato per Alessi ridefinendo il design dell'oggetto domestico, Mendini come direttore artistico e Starck come progettista"
+  },
+  {
+    "designer_a": "Charles Eames",
+    "designer_b": "Ray Eames",
+    "tipo": "coniugi",
+    "categoria": "personale",
+    "descrizione": "Marito e moglie, hanno fondato insieme lo studio Eames e collaborato su tutti i progetti dal 1941 fino alla morte di Charles nel 1978"
+  },
+  {
+    "designer_a": "Carlo Scarpa",
+    "designer_b": "Tobia Scarpa",
+    "tipo": "padre-figlio",
+    "categoria": "personale",
+    "descrizione": "Padre e figlio, Carlo ha trasmesso a Tobia la sensibilità per i materiali e l'artigianalità veneziana"
+  },
+  {
+    "designer_a": "Carlo Scarpa",
+    "designer_b": "Carlo Mollino",
+    "tipo": "stesso_periodo",
+    "categoria": "professionale",
+    "descrizione": "Entrambi figure eccentriche e poetiche dell'architettura e del design italiano, con un approccio organico e artigianale"
   }
 ]

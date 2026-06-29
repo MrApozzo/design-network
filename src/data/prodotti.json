@@ -1659,5 +1659,118 @@
     "azienda": "Emme Edizioni",
     "categoria": "libro",
     "foto": "nellanebbia.jpg"
+  },
+  {
+    "nome": "Lounge Chair",
+    "anno": 1956,
+    "designer": ["Charles Eames", "Ray Eames"],
+    "azienda": "Herman Miller",
+    "categoria": "poltrona",
+    "foto": "loungechair.jpg"
+  },
+  {
+    "nome": "DSW",
+    "anno": 1950,
+    "designer": ["Charles Eames", "Ray Eames"],
+    "azienda": "Herman Miller",
+    "categoria": "sedia",
+    "foto": "dsw.jpg"
+  },
+  {
+    "nome": "LCW",
+    "anno": 1946,
+    "designer": ["Charles Eames", "Ray Eames"],
+    "azienda": "Herman Miller",
+    "categoria": "sedia",
+    "foto": "lcw.jpg"
+  },
+  {
+    "nome": "La Chaise",
+    "anno": 1948,
+    "designer": ["Charles Eames", "Ray Eames"],
+    "azienda": "Vitra",
+    "categoria": "poltrona",
+    "foto": "lachaise.jpg"
+  },
+  {
+    "nome": "Elephant",
+    "anno": 1945,
+    "designer": ["Charles Eames", "Ray Eames"],
+    "azienda": "Vitra",
+    "categoria": "gioco",
+    "foto": "elephant.jpg"
+  },
+  {
+    "nome": "DAW",
+    "anno": 1950,
+    "designer": ["Charles Eames", "Ray Eames"],
+    "azienda": "Herman Miller",
+    "categoria": "sedia",
+    "foto": "daw.jpg"
+  },
+  {
+    "nome": "Wire Chair",
+    "anno": 1951,
+    "designer": ["Charles Eames", "Ray Eames"],
+    "azienda": "Herman Miller",
+    "categoria": "sedia",
+    "foto": "wirechair.jpg"
+  },
+  {
+    "nome": "Hang-It-All",
+    "anno": 1953,
+    "designer": ["Charles Eames", "Ray Eames"],
+    "azienda": "Herman Miller",
+    "categoria": "appendiabiti",
+    "foto": "hangitall.jpg"
+  },
+  {
+    "nome": "Doge",
+    "anno": 1968,
+    "designer": "Carlo Scarpa",
+    "azienda": "Simon Gavina",
+    "azienda_attuale": "Cassina",
+    "categoria": "tavolo",
+    "foto": "doge.jpg"
+  },
+  {
+    "nome": "Cornaro",
+    "anno": 1973,
+    "designer": "Carlo Scarpa",
+    "azienda": "Simon Gavina",
+    "categoria": "poltrona",
+    "foto": "cornaro.jpg"
+  },
+  {
+    "nome": "Battuto",
+    "anno": 1940,
+    "designer": "Carlo Scarpa",
+    "azienda": "Venini",
+    "categoria": "vaso",
+    "foto": "battuto.jpg"
+  },
+  {
+    "nome": "Sommerso",
+    "anno": 1934,
+    "designer": "Carlo Scarpa",
+    "azienda": "Venini",
+    "categoria": "vaso",
+    "foto": "sommerso.jpg"
+  },
+  {
+    "nome": "Valmarana",
+    "anno": 1974,
+    "designer": "Carlo Scarpa",
+    "azienda": "Simon Gavina",
+    "categoria": "sedia",
+    "foto": "valmarana.jpg"
+  },
+  {
+    "nome": "Murrino",
+    "anno": 1938,
+    "designer": "Carlo Scarpa",
+    "azienda": "Venini",
+    "categoria": "vaso",
+    "foto": "murrino.jpg"
   }
 ]

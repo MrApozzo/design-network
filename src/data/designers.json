@@ -598,5 +598,35 @@
     "y": null,
     "scuole": [],
     "collettivi": []
+  },
+  {
+    "nome": "Charles Eames",
+    "nato": 1907,
+    "morto": 1978,
+    "bio": "Architetto e designer americano, con la moglie Ray ha rivoluzionato il design del mobile moderno. Pioniere nell'uso del compensato curvato e della fibra di vetro.",
+    "foto": "charleseames.jpg",
+    "y": null,
+    "scuole": ["Modernismo"],
+    "collettivi": []
+  },
+  {
+    "nome": "Ray Eames",
+    "nato": 1912,
+    "morto": 1988,
+    "bio": "Designer e artista americana, moglie di Charles. Ha contribuito in modo fondamentale alla ricerca formale e cromatica dello studio Eames.",
+    "foto": "rayeames.jpg",
+    "y": null,
+    "scuole": ["Modernismo"],
+    "collettivi": []
+  },
+  {
+    "nome": "Carlo Scarpa",
+    "nato": 1906,
+    "morto": 1978,
+    "bio": "Architetto e designer veneziano, maestro nell'uso di vetro, cemento e legno. Padre di Tobia Scarpa, ha unito artigianalità e modernità con un linguaggio formale unico.",
+    "foto": "carloscarpa.jpg",
+    "y": null,
+    "scuole": ["Organicismo", "Razionalismo"],
+    "collettivi": []
   }
 ]
