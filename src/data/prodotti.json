@@ -8,7 +8,7 @@
     ],
     "azienda": "Flos",
     "categoria": "lampada",
-    "foto": "arco.jpg"
+    "foto": "castiglioni-arco.jpg"
   },
   {
     "nome": "Snoopy",
@@ -19,7 +19,7 @@
     ],
     "azienda": "Flos",
     "categoria": "lampada",
-    "foto": "snoopy.jpg"
+    "foto": "castiglioni-snoopy.jpg"
   },
   {
     "nome": "Taccia",
@@ -30,7 +30,7 @@
     ],
     "azienda": "Flos",
     "categoria": "lampada",
-    "foto": "taccia.jpg"
+    "foto": "castiglioni-taccia.jpg"
   },
   {
     "nome": "Toio",
@@ -41,7 +41,7 @@
     ],
     "azienda": "Flos",
     "categoria": "lampada",
-    "foto": "toio.jpg"
+    "foto": "castiglioni-toio.jpg"
   },
   {
     "nome": "Mezzadro",
@@ -52,7 +52,7 @@
     ],
     "azienda": "Zanotta",
     "categoria": "sgabello",
-    "foto": "mezzadro.jpg"
+    "foto": "castiglioni-mezzadro.jpg"
   },
   {
     "nome": "Sella",
@@ -63,7 +63,7 @@
     ],
     "azienda": "Zanotta",
     "categoria": "sgabello",
-    "foto": "sella.jpg"
+    "foto": "castiglioni-sella.jpg"
   },
   {
     "nome": "Biagio",
@@ -71,7 +71,7 @@
     "designer": "Tobia Scarpa",
     "azienda": "Flos",
     "categoria": "lampada",
-    "foto": "biagio.jpg"
+    "foto": "scarpa-biagio.jpg"
   },
   {
     "nome": "Parentesi",
@@ -79,7 +79,7 @@
     "designer": "Achille Castiglioni",
     "azienda": "Flos",
     "categoria": "lampada",
-    "foto": "parentesi.jpg"
+    "foto": "castiglioni-parentesi.jpg"
   },
   {
     "nome": "Noce",
@@ -87,7 +87,7 @@
     "designer": "Achille Castiglioni",
     "azienda": "Flos",
     "categoria": "lampada",
-    "foto": "noce.jpg"
+    "foto": "castiglioni-noce.jpg"
   },
   {
     "nome": "Gibigiana",
@@ -95,7 +95,7 @@
     "designer": "Achille Castiglioni",
     "azienda": "Flos",
     "categoria": "lampada",
-    "foto": "gibigiana.jpg"
+    "foto": "castiglioni-gibigiana.jpg"
   },
   {
     "nome": "Dry",
@@ -103,7 +103,7 @@
     "designer": "Achille Castiglioni",
     "azienda": "Alessi",
     "categoria": "posate",
-    "foto": "dry.jpg"
+    "foto": "castiglioni-dry.jpg"
   },
   {
     "nome": "Cumano",
@@ -111,7 +111,7 @@
     "designer": "Achille Castiglioni",
     "azienda": "Zanotta",
     "categoria": "tavolo",
-    "foto": "cumano.jpg"
+    "foto": "castiglioni-cumano.jpg"
   },
   {
     "nome": "Servomuto",
@@ -119,7 +119,7 @@
     "designer": "Achille Castiglioni",
     "azienda": "Zanotta",
     "categoria": "appendiabiti",
-    "foto": "servomuto.jpg"
+    "foto": "castiglioni-servomuto.jpg"
   },
   {
     "nome": "Frisbi",
@@ -127,7 +127,7 @@
     "designer": "Achille Castiglioni",
     "azienda": "Flos",
     "categoria": "lampada",
-    "foto": "frisbi.jpg"
+    "foto": "castiglioni-frisbi.jpg"
   },
   {
     "nome": "Ventosa",
@@ -138,7 +138,7 @@
     ],
     "azienda": "Flos",
     "categoria": "lampada",
-    "foto": "ventosa.jpg"
+    "foto": "castiglioni-ventosa.jpg"
   },
   {
     "nome": "Taraxacum 1",
@@ -149,7 +149,7 @@
     ],
     "azienda": "Flos",
     "categoria": "lampadario",
-    "foto": "taraxacum1.jpg"
+    "foto": "castiglioni-taraxacum1.jpg"
   },
   {
     "nome": "Taraxacum 88",
@@ -157,7 +157,7 @@
     "designer": "Achille Castiglioni",
     "azienda": "Flos",
     "categoria": "lampadario",
-    "foto": "taraxacum88.jpg"
+    "foto": "castiglioni-taraxacum88.jpg"
   },
   {
     "nome": "Gatto",
@@ -168,7 +168,7 @@
     ],
     "azienda": "Flos",
     "categoria": "lampada",
-    "foto": "gatto.jpg"
+    "foto": "castiglioni-gatto.jpg"
   },
   {
     "nome": "Sleek",
@@ -176,7 +176,7 @@
     "designer": "Achille Castiglioni",
     "azienda": "Alessi",
     "categoria": "posate",
-    "foto": "sleek.jpg"
+    "foto": "castiglioni-sleek.jpg"
   },
   {
     "nome": "Valentine",
@@ -184,7 +184,7 @@
     "designer": "Ettore Sottsass",
     "azienda": "Olivetti",
     "categoria": "macchina da scrivere",
-    "foto": "valentine.jpg"
+    "foto": "sottsass-valentine.jpg"
   },
   {
     "nome": "Carlton",
@@ -192,7 +192,7 @@
     "designer": "Ettore Sottsass",
     "azienda": "Memphis",
     "categoria": "libreria",
-    "foto": "carlton.jpg"
+    "foto": "sottsass-carlton.jpg"
   },
   {
     "nome": "Tahiti",
@@ -200,7 +200,7 @@
     "designer": "Ettore Sottsass",
     "azienda": "Memphis",
     "categoria": "lampada",
-    "foto": "tahiti.jpg"
+    "foto": "sottsass-tahiti.jpg"
   },
   {
     "nome": "Terrazzo Flooring",
@@ -208,7 +208,7 @@
     "designer": "Ettore Sottsass",
     "azienda": "Memphis",
     "categoria": "superficie",
-    "foto": "terrazzo.jpg"
+    "foto": "sottsass-terrazzo.jpg"
   },
   {
     "nome": "Selene",
@@ -216,7 +216,7 @@
     "designer": "Vico Magistretti",
     "azienda": "Artemide",
     "categoria": "sedia",
-    "foto": "selene.jpg"
+    "foto": "magistretti-selene.jpg"
   },
   {
     "nome": "Eclisse",
@@ -224,7 +224,7 @@
     "designer": "Vico Magistretti",
     "azienda": "Artemide",
     "categoria": "lampada",
-    "foto": "eclisse.jpg"
+    "foto": "magistretti-eclisse.jpg"
   },
   {
     "nome": "Maralunga",
@@ -232,7 +232,7 @@
     "designer": "Vico Magistretti",
     "azienda": "Cassina",
     "categoria": "divano",
-    "foto": "maralunga.jpg"
+    "foto": "magistretti-maralunga.jpg"
   },
   {
     "nome": "Atollo",
@@ -240,7 +240,11 @@
     "designer": "Vico Magistretti",
     "azienda": "O Luce",
     "categoria": "lampada",
-    "foto": "atollo.jpg"
+    "descrizione": "Icona assoluta del design italiano, la lampada Atollo riduce l'archetipo della lampada a tre forme geometriche pure: cilindro, cono e semisfera. È nella collezione permanente di numerosi musei di design nel mondo.",
+    "riconoscimenti": [
+      "Compasso d'Oro 1979"
+    ],
+    "foto": "magistretti-atollo.jpg"
   },
   {
     "nome": "Superleggera",
@@ -248,7 +252,7 @@
     "designer": "Gio Ponti",
     "azienda": "Cassina",
     "categoria": "sedia",
-    "foto": "superleggera.jpg"
+    "foto": "ponti-superleggera.jpg"
   },
   {
     "nome": "La Pavoni",
@@ -256,7 +260,7 @@
     "designer": "Gio Ponti",
     "azienda": "La Pavoni",
     "categoria": "macchina caffè",
-    "foto": "lapavoni.jpg"
+    "foto": "ponti-lapavoni.jpg"
   },
   {
     "nome": "Lady",
@@ -264,7 +268,7 @@
     "designer": "Marco Zanuso",
     "azienda": "Arflex",
     "categoria": "poltrona",
-    "foto": "lady.jpg"
+    "foto": "zanuso-lady.jpg"
   },
   {
     "nome": "Lambda",
@@ -272,7 +276,7 @@
     "designer": "Marco Zanuso",
     "azienda": "Gavina",
     "categoria": "sedia",
-    "foto": "lambda.jpg"
+    "foto": "zanuso-lambda.jpg"
   },
   {
     "nome": "Grillo",
@@ -283,7 +287,7 @@
     ],
     "azienda": "Siemens",
     "categoria": "telefono",
-    "foto": "grillo.jpg"
+    "foto": "zanuso-grillo.jpg"
   },
   {
     "nome": "Margherita",
@@ -291,7 +295,7 @@
     "designer": "Franco Albini",
     "azienda": "Bonacina",
     "categoria": "poltrona",
-    "foto": "margherita.jpg"
+    "foto": "albini-margherita.jpg"
   },
   {
     "nome": "Luisa",
@@ -299,7 +303,7 @@
     "designer": "Franco Albini",
     "azienda": "Poggi",
     "categoria": "sedia",
-    "foto": "luisa.jpg"
+    "foto": "albini-luisa.jpg"
   },
   {
     "nome": "Abitacolo",
@@ -307,7 +311,7 @@
     "designer": "Bruno Munari",
     "azienda": "Robots",
     "categoria": "letto",
-    "foto": "abitacolo.jpg"
+    "foto": "munari-abitacolo.jpg"
   },
   {
     "nome": "Falkland",
@@ -315,7 +319,7 @@
     "designer": "Bruno Munari",
     "azienda": "Danese",
     "categoria": "lampada",
-    "foto": "falkland.jpg"
+    "foto": "munari-falkland.jpg"
   },
   {
     "nome": "Boby",
@@ -323,7 +327,7 @@
     "designer": "Joe Colombo",
     "azienda": "Bieffeplast",
     "categoria": "carrello",
-    "foto": "boby.jpg"
+    "foto": "colombo-boby.jpg"
   },
   {
     "nome": "Tube Chair",
@@ -331,7 +335,7 @@
     "designer": "Joe Colombo",
     "azienda": "Flexform",
     "categoria": "sedia",
-    "foto": "tubechair.jpg"
+    "foto": "colombo-tubechair.jpg"
   },
   {
     "nome": "Spider",
@@ -339,7 +343,7 @@
     "designer": "Joe Colombo",
     "azienda": "O Luce",
     "categoria": "lampada",
-    "foto": "spider.jpg"
+    "foto": "colombo-spider.jpg"
   },
   {
     "nome": "Eros",
@@ -347,7 +351,7 @@
     "designer": "Angelo Mangiarotti",
     "azienda": "Skipper",
     "categoria": "tavolo",
-    "foto": "eros.jpg"
+    "foto": "mangiarotti-eros.jpg"
   },
   {
     "nome": "Lesbo",
@@ -355,7 +359,7 @@
     "designer": "Angelo Mangiarotti",
     "azienda": "Artemide",
     "categoria": "lampada",
-    "foto": "lesbo.jpg"
+    "foto": "mangiarotti-lesbo.jpg"
   },
   {
     "nome": "Pipistrello",
@@ -363,7 +367,7 @@
     "designer": "Gae Aulenti",
     "azienda": "Martinelli Luce",
     "categoria": "lampada",
-    "foto": "pipistrello.jpg"
+    "foto": "aulenti-pipistrello.jpg"
   },
   {
     "nome": "April",
@@ -371,7 +375,7 @@
     "designer": "Gae Aulenti",
     "azienda": "Zanotta",
     "categoria": "sedia",
-    "foto": "april.jpg"
+    "foto": "aulenti-april.jpg"
   },
   {
     "nome": "Tizio",
@@ -379,7 +383,7 @@
     "designer": "Richard Sapper",
     "azienda": "Artemide",
     "categoria": "lampada",
-    "foto": "tizio.jpg"
+    "foto": "sapper-tizio.jpg"
   },
   {
     "nome": "Bollitore 9091",
@@ -387,7 +391,7 @@
     "designer": "Richard Sapper",
     "azienda": "Alessi",
     "categoria": "bollitore",
-    "foto": "bollitore9091.jpg"
+    "foto": "sapper-bollitore9091.jpg"
   },
   {
     "nome": "Halley",
@@ -395,7 +399,7 @@
     "designer": "Richard Sapper",
     "azienda": "Artemide",
     "categoria": "lampada",
-    "foto": "halley.jpg"
+    "foto": "sapper-halley.jpg"
   },
   {
     "nome": "Cab",
@@ -403,7 +407,7 @@
     "designer": "Mario Bellini",
     "azienda": "Cassina",
     "categoria": "sedia",
-    "foto": "cab.jpg"
+    "foto": "bellini-cab.jpg"
   },
   {
     "nome": "Divisumma 18",
@@ -411,7 +415,7 @@
     "designer": "Mario Bellini",
     "azienda": "Olivetti",
     "categoria": "calcolatrice",
-    "foto": "divisumma.jpg"
+    "foto": "bellini-divisumma.jpg"
   },
   {
     "nome": "Proust",
@@ -419,7 +423,7 @@
     "designer": "Alessandro Mendini",
     "azienda": "Studio Alchimia",
     "categoria": "poltrona",
-    "foto": "proust.jpg"
+    "foto": "mendini-proust.jpg"
   },
   {
     "nome": "Anna G.",
@@ -427,7 +431,7 @@
     "designer": "Alessandro Mendini",
     "azienda": "Alessi",
     "categoria": "cavatappi",
-    "foto": "annag.jpg"
+    "foto": "mendini-annag.jpg"
   },
   {
     "nome": "Up 5",
@@ -435,7 +439,7 @@
     "designer": "Gaetano Pesce",
     "azienda": "B&B Italia",
     "categoria": "poltrona",
-    "foto": "up5.jpg"
+    "foto": "pesce-up5.jpg"
   },
   {
     "nome": "Feltri",
@@ -443,7 +447,7 @@
     "designer": "Gaetano Pesce",
     "azienda": "Cassina",
     "categoria": "poltrona",
-    "foto": "feltri.jpg"
+    "foto": "pesce-feltri.jpg"
   },
   {
     "nome": "Strips",
@@ -451,7 +455,7 @@
     "designer": "Cini Boeri",
     "azienda": "Arflex",
     "categoria": "divano",
-    "foto": "strips.jpg"
+    "foto": "boeri-strips.jpg"
   },
   {
     "nome": "Ghost",
@@ -459,7 +463,7 @@
     "designer": "Cini Boeri",
     "azienda": "Fiam",
     "categoria": "sedia",
-    "foto": "ghost.jpg"
+    "foto": "boeri-ghost.jpg"
   },
   {
     "nome": "Tema e Variazioni",
@@ -467,7 +471,7 @@
     "designer": "Piero Fornasetti",
     "azienda": "Fornasetti",
     "categoria": "piatto decorativo",
-    "foto": "temavariazioni.jpg"
+    "foto": "fornasetti-temavariazioni.jpg"
   },
   {
     "nome": "Architettura",
@@ -475,15 +479,105 @@
     "designer": "Piero Fornasetti",
     "azienda": "Fornasetti",
     "categoria": "cassettiera",
-    "foto": "architettura.jpg"
+    "foto": "fornasetti-architettura.jpg"
   },
   {
     "nome": "Arabesco",
     "anno": 1949,
     "designer": "Carlo Mollino",
     "azienda": "Apelli & Varesio",
+    "azienda_attuale": "Zanotta",
     "categoria": "tavolo",
-    "foto": "arabesco.jpg"
+    "foto": "mollino-arabesco.jpg"
+  },
+  {
+    "nome": "Reale",
+    "anno": 1946,
+    "designer": "Carlo Mollino",
+    "azienda": "Apelli & Varesio",
+    "azienda_attuale": "Zanotta",
+    "categoria": "tavolo",
+    "foto": "mollino-reale.jpg"
+  },
+  {
+    "nome": "Fenis",
+    "anno": 1959,
+    "designer": "Carlo Mollino",
+    "azienda": "produzione propria",
+    "azienda_attuale": "Zanotta",
+    "categoria": "poltrona",
+    "foto": "mollino-fenis.jpg"
+  },
+  {
+    "nome": "Ardea",
+    "anno": 1944,
+    "designer": "Carlo Mollino",
+    "azienda": "Apelli & Varesio",
+    "azienda_attuale": "Zanotta",
+    "categoria": "sedia",
+    "foto": "mollino-ardea.jpg"
+  },
+  {
+    "nome": "Cavour",
+    "anno": 1949,
+    "designer": "Carlo Mollino",
+    "azienda": "Apelli & Varesio",
+    "azienda_attuale": "Zanotta",
+    "categoria": "scrivania",
+    "foto": "mollino-cavour.jpg"
+  },
+  {
+    "nome": "Dining Table",
+    "anno": 1940,
+    "designer": "Carlo Mollino",
+    "azienda": " ",
+    "azienda_attuale": " ",
+    "categoria": "tavolo",
+    "foto": "mollino-diningtable.jpg"
+  },
+  {
+    "nome": "Suora",
+    "anno": 1949,
+    "designer": "Carlo Mollino",
+    "azienda": "Apelli & Varesio",
+    "azienda_attuale": "Zanotta",
+    "categoria": "sedia",
+    "foto": "mollino-suora.jpg"
+  },
+  {
+    "nome": "Agra",
+    "anno": 1955,
+    "designer": "Carlo Mollino",
+    "azienda": "Apelli & Varesio",
+    "azienda_attuale": "Zanotta",
+    "categoria": "sedia",
+    "foto": "mollino-agra.jpg"
+  },
+  {
+    "nome": "Gaudì",
+    "anno": 1954,
+    "designer": "Carlo Mollino",
+    "azienda": "Apelli & Varesio",
+    "azienda_attuale": "Zanotta",
+    "categoria": "sedia",
+    "foto": "mollino-gaudi.jpg"
+  },
+  {
+    "nome": "Gilda",
+    "anno": 1954,
+    "designer": "Carlo Mollino",
+    "azienda": "Apelli & Varesio",
+    "azienda_attuale": "Zanotta",
+    "categoria": "poltrona",
+    "foto": "mollino-gilda.jpg"
+  },
+  {
+    "nome": "Bisiluro",
+    "anno": 1955,
+    "designer": "Carlo Mollino",
+    "azienda": "Nardi-Damonte",
+    "categoria": "automobile",
+    "foto": "mollino-bolideasimmetrico.jpg"
   },
   {
     "nome": "Bastiano",
@@ -494,7 +588,7 @@
     ],
     "azienda": "Cassina",
     "categoria": "divano",
-    "foto": "bastiano.jpg"
+    "foto": "bianchin-bastiano.jpg"
   },
   {
     "nome": "Soriana",
@@ -505,7 +599,7 @@
     ],
     "azienda": "Cassina",
     "categoria": "poltrona",
-    "foto": "soriana.jpg"
+    "foto": "bianchin-soriana.jpg"
   },
   {
     "nome": "4870",
@@ -513,7 +607,7 @@
     "designer": "Anna Castelli Ferrieri",
     "azienda": "Kartell",
     "categoria": "sedia",
-    "foto": "4870.jpg"
+    "foto": "ferrieri-4870.jpg"
   },
   {
     "nome": "Componibili",
@@ -521,7 +615,7 @@
     "designer": "Anna Castelli Ferrieri",
     "azienda": "Kartell",
     "categoria": "contenitore",
-    "foto": "componibili.jpg"
+    "foto": "ferrieri-componibili.jpg"
   },
   {
     "nome": "Pesciera",
@@ -529,7 +623,7 @@
     "designer": "Roberto Sambonet",
     "azienda": "Sambonet",
     "categoria": "vassoio",
-    "foto": "pesciera.jpg"
+    "foto": "sambonet-pesciera.jpg"
   },
   {
     "nome": "Lettera 22",
@@ -537,7 +631,7 @@
     "designer": "Marcello Nizzoli",
     "azienda": "Olivetti",
     "categoria": "macchina da scrivere",
-    "foto": "lettera22.jpg"
+    "foto": "nizzoli-lettera22.jpg"
   },
   {
     "nome": "Mirella",
@@ -545,7 +639,7 @@
     "designer": "Marcello Nizzoli",
     "azienda": "Necchi",
     "categoria": "macchina da cucire",
-    "foto": "mirella.jpg"
+    "foto": "nizzoli-mirella.jpg"
   },
   {
     "nome": "P40",
@@ -553,7 +647,7 @@
     "designer": "Osvaldo Borsani",
     "azienda": "Tecno",
     "categoria": "poltrona",
-    "foto": "p40.jpg"
+    "foto": "borsani-p40.jpg"
   },
   {
     "nome": "T90",
@@ -561,7 +655,7 @@
     "designer": "Osvaldo Borsani",
     "azienda": "Tecno",
     "categoria": "scrivania",
-    "foto": "t90.jpg"
+    "foto": "borsani-t90.jpg"
   },
   {
     "nome": "2097",
@@ -569,7 +663,7 @@
     "designer": "Gino Sarfatti",
     "azienda": "Arteluce",
     "categoria": "lampadario",
-    "foto": "2097.jpg"
+    "foto": "sarfatti-2097.jpg"
   },
   {
     "nome": "1063",
@@ -577,7 +671,7 @@
     "designer": "Gino Sarfatti",
     "azienda": "Arteluce",
     "categoria": "lampada",
-    "foto": "1063.jpg"
+    "foto": "sarfatti-1063.jpg"
   },
   {
     "nome": "Sacco",
@@ -585,7 +679,7 @@
     "designer": "Piero Gatti",
     "azienda": "Zanotta",
     "categoria": "poltrona",
-    "foto": "sacco.jpg"
+    "foto": "gatti-sacco.jpg"
   },
   {
     "nome": "Libreria mod. 1955.DB3",
@@ -593,7 +687,7 @@
     "designer": "Ico Parisi",
     "azienda": "Stildomus",
     "categoria": "libreria",
-    "foto": "mod1955db3.jpg"
+    "foto": "parisi-mod1955db3.jpg"
   },
   {
     "nome": "875",
@@ -601,7 +695,7 @@
     "designer": "Ico Parisi",
     "azienda": "Cassina",
     "categoria": "sedia",
-    "foto": "875.jpg"
+    "foto": "parisi-875.jpg"
   },
   {
     "nome": "LB7",
@@ -612,7 +706,7 @@
     ],
     "azienda": "Poggi",
     "categoria": "libreria",
-    "foto": "lb7.jpg"
+    "foto": "albini-lb7.jpg"
   },
   {
     "nome": "Veliero",
@@ -620,7 +714,7 @@
     "designer": "Franco Albini",
     "azienda": "produzione propria",
     "categoria": "libreria",
-    "foto": "veliero.jpg"
+    "foto": "albini-veliero.jpg"
   },
   {
     "nome": "Radio in Cristallo",
@@ -628,7 +722,7 @@
     "designer": "Franco Albini",
     "azienda": "CGE",
     "categoria": "radio",
-    "foto": "radioincristallo.jpg"
+    "foto": "albini-radioincristallo.jpg"
   },
   {
     "nome": "Stadera",
@@ -636,7 +730,7 @@
     "designer": "Franco Albini",
     "azienda": "produzione propria",
     "categoria": "lampada",
-    "foto": "stadera.jpg"
+    "foto": "albini-stadera.jpg"
   },
   {
     "nome": "TL3",
@@ -644,7 +738,7 @@
     "designer": "Franco Albini",
     "azienda": "Poggi",
     "categoria": "tavolo",
-    "foto": "tl3.jpg"
+    "foto": "albini-tl3.jpg"
   },
   {
     "nome": "Tre Pezzi",
@@ -652,7 +746,7 @@
     "designer": "Franco Albini",
     "azienda": "Poggi",
     "categoria": "poltrona",
-    "foto": "trepezzi.jpg"
+    "foto": "albini-trepezzi.jpg"
   },
   {
     "nome": "Cavalletto",
@@ -660,7 +754,7 @@
     "designer": "Franco Albini",
     "azienda": "produzione propria",
     "categoria": "tavolo",
-    "foto": "cavalletto.jpg"
+    "foto": "albini-cavalletto.jpg"
   },
   {
     "nome": "PA 1947",
@@ -668,7 +762,7 @@
     "designer": "Franco Albini",
     "azienda": "Poggi",
     "categoria": "poltrona",
-    "foto": "pa1947.jpg"
+    "foto": "albini-pa1947.jpg"
   },
   {
     "nome": "Dalù",
@@ -676,7 +770,7 @@
     "designer": "Vico Magistretti",
     "azienda": "Artemide",
     "categoria": "lampada",
-    "foto": "dalu.jpg"
+    "foto": "magistretti-dalu.jpg"
   },
   {
     "nome": "Olimpino",
@@ -684,7 +778,7 @@
     "designer": "Marco Zanuso",
     "azienda": "Poggi",
     "categoria": "sedia",
-    "foto": "olimpino.jpg"
+    "foto": "zanuso-olimpino.jpg"
   },
   {
     "nome": "Tolomeo",
@@ -692,7 +786,7 @@
     "designer": "Michele De Lucchi",
     "azienda": "Artemide",
     "categoria": "lampada",
-    "foto": "tolomeo.jpg"
+    "foto": "lucchi-tolomeo.jpg"
   },
   {
     "nome": "Elettra",
@@ -704,7 +798,7 @@
     ],
     "azienda": "Arflex",
     "categoria": "sedia",
-    "foto": "elettra.jpg"
+    "foto": "belgiojoso-elettra.jpg"
   },
   {
     "nome": "Torre Velasca (modello)",
@@ -716,7 +810,7 @@
     ],
     "azienda": "BBPR",
     "categoria": "architettura",
-    "foto": "torrevelasca.jpg"
+    "foto": "belgiojoso-torrevelasca.jpg"
   },
   {
     "nome": "Allestimento Castello Sforzesco",
@@ -728,7 +822,7 @@
     ],
     "azienda": "BBPR",
     "categoria": "allestimento",
-    "foto": "castellosforzesco.jpg"
+    "foto": "belgiojoso-castellosforzesco.jpg"
   },
   {
     "nome": "Lampada Neon",
@@ -740,7 +834,7 @@
     ],
     "azienda": "BBPR",
     "categoria": "lampada",
-    "foto": "lampadaneon.jpg"
+    "foto": "belgiojoso-lampadaneon.jpg"
   },
   {
     "nome": "Poltrona di Proust (Alchimia)",
@@ -748,7 +842,7 @@
     "designer": "Alessandro Mendini",
     "azienda": "Studio Alchimia",
     "categoria": "poltrona",
-    "foto": "proustalchimia.jpg"
+    "foto": "mendini-proustalchimia.jpg"
   },
   {
     "nome": "Kandissi",
@@ -756,7 +850,7 @@
     "designer": "Alessandro Mendini",
     "azienda": "Studio Alchimia",
     "categoria": "divano",
-    "foto": "kandissi.jpg"
+    "foto": "mendini-kandissi.jpg"
   },
   {
     "nome": "Sinerpica",
@@ -764,7 +858,7 @@
     "designer": "Michele De Lucchi",
     "azienda": "Studio Alchimia",
     "categoria": "lampada",
-    "foto": "sinerpica.jpg"
+    "foto": "lucchi-sinerpica.jpg"
   },
   {
     "nome": "Animali Domestici",
@@ -772,7 +866,7 @@
     "designer": "Andrea Branzi",
     "azienda": "Zabro",
     "categoria": "libreria",
-    "foto": "animalidomestici.jpg"
+    "foto": "branzi-animalidomestici.jpg"
   },
   {
     "nome": "Grandi Legni",
@@ -780,7 +874,7 @@
     "designer": "Andrea Branzi",
     "azienda": "Edra",
     "categoria": "libreria",
-    "foto": "grandilegni.jpg"
+    "foto": "branzi-grandilegni.jpg"
   },
   {
     "nome": "No-Stop City",
@@ -793,7 +887,7 @@
     ],
     "azienda": "Archizoom",
     "categoria": "progetto teorico",
-    "foto": "nostopcity.jpg"
+    "foto": "branzi-nostopcity.jpg"
   },
   {
     "nome": "Superonda",
@@ -806,7 +900,7 @@
     ],
     "azienda": "Poltronova",
     "categoria": "divano",
-    "foto": "superonda.jpg"
+    "foto": "branzi-superonda.jpg"
   },
   {
     "nome": "Mies",
@@ -819,7 +913,7 @@
     ],
     "azienda": "Poltronova",
     "categoria": "sedia",
-    "foto": "mies.jpg"
+    "foto": "branzi-mies.jpg"
   },
   {
     "nome": "AEO",
@@ -827,7 +921,7 @@
     "designer": "Paolo Deganello",
     "azienda": "Cassina",
     "categoria": "poltrona",
-    "foto": "aeo.jpg"
+    "foto": "deganello-aeo.jpg"
   },
   {
     "nome": "Viscontea",
@@ -838,7 +932,7 @@
     ],
     "azienda": "Flos",
     "categoria": "lampada",
-    "foto": "viscontea.jpg"
+    "foto": "castiglioni-viscontea.jpg"
   },
   {
     "nome": "Cactus",
@@ -849,7 +943,7 @@
     ],
     "azienda": "Gufram",
     "categoria": "appendiabiti",
-    "foto": "cactus.jpg"
+    "foto": "drocco-cactus.jpg"
   },
   {
     "nome": "Urania",
@@ -861,7 +955,7 @@
     ],
     "azienda": "Arflex",
     "categoria": "sedia",
-    "foto": "urania.jpg"
+    "foto": "belgiojoso-urania.jpg"
   },
   {
     "nome": "Chimera",
@@ -869,7 +963,7 @@
     "designer": "Vico Magistretti",
     "azienda": "Artemide",
     "categoria": "lampada",
-    "foto": "chimera.jpg"
+    "foto": "magistretti-chimera.jpg"
   },
   {
     "nome": "Sindbad",
@@ -877,7 +971,7 @@
     "designer": "Vico Magistretti",
     "azienda": "Cassina",
     "categoria": "divano",
-    "foto": "sindbad.jpg"
+    "foto": "magistretti-sindbad.jpg"
   },
   {
     "nome": "Veranda",
@@ -885,7 +979,7 @@
     "designer": "Vico Magistretti",
     "azienda": "Cassina",
     "categoria": "poltrona",
-    "foto": "veranda.jpg"
+    "foto": "magistretti-veranda.jpg"
   },
   {
     "nome": "Marocca",
@@ -893,7 +987,7 @@
     "designer": "Vico Magistretti",
     "azienda": "dePadova",
     "categoria": "sedia",
-    "foto": "marocca.jpg"
+    "foto": "magistretti-marocca.jpg"
   },
   {
     "nome": "Incisa",
@@ -901,7 +995,7 @@
     "designer": "Vico Magistretti",
     "azienda": "dePadova",
     "categoria": "sedia",
-    "foto": "incisa.jpg"
+    "foto": "magistretti-incisa.jpg"
   },
   {
     "nome": "Vidun",
@@ -909,7 +1003,7 @@
     "designer": "Vico Magistretti",
     "azienda": "dePadova",
     "categoria": "tavolo",
-    "foto": "vidun.jpg"
+    "foto": "magistretti-vidun.jpg"
   },
   {
     "nome": "Nathalie",
@@ -917,7 +1011,7 @@
     "designer": "Vico Magistretti",
     "azienda": "Flou",
     "categoria": "letto",
-    "foto": "nathalie.jpg"
+    "foto": "magistretti-nathalie.jpg"
   },
   {
     "nome": "Tadao",
@@ -925,7 +1019,7 @@
     "designer": "Vico Magistretti",
     "azienda": "Flou",
     "categoria": "letto",
-    "foto": "tadao.jpg"
+    "foto": "magistretti-tadao.jpg"
   },
   {
     "nome": "Autoprogettazione",
@@ -933,7 +1027,7 @@
     "designer": "Enzo Mari",
     "azienda": "Simon International",
     "categoria": "tavolo",
-    "foto": "autoprogettazione.jpg"
+    "foto": "mari-autoprogettazione.jpg"
   },
   {
     "nome": "Putrella",
@@ -941,7 +1035,7 @@
     "designer": "Enzo Mari",
     "azienda": "Danese",
     "categoria": "fermacarte",
-    "foto": "putrella.jpg"
+    "foto": "mari-putrella.jpg"
   },
   {
     "nome": "16 Animali",
@@ -949,7 +1043,7 @@
     "designer": "Enzo Mari",
     "azienda": "Danese",
     "categoria": "gioco",
-    "foto": "16animali.jpg"
+    "foto": "mari-16animali.jpg"
   },
   {
     "nome": "Timor",
@@ -957,7 +1051,7 @@
     "designer": "Enzo Mari",
     "azienda": "Danese",
     "categoria": "calendario",
-    "foto": "timor.jpg"
+    "foto": "mari-timor.jpg"
   },
   {
     "nome": "Tonetta",
@@ -965,7 +1059,7 @@
     "designer": "Enzo Mari",
     "azienda": "Zanotta",
     "categoria": "sedia",
-    "foto": "tonetta.jpg"
+    "foto": "mari-tonetta.jpg"
   },
   {
     "nome": "Ecolo",
@@ -973,7 +1067,7 @@
     "designer": "Enzo Mari",
     "azienda": "Alessi",
     "categoria": "vassoio",
-    "foto": "ecolo.jpg"
+    "foto": "mari-ecolo.jpg"
   },
   {
     "nome": "Carimate",
@@ -981,7 +1075,7 @@
     "designer": "Vico Magistretti",
     "azienda": "Cassina",
     "categoria": "sedia",
-    "foto": "carimate.jpg"
+    "foto": "magistretti-carimate.jpg"
   },
   {
     "nome": "Lampadina",
@@ -989,7 +1083,7 @@
     "designer": "Achille Castiglioni",
     "azienda": "Flos",
     "categoria": "lampada",
-    "foto": "lampadina.jpg"
+    "foto": "castiglioni-lampadina.jpg"
   },
   {
     "nome": "Light Ball",
@@ -1000,7 +1094,7 @@
     ],
     "azienda": "Flos",
     "categoria": "lampada",
-    "foto": "lightball.jpg"
+    "foto": "castiglioni-lightball.jpg"
   },
   {
     "nome": "Secticon",
@@ -1008,7 +1102,7 @@
     "designer": "Angelo Mangiarotti",
     "azienda": "Le Porte",
     "categoria": "orologio",
-    "foto": "secticon.jpg"
+    "foto": "mangiarotti-secticon.jpg"
   },
   {
     "nome": "Incas",
@@ -1016,7 +1110,7 @@
     "designer": "Angelo Mangiarotti",
     "azienda": "Skipper",
     "categoria": "tavolo",
-    "foto": "incas.jpg"
+    "foto": "mangiarotti-incas.jpg"
   },
   {
     "nome": "Eccentrico",
@@ -1024,7 +1118,7 @@
     "designer": "Angelo Mangiarotti",
     "azienda": "Agapecasa",
     "categoria": "tavolo",
-    "foto": "eccentrico.jpg"
+    "foto": "mangiarotti-eccentrico.jpg"
   },
   {
     "nome": "Giogali",
@@ -1032,7 +1126,7 @@
     "designer": "Angelo Mangiarotti",
     "azienda": "Vistosi",
     "categoria": "lampadario",
-    "foto": "giogali.jpg"
+    "foto": "mangiarotti-giogali.jpg"
   },
   {
     "nome": "De Nos",
@@ -1040,7 +1134,7 @@
     "designer": "Angelo Mangiarotti",
     "azienda": "Skipper",
     "categoria": "sedia",
-    "foto": "denossedia.jpg"
+    "foto": "mangiarotti-denossedia.jpg"
   },
   {
     "nome": "Egina",
@@ -1048,7 +1142,7 @@
     "designer": "Angelo Mangiarotti",
     "azienda": "Artemide",
     "categoria": "lampada",
-    "foto": "egina.jpg"
+    "foto": "mangiarotti-egina.jpg"
   },
   {
     "nome": "Tre 3",
@@ -1056,7 +1150,7 @@
     "designer": "Angelo Mangiarotti",
     "azienda": "Skipper",
     "categoria": "tavolo",
-    "foto": "tre3.jpg"
+    "foto": "mangiarotti-tre3.jpg"
   },
   {
     "nome": "Bibulo",
@@ -1064,7 +1158,7 @@
     "designer": "Angelo Mangiarotti",
     "azienda": "Skipper",
     "categoria": "portaombrelli",
-    "foto": "bibulo.jpg"
+    "foto": "mangiarotti-bibulo.jpg"
   },
   {
     "nome": "Cap 53",
@@ -1072,7 +1166,7 @@
     "designer": "Angelo Mangiarotti",
     "azienda": "produzione propria",
     "categoria": "sedia",
-    "foto": "cap53.jpg"
+    "foto": "mangiarotti-cap53.jpg"
   },
   {
     "nome": "Clizia",
@@ -1080,7 +1174,7 @@
     "designer": "Angelo Mangiarotti",
     "azienda": "Artemide",
     "categoria": "lampada",
-    "foto": "clizia.jpg"
+    "foto": "mangiarotti-clizia.jpg"
   },
   {
     "nome": "Ice Stopper",
@@ -1088,7 +1182,7 @@
     "designer": "Angelo Mangiarotti",
     "azienda": "Colle",
     "categoria": "bottiglia",
-    "foto": "icestopper.jpg"
+    "foto": "mangiarotti-icestopper.jpg"
   },
   {
     "nome": "Saffo",
@@ -1096,7 +1190,7 @@
     "designer": "Angelo Mangiarotti",
     "azienda": "Artemide",
     "categoria": "lampada",
-    "foto": "saffo.jpg"
+    "foto": "mangiarotti-saffo.jpg"
   },
   {
     "nome": "SK 207",
@@ -1104,7 +1198,7 @@
     "designer": "Angelo Mangiarotti",
     "azienda": "Bernini",
     "categoria": "contenitore",
-    "foto": "sk207.jpg"
+    "foto": "mangiarotti-sk207.jpg"
   },
   {
     "nome": "K4999",
@@ -1116,7 +1210,7 @@
     ],
     "azienda": "Kartell",
     "categoria": "sedia",
-    "foto": "k4999.jpg"
+    "foto": "zanuso-k4999.jpg"
   },
   {
     "nome": "Martingala",
@@ -1124,7 +1218,7 @@
     "designer": "Marco Zanuso",
     "azienda": "Arflex",
     "categoria": "sedia",
-    "foto": "martingala.jpg"
+    "foto": "zanuso-martingala.jpg"
   },
   {
     "nome": "Woodline",
@@ -1132,7 +1226,7 @@
     "designer": "Marco Zanuso",
     "azienda": "Arflex",
     "categoria": "poltrona",
-    "foto": "woodline.jpg"
+    "foto": "zanuso-woodline.jpg"
   },
   {
     "nome": "TS 502",
@@ -1143,7 +1237,7 @@
     ],
     "azienda": "Brionvega",
     "categoria": "radio",
-    "foto": "ts502.jpg"
+    "foto": "zanuso-ts502.jpg"
   },
   {
     "nome": "Quadrata",
@@ -1151,7 +1245,7 @@
     "designer": "Marco Zanuso",
     "azienda": "Techniform",
     "categoria": "poltrona",
-    "foto": "quadrata.jpg"
+    "foto": "zanuso-quadrata.jpg"
   },
   {
     "nome": "Celestina",
@@ -1159,7 +1253,7 @@
     "designer": "Marco Zanuso",
     "azienda": "Zanotta",
     "categoria": "sedia",
-    "foto": "celestina.jpg"
+    "foto": "zanuso-celestina.jpg"
   },
   {
     "nome": "Maggiolina",
@@ -1167,7 +1261,7 @@
     "designer": "Marco Zanuso",
     "azienda": "Zanotta",
     "categoria": "poltrona",
-    "foto": "maggiolina.jpg"
+    "foto": "zanuso-maggiolina.jpg"
   },
   {
     "nome": "Fourline",
@@ -1175,7 +1269,7 @@
     "designer": "Marco Zanuso",
     "azienda": "Poltronova",
     "categoria": "divano",
-    "foto": "fourline.jpg"
+    "foto": "zanuso-fourline.jpg"
   },
   {
     "nome": "Algol 11",
@@ -1186,7 +1280,7 @@
     ],
     "azienda": "Brionvega",
     "categoria": "televisore",
-    "foto": "algol11.jpg"
+    "foto": "zanuso-algol11.jpg"
   },
   {
     "nome": "Black 201",
@@ -1197,7 +1291,7 @@
     ],
     "azienda": "Brionvega",
     "categoria": "televisore",
-    "foto": "black201.jpg"
+    "foto": "zanuso-black201.jpg"
   },
   {
     "nome": "Doney 14",
@@ -1208,7 +1302,7 @@
     ],
     "azienda": "Brionvega",
     "categoria": "televisore",
-    "foto": "doney14.jpg"
+    "foto": "zanuso-doney14.jpg"
   },
   {
     "nome": "Orologio da tavolo",
@@ -1219,7 +1313,7 @@
     ],
     "azienda": "Lorenz",
     "categoria": "orologio",
-    "foto": "orologiodatavolo.jpg"
+    "foto": "zanuso-orologiodatavolo.jpg"
   },
   {
     "nome": "Antropus",
@@ -1227,7 +1321,7 @@
     "designer": "Marco Zanuso",
     "azienda": "Arflex",
     "categoria": "sedia",
-    "foto": "antropus.jpg"
+    "foto": "zanuso-antropus.jpg"
   },
   {
     "nome": "Sleep-o-matic",
@@ -1235,7 +1329,7 @@
     "designer": "Marco Zanuso",
     "azienda": "Arflex",
     "categoria": "divano",
-    "foto": "sleepomatic.jpg"
+    "foto": "zanuso-sleepomatic.jpg"
   },
   {
     "nome": "D.153.1",
@@ -1243,7 +1337,7 @@
     "designer": "Gio Ponti",
     "azienda": "Molteni&C",
     "categoria": "poltrona",
-    "foto": "d153.jpg"
+    "foto": "ponti-d153.jpg"
   },
   {
     "nome": "D.270.2",
@@ -1251,7 +1345,7 @@
     "designer": "Gio Ponti",
     "azienda": "Molteni&C",
     "categoria": "sedia",
-    "foto": "d270.jpg"
+    "foto": "ponti-d270.jpg"
   },
   {
     "nome": "Luminator",
@@ -1262,7 +1356,7 @@
     ],
     "azienda": "Flos",
     "categoria": "lampada",
-    "foto": "luminator.jpg"
+    "foto": "castiglioni-luminator.jpg"
   },
   {
     "nome": "Tubino",
@@ -1273,7 +1367,7 @@
     ],
     "azienda": "Flos",
     "categoria": "lampada",
-    "foto": "tubino.jpg"
+    "foto": "castiglioni-tubino.jpg"
   },
   {
     "nome": "Boalum",
@@ -1284,7 +1378,7 @@
     ],
     "azienda": "Artemide",
     "categoria": "lampada",
-    "foto": "boalum.jpg"
+    "foto": "castiglioni-boalum.jpg"
   },
   {
     "nome": "Mod. 238/1",
@@ -1292,7 +1386,7 @@
     "designer": "Gino Sarfatti",
     "azienda": "Astep",
     "categoria": "lampada",
-    "foto": "238.jpg"
+    "foto": "sarfatti-238.jpg"
   },
   {
     "nome": "Algol",
@@ -1303,7 +1397,7 @@
     ],
     "azienda": "Brionvega",
     "categoria": "televisore",
-    "foto": "algol.jpg"
+    "foto": "zanuso-algol.jpg"
   },
   {
     "nome": "Black ST 201",
@@ -1314,7 +1408,7 @@
     ],
     "azienda": "Brionvega",
     "categoria": "televisore",
-    "foto": "blackst201.jpg"
+    "foto": "zanuso-blackst201.jpg"
   },
   {
     "nome": "Elda",
@@ -1322,7 +1416,7 @@
     "designer": "Joe Colombo",
     "azienda": "Comfort",
     "categoria": "poltrona",
-    "foto": "elda.jpg"
+    "foto": "colombo-elda.jpg"
   },
   {
     "nome": "Universale 4867",
@@ -1330,7 +1424,7 @@
     "designer": "Joe Colombo",
     "azienda": "Kartell",
     "categoria": "sedia",
-    "foto": "universale.jpg"
+    "foto": "colombo-universale.jpg"
   },
   {
     "nome": "Camaleonda",
@@ -1338,7 +1432,7 @@
     "designer": "Mario Bellini",
     "azienda": "B&B Italia",
     "categoria": "divano",
-    "foto": "camaleonda.jpg"
+    "foto": "bellini-camaleonda.jpg"
   },
   {
     "nome": "Le Bambole",
@@ -1346,7 +1440,7 @@
     "designer": "Mario Bellini",
     "azienda": "B&B Italia",
     "categoria": "poltrona",
-    "foto": "lebambole.jpg"
+    "foto": "bellini-lebambole.jpg"
   },
   {
     "nome": "Pratt",
@@ -1354,7 +1448,7 @@
     "designer": "Gaetano Pesce",
     "azienda": "Cassina",
     "categoria": "tavolo",
-    "foto": "pratt.jpg"
+    "foto": "pesce-pratt.jpg"
   },
   {
     "nome": "Nobody's Perfect",
@@ -1362,7 +1456,7 @@
     "designer": "Gaetano Pesce",
     "azienda": "Zerodisegno",
     "categoria": "sedia",
-    "foto": "nobodysperfect.jpg"
+    "foto": "pesce-nobodysperfect.jpg"
   },
   {
     "nome": "Ultrafragola",
@@ -1370,7 +1464,7 @@
     "designer": "Ettore Sottsass",
     "azienda": "Poltronova",
     "categoria": "specchio",
-    "foto": "ultrafragola.jpg"
+    "foto": "sottsass-ultrafragola.jpg"
   },
   {
     "nome": "Shiva",
@@ -1378,15 +1472,7 @@
     "designer": "Ettore Sottsass",
     "azienda": "Poltronova",
     "categoria": "contenitore",
-    "foto": "shiva.jpg"
-  },
-  {
-    "nome": "Reale",
-    "anno": 1946,
-    "designer": "Carlo Mollino",
-    "azienda": "Zanotta",
-    "categoria": "tavolo",
-    "foto": "reale.jpg"
+    "foto": "sottsass-shiva.jpg"
   },
   {
     "nome": "Jumbo",
@@ -1394,7 +1480,7 @@
     "designer": "Gae Aulenti",
     "azienda": "Knoll",
     "categoria": "tavolo",
-    "foto": "jumbo.jpg"
+    "foto": "aulenti-jumbo.jpg"
   },
   {
     "nome": "D70",
@@ -1402,7 +1488,7 @@
     "designer": "Osvaldo Borsani",
     "azienda": "Tecno",
     "categoria": "divano",
-    "foto": "d70.jpg"
+    "foto": "borsani-d70.jpg"
   },
   {
     "nome": "M1",
@@ -1410,7 +1496,7 @@
     "designer": "Angelo Mangiarotti",
     "azienda": "Skipper",
     "categoria": "tavolo",
-    "foto": "m1.jpg"
+    "foto": "mangiarotti-m1.jpg"
   },
   {
     "nome": "First",
@@ -1418,7 +1504,7 @@
     "designer": "Michele De Lucchi",
     "azienda": "Memphis",
     "categoria": "sedia",
-    "foto": "first.jpg"
+    "foto": "lucchi-first.jpg"
   },
   {
     "nome": "Kartell 4675",
@@ -1426,7 +1512,7 @@
     "designer": "Giotto Stoppino",
     "azienda": "Kartell",
     "categoria": "contenitore",
-    "foto": "4675.jpg"
+    "foto": "stoppino-4675.jpg"
   },
   {
     "nome": "Delfina",
@@ -1434,7 +1520,7 @@
     "designer": "Enzo Mari",
     "azienda": "Driade",
     "categoria": "sedia",
-    "foto": "delfina.jpg"
+    "foto": "mari-delfina.jpg"
   },
   {
     "nome": "Leggera",
@@ -1442,7 +1528,7 @@
     "designer": "Gio Ponti",
     "azienda": "Cassina",
     "categoria": "sedia",
-    "foto": "leggera.jpg"
+    "foto": "ponti-leggera.jpg"
   },
   {
     "nome": "Digamma",
@@ -1450,7 +1536,7 @@
     "designer": "Ignazio Gardella",
     "azienda": "Gavina",
     "categoria": "poltrona",
-    "foto": "digamma.jpg"
+    "foto": "gardella-digamma.jpg"
   },
   {
     "nome": "Plia",
@@ -1458,7 +1544,7 @@
     "designer": "Giancarlo Piretti",
     "azienda": "Castelli",
     "categoria": "sedia",
-    "foto": "plia.jpg"
+    "foto": "piretti-plia.jpg"
   },
   {
     "nome": "Quattro Gatti",
@@ -1466,7 +1552,7 @@
     "designer": "Rodolfo Bonetto",
     "azienda": "B-Line",
     "categoria": "tavolo",
-    "foto": "quattrogatti.jpg"
+    "foto": "bonetto-quattrogatti.jpg"
   },
   {
     "nome": "Centro Tavola",
@@ -1474,7 +1560,7 @@
     "designer": "Roberto Sambonet",
     "azienda": "Sambonet",
     "categoria": "vassoio",
-    "foto": "centrotavola.jpg"
+    "foto": "sambonet-centrotavola.jpg"
   },
   {
     "nome": "Cubo",
@@ -1482,7 +1568,7 @@
     "designer": "Bruno Munari",
     "azienda": "Danese",
     "categoria": "posacenere",
-    "foto": "cubo.jpg"
+    "foto": "munari-cubo.jpg"
   },
   {
     "nome": "Golden Gate",
@@ -1490,7 +1576,7 @@
     "designer": "Nanda Vigo",
     "azienda": "Arredoluce",
     "categoria": "lampada",
-    "foto": "goldengate.jpg"
+    "foto": "vigo-goldengate.jpg"
   },
   {
     "nome": "Toga",
@@ -1498,7 +1584,7 @@
     "designer": "Sergio Mazza",
     "azienda": "Artemide",
     "categoria": "lampada",
-    "foto": "toga.jpg"
+    "foto": "mazza-toga.jpg"
   },
   {
     "nome": "Juicy Salif",
@@ -1506,7 +1592,7 @@
     "designer": "Philippe Starck",
     "azienda": "Alessi",
     "categoria": "spremiagrumi",
-    "foto": "juicysalif.jpg"
+    "foto": "starck-juicysalif.jpg"
   },
   {
     "nome": "Louis Ghost",
@@ -1514,7 +1600,7 @@
     "designer": "Philippe Starck",
     "azienda": "Kartell",
     "categoria": "sedia",
-    "foto": "louisghost.jpg"
+    "foto": "starck-louisghost.jpg"
   },
   {
     "nome": "Ara",
@@ -1522,7 +1608,7 @@
     "designer": "Philippe Starck",
     "azienda": "Flos",
     "categoria": "lampada",
-    "foto": "ara.jpg"
+    "foto": "starck-ara.jpg"
   },
   {
     "nome": "Miss Sissi",
@@ -1530,7 +1616,7 @@
     "designer": "Philippe Starck",
     "azienda": "Flos",
     "categoria": "lampada",
-    "foto": "misssissi.jpg"
+    "foto": "starck-misssissi.jpg"
   },
   {
     "nome": "Gun Lamp",
@@ -1538,7 +1624,7 @@
     "designer": "Philippe Starck",
     "azienda": "Flos",
     "categoria": "lampada",
-    "foto": "gunlamp.jpg"
+    "foto": "starck-gunlamp.jpg"
   },
   {
     "nome": "Masters",
@@ -1546,7 +1632,7 @@
     "designer": "Philippe Starck",
     "azienda": "Kartell",
     "categoria": "sedia",
-    "foto": "masters.jpg"
+    "foto": "starck-masters.jpg"
   },
   {
     "nome": "Costes",
@@ -1554,7 +1640,7 @@
     "designer": "Philippe Starck",
     "azienda": "Driade",
     "categoria": "sedia",
-    "foto": "costes.jpg"
+    "foto": "starck-costes.jpg"
   },
   {
     "nome": "La Marie",
@@ -1562,7 +1648,7 @@
     "designer": "Philippe Starck",
     "azienda": "Kartell",
     "categoria": "sedia",
-    "foto": "lamarie.jpg"
+    "foto": "starck-lamarie.jpg"
   },
   {
     "nome": "Romeo Moon",
@@ -1570,7 +1656,7 @@
     "designer": "Philippe Starck",
     "azienda": "Flos",
     "categoria": "lampada",
-    "foto": "romeomoon.jpg"
+    "foto": "starck-romeomoon.jpg"
   },
   {
     "nome": "Dr. Glob",
@@ -1578,7 +1664,7 @@
     "designer": "Philippe Starck",
     "azienda": "Kartell",
     "categoria": "sedia",
-    "foto": "drglob.jpg"
+    "foto": "starck-drglob.jpg"
   },
   {
     "nome": "Macchine Inutili",
@@ -1586,7 +1672,7 @@
     "designer": "Bruno Munari",
     "azienda": "produzione propria",
     "categoria": "scultura",
-    "foto": "macchineinutili.jpg"
+    "foto": "munari-macchineinutili.jpg"
   },
   {
     "nome": "Concavo-Convesso",
@@ -1594,7 +1680,7 @@
     "designer": "Bruno Munari",
     "azienda": "produzione propria",
     "categoria": "scultura",
-    "foto": "concavoconvesso.jpg"
+    "foto": "munari-concavoconvesso.jpg"
   },
   {
     "nome": "Libri Illeggibili",
@@ -1602,7 +1688,7 @@
     "designer": "Bruno Munari",
     "azienda": "Corraini",
     "categoria": "libro",
-    "foto": "libriilleggibili.jpg"
+    "foto": "munari-libriilleggibili.jpg"
   },
   {
     "nome": "Sculture da Viaggio",
@@ -1610,7 +1696,7 @@
     "designer": "Bruno Munari",
     "azienda": "produzione propria",
     "categoria": "scultura",
-    "foto": "scultureviaggio.jpg"
+    "foto": "munari-scultureviaggio.jpg"
   },
   {
     "nome": "Aconà Biconbì",
@@ -1618,7 +1704,7 @@
     "designer": "Bruno Munari",
     "azienda": "Danese",
     "categoria": "gioco",
-    "foto": "aconabiconbi.jpg"
+    "foto": "munari-aconabiconbi.jpg"
   },
   {
     "nome": "Flexy",
@@ -1626,7 +1712,7 @@
     "designer": "Bruno Munari",
     "azienda": "Danese",
     "categoria": "scultura",
-    "foto": "flexy.jpg"
+    "foto": "munari-flexy.jpg"
   },
   {
     "nome": "Zizì",
@@ -1634,7 +1720,7 @@
     "designer": "Bruno Munari",
     "azienda": "Pigomma",
     "categoria": "gioco",
-    "foto": "zizi.jpg"
+    "foto": "munari-zizi.jpg"
   },
   {
     "nome": "Ora X",
@@ -1642,7 +1728,7 @@
     "designer": "Bruno Munari",
     "azienda": "Danese",
     "categoria": "orologio",
-    "foto": "orax.jpg"
+    "foto": "munari-orax.jpg"
   },
   {
     "nome": "Più e Meno",
@@ -1650,7 +1736,7 @@
     "designer": "Bruno Munari",
     "azienda": "Corraini",
     "categoria": "gioco",
-    "foto": "piumeno.jpg"
+    "foto": "munari-piuemeno.jpg"
   },
   {
     "nome": "Nella Nebbia di Milano",
@@ -1658,71 +1744,95 @@
     "designer": "Bruno Munari",
     "azienda": "Emme Edizioni",
     "categoria": "libro",
-    "foto": "nellanebbia.jpg"
+    "foto": "munari-nellanebbiadimilano.jpg"
   },
   {
     "nome": "Lounge Chair",
     "anno": 1956,
-    "designer": ["Charles Eames", "Ray Eames"],
+    "designer": [
+      "Charles Eames",
+      "Ray Eames"
+    ],
     "azienda": "Herman Miller",
     "categoria": "poltrona",
-    "foto": "loungechair.jpg"
+    "foto": "eames-loungechair.jpg"
   },
   {
     "nome": "DSW",
     "anno": 1950,
-    "designer": ["Charles Eames", "Ray Eames"],
+    "designer": [
+      "Charles Eames",
+      "Ray Eames"
+    ],
     "azienda": "Herman Miller",
     "categoria": "sedia",
-    "foto": "dsw.jpg"
+    "foto": "eames-dsw.jpg"
   },
   {
     "nome": "LCW",
     "anno": 1946,
-    "designer": ["Charles Eames", "Ray Eames"],
+    "designer": [
+      "Charles Eames",
+      "Ray Eames"
+    ],
     "azienda": "Herman Miller",
     "categoria": "sedia",
-    "foto": "lcw.jpg"
+    "foto": "eames-lcw.jpg"
   },
   {
     "nome": "La Chaise",
     "anno": 1948,
-    "designer": ["Charles Eames", "Ray Eames"],
+    "designer": [
+      "Charles Eames",
+      "Ray Eames"
+    ],
     "azienda": "Vitra",
     "categoria": "poltrona",
-    "foto": "lachaise.jpg"
+    "foto": "eames-lachaise.jpg"
   },
   {
     "nome": "Elephant",
     "anno": 1945,
-    "designer": ["Charles Eames", "Ray Eames"],
+    "designer": [
+      "Charles Eames",
+      "Ray Eames"
+    ],
     "azienda": "Vitra",
     "categoria": "gioco",
-    "foto": "elephant.jpg"
+    "foto": "eames-elephant.jpg"
   },
   {
     "nome": "DAW",
     "anno": 1950,
-    "designer": ["Charles Eames", "Ray Eames"],
+    "designer": [
+      "Charles Eames",
+      "Ray Eames"
+    ],
     "azienda": "Herman Miller",
     "categoria": "sedia",
-    "foto": "daw.jpg"
+    "foto": "eames-daw.jpg"
   },
   {
     "nome": "Wire Chair",
     "anno": 1951,
-    "designer": ["Charles Eames", "Ray Eames"],
+    "designer": [
+      "Charles Eames",
+      "Ray Eames"
+    ],
     "azienda": "Herman Miller",
     "categoria": "sedia",
-    "foto": "wirechair.jpg"
+    "foto": "eames-wirechair.jpg"
   },
   {
     "nome": "Hang-It-All",
     "anno": 1953,
-    "designer": ["Charles Eames", "Ray Eames"],
+    "designer": [
+      "Charles Eames",
+      "Ray Eames"
+    ],
     "azienda": "Herman Miller",
     "categoria": "appendiabiti",
-    "foto": "hangitall.jpg"
+    "foto": "eames-hangitall.jpg"
   },
   {
     "nome": "Doge",
@@ -1731,7 +1841,7 @@
     "azienda": "Simon Gavina",
     "azienda_attuale": "Cassina",
     "categoria": "tavolo",
-    "foto": "doge.jpg"
+    "foto": "scarpa-doge.jpg"
   },
   {
     "nome": "Cornaro",
@@ -1739,23 +1849,23 @@
     "designer": "Carlo Scarpa",
     "azienda": "Simon Gavina",
     "categoria": "poltrona",
-    "foto": "cornaro.jpg"
+    "foto": "scarpa-cornaro.jpg"
   },
   {
-    "nome": "Battuto",
+    "nome": "Battuto a nido d'ape",
     "anno": 1940,
     "designer": "Carlo Scarpa",
     "azienda": "Venini",
     "categoria": "vaso",
-    "foto": "battuto.jpg"
+    "foto": "scarpa-battutoanidodape.jpg"
   },
   {
-    "nome": "Sommerso",
+    "nome": "Sommersi",
     "anno": 1934,
     "designer": "Carlo Scarpa",
     "azienda": "Venini",
     "categoria": "vaso",
-    "foto": "sommerso.jpg"
+    "foto": "scarpa-sommersi.jpg"
   },
   {
     "nome": "Valmarana",
@@ -1763,14 +1873,48 @@
     "designer": "Carlo Scarpa",
     "azienda": "Simon Gavina",
     "categoria": "sedia",
-    "foto": "valmarana.jpg"
+    "foto": "scarpa-valmarana.jpg"
   },
   {
-    "nome": "Murrino",
+    "nome": "Murrine Romane",
     "anno": 1938,
     "designer": "Carlo Scarpa",
     "azienda": "Venini",
     "categoria": "vaso",
-    "foto": "murrino.jpg"
+    "foto": "scarpa-murrineromane.jpg"
+  },
+  {
+    "nome": "Serpente",
+    "anno": 1942,
+    "designer": "Carlo Scarpa",
+    "azienda": "Venini",
+    "categoria": "vaso",
+    "foto": "scarpa-serpente.jpg"
+  },
+  {
+    "nome": "99.37",
+    "anno": 1937,
+    "designer": "Carlo Scarpa",
+    "azienda": "Venini",
+    "categoria": "vaso",
+    "foto": "scarpa-9937.jpg"
+  },
+  {
+    "nome": "Mod. 765",
+    "anno": 1934,
+    "anno_label": "1934 / prod. 1977",
+    "designer": "Carlo Scarpa",
+    "azienda": "Bernini",
+    "categoria": "sedia",
+    "descrizione": "Disegnata da Carlo Scarpa per la sua residenza veneziana, si caratterizza per il contrasto tra la base geometrica e rigorosa e lo schienale organico e sinuoso. Un cuscino sottile in pelle nera segue la sagoma curva del legno.",
+    "foto": "scarpa-mod765.jpg"
+  },
+  {
+    "nome": "Samo",
+    "anno": 1934,
+    "designer": "Carlo Scarpa",
+    "azienda": "Venini",
+    "categoria": "vaso",
+    "foto": "scarpa-samo.jpg"
   }
 ]

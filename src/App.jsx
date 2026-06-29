@@ -53,15 +53,15 @@ const STILE = {
   //  zoom_viewport_ref → viewport di riferimento per il ridimensionamento
   // =============================================
   zoom_designer_min: 3,
-  zoom_designer_max: 18,
+  zoom_designer_max: 25,
   zoom_prodotto_min: 2,
   zoom_prodotto_max: 36,
   zoom_label_designer_min: 4,
   zoom_label_designer_max: 14,
   zoom_label_prodotto_max: 10,
-  zoom_label_soglia: 0.4,
+  zoom_label_soglia: window.innerWidth < 768 ? 0.65 : 0.4,
   zoom_griglia_min: 1.4,
-  zoom_griglia_max: 3,
+  zoom_griglia_max: window.innerWidth < 768 ? 1.8 : 3,
   zoom_viewport_ref: 800,
 
   // --- Transizione tra viste ---
@@ -146,7 +146,7 @@ const MARGINE_Y = 2
 const Y_MIN = -20
 const Y_MAX = 20
 const MAX_CAMERA_RATIO = window.innerWidth < 768 ? 0.6 : 1.2
-const MIN_CAMERA_RATIO = 0.05
+const MIN_CAMERA_RATIO = window.innerWidth < 768 ? 0.02 : 0.05
 
 function annoToX(anno) {
   return X_MIN + ((anno - ANNO_MIN) / (ANNO_MAX - ANNO_MIN)) * (X_MAX - X_MIN)
@@ -191,7 +191,7 @@ function App() {
   const [vistaCorrente, setVistaCorrente] = useState("designer")
   const [animaTransizioneFn, setAnimaTransizioneFn] = useState(null)
   const [ridisegnaFn, setRidisegnaFn] = useState(null)
-  const [haInteragito, setHaInteragito] = useState(false)
+  const [haInteragito, setHaInteragito] = useState(true)
   const [bioEspansa, setBioEspansa] = useState(false)
   const [aziendaAttiva, setAziendaAttiva] = useState(null)
   const aziendaAttivaRef = useRef(null)
@@ -265,6 +265,21 @@ function App() {
       ...prodotti.map((p) => `${import.meta.env.BASE_URL}immagini/${p.foto}`),
     ]
     const imgCache = preloadImages(imgPaths)
+    const imgColori = {}
+    const campionaColore = (src, img) => {
+      try {
+        const c = document.createElement("canvas")
+        c.width = 1; c.height = 1
+        const cx = c.getContext("2d")
+        cx.drawImage(img, 0, 0, 1, 1)
+        const [r, g, b] = cx.getImageData(0, 0, 1, 1).data
+        imgColori[src] = `rgb(${r},${g},${b})`
+      } catch {}
+    }
+    Object.entries(imgCache).forEach(([src, img]) => {
+      if (img.complete && img.naturalWidth > 0) campionaColore(src, img)
+      else img.addEventListener("load", () => campionaColore(src, img), { once: true })
+    })
 
     const nProdottiPerDesigner = {}
     prodotti.forEach((p) => {
@@ -655,11 +670,12 @@ function App() {
       return s
     }
 
+    const ZOOM_SCALA_REF = 0.05
     function zoomT() {
       const ratio = Math.max(MIN_CAMERA_RATIO, Math.min(MAX_CAMERA_RATIO, cameraRatio))
       const logMax = Math.log(MAX_CAMERA_RATIO)
-      const logMin = Math.log(MIN_CAMERA_RATIO)
-      return (logMax - Math.log(ratio)) / (logMax - logMin)
+      const logRef = Math.log(ZOOM_SCALA_REF)
+      return (logMax - Math.log(ratio)) / (logMax - logRef)
     }
 
     function vScale() {
@@ -703,7 +719,8 @@ function App() {
       const collegati = nodiCollegatiAlHover(nodoAttivo)
       const hoverAttivo = nodoAttivo !== null
 
-      const grigliaRaggio = lerp(STILE.zoom_griglia_min, STILE.zoom_griglia_max, t)
+      const tGriglia = Math.pow(t, 10)
+      const grigliaRaggio = lerp(STILE.zoom_griglia_min, STILE.zoom_griglia_max, tGriglia)
       const yGrafoMin = Math.min(Y_MIN, contenutoYMin) - MARGINE_Y
       const yGrafoMax = Math.max(Y_MAX, contenutoYMax) + MARGINE_Y
       const ogniN = t < 0.3 ? 2 : 1
@@ -854,7 +871,10 @@ function App() {
             const evidCollegati = nodiCollegatiAlHover(evid)
             alphaTarget = evidCollegati.has(node) ? 1 : 0.15
           } else {
-            alphaTarget = node === evid ? 1 : 0.15
+            const designersDelEvid = graph.hasNode(evid)
+              ? graph.neighbors(evid).filter(n => graph.getNodeAttribute(n, "tipo") === "designer")
+              : []
+            alphaTarget = (node === evid || designersDelEvid.includes(node)) ? 1 : 0.15
           }
         } else if (azFiltro) {
           if (attr.tipo === "prodotto") {
@@ -987,26 +1007,31 @@ function App() {
         const r = animated[node]?.r ?? STILE.zoom_prodotto_min
         const alpha = animated[node]?.alpha ?? 1
 
+        if (pos.x < -r || pos.x > w + r || pos.y < -r || pos.y > h + r) return
+
         ctx.globalAlpha = alpha
-        ctx.beginPath()
-        ctx.arc(pos.x, pos.y, r, 0, Math.PI * 2)
-        ctx.fillStyle = "#cccccc"
-        ctx.fill()
-        ctx.save()
-        ctx.beginPath()
-        ctx.arc(pos.x, pos.y, r, 0, Math.PI * 2)
-        ctx.clip()
         const img = imgCache[attr.imgSrc]
-        if (img && img.complete && img.naturalWidth > 0) {
+        const sogliaImg = attr.tipo === "designer" ? 0 : (isMobile ? 6 : 12)
+        const haImg = r > sogliaImg && img && img.complete && img.naturalWidth > 0
+
+        if (!haImg) {
+          ctx.beginPath()
+          ctx.arc(pos.x, pos.y, r, 0, Math.PI * 2)
+          ctx.fillStyle = imgColori[attr.imgSrc] || "#cccccc"
+          ctx.fill()
+        }
+
+        if (haImg) {
+          ctx.save()
+          ctx.beginPath()
+          ctx.arc(pos.x, pos.y, r, 0, Math.PI * 2)
+          ctx.clip()
           const iw = img.naturalWidth, ih = img.naturalHeight
           const scale = Math.max(r * 2 / iw, r * 2 / ih)
           const sw = iw * scale, sh = ih * scale
           ctx.drawImage(img, pos.x - sw / 2, pos.y - sh / 2, sw, sh)
-        } else {
-          ctx.fillStyle = "#ffffff"
-          ctx.fill()
+          ctx.restore()
         }
-        ctx.restore()
 
         if (attr.tipo === "prodotto") {
           ctx.beginPath()
@@ -1147,12 +1172,6 @@ function App() {
         }
       }
 
-      if (isMobile) {
-        const zoomOut = state.ratio > MAX_CAMERA_RATIO * 0.85
-        if (zoomOut && haInteragitoRef.current) { haInteragitoRef.current = false; setHaInteragito(false) }
-        else if (!zoomOut && !haInteragitoRef.current) { haInteragitoRef.current = true; setHaInteragito(true) }
-      }
-
       try { localStorage.setItem("dn-camera", JSON.stringify({ x: state.x, y: state.y, ratio: state.ratio })) } catch {}
       richiediDisegnoOverlay(2)
     })
@@ -1260,7 +1279,7 @@ function App() {
       const bbox = renderer.getCustomBBox() || renderer.getBBox()
       const cx = (attr.x - bbox.x[0]) / (bbox.x[1] - bbox.x[0])
       const cy = (attr.y - bbox.y[0]) / (bbox.y[1] - bbox.y[0])
-      animaCamera({ x: cx, y: cy, ratio: 0.15 }, 600)
+      animaCamera({ x: cx, y: cy, ratio: 0.08 }, 600)
       nodoEvidenziatoRef.current = nodeId
       setNodoEvidenziato(nodeId)
       if (tipo === "designer") {
@@ -1286,11 +1305,7 @@ function App() {
       sigmaCanvas.addEventListener("mousedown", (e) => {
         mouseDownPos = { x: e.clientX, y: e.clientY }
         isDragging = false
-        if (isMobile && !haInteragitoRef.current) { haInteragitoRef.current = true; setHaInteragito(true) }
       })
-      sigmaCanvas.addEventListener("wheel", () => {
-        if (isMobile && !haInteragitoRef.current) { haInteragitoRef.current = true; setHaInteragito(true) }
-      }, { passive: true })
 
       sigmaCanvas.addEventListener("mousemove", (e) => {
         if (mouseDownPos) {
@@ -1422,13 +1437,18 @@ function App() {
               annoBloccato = annoBloccato === anno ? null : anno
             }
             prodottoCliccato = trovato.node
+            ultimoProdottoHover = trovato.node
             setPannelloDesigner({ ...trovato.attr.dati, _tipo: "prodotto" })
             requestAnimationFrame(() => setPannelloVisibile(true))
             cameraPrimaDiClick = camera.getState()
             const pAttr = graph.getNodeAttributes(trovato.node)
             const cRect = container.getBoundingClientRect()
             const sState = camera.getState()
-            const tRatio = 0.08
+            const tRatio = 0.025
+            const pannelloW = isMobile ? 0 : 340 * uiScale
+            const pannelloH = isMobile ? cRect.height * 0.4 : 0
+            const centroX = (cRect.width - pannelloW) / 2 - pannelloW * 0.25
+            const centroY = (cRect.height - pannelloH) / 2
             clamping = true
             camera.setState({ x: sState.x, y: sState.y, ratio: tRatio, angle: sState.angle })
             renderer.refresh()
@@ -1441,16 +1461,44 @@ function App() {
             const pY = renderer.graphToViewport({ x: pAttr.x, y: pAttr.y })
             const ppuX = (p0.x - pX.x) / 0.01
             const ppuY = (p0.y - pY.y) / 0.01
-            const tX = sState.x + (p0.x - cRect.width / 2) / ppuX
-            const tY = sState.y + (p0.y - cRect.height / 2) / ppuY
+            const tX = sState.x + (p0.x - centroX) / ppuX
+            const tY = sState.y + (p0.y - centroY) / ppuY
             camera.setState(sState)
             renderer.refresh()
             clamping = false
-            animaCamera({ ratio: tRatio, x: tX + 0.02, y: tY }, 500)
+            animaCamera({ ratio: tRatio, x: tX, y: tY }, 500)
             richiediDisegnoOverlay(18)
           }
         } else {
           const avevaPannello = designerCliccato !== null || prodottoCliccato !== null
+          if (isMobile && avevaPannello) {
+            const nodoDaEvidenziare = prodottoCliccato || designerCliccato
+            setPannelloVisibile(false)
+            setTimeout(() => setPannelloDesigner(null), 350)
+            setDesignerAttivo(null)
+            graph.forEachEdge((edge, attr) => { if (attr.tipo === "relazione") graph.setEdgeAttribute(edge, "attivo", false) })
+            if (nodoDaEvidenziare) {
+              nodoEvidenziatoRef.current = nodoDaEvidenziare
+              setNodoEvidenziato(nodoDaEvidenziare)
+              ultimoProdottoHover = prodottoCliccato || ultimoProdottoHover
+            }
+            designerCliccato = null; prodottoCliccato = null
+            richiediDisegnoOverlay(18)
+            return
+          }
+          if (isMobile && nodoEvidenziatoRef.current) {
+            ultimoProdottoHover = null
+            nodoEvidenziatoRef.current = null; setNodoEvidenziato(null)
+            aziendaAttivaRef.current = null; setAziendaAttiva(null)
+            if (cameraPrimaDiClick) { animaCamera(cameraPrimaDiClick, 500); cameraPrimaDiClick = null }
+            richiediDisegnoOverlay(18)
+            return
+          }
+          if (isMobile && aziendaAttivaRef.current) {
+            aziendaAttivaRef.current = null; setAziendaAttiva(null)
+            richiediDisegnoOverlay(18)
+            return
+          }
           if (cameraPrimaDiClick && prodottoCliccato) {
             animaCamera(cameraPrimaDiClick, 500)
             cameraPrimaDiClick = null
@@ -1460,21 +1508,37 @@ function App() {
           annoBloccato = null
           nodoEvidenziatoRef.current = null; setNodoEvidenziato(null)
           setDesignerAttivo(null)
-          if (isMobile && aziendaAttivaRef.current && avevaPannello) {
-            setPannelloVisibile(false)
-            setTimeout(() => setPannelloDesigner(null), 350)
-          } else if (isMobile && aziendaAttivaRef.current) {
-            aziendaAttivaRef.current = null; setAziendaAttiva(null)
-            richiediDisegnoOverlay(18)
-          } else {
-            setPannelloVisibile(false)
-            setTimeout(() => setPannelloDesigner(null), 350)
-            aziendaAttivaRef.current = null; setAziendaAttiva(null)
-          }
+          setPannelloVisibile(false)
+          setTimeout(() => setPannelloDesigner(null), 350)
+          aziendaAttivaRef.current = null; setAziendaAttiva(null)
           graph.forEachEdge((edge, attr) => { if (attr.tipo === "relazione") graph.setEdgeAttribute(edge, "attivo", false) })
           setPopup(null); setTooltipRelazione(null)
           richiediDisegnoOverlay(18)
         }
+      })
+
+      let touchStartPos = null
+      let touchIsDragging = false
+      sigmaCanvas.addEventListener("touchstart", (e) => {
+        const t = e.touches[0]
+        touchStartPos = { x: t.clientX, y: t.clientY }
+        touchIsDragging = false
+      }, { passive: true })
+      sigmaCanvas.addEventListener("touchmove", (e) => {
+        if (touchStartPos && e.touches[0]) {
+          const dx = Math.abs(e.touches[0].clientX - touchStartPos.x)
+          const dy = Math.abs(e.touches[0].clientY - touchStartPos.y)
+          if (dx > 8 || dy > 8) touchIsDragging = true
+        }
+      }, { passive: true })
+      sigmaCanvas.addEventListener("touchend", (e) => {
+        if (touchIsDragging || !touchStartPos) { touchStartPos = null; touchIsDragging = false; return }
+        const fakeEvent = { clientX: touchStartPos.x, clientY: touchStartPos.y }
+        touchStartPos = null; touchIsDragging = false
+        sigmaCanvas.dispatchEvent(new MouseEvent("mouseup", {
+          clientX: fakeEvent.clientX, clientY: fakeEvent.clientY,
+          bubbles: true
+        }))
       })
     }
 
@@ -1506,91 +1570,129 @@ function App() {
 
   return (
     <>
-      <div style={{
-        position: "fixed", zIndex: 20, pointerEvents: "none", boxSizing: "border-box",
-        ...(window.innerWidth < 768
-          ? { top: 0, left: 0, right: 0, padding: "16px 20px", background: STILE.sfondo_colore }
-          : { top: 0, left: 0, bottom: 0, width: 240 * uiScale, padding: `${20 * uiScale}px ${16 * uiScale}px`, display: "flex", flexDirection: "column", justifyContent: "flex-end" })
-      }}>
-        <div style={{ fontFamily: "'Roboto Serif', serif", fontWeight: 500, fontStyle: "italic", fontSize: 13 * uiScale, color: "#1a1a1a", letterSpacing: 0.3, lineHeight: 1.3 }}>
-          Design — encyclopédie visuelle 1880–1980
-        </div>
-        <div style={{ fontFamily: "'Roboto Serif', serif", fontWeight: 400, fontStyle: "italic", fontSize: 13 * uiScale, color: "#1a1a1a", marginTop: 6 * uiScale, lineHeight: 1.3 }}>
-          Un secolo di oggetti, forme e idee.
-        </div>
+      {window.innerWidth < 768 && (
         <div style={{
-          display: "flex", flexDirection: "column", gap: 8 * uiScale, marginTop: 10 * uiScale,
-          opacity: (haInteragito && window.innerWidth < 768) ? 0 : 1, maxHeight: (haInteragito && window.innerWidth < 768) ? 0 : 300,
-          overflow: "hidden", transition: "opacity 0.6s ease, max-height 0.6s ease",
+          position: "fixed", top: 0, left: 0, right: 0, zIndex: 20, padding: "14px 16px",
+          background: STILE.sfondo_colore, boxSizing: "border-box",
         }}>
-          <p style={{ fontFamily: "Roboto, sans-serif", fontWeight: 300, fontSize: 11 * uiScale, color: "#888", lineHeight: 1.35, margin: 0 }}>
-            Questa mappa rappresenta un secolo di design occidentale — i suoi protagonisti, le loro opere e i legami invisibili che li uniscono. Ogni nodo è un designer o un oggetto; ogni connessione, una relazione di collaborazione, influenza o formazione.
-          </p>
-          <p style={{ fontFamily: "Roboto, sans-serif", fontWeight: 300, fontSize: 11 * uiScale, color: "#888", lineHeight: 1.35, margin: 0 }}>
-            La posizione orizzontale segue una cronologia rigorosa, dal 1880 al 1980. Esplorando la mappa si scoprono le grandi concentrazioni del movimento moderno, le filiazioni tra maestri e allievi, e le convergenze tra discipline e nazionalità.
-          </p>
+          <div onClick={() => setHaInteragito(!haInteragito)}
+            style={{ fontFamily: "'Roboto Serif', serif", fontWeight: 500, fontStyle: "italic", fontSize: 13, color: "#1a1a1a", letterSpacing: 0.3, lineHeight: 1.3, cursor: "pointer" }}>
+            Design — encyclopédie visuelle 1880–1980
+          </div>
+          <div style={{
+            overflow: "hidden", transition: "max-height 0.5s ease, opacity 0.5s ease, margin 0.5s ease",
+            maxHeight: haInteragito ? 0 : 60, opacity: haInteragito ? 0 : 1,
+            marginTop: haInteragito ? 0 : 4,
+          }}>
+            <div style={{ fontFamily: "'Roboto Serif', serif", fontWeight: 400, fontStyle: "italic", fontSize: 13, color: "#1a1a1a", lineHeight: 1.3 }}>
+              Un secolo di oggetti, forme e idee.
+            </div>
+            <div style={{ display: "flex", flexDirection: "column", gap: 8, marginTop: 8 }}>
+              <p style={{ fontFamily: "Roboto, sans-serif", fontWeight: 300, fontSize: 10, color: "#888", lineHeight: 1.35, margin: 0 }}>
+                Questa mappa rappresenta un secolo di design occidentale — i suoi protagonisti, le loro opere e i legami invisibili che li uniscono.
+              </p>
+            </div>
+          </div>
+          <div style={{ display: "flex", gap: 8, marginTop: 10, alignItems: "flex-start" }}>
+            <div style={{ display: "flex", gap: 0, background: "white", borderRadius: 20, boxShadow: "0 2px 12px rgba(0,0,0,0.1)", overflow: "hidden" }}>
+              <button onClick={() => cambiaVista("designer")}
+                style={{ padding: "8px 14px", border: "none", cursor: "pointer", fontSize: 10, fontWeight: vistaCorrente === "designer" ? 600 : 300, fontFamily: "Roboto, sans-serif", color: vistaCorrente === "designer" ? "#1a1a1a" : "#999", background: vistaCorrente === "designer" ? "#f0f0f0" : "white", transition: "all 0.2s" }}>
+                Designer
+              </button>
+              <button onClick={() => cambiaVista("timeline")}
+                style={{ padding: "8px 14px", border: "none", cursor: "pointer", fontSize: 10, fontWeight: vistaCorrente === "timeline" ? 600 : 300, fontFamily: "Roboto, sans-serif", color: vistaCorrente === "timeline" ? "#1a1a1a" : "#999", background: vistaCorrente === "timeline" ? "#f0f0f0" : "white", transition: "all 0.2s" }}>
+                Timeline
+              </button>
+            </div>
+            <div style={{ position: "relative", flex: 1 }}>
+              <input type="text" value={ricerca} onChange={(e) => setRicerca(e.target.value)} placeholder="Cerca..."
+                style={{ padding: "8px 14px", border: "none", borderRadius: 20, fontSize: 10, fontWeight: 300, fontFamily: "Roboto, sans-serif", background: "white", boxShadow: "0 2px 12px rgba(0,0,0,0.1)", outline: "none", width: "100%", boxSizing: "border-box", color: "#1a1a1a" }} />
+              {ricerca.length > 1 && (() => {
+                const q = ricerca.toLowerCase()
+                const risultati = [
+                  ...designers.filter(d => d.nome.toLowerCase().includes(q)).map(d => ({ tipo: "designer", nome: d.nome })),
+                  ...prodotti.filter(p => p.nome.toLowerCase().includes(q)).map(p => ({ tipo: "prodotto", nome: p.nome, sub: getDesigners(p).join(", ") })),
+                ].slice(0, 8)
+                if (risultati.length === 0) return null
+                return (
+                  <div style={{ position: "absolute", top: "100%", left: 0, right: 0, marginTop: 4, background: "white", borderRadius: 12, boxShadow: "0 4px 16px rgba(0,0,0,0.12)", overflow: "hidden", maxHeight: 200, overflowY: "auto", zIndex: 30 }}>
+                    {risultati.map((r, i) => (
+                      <button key={i} onClick={() => { setRicerca(""); if (centraFn) centraFn(r.nome, r.tipo) }}
+                        style={{ display: "block", width: "100%", padding: "8px 14px", border: "none", background: "white", cursor: "pointer", textAlign: "left", fontFamily: "Roboto, sans-serif", fontSize: 11, borderBottom: "1px solid #f0f0f0" }}>
+                        <span style={{ fontWeight: 500, color: "#1a1a1a" }}>{r.nome}</span>
+                        {r.sub && <span style={{ fontWeight: 300, color: "#999", marginLeft: 6 }}>{r.sub}</span>}
+                      </button>
+                    ))}
+                  </div>
+                )
+              })()}
+            </div>
+          </div>
         </div>
-      </div>
+      )}
 
-      <div style={{ position: "fixed", bottom: 24, left: "50%", transform: "translateX(-50%)", zIndex: 20, fontFamily: "Roboto, sans-serif", display: "flex", gap: 8, alignItems: "flex-end" }}>
-        <div style={{ display: "flex", gap: 0, background: "white", borderRadius: 20, boxShadow: "0 2px 12px rgba(0,0,0,0.1)", overflow: "hidden" }}>
-          <button onClick={() => cambiaVista("designer")}
-            style={{ padding: "8px 18px", border: "none", cursor: "pointer", fontSize: 11, fontWeight: vistaCorrente === "designer" ? 600 : 300, fontFamily: "Roboto, sans-serif", color: vistaCorrente === "designer" ? "#1a1a1a" : "#999", background: vistaCorrente === "designer" ? "#f0f0f0" : "white", transition: "all 0.2s" }}>
-            Designer
-          </button>
-          <button onClick={() => cambiaVista("timeline")}
-            style={{ padding: "8px 18px", border: "none", cursor: "pointer", fontSize: 11, fontWeight: vistaCorrente === "timeline" ? 600 : 300, fontFamily: "Roboto, sans-serif", color: vistaCorrente === "timeline" ? "#1a1a1a" : "#999", background: vistaCorrente === "timeline" ? "#f0f0f0" : "white", transition: "all 0.2s" }}>
-            Linea del tempo
-          </button>
+      {window.innerWidth >= 768 && (
+        <div style={{
+          position: "fixed", top: 0, left: 0, bottom: 0, width: 240 * uiScale,
+          padding: `${20 * uiScale}px ${16 * uiScale}px`, boxSizing: "border-box",
+          display: "flex", flexDirection: "column", justifyContent: "flex-end",
+          zIndex: 20, pointerEvents: "none",
+        }}>
+          <div style={{ fontFamily: "'Roboto Serif', serif", fontWeight: 500, fontStyle: "italic", fontSize: 13 * uiScale, color: "#1a1a1a", letterSpacing: 0.3, lineHeight: 1.3 }}>
+            Design — encyclopédie visuelle 1880–1980
+          </div>
+          <div style={{ fontFamily: "'Roboto Serif', serif", fontWeight: 400, fontStyle: "italic", fontSize: 13 * uiScale, color: "#1a1a1a", marginTop: 6 * uiScale, lineHeight: 1.3 }}>
+            Un secolo di oggetti, forme e idee.
+          </div>
+          <div style={{ display: "flex", flexDirection: "column", gap: 8 * uiScale, marginTop: 10 * uiScale, opacity: 1, maxHeight: 300, overflow: "hidden" }}>
+            <p style={{ fontFamily: "Roboto, sans-serif", fontWeight: 300, fontSize: 11 * uiScale, color: "#888", lineHeight: 1.35, margin: 0 }}>
+              Questa mappa rappresenta un secolo di design occidentale — i suoi protagonisti, le loro opere e i legami invisibili che li uniscono. Ogni nodo è un designer o un oggetto; ogni connessione, una relazione di collaborazione, influenza o formazione.
+            </p>
+            <p style={{ fontFamily: "Roboto, sans-serif", fontWeight: 300, fontSize: 11 * uiScale, color: "#888", lineHeight: 1.35, margin: 0 }}>
+              La posizione orizzontale segue una cronologia rigorosa, dal 1880 al 1980. Esplorando la mappa si scoprono le grandi concentrazioni del movimento moderno, le filiazioni tra maestri e allievi, e le convergenze tra discipline e nazionalità.
+            </p>
+          </div>
         </div>
-        <div style={{ position: "relative" }}>
-          <input
-            type="text"
-            value={ricerca}
-            onChange={(e) => setRicerca(e.target.value)}
-            placeholder="Cerca..."
-            style={{
-              padding: "8px 14px", border: "none", borderRadius: 20, fontSize: 11, fontWeight: 300,
-              fontFamily: "Roboto, sans-serif", background: "white", boxShadow: "0 2px 12px rgba(0,0,0,0.1)",
-              outline: "none", width: 160, color: "#1a1a1a",
-            }}
-          />
-          {ricerca.length > 1 && (() => {
-            const q = ricerca.toLowerCase()
-            const risultati = [
-              ...designers.filter(d => d.nome.toLowerCase().includes(q)).map(d => ({ tipo: "designer", nome: d.nome, id: d.nome })),
-              ...prodotti.filter(p => p.nome.toLowerCase().includes(q)).map(p => {
-                const ds = getDesigners(p)
-                const id = ds.length > 1 ? `prodotto:multi:${p.nome}:0` : `prodotto:${ds[0]}:${p.nome}:0`
-                return { tipo: "prodotto", nome: p.nome, sub: ds.join(", "), id }
-              }),
-            ].slice(0, 8)
-            if (risultati.length === 0) return null
-            return (
-              <div style={{
-                position: "absolute", bottom: "100%", left: 0, right: 0, marginBottom: 4,
-                background: "white", borderRadius: 12, boxShadow: "0 4px 16px rgba(0,0,0,0.12)",
-                overflow: "hidden", maxHeight: 240, overflowY: "auto",
-              }}>
-                {risultati.map((r, i) => (
-                  <button key={i} onClick={() => {
-                    setRicerca("")
-                    if (centraFn) centraFn(r.nome, r.tipo)
-                  }} style={{
-                    display: "block", width: "100%", padding: "8px 14px", border: "none", background: "white",
-                    cursor: "pointer", textAlign: "left", fontFamily: "Roboto, sans-serif", fontSize: 11,
-                    borderBottom: "1px solid #f0f0f0",
-                  }}>
-                    <span style={{ fontWeight: 500, color: "#1a1a1a" }}>{r.nome}</span>
-                    {r.sub && <span style={{ fontWeight: 300, color: "#999", marginLeft: 6 }}>{r.sub}</span>}
-                    <span style={{ fontWeight: 300, color: "#ccc", marginLeft: 6, fontSize: 9, textTransform: "uppercase" }}>{r.tipo}</span>
-                  </button>
-                ))}
-              </div>
-            )
-          })()}
+      )}
+
+      {window.innerWidth >= 768 && (
+        <div style={{ position: "fixed", bottom: 24, left: "50%", transform: "translateX(-50%)", zIndex: 20, fontFamily: "Roboto, sans-serif", display: "flex", gap: 8, alignItems: "flex-end" }}>
+          <div style={{ display: "flex", gap: 0, background: "white", borderRadius: 20, boxShadow: "0 2px 12px rgba(0,0,0,0.1)", overflow: "hidden" }}>
+            <button onClick={() => cambiaVista("designer")}
+              style={{ padding: "8px 18px", border: "none", cursor: "pointer", fontSize: 11, fontWeight: vistaCorrente === "designer" ? 600 : 300, fontFamily: "Roboto, sans-serif", color: vistaCorrente === "designer" ? "#1a1a1a" : "#999", background: vistaCorrente === "designer" ? "#f0f0f0" : "white", transition: "all 0.2s" }}>
+              Designer
+            </button>
+            <button onClick={() => cambiaVista("timeline")}
+              style={{ padding: "8px 18px", border: "none", cursor: "pointer", fontSize: 11, fontWeight: vistaCorrente === "timeline" ? 600 : 300, fontFamily: "Roboto, sans-serif", color: vistaCorrente === "timeline" ? "#1a1a1a" : "#999", background: vistaCorrente === "timeline" ? "#f0f0f0" : "white", transition: "all 0.2s" }}>
+              Linea del tempo
+            </button>
+          </div>
+          <div style={{ position: "relative" }}>
+            <input type="text" value={ricerca} onChange={(e) => setRicerca(e.target.value)} placeholder="Cerca..."
+              style={{ padding: "8px 14px", border: "none", borderRadius: 20, fontSize: 11, fontWeight: 300, fontFamily: "Roboto, sans-serif", background: "white", boxShadow: "0 2px 12px rgba(0,0,0,0.1)", outline: "none", width: 160, color: "#1a1a1a" }} />
+            {ricerca.length > 1 && (() => {
+              const q = ricerca.toLowerCase()
+              const risultati = [
+                ...designers.filter(d => d.nome.toLowerCase().includes(q)).map(d => ({ tipo: "designer", nome: d.nome })),
+                ...prodotti.filter(p => p.nome.toLowerCase().includes(q)).map(p => ({ tipo: "prodotto", nome: p.nome, sub: getDesigners(p).join(", ") })),
+              ].slice(0, 8)
+              if (risultati.length === 0) return null
+              return (
+                <div style={{ position: "absolute", bottom: "100%", left: 0, right: 0, marginBottom: 4, background: "white", borderRadius: 12, boxShadow: "0 4px 16px rgba(0,0,0,0.12)", overflow: "hidden", maxHeight: 240, overflowY: "auto" }}>
+                  {risultati.map((r, i) => (
+                    <button key={i} onClick={() => { setRicerca(""); if (centraFn) centraFn(r.nome, r.tipo) }}
+                      style={{ display: "block", width: "100%", padding: "8px 14px", border: "none", background: "white", cursor: "pointer", textAlign: "left", fontFamily: "Roboto, sans-serif", fontSize: 11, borderBottom: "1px solid #f0f0f0" }}>
+                      <span style={{ fontWeight: 500, color: "#1a1a1a" }}>{r.nome}</span>
+                      {r.sub && <span style={{ fontWeight: 300, color: "#999", marginLeft: 6 }}>{r.sub}</span>}
+                      <span style={{ fontWeight: 300, color: "#ccc", marginLeft: 6, fontSize: 9, textTransform: "uppercase" }}>{r.tipo}</span>
+                    </button>
+                  ))}
+                </div>
+              )
+            })()}
+          </div>
         </div>
-      </div>
+      )}
 
       {designerAttivo && (
         <div style={{ position: "fixed", bottom: 64, left: "50%", transform: "translateX(-50%)", background: "rgba(0,0,0,0.06)", borderRadius: 20, padding: "6px 16px", fontSize: 11, fontWeight: 300, color: "#888", fontFamily: "Roboto, sans-serif", zIndex: 20, pointerEvents: "none" }}>
@@ -1619,48 +1721,93 @@ function App() {
           : ""
         return (
         <div style={{
-          position: "fixed", top: 0, right: 0, bottom: 0, width: 340 * uiScale,
+          position: "fixed", fontFamily: "Roboto, sans-serif", zIndex: 100,
           background: scuro ? "#1a1a1a" : "#ffffff",
-          boxShadow: `-4px 0 32px rgba(0,0,0,${scuro ? 0.3 : 0.12})`,
-          fontFamily: "Roboto, sans-serif", zIndex: 100,
-          transform: pannelloVisibile ? "translateX(0)" : "translateX(100%)",
-          transition: "transform 0.35s cubic-bezier(0.4, 0, 0.2, 1)",
           display: "flex", flexDirection: "column", overflow: "hidden",
+          transition: "transform 0.35s cubic-bezier(0.4, 0, 0.2, 1)",
+          ...(window.innerWidth < 768
+            ? {
+              left: 0, right: 0, bottom: 0,
+              height: pannelloDesigner._tipo === "prodotto" ? "40vh" : "60vh",
+              borderRadius: "16px 16px 0 0",
+              boxShadow: `0 -4px 32px rgba(0,0,0,${scuro ? 0.3 : 0.12})`,
+              transform: pannelloVisibile ? "translateY(0)" : "translateY(100%)",
+            }
+            : {
+              top: 0, right: 0, bottom: 0, width: 340 * uiScale,
+              boxShadow: `-4px 0 32px rgba(0,0,0,${scuro ? 0.3 : 0.12})`,
+              transform: pannelloVisibile ? "translateX(0)" : "translateX(100%)",
+            })
         }}>
-          <div style={{ padding: "32px 28px 0", flexShrink: 0 }}>
-            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start" }}>
-              <div>
-                <div style={{ fontFamily: "'Roboto Serif', serif", fontWeight: 500, fontStyle: "italic", fontSize: 20, color: scuro ? "#ffffff" : "#1a1a1a", lineHeight: 1.2 }}>
-                  {pannelloDesigner.nome}
+          <div style={{ flex: 1, overflowY: "auto", padding: window.innerWidth < 768 ? "16px 16px 24px" : "20px 28px 32px" }}>
+            {window.innerWidth < 768 ? (
+              <div style={{ display: "flex", gap: 14, marginBottom: 16 }}>
+                <div style={{ width: 90, height: 90, flexShrink: 0, overflow: "hidden", background: scuro ? "#2a2a2a" : "#f5f5f5", borderRadius: 8 }}>
+                  <img src={`${import.meta.env.BASE_URL}immagini/${pannelloDesigner.foto}`} alt={pannelloDesigner.nome}
+                    style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
+                    onError={(e) => { e.target.style.display = "none" }} />
                 </div>
-                <div style={{ fontFamily: "'Roboto Serif', serif", fontWeight: 400, fontStyle: "italic", fontSize: 14, color: "#888", marginTop: 4 }}>
-                  {pannelloDesigner._tipo === "designer"
-                    ? `${pannelloDesigner.nato}${pannelloDesigner.morto ? ` — ${pannelloDesigner.morto}` : ""}`
-                    : `${pannelloDesigner.anno || ""}${designerProdotto ? ` — ${designerProdotto}` : ""}`
-                  }
+                <div style={{ flex: 1, display: "flex", flexDirection: "column", justifyContent: "center" }}>
+                  <div style={{ fontFamily: "'Roboto Serif', serif", fontWeight: 500, fontStyle: "italic", fontSize: 17, color: scuro ? "#fff" : "#1a1a1a", lineHeight: 1.2 }}>
+                    {pannelloDesigner.nome}
+                  </div>
+                  {pannelloDesigner._tipo === "prodotto" && (
+                    <div style={{ marginTop: 3 }}>
+                      <div style={{ fontFamily: "Roboto, sans-serif", fontWeight: 300, fontSize: 11, color: "#888" }}>{designerProdotto}</div>
+                      <div style={{ fontFamily: "'Roboto Serif', serif", fontWeight: 400, fontStyle: "italic", fontSize: 12, color: "#aaa", marginTop: 1 }}>{pannelloDesigner.anno_label || pannelloDesigner.anno}</div>
+                    </div>
+                  )}
+                  {pannelloDesigner._tipo === "designer" && (
+                    <div style={{ fontFamily: "'Roboto Serif', serif", fontWeight: 400, fontStyle: "italic", fontSize: 12, color: "#888", marginTop: 3 }}>
+                      {pannelloDesigner.nato}{pannelloDesigner.morto ? ` — ${pannelloDesigner.morto}` : ""}
+                    </div>
+                  )}
+                  {pannelloDesigner.descrizione && (
+                    <p style={{ fontSize: 10, fontWeight: 300, color: "#888", lineHeight: 1.4, margin: "6px 0 0" }}>
+                      {pannelloDesigner.descrizione}
+                    </p>
+                  )}
                 </div>
               </div>
-              <button onClick={() => { setPannelloVisibile(false); setTimeout(() => setPannelloDesigner(null), 350) }}
-                style={{ background: "none", border: "none", cursor: "pointer", fontSize: 20, color: scuro ? "#666" : "#aaa", padding: "0 4px", lineHeight: 1 }}>
-                &times;
-              </button>
-            </div>
-          </div>
-          <div style={{ flex: 1, overflowY: "auto", padding: "20px 28px 32px" }}>
-            <div style={{
-              width: "100%", aspectRatio: "1", overflow: "hidden",
-              background: scuro ? "#2a2a2a" : "#f5f5f5", marginBottom: 24,
-            }}>
-              <img src={`${import.meta.env.BASE_URL}immagini/${pannelloDesigner.foto}`} alt={pannelloDesigner.nome}
-                style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
-                onError={(e) => { e.target.style.display = "none" }} />
-            </div>
+            ) : (
+              <div>
+                <div style={{ padding: "12px 0 0" }}>
+                  <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start" }}>
+                    <div>
+                      <div style={{ fontFamily: "'Roboto Serif', serif", fontWeight: 500, fontStyle: "italic", fontSize: 20, color: scuro ? "#ffffff" : "#1a1a1a", lineHeight: 1.2 }}>
+                        {pannelloDesigner.nome}
+                      </div>
+                      {pannelloDesigner._tipo === "designer" && (
+                        <div style={{ fontFamily: "'Roboto Serif', serif", fontWeight: 400, fontStyle: "italic", fontSize: 14, color: "#888", marginTop: 4 }}>
+                          {pannelloDesigner.nato}{pannelloDesigner.morto ? ` — ${pannelloDesigner.morto}` : ""}
+                        </div>
+                      )}
+                      {pannelloDesigner._tipo === "prodotto" && (
+                        <div style={{ marginTop: 4 }}>
+                          <div style={{ fontFamily: "Roboto, sans-serif", fontWeight: 300, fontSize: 12, color: "#888" }}>{designerProdotto}</div>
+                          <div style={{ fontFamily: "'Roboto Serif', serif", fontWeight: 400, fontStyle: "italic", fontSize: 13, color: "#aaa", marginTop: 2 }}>{pannelloDesigner.anno_label || pannelloDesigner.anno}</div>
+                        </div>
+                      )}
+                    </div>
+                    <button onClick={() => { setPannelloVisibile(false); setTimeout(() => setPannelloDesigner(null), 350) }}
+                      style={{ background: "none", border: "none", cursor: "pointer", fontSize: 20, color: scuro ? "#666" : "#aaa", padding: "0 4px", lineHeight: 1 }}>
+                      &times;
+                    </button>
+                  </div>
+                </div>
+                <div style={{ width: "100%", aspectRatio: "1", overflow: "hidden", background: scuro ? "#2a2a2a" : "#f5f5f5", marginTop: 20, marginBottom: 24 }}>
+                  <img src={`${import.meta.env.BASE_URL}immagini/${pannelloDesigner.foto}`} alt={pannelloDesigner.nome}
+                    style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
+                    onError={(e) => { e.target.style.display = "none" }} />
+                </div>
+              </div>
+            )}
 
             {pannelloDesigner._tipo === "designer" && pannelloDesigner.bio && (
-              <div style={{ marginBottom: 0 }}>
+              <div style={{ marginBottom: 0, ...(window.innerWidth < 768 ? { marginLeft: 104 } : {}) }}>
                 <div style={{ fontSize: 9, fontWeight: 600, color: scuro ? "#555" : "#aaa", textTransform: "uppercase", letterSpacing: 1.5, marginBottom: 8 }}>Biografia</div>
                 <p style={{
-                  fontSize: 13, fontWeight: 300, color: scuro ? "#999" : "#666", lineHeight: 1.6, margin: 0,
+                  fontSize: window.innerWidth < 768 ? 11 : 13, fontWeight: 300, color: scuro ? "#999" : "#666", lineHeight: 1.6, margin: 0,
                   maxHeight: bioEspansa ? "none" : "4.8em", overflow: "hidden",
                 }}>
                   {pannelloDesigner.bio}
@@ -1683,7 +1830,7 @@ function App() {
               }).flatMap(p => [p.azienda, p.azienda_attuale]).filter(Boolean))]
               if (aziende.length === 0) return null
               return (
-                <div>
+                <div style={window.innerWidth < 768 ? { marginLeft: 104 } : {}}>
                   <hr style={{ border: "none", borderTop: `1px solid ${scuro ? "#333" : "#eee"}`, margin: "20px 0" }} />
                   <div style={{ fontSize: 9, fontWeight: 600, color: scuro ? "#555" : "#aaa", textTransform: "uppercase", letterSpacing: 1.5, marginBottom: 10 }}>Aziende</div>
                   <div style={{ display: "flex", flexWrap: "wrap", gap: 6 }}>
@@ -1707,9 +1854,57 @@ function App() {
             })()}
 
             {pannelloDesigner._tipo === "prodotto" && (
-              <div style={{ fontSize: 13, fontWeight: 300, color: "#555", lineHeight: 1.6 }}>
-                {pannelloDesigner.azienda && <p style={{ margin: "0 0 8px" }}>{pannelloDesigner.azienda}</p>}
-                {pannelloDesigner.categoria && <p style={{ margin: 0, color: "#888", fontStyle: "italic" }}>{pannelloDesigner.categoria}</p>}
+              <div style={window.innerWidth < 768 ? { marginLeft: 104 } : {}}>
+                {pannelloDesigner.descrizione && !(window.innerWidth < 768) && (
+                  <div style={{ marginBottom: 16 }}>
+                    <div style={{ fontSize: 9, fontWeight: 600, color: "#aaa", textTransform: "uppercase", letterSpacing: 1.5, marginBottom: 8 }}>Descrizione</div>
+                    <p style={{ fontSize: 13, fontWeight: 300, color: "#666", lineHeight: 1.6, margin: 0 }}>
+                      {pannelloDesigner.descrizione}
+                    </p>
+                  </div>
+                )}
+                {pannelloDesigner.categoria && (
+                  <div>
+                    <hr style={{ border: "none", borderTop: "1px solid #eee", margin: "16px 0" }} />
+                    <div style={{ fontSize: 9, fontWeight: 600, color: "#aaa", textTransform: "uppercase", letterSpacing: 1.5, marginBottom: 10 }}>Tipologia</div>
+                    <span style={{ fontSize: 11, fontWeight: 400, color: "#555", border: "1px solid #ddd", borderRadius: 20, padding: "4px 12px", fontFamily: "Roboto, sans-serif" }}>{pannelloDesigner.categoria}</span>
+                  </div>
+                )}
+                {pannelloDesigner.azienda && (
+                  <div>
+                    <hr style={{ border: "none", borderTop: "1px solid #eee", margin: "16px 0" }} />
+                    <div style={{ fontSize: 9, fontWeight: 600, color: "#aaa", textTransform: "uppercase", letterSpacing: 1.5, marginBottom: 10 }}>Azienda</div>
+                    <div style={{ display: "flex", flexWrap: "wrap", gap: 6 }}>
+                      {[pannelloDesigner.azienda, pannelloDesigner.azienda_attuale].filter(Boolean).filter((v, i, a) => a.indexOf(v) === i).map((az) => {
+                        const attiva = aziendaAttiva === az
+                        return (
+                          <button key={az} onClick={() => toggleAzienda(az)} style={{
+                            fontSize: 11, fontWeight: attiva ? 600 : 400,
+                            color: attiva ? "#fff" : "#555",
+                            background: attiva ? "#ff6b2b" : "transparent",
+                            border: `1px solid ${attiva ? "#ff6b2b" : "#ddd"}`,
+                            borderRadius: 20, padding: "4px 12px",
+                            fontFamily: "Roboto, sans-serif", cursor: "pointer",
+                            transition: "all 0.2s",
+                          }}>{az}</button>
+                        )
+                      })}
+                    </div>
+                  </div>
+                )}
+                {pannelloDesigner.riconoscimenti && pannelloDesigner.riconoscimenti.length > 0 && (
+                  <div>
+                    <hr style={{ border: "none", borderTop: "1px solid #eee", margin: "16px 0" }} />
+                    <div style={{ fontSize: 9, fontWeight: 600, color: "#aaa", textTransform: "uppercase", letterSpacing: 1.5, marginBottom: 10 }}>Riconoscimenti</div>
+                    <div style={{ display: "flex", flexDirection: "column", gap: 4 }}>
+                      {pannelloDesigner.riconoscimenti.map((r, i) => (
+                        <div key={i} style={{ fontSize: 12, fontWeight: 300, color: "#555", fontFamily: "Roboto, sans-serif" }}>
+                          {r}
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
               </div>
             )}
           </div>
