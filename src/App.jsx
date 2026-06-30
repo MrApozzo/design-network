@@ -193,6 +193,7 @@ function App() {
   const topBarRef = useRef(null)
   const sottotitoloRef = useRef(null)
   const [menuApertoMobile, setMenuApertoMobile] = useState(false)
+  const [aboutEspanso, setAboutEspanso] = useState(false)
   const [bioEspansa, setBioEspansa] = useState(false)
   const [galleriaIndice, setGalleriaIndice] = useState(0)
   const [galleriaFullscreen, setGalleriaFullscreen] = useState(false)
@@ -1088,7 +1089,7 @@ function App() {
           ctx.beginPath()
           ctx.arc(pos.x, pos.y, r, 0, Math.PI * 2)
           ctx.strokeStyle = "#ffffff"
-          ctx.lineWidth = 3
+          ctx.lineWidth = Math.max(0.5, Math.min(3, r * 0.18))
           ctx.stroke()
         }
         if (attr.tipo === "designer") {
@@ -1867,25 +1868,60 @@ function App() {
           transition: "transform 0.35s ease", padding: "24px 22px", boxSizing: "border-box",
           display: "flex", flexDirection: "column", gap: 2, overflowY: "auto",
         }}>
+          <div style={{ fontFamily: "Roboto, sans-serif", fontSize: 10, fontWeight: 600, color: "#aaa", letterSpacing: 1.5, textTransform: "uppercase", marginBottom: 8 }}>
+            Sezione
+          </div>
+          <div style={{ marginBottom: 18, marginLeft: -7 }}>
+            <span style={{
+              display: "inline-block", fontFamily: "'Roboto Mono', monospace", fontSize: 10, fontWeight: 400,
+              color: "#555", border: "1px solid #ddd", borderRadius: 20, padding: "3px 12px",
+            }}>
+              Design
+            </span>
+          </div>
           <div style={{ fontFamily: "Roboto, sans-serif", fontSize: 10, fontWeight: 600, color: "#aaa", letterSpacing: 1.5, textTransform: "uppercase", marginBottom: 10 }}>
             Menu
           </div>
-          {[
-            { titolo: "About", testo: "Questa mappa rappresenta un secolo di design occidentale — i suoi protagonisti, le loro opere e i legami invisibili che li uniscono." },
-            { titolo: "Maps", testo: null },
-            { titolo: "Contatti", testo: null },
-          ].map((voce, i) => (
-            <div key={i} style={{ borderBottom: "1px solid #eee", padding: "16px 0" }}>
-              <div style={{ fontFamily: "'Roboto Serif', serif", fontStyle: "italic", fontWeight: 500, fontSize: 15, color: "#1a1a1a" }}>
-                {voce.titolo}
+          <div style={{ borderBottom: "1px solid #eee", padding: "16px 0" }}>
+            <div onClick={() => setAboutEspanso(!aboutEspanso)}
+              style={{ display: "flex", alignItems: "center", justifyContent: "space-between", cursor: "pointer" }}>
+              <div style={{ fontFamily: "'Roboto Mono', monospace", fontWeight: 400, fontSize: 13, color: "#777" }}>
+                About
               </div>
-              {voce.testo && (
-                <p style={{ fontFamily: "Roboto, sans-serif", fontWeight: 300, fontSize: 11, color: "#888", lineHeight: 1.45, marginTop: 8, marginBottom: 0 }}>
-                  {voce.testo}
-                </p>
-              )}
+              <span style={{
+                display: "inline-block", transform: aboutEspanso ? "rotate(180deg)" : "rotate(0deg)",
+                transition: "transform 0.25s ease", fontSize: 10, color: "#999",
+              }}>
+                ▼
+              </span>
+            </div>
+            <div style={{
+              overflow: "hidden", transition: "max-height 0.35s ease, opacity 0.35s ease, margin 0.35s ease",
+              maxHeight: aboutEspanso ? 300 : 0, opacity: aboutEspanso ? 1 : 0,
+              marginTop: aboutEspanso ? 8 : 0,
+            }}>
+              <p style={{ fontFamily: "Roboto, sans-serif", fontWeight: 300, fontSize: 11, color: "#888", lineHeight: 1.45, margin: 0 }}>
+                Questa mappa rappresenta un secolo di design occidentale — i suoi protagonisti, le loro opere e i legami invisibili che li uniscono. Ogni nodo è un designer o un oggetto; ogni connessione, una relazione di collaborazione, influenza o formazione.
+              </p>
+              <p style={{ fontFamily: "Roboto, sans-serif", fontWeight: 300, fontSize: 11, color: "#888", lineHeight: 1.45, marginTop: 8, marginBottom: 0 }}>
+                La posizione orizzontale segue una cronologia rigorosa, dal 1880 al 1980. Esplorando la mappa si scoprono le grandi concentrazioni del movimento moderno, le filiazioni tra maestri e allievi, e le convergenze tra discipline e nazionalità.
+              </p>
+            </div>
+          </div>
+          {["Maps", "Contatti"].map((titolo, i) => (
+            <div key={i} style={{ borderBottom: "1px solid #eee", padding: "16px 0" }}>
+              <div style={{ fontFamily: "'Roboto Mono', monospace", fontWeight: 400, fontSize: 13, color: "#777" }}>
+                {titolo}
+              </div>
             </div>
           ))}
+          <div style={{ marginTop: "auto", paddingTop: 24 }}>
+            <div style={{ fontFamily: "'Roboto Mono', monospace", fontSize: 9, color: "#bbb", lineHeight: 1.6 }}>
+              © 2026 Design — Encyclopédie Visuelle<br />
+              Un secolo di design occidentale, 1880–1980<br />
+              Tutti i diritti riservati
+            </div>
+          </div>
         </div>
       )}
 

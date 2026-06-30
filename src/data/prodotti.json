@@ -474,12 +474,12 @@
     "foto": "fornasetti-temavariazioni.jpg"
   },
   {
-    "nome": "Architettura",
+    "nome": "Architettura Trumeau",
     "anno": 1955,
     "designer": "Piero Fornasetti",
     "azienda": "Fornasetti",
     "categoria": "cassettiera",
-    "foto": "fornasetti-architettura.jpg"
+    "foto": "fornasetti-architetturatrumeau.jpg"
   },
   {
     "nome": "Arabesco",
@@ -607,7 +607,7 @@
     "designer": "Anna Castelli Ferrieri",
     "azienda": "Kartell",
     "categoria": "sedia",
-    "foto": "ferrieri-4870.jpg"
+    "foto": "castelli-4870.jpg"
   },
   {
     "nome": "Componibili",
@@ -615,7 +615,7 @@
     "designer": "Anna Castelli Ferrieri",
     "azienda": "Kartell",
     "categoria": "contenitore",
-    "foto": "ferrieri-componibili.jpg"
+    "foto": "castelli-componibili.jpg"
   },
   {
     "nome": "Pesciera",
@@ -1511,8 +1511,8 @@
     "anno": 1971,
     "designer": "Giotto Stoppino",
     "azienda": "Kartell",
-    "categoria": "contenitore",
-    "foto": "stoppino-4675.jpg"
+    "categoria": "portariviste",
+    "foto": "stoppino-portarivistemod4675.jpg"
   },
   {
     "nome": "Delfina",
