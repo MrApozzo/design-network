@@ -17,7 +17,9 @@
     "foto": "piergiacomocastiglioni.jpg",
     "y": null,
     "scuole": [],
-    "collettivi": []
+    "collettivi": [
+      "Studio Caccia Dominioni-Castiglioni"
+    ]
   },
   {
     "nome": "Ettore Sottsass",
@@ -359,7 +361,9 @@
     "scuole": [
       "Razionalismo"
     ],
-    "collettivi": []
+    "collettivi": [
+      "Azucena"
+    ]
   },
   {
     "nome": "Gino Sarfatti",
@@ -567,7 +571,9 @@
     "foto": "liviocastiglioni.jpg",
     "y": null,
     "scuole": [],
-    "collettivi": []
+    "collettivi": [
+      "Studio Caccia Dominioni-Castiglioni"
+    ]
   },
   {
     "nome": "Giotto Stoppino",
@@ -606,7 +612,9 @@
     "bio": "Architetto e designer americano, con la moglie Ray ha rivoluzionato il design del mobile moderno. Pioniere nell'uso del compensato curvato e della fibra di vetro.",
     "foto": "charleseames.jpg",
     "y": null,
-    "scuole": ["Modernismo"],
+    "scuole": [
+      "Modernismo"
+    ],
     "collettivi": []
   },
   {
@@ -616,7 +624,9 @@
     "bio": "Designer e artista americana, moglie di Charles. Ha contribuito in modo fondamentale alla ricerca formale e cromatica dello studio Eames.",
     "foto": "rayeames.jpg",
     "y": null,
-    "scuole": ["Modernismo"],
+    "scuole": [
+      "Modernismo"
+    ],
     "collettivi": []
   },
   {
@@ -626,7 +636,39 @@
     "bio": "Architetto e designer veneziano, maestro nell'uso di vetro, cemento e legno. Padre di Tobia Scarpa, ha unito artigianalità e modernità con un linguaggio formale unico.",
     "foto": "carloscarpa.jpg",
     "y": null,
-    "scuole": ["Organicismo", "Razionalismo"],
+    "scuole": [
+      "Organicismo",
+      "Razionalismo"
+    ],
     "collettivi": []
+  },
+  {
+    "nome": "Luigi Caccia Dominioni",
+    "nato": 1913,
+    "morto": 2016,
+    "bio": "Architetto e designer milanese, cofondatore di Azucena. Ha condiviso lo studio con i fratelli Castiglioni nei primi anni di carriera, prima di esercitare per tutta la vita nella casa di famiglia in Piazza Sant'Ambrogio.",
+    "foto": "cacciadominioni.jpg",
+    "y": null,
+    "scuole": [
+      "Razionalismo"
+    ],
+    "collettivi": [
+      "Azucena",
+      "Studio Caccia Dominioni-Castiglioni"
+    ]
+  },
+  {
+    "nome": "Corrado Corradi Dell'Acqua",
+    "nato": 1921,
+    "morto": 2013,
+    "bio": "Architetto e designer milanese, cofondatore di Azucena insieme a Caccia Dominioni e Gardella.",
+    "foto": "corradidellacqua.jpg",
+    "y": null,
+    "scuole": [
+      "Razionalismo"
+    ],
+    "collettivi": [
+      "Azucena"
+    ]
   }
 ]

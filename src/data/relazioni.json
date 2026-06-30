@@ -257,5 +257,40 @@
     "tipo": "stesso_periodo",
     "categoria": "professionale",
     "descrizione": "Entrambi figure eccentriche e poetiche dell'architettura e del design italiano, con un approccio organico e artigianale"
+  },
+  {
+    "designer_a": "Luigi Caccia Dominioni",
+    "designer_b": "Ignazio Gardella",
+    "tipo": "fondatori Azucena",
+    "categoria": "professionale",
+    "descrizione": "Cofondatori di Azucena nel 1947 insieme a Corrado Corradi Dell'Acqua"
+  },
+  {
+    "designer_a": "Luigi Caccia Dominioni",
+    "designer_b": "Corrado Corradi Dell'Acqua",
+    "tipo": "fondatori Azucena",
+    "categoria": "professionale",
+    "descrizione": "Cofondatori di Azucena nel 1947 insieme a Ignazio Gardella"
+  },
+  {
+    "designer_a": "Ignazio Gardella",
+    "designer_b": "Corrado Corradi Dell'Acqua",
+    "tipo": "fondatori Azucena",
+    "categoria": "professionale",
+    "descrizione": "Cofondatori di Azucena nel 1947 insieme a Luigi Caccia Dominioni"
+  },
+  {
+    "designer_a": "Luigi Caccia Dominioni",
+    "designer_b": "Livio Castiglioni",
+    "tipo": "studio condiviso",
+    "categoria": "professionale",
+    "descrizione": "Hanno condiviso lo studio in Corso di Porta Nuova nei primi anni di carriera di Caccia Dominioni"
+  },
+  {
+    "designer_a": "Luigi Caccia Dominioni",
+    "designer_b": "Pier Giacomo Castiglioni",
+    "tipo": "studio condiviso",
+    "categoria": "professionale",
+    "descrizione": "Hanno condiviso lo studio in Corso di Porta Nuova nei primi anni di carriera di Caccia Dominioni"
   }
 ]

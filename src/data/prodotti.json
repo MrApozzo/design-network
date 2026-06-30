@@ -1539,6 +1539,94 @@
     "foto": "gardella-digamma.jpg"
   },
   {
+    "nome": "Arenzano",
+    "anno": 1956,
+    "designer": "Ignazio Gardella",
+    "azienda": "Azucena",
+    "azienda_attuale": "Tacchini",
+    "categoria": "lampada",
+    "foto": "gardella-arenzano.jpg"
+  },
+  {
+    "nome": "Paolina",
+    "anno": 1958,
+    "designer": "Ignazio Gardella",
+    "azienda": "Azucena",
+    "azienda_attuale": "Tacchini",
+    "categoria": "lampada",
+    "foto": "gardella-paolina.jpg"
+  },
+  {
+    "nome": "P10",
+    "anno": 1957,
+    "designer": "Ignazio Gardella",
+    "azienda": "Azucena",
+    "azienda_attuale": "Tacchini",
+    "categoria": "poltrona",
+    "foto": "gardella-p10.jpg"
+  },
+  {
+    "nome": "Lido",
+    "anno": 1959,
+    "designer": "Ignazio Gardella",
+    "azienda": "Azucena",
+    "azienda_attuale": "Tacchini",
+    "categoria": "poltrona",
+    "foto": "gardella-lido.jpg"
+  },
+  {
+    "nome": "Lido",
+    "anno": 1959,
+    "designer": "Ignazio Gardella",
+    "azienda": "Azucena",
+    "azienda_attuale": "Tacchini",
+    "categoria": "divano",
+    "foto": "gardella-lidodivano.jpg"
+  },
+  {
+    "nome": "Blevio",
+    "anno": 1958,
+    "designer": "Ignazio Gardella",
+    "azienda": "Azucena",
+    "azienda_attuale": "Tacchini",
+    "categoria": "tavolo",
+    "foto": "gardella-blevio.jpg"
+  },
+  {
+    "nome": "Stand",
+    "anno": 1957,
+    "designer": "Ignazio Gardella",
+    "azienda": "Azucena",
+    "azienda_attuale": "Tacchini",
+    "categoria": "tavolo",
+    "foto": "gardella-stand.jpg"
+  },
+  {
+    "nome": "LB2",
+    "anno": 1956,
+    "designer": "Ignazio Gardella",
+    "azienda": "Azucena",
+    "categoria": "libreria",
+    "foto": "gardella-lib2.jpg"
+  },
+  {
+    "nome": "Applique ottone e doppio vetro",
+    "anno": 1956,
+    "designer": "Ignazio Gardella",
+    "azienda": "Azucena",
+    "azienda_attuale": "Tacchini",
+    "categoria": "lampada",
+    "foto": "gardella-appliqueottonedoppiovetro.jpg"
+  },
+  {
+    "nome": "Tavolo a piedi regolabili",
+    "anno": 1958,
+    "designer": "Ignazio Gardella",
+    "azienda": "Azucena",
+    "categoria": "tavolo",
+    "foto": "gardella-tavolopiediregolabili.jpg"
+  },
+  {
     "nome": "Plia",
     "anno": 1969,
     "designer": "Giancarlo Piretti",
@@ -1916,5 +2004,79 @@
     "azienda": "Venini",
     "categoria": "vaso",
     "foto": "scarpa-samo.jpg"
+  },
+  {
+    "nome": "Toro",
+    "anno": 1953,
+    "designer": "Luigi Caccia Dominioni",
+    "azienda": "Azucena",
+    "categoria": "pouf",
+    "foto": "cacciadominioni-toro.jpg"
+  },
+  {
+    "nome": "Catilina",
+    "anno": 1958,
+    "designer": "Luigi Caccia Dominioni",
+    "azienda": "Azucena",
+    "categoria": "sedia",
+    "foto": "cacciadominioni-catilina.jpg"
+  },
+  {
+    "nome": "Monachella",
+    "anno": 1956,
+    "designer": "Luigi Caccia Dominioni",
+    "azienda": "Azucena",
+    "categoria": "lampada",
+    "foto": "cacciadominioni-monachella.jpg"
+  },
+  {
+    "nome": "Imbuto",
+    "anno": 1953,
+    "designer": "Luigi Caccia Dominioni",
+    "azienda": "Azucena",
+    "categoria": "lampada",
+    "foto": "cacciadominioni-imbuto.jpg"
+  },
+  {
+    "nome": "Lariana",
+    "anno": 1958,
+    "designer": "Luigi Caccia Dominioni",
+    "azienda": "Azucena",
+    "categoria": "sedia",
+    "foto": "cacciadominioni-lariana.jpg"
+  },
+  {
+    "nome": "De Nos",
+    "anno": 1987,
+    "designer": "Angelo Mangiarotti",
+    "azienda": "Skipper",
+    "categoria": "tavolo",
+    "foto": "mangiarotti-denostavolo.jpg"
+  },
+  {
+    "nome": "Libreria a tre montanti",
+    "anno": 1956,
+    "designer": "Ignazio Gardella",
+    "azienda": "Azucena",
+    "categoria": "libreria",
+    "foto": "gardella-libreriatremontanti.jpg"
+  },
+  {
+    "nome": "Prisma",
+    "anno": 1956,
+    "designer": "Ignazio Gardella",
+    "azienda": "Azucena",
+    "azienda_attuale": "Tacchini",
+    "categoria": "lampada",
+    "foto": "gardella-prisma.jpg",
+    "foto_dettaglio": ["gardella-prisma2.jpg"]
+  },
+  {
+    "nome": "Quatour",
+    "anno": 1973,
+    "designer": "Carlo Scarpa",
+    "azienda": "Stildomus",
+    "categoria": "tavolo",
+    "foto": "scarpa-quatour.jpg"
   }
 ]

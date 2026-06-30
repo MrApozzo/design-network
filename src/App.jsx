@@ -193,8 +193,30 @@ function App() {
   const [ridisegnaFn, setRidisegnaFn] = useState(null)
   const [haInteragito, setHaInteragito] = useState(true)
   const [bioEspansa, setBioEspansa] = useState(false)
+  const [galleriaIndice, setGalleriaIndice] = useState(0)
+  const [galleriaFullscreen, setGalleriaFullscreen] = useState(false)
+  const [galleriaOrigin, setGalleriaOrigin] = useState(null)
+  const [galleriaAnimata, setGalleriaAnimata] = useState(false)
+  const thumbnailRef = useRef(null)
+  const touchGalleriaRef = useRef(null)
+
+  function apriGalleriaFullscreen() {
+    if (thumbnailRef.current) {
+      const r = thumbnailRef.current.getBoundingClientRect()
+      setGalleriaOrigin({ top: r.top, left: r.left, width: r.width, height: r.height })
+    }
+    setGalleriaFullscreen(true)
+    setGalleriaAnimata(false)
+    requestAnimationFrame(() => requestAnimationFrame(() => setGalleriaAnimata(true)))
+  }
+
+  function chiudiGalleriaFullscreen() {
+    setGalleriaAnimata(false)
+    setTimeout(() => setGalleriaFullscreen(false), 280)
+  }
   const [aziendaAttiva, setAziendaAttiva] = useState(null)
   const aziendaAttivaRef = useRef(null)
+  const aziendaGlobaleRef = useRef(false)
   const [ricerca, setRicerca] = useState("")
   const [nodoEvidenziato, setNodoEvidenziato] = useState(null)
   const nodoEvidenziatoRef = useRef(null)
@@ -858,7 +880,17 @@ function App() {
         const evid = nodoEvidenziatoRef.current
         const azFiltro = aziendaAttivaRef.current
         const designerAttuale = evid || designerCliccato
-        if (azFiltro && designerAttuale) {
+        if (azFiltro && aziendaGlobaleRef.current) {
+          if (attr.tipo === "prodotto") {
+            alphaTarget = (attr.dati && (attr.dati.azienda === azFiltro || attr.dati.azienda_attuale === azFiltro)) ? 1 : 0.08
+          } else if (attr.tipo === "designer") {
+            const haProdottoAzienda = graph.neighbors(node).some(n => {
+              const na = graph.getNodeAttribute(n, "dati")
+              return na && (na.azienda === azFiltro || na.azienda_attuale === azFiltro)
+            })
+            alphaTarget = haProdottoAzienda ? 1 : 0.08
+          }
+        } else if (azFiltro && designerAttuale) {
           if (attr.tipo === "prodotto") {
             const isDelDesigner = graph.hasNode(designerAttuale) && graph.neighbors(designerAttuale).includes(node)
             alphaTarget = (attr.dati && (attr.dati.azienda === azFiltro || attr.dati.azienda_attuale === azFiltro) && isDelDesigner) ? 1 : 0.08
@@ -1292,6 +1324,7 @@ function App() {
       } else {
         prodottoCliccato = nodeId
         setPannelloDesigner({ ...attr.dati, _tipo: "prodotto" })
+        setGalleriaIndice(0); setGalleriaFullscreen(false)
         requestAnimationFrame(() => setPannelloVisibile(true))
       }
       richiediDisegnoOverlay(18)
@@ -1425,6 +1458,8 @@ function App() {
             } else {
               designerCliccato = trovato.node
               setDesignerAttivo(trovato.node)
+              nodoEvidenziatoRef.current = null; setNodoEvidenziato(null)
+              aziendaAttivaRef.current = null; aziendaGlobaleRef.current = false
               setPannelloDesigner({ ...trovato.attr.dati, _tipo: "designer" }); setBioEspansa(false); setAziendaAttiva(null)
               requestAnimationFrame(() => setPannelloVisibile(true))
               graph.forEachEdge((edge, attr) => { if (attr.tipo === "relazione") graph.setEdgeAttribute(edge, "attivo", false) })
@@ -1438,7 +1473,10 @@ function App() {
             }
             prodottoCliccato = trovato.node
             ultimoProdottoHover = trovato.node
+            nodoEvidenziatoRef.current = null; setNodoEvidenziato(null)
+            aziendaAttivaRef.current = null; setAziendaAttiva(null); aziendaGlobaleRef.current = false
             setPannelloDesigner({ ...trovato.attr.dati, _tipo: "prodotto" })
+            setGalleriaIndice(0); setGalleriaFullscreen(false)
             requestAnimationFrame(() => setPannelloVisibile(true))
             cameraPrimaDiClick = camera.getState()
             const pAttr = graph.getNodeAttributes(trovato.node)
@@ -1489,13 +1527,13 @@ function App() {
           if (isMobile && nodoEvidenziatoRef.current) {
             ultimoProdottoHover = null
             nodoEvidenziatoRef.current = null; setNodoEvidenziato(null)
-            aziendaAttivaRef.current = null; setAziendaAttiva(null)
+            aziendaAttivaRef.current = null; setAziendaAttiva(null); aziendaGlobaleRef.current = false
             if (cameraPrimaDiClick) { animaCamera(cameraPrimaDiClick, 500); cameraPrimaDiClick = null }
             richiediDisegnoOverlay(18)
             return
           }
           if (isMobile && aziendaAttivaRef.current) {
-            aziendaAttivaRef.current = null; setAziendaAttiva(null)
+            aziendaAttivaRef.current = null; setAziendaAttiva(null); aziendaGlobaleRef.current = false
             richiediDisegnoOverlay(18)
             return
           }
@@ -1557,6 +1595,7 @@ function App() {
     const nuova = aziendaAttiva === az ? null : az
     setAziendaAttiva(nuova)
     aziendaAttivaRef.current = nuova
+    aziendaGlobaleRef.current = !!(nuova && pannelloDesigner && pannelloDesigner._tipo === "prodotto")
     if (ridisegnaFn) ridisegnaFn()
   }
 
@@ -1742,11 +1781,42 @@ function App() {
           <div style={{ flex: 1, overflowY: "auto", padding: window.innerWidth < 768 ? "16px 16px 24px" : "20px 28px 32px" }}>
             {window.innerWidth < 768 ? (
               <div style={{ display: "flex", gap: 14, marginBottom: 16 }}>
-                <div style={{ width: 90, height: 90, flexShrink: 0, overflow: "hidden", background: scuro ? "#2a2a2a" : "#f5f5f5", borderRadius: 8 }}>
-                  <img src={`${import.meta.env.BASE_URL}immagini/${pannelloDesigner.foto}`} alt={pannelloDesigner.nome}
-                    style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
-                    onError={(e) => { e.target.style.display = "none" }} />
-                </div>
+                {(() => {
+                  const galleria = [pannelloDesigner.foto, ...(pannelloDesigner.foto_dettaglio || [])]
+                  const idx = Math.min(galleriaIndice, galleria.length - 1)
+                  return (
+                    <div style={{ width: 90, flexShrink: 0 }}>
+                      <div ref={thumbnailRef}
+                        onTouchStart={(e) => { touchGalleriaRef.current = { x: e.touches[0].clientX, y: e.touches[0].clientY, gestito: false } }}
+                        onTouchEnd={(e) => {
+                          const start = touchGalleriaRef.current
+                          if (!start) return
+                          start.gestito = true
+                          const dx = e.changedTouches[0].clientX - start.x
+                          const dy = e.changedTouches[0].clientY - start.y
+                          if (Math.abs(dx) > 16 && Math.abs(dx) > Math.abs(dy)) {
+                            if (dx < 0) setGalleriaIndice((idx + 1) % galleria.length)
+                            else setGalleriaIndice((idx - 1 + galleria.length) % galleria.length)
+                          } else {
+                            apriGalleriaFullscreen()
+                          }
+                        }}
+                        onClick={() => { if (!touchGalleriaRef.current || !touchGalleriaRef.current.gestito) apriGalleriaFullscreen() }}
+                        style={{ width: 90, height: 90, overflow: "hidden", background: scuro ? "#2a2a2a" : "#f5f5f5", borderRadius: 8, cursor: "pointer" }}>
+                        <img src={`${import.meta.env.BASE_URL}immagini/${galleria[idx]}`} alt={pannelloDesigner.nome}
+                          style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
+                          onError={(e) => { e.target.style.display = "none" }} />
+                      </div>
+                      {galleria.length > 1 && (
+                        <div style={{ display: "flex", justifyContent: "center", gap: 4, marginTop: 5 }}>
+                          {galleria.map((_, i) => (
+                            <span key={i} style={{ width: 4, height: 4, borderRadius: "50%", background: i === idx ? (scuro ? "#fff" : "#1a1a1a") : (scuro ? "#444" : "#ddd") }} />
+                          ))}
+                        </div>
+                      )}
+                    </div>
+                  )
+                })()}
                 <div style={{ flex: 1, display: "flex", flexDirection: "column", justifyContent: "center" }}>
                   <div style={{ fontFamily: "'Roboto Serif', serif", fontWeight: 500, fontStyle: "italic", fontSize: 17, color: scuro ? "#fff" : "#1a1a1a", lineHeight: 1.2 }}>
                     {pannelloDesigner.nome}
@@ -1795,11 +1865,35 @@ function App() {
                     </button>
                   </div>
                 </div>
-                <div style={{ width: "100%", aspectRatio: "1", overflow: "hidden", background: scuro ? "#2a2a2a" : "#f5f5f5", marginTop: 20, marginBottom: 24 }}>
-                  <img src={`${import.meta.env.BASE_URL}immagini/${pannelloDesigner.foto}`} alt={pannelloDesigner.nome}
-                    style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
-                    onError={(e) => { e.target.style.display = "none" }} />
-                </div>
+                {(() => {
+                  const galleria = [pannelloDesigner.foto, ...(pannelloDesigner.foto_dettaglio || [])]
+                  const idx = Math.min(galleriaIndice, galleria.length - 1)
+                  return (
+                    <div style={{ marginTop: 20, marginBottom: 24 }}>
+                      <div style={{ position: "relative", width: "100%", aspectRatio: "1", overflow: "hidden", background: scuro ? "#2a2a2a" : "#f5f5f5" }}>
+                        <img src={`${import.meta.env.BASE_URL}immagini/${galleria[idx]}`} alt={pannelloDesigner.nome}
+                          style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
+                          onError={(e) => { e.target.style.display = "none" }} />
+                        {galleria.length > 1 && (
+                          <>
+                            <button onClick={() => setGalleriaIndice((idx - 1 + galleria.length) % galleria.length)}
+                              style={{ position: "absolute", top: "50%", left: 8, transform: "translateY(-50%)", background: "rgba(0,0,0,0.4)", border: "none", color: "#fff", width: 28, height: 28, borderRadius: "50%", cursor: "pointer", fontSize: 14 }}>‹</button>
+                            <button onClick={() => setGalleriaIndice((idx + 1) % galleria.length)}
+                              style={{ position: "absolute", top: "50%", right: 8, transform: "translateY(-50%)", background: "rgba(0,0,0,0.4)", border: "none", color: "#fff", width: 28, height: 28, borderRadius: "50%", cursor: "pointer", fontSize: 14 }}>›</button>
+                          </>
+                        )}
+                      </div>
+                      {galleria.length > 1 && (
+                        <div style={{ display: "flex", justifyContent: "center", gap: 6, marginTop: 10 }}>
+                          {galleria.map((_, i) => (
+                            <button key={i} onClick={() => setGalleriaIndice(i)}
+                              style={{ width: 6, height: 6, borderRadius: "50%", border: "none", padding: 0, cursor: "pointer", background: i === idx ? (scuro ? "#fff" : "#1a1a1a") : (scuro ? "#444" : "#ddd") }} />
+                          ))}
+                        </div>
+                      )}
+                    </div>
+                  )
+                })()}
               </div>
             )}
 
@@ -1909,6 +2003,62 @@ function App() {
             )}
           </div>
         </div>
+        )
+      })()}
+
+      {galleriaFullscreen && pannelloDesigner && galleriaOrigin && (() => {
+        const galleria = [pannelloDesigner.foto, ...(pannelloDesigner.foto_dettaglio || [])]
+        const idx = Math.min(galleriaIndice, galleria.length - 1)
+        const finaleW = Math.min(window.innerWidth * 0.9, 480)
+        const finaleH = Math.min(window.innerHeight * 0.7, 480)
+        const frameStyle = galleriaAnimata
+          ? { position: "fixed", top: "50%", left: "50%", width: finaleW, height: finaleH, transform: "translate(-50%, -50%)" }
+          : { position: "fixed", top: galleriaOrigin.top, left: galleriaOrigin.left, width: galleriaOrigin.width, height: galleriaOrigin.height, transform: "translate(0, 0)" }
+        return (
+          <div onClick={chiudiGalleriaFullscreen} style={{
+            position: "fixed", inset: 0, zIndex: 300,
+            background: galleriaAnimata ? "rgba(232,232,232,0.85)" : "rgba(232,232,232,0)",
+            backdropFilter: galleriaAnimata ? "blur(4px)" : "blur(0px)",
+            transition: "background 0.28s ease, backdrop-filter 0.28s ease",
+          }}>
+            <div
+              onTouchStart={(e) => { touchGalleriaRef.current = { x: e.touches[0].clientX, y: e.touches[0].clientY, gestito: false } }}
+              onTouchEnd={(e) => {
+                const start = touchGalleriaRef.current
+                if (!start) return
+                start.gestito = true
+                const dx = e.changedTouches[0].clientX - start.x
+                const dy = e.changedTouches[0].clientY - start.y
+                if (Math.abs(dx) > 30 && Math.abs(dx) > Math.abs(dy)) {
+                  if (dx < 0) setGalleriaIndice((idx + 1) % galleria.length)
+                  else setGalleriaIndice((idx - 1 + galleria.length) % galleria.length)
+                }
+              }}
+              style={{
+                ...frameStyle,
+                overflow: "hidden",
+                borderRadius: galleriaAnimata ? 16 : 8,
+                boxShadow: galleriaAnimata ? "0 12px 48px rgba(0,0,0,0.18)" : "none",
+                background: "#ffffff",
+                transition: "all 0.28s cubic-bezier(0.4, 0, 0.2, 1)",
+              }}>
+              <img src={`${import.meta.env.BASE_URL}immagini/${galleria[idx]}`} alt={pannelloDesigner.nome}
+                onClick={(e) => e.stopPropagation()}
+                style={{ width: "100%", height: "100%", objectFit: "contain", display: "block" }} />
+            </div>
+            <button onClick={chiudiGalleriaFullscreen}
+              style={{ position: "fixed", top: 20, right: 20, background: "none", border: "none", color: "#444", fontSize: 26, cursor: "pointer", lineHeight: 1, opacity: galleriaAnimata ? 1 : 0, transition: "opacity 0.2s ease" }}>
+              &times;
+            </button>
+            {galleria.length > 1 && (
+              <div style={{ position: "fixed", bottom: 24, left: "50%", transform: "translateX(-50%)", display: "flex", gap: 8, opacity: galleriaAnimata ? 1 : 0, transition: "opacity 0.2s ease" }}>
+                {galleria.map((_, i) => (
+                  <span key={i} onClick={(e) => { e.stopPropagation(); setGalleriaIndice(i) }}
+                    style={{ width: 7, height: 7, borderRadius: "50%", cursor: "pointer", background: i === idx ? "#1a1a1a" : "rgba(0,0,0,0.2)" }} />
+                ))}
+              </div>
+            )}
+          </div>
         )
       })()}
 
