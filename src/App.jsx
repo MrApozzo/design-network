@@ -17,7 +17,7 @@ const STILE = {
   bordo_colore: "#222222",
   bordo_spessore: 0.2,
   griglia_pallino_colore: "#d8d8d8",
-  griglia_label_colore: "#aaaaaa",
+  griglia_label_colore: "#5a5a5a",
   edge_prodotto_colore: "#dddddd",
   edge_relazione_colore: "#888888",
   sfondo_colore: "#e8e8e8",
@@ -60,8 +60,8 @@ const STILE = {
   zoom_label_designer_max: 14,
   zoom_label_prodotto_max: 10,
   zoom_label_soglia: window.innerWidth < 768 ? 0.65 : 0.4,
-  zoom_griglia_min: 1.4,
-  zoom_griglia_max: window.innerWidth < 768 ? 1.8 : 3,
+  zoom_griglia_min: window.innerWidth < 768 ? 0.9 : 1.5,
+  zoom_griglia_max: window.innerWidth < 768 ? 3 : 4,
   zoom_viewport_ref: 800,
 
   // --- Transizione tra viste ---
@@ -139,7 +139,6 @@ const ANNO_MIN = 1880
 const ANNO_MAX = 2020
 const X_MIN = -120
 const X_MAX = 120
-const DECENNI = [1880,1890,1900,1910,1920,1930,1940,1950,1960,1970,1980,1990,2000,2010,2020]
 const ANNI_SINGOLI = Array.from({length: (2020-1880)+1}, (_, i) => 1880 + i)
 const MARGINE_X = 2
 const MARGINE_Y = 2
@@ -191,7 +190,9 @@ function App() {
   const [vistaCorrente, setVistaCorrente] = useState("designer")
   const [animaTransizioneFn, setAnimaTransizioneFn] = useState(null)
   const [ridisegnaFn, setRidisegnaFn] = useState(null)
-  const [haInteragito, setHaInteragito] = useState(true)
+  const topBarRef = useRef(null)
+  const sottotitoloRef = useRef(null)
+  const [menuApertoMobile, setMenuApertoMobile] = useState(false)
   const [bioEspansa, setBioEspansa] = useState(false)
   const [galleriaIndice, setGalleriaIndice] = useState(0)
   const [galleriaFullscreen, setGalleriaFullscreen] = useState(false)
@@ -221,7 +222,6 @@ function App() {
   const [nodoEvidenziato, setNodoEvidenziato] = useState(null)
   const nodoEvidenziatoRef = useRef(null)
   const [centraFn, setCentraFn] = useState(null)
-  const haInteragitoRef = useRef(false)
 
   useEffect(() => {
     document.body.style.margin = "0"
@@ -560,6 +560,7 @@ function App() {
       const coords = ds.map((d) => ({ x: graph.getNodeAttribute(d, "x"), y: graph.getNodeAttribute(d, "y") }))
       let centroX = coords.reduce((s, c) => s + c.x, 0) / coords.length
       let centroY = coords.reduce((s, c) => s + c.y, 0) / coords.length
+      const centroYTimeline = centroY
       const n = lista.length
       const raggioShift = calcolaRaggio(n) * STILE.anello_raggio_esterno + 1
       if (ds.length === 2) {
@@ -586,6 +587,13 @@ function App() {
 
       const settoriM = calcolaSettoriDinamici(listaOrdinata, true)
 
+      const conteggioPerAnnoM = {}
+      listaOrdinata.forEach((p) => {
+        const a = p.anno || 1900
+        conteggioPerAnnoM[a] = (conteggioPerAnnoM[a] || 0) + 1
+      })
+      const indiceCorrentePerAnnoM = {}
+
       listaOrdinata.forEach((p, i) => {
         const macro = getMacro(p.categoria)
         const sett = settoriM[macro]
@@ -600,8 +608,14 @@ function App() {
         const prodottoId = `prodotto:multi:${p.nome}:${i}`
         const orbitaX = centroX + Math.cos(angolo) * raggio
         const orbitaY = centroY + Math.sin(angolo) * raggio
-        const timelineX = annoToX(p.anno || 1900)
-        const timelineY = centroY
+
+        const anno = p.anno || 1900
+        const nStessoAnno = conteggioPerAnnoM[anno]
+        const idxAnno = indiceCorrentePerAnnoM[anno] || 0
+        indiceCorrentePerAnnoM[anno] = idxAnno + 1
+        const offset45 = nStessoAnno > 1 ? (idxAnno - (nStessoAnno - 1) / 2) * 0.5 : 0
+        const timelineX = annoToX(anno) + offset45
+        const timelineY = centroYTimeline - offset45
 
         graph.addNode(prodottoId, {
           label: p.nome, size: STILE.prodotto_size,
@@ -631,7 +645,7 @@ function App() {
       zoomingRatio: 1.7,
       zoomDuration: 150,
       inertiaDuration: 5,
-      inertiaRatio: 0.2,  
+      inertiaRatio: 0,
       enableCameraRotation: false,
       nodeReducer: (node, data) => ({
         ...data, hidden: false, label: "",
@@ -741,12 +755,24 @@ function App() {
       const collegati = nodiCollegatiAlHover(nodoAttivo)
       const hoverAttivo = nodoAttivo !== null
 
-      const tGriglia = Math.pow(t, 10)
+      const tGriglia = Math.pow(Math.min(1, t), 10)
       const grigliaRaggio = lerp(STILE.zoom_griglia_min, STILE.zoom_griglia_max, tGriglia)
       const yGrafoMin = Math.min(Y_MIN, contenutoYMin) - MARGINE_Y
       const yGrafoMax = Math.max(Y_MAX, contenutoYMax) + MARGINE_Y
       const ogniN = t < 0.3 ? 2 : 1
       const grigliaRaggioEffettivo = t < 0.3 ? grigliaRaggio * 0.7 : grigliaRaggio
+
+      const padLati = isMobile ? 10 : 16
+      const padBasso = isMobile ? 10 : 16
+      const padSopra = isMobile
+        ? (topBarRef.current ? topBarRef.current.getBoundingClientRect().height + 22 : 100)
+        : 40
+
+      ctx.save()
+      ctx.beginPath()
+      ctx.rect(padLati, padSopra, Math.max(0, w - padLati * 2), Math.max(0, h - padSopra - padBasso))
+      ctx.clip()
+
       ANNI_SINGOLI.forEach((anno, ai) => {
         if (ogniN > 1 && ai % ogniN !== 0) return
         const gx = annoToX(anno)
@@ -759,14 +785,6 @@ function App() {
           ctx.fillStyle = STILE.griglia_pallino_colore
           ctx.fill()
         }
-      })
-
-      DECENNI.forEach((anno) => {
-        const screen = renderer.graphToViewport({ x: annoToX(anno), y: 0 })
-        ctx.font = "300 10px Roboto"
-        ctx.fillStyle = STILE.griglia_label_colore
-        ctx.textAlign = "center"
-        ctx.fillText(anno, screen.x, 30)
       })
 
       if (vistaInterna === "timeline") {
@@ -822,35 +840,46 @@ function App() {
         })
       }
 
+      amoebaAlphaAnimata = lerp(amoebaAlphaAnimata, transizioneAttiva ? 0 : 1, STILE.lerp_velocita)
       gruppiCollettivi.forEach(({ nome, nodi }) => {
-        const punti = nodi
-          .filter((n) => graph.hasNode(n))
-          .map((n) => {
-            const a = graph.getNodeAttributes(n)
-            const p = renderer.graphToViewport({ x: a.x, y: a.y })
-            const r = animated[n]?.r ?? STILE.zoom_prodotto_min
-            return { x: p.x, y: p.y, r }
-          })
-        if (punti.length < 2) return
+        if (amoebaAlphaAnimata < 0.01) return
+        const nodiValidi = nodi.filter((n) => graph.hasNode(n))
+        if (nodiValidi.length < 2) return
 
-        const cx = punti.reduce((s, p) => s + p.x, 0) / punti.length
-        const cy = punti.reduce((s, p) => s + p.y, 0) / punti.length
-        const pad = 20
+        // Ordine dei vertici stabile, calcolato sulla posizione di destinazione
+        // della vista corrente (non su quella live interpolata): durante la
+        // transizione i punti possono incrociarsi in angolo rispetto al centro,
+        // e ri-ordinare ogni frame causava un giravolta del contorno.
+        const ordineStabile = nodiValidi.map((n) => {
+          const a = graph.getNodeAttributes(n)
+          const tx = vistaInterna === "timeline" ? a.timelineX : a.orbitaX
+          const ty = vistaInterna === "timeline" ? a.timelineY : a.orbitaY
+          return { n, tx, ty }
+        })
+        const tcx = ordineStabile.reduce((s, p) => s + p.tx, 0) / ordineStabile.length
+        const tcy = ordineStabile.reduce((s, p) => s + p.ty, 0) / ordineStabile.length
+        ordineStabile.forEach((p) => { p.angoloStabile = Math.atan2(p.ty - tcy, p.tx - tcx) })
+        ordineStabile.sort((a, b) => a.angoloStabile - b.angoloStabile)
 
-        const angolati = punti.map((p) => ({
-          ...p,
-          angolo: Math.atan2(p.y - cy, p.x - cx),
-        }))
-        angolati.sort((a, b) => a.angolo - b.angolo)
+        const angolati = ordineStabile.map(({ n }) => {
+          const a = graph.getNodeAttributes(n)
+          const p = renderer.graphToViewport({ x: a.x, y: a.y })
+          const r = animated[n]?.r ?? STILE.zoom_prodotto_min
+          return { x: p.x, y: p.y, r }
+        })
+
+        const cx = angolati.reduce((s, p) => s + p.x, 0) / angolati.length
+        const cy = angolati.reduce((s, p) => s + p.y, 0) / angolati.length
 
         const espansi = angolati.map((p) => {
           const dx = p.x - cx, dy = p.y - cy
           const dist = Math.sqrt(dx * dx + dy * dy)
+          const pad = p.r * 2 + 6
           const scala = (dist + p.r + pad) / Math.max(dist, 0.01)
           return { x: cx + dx * scala, y: cy + dy * scala }
         })
 
-        ctx.globalAlpha = 0.4
+        ctx.globalAlpha = 0.4 * amoebaAlphaAnimata
         ctx.beginPath()
         const primo = espansi[0]
         const ultimo = espansi[espansi.length - 1]
@@ -914,16 +943,6 @@ function App() {
             alphaTarget = (attr.dati && (attr.dati.azienda === azFiltro || attr.dati.azienda_attuale === azFiltro) && isDelDesigner) ? 1 : 0.08
           } else if (attr.tipo === "designer") {
             alphaTarget = node === designerCliccato ? 1 : 0.08
-          }
-        } else if (vistaInterna === "timeline" && annoBloccato) {
-          if (attr.tipo === "prodotto") {
-            alphaTarget = attr.dati && attr.dati.anno === annoBloccato ? 1 : 0.2
-          } else if (attr.tipo === "designer") {
-            const haProdottoAnno = graph.neighbors(node).some(n => {
-              const na = graph.getNodeAttribute(n, "dati")
-              return na && na.anno === annoBloccato
-            })
-            alphaTarget = haProdottoAnno ? 1 : 0.2
           }
         } else if (prodottoCliccato) {
           const designersDelCliccato = graph.hasNode(prodottoCliccato)
@@ -1134,18 +1153,47 @@ function App() {
         ctx.globalAlpha = 1
       })
 
+      ctx.restore()
+
+      {
+        const a0 = renderer.graphToViewport({ x: annoToX(1880), y: 0 })
+        const a1 = renderer.graphToViewport({ x: annoToX(2020), y: 0 })
+        const pxPerAnno = Math.abs(a1.x - a0.x) / (2020 - 1880)
+        const passoMinPx = isMobile ? 40 : 56
+        const passiCandidati = [1, 2, 5, 10, 20, 50]
+        let passoAnno = 50
+        for (const p of passiCandidati) {
+          if (pxPerAnno * p >= passoMinPx) { passoAnno = p; break }
+        }
+        const assePosY = padSopra - 14
+        ctx.save()
+        ctx.beginPath()
+        ctx.rect(0, 0, w, padSopra)
+        ctx.clip()
+        ctx.font = isMobile ? "500 11px Roboto" : "500 12px Roboto"
+        ctx.fillStyle = isMobile ? "#a8a8a8" : "#6a6a6a"
+        ctx.textAlign = "center"
+        const annoInizio = Math.ceil(1880 / passoAnno) * passoAnno
+        for (let anno = annoInizio; anno <= 2020; anno += passoAnno) {
+          const screen = renderer.graphToViewport({ x: annoToX(anno), y: 0 })
+          if (screen.x < padLati - 20 || screen.x > w - padLati + 20) continue
+          ctx.fillText(anno, screen.x, assePosY)
+        }
+        ctx.restore()
+      }
+
       if (mouseNelCanvas) {
-        mouseTrailX = lerp(mouseTrailX, mouseX, STILE.cursore_alone_velocita)
-        mouseTrailY = lerp(mouseTrailY, mouseY, STILE.cursore_alone_velocita)
         const suElemento = !!(prodottoHoverAttivo || nodoHoverAttivo)
         if (suElemento) {
           ctx.globalAlpha = 0.35
           ctx.beginPath()
-          ctx.arc(mouseTrailX, mouseTrailY, STILE.cursore_alone_raggio, 0, Math.PI * 2)
+          ctx.arc(mouseX, mouseY, STILE.cursore_alone_raggio, 0, Math.PI * 2)
           ctx.fillStyle = STILE.cursore_alone_colore
           ctx.fill()
           ctx.globalAlpha = 1
         } else {
+          mouseTrailX = lerp(mouseTrailX, mouseX, STILE.cursore_alone_velocita)
+          mouseTrailY = lerp(mouseTrailY, mouseY, STILE.cursore_alone_velocita)
           ctx.beginPath()
           ctx.arc(mouseTrailX, mouseTrailY, STILE.cursore_alone_raggio, 0, Math.PI * 2)
           ctx.strokeStyle = STILE.cursore_alone_colore
@@ -1187,20 +1235,87 @@ function App() {
 
     const camera = renderer.getCamera()
     let clamping = false
+
+    // Clamp preciso in coordinate-grafo: il riquadro visibile non può uscire
+    // dall'area dove esistono i pallini di griglia. Ricalcolato dai dati reali
+    // a ogni chiamata, quindi resta corretto anche se la griglia cresce
+    // (più designer/prodotti => contenutoYMin/Max più ampi).
+    function clampCameraAllaGriglia(state) {
+      const cRect = container.getBoundingClientRect()
+      const w = cRect.width, h = cRect.height
+      if (w === 0 || h === 0) return
+
+      renderer.refresh()
+
+      const margineYExtra = 6
+      const dataXMin = X_MIN - MARGINE_X, dataXMax = X_MAX + MARGINE_X
+      const dataYMin = Math.min(Y_MIN, contenutoYMin) - MARGINE_Y - margineYExtra
+      const dataYMax = Math.max(Y_MAX, contenutoYMax) + MARGINE_Y + margineYExtra
+
+      const pTL = renderer.graphToViewport({ x: dataXMin, y: dataYMin })
+      const pBR = renderer.graphToViewport({ x: dataXMax, y: dataYMax })
+      const bxMin = Math.min(pTL.x, pBR.x), bxMax = Math.max(pTL.x, pBR.x)
+      const byMin = Math.min(pTL.y, pBR.y), byMax = Math.max(pTL.y, pBR.y)
+
+      const margineLati = 10
+      const margineAlto = topBarRef.current ? topBarRef.current.getBoundingClientRect().height + 10 : 100
+      const margineBasso = 10
+
+      let shiftX = 0, shiftY = 0
+      if (bxMax - bxMin >= w - margineLati * 2) {
+        if (bxMin > margineLati) shiftX = bxMin - margineLati
+        else if (bxMax < w - margineLati) shiftX = bxMax - (w - margineLati)
+      } else {
+        shiftX = (bxMin + bxMax) / 2 - w / 2
+      }
+      if (byMax - byMin >= h - margineAlto - margineBasso) {
+        if (byMin > margineAlto) shiftY = byMin - margineAlto
+        else if (byMax < h - margineBasso) shiftY = byMax - (h - margineBasso)
+      } else {
+        const centroDisponibileY = margineAlto + (h - margineAlto - margineBasso) / 2
+        shiftY = (byMin + byMax) / 2 - centroDisponibileY
+      }
+
+      if (Math.abs(shiftX) < 0.5 && Math.abs(shiftY) < 0.5) return
+
+      const rif = renderer.graphToViewport({ x: 0, y: 0 })
+      clamping = true
+      camera.setState({ x: state.x + 0.01, y: state.y, ratio: state.ratio, angle: state.angle })
+      renderer.refresh()
+      const rifX = renderer.graphToViewport({ x: 0, y: 0 })
+      camera.setState({ x: state.x, y: state.y + 0.01, ratio: state.ratio, angle: state.angle })
+      renderer.refresh()
+      const rifY = renderer.graphToViewport({ x: 0, y: 0 })
+      camera.setState({ x: state.x, y: state.y, ratio: state.ratio, angle: state.angle })
+      renderer.refresh()
+
+      const ppuX = (rif.x - rifX.x) / 0.01
+      const ppuY = (rif.y - rifY.y) / 0.01
+
+      const nuovaX = ppuX !== 0 ? state.x + shiftX / ppuX : state.x
+      const nuovaY = ppuY !== 0 ? state.y + shiftY / ppuY : state.y
+      camera.setState({ x: nuovaX, y: nuovaY, ratio: state.ratio, angle: state.angle })
+      clamping = false
+    }
+
     camera.on("updated", (state) => {
       cameraRatio = state.ratio
       if (!clamping && !prodottoCliccato) {
-        const r = state.ratio
-        const xLo = Math.min(0.5, r / 2)
-        const xHi = Math.max(0.5, 1 - r / 2)
-        const yLo = Math.min(0.5, r / 2)
-        const yHi = Math.max(0.5, 1 - r / 2)
-        const cx = Math.max(xLo, Math.min(xHi, state.x))
-        const cy = Math.max(yLo, Math.min(yHi, state.y))
-        if (Math.abs(cx - state.x) > 0.001 || Math.abs(cy - state.y) > 0.001) {
-          clamping = true
-          camera.setState({ x: cx, y: cy })
-          clamping = false
+        if (isMobile) {
+          clampCameraAllaGriglia(state)
+        } else {
+          const r = state.ratio
+          const xLo = Math.min(0.5, r / 2)
+          const xHi = Math.max(0.5, 1 - r / 2)
+          const yLo = Math.min(0.5, r / 2)
+          const yHi = Math.max(0.5, 1 - r / 2)
+          const cx = Math.max(xLo, Math.min(xHi, state.x))
+          const cy = Math.max(yLo, Math.min(yHi, state.y))
+          if (Math.abs(cx - state.x) > 0.001 || Math.abs(cy - state.y) > 0.001) {
+            clamping = true
+            camera.setState({ x: cx, y: cy })
+            clamping = false
+          }
         }
       }
 
@@ -1249,6 +1364,7 @@ function App() {
 
     let vistaInterna = "designer"
     let transizioneAttiva = false
+    let amoebaAlphaAnimata = 1
 
     function raccogliProdotti() {
       const lista = []
@@ -1455,7 +1571,9 @@ function App() {
               setPannelloVisibile(false)
               setTimeout(() => setPannelloDesigner(null), 350)
               graph.forEachEdge((edge, attr) => { if (attr.tipo === "relazione") graph.setEdgeAttribute(edge, "attivo", false) })
+              if (cameraPrimaDiClick) { animaCamera(cameraPrimaDiClick, 500); cameraPrimaDiClick = null }
             } else {
+              const pannelloEraApertoPrima = designerCliccato !== null || prodottoCliccato !== null
               designerCliccato = trovato.node
               setDesignerAttivo(trovato.node)
               nodoEvidenziatoRef.current = null; setNodoEvidenziato(null)
@@ -1464,6 +1582,42 @@ function App() {
               requestAnimationFrame(() => setPannelloVisibile(true))
               graph.forEachEdge((edge, attr) => { if (attr.tipo === "relazione") graph.setEdgeAttribute(edge, "attivo", false) })
               graph.forEachEdge(trovato.node, (edge, edgeAttr) => { if (edgeAttr.tipo === "relazione") graph.setEdgeAttribute(edge, "attivo", true) })
+              cameraPrimaDiClick = camera.getState()
+              {
+                const pAttr = graph.getNodeAttributes(trovato.node)
+                const cRect = container.getBoundingClientRect()
+                const sState = camera.getState()
+                const tRatio = 0.06
+                const pannelloW = isMobile ? 0 : 340 * uiScale
+                const pannelloH = isMobile ? cRect.height * 0.4 : 0
+                let topBarH = 0
+                if (isMobile && topBarRef.current) {
+                  topBarH = topBarRef.current.getBoundingClientRect().height
+                  if (!pannelloEraApertoPrima && sottotitoloRef.current) {
+                    topBarH -= sottotitoloRef.current.getBoundingClientRect().height
+                  }
+                }
+                const centroX = (cRect.width - pannelloW) / 2 - pannelloW * 0.25
+                const centroY = topBarH + (cRect.height - topBarH - pannelloH) / 2
+                clamping = true
+                camera.setState({ x: sState.x, y: sState.y, ratio: tRatio, angle: sState.angle })
+                renderer.refresh()
+                const p0 = renderer.graphToViewport({ x: pAttr.x, y: pAttr.y })
+                camera.setState({ x: sState.x + 0.01, y: sState.y, ratio: tRatio, angle: sState.angle })
+                renderer.refresh()
+                const pX = renderer.graphToViewport({ x: pAttr.x, y: pAttr.y })
+                camera.setState({ x: sState.x, y: sState.y + 0.01, ratio: tRatio, angle: sState.angle })
+                renderer.refresh()
+                const pY = renderer.graphToViewport({ x: pAttr.x, y: pAttr.y })
+                const ppuX = (p0.x - pX.x) / 0.01
+                const ppuY = (p0.y - pY.y) / 0.01
+                const tX = sState.x + (p0.x - centroX) / ppuX
+                const tY = sState.y + (p0.y - centroY) / ppuY
+                camera.setState(sState)
+                renderer.refresh()
+                clamping = false
+                animaCamera({ ratio: tRatio, x: tX, y: tY }, 500)
+              }
             }
             richiediDisegnoOverlay(18)
           } else {
@@ -1471,6 +1625,7 @@ function App() {
               const anno = trovato.attr.dati.anno
               annoBloccato = annoBloccato === anno ? null : anno
             }
+            const pannelloEraApertoPrima = designerCliccato !== null || prodottoCliccato !== null
             prodottoCliccato = trovato.node
             ultimoProdottoHover = trovato.node
             nodoEvidenziatoRef.current = null; setNodoEvidenziato(null)
@@ -1479,32 +1634,41 @@ function App() {
             setGalleriaIndice(0); setGalleriaFullscreen(false)
             requestAnimationFrame(() => setPannelloVisibile(true))
             cameraPrimaDiClick = camera.getState()
-            const pAttr = graph.getNodeAttributes(trovato.node)
-            const cRect = container.getBoundingClientRect()
-            const sState = camera.getState()
-            const tRatio = 0.025
-            const pannelloW = isMobile ? 0 : 340 * uiScale
-            const pannelloH = isMobile ? cRect.height * 0.4 : 0
-            const centroX = (cRect.width - pannelloW) / 2 - pannelloW * 0.25
-            const centroY = (cRect.height - pannelloH) / 2
-            clamping = true
-            camera.setState({ x: sState.x, y: sState.y, ratio: tRatio, angle: sState.angle })
-            renderer.refresh()
-            const p0 = renderer.graphToViewport({ x: pAttr.x, y: pAttr.y })
-            camera.setState({ x: sState.x + 0.01, y: sState.y, ratio: tRatio, angle: sState.angle })
-            renderer.refresh()
-            const pX = renderer.graphToViewport({ x: pAttr.x, y: pAttr.y })
-            camera.setState({ x: sState.x, y: sState.y + 0.01, ratio: tRatio, angle: sState.angle })
-            renderer.refresh()
-            const pY = renderer.graphToViewport({ x: pAttr.x, y: pAttr.y })
-            const ppuX = (p0.x - pX.x) / 0.01
-            const ppuY = (p0.y - pY.y) / 0.01
-            const tX = sState.x + (p0.x - centroX) / ppuX
-            const tY = sState.y + (p0.y - centroY) / ppuY
-            camera.setState(sState)
-            renderer.refresh()
-            clamping = false
-            animaCamera({ ratio: tRatio, x: tX, y: tY }, 500)
+            {
+              const pAttr = graph.getNodeAttributes(trovato.node)
+              const cRect = container.getBoundingClientRect()
+              const sState = camera.getState()
+              const tRatio = 0.025
+              const pannelloW = isMobile ? 0 : 340 * uiScale
+              const pannelloH = isMobile ? cRect.height * 0.4 : 0
+              let topBarH = 0
+              if (isMobile && topBarRef.current) {
+                topBarH = topBarRef.current.getBoundingClientRect().height
+                if (!pannelloEraApertoPrima && sottotitoloRef.current) {
+                  topBarH -= sottotitoloRef.current.getBoundingClientRect().height
+                }
+              }
+              const centroX = (cRect.width - pannelloW) / 2 - pannelloW * 0.25
+              const centroY = topBarH + (cRect.height - topBarH - pannelloH) / 2
+              clamping = true
+              camera.setState({ x: sState.x, y: sState.y, ratio: tRatio, angle: sState.angle })
+              renderer.refresh()
+              const p0 = renderer.graphToViewport({ x: pAttr.x, y: pAttr.y })
+              camera.setState({ x: sState.x + 0.01, y: sState.y, ratio: tRatio, angle: sState.angle })
+              renderer.refresh()
+              const pX = renderer.graphToViewport({ x: pAttr.x, y: pAttr.y })
+              camera.setState({ x: sState.x, y: sState.y + 0.01, ratio: tRatio, angle: sState.angle })
+              renderer.refresh()
+              const pY = renderer.graphToViewport({ x: pAttr.x, y: pAttr.y })
+              const ppuX = (p0.x - pX.x) / 0.01
+              const ppuY = (p0.y - pY.y) / 0.01
+              const tX = sState.x + (p0.x - centroX) / ppuX
+              const tY = sState.y + (p0.y - centroY) / ppuY
+              camera.setState(sState)
+              renderer.refresh()
+              clamping = false
+              animaCamera({ ratio: tRatio, x: tX, y: tY }, 500)
+            }
             richiediDisegnoOverlay(18)
           }
         } else {
@@ -1528,6 +1692,7 @@ function App() {
             ultimoProdottoHover = null
             nodoEvidenziatoRef.current = null; setNodoEvidenziato(null)
             aziendaAttivaRef.current = null; setAziendaAttiva(null); aziendaGlobaleRef.current = false
+            annoBloccato = null
             if (cameraPrimaDiClick) { animaCamera(cameraPrimaDiClick, 500); cameraPrimaDiClick = null }
             richiediDisegnoOverlay(18)
             return
@@ -1610,63 +1775,117 @@ function App() {
   return (
     <>
       {window.innerWidth < 768 && (
-        <div style={{
+        <div ref={topBarRef} style={{
           position: "fixed", top: 0, left: 0, right: 0, zIndex: 20, padding: "14px 16px",
           background: STILE.sfondo_colore, boxSizing: "border-box",
         }}>
-          <div onClick={() => setHaInteragito(!haInteragito)}
-            style={{ fontFamily: "'Roboto Serif', serif", fontWeight: 500, fontStyle: "italic", fontSize: 13, color: "#1a1a1a", letterSpacing: 0.3, lineHeight: 1.3, cursor: "pointer" }}>
-            Design — encyclopédie visuelle 1880–1980
+          <div style={{ position: "relative" }}>
+            <div
+              style={{ fontFamily: "'Roboto Serif', serif", fontWeight: 500, fontStyle: "italic", fontSize: 13, color: "#1a1a1a", letterSpacing: 0.3, lineHeight: 1.3, marginLeft: 9, paddingRight: 36 }}>
+              Design — encyclopédie visuelle 1880–1980
+            </div>
+            <button onClick={() => setMenuApertoMobile(!menuApertoMobile)}
+              style={{
+                position: "absolute", top: "50%", right: 0,
+                transform: menuApertoMobile ? "translateY(-50%) rotate(45deg)" : "translateY(-50%) rotate(0deg)",
+                width: 28, height: 28, minWidth: 28, borderRadius: "50%", border: "none",
+                background: "white", boxShadow: "0 2px 12px rgba(0,0,0,0.1)", cursor: "pointer",
+                display: "flex", alignItems: "center", justifyContent: "center", padding: 0,
+                transition: "transform 0.3s ease",
+              }}>
+              <span style={{ position: "relative", width: 12, height: 12, display: "block" }}>
+                <span style={{ position: "absolute", top: "50%", left: 0, right: 0, height: 1.5, background: "#1a1a1a", transform: "translateY(-50%)" }} />
+                <span style={{ position: "absolute", left: "50%", top: 0, bottom: 0, width: 1.5, background: "#1a1a1a", transform: "translateX(-50%)" }} />
+              </span>
+            </button>
           </div>
-          <div style={{
+          <div ref={sottotitoloRef} style={{
             overflow: "hidden", transition: "max-height 0.5s ease, opacity 0.5s ease, margin 0.5s ease",
-            maxHeight: haInteragito ? 0 : 60, opacity: haInteragito ? 0 : 1,
-            marginTop: haInteragito ? 0 : 4,
+            maxHeight: (pannelloDesigner || nodoEvidenziato) ? 0 : 60, opacity: (pannelloDesigner || nodoEvidenziato) ? 0 : 1,
+            marginTop: (pannelloDesigner || nodoEvidenziato) ? 0 : 4,
           }}>
-            <div style={{ fontFamily: "'Roboto Serif', serif", fontWeight: 400, fontStyle: "italic", fontSize: 13, color: "#1a1a1a", lineHeight: 1.3 }}>
+            <div style={{ fontFamily: "'Roboto Serif', serif", fontWeight: 400, fontStyle: "italic", fontSize: 13, color: "#1a1a1a", lineHeight: 1.3, marginLeft: 9 }}>
               Un secolo di oggetti, forme e idee.
             </div>
-            <div style={{ display: "flex", flexDirection: "column", gap: 8, marginTop: 8 }}>
-              <p style={{ fontFamily: "Roboto, sans-serif", fontWeight: 300, fontSize: 10, color: "#888", lineHeight: 1.35, margin: 0 }}>
-                Questa mappa rappresenta un secolo di design occidentale — i suoi protagonisti, le loro opere e i legami invisibili che li uniscono.
-              </p>
+          </div>
+          <div style={{
+            overflow: "hidden", transition: "max-height 0.4s ease, opacity 0.4s ease, margin 0.4s ease",
+            maxHeight: (pannelloDesigner || nodoEvidenziato) ? 0 : 400,
+            opacity: (pannelloDesigner || nodoEvidenziato) ? 0 : 1,
+            marginTop: (pannelloDesigner || nodoEvidenziato) ? 0 : 28,
+            marginLeft: -6,
+          }}>
+            <div style={{ display: "flex", gap: 5, alignItems: "flex-start" }}>
+              <div style={{ display: "flex", gap: 2, background: "#ffffff", borderRadius: 22, padding: 3, boxShadow: "0 2px 12px rgba(0,0,0,0.1)" }}>
+                <button onClick={() => cambiaVista("designer")}
+                  style={{ padding: "6px 12px", border: "none", borderRadius: 18, cursor: "pointer", fontSize: 9, fontWeight: vistaCorrente === "designer" ? 400 : 300, fontFamily: "'Roboto Mono', monospace", color: vistaCorrente === "designer" ? "#ffffff" : "#555555", background: vistaCorrente === "designer" ? "#F34213" : "#ececec", transition: "all 0.2s" }}>
+                  Designer
+                </button>
+                <button onClick={() => cambiaVista("timeline")}
+                  style={{ padding: "6px 12px", border: "none", borderRadius: 18, cursor: "pointer", fontSize: 9, fontWeight: vistaCorrente === "timeline" ? 400 : 300, fontFamily: "'Roboto Mono', monospace", color: vistaCorrente === "timeline" ? "#ffffff" : "#555555", background: vistaCorrente === "timeline" ? "#F34213" : "#ececec", transition: "all 0.2s" }}>
+                  Timeline
+                </button>
+              </div>
+              <div style={{ position: "relative", flex: 1 }}>
+                <input type="text" value={ricerca} onChange={(e) => setRicerca(e.target.value)} placeholder="Cerca..."
+                  style={{ padding: "8px 14px", border: "none", borderRadius: 20, fontSize: 9, fontWeight: 300, fontFamily: "'Roboto Mono', monospace", background: "white", boxShadow: "0 2px 12px rgba(0,0,0,0.1)", outline: "none", width: "100%", boxSizing: "border-box", color: "#1a1a1a" }} />
+                {ricerca.length > 1 && (() => {
+                  const q = ricerca.toLowerCase()
+                  const risultati = [
+                    ...designers.filter(d => d.nome.toLowerCase().includes(q)).map(d => ({ tipo: "designer", nome: d.nome })),
+                    ...prodotti.filter(p => p.nome.toLowerCase().includes(q)).map(p => ({ tipo: "prodotto", nome: p.nome, sub: getDesigners(p).join(", ") })),
+                  ].slice(0, 8)
+                  if (risultati.length === 0) return null
+                  return (
+                    <div style={{ position: "absolute", top: "100%", left: 0, right: 0, marginTop: 4, background: "white", borderRadius: 12, boxShadow: "0 4px 16px rgba(0,0,0,0.12)", overflow: "hidden", maxHeight: 200, overflowY: "auto", zIndex: 30 }}>
+                      {risultati.map((r, i) => (
+                        <button key={i} onClick={() => { setRicerca(""); if (centraFn) centraFn(r.nome, r.tipo) }}
+                          style={{ display: "block", width: "100%", padding: "8px 14px", border: "none", background: "white", cursor: "pointer", textAlign: "left", fontFamily: "Roboto, sans-serif", fontSize: 11, borderBottom: "1px solid #f0f0f0" }}>
+                          <span style={{ fontWeight: 500, color: "#1a1a1a" }}>{r.nome}</span>
+                          {r.sub && <span style={{ fontWeight: 300, color: "#999", marginLeft: 6 }}>{r.sub}</span>}
+                        </button>
+                      ))}
+                    </div>
+                  )
+                })()}
+              </div>
             </div>
           </div>
-          <div style={{ display: "flex", gap: 8, marginTop: 10, alignItems: "flex-start" }}>
-            <div style={{ display: "flex", gap: 0, background: "white", borderRadius: 20, boxShadow: "0 2px 12px rgba(0,0,0,0.1)", overflow: "hidden" }}>
-              <button onClick={() => cambiaVista("designer")}
-                style={{ padding: "8px 14px", border: "none", cursor: "pointer", fontSize: 10, fontWeight: vistaCorrente === "designer" ? 600 : 300, fontFamily: "Roboto, sans-serif", color: vistaCorrente === "designer" ? "#1a1a1a" : "#999", background: vistaCorrente === "designer" ? "#f0f0f0" : "white", transition: "all 0.2s" }}>
-                Designer
-              </button>
-              <button onClick={() => cambiaVista("timeline")}
-                style={{ padding: "8px 14px", border: "none", cursor: "pointer", fontSize: 10, fontWeight: vistaCorrente === "timeline" ? 600 : 300, fontFamily: "Roboto, sans-serif", color: vistaCorrente === "timeline" ? "#1a1a1a" : "#999", background: vistaCorrente === "timeline" ? "#f0f0f0" : "white", transition: "all 0.2s" }}>
-                Timeline
-              </button>
-            </div>
-            <div style={{ position: "relative", flex: 1 }}>
-              <input type="text" value={ricerca} onChange={(e) => setRicerca(e.target.value)} placeholder="Cerca..."
-                style={{ padding: "8px 14px", border: "none", borderRadius: 20, fontSize: 10, fontWeight: 300, fontFamily: "Roboto, sans-serif", background: "white", boxShadow: "0 2px 12px rgba(0,0,0,0.1)", outline: "none", width: "100%", boxSizing: "border-box", color: "#1a1a1a" }} />
-              {ricerca.length > 1 && (() => {
-                const q = ricerca.toLowerCase()
-                const risultati = [
-                  ...designers.filter(d => d.nome.toLowerCase().includes(q)).map(d => ({ tipo: "designer", nome: d.nome })),
-                  ...prodotti.filter(p => p.nome.toLowerCase().includes(q)).map(p => ({ tipo: "prodotto", nome: p.nome, sub: getDesigners(p).join(", ") })),
-                ].slice(0, 8)
-                if (risultati.length === 0) return null
-                return (
-                  <div style={{ position: "absolute", top: "100%", left: 0, right: 0, marginTop: 4, background: "white", borderRadius: 12, boxShadow: "0 4px 16px rgba(0,0,0,0.12)", overflow: "hidden", maxHeight: 200, overflowY: "auto", zIndex: 30 }}>
-                    {risultati.map((r, i) => (
-                      <button key={i} onClick={() => { setRicerca(""); if (centraFn) centraFn(r.nome, r.tipo) }}
-                        style={{ display: "block", width: "100%", padding: "8px 14px", border: "none", background: "white", cursor: "pointer", textAlign: "left", fontFamily: "Roboto, sans-serif", fontSize: 11, borderBottom: "1px solid #f0f0f0" }}>
-                        <span style={{ fontWeight: 500, color: "#1a1a1a" }}>{r.nome}</span>
-                        {r.sub && <span style={{ fontWeight: 300, color: "#999", marginLeft: 6 }}>{r.sub}</span>}
-                      </button>
-                    ))}
-                  </div>
-                )
-              })()}
-            </div>
+        </div>
+      )}
+
+      {window.innerWidth < 768 && menuApertoMobile && (
+        <div onClick={() => setMenuApertoMobile(false)}
+          style={{ position: "fixed", inset: 0, background: "rgba(0,0,0,0.25)", zIndex: 25 }} />
+      )}
+
+      {window.innerWidth < 768 && (
+        <div style={{
+          position: "fixed", top: 0, right: 0, bottom: 0, width: "78%", maxWidth: 320,
+          background: "#ffffff", zIndex: 26, boxShadow: "-4px 0 24px rgba(0,0,0,0.15)",
+          transform: menuApertoMobile ? "translateX(0)" : "translateX(100%)",
+          transition: "transform 0.35s ease", padding: "24px 22px", boxSizing: "border-box",
+          display: "flex", flexDirection: "column", gap: 2, overflowY: "auto",
+        }}>
+          <div style={{ fontFamily: "Roboto, sans-serif", fontSize: 10, fontWeight: 600, color: "#aaa", letterSpacing: 1.5, textTransform: "uppercase", marginBottom: 10 }}>
+            Menu
           </div>
+          {[
+            { titolo: "About", testo: "Questa mappa rappresenta un secolo di design occidentale — i suoi protagonisti, le loro opere e i legami invisibili che li uniscono." },
+            { titolo: "Maps", testo: null },
+            { titolo: "Contatti", testo: null },
+          ].map((voce, i) => (
+            <div key={i} style={{ borderBottom: "1px solid #eee", padding: "16px 0" }}>
+              <div style={{ fontFamily: "'Roboto Serif', serif", fontStyle: "italic", fontWeight: 500, fontSize: 15, color: "#1a1a1a" }}>
+                {voce.titolo}
+              </div>
+              {voce.testo && (
+                <p style={{ fontFamily: "Roboto, sans-serif", fontWeight: 300, fontSize: 11, color: "#888", lineHeight: 1.45, marginTop: 8, marginBottom: 0 }}>
+                  {voce.testo}
+                </p>
+              )}
+            </div>
+          ))}
         </div>
       )}
 
@@ -1767,7 +1986,7 @@ function App() {
           ...(window.innerWidth < 768
             ? {
               left: 0, right: 0, bottom: 0,
-              height: pannelloDesigner._tipo === "prodotto" ? "40vh" : "60vh",
+              height: "40vh",
               borderRadius: "16px 16px 0 0",
               boxShadow: `0 -4px 32px rgba(0,0,0,${scuro ? 0.3 : 0.12})`,
               transform: pannelloVisibile ? "translateY(0)" : "translateY(100%)",
