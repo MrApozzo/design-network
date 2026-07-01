@@ -246,6 +246,8 @@ function App() {
     let ultimoProdottoHover = null
     let prodottoCliccato = null
     let designerCliccato = null
+    let popupCanvas = null
+    let primoClickFuoriDesigner = false
     let annoBloccato = null
     let mouseDownPos = null
     let isDragging = false
@@ -1207,6 +1209,57 @@ function App() {
           ctx.fill()
         }
       }
+
+      if (isMobile && popupCanvas) {
+        const anchor = renderer.graphToViewport({ x: popupCanvas.gx, y: popupCanvas.gy })
+        if (anchor.x > -100 && anchor.x < w + 100 && anchor.y > -100 && anchor.y < h + 100) {
+          const pad = 10
+          const cardW = 220
+          const fontDesc = 10
+          const lineHDesc = 13
+          ctx.save()
+          ctx.font = `300 ${fontDesc}px Roboto`
+          const words = (popupCanvas.dati.descrizione || "").split(" ")
+          const descLines = []
+          let line = ""
+          for (const word of words) {
+            const test = line ? line + " " + word : word
+            if (ctx.measureText(test).width > cardW - pad * 2 && line) { descLines.push(line); line = word }
+            else line = test
+          }
+          if (line) descLines.push(line)
+          const cardH = pad + 13 + 4 + 9 + 6 + descLines.length * lineHDesc + pad
+          let boxX = Math.max(10, Math.min(w - cardW - 10, anchor.x - cardW / 2))
+          let boxY = anchor.y - cardH - 10
+          if (boxY < 50) boxY = anchor.y + 10
+          ctx.shadowColor = "rgba(0,0,0,0.12)"; ctx.shadowBlur = 10; ctx.shadowOffsetY = 3
+          ctx.fillStyle = "white"
+          ctx.beginPath()
+          const cr = 10
+          ctx.moveTo(boxX + cr, boxY); ctx.lineTo(boxX + cardW - cr, boxY)
+          ctx.quadraticCurveTo(boxX + cardW, boxY, boxX + cardW, boxY + cr)
+          ctx.lineTo(boxX + cardW, boxY + cardH - cr)
+          ctx.quadraticCurveTo(boxX + cardW, boxY + cardH, boxX + cardW - cr, boxY + cardH)
+          ctx.lineTo(boxX + cr, boxY + cardH)
+          ctx.quadraticCurveTo(boxX, boxY + cardH, boxX, boxY + cardH - cr)
+          ctx.lineTo(boxX, boxY + cr)
+          ctx.quadraticCurveTo(boxX, boxY, boxX + cr, boxY)
+          ctx.closePath(); ctx.fill()
+          ctx.shadowColor = "transparent"; ctx.shadowBlur = 0; ctx.shadowOffsetY = 0
+          let ty = boxY + pad + 11
+          ctx.font = "italic 500 11px 'Roboto Serif'"; ctx.fillStyle = "#1a1a1a"; ctx.textAlign = "left"
+          ctx.fillText(`${popupCanvas.dati.designer_a} — ${popupCanvas.dati.designer_b}`, boxX + pad, ty)
+          ty += 4 + 9
+          ctx.font = "600 8px Roboto"; ctx.fillStyle = "#aaa"
+          ctx.fillText((popupCanvas.dati.tipo || "").toUpperCase(), boxX + pad, ty)
+          ty += 6
+          ctx.font = `300 ${fontDesc}px Roboto`; ctx.fillStyle = "#666"
+          for (const dl of descLines) { ty += lineHDesc; ctx.fillText(dl, boxX + pad, ty) }
+          ctx.beginPath(); ctx.arc(anchor.x, anchor.y, 3, 0, Math.PI * 2)
+          ctx.fillStyle = "#888"; ctx.fill()
+          ctx.restore()
+        }
+      }
     }
 
     // Il canvas overlay ha una propria animazione. In questo modo il primo frame
@@ -1302,6 +1355,10 @@ function App() {
 
     camera.on("updated", (state) => {
       cameraRatio = state.ratio
+      if (!clamping && isMobile && designerCliccato && cameraPrimaDiClick) {
+        // Movimento manuale della mappa durante navigazione collegamenti: non tornare più alla posizione pre-click
+        cameraPrimaDiClick = null
+      }
       if (!clamping && !prodottoCliccato) {
         if (isMobile) {
           clampCameraAllaGriglia(state)
@@ -1556,6 +1613,7 @@ function App() {
       sigmaCanvas.addEventListener("mouseup", (e) => {
         if (isDragging) { mouseDownPos = null; isDragging = false; richiediDisegnoOverlay(3); return }
         mouseDownPos = null; isDragging = false
+        popupCanvas = null
 
         const rect = sigmaCanvas.getBoundingClientRect()
         const mx = e.clientX - rect.left
@@ -1572,13 +1630,23 @@ function App() {
             if (len2 === 0) return
             const t = Math.max(0, Math.min(1, ((mx - posS.x) * dx + (my - posS.y) * dy) / len2))
             const px = posS.x + t * dx - mx, py = posS.y + t * dy - my
-            if (Math.sqrt(px * px + py * py) < 8) {
+            if (Math.sqrt(px * px + py * py) < (isMobile ? 18 : 8)) {
               const d = attr.dati
               relazioneCliccata = designerCliccato === d.designer_b ? { ...d, designer_a: d.designer_b, designer_b: d.designer_a } : d
             }
           })
         }
-        if (relazioneCliccata) { setPopup({ tipo: "relazione", dati: relazioneCliccata, colore: "#888888" }); return }
+        if (relazioneCliccata) {
+          if (isMobile) {
+            const cg = renderer.viewportToGraph({ x: mx, y: my })
+            popupCanvas = { dati: relazioneCliccata, gx: cg.x, gy: cg.y }
+            setPopup({ tipo: "relazione", dati: relazioneCliccata })
+            richiediDisegnoOverlay(3)
+          } else {
+            setPopup({ tipo: "relazione", dati: relazioneCliccata, x: e.clientX, y: e.clientY })
+          }
+          return
+        }
 
         let trovato = null
         graph.forEachNode((node, attr) => {
@@ -1591,13 +1659,24 @@ function App() {
           if (trovato.attr.tipo === "designer") {
             prodottoCliccato = null
             if (designerCliccato === trovato.node) {
-              designerCliccato = null
-              setDesignerAttivo(null)
-              setPannelloVisibile(false)
-              setTimeout(() => setPannelloDesigner(null), 350)
-              graph.forEachEdge((edge, attr) => { if (attr.tipo === "relazione") graph.setEdgeAttribute(edge, "attivo", false) })
-              if (cameraPrimaDiClick) { animaCamera(cameraPrimaDiClick, 500); cameraPrimaDiClick = null }
+              if (nodoEvidenziatoRef.current === trovato.node) {
+                // State 3 → re-apri pannello
+                primoClickFuoriDesigner = false
+                nodoEvidenziatoRef.current = null; setNodoEvidenziato(null)
+                setDesignerAttivo(trovato.node)
+                requestAnimationFrame(() => setPannelloVisibile(true))
+              } else {
+                // State 2 → chiudi pannello
+                primoClickFuoriDesigner = false
+                designerCliccato = null
+                setDesignerAttivo(null)
+                setPannelloVisibile(false)
+                setTimeout(() => setPannelloDesigner(null), 350)
+                graph.forEachEdge((edge, attr) => { if (attr.tipo === "relazione") graph.setEdgeAttribute(edge, "attivo", false) })
+                if (cameraPrimaDiClick) { animaCamera(cameraPrimaDiClick, 500); cameraPrimaDiClick = null }
+              }
             } else {
+              primoClickFuoriDesigner = false
               const pannelloEraApertoPrima = designerCliccato !== null || prodottoCliccato !== null
               designerCliccato = trovato.node
               setDesignerAttivo(trovato.node)
@@ -1697,19 +1776,33 @@ function App() {
             richiediDisegnoOverlay(18)
           }
         } else {
-          const avevaPannello = designerCliccato !== null || prodottoCliccato !== null
+          const avevaPannello = (designerCliccato !== null || prodottoCliccato !== null) && !primoClickFuoriDesigner
           if (isMobile && avevaPannello) {
+            // State 2 → State 3: chiudi pannello, mantieni designer isolato con edges visibili
             const nodoDaEvidenziare = prodottoCliccato || designerCliccato
+            primoClickFuoriDesigner = true
             setPannelloVisibile(false)
-            setTimeout(() => setPannelloDesigner(null), 350)
             setDesignerAttivo(null)
-            graph.forEachEdge((edge, attr) => { if (attr.tipo === "relazione") graph.setEdgeAttribute(edge, "attivo", false) })
             if (nodoDaEvidenziare) {
               nodoEvidenziatoRef.current = nodoDaEvidenziare
               setNodoEvidenziato(nodoDaEvidenziare)
               ultimoProdottoHover = prodottoCliccato || ultimoProdottoHover
             }
-            designerCliccato = null; prodottoCliccato = null
+            prodottoCliccato = null
+            richiediDisegnoOverlay(18)
+            return
+          }
+          if (isMobile && primoClickFuoriDesigner) {
+            // State 3 → State 1: deseleziona tutto
+            primoClickFuoriDesigner = false
+            designerCliccato = null
+            nodoEvidenziatoRef.current = null; setNodoEvidenziato(null)
+            aziendaAttivaRef.current = null; setAziendaAttiva(null); aziendaGlobaleRef.current = false
+            annoBloccato = null
+            setPannelloDesigner(null)
+            graph.forEachEdge((edge, attr) => { if (attr.tipo === "relazione") graph.setEdgeAttribute(edge, "attivo", false) })
+            setPopup(null)
+            if (cameraPrimaDiClick) { animaCamera(cameraPrimaDiClick, 500); cameraPrimaDiClick = null }
             richiediDisegnoOverlay(18)
             return
           }
@@ -2034,7 +2127,7 @@ function App() {
 
       {tooltipRelazione && (
         <div style={{ position: "fixed", left: tooltipRelazione.x + 14, top: tooltipRelazione.y - 10, background: "white", borderRadius: 8, padding: "8px 12px", boxShadow: "0 4px 16px rgba(0,0,0,0.12)", fontFamily: "Roboto, sans-serif", fontSize: 12, zIndex: 200, pointerEvents: "none", maxWidth: 220 }}>
-          <div style={{ fontWeight: 600, color: "#222", marginBottom: 4, fontSize: 12 }}>
+          <div style={{ fontFamily: "'Roboto Serif', serif", fontWeight: 500, fontStyle: "italic", color: "#1a1a1a", marginBottom: 4, fontSize: 13 }}>
             {tooltipRelazione.dati.designer_a} — {tooltipRelazione.dati.designer_b}
           </div>
           <div style={{ fontWeight: 600, color: "#444", marginBottom: 4, textTransform: "uppercase", fontSize: 10, letterSpacing: 1 }}>
@@ -2356,7 +2449,7 @@ function App() {
         )
       })()}
 
-      {popup && (
+      {popup && window.innerWidth >= 768 && (
         <div style={{
           position: "fixed", top: 0, right: 0, bottom: 0, width: 340 * uiScale,
           background: "#1a1a1a", boxShadow: "-4px 0 32px rgba(0,0,0,0.3)",
