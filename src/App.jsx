@@ -140,7 +140,7 @@ const ANNO_MAX = 2020
 const X_MIN = -120
 const X_MAX = 120
 const ANNI_SINGOLI = Array.from({length: (2020-1880)+1}, (_, i) => 1880 + i)
-const MARGINE_X = 2
+const MARGINE_X = 20
 const MARGINE_Y = 2
 const Y_MIN = -20
 const Y_MAX = 20
@@ -831,12 +831,12 @@ function App() {
       const ogniN = t < 0.3 ? 2 : 1
       const grigliaRaggioEffettivo = t < 0.3 ? grigliaRaggio * 0.7 : grigliaRaggio
 
-      const padLati = isMobile ? 10 : 16
+      const padLati = isMobile ? 10 : 240 * uiScale + 24
       const padSinistra = isMobile ? padLati : 240 * uiScale + 24
       const padBasso = isMobile ? 10 : 16
       const padSopra = isMobile
         ? (topBarRef.current ? topBarRef.current.getBoundingClientRect().height + 22 : 100)
-        : 40
+        : 110 * uiScale
 
       ctx.save()
       ctx.beginPath()
@@ -1402,10 +1402,10 @@ function App() {
       const byMin = Math.min(pTL.y, pBR.y), byMax = Math.max(pTL.y, pBR.y)
 
       const margineSinistra = isMobile ? 10 : 240 * uiScale + 24
-      const margineDestra = 10
+      const margineDestra = isMobile ? 10 : 240 * uiScale + 24
       const margineAlto = isMobile
         ? (topBarRef.current ? topBarRef.current.getBoundingClientRect().height + 10 : 100)
-        : 48
+        : 170 * uiScale
       const margineBasso = 10
 
       let shiftX = 0, shiftY = 0
@@ -2317,25 +2317,28 @@ function App() {
       )}
 
       {window.innerWidth >= 768 && (
-        <div style={{ position: "fixed", bottom: 24, left: "50%", transform: "translateX(-50%)", zIndex: 20, fontFamily: "Roboto, sans-serif", display: "flex", gap: 8, alignItems: "flex-end" }}>
-          <div style={{ display: "flex", gap: 0, background: "white", borderRadius: 20, boxShadow: "0 2px 12px rgba(0,0,0,0.1)", overflow: "hidden" }}>
+        <div style={{
+          position: "fixed", top: 36 * uiScale, left: "50%", transform: "translateX(-50%)",
+          zIndex: 20, display: "flex", flexDirection: "row", alignItems: "center", gap: 8 * uiScale,
+        }}>
+          <div style={{ display: "flex", gap: 2, background: "#ffffff", borderRadius: 18 * uiScale, padding: 3, boxShadow: "0 2px 12px rgba(0,0,0,0.1)", height: 28 * uiScale, boxSizing: "border-box" }}>
             <button onClick={() => cambiaVista("designer")}
-              style={{ padding: "8px 18px", border: "none", cursor: "pointer", fontSize: 11, fontWeight: vistaCorrente === "designer" ? 600 : 300, fontFamily: "Roboto, sans-serif", color: vistaCorrente === "designer" ? "#1a1a1a" : "#999", background: vistaCorrente === "designer" ? "#f0f0f0" : "white", transition: "all 0.2s" }}>
+              style={{ padding: `0 ${11 * uiScale}px`, border: "none", borderRadius: 13 * uiScale, cursor: "pointer", fontSize: 10 * uiScale, fontWeight: vistaCorrente === "designer" ? 400 : 300, fontFamily: "'Roboto Mono', monospace", color: vistaCorrente === "designer" ? "#ffffff" : "#555555", background: vistaCorrente === "designer" ? "#F34213" : "#ececec", transition: "all 0.2s", display: "flex", alignItems: "center" }}>
               Designer
             </button>
             <button onClick={() => cambiaVista("timeline")}
-              style={{ padding: "8px 18px", border: "none", cursor: "pointer", fontSize: 11, fontWeight: vistaCorrente === "timeline" ? 600 : 300, fontFamily: "Roboto, sans-serif", color: vistaCorrente === "timeline" ? "#1a1a1a" : "#999", background: vistaCorrente === "timeline" ? "#f0f0f0" : "white", transition: "all 0.2s" }}>
+              style={{ padding: `0 ${11 * uiScale}px`, border: "none", borderRadius: 13 * uiScale, cursor: "pointer", fontSize: 10 * uiScale, fontWeight: vistaCorrente === "timeline" ? 400 : 300, fontFamily: "'Roboto Mono', monospace", color: vistaCorrente === "timeline" ? "#ffffff" : "#555555", background: vistaCorrente === "timeline" ? "#F34213" : "#ececec", transition: "all 0.2s", display: "flex", alignItems: "center" }}>
               Linea del tempo
             </button>
           </div>
           <div style={{ position: "relative" }}>
             <input type="text" value={ricerca} onChange={(e) => setRicerca(e.target.value)} placeholder="Cerca..."
-              style={{ padding: "8px 14px", border: "none", borderRadius: 20, fontSize: 11, fontWeight: 300, fontFamily: "Roboto, sans-serif", background: "white", boxShadow: "0 2px 12px rgba(0,0,0,0.1)", outline: "none", width: 160, color: "#1a1a1a" }} />
+              style={{ height: 28 * uiScale, boxSizing: "border-box", padding: `0 ${11 * uiScale}px`, border: "none", borderRadius: 14 * uiScale, fontSize: 10 * uiScale, fontWeight: 300, fontFamily: "'Roboto Mono', monospace", background: "white", boxShadow: "0 2px 12px rgba(0,0,0,0.1)", outline: "none", width: 140 * uiScale, color: "#1a1a1a" }} />
             {ricerca.length > 1 && (() => {
               const risultati = cercaEntita(ricerca)
               if (risultati.length === 0) return null
               return (
-                <div style={{ position: "absolute", bottom: "100%", left: 0, right: 0, marginBottom: 4, background: "white", borderRadius: 12, boxShadow: "0 4px 16px rgba(0,0,0,0.12)", overflow: "hidden", maxHeight: 240, overflowY: "auto" }}>
+                <div style={{ position: "absolute", top: "100%", left: 0, right: 0, marginTop: 4, background: "white", borderRadius: 12, boxShadow: "0 4px 16px rgba(0,0,0,0.12)", overflow: "hidden", maxHeight: 240, overflowY: "auto" }}>
                   {risultati.map((r, i) => (
                     <button key={i} onClick={() => { setRicerca(""); if (centraFn) centraFn(r.nome, r.tipo) }}
                       style={{ display: "block", width: "100%", padding: "8px 14px", border: "none", background: "white", cursor: "pointer", textAlign: "left", fontFamily: "Roboto, sans-serif", fontSize: 11, borderBottom: "1px solid #f0f0f0" }}>
