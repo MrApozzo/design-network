@@ -2078,5 +2078,245 @@
     "azienda": "Stildomus",
     "categoria": "tavolo",
     "foto": "scarpa-quatour.jpg"
+  },
+  {
+    "nome": "Casablanca",
+    "anno": 1981,
+    "designer": "Ettore Sottsass",
+    "azienda": "Memphis",
+    "categoria": "contenitore",
+    "foto": "sottsass-casablanca.jpg"
+  },
+  {
+    "nome": "Superbox",
+    "anno": 1966,
+    "designer": "Ettore Sottsass",
+    "azienda": "Poltronova",
+    "categoria": "contenitore",
+    "foto": "sottsass-superbox.jpg"
+  },
+  {
+    "nome": "Ashoka",
+    "anno": 1981,
+    "designer": "Ettore Sottsass",
+    "azienda": "Memphis",
+    "categoria": "lampada",
+    "foto": "sottsass-ashoka.jpg"
+  },
+  {
+    "nome": "Distex",
+    "anno": 1953,
+    "designer": "Gio Ponti",
+    "azienda": "Cassina",
+    "categoria": "poltrona",
+    "foto": "ponti-distex.jpg"
+  },
+  {
+    "nome": "Torre Pirelli",
+    "anno": 1960,
+    "designer": "Gio Ponti",
+    "azienda": "Pirelli",
+    "categoria": "architettura",
+    "foto": "ponti-torrepirelli.jpg"
+  },
+  {
+    "nome": "Lexikon 80",
+    "anno": 1948,
+    "designer": "Marcello Nizzoli",
+    "azienda": "Olivetti",
+    "categoria": "macchina da scrivere",
+    "foto": "nizzoli-lexikon80.jpg"
+  },
+  {
+    "nome": "Locus Solus",
+    "anno": 1964,
+    "designer": "Gae Aulenti",
+    "azienda": "Poltronova",
+    "categoria": "sedia",
+    "foto": "aulenti-locussolus.jpg"
+  },
+  {
+    "nome": "Tavolo con Ruote",
+    "anno": 1980,
+    "designer": "Gae Aulenti",
+    "azienda": "Fontana Arte",
+    "categoria": "tavolo",
+    "foto": "aulenti-tavoloconruote.jpg"
+  },
+  {
+    "nome": "Coronado",
+    "anno": 1966,
+    "designer": ["Tobia Scarpa", "Afra Bianchin"],
+    "azienda": "B&B Italia",
+    "categoria": "poltrona",
+    "foto": "scarpa-coronado.jpg"
+  },
+  {
+    "nome": "Serpentone",
+    "anno": 1971,
+    "designer": "Cini Boeri",
+    "azienda": "Arflex",
+    "categoria": "divano",
+    "foto": "boeri-serpentone.jpg"
+  },
+  {
+    "nome": "Plona",
+    "anno": 1969,
+    "designer": "Giancarlo Piretti",
+    "azienda": "Castelli",
+    "categoria": "poltrona",
+    "foto": "piretti-plona.jpg"
+  },
+  {
+    "nome": "Allunaggio",
+    "anno": 1969,
+    "designer": "Sergio Mazza",
+    "azienda": "Artemide",
+    "categoria": "sgabello",
+    "foto": "mazza-allunaggio.jpg"
+  },
+  {
+    "nome": "Bavero",
+    "anno": 1969,
+    "designer": "Franca Helg",
+    "azienda": "Arflex",
+    "categoria": "poltrona",
+    "foto": "helg-bavero.jpg"
+  },
+  {
+    "nome": "Formosa",
+    "anno": 1963,
+    "designer": "Enzo Mari",
+    "azienda": "Danese",
+    "categoria": "calendario",
+    "foto": "mari-formosa.jpg"
+  },
+  {
+    "nome": "Pago Pago",
+    "anno": 1969,
+    "designer": "Enzo Mari",
+    "azienda": "Danese",
+    "categoria": "vaso",
+    "foto": "mari-pagopago.jpg"
+  },
+  {
+    "nome": "Sof Sof",
+    "anno": 1971,
+    "designer": "Enzo Mari",
+    "azienda": "Driade",
+    "categoria": "sedia",
+    "foto": "mari-sofsof.jpg"
+  },
+  {
+    "nome": "4801",
+    "anno": 1965,
+    "designer": "Joe Colombo",
+    "azienda": "Kartell",
+    "categoria": "sedia",
+    "foto": "colombo-4801.jpg"
+  },
+  {
+    "nome": "Eames Storage Unit",
+    "anno": 1950,
+    "designer": ["Charles Eames", "Ray Eames"],
+    "azienda": "Herman Miller",
+    "categoria": "libreria",
+    "foto": "eames-esu.jpg"
+  },
+  {
+    "nome": "Sofa Compact",
+    "anno": 1954,
+    "designer": ["Charles Eames", "Ray Eames"],
+    "azienda": "Herman Miller",
+    "categoria": "divano",
+    "foto": "eames-sofacompact.jpg"
+  },
+  {
+    "nome": "Aluminum Group",
+    "anno": 1958,
+    "designer": ["Charles Eames", "Ray Eames"],
+    "azienda": "Herman Miller",
+    "categoria": "poltrona",
+    "foto": "eames-aluminumgroup.jpg"
+  },
+  {
+    "nome": "Time-Life Stool",
+    "anno": 1960,
+    "designer": ["Charles Eames", "Ray Eames"],
+    "azienda": "Herman Miller",
+    "categoria": "sgabello",
+    "foto": "eames-timelifestool.jpg"
+  },
+  {
+    "nome": "Bubble Club",
+    "anno": 2000,
+    "designer": "Philippe Starck",
+    "azienda": "Kartell",
+    "categoria": "poltrona",
+    "foto": "starck-bubbleclub.jpg"
+  },
+  {
+    "nome": "W.W. Stool",
+    "anno": 1990,
+    "designer": "Philippe Starck",
+    "azienda": "Vitra",
+    "categoria": "sgabello",
+    "foto": "starck-wwstool.jpg"
+  },
+  {
+    "nome": "Fiorenza",
+    "anno": 1952,
+    "designer": "Franco Albini",
+    "azienda": "Arflex",
+    "categoria": "poltrona",
+    "foto": "albini-fiorenza.jpg"
+  },
+  {
+    "nome": "Cicognino",
+    "anno": 1952,
+    "designer": "Franco Albini",
+    "azienda": "Poggi",
+    "categoria": "tavolo",
+    "foto": "albini-cicognino.jpg"
+  },
+  {
+    "nome": "San Luca",
+    "anno": 1960,
+    "designer": ["Achille Castiglioni", "Pier Giacomo Castiglioni"],
+    "azienda": "Poggi",
+    "categoria": "poltrona",
+    "foto": "castiglioni-sanluca.jpg"
+  },
+  {
+    "nome": "Vicario",
+    "anno": 1970,
+    "designer": "Vico Magistretti",
+    "azienda": "Artemide",
+    "categoria": "poltrona",
+    "foto": "magistretti-vicario.jpg"
+  },
+  {
+    "nome": "Nuvola Rossa",
+    "anno": 1977,
+    "designer": "Vico Magistretti",
+    "azienda": "Cassina",
+    "categoria": "libreria",
+    "foto": "magistretti-nuvolarossa.jpg"
+  },
+  {
+    "nome": "Silver",
+    "anno": 1989,
+    "designer": "Vico Magistretti",
+    "azienda": "De Padova",
+    "categoria": "sedia",
+    "foto": "magistretti-silver.jpg"
+  },
+  {
+    "nome": "Monumento ai Caduti nei Campi di Concentramento",
+    "anno": 1946,
+    "designer": ["Gianluigi Banfi", "Lodovico Belgiojoso", "Enrico Peressutti", "Ernesto Nathan Rogers"],
+    "azienda": "BBPR",
+    "categoria": "architettura",
+    "foto": "belgiojoso-monumentocaduti.jpg"
   }
 ]

@@ -171,6 +171,64 @@ function getDesigners(p) {
   return Array.isArray(p.designer) ? p.designer : [p.designer]
 }
 
+function cercaEntita(query, limit = 8) {
+  const q = query.toLowerCase()
+  return [
+    ...designers.filter(d => d.nome.toLowerCase().includes(q)).map(d => ({ tipo: "designer", nome: d.nome })),
+    ...prodotti.filter(p => p.nome.toLowerCase().includes(q)).map(p => ({ tipo: "prodotto", nome: p.nome, sub: getDesigners(p).join(", ") })),
+  ].slice(0, limit)
+}
+
+// Formspree: crea un form su formspree.io, copia l'endpoint generato al posto di YOUR_FORM_ID
+const FORMSPREE_ENDPOINT = "https://formspree.io/f/YOUR_FORM_ID"
+
+const SEZIONI_CREDITS = [
+  {
+    titolo: "Fondazioni e archivi",
+    nomi: [
+      "Fondazione Achille Castiglioni, Milano",
+      "Fondazione Franco Albini, Milano",
+      "Fondazione Bruno Munari, Milano",
+      "Fondazione Studio Museo Vico Magistretti, Milano",
+      "Fondazione Ico e Luisa Parisi, Como",
+      "Archivio Carlo Scarpa, Università Iuav di Venezia",
+      "Gio Ponti Archives",
+      "Museo Casa Mollino, Torino",
+      "Triennale Milano — Archivio Enzo Mari",
+      "CSAC — Centro Studi e Archivio della Comunicazione, Università di Parma",
+      "Vitra Design Museum",
+      "MoMA — The Museum of Modern Art, New York",
+      "Cooper Hewitt, Smithsonian Design Museum",
+    ],
+  },
+  {
+    titolo: "Case d'asta e rivenditori",
+    nomi: [
+      "Wright, Chicago",
+      "Phillips",
+      "Sotheby's",
+      "Christie's",
+      "Bonhams",
+      "Cambi Casa d'Aste",
+      "Il Ponte Casa d'Aste",
+      "Farsetti Arte",
+      "Meeting Art",
+      "Nilufar Gallery, Milano",
+      "1stDibs",
+      "Pamono",
+    ],
+  },
+  {
+    titolo: "Siti e database specializzati",
+    nomi: [
+      "Design Index",
+      "Design Addict",
+      "Domus — archivio storico",
+      "MoMA Collection Online",
+    ],
+  },
+]
+
 function preloadImages(paths) {
   const cache = {}
   paths.forEach((src) => {
@@ -194,7 +252,14 @@ function App() {
   const sottotitoloRef = useRef(null)
   const inputRicercaMobileRef = useRef(null)
   const [menuApertoMobile, setMenuApertoMobile] = useState(false)
-  const [aboutEspanso, setAboutEspanso] = useState(false)
+  const [menuApertoDesktop, setMenuApertoDesktop] = useState(false)
+  const [menuVista, setMenuVista] = useState("lista")
+  const [contribCategoria, setContribCategoria] = useState("Correzione")
+  const [contribTag, setContribTag] = useState(null)
+  const [contribRicerca, setContribRicerca] = useState("")
+  const [contribDescrizione, setContribDescrizione] = useState("")
+  const [contribEmail, setContribEmail] = useState("")
+  const [contribStato, setContribStato] = useState("idle")
   const [bioEspansa, setBioEspansa] = useState(false)
   const [galleriaIndice, setGalleriaIndice] = useState(0)
   const [galleriaFullscreen, setGalleriaFullscreen] = useState(false)
@@ -767,6 +832,7 @@ function App() {
       const grigliaRaggioEffettivo = t < 0.3 ? grigliaRaggio * 0.7 : grigliaRaggio
 
       const padLati = isMobile ? 10 : 16
+      const padSinistra = isMobile ? padLati : 240 * uiScale + 24
       const padBasso = isMobile ? 10 : 16
       const padSopra = isMobile
         ? (topBarRef.current ? topBarRef.current.getBoundingClientRect().height + 22 : 100)
@@ -774,7 +840,7 @@ function App() {
 
       ctx.save()
       ctx.beginPath()
-      ctx.rect(padLati, padSopra, Math.max(0, w - padLati * 2), Math.max(0, h - padSopra - padBasso))
+      ctx.rect(padSinistra, padSopra, Math.max(0, w - padSinistra - padLati), Math.max(0, h - padSopra - padBasso))
       ctx.clip()
 
       ANNI_SINGOLI.forEach((anno, ai) => {
@@ -1180,7 +1246,7 @@ function App() {
         const annoInizio = Math.ceil(1880 / passoAnno) * passoAnno
         for (let anno = annoInizio; anno <= 2020; anno += passoAnno) {
           const screen = renderer.graphToViewport({ x: annoToX(anno), y: 0 })
-          if (screen.x < padLati - 20 || screen.x > w - padLati + 20) continue
+          if (screen.x < padSinistra - 20 || screen.x > w - padLati + 20) continue
           ctx.fillText(anno, screen.x, assePosY)
         }
         ctx.restore()
@@ -1291,6 +1357,29 @@ function App() {
     const camera = renderer.getCamera()
     let clamping = false
 
+    // Pixel-per-unità dipendono solo da ratio + dimensioni contenitore, non da x/y:
+    // durante un pan (x/y cambiano, ratio no) restano validi. Cache per evitare
+    // di rifare la sonda (più setState + refresh) a ogni evento "updated" durante
+    // il drag, che causava lo scatto/rimbalzo mentre l'utente trascinava al bordo.
+    let ppuCache = { key: null, ppuX: 0, ppuY: 0 }
+    function pixelPerUnita(state, w, h) {
+      const key = `${state.ratio}|${w}|${h}`
+      if (ppuCache.key === key) return ppuCache
+      const rif = renderer.graphToViewport({ x: 0, y: 0 })
+      clamping = true
+      camera.setState({ x: state.x + 0.01, y: state.y, ratio: state.ratio, angle: state.angle })
+      renderer.refresh()
+      const rifX = renderer.graphToViewport({ x: 0, y: 0 })
+      camera.setState({ x: state.x, y: state.y + 0.01, ratio: state.ratio, angle: state.angle })
+      renderer.refresh()
+      const rifY = renderer.graphToViewport({ x: 0, y: 0 })
+      camera.setState({ x: state.x, y: state.y, ratio: state.ratio, angle: state.angle })
+      renderer.refresh()
+      clamping = false
+      ppuCache = { key, ppuX: (rif.x - rifX.x) / 0.01, ppuY: (rif.y - rifY.y) / 0.01 }
+      return ppuCache
+    }
+
     // Clamp preciso in coordinate-grafo: il riquadro visibile non può uscire
     // dall'area dove esistono i pallini di griglia. Ricalcolato dai dati reali
     // a ogni chiamata, quindi resta corretto anche se la griglia cresce
@@ -1312,43 +1401,42 @@ function App() {
       const bxMin = Math.min(pTL.x, pBR.x), bxMax = Math.max(pTL.x, pBR.x)
       const byMin = Math.min(pTL.y, pBR.y), byMax = Math.max(pTL.y, pBR.y)
 
-      const margineLati = 10
-      const margineAlto = topBarRef.current ? topBarRef.current.getBoundingClientRect().height + 10 : 100
+      const margineSinistra = isMobile ? 10 : 240 * uiScale + 24
+      const margineDestra = 10
+      const margineAlto = isMobile
+        ? (topBarRef.current ? topBarRef.current.getBoundingClientRect().height + 10 : 100)
+        : 48
       const margineBasso = 10
 
       let shiftX = 0, shiftY = 0
-      if (bxMax - bxMin >= w - margineLati * 2) {
-        if (bxMin > margineLati) shiftX = bxMin - margineLati
-        else if (bxMax < w - margineLati) shiftX = bxMax - (w - margineLati)
+      if (bxMax - bxMin >= w - margineSinistra - margineDestra) {
+        if (bxMin > margineSinistra) shiftX = bxMin - margineSinistra
+        else if (bxMax < w - margineDestra) shiftX = bxMax - (w - margineDestra)
+      } else if (isMobile) {
+        const centroDisponibileX = margineSinistra + (w - margineSinistra - margineDestra) / 2
+        shiftX = (bxMin + bxMax) / 2 - centroDisponibileX
       } else {
-        shiftX = (bxMin + bxMax) / 2 - w / 2
+        // Desktop: a zoom ridotto il contenuto entra tutto nella viewport — ancorato in alto a sinistra
+        // (subito dopo il margine riservato al menu), non centrato, e non trascinabile oltre quel margine.
+        shiftX = bxMin - margineSinistra
       }
       if (byMax - byMin >= h - margineAlto - margineBasso) {
         if (byMin > margineAlto) shiftY = byMin - margineAlto
         else if (byMax < h - margineBasso) shiftY = byMax - (h - margineBasso)
-      } else {
+      } else if (isMobile) {
         const centroDisponibileY = margineAlto + (h - margineAlto - margineBasso) / 2
         shiftY = (byMin + byMax) / 2 - centroDisponibileY
+      } else {
+        shiftY = byMin - margineAlto
       }
 
       if (Math.abs(shiftX) < 0.5 && Math.abs(shiftY) < 0.5) return
 
-      const rif = renderer.graphToViewport({ x: 0, y: 0 })
-      clamping = true
-      camera.setState({ x: state.x + 0.01, y: state.y, ratio: state.ratio, angle: state.angle })
-      renderer.refresh()
-      const rifX = renderer.graphToViewport({ x: 0, y: 0 })
-      camera.setState({ x: state.x, y: state.y + 0.01, ratio: state.ratio, angle: state.angle })
-      renderer.refresh()
-      const rifY = renderer.graphToViewport({ x: 0, y: 0 })
-      camera.setState({ x: state.x, y: state.y, ratio: state.ratio, angle: state.angle })
-      renderer.refresh()
-
-      const ppuX = (rif.x - rifX.x) / 0.01
-      const ppuY = (rif.y - rifY.y) / 0.01
+      const { ppuX, ppuY } = pixelPerUnita(state, w, h)
 
       const nuovaX = ppuX !== 0 ? state.x + shiftX / ppuX : state.x
       const nuovaY = ppuY !== 0 ? state.y + shiftY / ppuY : state.y
+      clamping = true
       camera.setState({ x: nuovaX, y: nuovaY, ratio: state.ratio, angle: state.angle })
       clamping = false
     }
@@ -1360,22 +1448,7 @@ function App() {
         cameraPrimaDiClick = null
       }
       if (!clamping && !prodottoCliccato) {
-        if (isMobile) {
-          clampCameraAllaGriglia(state)
-        } else {
-          const r = state.ratio
-          const xLo = Math.min(0.5, r / 2)
-          const xHi = Math.max(0.5, 1 - r / 2)
-          const yLo = Math.min(0.5, r / 2)
-          const yHi = Math.max(0.5, 1 - r / 2)
-          const cx = Math.max(xLo, Math.min(xHi, state.x))
-          const cy = Math.max(yLo, Math.min(yHi, state.y))
-          if (Math.abs(cx - state.x) > 0.001 || Math.abs(cy - state.y) > 0.001) {
-            clamping = true
-            camera.setState({ x: cx, y: cy })
-            clamping = false
-          }
-        }
+        clampCameraAllaGriglia(state)
       }
 
       try { localStorage.setItem("dn-camera", JSON.stringify({ x: state.x, y: state.y, ratio: state.ratio })) } catch {}
@@ -1487,10 +1560,11 @@ function App() {
       const cRect = container.getBoundingClientRect()
       const sState = camera.getState()
       const pannelloW = isMobile ? 0 : 340 * uiScale
+      const pannelloSx = isMobile ? 0 : 240 * uiScale + 24
       const pannelloH = isMobile ? cRect.height * 0.4 : 0
       let topBarH = 0
       if (isMobile && topBarRef.current) topBarH = topBarRef.current.getBoundingClientRect().height
-      const centroX = (cRect.width - pannelloW) / 2 - pannelloW * 0.25
+      const centroX = pannelloSx + (cRect.width - pannelloSx - pannelloW) / 2 - pannelloW * 0.25
       const centroY = topBarH + (cRect.height - topBarH - pannelloH) / 2
       clamping = true
       camera.setState({ x: sState.x, y: sState.y, ratio: tRatio, angle: sState.angle })
@@ -1693,6 +1767,7 @@ function App() {
                 const sState = camera.getState()
                 const tRatio = 0.06
                 const pannelloW = isMobile ? 0 : 340 * uiScale
+                const pannelloSx = isMobile ? 0 : 240 * uiScale + 24
                 const pannelloH = isMobile ? cRect.height * 0.4 : 0
                 let topBarH = 0
                 if (isMobile && topBarRef.current) {
@@ -1701,7 +1776,7 @@ function App() {
                     topBarH -= sottotitoloRef.current.getBoundingClientRect().height
                   }
                 }
-                const centroX = (cRect.width - pannelloW) / 2 - pannelloW * 0.25
+                const centroX = pannelloSx + (cRect.width - pannelloSx - pannelloW) / 2 - pannelloW * 0.25
                 const centroY = topBarH + (cRect.height - topBarH - pannelloH) / 2
                 clamping = true
                 camera.setState({ x: sState.x, y: sState.y, ratio: tRatio, angle: sState.angle })
@@ -1744,6 +1819,7 @@ function App() {
               const sState = camera.getState()
               const tRatio = 0.025
               const pannelloW = isMobile ? 0 : 340 * uiScale
+              const pannelloSx = isMobile ? 0 : 240 * uiScale + 24
               const pannelloH = isMobile ? cRect.height * 0.4 : 0
               let topBarH = 0
               if (isMobile && topBarRef.current) {
@@ -1752,7 +1828,7 @@ function App() {
                   topBarH -= sottotitoloRef.current.getBoundingClientRect().height
                 }
               }
-              const centroX = (cRect.width - pannelloW) / 2 - pannelloW * 0.25
+              const centroX = pannelloSx + (cRect.width - pannelloSx - pannelloW) / 2 - pannelloW * 0.25
               const centroY = topBarH + (cRect.height - topBarH - pannelloH) / 2
               clamping = true
               camera.setState({ x: sState.x, y: sState.y, ratio: tRatio, angle: sState.angle })
@@ -1899,6 +1975,221 @@ function App() {
     if (animaTransizioneFn) animaTransizioneFn(vista)
   }
 
+  function chiudiMenu() {
+    setMenuApertoMobile(false)
+    setMenuApertoDesktop(false)
+    setMenuVista("lista")
+  }
+
+  function inviaContribuzione() {
+    setContribStato("invio")
+    fetch(FORMSPREE_ENDPOINT, {
+      method: "POST",
+      headers: { "Content-Type": "application/json", "Accept": "application/json" },
+      body: JSON.stringify({
+        categoria: contribCategoria,
+        tag: contribTag ? `${contribTag.nome} (${contribTag.tipo})` : "",
+        descrizione: contribDescrizione,
+        email: contribEmail,
+      }),
+    })
+      .then((res) => {
+        if (res.ok) {
+          setContribStato("ok")
+          setContribCategoria("Correzione"); setContribTag(null); setContribRicerca("")
+          setContribDescrizione(""); setContribEmail("")
+        } else {
+          setContribStato("errore")
+        }
+      })
+      .catch(() => setContribStato("errore"))
+  }
+
+  function renderMenuHeader() {
+    return (
+      <>
+        <div style={{ fontFamily: "Roboto, sans-serif", fontSize: 10, fontWeight: 600, color: "#aaa", letterSpacing: 1.5, textTransform: "uppercase", marginBottom: 8 }}>
+          Sezione
+        </div>
+        <div style={{ marginBottom: 18, marginLeft: -7 }}>
+          <span style={{
+            display: "inline-block", fontFamily: "'Roboto Mono', monospace", fontSize: 10, fontWeight: 400,
+            color: "#ffffff", background: "#F34213", border: "none", borderRadius: 20, padding: "3px 12px",
+          }}>
+            Design
+          </span>
+        </div>
+      </>
+    )
+  }
+
+  function renderMenuFooter() {
+    return (
+      <div style={{ marginTop: "auto", paddingTop: 24 }}>
+        <div style={{ fontFamily: "'Roboto Mono', monospace", fontSize: 9, color: "#bbb", lineHeight: 1.6 }}>
+          © 2026 Design — Encyclopédie Visuelle<br />
+          Un secolo di design occidentale, 1880–1980<br />
+          Tutti i diritti riservati
+        </div>
+      </div>
+    )
+  }
+
+  function renderMenuLista() {
+    return (
+      <>
+        <div style={{ fontFamily: "Roboto, sans-serif", fontSize: 10, fontWeight: 600, color: "#aaa", letterSpacing: 1.5, textTransform: "uppercase", marginBottom: 10 }}>
+          Menu
+        </div>
+        {["Manifesto", "Contatti", "Credits", "Contribuisci"].map((titolo, i) => (
+          <div key={i} onClick={() => setMenuVista(titolo.toLowerCase())}
+            style={{ borderBottom: "1px solid #eee", padding: "16px 0", cursor: "pointer" }}>
+            <div style={{ fontFamily: "'Roboto Mono', monospace", fontWeight: 400, fontSize: 13, color: "#777" }}>
+              {titolo}
+            </div>
+          </div>
+        ))}
+      </>
+    )
+  }
+
+  function renderManifestoBody() {
+    return (
+      <>
+        <div style={{ fontFamily: "'Roboto Serif', serif", fontWeight: 500, fontStyle: "italic", fontSize: 14, color: "#1a1a1a", marginBottom: 16 }}>
+          Design — encyclopédie visuelle 1880–1980
+        </div>
+        {[
+          "Il francese non è una scelta puramente estetica, ma un atto di posizionamento culturale. Per secoli è stata la lingua degli intellettuali, degli enciclopedisti e di quanti hanno riconosciuto nella conoscenza un patrimonio da ordinare, condividere e rendere accessibile. È nel solco di questa tradizione che nasce il progetto.",
+          "Il design del Novecento costituisce uno dei capitoli più densi e articolati della cultura materiale occidentale. La sua conoscenza è affidata a un patrimonio ampio di monografie, archivi, cataloghi e raccolte tematiche, spesso organizzati attorno a singoli autori, aziende, movimenti o prodotti. Le fonti esistono, ma parlano lingue diverse. I frammenti ci sono; manca la mappa. Ne deriva una conoscenza ricca ma discontinua, nella quale risulta complesso ricostruire una visione d'insieme e leggere con immediatezza le relazioni che legano persone, opere, esperienze e contesti differenti.",
+          "Comprendere pienamente il percorso di un designer non significa soltanto conoscerne i prodotti, ma collocarne il lavoro all'interno di una rete di relazioni formative, personali, professionali e culturali. Significa osservare l'evoluzione del suo linguaggio nel tempo, riconoscere le influenze ricevute ed esercitate, individuare continuità, trasformazioni e discontinuità. Il singolo autore viene così rappresentato come parte di un sistema più ampio, costruito attraverso incontri, collaborazioni, affinità e contrapposizioni.",
+          "L'enciclopedia raccoglie prodotti appartenenti ad autori, periodi e contesti differenti all'interno di un unico spazio visivo. Le relazioni tra maestri e allievi, collaboratori, famiglie, collettivi, aziende e movimenti diventano elementi leggibili. La successione temporale non viene restituita come una semplice sequenza di date, ma come una geografia di esperienze, idee e linguaggi progettuali.",
+          "La visualizzazione costituisce, in questo senso, uno strumento di conoscenza. Permette di associare con maggiore immediatezza un'opera al proprio autore, di collocarla nel tempo e di confrontarla con ciò che la precede, la accompagna o ne deriva. Rende visibili traiettorie che, nei tradizionali strumenti di consultazione, restano spesso separate e richiedono la comparazione di fonti autonome e difficilmente sovrapponibili.",
+          "Questo strumento ha una finalità prevalentemente divulgativa ed educativa. Si propone come uno strumento agile ma rigoroso per chi studia, insegna, ricerca o desidera avvicinarsi alla storia del design attraverso una lettura accessibile e al tempo stesso stratificata. Non intende sostituire archivi, monografie o cataloghi, ma offrire una struttura capace di metterli in relazione e di orientarne la consultazione.",
+          "La sua natura aperta può inoltre favorire la convergenza di conoscenze oggi custodite da fondazioni, aziende, archivi, istituzioni e protagonisti del settore, contribuendo alla costruzione di una narrazione più coesa e condivisa. Un sistema in evoluzione, nel quale patrimoni differenti possano dialogare senza perdere la propria specificità.",
+          "Il design non è soltanto un insieme di oggetti desiderabili, né può essere ridotto alla loro dimensione commerciale, simbolica o collezionistica. Ogni prodotto è l'esito di una cultura, di una ricerca, di un sistema produttivo e di una precisa idea dell'abitare e del vivere.",
+          "Il design è cultura. È pensiero. È il modo in cui una civiltà dà forma ai propri gesti, ai propri spazi e alla propria quotidianità.",
+          "Questa enciclopedia nasce per restituirne la complessità, le relazioni e la profondità storica.",
+        ].map((par, i) => (
+          <p key={i} style={{ fontFamily: "Roboto, sans-serif", fontWeight: 300, fontSize: 12, color: "#888", lineHeight: 1.6, marginTop: i === 0 ? 0 : 12, marginBottom: 0 }}>
+            {par}
+          </p>
+        ))}
+      </>
+    )
+  }
+
+  function renderContattiBody() {
+    // PLACEHOLDER: inserire qui l'indirizzo email di contatto reale — decisione da prendere esplicitamente (privacy), non inventare
+    return (
+      <div style={{ fontFamily: "Roboto, sans-serif", fontWeight: 300, fontSize: 12, color: "#888", lineHeight: 1.6 }}>
+        <div style={{ fontSize: 9, fontWeight: 600, color: "#aaa", textTransform: "uppercase", letterSpacing: 1.5, marginBottom: 8 }}>Email</div>
+        <div style={{ color: "#ccc", fontStyle: "italic" }}>—</div>
+      </div>
+    )
+  }
+
+  function renderCreditsBody() {
+    return (
+      <>
+        <p style={{ fontFamily: "Roboto, sans-serif", fontWeight: 300, fontSize: 12, color: "#888", lineHeight: 1.6, marginTop: 0 }}>
+          Le immagini e i dati storici presenti in questa mappa provengono da un'ampia rete di fondazioni, archivi, case d'asta e piattaforme specializzate nel design del XX secolo. Di seguito l'elenco delle fonti principali.
+        </p>
+        {SEZIONI_CREDITS.map((sez, i) => (
+          <div key={i} style={{ marginBottom: i < SEZIONI_CREDITS.length - 1 ? 22 : 16 }}>
+            <div style={{ fontFamily: "'Roboto Serif', serif", fontWeight: 500, fontStyle: "italic", fontSize: 14, color: "#1a1a1a", marginBottom: 10 }}>
+              {sez.titolo}
+            </div>
+            {sez.nomi.map((nome, j) => (
+              <div key={j} style={{ fontFamily: "Roboto, sans-serif", fontWeight: 300, fontSize: 12, color: "#777", lineHeight: 1.9 }}>
+                {nome}
+              </div>
+            ))}
+          </div>
+        ))}
+        <p style={{ fontFamily: "Roboto, sans-serif", fontWeight: 300, fontStyle: "italic", fontSize: 11, color: "#aaa", lineHeight: 1.5 }}>
+          Elenco in aggiornamento; eventuali omissioni o correzioni possono essere segnalate tramite la pagina Contribuisci.
+        </p>
+      </>
+    )
+  }
+
+  function renderContribuisciBody() {
+    const risultatiTag = contribRicerca.length > 1 ? cercaEntita(contribRicerca) : []
+    return (
+      <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
+        <select value={contribCategoria} onChange={(e) => setContribCategoria(e.target.value)}
+          style={{ fontFamily: "Roboto, sans-serif", fontSize: 12, fontWeight: 300, color: "#1a1a1a", padding: "8px 10px", borderRadius: 8, border: "1px solid #ddd", background: "white" }}>
+          <option>Correzione</option>
+          <option>Aggiunta</option>
+          <option>Miglioramento o suggerimento</option>
+        </select>
+
+        <div>
+          <label style={{ fontFamily: "Roboto, sans-serif", fontSize: 11, fontWeight: 400, color: "#777", display: "block", marginBottom: 6 }}>
+            Quale modifica vuoi presentare?
+          </label>
+          {contribTag ? (
+            <div style={{ display: "inline-flex", alignItems: "center", gap: 6, border: "1px solid #ddd", borderRadius: 20, padding: "4px 6px 4px 12px" }}>
+              <span style={{ fontFamily: "Roboto, sans-serif", fontSize: 12, color: "#1a1a1a" }}>{contribTag.nome}</span>
+              <button type="button" onClick={() => setContribTag(null)}
+                style={{ border: "none", background: "#eee", borderRadius: "50%", width: 18, height: 18, cursor: "pointer", fontSize: 11, lineHeight: 1 }}>×</button>
+            </div>
+          ) : (
+            <div style={{ position: "relative" }}>
+              <input type="text" value={contribRicerca} onChange={(e) => setContribRicerca(e.target.value)} placeholder="Cerca designer o prodotto..."
+                style={{ width: "100%", boxSizing: "border-box", padding: "8px 12px", borderRadius: 8, border: "1px solid #ddd", fontFamily: "Roboto, sans-serif", fontSize: 12, fontWeight: 300 }} />
+              {risultatiTag.length > 0 && (
+                <div style={{ position: "absolute", top: "100%", left: 0, right: 0, marginTop: 4, background: "white", borderRadius: 8, boxShadow: "0 4px 16px rgba(0,0,0,0.12)", zIndex: 1, maxHeight: 200, overflowY: "auto" }}>
+                  {risultatiTag.map((r, i) => (
+                    <button key={i} type="button"
+                      onClick={() => { setContribTag({ tipo: r.tipo, nome: r.nome }); setContribRicerca("") }}
+                      style={{ display: "block", width: "100%", padding: "8px 12px", border: "none", background: "white", cursor: "pointer", textAlign: "left", fontFamily: "Roboto, sans-serif", fontSize: 12 }}>
+                      {r.nome}{r.sub && <span style={{ color: "#999", marginLeft: 6, fontWeight: 300 }}>{r.sub}</span>}
+                    </button>
+                  ))}
+                </div>
+              )}
+            </div>
+          )}
+        </div>
+
+        <textarea value={contribDescrizione} onChange={(e) => setContribDescrizione(e.target.value)}
+          placeholder="Descrivi la modifica proposta..." rows={5}
+          style={{ width: "100%", boxSizing: "border-box", padding: "10px 12px", borderRadius: 8, border: "1px solid #ddd", fontFamily: "Roboto, sans-serif", fontSize: 12, fontWeight: 300, resize: "vertical" }} />
+
+        <input type="email" value={contribEmail} onChange={(e) => setContribEmail(e.target.value)} placeholder="La tua email"
+          style={{ padding: "8px 12px", borderRadius: 8, border: "1px solid #ddd", fontFamily: "Roboto, sans-serif", fontSize: 12, fontWeight: 300 }} />
+
+        <button type="button" onClick={inviaContribuzione} disabled={contribStato === "invio"}
+          style={{ padding: "10px 16px", borderRadius: 20, border: "none", cursor: "pointer", background: "#1a1a1a", color: "white", fontFamily: "Roboto, sans-serif", fontSize: 12, fontWeight: 500 }}>
+          {contribStato === "invio" ? "Invio in corso..." : "Invia"}
+        </button>
+        {contribStato === "ok" && <div style={{ color: "#2a8a4a", fontSize: 11, fontFamily: "Roboto, sans-serif" }}>Grazie, la tua segnalazione è stata inviata.</div>}
+        {contribStato === "errore" && <div style={{ color: "#c0392b", fontSize: 11, fontFamily: "Roboto, sans-serif" }}>Si è verificato un errore. Riprova più tardi.</div>}
+      </div>
+    )
+  }
+
+  function renderMenuDetail(vista) {
+    const titoli = { manifesto: "Manifesto", contatti: "Contatti", credits: "Credits", contribuisci: "Contribuisci" }
+    const corpo = {
+      manifesto: renderManifestoBody, contatti: renderContattiBody, credits: renderCreditsBody, contribuisci: renderContribuisciBody,
+    }[vista]
+    return (
+      <>
+        <div onClick={() => setMenuVista("lista")}
+          style={{ display: "flex", alignItems: "center", gap: 8, cursor: "pointer", marginBottom: 18 }}>
+          <span style={{ fontSize: 14, color: "#999" }}>‹</span>
+          <span style={{ fontFamily: "'Roboto Mono', monospace", fontSize: 11, color: "#999", textTransform: "uppercase", letterSpacing: 1 }}>
+            {titoli[vista]}
+          </span>
+        </div>
+        {corpo && corpo()}
+      </>
+    )
+  }
+
   const uiScale = 0.6 + (window.innerWidth / 1440) * 0.4
 
   return (
@@ -1913,7 +2204,7 @@ function App() {
               style={{ fontFamily: "'Roboto Serif', serif", fontWeight: 500, fontStyle: "italic", fontSize: 13, color: "#1a1a1a", letterSpacing: 0.3, lineHeight: 1.3, marginLeft: 9, paddingRight: 36 }}>
               Design — encyclopédie visuelle 1880–1980
             </div>
-            <button onClick={() => setMenuApertoMobile(!menuApertoMobile)}
+            <button onClick={() => menuApertoMobile ? chiudiMenu() : setMenuApertoMobile(true)}
               style={{
                 position: "absolute", top: "50%", right: 0,
                 transform: menuApertoMobile ? "translateY(-50%) rotate(45deg)" : "translateY(-50%) rotate(0deg)",
@@ -1965,11 +2256,7 @@ function App() {
       )}
 
       {window.innerWidth < 768 && ricerca.length > 1 && (() => {
-        const q = ricerca.toLowerCase()
-        const risultati = [
-          ...designers.filter(d => d.nome.toLowerCase().includes(q)).map(d => ({ tipo: "designer", nome: d.nome })),
-          ...prodotti.filter(p => p.nome.toLowerCase().includes(q)).map(p => ({ tipo: "prodotto", nome: p.nome, sub: getDesigners(p).join(", ") })),
-        ].slice(0, 8)
+        const risultati = cercaEntita(ricerca)
         if (risultati.length === 0) return null
         const inputRect = inputRicercaMobileRef.current ? inputRicercaMobileRef.current.getBoundingClientRect() : null
         if (!inputRect) return null
@@ -1987,7 +2274,7 @@ function App() {
       })()}
 
       {window.innerWidth < 768 && menuApertoMobile && (
-        <div onClick={() => setMenuApertoMobile(false)}
+        <div onClick={chiudiMenu}
           style={{ position: "fixed", inset: 0, background: "rgba(0,0,0,0.25)", zIndex: 25 }} />
       )}
 
@@ -1999,60 +2286,9 @@ function App() {
           transition: "transform 0.35s ease", padding: "24px 22px", boxSizing: "border-box",
           display: "flex", flexDirection: "column", gap: 2, overflowY: "auto",
         }}>
-          <div style={{ fontFamily: "Roboto, sans-serif", fontSize: 10, fontWeight: 600, color: "#aaa", letterSpacing: 1.5, textTransform: "uppercase", marginBottom: 8 }}>
-            Sezione
-          </div>
-          <div style={{ marginBottom: 18, marginLeft: -7 }}>
-            <span style={{
-              display: "inline-block", fontFamily: "'Roboto Mono', monospace", fontSize: 10, fontWeight: 400,
-              color: "#555", border: "1px solid #ddd", borderRadius: 20, padding: "3px 12px",
-            }}>
-              Design
-            </span>
-          </div>
-          <div style={{ fontFamily: "Roboto, sans-serif", fontSize: 10, fontWeight: 600, color: "#aaa", letterSpacing: 1.5, textTransform: "uppercase", marginBottom: 10 }}>
-            Menu
-          </div>
-          <div style={{ borderBottom: "1px solid #eee", padding: "16px 0" }}>
-            <div onClick={() => setAboutEspanso(!aboutEspanso)}
-              style={{ display: "flex", alignItems: "center", justifyContent: "space-between", cursor: "pointer" }}>
-              <div style={{ fontFamily: "'Roboto Mono', monospace", fontWeight: 400, fontSize: 13, color: "#777" }}>
-                About
-              </div>
-              <span style={{
-                display: "inline-block", transform: aboutEspanso ? "rotate(180deg)" : "rotate(0deg)",
-                transition: "transform 0.25s ease", fontSize: 10, color: "#999",
-              }}>
-                ▼
-              </span>
-            </div>
-            <div style={{
-              overflow: "hidden", transition: "max-height 0.35s ease, opacity 0.35s ease, margin 0.35s ease",
-              maxHeight: aboutEspanso ? 300 : 0, opacity: aboutEspanso ? 1 : 0,
-              marginTop: aboutEspanso ? 8 : 0,
-            }}>
-              <p style={{ fontFamily: "Roboto, sans-serif", fontWeight: 300, fontSize: 11, color: "#888", lineHeight: 1.45, margin: 0 }}>
-                Questa mappa rappresenta un secolo di design occidentale — i suoi protagonisti, le loro opere e i legami invisibili che li uniscono. Ogni nodo è un designer o un oggetto; ogni connessione, una relazione di collaborazione, influenza o formazione.
-              </p>
-              <p style={{ fontFamily: "Roboto, sans-serif", fontWeight: 300, fontSize: 11, color: "#888", lineHeight: 1.45, marginTop: 8, marginBottom: 0 }}>
-                La posizione orizzontale segue una cronologia rigorosa, dal 1880 al 1980. Esplorando la mappa si scoprono le grandi concentrazioni del movimento moderno, le filiazioni tra maestri e allievi, e le convergenze tra discipline e nazionalità.
-              </p>
-            </div>
-          </div>
-          {["Maps", "Contatti"].map((titolo, i) => (
-            <div key={i} style={{ borderBottom: "1px solid #eee", padding: "16px 0" }}>
-              <div style={{ fontFamily: "'Roboto Mono', monospace", fontWeight: 400, fontSize: 13, color: "#777" }}>
-                {titolo}
-              </div>
-            </div>
-          ))}
-          <div style={{ marginTop: "auto", paddingTop: 24 }}>
-            <div style={{ fontFamily: "'Roboto Mono', monospace", fontSize: 9, color: "#bbb", lineHeight: 1.6 }}>
-              © 2026 Design — Encyclopédie Visuelle<br />
-              Un secolo di design occidentale, 1880–1980<br />
-              Tutti i diritti riservati
-            </div>
-          </div>
+          {menuVista === "lista" && renderMenuHeader()}
+          {menuVista === "lista" ? renderMenuLista() : renderMenuDetail(menuVista)}
+          {menuVista === "lista" && renderMenuFooter()}
         </div>
       )}
 
@@ -2096,11 +2332,7 @@ function App() {
             <input type="text" value={ricerca} onChange={(e) => setRicerca(e.target.value)} placeholder="Cerca..."
               style={{ padding: "8px 14px", border: "none", borderRadius: 20, fontSize: 11, fontWeight: 300, fontFamily: "Roboto, sans-serif", background: "white", boxShadow: "0 2px 12px rgba(0,0,0,0.1)", outline: "none", width: 160, color: "#1a1a1a" }} />
             {ricerca.length > 1 && (() => {
-              const q = ricerca.toLowerCase()
-              const risultati = [
-                ...designers.filter(d => d.nome.toLowerCase().includes(q)).map(d => ({ tipo: "designer", nome: d.nome })),
-                ...prodotti.filter(p => p.nome.toLowerCase().includes(q)).map(p => ({ tipo: "prodotto", nome: p.nome, sub: getDesigners(p).join(", ") })),
-              ].slice(0, 8)
+              const risultati = cercaEntita(ricerca)
               if (risultati.length === 0) return null
               return (
                 <div style={{ position: "absolute", bottom: "100%", left: 0, right: 0, marginBottom: 4, background: "white", borderRadius: 12, boxShadow: "0 4px 16px rgba(0,0,0,0.12)", overflow: "hidden", maxHeight: 240, overflowY: "auto" }}>
@@ -2115,6 +2347,45 @@ function App() {
                 </div>
               )
             })()}
+          </div>
+        </div>
+      )}
+
+      {window.innerWidth >= 768 && (
+        <button onClick={() => menuApertoDesktop ? chiudiMenu() : setMenuApertoDesktop(true)}
+          style={{
+            position: "fixed", top: 32 * uiScale, left: 24 * uiScale, zIndex: 210,
+            width: 36 * uiScale, height: 36 * uiScale, minWidth: 36 * uiScale, borderRadius: "50%", border: "none",
+            background: "white", boxShadow: "0 2px 12px rgba(0,0,0,0.1)", cursor: "pointer",
+            display: "flex", alignItems: "center", justifyContent: "center", padding: 0,
+            transform: menuApertoDesktop ? "rotate(45deg)" : "rotate(0deg)",
+            transition: "transform 0.3s ease",
+          }}>
+          <span style={{ position: "relative", width: 14 * uiScale, height: 14 * uiScale, display: "block" }}>
+            <span style={{ position: "absolute", top: "50%", left: 0, right: 0, height: 1.5, background: "#1a1a1a", transform: "translateY(-50%)" }} />
+            <span style={{ position: "absolute", left: "50%", top: 0, bottom: 0, width: 1.5, background: "#1a1a1a", transform: "translateX(-50%)" }} />
+          </span>
+        </button>
+      )}
+
+      {window.innerWidth >= 768 && menuApertoDesktop && (
+        <div onClick={chiudiMenu}
+          style={{ position: "fixed", inset: 0, background: "rgba(0,0,0,0.15)", zIndex: 149 }} />
+      )}
+
+      {window.innerWidth >= 768 && (
+        <div style={{
+          position: "fixed", top: 0, left: 0, bottom: 0, width: 340 * uiScale,
+          background: "#ffffff", zIndex: 150, boxShadow: "4px 0 32px rgba(0,0,0,0.12)",
+          transform: menuApertoDesktop ? "translateX(0)" : "translateX(-100%)",
+          transition: "transform 0.35s cubic-bezier(0.4, 0, 0.2, 1)",
+          display: "flex", flexDirection: "column", overflow: "hidden",
+          fontFamily: "Roboto, sans-serif",
+        }}>
+          <div style={{ flex: 1, overflowY: "auto", padding: `${116 * uiScale}px ${28 * uiScale}px ${32 * uiScale}px` }}>
+            {menuVista === "lista" && renderMenuHeader()}
+            {menuVista === "lista" ? renderMenuLista() : renderMenuDetail(menuVista)}
+            {menuVista === "lista" && renderMenuFooter()}
           </div>
         </div>
       )}
