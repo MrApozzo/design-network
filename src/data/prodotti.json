@@ -241,6 +241,7 @@
     "azienda": "O Luce",
     "categoria": "lampada",
     "descrizione": "Icona assoluta del design italiano, la lampada Atollo riduce l'archetipo della lampada a tre forme geometriche pure: cilindro, cono e semisfera. È nella collezione permanente di numerosi musei di design nel mondo.",
+    "descrizione_en": "An absolute icon of Italian design, the Atollo lamp reduces the lamp archetype to three pure geometric forms: cylinder, cone, and hemisphere. It is in the permanent collection of numerous design museums worldwide.",
     "riconoscimenti": [
       "Compasso d'Oro 1979"
     ],
@@ -1995,6 +1996,7 @@
     "azienda": "Bernini",
     "categoria": "sedia",
     "descrizione": "Disegnata da Carlo Scarpa per la sua residenza veneziana, si caratterizza per il contrasto tra la base geometrica e rigorosa e lo schienale organico e sinuoso. Un cuscino sottile in pelle nera segue la sagoma curva del legno.",
+    "descrizione_en": "Designed by Carlo Scarpa for his Venetian residence, it is defined by the contrast between the rigorous geometric base and the organic, sinuous backrest. A thin black leather cushion follows the wood's curved profile.",
     "foto": "scarpa-mod765.jpg"
   },
   {

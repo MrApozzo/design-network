@@ -4,293 +4,335 @@
     "designer_b": "Pier Giacomo Castiglioni",
     "tipo": "fratelli",
     "categoria": "personale",
-    "descrizione": "Fratelli, hanno collaborato su quasi tutti i progetti fino alla morte di Pier Giacomo nel 1968"
+    "descrizione": "Fratelli, hanno collaborato su quasi tutti i progetti fino alla morte di Pier Giacomo nel 1968",
+    "descrizione_en": "Brothers, they collaborated on nearly every project until Pier Giacomo's death in 1968"
   },
   {
     "designer_a": "Achille Castiglioni",
     "designer_b": "Marco Zanuso",
     "tipo": "collaborazione",
     "categoria": "professionale",
-    "descrizione": "Entrambi protagonisti del design milanese del dopoguerra, spesso esposti insieme alla Triennale di Milano"
+    "descrizione": "Entrambi protagonisti del design milanese del dopoguerra, spesso esposti insieme alla Triennale di Milano",
+    "descrizione_en": "Both leading figures of postwar Milanese design, often exhibited together at the Triennale di Milano"
   },
   {
     "designer_a": "Gio Ponti",
     "designer_b": "Franco Albini",
     "tipo": "stesso_periodo",
     "categoria": "professionale",
-    "descrizione": "Entrambi figure fondamentali del razionalismo e del design italiano degli anni '40 e '50"
+    "descrizione": "Entrambi figure fondamentali del razionalismo e del design italiano degli anni '40 e '50",
+    "descrizione_en": "Both foundational figures of rationalism and Italian design in the 1940s and '50s"
   },
   {
     "designer_a": "Marco Zanuso",
     "designer_b": "Richard Sapper",
     "tipo": "collaborazione",
     "categoria": "professionale",
-    "descrizione": "Hanno collaborato per anni progettando insieme prodotti iconici come il telefono Grillo per Siemens"
+    "descrizione": "Hanno collaborato per anni progettando insieme prodotti iconici come il telefono Grillo per Siemens",
+    "descrizione_en": "They collaborated for years, designing iconic products together such as the Grillo telephone for Siemens"
   },
   {
     "designer_a": "Ettore Sottsass",
     "designer_b": "Alessandro Mendini",
     "tipo": "collaborazione",
     "categoria": "professionale",
-    "descrizione": "Figure centrali del design radicale e postmoderno italiano, fondatori di movimenti culturali affini"
+    "descrizione": "Figure centrali del design radicale e postmoderno italiano, fondatori di movimenti culturali affini",
+    "descrizione_en": "Central figures of Italian radical and postmodern design, founders of kindred cultural movements"
   },
   {
     "designer_a": "Vico Magistretti",
     "designer_b": "Cini Boeri",
     "tipo": "stesso_studio",
     "categoria": "professionale",
-    "descrizione": "Entrambi formatisi nell'ambiente del design milanese, allievi di maestri razionalisti"
+    "descrizione": "Entrambi formatisi nell'ambiente del design milanese, allievi di maestri razionalisti",
+    "descrizione_en": "Both trained in the Milanese design scene, students of rationalist masters"
   },
   {
     "designer_a": "Franco Albini",
     "designer_b": "Gae Aulenti",
     "tipo": "mentore",
     "categoria": "professionale",
-    "descrizione": "Aulenti si è formata nell'ambiente professionale milanese vicino ad Albini"
+    "descrizione": "Aulenti si è formata nell'ambiente professionale milanese vicino ad Albini",
+    "descrizione_en": "Aulenti trained in the Milanese professional milieu close to Albini"
   },
   {
     "designer_a": "Achille Castiglioni",
     "designer_b": "Bruno Munari",
     "tipo": "amicizia",
     "categoria": "personale",
-    "descrizione": "Entrambi legati alla Triennale di Milano e alla ricerca sul design come cultura visiva"
+    "descrizione": "Entrambi legati alla Triennale di Milano e alla ricerca sul design come cultura visiva",
+    "descrizione_en": "Both connected to the Triennale di Milano and to research on design as visual culture"
   },
   {
     "designer_a": "Gio Ponti",
     "designer_b": "Piero Fornasetti",
     "tipo": "collaborazione",
     "categoria": "professionale",
-    "descrizione": "Hanno collaborato intensamente per decenni, Fornasetti decorava gli oggetti disegnati da Ponti"
+    "descrizione": "Hanno collaborato intensamente per decenni, Fornasetti decorava gli oggetti disegnati da Ponti",
+    "descrizione_en": "They collaborated closely for decades, with Fornasetti decorating objects designed by Ponti"
   },
   {
     "designer_a": "Joe Colombo",
     "designer_b": "Gaetano Pesce",
     "tipo": "stesso_periodo",
     "categoria": "professionale",
-    "descrizione": "Entrambi designer visionari degli anni '60, protagonisti del design sperimentale italiano"
+    "descrizione": "Entrambi designer visionari degli anni '60, protagonisti del design sperimentale italiano",
+    "descrizione_en": "Both visionary designers of the 1960s, leading figures of experimental Italian design"
   },
   {
     "designer_a": "Ettore Sottsass",
     "designer_b": "Mario Bellini",
     "tipo": "collaborazione",
     "categoria": "professionale",
-    "descrizione": "Entrambi hanno lavorato per Olivetti come consulenti del design negli stessi anni"
+    "descrizione": "Entrambi hanno lavorato per Olivetti come consulenti del design negli stessi anni",
+    "descrizione_en": "Both worked for Olivetti as design consultants during the same years"
   },
   {
     "designer_a": "Gino Sarfatti",
     "designer_b": "Achille Castiglioni",
     "tipo": "stesso_settore",
     "categoria": "professionale",
-    "descrizione": "Entrambi hanno rivoluzionato il design della luce italiana, con approcci diversi ma complementari"
+    "descrizione": "Entrambi hanno rivoluzionato il design della luce italiana, con approcci diversi ma complementari",
+    "descrizione_en": "Both revolutionized Italian lighting design, with different but complementary approaches"
   },
   {
     "designer_a": "Anna Castelli Ferrieri",
     "designer_b": "Marco Zanuso",
     "tipo": "collaborazione",
     "categoria": "professionale",
-    "descrizione": "Entrambi hanno esplorato le possibilità del design in plastica nel dopoguerra italiano"
+    "descrizione": "Entrambi hanno esplorato le possibilità del design in plastica nel dopoguerra italiano",
+    "descrizione_en": "Both explored the possibilities of plastic design in postwar Italy"
   },
   {
     "designer_a": "Osvaldo Borsani",
     "designer_b": "Marco Zanuso",
     "tipo": "stesso_periodo",
     "categoria": "professionale",
-    "descrizione": "Entrambi protagonisti del design italiano degli anni '50, interessati alla funzionalità e alla trasformabilità"
+    "descrizione": "Entrambi protagonisti del design italiano degli anni '50, interessati alla funzionalità e alla trasformabilità",
+    "descrizione_en": "Both leading figures of 1950s Italian design, interested in functionality and transformability"
   },
   {
     "designer_a": "Carlo Mollino",
     "designer_b": "Gio Ponti",
     "tipo": "stesso_periodo",
     "categoria": "professionale",
-    "descrizione": "Figure eccentriche e visionarie del design italiano, attive nello stesso periodo storico"
+    "descrizione": "Figure eccentriche e visionarie del design italiano, attive nello stesso periodo storico",
+    "descrizione_en": "Eccentric and visionary figures of Italian design, active in the same historical period"
   },
   {
     "designer_a": "Marcello Nizzoli",
     "designer_b": "Mario Bellini",
     "tipo": "successione",
     "categoria": "professionale",
-    "descrizione": "Bellini ha raccolto l'eredità di Nizzoli come principale designer di Olivetti"
+    "descrizione": "Bellini ha raccolto l'eredità di Nizzoli come principale designer di Olivetti",
+    "descrizione_en": "Bellini inherited Nizzoli's role as Olivetti's principal designer"
   },
   {
     "designer_a": "Cini Boeri",
     "designer_b": "Marco Zanuso",
     "tipo": "mentore",
     "categoria": "professionale",
-    "descrizione": "Boeri è stata allieva e collaboratrice di Zanuso"
+    "descrizione": "Boeri è stata allieva e collaboratrice di Zanuso",
+    "descrizione_en": "Boeri was a student and collaborator of Zanuso"
   },
   {
     "designer_a": "Afra Bianchin",
     "designer_b": "Tobia Scarpa",
     "tipo": "coniugi",
     "categoria": "personale",
-    "descrizione": "Marito e moglie, hanno collaborato su tutti i progetti dal 1957 fino alla morte di Afra nel 2011"
+    "descrizione": "Marito e moglie, hanno collaborato su tutti i progetti dal 1957 fino alla morte di Afra nel 2011",
+    "descrizione_en": "Husband and wife, they collaborated on every project from 1957 until Afra's death in 2011"
   },
   {
     "designer_a": "Tobia Scarpa",
     "designer_b": "Angelo Mangiarotti",
     "tipo": "stesso_periodo",
     "categoria": "professionale",
-    "descrizione": "Entrambi veneti, entrambi interessati all'artigianalità e alla ricerca sui materiali"
+    "descrizione": "Entrambi veneti, entrambi interessati all'artigianalità e alla ricerca sui materiali",
+    "descrizione_en": "Both from the Veneto region, both interested in craftsmanship and material research"
   },
   {
     "designer_a": "Franco Albini",
     "designer_b": "Franca Helg",
     "tipo": "collaborazione",
     "categoria": "professionale",
-    "descrizione": "Collaborazione ventennale nello Studio Albini-Helg, firmando insieme architetture, allestimenti e arredi"
+    "descrizione": "Collaborazione ventennale nello Studio Albini-Helg, firmando insieme architetture, allestimenti e arredi",
+    "descrizione_en": "A twenty-year collaboration at Studio Albini-Helg, jointly signing buildings, exhibition designs, and furniture"
   },
   {
     "designer_a": "Michele De Lucchi",
     "designer_b": "Ettore Sottsass",
     "tipo": "collaborazione",
     "categoria": "professionale",
-    "descrizione": "Entrambi fondatori del gruppo Memphis, De Lucchi è stato tra i principali protagonisti del movimento"
+    "descrizione": "Entrambi fondatori del gruppo Memphis, De Lucchi è stato tra i principali protagonisti del movimento",
+    "descrizione_en": "Both founders of the Memphis group, De Lucchi was among the movement's leading figures"
   },
   {
     "designer_a": "Andrea Branzi",
     "designer_b": "Alessandro Mendini",
     "tipo": "collaborazione",
     "categoria": "professionale",
-    "descrizione": "Entrambi protagonisti di Studio Alchimia e del design radicale, hanno condiviso visione e percorso culturale"
+    "descrizione": "Entrambi protagonisti di Studio Alchimia e del design radicale, hanno condiviso visione e percorso culturale",
+    "descrizione_en": "Both leading figures of Studio Alchimia and radical design, sharing a common vision and cultural path"
   },
   {
     "designer_a": "Andrea Branzi",
     "designer_b": "Ettore Sottsass",
     "tipo": "collaborazione",
     "categoria": "professionale",
-    "descrizione": "Entrambi esponenti del design radicale, hanno partecipato insieme a Studio Alchimia prima della nascita di Memphis"
+    "descrizione": "Entrambi esponenti del design radicale, hanno partecipato insieme a Studio Alchimia prima della nascita di Memphis",
+    "descrizione_en": "Both exponents of radical design, they took part together in Studio Alchimia before Memphis was founded"
   },
   {
     "designer_a": "Gianluigi Banfi",
     "designer_b": "Lodovico Belgiojoso",
     "tipo": "fondatori studio BBPR",
     "categoria": "professionale",
-    "descrizione": "Co-fondatori dello studio BBPR nel 1932 insieme a Peressutti e Rogers"
+    "descrizione": "Co-fondatori dello studio BBPR nel 1932 insieme a Peressutti e Rogers",
+    "descrizione_en": "Co-founders of studio BBPR in 1932, together with Peressutti and Rogers"
   },
   {
     "designer_a": "Gianluigi Banfi",
     "designer_b": "Enrico Peressutti",
     "tipo": "fondatori studio BBPR",
     "categoria": "professionale",
-    "descrizione": "Co-fondatori dello studio BBPR nel 1932 insieme a Belgiojoso e Rogers"
+    "descrizione": "Co-fondatori dello studio BBPR nel 1932 insieme a Belgiojoso e Rogers",
+    "descrizione_en": "Co-founders of studio BBPR in 1932, together with Belgiojoso and Rogers"
   },
   {
     "designer_a": "Gianluigi Banfi",
     "designer_b": "Ernesto Nathan Rogers",
     "tipo": "fondatori studio BBPR",
     "categoria": "professionale",
-    "descrizione": "Co-fondatori dello studio BBPR nel 1932 insieme a Belgiojoso e Peressutti"
+    "descrizione": "Co-fondatori dello studio BBPR nel 1932 insieme a Belgiojoso e Peressutti",
+    "descrizione_en": "Co-founders of studio BBPR in 1932, together with Belgiojoso and Peressutti"
   },
   {
     "designer_a": "Lodovico Belgiojoso",
     "designer_b": "Enrico Peressutti",
     "tipo": "fondatori studio BBPR",
     "categoria": "professionale",
-    "descrizione": "Co-fondatori dello studio BBPR nel 1932 insieme a Banfi e Rogers"
+    "descrizione": "Co-fondatori dello studio BBPR nel 1932 insieme a Banfi e Rogers",
+    "descrizione_en": "Co-founders of studio BBPR in 1932, together with Banfi and Rogers"
   },
   {
     "designer_a": "Lodovico Belgiojoso",
     "designer_b": "Ernesto Nathan Rogers",
     "tipo": "fondatori studio BBPR",
     "categoria": "professionale",
-    "descrizione": "Co-fondatori dello studio BBPR nel 1932 insieme a Banfi e Peressutti"
+    "descrizione": "Co-fondatori dello studio BBPR nel 1932 insieme a Banfi e Peressutti",
+    "descrizione_en": "Co-founders of studio BBPR in 1932, together with Banfi and Peressutti"
   },
   {
     "designer_a": "Enrico Peressutti",
     "designer_b": "Ernesto Nathan Rogers",
     "tipo": "fondatori studio BBPR",
     "categoria": "professionale",
-    "descrizione": "Co-fondatori dello studio BBPR nel 1932 insieme a Banfi e Belgiojoso"
+    "descrizione": "Co-fondatori dello studio BBPR nel 1932 insieme a Banfi e Belgiojoso",
+    "descrizione_en": "Co-founders of studio BBPR in 1932, together with Banfi and Belgiojoso"
   },
   {
     "designer_a": "Enzo Mari",
     "designer_b": "Bruno Munari",
     "tipo": "amicizia",
     "categoria": "personale",
-    "descrizione": "Entrambi legati a Danese e alla ricerca sulla semplicità, il gioco e la didattica nel design"
+    "descrizione": "Entrambi legati a Danese e alla ricerca sulla semplicità, il gioco e la didattica nel design",
+    "descrizione_en": "Both connected to Danese and to research on simplicity, play, and pedagogy in design"
   },
   {
     "designer_a": "Enzo Mari",
     "designer_b": "Andrea Branzi",
     "tipo": "stesso_periodo",
     "categoria": "professionale",
-    "descrizione": "Entrambi figure del design radicale italiano, con approcci diversi ma complementari alla critica del consumismo"
+    "descrizione": "Entrambi figure del design radicale italiano, con approcci diversi ma complementari alla critica del consumismo",
+    "descrizione_en": "Both figures of Italian radical design, with different but complementary approaches to the critique of consumerism"
   },
   {
     "designer_a": "Livio Castiglioni",
     "designer_b": "Achille Castiglioni",
     "tipo": "fratelli",
     "categoria": "personale",
-    "descrizione": "Fratelli, Livio era il maggiore dei tre fratelli Castiglioni"
+    "descrizione": "Fratelli, Livio era il maggiore dei tre fratelli Castiglioni",
+    "descrizione_en": "Brothers, Livio was the eldest of the three Castiglioni brothers"
   },
   {
     "designer_a": "Livio Castiglioni",
     "designer_b": "Pier Giacomo Castiglioni",
     "tipo": "fratelli",
     "categoria": "personale",
-    "descrizione": "Fratelli, hanno collaborato nei primi anni dello studio Castiglioni"
+    "descrizione": "Fratelli, hanno collaborato nei primi anni dello studio Castiglioni",
+    "descrizione_en": "Brothers, they collaborated in the early years of the Castiglioni studio"
   },
   {
     "designer_a": "Philippe Starck",
     "designer_b": "Alessandro Mendini",
     "tipo": "collaborazione",
     "categoria": "professionale",
-    "descrizione": "Entrambi hanno lavorato per Alessi ridefinendo il design dell'oggetto domestico, Mendini come direttore artistico e Starck come progettista"
+    "descrizione": "Entrambi hanno lavorato per Alessi ridefinendo il design dell'oggetto domestico, Mendini come direttore artistico e Starck come progettista",
+    "descrizione_en": "Both worked for Alessi, redefining the design of domestic objects — Mendini as artistic director, Starck as a designer"
   },
   {
     "designer_a": "Charles Eames",
     "designer_b": "Ray Eames",
     "tipo": "coniugi",
     "categoria": "personale",
-    "descrizione": "Marito e moglie, hanno fondato insieme lo studio Eames e collaborato su tutti i progetti dal 1941 fino alla morte di Charles nel 1978"
+    "descrizione": "Marito e moglie, hanno fondato insieme lo studio Eames e collaborato su tutti i progetti dal 1941 fino alla morte di Charles nel 1978",
+    "descrizione_en": "Husband and wife, they founded the Eames studio together and collaborated on every project from 1941 until Charles's death in 1978"
   },
   {
     "designer_a": "Carlo Scarpa",
     "designer_b": "Tobia Scarpa",
     "tipo": "padre-figlio",
     "categoria": "personale",
-    "descrizione": "Padre e figlio, Carlo ha trasmesso a Tobia la sensibilità per i materiali e l'artigianalità veneziana"
+    "descrizione": "Padre e figlio, Carlo ha trasmesso a Tobia la sensibilità per i materiali e l'artigianalità veneziana",
+    "descrizione_en": "Father and son, Carlo passed on to Tobia his sensitivity for materials and Venetian craftsmanship"
   },
   {
     "designer_a": "Carlo Scarpa",
     "designer_b": "Carlo Mollino",
     "tipo": "stesso_periodo",
     "categoria": "professionale",
-    "descrizione": "Entrambi figure eccentriche e poetiche dell'architettura e del design italiano, con un approccio organico e artigianale"
+    "descrizione": "Entrambi figure eccentriche e poetiche dell'architettura e del design italiano, con un approccio organico e artigianale",
+    "descrizione_en": "Both eccentric and poetic figures of Italian architecture and design, with an organic, craft-based approach"
   },
   {
     "designer_a": "Luigi Caccia Dominioni",
     "designer_b": "Ignazio Gardella",
     "tipo": "fondatori Azucena",
     "categoria": "professionale",
-    "descrizione": "Cofondatori di Azucena nel 1947 insieme a Corrado Corradi Dell'Acqua"
+    "descrizione": "Cofondatori di Azucena nel 1947 insieme a Corrado Corradi Dell'Acqua",
+    "descrizione_en": "Co-founders of Azucena in 1947, together with Corrado Corradi Dell'Acqua"
   },
   {
     "designer_a": "Luigi Caccia Dominioni",
     "designer_b": "Corrado Corradi Dell'Acqua",
     "tipo": "fondatori Azucena",
     "categoria": "professionale",
-    "descrizione": "Cofondatori di Azucena nel 1947 insieme a Ignazio Gardella"
+    "descrizione": "Cofondatori di Azucena nel 1947 insieme a Ignazio Gardella",
+    "descrizione_en": "Co-founders of Azucena in 1947, together with Ignazio Gardella"
   },
   {
     "designer_a": "Ignazio Gardella",
     "designer_b": "Corrado Corradi Dell'Acqua",
     "tipo": "fondatori Azucena",
     "categoria": "professionale",
-    "descrizione": "Cofondatori di Azucena nel 1947 insieme a Luigi Caccia Dominioni"
+    "descrizione": "Cofondatori di Azucena nel 1947 insieme a Luigi Caccia Dominioni",
+    "descrizione_en": "Co-founders of Azucena in 1947, together with Luigi Caccia Dominioni"
   },
   {
     "designer_a": "Luigi Caccia Dominioni",
     "designer_b": "Livio Castiglioni",
     "tipo": "studio condiviso",
     "categoria": "professionale",
-    "descrizione": "Hanno condiviso lo studio in Corso di Porta Nuova nei primi anni di carriera di Caccia Dominioni"
+    "descrizione": "Hanno condiviso lo studio in Corso di Porta Nuova nei primi anni di carriera di Caccia Dominioni",
+    "descrizione_en": "They shared a studio on Corso di Porta Nuova in the early years of Caccia Dominioni's career"
   },
   {
     "designer_a": "Luigi Caccia Dominioni",
     "designer_b": "Pier Giacomo Castiglioni",
     "tipo": "studio condiviso",
     "categoria": "professionale",
-    "descrizione": "Hanno condiviso lo studio in Corso di Porta Nuova nei primi anni di carriera di Caccia Dominioni"
+    "descrizione": "Hanno condiviso lo studio in Corso di Porta Nuova nei primi anni di carriera di Caccia Dominioni",
+    "descrizione_en": "They shared a studio on Corso di Porta Nuova in the early years of Caccia Dominioni's career"
   }
 ]

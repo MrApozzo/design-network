@@ -229,6 +229,125 @@ const SEZIONI_CREDITS = [
   },
 ]
 
+const CATEGORIA_EN = {
+  allestimento: "installation", appendiabiti: "coat stand", architettura: "architecture",
+  automobile: "automobile", bollitore: "kettle", bottiglia: "bottle", calcolatrice: "calculator",
+  calendario: "calendar", carrello: "trolley", cassettiera: "chest of drawers", cavatappi: "corkscrew",
+  contenitore: "storage unit", divano: "sofa", fermacarte: "paperweight", gioco: "game",
+  lampada: "lamp", lampadario: "chandelier", letto: "bed", libreria: "bookcase", libro: "book",
+  "macchina caffè": "coffee machine", "macchina da cucire": "sewing machine", "macchina da scrivere": "typewriter",
+  orologio: "clock", "piatto decorativo": "decorative plate", poltrona: "armchair",
+  portaombrelli: "umbrella stand", portariviste: "magazine rack", posacenere: "ashtray", posate: "cutlery",
+  pouf: "pouf", "progetto teorico": "theoretical project", radio: "radio", scrivania: "desk",
+  scultura: "sculpture", sedia: "chair", sgabello: "stool", specchio: "mirror", spremiagrumi: "juicer",
+  superficie: "surface", tavolo: "table", telefono: "telephone", televisore: "television",
+  vaso: "vase", vassoio: "tray",
+}
+
+const TIPO_RELAZIONE_EN = {
+  fratelli: "siblings", collaborazione: "collaboration", stesso_periodo: "same period",
+  stesso_studio: "same studio", mentore: "mentor", amicizia: "friendship", stesso_settore: "same field",
+  successione: "succession", coniugi: "spouses", "fondatori studio BBPR": "BBPR studio founders",
+  "padre-figlio": "father-son", "fondatori Azucena": "Azucena founders", "studio condiviso": "shared studio",
+}
+
+const TESTI = {
+  it: {
+    sottotitolo: "Un secolo di oggetti, forme e idee.",
+    paragrafo1: "Questa mappa rappresenta un secolo di design occidentale — i suoi protagonisti, le loro opere e i legami invisibili che li uniscono. Ogni nodo è un designer o un oggetto; ogni connessione, una relazione di collaborazione, influenza o formazione.",
+    paragrafo2: "La posizione orizzontale segue una cronologia rigorosa, dal 1880 al 1980. Esplorando la mappa si scoprono le grandi concentrazioni del movimento moderno, le filiazioni tra maestri e allievi, e le convergenze tra discipline e nazionalità.",
+    cerca: "Cerca...",
+    designerToggle: "Designer",
+    timelineToggle: "Linea del tempo",
+    hoverTooltip: "Hover sui collegamenti — clicca su area vuota per uscire",
+    sezione: "Sezione",
+    menu: "Menu",
+    biografia: "Biografia",
+    riduci: "— Riduci",
+    leggiTutto: "+ Leggi tutto",
+    descrizioneLabel: "Descrizione",
+    tipologia: "Tipologia",
+    azienda: "Azienda",
+    aziende: "Aziende",
+    riconoscimenti: "Riconoscimenti",
+    footerRiga1: "Un secolo di design occidentale, 1880–1980",
+    footerRiga2: "Tutti i diritti riservati",
+    voci: { manifesto: "Manifesto", contatti: "Contatti", credits: "Credits", contribuisci: "Contribuisci" },
+    email: "Email",
+    contribCategorie: ["Correzione", "Aggiunta", "Miglioramento o suggerimento"],
+    contribDomanda: "Quale modifica vuoi presentare?",
+    contribCercaPlaceholder: "Cerca designer o prodotto...",
+    contribDescrizionePlaceholder: "Descrivi la modifica proposta...",
+    contribEmailPlaceholder: "La tua email",
+    invia: "Invia",
+    invioInCorso: "Invio in corso...",
+    contribOk: "Grazie, la tua segnalazione è stata inviata.",
+    contribErrore: "Si è verificato un errore. Riprova più tardi.",
+    creditsIntro: "Le immagini e i dati storici presenti in questa mappa provengono da un'ampia rete di fondazioni, archivi, case d'asta e piattaforme specializzate nel design del XX secolo. Di seguito l'elenco delle fonti principali.",
+    creditsTitoli: ["Fondazioni e archivi", "Case d'asta e rivenditori", "Siti e database specializzati"],
+    creditsChiusura: "Elenco in aggiornamento; eventuali omissioni o correzioni possono essere segnalate tramite la pagina Contribuisci.",
+    manifestoParagrafi: [
+      "Il francese non è una scelta puramente estetica, ma un atto di posizionamento culturale. Per secoli è stata la lingua degli intellettuali, degli enciclopedisti e di quanti hanno riconosciuto nella conoscenza un patrimonio da ordinare, condividere e rendere accessibile. È nel solco di questa tradizione che nasce il progetto.",
+      "Il design del Novecento costituisce uno dei capitoli più densi e articolati della cultura materiale occidentale. La sua conoscenza è affidata a un patrimonio ampio di monografie, archivi, cataloghi e raccolte tematiche, spesso organizzati attorno a singoli autori, aziende, movimenti o prodotti. Le fonti esistono, ma parlano lingue diverse. I frammenti ci sono; manca la mappa. Ne deriva una conoscenza ricca ma discontinua, nella quale risulta complesso ricostruire una visione d'insieme e leggere con immediatezza le relazioni che legano persone, opere, esperienze e contesti differenti.",
+      "Comprendere pienamente il percorso di un designer non significa soltanto conoscerne i prodotti, ma collocarne il lavoro all'interno di una rete di relazioni formative, personali, professionali e culturali. Significa osservare l'evoluzione del suo linguaggio nel tempo, riconoscere le influenze ricevute ed esercitate, individuare continuità, trasformazioni e discontinuità. Il singolo autore viene così rappresentato come parte di un sistema più ampio, costruito attraverso incontri, collaborazioni, affinità e contrapposizioni.",
+      "L'enciclopedia raccoglie prodotti appartenenti ad autori, periodi e contesti differenti all'interno di un unico spazio visivo. Le relazioni tra maestri e allievi, collaboratori, famiglie, collettivi, aziende e movimenti diventano elementi leggibili. La successione temporale non viene restituita come una semplice sequenza di date, ma come una geografia di esperienze, idee e linguaggi progettuali.",
+      "La visualizzazione costituisce, in questo senso, uno strumento di conoscenza. Permette di associare con maggiore immediatezza un'opera al proprio autore, di collocarla nel tempo e di confrontarla con ciò che la precede, la accompagna o ne deriva. Rende visibili traiettorie che, nei tradizionali strumenti di consultazione, restano spesso separate e richiedono la comparazione di fonti autonome e difficilmente sovrapponibili.",
+      "Questo strumento ha una finalità prevalentemente divulgativa ed educativa. Si propone come uno strumento agile ma rigoroso per chi studia, insegna, ricerca o desidera avvicinarsi alla storia del design attraverso una lettura accessibile e al tempo stesso stratificata. Non intende sostituire archivi, monografie o cataloghi, ma offrire una struttura capace di metterli in relazione e di orientarne la consultazione.",
+      "La sua natura aperta può inoltre favorire la convergenza di conoscenze oggi custodite da fondazioni, aziende, archivi, istituzioni e protagonisti del settore, contribuendo alla costruzione di una narrazione più coesa e condivisa. Un sistema in evoluzione, nel quale patrimoni differenti possano dialogare senza perdere la propria specificità.",
+      "Il design non è soltanto un insieme di oggetti desiderabili, né può essere ridotto alla loro dimensione commerciale, simbolica o collezionistica. Ogni prodotto è l'esito di una cultura, di una ricerca, di un sistema produttivo e di una precisa idea dell'abitare e del vivere.",
+      "Il design è cultura. È pensiero. È il modo in cui una civiltà dà forma ai propri gesti, ai propri spazi e alla propria quotidianità.",
+      "Questa enciclopedia nasce per restituirne la complessità, le relazioni e la profondità storica.",
+    ],
+  },
+  en: {
+    sottotitolo: "A century of objects, forms, and ideas.",
+    paragrafo1: "This map represents a century of Western design — its protagonists, their works, and the invisible ties that bind them. Each node is a designer or an object; each connection, a relationship of collaboration, influence, or formation.",
+    paragrafo2: "The horizontal position follows a rigorous chronology, from 1880 to 1980. Exploring the map reveals the great concentrations of the modern movement, the lineages between masters and students, and the convergences across disciplines and nationalities.",
+    cerca: "Search...",
+    designerToggle: "Designer",
+    timelineToggle: "Timeline",
+    hoverTooltip: "Hover over the connections — click an empty area to exit",
+    sezione: "Section",
+    menu: "Menu",
+    biografia: "Biography",
+    riduci: "— Show less",
+    leggiTutto: "+ Read more",
+    descrizioneLabel: "Description",
+    tipologia: "Type",
+    azienda: "Company",
+    aziende: "Companies",
+    riconoscimenti: "Awards",
+    footerRiga1: "A century of Western design, 1880–1980",
+    footerRiga2: "All rights reserved",
+    voci: { manifesto: "Manifesto", contatti: "Contact", credits: "Credits", contribuisci: "Contribute" },
+    email: "Email",
+    contribCategorie: ["Correction", "Addition", "Improvement or suggestion"],
+    contribDomanda: "What change would you like to submit?",
+    contribCercaPlaceholder: "Search designer or product...",
+    contribDescrizionePlaceholder: "Describe the proposed change...",
+    contribEmailPlaceholder: "Your email",
+    invia: "Submit",
+    invioInCorso: "Submitting...",
+    contribOk: "Thank you, your submission has been sent.",
+    contribErrore: "An error occurred. Please try again later.",
+    creditsIntro: "The images and historical data featured on this map come from a broad network of foundations, archives, auction houses, and platforms specialized in 20th-century design. Below is a list of the main sources.",
+    creditsTitoli: ["Foundations and Archives", "Auction Houses and Dealers", "Specialized Sites and Databases"],
+    creditsChiusura: "This list is a work in progress; any omissions or corrections can be reported via the Contribute page.",
+    manifestoParagrafi: [
+      "French is not a purely aesthetic choice, but an act of cultural positioning. For centuries it was the language of intellectuals, of the encyclopedists, and of all those who recognized knowledge as a heritage to be ordered, shared, and made accessible. It is in the wake of this tradition that this project is born.",
+      "Twentieth-century design is one of the richest and most intricate chapters of Western material culture. Our knowledge of it rests on a vast body of monographs, archives, catalogues, and thematic collections, often organized around individual authors, companies, movements, or products. The sources exist, but they speak different languages. The fragments are there; what is missing is the map. The result is a body of knowledge that is rich yet discontinuous, one in which it is difficult to reconstruct an overall view and to immediately read the relationships linking different people, works, experiences, and contexts.",
+      "Fully understanding a designer's trajectory means more than knowing their products; it means situating their work within a network of formative, personal, professional, and cultural relationships. It means observing the evolution of their language over time, recognizing the influences they received and exerted, and identifying continuities, transformations, and discontinuities. The individual author is thus represented as part of a larger system, built through encounters, collaborations, affinities, and oppositions.",
+      "The encyclopedia gathers products belonging to different authors, periods, and contexts within a single visual space. The relationships between masters and students, collaborators, families, collectives, companies, and movements become legible elements. The chronological sequence is rendered not as a simple succession of dates, but as a geography of experiences, ideas, and design languages.",
+      "In this sense, visualization becomes a tool of knowledge. It allows a work to be more immediately linked to its author, placed in time, and compared with what precedes, accompanies, or follows from it. It makes visible trajectories that, in traditional reference tools, often remain separate and require comparing autonomous sources that are difficult to overlay.",
+      "This tool serves a primarily educational and outreach purpose. It is conceived as an agile yet rigorous instrument for those who study, teach, research, or simply wish to approach the history of design through a reading that is both accessible and layered. It does not aim to replace archives, monographs, or catalogues, but to offer a structure capable of relating them to one another and guiding their consultation.",
+      "Its open nature can also foster the convergence of knowledge currently held by foundations, companies, archives, institutions, and protagonists of the field, contributing to the construction of a more cohesive, shared narrative — an evolving system in which different bodies of heritage can engage with one another without losing their specificity.",
+      "Design is not merely a collection of desirable objects, nor can it be reduced to their commercial, symbolic, or collectible dimension. Every product is the outcome of a culture, a body of research, a production system, and a precise idea of dwelling and living.",
+      "Design is culture. It is thought. It is the way a civilization gives form to its gestures, its spaces, and its everyday life.",
+      "This encyclopedia was created to give back its complexity, its relationships, and its historical depth.",
+    ],
+  },
+}
+
 function preloadImages(paths) {
   const cache = {}
   paths.forEach((src) => {
@@ -260,6 +379,10 @@ function App() {
   const [contribDescrizione, setContribDescrizione] = useState("")
   const [contribEmail, setContribEmail] = useState("")
   const [contribStato, setContribStato] = useState("idle")
+  const [lingua, setLingua] = useState("it")
+  const linguaRef = useRef("it")
+  useEffect(() => { linguaRef.current = lingua }, [lingua])
+  const t = TESTI[lingua]
   const [bioEspansa, setBioEspansa] = useState(false)
   const [galleriaIndice, setGalleriaIndice] = useState(0)
   const [galleriaFullscreen, setGalleriaFullscreen] = useState(false)
@@ -1285,7 +1408,8 @@ function App() {
           const lineHDesc = 13
           ctx.save()
           ctx.font = `300 ${fontDesc}px Roboto`
-          const words = (popupCanvas.dati.descrizione || "").split(" ")
+          const descrizioneCanvas = (linguaRef.current === "en" && popupCanvas.dati.descrizione_en) ? popupCanvas.dati.descrizione_en : (popupCanvas.dati.descrizione || "")
+          const words = descrizioneCanvas.split(" ")
           const descLines = []
           let line = ""
           for (const word of words) {
@@ -1317,7 +1441,8 @@ function App() {
           ctx.fillText(`${popupCanvas.dati.designer_a} — ${popupCanvas.dati.designer_b}`, boxX + pad, ty)
           ty += 4 + 9
           ctx.font = "600 8px Roboto"; ctx.fillStyle = "#aaa"
-          ctx.fillText((popupCanvas.dati.tipo || "").toUpperCase(), boxX + pad, ty)
+          const tipoCanvas = linguaRef.current === "en" ? (TIPO_RELAZIONE_EN[popupCanvas.dati.tipo] || popupCanvas.dati.tipo) : popupCanvas.dati.tipo
+          ctx.fillText((tipoCanvas || "").toUpperCase(), boxX + pad, ty)
           ty += 6
           ctx.font = `300 ${fontDesc}px Roboto`; ctx.fillStyle = "#666"
           for (const dl of descLines) { ty += lineHDesc; ctx.fillText(dl, boxX + pad, ty) }
@@ -2008,8 +2133,18 @@ function App() {
   function renderMenuHeader() {
     return (
       <>
-        <div style={{ fontFamily: "Roboto, sans-serif", fontSize: 10, fontWeight: 600, color: "#aaa", letterSpacing: 1.5, textTransform: "uppercase", marginBottom: 8 }}>
-          Sezione
+        <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 8 }}>
+          <div style={{ fontFamily: "Roboto, sans-serif", fontSize: 10, fontWeight: 600, color: "#aaa", letterSpacing: 1.5, textTransform: "uppercase" }}>
+            {t.sezione}
+          </div>
+          <div style={{ display: "flex", gap: 2, background: "#ececec", borderRadius: 12, padding: 2 }}>
+            {["it", "en"].map((l) => (
+              <button key={l} onClick={() => setLingua(l)}
+                style={{ padding: "2px 8px", border: "none", borderRadius: 10, cursor: "pointer", fontSize: 9, fontWeight: lingua === l ? 600 : 300, fontFamily: "'Roboto Mono', monospace", color: lingua === l ? "#ffffff" : "#888", background: lingua === l ? "#1a1a1a" : "transparent", transition: "all 0.2s" }}>
+                {l.toUpperCase()}
+              </button>
+            ))}
+          </div>
         </div>
         <div style={{ marginBottom: 18, marginLeft: -7 }}>
           <span style={{
@@ -2028,8 +2163,8 @@ function App() {
       <div style={{ marginTop: "auto", paddingTop: 24 }}>
         <div style={{ fontFamily: "'Roboto Mono', monospace", fontSize: 9, color: "#bbb", lineHeight: 1.6 }}>
           © 2026 Design — Encyclopédie Visuelle<br />
-          Un secolo di design occidentale, 1880–1980<br />
-          Tutti i diritti riservati
+          {t.footerRiga1}<br />
+          {t.footerRiga2}
         </div>
       </div>
     )
@@ -2039,13 +2174,13 @@ function App() {
     return (
       <>
         <div style={{ fontFamily: "Roboto, sans-serif", fontSize: 10, fontWeight: 600, color: "#aaa", letterSpacing: 1.5, textTransform: "uppercase", marginBottom: 10 }}>
-          Menu
+          {t.menu}
         </div>
-        {["Manifesto", "Contatti", "Credits", "Contribuisci"].map((titolo, i) => (
-          <div key={i} onClick={() => setMenuVista(titolo.toLowerCase())}
+        {["manifesto", "contatti", "credits", "contribuisci"].map((id) => (
+          <div key={id} onClick={() => setMenuVista(id)}
             style={{ borderBottom: "1px solid #eee", padding: "16px 0", cursor: "pointer" }}>
             <div style={{ fontFamily: "'Roboto Mono', monospace", fontWeight: 400, fontSize: 13, color: "#777" }}>
-              {titolo}
+              {t.voci[id]}
             </div>
           </div>
         ))}
@@ -2059,18 +2194,7 @@ function App() {
         <div style={{ fontFamily: "'Roboto Serif', serif", fontWeight: 500, fontStyle: "italic", fontSize: 14, color: "#1a1a1a", marginBottom: 16 }}>
           Design — encyclopédie visuelle 1880–1980
         </div>
-        {[
-          "Il francese non è una scelta puramente estetica, ma un atto di posizionamento culturale. Per secoli è stata la lingua degli intellettuali, degli enciclopedisti e di quanti hanno riconosciuto nella conoscenza un patrimonio da ordinare, condividere e rendere accessibile. È nel solco di questa tradizione che nasce il progetto.",
-          "Il design del Novecento costituisce uno dei capitoli più densi e articolati della cultura materiale occidentale. La sua conoscenza è affidata a un patrimonio ampio di monografie, archivi, cataloghi e raccolte tematiche, spesso organizzati attorno a singoli autori, aziende, movimenti o prodotti. Le fonti esistono, ma parlano lingue diverse. I frammenti ci sono; manca la mappa. Ne deriva una conoscenza ricca ma discontinua, nella quale risulta complesso ricostruire una visione d'insieme e leggere con immediatezza le relazioni che legano persone, opere, esperienze e contesti differenti.",
-          "Comprendere pienamente il percorso di un designer non significa soltanto conoscerne i prodotti, ma collocarne il lavoro all'interno di una rete di relazioni formative, personali, professionali e culturali. Significa osservare l'evoluzione del suo linguaggio nel tempo, riconoscere le influenze ricevute ed esercitate, individuare continuità, trasformazioni e discontinuità. Il singolo autore viene così rappresentato come parte di un sistema più ampio, costruito attraverso incontri, collaborazioni, affinità e contrapposizioni.",
-          "L'enciclopedia raccoglie prodotti appartenenti ad autori, periodi e contesti differenti all'interno di un unico spazio visivo. Le relazioni tra maestri e allievi, collaboratori, famiglie, collettivi, aziende e movimenti diventano elementi leggibili. La successione temporale non viene restituita come una semplice sequenza di date, ma come una geografia di esperienze, idee e linguaggi progettuali.",
-          "La visualizzazione costituisce, in questo senso, uno strumento di conoscenza. Permette di associare con maggiore immediatezza un'opera al proprio autore, di collocarla nel tempo e di confrontarla con ciò che la precede, la accompagna o ne deriva. Rende visibili traiettorie che, nei tradizionali strumenti di consultazione, restano spesso separate e richiedono la comparazione di fonti autonome e difficilmente sovrapponibili.",
-          "Questo strumento ha una finalità prevalentemente divulgativa ed educativa. Si propone come uno strumento agile ma rigoroso per chi studia, insegna, ricerca o desidera avvicinarsi alla storia del design attraverso una lettura accessibile e al tempo stesso stratificata. Non intende sostituire archivi, monografie o cataloghi, ma offrire una struttura capace di metterli in relazione e di orientarne la consultazione.",
-          "La sua natura aperta può inoltre favorire la convergenza di conoscenze oggi custodite da fondazioni, aziende, archivi, istituzioni e protagonisti del settore, contribuendo alla costruzione di una narrazione più coesa e condivisa. Un sistema in evoluzione, nel quale patrimoni differenti possano dialogare senza perdere la propria specificità.",
-          "Il design non è soltanto un insieme di oggetti desiderabili, né può essere ridotto alla loro dimensione commerciale, simbolica o collezionistica. Ogni prodotto è l'esito di una cultura, di una ricerca, di un sistema produttivo e di una precisa idea dell'abitare e del vivere.",
-          "Il design è cultura. È pensiero. È il modo in cui una civiltà dà forma ai propri gesti, ai propri spazi e alla propria quotidianità.",
-          "Questa enciclopedia nasce per restituirne la complessità, le relazioni e la profondità storica.",
-        ].map((par, i) => (
+        {t.manifestoParagrafi.map((par, i) => (
           <p key={i} style={{ fontFamily: "Roboto, sans-serif", fontWeight: 300, fontSize: 12, color: "#888", lineHeight: 1.6, marginTop: i === 0 ? 0 : 12, marginBottom: 0 }}>
             {par}
           </p>
@@ -2083,7 +2207,7 @@ function App() {
     // PLACEHOLDER: inserire qui l'indirizzo email di contatto reale — decisione da prendere esplicitamente (privacy), non inventare
     return (
       <div style={{ fontFamily: "Roboto, sans-serif", fontWeight: 300, fontSize: 12, color: "#888", lineHeight: 1.6 }}>
-        <div style={{ fontSize: 9, fontWeight: 600, color: "#aaa", textTransform: "uppercase", letterSpacing: 1.5, marginBottom: 8 }}>Email</div>
+        <div style={{ fontSize: 9, fontWeight: 600, color: "#aaa", textTransform: "uppercase", letterSpacing: 1.5, marginBottom: 8 }}>{t.email}</div>
         <div style={{ color: "#ccc", fontStyle: "italic" }}>—</div>
       </div>
     )
@@ -2093,12 +2217,12 @@ function App() {
     return (
       <>
         <p style={{ fontFamily: "Roboto, sans-serif", fontWeight: 300, fontSize: 12, color: "#888", lineHeight: 1.6, marginTop: 0 }}>
-          Le immagini e i dati storici presenti in questa mappa provengono da un'ampia rete di fondazioni, archivi, case d'asta e piattaforme specializzate nel design del XX secolo. Di seguito l'elenco delle fonti principali.
+          {t.creditsIntro}
         </p>
         {SEZIONI_CREDITS.map((sez, i) => (
           <div key={i} style={{ marginBottom: i < SEZIONI_CREDITS.length - 1 ? 22 : 16 }}>
             <div style={{ fontFamily: "'Roboto Serif', serif", fontWeight: 500, fontStyle: "italic", fontSize: 14, color: "#1a1a1a", marginBottom: 10 }}>
-              {sez.titolo}
+              {t.creditsTitoli[i]}
             </div>
             {sez.nomi.map((nome, j) => (
               <div key={j} style={{ fontFamily: "Roboto, sans-serif", fontWeight: 300, fontSize: 12, color: "#777", lineHeight: 1.9 }}>
@@ -2108,7 +2232,7 @@ function App() {
           </div>
         ))}
         <p style={{ fontFamily: "Roboto, sans-serif", fontWeight: 300, fontStyle: "italic", fontSize: 11, color: "#aaa", lineHeight: 1.5 }}>
-          Elenco in aggiornamento; eventuali omissioni o correzioni possono essere segnalate tramite la pagina Contribuisci.
+          {t.creditsChiusura}
         </p>
       </>
     )
@@ -2120,14 +2244,14 @@ function App() {
       <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
         <select value={contribCategoria} onChange={(e) => setContribCategoria(e.target.value)}
           style={{ fontFamily: "Roboto, sans-serif", fontSize: 12, fontWeight: 300, color: "#1a1a1a", padding: "8px 10px", borderRadius: 8, border: "1px solid #ddd", background: "white" }}>
-          <option>Correzione</option>
-          <option>Aggiunta</option>
-          <option>Miglioramento o suggerimento</option>
+          <option>{t.contribCategorie[0]}</option>
+          <option>{t.contribCategorie[1]}</option>
+          <option>{t.contribCategorie[2]}</option>
         </select>
 
         <div>
           <label style={{ fontFamily: "Roboto, sans-serif", fontSize: 11, fontWeight: 400, color: "#777", display: "block", marginBottom: 6 }}>
-            Quale modifica vuoi presentare?
+            {t.contribDomanda}
           </label>
           {contribTag ? (
             <div style={{ display: "inline-flex", alignItems: "center", gap: 6, border: "1px solid #ddd", borderRadius: 20, padding: "4px 6px 4px 12px" }}>
@@ -2137,7 +2261,7 @@ function App() {
             </div>
           ) : (
             <div style={{ position: "relative" }}>
-              <input type="text" value={contribRicerca} onChange={(e) => setContribRicerca(e.target.value)} placeholder="Cerca designer o prodotto..."
+              <input type="text" value={contribRicerca} onChange={(e) => setContribRicerca(e.target.value)} placeholder={t.contribCercaPlaceholder}
                 style={{ width: "100%", boxSizing: "border-box", padding: "8px 12px", borderRadius: 8, border: "1px solid #ddd", fontFamily: "Roboto, sans-serif", fontSize: 12, fontWeight: 300 }} />
               {risultatiTag.length > 0 && (
                 <div style={{ position: "absolute", top: "100%", left: 0, right: 0, marginTop: 4, background: "white", borderRadius: 8, boxShadow: "0 4px 16px rgba(0,0,0,0.12)", zIndex: 1, maxHeight: 200, overflowY: "auto" }}>
@@ -2155,24 +2279,24 @@ function App() {
         </div>
 
         <textarea value={contribDescrizione} onChange={(e) => setContribDescrizione(e.target.value)}
-          placeholder="Descrivi la modifica proposta..." rows={5}
+          placeholder={t.contribDescrizionePlaceholder} rows={5}
           style={{ width: "100%", boxSizing: "border-box", padding: "10px 12px", borderRadius: 8, border: "1px solid #ddd", fontFamily: "Roboto, sans-serif", fontSize: 12, fontWeight: 300, resize: "vertical" }} />
 
-        <input type="email" value={contribEmail} onChange={(e) => setContribEmail(e.target.value)} placeholder="La tua email"
+        <input type="email" value={contribEmail} onChange={(e) => setContribEmail(e.target.value)} placeholder={t.contribEmailPlaceholder}
           style={{ padding: "8px 12px", borderRadius: 8, border: "1px solid #ddd", fontFamily: "Roboto, sans-serif", fontSize: 12, fontWeight: 300 }} />
 
         <button type="button" onClick={inviaContribuzione} disabled={contribStato === "invio"}
           style={{ padding: "10px 16px", borderRadius: 20, border: "none", cursor: "pointer", background: "#1a1a1a", color: "white", fontFamily: "Roboto, sans-serif", fontSize: 12, fontWeight: 500 }}>
-          {contribStato === "invio" ? "Invio in corso..." : "Invia"}
+          {contribStato === "invio" ? t.invioInCorso : t.invia}
         </button>
-        {contribStato === "ok" && <div style={{ color: "#2a8a4a", fontSize: 11, fontFamily: "Roboto, sans-serif" }}>Grazie, la tua segnalazione è stata inviata.</div>}
-        {contribStato === "errore" && <div style={{ color: "#c0392b", fontSize: 11, fontFamily: "Roboto, sans-serif" }}>Si è verificato un errore. Riprova più tardi.</div>}
+        {contribStato === "ok" && <div style={{ color: "#2a8a4a", fontSize: 11, fontFamily: "Roboto, sans-serif" }}>{t.contribOk}</div>}
+        {contribStato === "errore" && <div style={{ color: "#c0392b", fontSize: 11, fontFamily: "Roboto, sans-serif" }}>{t.contribErrore}</div>}
       </div>
     )
   }
 
   function renderMenuDetail(vista) {
-    const titoli = { manifesto: "Manifesto", contatti: "Contatti", credits: "Credits", contribuisci: "Contribuisci" }
+    const titoli = t.voci
     const corpo = {
       manifesto: renderManifestoBody, contatti: renderContattiBody, credits: renderCreditsBody, contribuisci: renderContribuisciBody,
     }[vista]
@@ -2225,7 +2349,7 @@ function App() {
             marginTop: (pannelloDesigner || nodoEvidenziato) ? 0 : 4,
           }}>
             <div style={{ fontFamily: "'Roboto Serif', serif", fontWeight: 400, fontStyle: "italic", fontSize: 13, color: "#1a1a1a", lineHeight: 1.3, marginLeft: 9 }}>
-              Un secolo di oggetti, forme e idee.
+              {t.sottotitolo}
             </div>
           </div>
           <div style={{
@@ -2239,15 +2363,15 @@ function App() {
               <div style={{ display: "flex", gap: 2, background: "#ffffff", borderRadius: 22, padding: 3, boxShadow: "0 2px 12px rgba(0,0,0,0.1)" }}>
                 <button onClick={() => cambiaVista("designer")}
                   style={{ padding: "6px 12px", border: "none", borderRadius: 18, cursor: "pointer", fontSize: 9, fontWeight: vistaCorrente === "designer" ? 400 : 300, fontFamily: "'Roboto Mono', monospace", color: vistaCorrente === "designer" ? "#ffffff" : "#555555", background: vistaCorrente === "designer" ? "#F34213" : "#ececec", transition: "all 0.2s" }}>
-                  Designer
+                  {t.designerToggle}
                 </button>
                 <button onClick={() => cambiaVista("timeline")}
                   style={{ padding: "6px 12px", border: "none", borderRadius: 18, cursor: "pointer", fontSize: 9, fontWeight: vistaCorrente === "timeline" ? 400 : 300, fontFamily: "'Roboto Mono', monospace", color: vistaCorrente === "timeline" ? "#ffffff" : "#555555", background: vistaCorrente === "timeline" ? "#F34213" : "#ececec", transition: "all 0.2s" }}>
-                  Timeline
+                  {t.timelineToggle}
                 </button>
               </div>
               <div style={{ position: "relative", flex: 1 }}>
-                <input ref={inputRicercaMobileRef} type="text" value={ricerca} onChange={(e) => setRicerca(e.target.value)} onBlur={() => setTimeout(() => setRicerca(""), 150)} placeholder="Cerca..."
+                <input ref={inputRicercaMobileRef} type="text" value={ricerca} onChange={(e) => setRicerca(e.target.value)} onBlur={() => setTimeout(() => setRicerca(""), 150)} placeholder={t.cerca}
                   style={{ padding: "8px 14px", border: "none", borderRadius: 20, fontSize: 9, fontWeight: 300, fontFamily: "'Roboto Mono', monospace", background: "white", boxShadow: "0 2px 12px rgba(0,0,0,0.1)", outline: "none", width: "100%", boxSizing: "border-box", color: "#1a1a1a" }} />
               </div>
             </div>
@@ -2303,14 +2427,14 @@ function App() {
             Design — encyclopédie visuelle 1880–1980
           </div>
           <div style={{ fontFamily: "'Roboto Serif', serif", fontWeight: 400, fontStyle: "italic", fontSize: 13 * uiScale, color: "#1a1a1a", marginTop: 6 * uiScale, lineHeight: 1.3 }}>
-            Un secolo di oggetti, forme e idee.
+            {t.sottotitolo}
           </div>
           <div style={{ display: "flex", flexDirection: "column", gap: 8 * uiScale, marginTop: 10 * uiScale, opacity: 1, maxHeight: 300, overflow: "hidden" }}>
             <p style={{ fontFamily: "Roboto, sans-serif", fontWeight: 300, fontSize: 11 * uiScale, color: "#888", lineHeight: 1.35, margin: 0 }}>
-              Questa mappa rappresenta un secolo di design occidentale — i suoi protagonisti, le loro opere e i legami invisibili che li uniscono. Ogni nodo è un designer o un oggetto; ogni connessione, una relazione di collaborazione, influenza o formazione.
+              {t.paragrafo1}
             </p>
             <p style={{ fontFamily: "Roboto, sans-serif", fontWeight: 300, fontSize: 11 * uiScale, color: "#888", lineHeight: 1.35, margin: 0 }}>
-              La posizione orizzontale segue una cronologia rigorosa, dal 1880 al 1980. Esplorando la mappa si scoprono le grandi concentrazioni del movimento moderno, le filiazioni tra maestri e allievi, e le convergenze tra discipline e nazionalità.
+              {t.paragrafo2}
             </p>
           </div>
         </div>
@@ -2324,15 +2448,15 @@ function App() {
           <div style={{ display: "flex", gap: 2, background: "#ffffff", borderRadius: 18 * uiScale, padding: 3, boxShadow: "0 2px 12px rgba(0,0,0,0.1)", height: 28 * uiScale, boxSizing: "border-box" }}>
             <button onClick={() => cambiaVista("designer")}
               style={{ padding: `0 ${11 * uiScale}px`, border: "none", borderRadius: 13 * uiScale, cursor: "pointer", fontSize: 10 * uiScale, fontWeight: vistaCorrente === "designer" ? 400 : 300, fontFamily: "'Roboto Mono', monospace", color: vistaCorrente === "designer" ? "#ffffff" : "#555555", background: vistaCorrente === "designer" ? "#F34213" : "#ececec", transition: "all 0.2s", display: "flex", alignItems: "center" }}>
-              Designer
+              {t.designerToggle}
             </button>
             <button onClick={() => cambiaVista("timeline")}
               style={{ padding: `0 ${11 * uiScale}px`, border: "none", borderRadius: 13 * uiScale, cursor: "pointer", fontSize: 10 * uiScale, fontWeight: vistaCorrente === "timeline" ? 400 : 300, fontFamily: "'Roboto Mono', monospace", color: vistaCorrente === "timeline" ? "#ffffff" : "#555555", background: vistaCorrente === "timeline" ? "#F34213" : "#ececec", transition: "all 0.2s", display: "flex", alignItems: "center" }}>
-              Linea del tempo
+              {t.timelineToggle}
             </button>
           </div>
           <div style={{ position: "relative" }}>
-            <input type="text" value={ricerca} onChange={(e) => setRicerca(e.target.value)} placeholder="Cerca..."
+            <input type="text" value={ricerca} onChange={(e) => setRicerca(e.target.value)} placeholder={t.cerca}
               style={{ height: 28 * uiScale, boxSizing: "border-box", padding: `0 ${11 * uiScale}px`, border: "none", borderRadius: 14 * uiScale, fontSize: 10 * uiScale, fontWeight: 300, fontFamily: "'Roboto Mono', monospace", background: "white", boxShadow: "0 2px 12px rgba(0,0,0,0.1)", outline: "none", width: 140 * uiScale, color: "#1a1a1a" }} />
             {ricerca.length > 1 && (() => {
               const risultati = cercaEntita(ricerca)
@@ -2344,7 +2468,7 @@ function App() {
                       style={{ display: "block", width: "100%", padding: "8px 14px", border: "none", background: "white", cursor: "pointer", textAlign: "left", fontFamily: "Roboto, sans-serif", fontSize: 11, borderBottom: "1px solid #f0f0f0" }}>
                       <span style={{ fontWeight: 500, color: "#1a1a1a" }}>{r.nome}</span>
                       {r.sub && <span style={{ fontWeight: 300, color: "#999", marginLeft: 6 }}>{r.sub}</span>}
-                      <span style={{ fontWeight: 300, color: "#ccc", marginLeft: 6, fontSize: 9, textTransform: "uppercase" }}>{r.tipo}</span>
+                      <span style={{ fontWeight: 300, color: "#ccc", marginLeft: 6, fontSize: 9, textTransform: "uppercase" }}>{lingua === "en" && r.tipo === "prodotto" ? "product" : r.tipo}</span>
                     </button>
                   ))}
                 </div>
@@ -2395,7 +2519,7 @@ function App() {
 
       {designerAttivo && (
         <div style={{ position: "fixed", bottom: 64, left: "50%", transform: "translateX(-50%)", background: "rgba(0,0,0,0.06)", borderRadius: 20, padding: "6px 16px", fontSize: 11, fontWeight: 300, color: "#888", fontFamily: "Roboto, sans-serif", zIndex: 20, pointerEvents: "none" }}>
-          Hover sui collegamenti — clicca su area vuota per uscire
+          {t.hoverTooltip}
         </div>
       )}
 
@@ -2405,10 +2529,10 @@ function App() {
             {tooltipRelazione.dati.designer_a} — {tooltipRelazione.dati.designer_b}
           </div>
           <div style={{ fontWeight: 600, color: "#444", marginBottom: 4, textTransform: "uppercase", fontSize: 10, letterSpacing: 1 }}>
-            {tooltipRelazione.dati.tipo}
+            {lingua === "en" ? (TIPO_RELAZIONE_EN[tooltipRelazione.dati.tipo] || tooltipRelazione.dati.tipo) : tooltipRelazione.dati.tipo}
           </div>
           <div style={{ fontWeight: 300, color: "#555", lineHeight: 1.4 }}>
-            {tooltipRelazione.dati.descrizione}
+            {lingua === "en" ? (tooltipRelazione.dati.descrizione_en || tooltipRelazione.dati.descrizione) : tooltipRelazione.dati.descrizione}
           </div>
         </div>
       )}
@@ -2495,7 +2619,7 @@ function App() {
                   )}
                   {pannelloDesigner.descrizione && (
                     <p style={{ fontSize: 10, fontWeight: 300, color: "#888", lineHeight: 1.4, margin: "6px 0 0" }}>
-                      {pannelloDesigner.descrizione}
+                      {lingua === "en" ? (pannelloDesigner.descrizione_en || pannelloDesigner.descrizione) : pannelloDesigner.descrizione}
                     </p>
                   )}
                 </div>
@@ -2558,25 +2682,28 @@ function App() {
               </div>
             )}
 
-            {pannelloDesigner._tipo === "designer" && pannelloDesigner.bio && (
+            {pannelloDesigner._tipo === "designer" && pannelloDesigner.bio && (() => {
+              const bioTesto = lingua === "en" ? (pannelloDesigner.bio_en || pannelloDesigner.bio) : pannelloDesigner.bio
+              return (
               <div style={{ marginBottom: 0, ...(window.innerWidth < 768 ? { marginLeft: 104 } : {}) }}>
-                <div style={{ fontSize: 9, fontWeight: 600, color: scuro ? "#555" : "#aaa", textTransform: "uppercase", letterSpacing: 1.5, marginBottom: 8 }}>Biografia</div>
+                <div style={{ fontSize: 9, fontWeight: 600, color: scuro ? "#555" : "#aaa", textTransform: "uppercase", letterSpacing: 1.5, marginBottom: 8 }}>{t.biografia}</div>
                 <p style={{
                   fontSize: window.innerWidth < 768 ? 11 : 13, fontWeight: 300, color: scuro ? "#999" : "#666", lineHeight: 1.6, margin: 0,
                   maxHeight: bioEspansa ? "none" : "4.8em", overflow: "hidden",
                 }}>
-                  {pannelloDesigner.bio}
+                  {bioTesto}
                 </p>
-                {pannelloDesigner.bio.length > 150 && (
+                {bioTesto.length > 150 && (
                   <button onClick={() => setBioEspansa(!bioEspansa)} style={{
                     background: "none", border: "none", cursor: "pointer", padding: 0, marginTop: 6,
                     fontSize: 11, fontWeight: 400, color: scuro ? "#666" : "#aaa", fontFamily: "Roboto, sans-serif",
                   }}>
-                    {bioEspansa ? "— Riduci" : "+ Leggi tutto"}
+                    {bioEspansa ? t.riduci : t.leggiTutto}
                   </button>
                 )}
               </div>
-            )}
+              )
+            })()}
 
             {pannelloDesigner._tipo === "designer" && (() => {
               const aziende = [...new Set(prodotti.filter(p => {
@@ -2587,7 +2714,7 @@ function App() {
               return (
                 <div style={window.innerWidth < 768 ? { marginLeft: 104 } : {}}>
                   <hr style={{ border: "none", borderTop: `1px solid ${scuro ? "#333" : "#eee"}`, margin: "20px 0" }} />
-                  <div style={{ fontSize: 9, fontWeight: 600, color: scuro ? "#555" : "#aaa", textTransform: "uppercase", letterSpacing: 1.5, marginBottom: 10 }}>Aziende</div>
+                  <div style={{ fontSize: 9, fontWeight: 600, color: scuro ? "#555" : "#aaa", textTransform: "uppercase", letterSpacing: 1.5, marginBottom: 10 }}>{t.aziende}</div>
                   <div style={{ display: "flex", flexWrap: "wrap", gap: 6 }}>
                     {aziende.map((az) => {
                       const attiva = aziendaAttiva === az
@@ -2612,23 +2739,23 @@ function App() {
               <div style={window.innerWidth < 768 ? { marginLeft: 104 } : {}}>
                 {pannelloDesigner.descrizione && !(window.innerWidth < 768) && (
                   <div style={{ marginBottom: 16 }}>
-                    <div style={{ fontSize: 9, fontWeight: 600, color: "#aaa", textTransform: "uppercase", letterSpacing: 1.5, marginBottom: 8 }}>Descrizione</div>
+                    <div style={{ fontSize: 9, fontWeight: 600, color: "#aaa", textTransform: "uppercase", letterSpacing: 1.5, marginBottom: 8 }}>{t.descrizioneLabel}</div>
                     <p style={{ fontSize: 13, fontWeight: 300, color: "#666", lineHeight: 1.6, margin: 0 }}>
-                      {pannelloDesigner.descrizione}
+                      {lingua === "en" ? (pannelloDesigner.descrizione_en || pannelloDesigner.descrizione) : pannelloDesigner.descrizione}
                     </p>
                   </div>
                 )}
                 {pannelloDesigner.categoria && (
                   <div>
                     <hr style={{ border: "none", borderTop: "1px solid #eee", margin: "16px 0" }} />
-                    <div style={{ fontSize: 9, fontWeight: 600, color: "#aaa", textTransform: "uppercase", letterSpacing: 1.5, marginBottom: 10 }}>Tipologia</div>
-                    <span style={{ fontSize: 11, fontWeight: 400, color: "#555", border: "1px solid #ddd", borderRadius: 20, padding: "4px 12px", fontFamily: "Roboto, sans-serif" }}>{pannelloDesigner.categoria}</span>
+                    <div style={{ fontSize: 9, fontWeight: 600, color: "#aaa", textTransform: "uppercase", letterSpacing: 1.5, marginBottom: 10 }}>{t.tipologia}</div>
+                    <span style={{ fontSize: 11, fontWeight: 400, color: "#555", border: "1px solid #ddd", borderRadius: 20, padding: "4px 12px", fontFamily: "Roboto, sans-serif" }}>{lingua === "en" ? (CATEGORIA_EN[pannelloDesigner.categoria] || pannelloDesigner.categoria) : pannelloDesigner.categoria}</span>
                   </div>
                 )}
                 {pannelloDesigner.azienda && (
                   <div>
                     <hr style={{ border: "none", borderTop: "1px solid #eee", margin: "16px 0" }} />
-                    <div style={{ fontSize: 9, fontWeight: 600, color: "#aaa", textTransform: "uppercase", letterSpacing: 1.5, marginBottom: 10 }}>Azienda</div>
+                    <div style={{ fontSize: 9, fontWeight: 600, color: "#aaa", textTransform: "uppercase", letterSpacing: 1.5, marginBottom: 10 }}>{t.azienda}</div>
                     <div style={{ display: "flex", flexWrap: "wrap", gap: 6 }}>
                       {[pannelloDesigner.azienda, pannelloDesigner.azienda_attuale].filter(Boolean).filter((v, i, a) => a.indexOf(v) === i).map((az) => {
                         const attiva = aziendaAttiva === az
@@ -2650,7 +2777,7 @@ function App() {
                 {pannelloDesigner.riconoscimenti && pannelloDesigner.riconoscimenti.length > 0 && (
                   <div>
                     <hr style={{ border: "none", borderTop: "1px solid #eee", margin: "16px 0" }} />
-                    <div style={{ fontSize: 9, fontWeight: 600, color: "#aaa", textTransform: "uppercase", letterSpacing: 1.5, marginBottom: 10 }}>Riconoscimenti</div>
+                    <div style={{ fontSize: 9, fontWeight: 600, color: "#aaa", textTransform: "uppercase", letterSpacing: 1.5, marginBottom: 10 }}>{t.riconoscimenti}</div>
                     <div style={{ display: "flex", flexDirection: "column", gap: 4 }}>
                       {pannelloDesigner.riconoscimenti.map((r, i) => (
                         <div key={i} style={{ fontSize: 12, fontWeight: 300, color: "#555", fontFamily: "Roboto, sans-serif" }}>
@@ -2737,7 +2864,7 @@ function App() {
                   {popup.dati.designer_a} — {popup.dati.designer_b}
                 </div>
                 <div style={{ fontFamily: "'Roboto Serif', serif", fontWeight: 400, fontStyle: "italic", fontSize: 13, color: "#888", marginTop: 4 }}>
-                  {popup.dati.tipo}
+                  {lingua === "en" ? (TIPO_RELAZIONE_EN[popup.dati.tipo] || popup.dati.tipo) : popup.dati.tipo}
                 </div>
               </div>
               <button onClick={() => setPopup(null)}
@@ -2748,7 +2875,7 @@ function App() {
           </div>
           <div style={{ flex: 1, overflowY: "auto", padding: "20px 28px 32px" }}>
             <p style={{ fontSize: 13, fontWeight: 300, color: "#999", lineHeight: 1.6, margin: 0 }}>
-              {popup.dati.descrizione}
+              {lingua === "en" ? (popup.dati.descrizione_en || popup.dati.descrizione) : popup.dati.descrizione}
             </p>
           </div>
         </div>
