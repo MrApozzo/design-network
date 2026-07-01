@@ -192,6 +192,7 @@ function App() {
   const [ridisegnaFn, setRidisegnaFn] = useState(null)
   const topBarRef = useRef(null)
   const sottotitoloRef = useRef(null)
+  const inputRicercaMobileRef = useRef(null)
   const [menuApertoMobile, setMenuApertoMobile] = useState(false)
   const [aboutEspanso, setAboutEspanso] = useState(false)
   const [bioEspansa, setBioEspansa] = useState(false)
@@ -234,8 +235,8 @@ function App() {
     const isMobile = window.innerWidth < 768
     const container = document.createElement("div")
     container.style.cssText = isMobile
-      ? "position:fixed;top:0;right:0;bottom:0;left:0;z-index:1;cursor:none;"
-      : "position:fixed;top:0;right:0;bottom:0;left:200px;z-index:1;cursor:none;"
+      ? `position:fixed;top:0;right:0;bottom:0;left:0;z-index:1;cursor:none;background:${STILE.sfondo_colore};`
+      : `position:fixed;top:0;right:0;bottom:0;left:200px;z-index:1;cursor:none;background:${STILE.sfondo_colore};`
     document.body.appendChild(container)
 
     const graph = new Graph()
@@ -1425,10 +1426,33 @@ function App() {
       })
       if (!nodeId || !graph.hasNode(nodeId)) return
       const attr = graph.getNodeAttributes(nodeId)
-      const bbox = renderer.getCustomBBox() || renderer.getBBox()
-      const cx = (attr.x - bbox.x[0]) / (bbox.x[1] - bbox.x[0])
-      const cy = (attr.y - bbox.y[0]) / (bbox.y[1] - bbox.y[0])
-      animaCamera({ x: cx, y: cy, ratio: 0.08 }, 600)
+      const tRatio = tipo === "designer" ? 0.06 : 0.025
+      const cRect = container.getBoundingClientRect()
+      const sState = camera.getState()
+      const pannelloW = isMobile ? 0 : 340 * uiScale
+      const pannelloH = isMobile ? cRect.height * 0.4 : 0
+      let topBarH = 0
+      if (isMobile && topBarRef.current) topBarH = topBarRef.current.getBoundingClientRect().height
+      const centroX = (cRect.width - pannelloW) / 2 - pannelloW * 0.25
+      const centroY = topBarH + (cRect.height - topBarH - pannelloH) / 2
+      clamping = true
+      camera.setState({ x: sState.x, y: sState.y, ratio: tRatio, angle: sState.angle })
+      renderer.refresh()
+      const p0 = renderer.graphToViewport({ x: attr.x, y: attr.y })
+      camera.setState({ x: sState.x + 0.01, y: sState.y, ratio: tRatio, angle: sState.angle })
+      renderer.refresh()
+      const pX = renderer.graphToViewport({ x: attr.x, y: attr.y })
+      camera.setState({ x: sState.x, y: sState.y + 0.01, ratio: tRatio, angle: sState.angle })
+      renderer.refresh()
+      const pY = renderer.graphToViewport({ x: attr.x, y: attr.y })
+      const ppuX = (p0.x - pX.x) / 0.01
+      const ppuY = (p0.y - pY.y) / 0.01
+      const tX = sState.x + (p0.x - centroX) / ppuX
+      const tY = sState.y + (p0.y - centroY) / ppuY
+      camera.setState(sState)
+      renderer.refresh()
+      clamping = false
+      animaCamera({ ratio: tRatio, x: tX, y: tY }, 600)
       nodoEvidenziatoRef.current = nodeId
       setNodoEvidenziato(nodeId)
       if (tipo === "designer") {
@@ -1757,6 +1781,17 @@ function App() {
     }
   }, [])
 
+  useEffect(() => {
+    if (window.innerWidth >= 768) return
+    if (!pannelloVisibile) {
+      const bg = STILE.sfondo_colore
+      document.documentElement.style.backgroundColor = bg
+      document.body.style.backgroundColor = bg
+      const meta = document.querySelector('meta[name="theme-color"]')
+      if (meta) meta.setAttribute('content', bg)
+    }
+  }, [pannelloVisibile])
+
   function toggleAzienda(az) {
     const nuova = aziendaAttiva === az ? null : az
     setAziendaAttiva(nuova)
@@ -1828,32 +1863,35 @@ function App() {
                 </button>
               </div>
               <div style={{ position: "relative", flex: 1 }}>
-                <input type="text" value={ricerca} onChange={(e) => setRicerca(e.target.value)} placeholder="Cerca..."
+                <input ref={inputRicercaMobileRef} type="text" value={ricerca} onChange={(e) => setRicerca(e.target.value)} onBlur={() => setTimeout(() => setRicerca(""), 150)} placeholder="Cerca..."
                   style={{ padding: "8px 14px", border: "none", borderRadius: 20, fontSize: 9, fontWeight: 300, fontFamily: "'Roboto Mono', monospace", background: "white", boxShadow: "0 2px 12px rgba(0,0,0,0.1)", outline: "none", width: "100%", boxSizing: "border-box", color: "#1a1a1a" }} />
-                {ricerca.length > 1 && (() => {
-                  const q = ricerca.toLowerCase()
-                  const risultati = [
-                    ...designers.filter(d => d.nome.toLowerCase().includes(q)).map(d => ({ tipo: "designer", nome: d.nome })),
-                    ...prodotti.filter(p => p.nome.toLowerCase().includes(q)).map(p => ({ tipo: "prodotto", nome: p.nome, sub: getDesigners(p).join(", ") })),
-                  ].slice(0, 8)
-                  if (risultati.length === 0) return null
-                  return (
-                    <div style={{ position: "absolute", top: "100%", left: 0, right: 0, marginTop: 4, background: "white", borderRadius: 12, boxShadow: "0 4px 16px rgba(0,0,0,0.12)", overflow: "hidden", maxHeight: 200, overflowY: "auto", zIndex: 30 }}>
-                      {risultati.map((r, i) => (
-                        <button key={i} onClick={() => { setRicerca(""); if (centraFn) centraFn(r.nome, r.tipo) }}
-                          style={{ display: "block", width: "100%", padding: "8px 14px", border: "none", background: "white", cursor: "pointer", textAlign: "left", fontFamily: "Roboto, sans-serif", fontSize: 11, borderBottom: "1px solid #f0f0f0" }}>
-                          <span style={{ fontWeight: 500, color: "#1a1a1a" }}>{r.nome}</span>
-                          {r.sub && <span style={{ fontWeight: 300, color: "#999", marginLeft: 6 }}>{r.sub}</span>}
-                        </button>
-                      ))}
-                    </div>
-                  )
-                })()}
               </div>
             </div>
           </div>
         </div>
       )}
+
+      {window.innerWidth < 768 && ricerca.length > 1 && (() => {
+        const q = ricerca.toLowerCase()
+        const risultati = [
+          ...designers.filter(d => d.nome.toLowerCase().includes(q)).map(d => ({ tipo: "designer", nome: d.nome })),
+          ...prodotti.filter(p => p.nome.toLowerCase().includes(q)).map(p => ({ tipo: "prodotto", nome: p.nome, sub: getDesigners(p).join(", ") })),
+        ].slice(0, 8)
+        if (risultati.length === 0) return null
+        const inputRect = inputRicercaMobileRef.current ? inputRicercaMobileRef.current.getBoundingClientRect() : null
+        if (!inputRect) return null
+        return (
+          <div style={{ position: "fixed", top: inputRect.bottom + 4, left: inputRect.left, width: inputRect.width, background: "white", borderRadius: 12, boxShadow: "0 4px 16px rgba(0,0,0,0.12)", overflow: "hidden", maxHeight: 260, overflowY: "auto", zIndex: 30 }}>
+            {risultati.map((r, i) => (
+              <button key={i} onClick={() => { setRicerca(""); if (centraFn) centraFn(r.nome, r.tipo) }}
+                style={{ display: "block", width: "100%", padding: "10px 14px", border: "none", background: "white", cursor: "pointer", textAlign: "left", fontFamily: "Roboto, sans-serif", fontSize: 11, borderBottom: "1px solid #f0f0f0" }}>
+                <span style={{ fontWeight: 500, color: "#1a1a1a" }}>{r.nome}</span>
+                {r.sub && <span style={{ fontWeight: 300, color: "#999", marginLeft: 6 }}>{r.sub}</span>}
+              </button>
+            ))}
+          </div>
+        )
+      })()}
 
       {window.innerWidth < 768 && menuApertoMobile && (
         <div onClick={() => setMenuApertoMobile(false)}
@@ -2016,16 +2054,17 @@ function App() {
         return (
         <div style={{
           position: "fixed", fontFamily: "Roboto, sans-serif", zIndex: 100,
-          background: scuro ? "#1a1a1a" : "#ffffff",
+          background: (window.innerWidth < 768 && !pannelloVisibile) ? STILE.sfondo_colore : (scuro ? "#1a1a1a" : "#ffffff"),
           display: "flex", flexDirection: "column", overflow: "hidden",
-          transition: "transform 0.35s cubic-bezier(0.4, 0, 0.2, 1)",
+          transition: window.innerWidth < 768
+            ? "height 0.35s cubic-bezier(0.4, 0, 0.2, 1)"
+            : "transform 0.35s cubic-bezier(0.4, 0, 0.2, 1)",
           ...(window.innerWidth < 768
             ? {
               left: 0, right: 0, bottom: 0,
-              height: "40vh",
+              height: pannelloVisibile ? "40vh" : "0",
               borderRadius: "16px 16px 0 0",
-              boxShadow: `0 -4px 32px rgba(0,0,0,${scuro ? 0.3 : 0.12})`,
-              transform: pannelloVisibile ? "translateY(0)" : "translateY(100%)",
+              boxShadow: pannelloVisibile ? `0 -4px 32px rgba(0,0,0,${scuro ? 0.3 : 0.12})` : "none",
             }
             : {
               top: 0, right: 0, bottom: 0, width: 340 * uiScale,
