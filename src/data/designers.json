@@ -725,5 +725,148 @@
     "collettivi": [
       "Azucena"
     ]
+  },
+  {
+    "nome": "Eugenio Gerli",
+    "nato": 1923,
+    "morto": 2013,
+    "bio": "Architetto e designer italiano, allievo di Luigi Caccia Dominioni. Dal 1957 collabora a lungo con Tecno, firmando tra l'altro le sedie S82-S83, la poltrona Clamis e il sistema per ufficio Graphis.",
+    "bio_en": "Italian architect and designer, a student of Luigi Caccia Dominioni. From 1957 he worked for decades with Tecno, designing among others the S82-S83 chairs, the Clamis armchair and the Graphis office system.",
+    "foto": "eugeniogerli.jpg",
+    "y": null,
+    "scuole": [],
+    "collettivi": []
+  },
+  {
+    "nome": "Gianfranco Frattini",
+    "nato": 1926,
+    "morto": 2004,
+    "bio": "Architetto e designer, allievo di Gio Ponti e tra i fondatori dell'ADI. Ha lavorato con Cassina, Artemide, Bernini e Kartell, firmando pezzi come il lampadario Luminator e la lampada Boalum con Livio Castiglioni.",
+    "bio_en": "Architect and designer, a student of Gio Ponti and among the founders of ADI. He worked with Cassina, Artemide, Bernini and Kartell, designing pieces such as the Luminator chandelier and the Boalum lamp with Livio Castiglioni.",
+    "foto": "gianfrancofrattini.jpg",
+    "y": null,
+    "scuole": [],
+    "collettivi": []
+  },
+  {
+    "nome": "Dieter Thiel",
+    "nato": 1947,
+    "morto": null,
+    "bio": "Designer tedesco, per anni assistente e collaboratore di Mario Bellini nella progettazione di sedute per ufficio per Vitra, tra cui Persona e Figura.",
+    "bio_en": "German designer, for years an assistant and collaborator of Mario Bellini in designing office seating for Vitra, including Persona and Figura.",
+    "foto": "dieterthiel.jpg",
+    "y": null,
+    "scuole": [],
+    "collettivi": []
+  },
+  {
+    "nome": "Sandro Pasqui",
+    "nato": 1937,
+    "morto": null,
+    "bio": "Designer italiano, dai primi anni '60 nel gruppo Olivetti coordinato da Mario Bellini. Con lui firma la calcolatrice Logos 270 e la macchina per scrivere Praxis 35, entrambe premiate con il Compasso d'Oro. Nel 1974 fonda lo studio PicoDesign con Gianni Pasini.",
+    "bio_en": "Italian designer, from the early 1960s part of the Olivetti group coordinated by Mario Bellini. With him he designed the Logos 270 calculator and the Praxis 35 typewriter, both awarded the Compasso d'Oro. In 1974 he founded the PicoDesign studio with Gianni Pasini.",
+    "foto": "sandropasqui.jpg",
+    "y": null,
+    "scuole": [],
+    "collettivi": []
+  },
+  {
+    "nome": "Piero Castiglioni",
+    "nato": 1944,
+    "morto": null,
+    "bio": "Architetto e lighting designer, figlio di Livio Castiglioni. Formatosi nello studio degli zii Achille e Pier Giacomo, si dedica quasi esclusivamente al progetto della luce, spesso in collaborazione con Gae Aulenti.",
+    "bio_en": "Architect and lighting designer, son of Livio Castiglioni. Trained in the studio of his uncles Achille and Pier Giacomo, he devoted himself almost exclusively to lighting design, often in collaboration with Gae Aulenti.",
+    "foto": "pierocastiglioni.jpg",
+    "y": null,
+    "scuole": [],
+    "collettivi": []
+  },
+  {
+    "nome": "Ugo La Pietra",
+    "nato": 1938,
+    "morto": null,
+    "bio": "Architetto, artista e designer, figura di riferimento del Design Radicale italiano. Teorico del 'Sistema Disequilibrante', collabora con Archizoom e Superstudio al progetto Global Tools. Nel 2016 riceve il Compasso d'Oro alla carriera.",
+    "bio_en": "Architect, artist and designer, a key figure of Italian Radical Design. Theorist of the 'Disequilibrating System', he collaborated with Archizoom and Superstudio on the Global Tools project. In 2016 he received the Compasso d'Oro for lifetime achievement.",
+    "foto": "ugolapietra.jpg",
+    "y": null,
+    "scuole": [],
+    "collettivi": []
+  },
+  {
+    "nome": "Gianni Colombo",
+    "nato": 1937,
+    "morto": 1993,
+    "bio": "Artista italiano, fratello minore di Joe Colombo. Fondatore del Gruppo T nel 1959, esplora arte cinetica e programmata; vince il Leone d'oro alla Biennale di Venezia del 1968 con l'ambiente Spazio elastico.",
+    "bio_en": "Italian artist, Joe Colombo's younger brother. Founder of Gruppo T in 1959, he explored kinetic and programmed art; he won the Golden Lion at the 1968 Venice Biennale with the environment Spazio elastico.",
+    "foto": "giannicolombo.jpg",
+    "y": null,
+    "scuole": [],
+    "collettivi": ["Gruppo T"]
+  },
+  {
+    "nome": "Ambrogio Pozzi",
+    "nato": 1931,
+    "morto": 2012,
+    "bio": "Designer e ceramista, figlio dell'industriale Franco Pozzi. Lavora per Richard-Ginori, Rosenthal e Thomas; con Joe Colombo firma il servizio da tavola per aerei Alitalia.",
+    "bio_en": "Designer and ceramicist, son of industrialist Franco Pozzi. He worked for Richard-Ginori, Rosenthal and Thomas; with Joe Colombo he designed the Alitalia in-flight tableware service.",
+    "foto": "ambrogiopozzi.jpg",
+    "y": null,
+    "scuole": [],
+    "collettivi": []
+  },
+  {
+    "nome": "Naoki Matsunaga",
+    "nato": 1940,
+    "morto": null,
+    "bio": "Designer industriale giapponese, collaboratore di Rodolfo Bonetto su progetti Olivetti tra il 1972 e il 1979, tra cui il centro di lavorazione Horizon 2 e l'Inspector Midi, premiato con il Compasso d'Oro nel 1979. Anno di nascita non documentato: stima basata sul periodo di attività.",
+    "bio_en": "Japanese industrial designer, collaborator of Rodolfo Bonetto on Olivetti projects between 1972 and 1979, including the Horizon 2 machining center and the Inspector Midi, awarded the Compasso d'Oro in 1979. Birth year undocumented: estimate based on his period of activity.",
+    "foto": "naokimatsunaga.jpg",
+    "y": null,
+    "scuole": [],
+    "collettivi": []
+  },
+  {
+    "nome": "Dario Bellini",
+    "nato": 1938,
+    "morto": null,
+    "bio": "Collaboratore di lunga data di Mario Bellini, con cui firma diversi apparecchi elettronici per Brionvega e Olivetti tra il 1968 e il 1985 (tra cui Totem, Class, Monitor 15, Eclipse). Anno di nascita non documentato: stima basata sul periodo di attività.",
+    "bio_en": "Long-time collaborator of Mario Bellini, with whom he designed several electronic products for Brionvega and Olivetti between 1968 and 1985 (including Totem, Class, Monitor 15, Eclipse). Birth year undocumented: estimate based on his period of activity.",
+    "foto": "dariobellini.jpg",
+    "y": null,
+    "scuole": [],
+    "collettivi": []
+  },
+  {
+    "nome": "Giorgio Origlia",
+    "nato": 1942,
+    "morto": null,
+    "bio": "Architetto milanese, collaboratore storico di Mario Bellini con cui firma la lampada Area per Artemide (1974), il sistema per uffici Planet-Office e uno showroom Interdecor a Tokyo. Anno di nascita non documentato: stima basata sul periodo di attività.",
+    "bio_en": "Milanese architect, a long-time collaborator of Mario Bellini with whom he designed the Area lamp for Artemide (1974), the Planet-Office system for open-plan offices and an Interdecor showroom in Tokyo. Birth year undocumented: estimate based on his period of activity.",
+    "foto": "giorgiooriglia.jpg",
+    "y": null,
+    "scuole": [],
+    "collettivi": []
+  },
+  {
+    "nome": "Valeria Borsani",
+    "nato": 1942,
+    "morto": null,
+    "bio": "Architetta, figlia di Osvaldo Borsani. Laureata al Politecnico di Milano nel 1967, nel 1970 fonda con il padre e il marito Marco Fantoni il Centro Progetti Tecno, di cui guida la direzione creativa. Anno di nascita non documentato: stima basata sull'anno di laurea.",
+    "bio_en": "Architect, daughter of Osvaldo Borsani. Graduated from Politecnico di Milano in 1967, in 1970 she co-founded the Centro Progetti Tecno with her father and husband Marco Fantoni, later leading its creative direction. Birth year undocumented: estimate based on her graduation year.",
+    "foto": "valeriaborsani.jpg",
+    "y": null,
+    "scuole": [],
+    "collettivi": []
+  },
+  {
+    "nome": "Marco Fantoni",
+    "nato": 1941,
+    "morto": null,
+    "bio": "Architetto, con la moglie Valeria Borsani e il suocero Osvaldo Borsani fonda nel 1970 il Centro Progetti Tecno, che coordina fino agli anni '80. Anno di nascita non documentato: stima basata sul periodo di attività.",
+    "bio_en": "Architect, who together with his wife Valeria Borsani and father-in-law Osvaldo Borsani founded the Centro Progetti Tecno in 1970, which he coordinated until the 1980s. Birth year undocumented: estimate based on his period of activity.",
+    "foto": "marcofantoni.jpg",
+    "y": null,
+    "scuole": [],
+    "collettivi": []
   }
 ]

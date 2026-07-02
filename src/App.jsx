@@ -90,6 +90,10 @@ const STILE = {
   arco_inizio: 0.15,
   arco_fine: 1.85,
   arco_perturbazione: 0.4,
+  // Scarto verticale tra prodotti dello stesso anno nella vista timeline: non è
+  // legato a nessuna delle costanti di spaziatura sopra (quelle valgono per l'asse Y
+  // dei designer), quindi va scalato a mano quando cresce il resto del layout.
+  timeline_scarto_stesso_anno: 5,
 }
 
 const MACRO_CATEGORIE = {
@@ -271,6 +275,28 @@ const CATEGORIA_EN = {
   "registratore a cassette": "cassette recorder", "macchina da scrivere elettronica": "electronic typewriter",
   thermos: "thermos", "tastiera elettronica": "electronic keyboard", "sedia da ufficio": "office chair",
   faretto: "spotlight", rubinetto: "faucet",
+  "sedia pieghevole": "folding chair", "scrivania direzionale": "executive desk",
+  "letto sovrapponibile": "stackable bed", "poltrona da ufficio": "office armchair",
+  "poltrona direzionale": "executive armchair", "sistema di arredi per ufficio": "office furniture system",
+  "radio portatile": "portable radio", "sistema modulare di sedute": "modular seating system",
+  autoradio: "car radio", "telefono pubblico": "public telephone", "sistema hi-fi": "hi-fi system",
+  "calcolatrice elettronica": "electronic calculator", "macchina da scrivere elettrica": "electric typewriter",
+  poltroncina: "small armchair",
+  "poltrona a dondolo": "rocking chair", divanetto: "loveseat", "chaise longue": "chaise longue",
+  "lampada da tavolo e da terra": "table and floor lamp", "sistema di sedute e tavoli": "seating and table system",
+  "orologio da polso": "wristwatch", "postazione per home office": "home office workstation",
+  "tavolo da lavoro": "work table", "famiglia di lampade": "lamp family",
+  "divano letto": "sofa bed", "pouf modulare": "modular pouf", "cucina compatta mobile": "mobile compact kitchen",
+  "mobile contenitore": "storage cabinet", "contenitore modulare": "modular storage unit",
+  "lampada da giardino": "garden lamp", "servizio di bicchieri": "glass set", bicchiere: "glass",
+  "sedia impilabile": "stackable chair", "cucina a isola": "island kitchen", "tavolo da gioco": "game table",
+  tappeto: "rug", "sistema di contenitori": "storage system", proiettore: "projector",
+  "poltrona modulare": "modular armchair", "carrello contenitore": "storage trolley",
+  portaoggetti: "storage tray", "sistema fotografico": "photographic system",
+  "seduta trasformabile": "convertible seat", "letto trasformabile": "convertible bed",
+  "sistema abitativo": "living system", "condizionatore portatile": "portable air conditioner",
+  "set di bicchieri": "glass set", formaggiera: "cheese dish", "servizio da tavola per aereo": "airline tableware set",
+  mensola: "shelf",
 }
 
 const TIPO_RELAZIONE_EN = {
@@ -694,7 +720,7 @@ function App() {
         const nStessoAnno = conteggioPerAnno[anno]
         const idxAnno = indiceCorrentePerAnno[anno] || 0
         indiceCorrentePerAnno[anno] = idxAnno + 1
-        const offsetVerticale = nStessoAnno > 1 ? (idxAnno - (nStessoAnno - 1) / 2) * 1 : 0
+        const offsetVerticale = nStessoAnno > 1 ? (idxAnno - (nStessoAnno - 1) / 2) * STILE.timeline_scarto_stesso_anno : 0
         const timelineX = annoToX(anno)
         const timelineY = dy - offsetVerticale
 
@@ -781,7 +807,7 @@ function App() {
         const nStessoAnno = conteggioPerAnnoM[anno]
         const idxAnno = indiceCorrentePerAnnoM[anno] || 0
         indiceCorrentePerAnnoM[anno] = idxAnno + 1
-        const offsetVerticale = nStessoAnno > 1 ? (idxAnno - (nStessoAnno - 1) / 2) * 1 : 0
+        const offsetVerticale = nStessoAnno > 1 ? (idxAnno - (nStessoAnno - 1) / 2) * STILE.timeline_scarto_stesso_anno : 0
         const timelineX = annoToX(anno)
         const timelineY = centroYTimeline - offsetVerticale
 

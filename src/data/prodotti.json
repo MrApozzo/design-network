@@ -324,10 +324,11 @@
   },
   {
     "nome": "Boby",
-    "anno": 1969,
+    "anno": 1970,
     "designer": "Joe Colombo",
     "azienda": "Bieffeplast",
-    "categoria": "carrello",
+    "azienda_attuale": "B-Line",
+    "categoria": "carrello contenitore",
     "foto": "colombo-boby.jpg"
   },
   {
@@ -335,15 +336,17 @@
     "anno": 1969,
     "designer": "Joe Colombo",
     "azienda": "Flexform",
-    "categoria": "sedia",
-    "foto": "colombo-tubechair.jpg"
+    "azienda_attuale": "Cappellini",
+    "categoria": "poltrona modulare",
+    "foto": "colombo-tube-chair.jpg"
   },
   {
     "nome": "Spider",
     "anno": 1965,
     "designer": "Joe Colombo",
     "azienda": "O Luce",
-    "categoria": "lampada",
+    "azienda_attuale": "O Luce",
+    "categoria": "famiglia di lampade",
     "foto": "colombo-spider.jpg"
   },
   {
@@ -367,7 +370,8 @@
     "anno": 1965,
     "designer": "Gae Aulenti",
     "azienda": "Martinelli Luce",
-    "categoria": "lampada",
+    "azienda_attuale": "Martinelli Luce",
+    "categoria": "lampada da tavolo e da terra",
     "foto": "aulenti-pipistrello.jpg"
   },
   {
@@ -375,7 +379,8 @@
     "anno": 1964,
     "designer": "Gae Aulenti",
     "azienda": "Zanotta",
-    "categoria": "sedia",
+    "azienda_attuale": "Zanotta",
+    "categoria": "sedia pieghevole",
     "foto": "aulenti-april.jpg"
   },
   {
@@ -1629,16 +1634,18 @@
     "anno": 1963,
     "designer": "Joe Colombo",
     "azienda": "Comfort",
+    "azienda_attuale": "Longhi",
     "categoria": "poltrona",
     "foto": "colombo-elda.jpg"
   },
   {
-    "nome": "Universale 4867",
-    "anno": 1967,
+    "nome": "Universale 4860",
+    "anno": 1965,
     "designer": "Joe Colombo",
     "azienda": "Kartell",
-    "categoria": "sedia",
-    "foto": "colombo-universale.jpg"
+    "azienda_attuale": null,
+    "categoria": "sedia impilabile",
+    "foto": "colombo-universale-4860.jpg"
   },
   {
     "nome": "Camaleonda",
@@ -1695,7 +1702,8 @@
     "anno": 1965,
     "designer": "Gae Aulenti",
     "azienda": "Knoll",
-    "categoria": "tavolo",
+    "azienda_attuale": null,
+    "categoria": "tavolino",
     "foto": "aulenti-jumbo.jpg"
   },
   {
@@ -2337,20 +2345,94 @@
     "foto": "nizzoli-lexikon80.jpg"
   },
   {
-    "nome": "Locus Solus",
+    "nome": "Locus Solus Armchair",
     "anno": 1964,
     "designer": "Gae Aulenti",
     "azienda": "Poltronova",
+    "azienda_attuale": "Exteta",
+    "categoria": "poltrona",
+    "foto": "aulenti-locus-solus-armchair.jpg"
+  },
+  {
+    "nome": "Locus Solus Chair",
+    "anno": 1964,
+    "designer": "Gae Aulenti",
+    "azienda": "Poltronova",
+    "azienda_attuale": "Exteta",
     "categoria": "sedia",
-    "foto": "aulenti-locussolus.jpg"
+    "foto": "aulenti-locus-solus-chair.jpg"
+  },
+  {
+    "nome": "Locus Solus Loveseat",
+    "anno": 1964,
+    "designer": "Gae Aulenti",
+    "azienda": "Poltronova",
+    "azienda_attuale": "Exteta",
+    "categoria": "divanetto",
+    "foto": "aulenti-locus-solus-loveseat.jpg"
+  },
+  {
+    "nome": "Locus Solus Sun Lounger",
+    "anno": 1964,
+    "designer": "Gae Aulenti",
+    "azienda": "Poltronova",
+    "azienda_attuale": "Exteta",
+    "categoria": "chaise longue",
+    "foto": "aulenti-locus-solus-sun-lounger.jpg"
+  },
+  {
+    "nome": "Locus Solus Dining Table",
+    "anno": 1964,
+    "designer": "Gae Aulenti",
+    "azienda": "Poltronova",
+    "azienda_attuale": "Exteta",
+    "categoria": "tavolo",
+    "foto": "aulenti-locus-solus-dining-table.jpg"
+  },
+  {
+    "nome": "Locus Solus Low Table",
+    "anno": 1964,
+    "designer": "Gae Aulenti",
+    "azienda": "Poltronova",
+    "azienda_attuale": "Exteta",
+    "categoria": "tavolino",
+    "foto": "aulenti-locus-solus-low-table.jpg"
+  },
+  {
+    "nome": "Locus Solus Pouf",
+    "anno": 1964,
+    "designer": "Gae Aulenti",
+    "azienda": "Poltronova",
+    "azienda_attuale": "Exteta",
+    "categoria": "pouf",
+    "foto": "aulenti-locus-solus-pouf.jpg"
+  },
+  {
+    "nome": "Locus Solus Stool",
+    "anno": 1964,
+    "designer": "Gae Aulenti",
+    "azienda": "Poltronova",
+    "azienda_attuale": "Exteta",
+    "categoria": "sgabello",
+    "foto": "aulenti-locus-solus-stool.jpg"
+  },
+  {
+    "nome": "Locus Solus Floor Lamp",
+    "anno": 1964,
+    "designer": "Gae Aulenti",
+    "azienda": "Poltronova",
+    "azienda_attuale": null,
+    "categoria": "lampada da terra",
+    "foto": "aulenti-locus-solus-floor-lamp.jpg"
   },
   {
     "nome": "Tavolo con Ruote",
     "anno": 1980,
     "designer": "Gae Aulenti",
     "azienda": "Fontana Arte",
-    "categoria": "tavolo",
-    "foto": "aulenti-tavoloconruote.jpg"
+    "azienda_attuale": "Fontana Arte",
+    "categoria": "tavolino",
+    "foto": "aulenti-tavolo-con-ruote.jpg"
   },
   {
     "nome": "Coronado",
@@ -2421,7 +2503,8 @@
     "anno": 1965,
     "designer": "Joe Colombo",
     "azienda": "Kartell",
-    "categoria": "sedia",
+    "azienda_attuale": "Kartell",
+    "categoria": "poltrona",
     "foto": "colombo-4801.jpg"
   },
   {
@@ -3094,5 +3177,1472 @@
     "azienda_attuale": "B&B Italia",
     "categoria": "sedia",
     "foto": "bellini-vol-au-vent.jpg"
+  },
+  {
+    "nome": "T2",
+    "anno": 1949,
+    "designer": "Osvaldo Borsani",
+    "azienda": "Tecno",
+    "azienda_attuale": null,
+    "categoria": "tavolino",
+    "foto": "borsani-t2.jpg"
+  },
+  {
+    "nome": "P71",
+    "anno": 1954,
+    "designer": "Osvaldo Borsani",
+    "azienda": "Tecno",
+    "azienda_attuale": null,
+    "categoria": "poltrona",
+    "foto": "borsani-p71.jpg"
+  },
+  {
+    "nome": "P72",
+    "anno": 1955,
+    "designer": "Osvaldo Borsani",
+    "azienda": "Tecno",
+    "azienda_attuale": null,
+    "categoria": "poltrona",
+    "foto": "borsani-p72.jpg"
+  },
+  {
+    "nome": "L77",
+    "anno": 1955,
+    "designer": "Osvaldo Borsani",
+    "azienda": "Tecno",
+    "azienda_attuale": null,
+    "categoria": "letto",
+    "foto": "borsani-l77.jpg"
+  },
+  {
+    "nome": "T95",
+    "anno": 1956,
+    "designer": "Osvaldo Borsani",
+    "azienda": "Tecno",
+    "azienda_attuale": null,
+    "categoria": "scrivania",
+    "foto": "borsani-t95.jpg"
+  },
+  {
+    "nome": "S88",
+    "anno": 1956,
+    "designer": "Osvaldo Borsani",
+    "azienda": "Tecno",
+    "azienda_attuale": null,
+    "categoria": "sedia pieghevole",
+    "foto": "borsani-s88.jpg"
+  },
+  {
+    "nome": "T96",
+    "anno": 1956,
+    "designer": "Osvaldo Borsani",
+    "azienda": "Tecno",
+    "azienda_attuale": null,
+    "categoria": "scrivania direzionale",
+    "foto": "borsani-t96.jpg"
+  },
+  {
+    "nome": "L75",
+    "anno": 1963,
+    "designer": "Osvaldo Borsani",
+    "azienda": "Tecno",
+    "azienda_attuale": null,
+    "categoria": "letto sovrapponibile",
+    "foto": "borsani-l75.jpg"
+  },
+  {
+    "nome": "P110 Canada",
+    "anno": 1965,
+    "designer": [
+      "Osvaldo Borsani",
+      "Valeria Borsani",
+      "Marco Fantoni"
+    ],
+    "azienda": "Tecno",
+    "azienda_attuale": null,
+    "categoria": "poltrona",
+    "foto": "borsani-fantoni-p110-canada.jpg"
+  },
+  {
+    "nome": "P125",
+    "anno": 1966,
+    "designer": "Osvaldo Borsani",
+    "azienda": "Tecno",
+    "azienda_attuale": null,
+    "categoria": "poltrona da ufficio",
+    "foto": "borsani-p125.jpg"
+  },
+  {
+    "nome": "P126",
+    "anno": 1966,
+    "designer": "Osvaldo Borsani",
+    "azienda": "Tecno",
+    "azienda_attuale": null,
+    "categoria": "poltrona direzionale",
+    "foto": "borsani-p126.jpg"
+  },
+  {
+    "nome": "Spazio",
+    "anno": 1960,
+    "designer": [
+      "Lodovico Belgiojoso",
+      "Enrico Peressutti",
+      "Ernesto Nathan Rogers"
+    ],
+    "azienda": "Olivetti Synthesis",
+    "azienda_attuale": null,
+    "categoria": "sistema di arredi per ufficio",
+    "foto": "bbpr-spazio.jpg"
+  },
+  {
+    "nome": "Emma",
+    "anno": 1967,
+    "designer": [
+      "Lodovico Belgiojoso",
+      "Enrico Peressutti",
+      "Ernesto Nathan Rogers"
+    ],
+    "azienda": "Olivari",
+    "azienda_attuale": null,
+    "categoria": "maniglia",
+    "foto": "bbpr-emma.jpg"
+  },
+  {
+    "nome": "812 Uovo",
+    "anno": 1951,
+    "designer": "Ico Parisi",
+    "azienda": "Ariberto Colombo",
+    "azienda_attuale": null,
+    "categoria": "divano",
+    "foto": "parisi-812-uovo.jpg"
+  },
+  {
+    "nome": "813 Uovo",
+    "anno": 1951,
+    "designer": "Ico Parisi",
+    "azienda": "Ariberto Colombo",
+    "azienda_attuale": null,
+    "categoria": "poltrona",
+    "foto": "parisi-813-uovo.jpg"
+  },
+  {
+    "nome": "865",
+    "anno": 1958,
+    "designer": "Ico Parisi",
+    "azienda": "Cassina",
+    "azienda_attuale": null,
+    "categoria": "sistema di sedute",
+    "foto": "parisi-865.jpg"
+  },
+  {
+    "nome": "Paraggi M3",
+    "anno": 1958,
+    "designer": "Ico Parisi",
+    "azienda": "MIM Roma",
+    "azienda_attuale": null,
+    "categoria": "specchio",
+    "foto": "parisi-paraggi-m3.jpg"
+  },
+  {
+    "nome": "754/2",
+    "anno": 1959,
+    "designer": "Ico Parisi",
+    "azienda": "Cassina",
+    "azienda_attuale": null,
+    "categoria": "tavolo",
+    "foto": "parisi-754-2.jpg"
+  },
+  {
+    "nome": "Iride",
+    "anno": 1970,
+    "designer": "Ico Parisi",
+    "azienda": "Lamperti",
+    "azienda_attuale": "Cassina",
+    "categoria": "lampada da terra",
+    "foto": "parisi-iride.jpg"
+  },
+  {
+    "nome": "Palpebra",
+    "anno": 1970,
+    "designer": "Ico Parisi",
+    "azienda": "Lamperti",
+    "azienda_attuale": "Cassina",
+    "categoria": "lampada da tavolo",
+    "foto": "parisi-palpebra.jpg"
+  },
+  {
+    "nome": "TS 207",
+    "anno": 1961,
+    "designer": "Rodolfo Bonetto",
+    "azienda": "Brionvega",
+    "azienda_attuale": null,
+    "categoria": "radio portatile",
+    "foto": "bonetto-ts-207.jpg"
+  },
+  {
+    "nome": "Melaina",
+    "anno": 1970,
+    "designer": "Rodolfo Bonetto",
+    "azienda": "Driade",
+    "azienda_attuale": null,
+    "categoria": "poltrona",
+    "foto": "bonetto-melaina.jpg"
+  },
+  {
+    "nome": "Linearsystem",
+    "anno": 1970,
+    "designer": "Rodolfo Bonetto",
+    "azienda": "Bellato",
+    "azienda_attuale": null,
+    "categoria": "sistema modulare di sedute",
+    "foto": "bonetto-linearsystem.jpg"
+  },
+  {
+    "nome": "TV 1202",
+    "anno": 1972,
+    "designer": "Rodolfo Bonetto",
+    "azienda": "Voxson",
+    "azienda_attuale": null,
+    "categoria": "televisore",
+    "foto": "bonetto-tv-1202.jpg"
+  },
+  {
+    "nome": "Oyster T1228",
+    "anno": 1973,
+    "designer": "Rodolfo Bonetto",
+    "azienda": "Voxson",
+    "azienda_attuale": null,
+    "categoria": "televisore",
+    "foto": "bonetto-oyster-t1228.jpg"
+  },
+  {
+    "nome": "Aki",
+    "anno": 1975,
+    "designer": "Rodolfo Bonetto",
+    "azienda": "Bilumen",
+    "azienda_attuale": "B-Line",
+    "categoria": "portaombrelli",
+    "foto": "bonetto-aki.jpg"
+  },
+  {
+    "nome": "Tanga",
+    "anno": 1979,
+    "designer": "Rodolfo Bonetto",
+    "azienda": "Voxson",
+    "azienda_attuale": null,
+    "categoria": "autoradio",
+    "foto": "bonetto-tanga.jpg"
+  },
+  {
+    "nome": "Sistema Flu",
+    "anno": 1981,
+    "designer": "Rodolfo Bonetto",
+    "azienda": "Luci Italia",
+    "azienda_attuale": null,
+    "categoria": "sistema di illuminazione",
+    "foto": "bonetto-sistema-flu.jpg"
+  },
+  {
+    "nome": "Rotor",
+    "anno": 1987,
+    "designer": "Rodolfo Bonetto",
+    "azienda": "IPM / Urmet",
+    "azienda_attuale": null,
+    "categoria": "telefono pubblico",
+    "foto": "bonetto-rotor.jpg"
+  },
+  {
+    "nome": "Chiara",
+    "anno": 1969,
+    "designer": "Mario Bellini",
+    "azienda": "Flos",
+    "azienda_attuale": "Flos",
+    "categoria": "lampada da terra",
+    "foto": "bellini-chiara.jpg"
+  },
+  {
+    "nome": "RR130 Totem",
+    "anno": 1970,
+    "designer": "Mario Bellini",
+    "azienda": "Brionvega",
+    "azienda_attuale": "Brionvega",
+    "categoria": "sistema hi-fi",
+    "foto": "bellini-rr130-totem.jpg"
+  },
+  {
+    "nome": "Logos 50/68",
+    "anno": 1972,
+    "designer": "Mario Bellini",
+    "azienda": "Olivetti",
+    "azienda_attuale": null,
+    "categoria": "calcolatrice elettronica",
+    "foto": "bellini-logos-50-68.jpg"
+  },
+  {
+    "nome": "Lettera 35",
+    "anno": 1972,
+    "designer": "Mario Bellini",
+    "azienda": "Olivetti",
+    "azienda_attuale": null,
+    "categoria": "macchina da scrivere",
+    "foto": "bellini-lettera-35.jpg"
+  },
+  {
+    "nome": "Lexikon 82",
+    "anno": 1975,
+    "designer": "Mario Bellini",
+    "azienda": "Olivetti",
+    "azienda_attuale": null,
+    "categoria": "macchina da scrivere elettrica",
+    "foto": "bellini-lexikon-82.jpg"
+  },
+  {
+    "nome": "Cab 412",
+    "anno": 1977,
+    "designer": "Mario Bellini",
+    "azienda": "Cassina",
+    "azienda_attuale": "Cassina",
+    "categoria": "sedia",
+    "foto": "bellini-cab-412.jpg"
+  },
+  {
+    "nome": "Cab 413",
+    "anno": 1977,
+    "designer": "Mario Bellini",
+    "azienda": "Cassina",
+    "azienda_attuale": "Cassina",
+    "categoria": "poltroncina",
+    "foto": "bellini-cab-413.jpg"
+  },
+  {
+    "nome": "Monitor 15",
+    "anno": 1978,
+    "designer": [
+      "Mario Bellini",
+      "Dario Bellini"
+    ],
+    "azienda": "Brionvega",
+    "azienda_attuale": null,
+    "categoria": "televisore",
+    "foto": "bellini-monitor-15.jpg"
+  },
+  {
+    "nome": "Robot",
+    "anno": 1981,
+    "designer": "Mario Bellini",
+    "azienda": "Brionvega",
+    "azienda_attuale": null,
+    "categoria": "televisore",
+    "foto": "bellini-robot.jpg"
+  },
+  {
+    "nome": "Praxis 35",
+    "anno": 1981,
+    "designer": [
+      "Mario Bellini",
+      "Sandro Pasqui"
+    ],
+    "azienda": "Olivetti",
+    "azienda_attuale": null,
+    "categoria": "macchina da scrivere elettronica",
+    "foto": "bellini-pasqui-praxis-35.jpg"
+  },
+  {
+    "nome": "Sgarsul",
+    "anno": 1962,
+    "designer": "Gae Aulenti",
+    "azienda": "Poltronova",
+    "azienda_attuale": null,
+    "categoria": "poltrona a dondolo",
+    "foto": "aulenti-sgarsul.jpg"
+  },
+  {
+    "nome": "Stringa Armchair",
+    "anno": 1963,
+    "designer": "Gae Aulenti",
+    "azienda": "Poltronova",
+    "azienda_attuale": "Exteta",
+    "categoria": "poltrona",
+    "foto": "aulenti-stringa-armchair.jpg"
+  },
+  {
+    "nome": "Stringa Sofa",
+    "anno": 1963,
+    "designer": "Gae Aulenti",
+    "azienda": "Poltronova",
+    "azienda_attuale": "Exteta",
+    "categoria": "divano",
+    "foto": "aulenti-stringa-sofa.jpg"
+  },
+  {
+    "nome": "Stringa Coffee Table",
+    "anno": 1963,
+    "designer": "Gae Aulenti",
+    "azienda": "Poltronova",
+    "azienda_attuale": "Exteta",
+    "categoria": "tavolino",
+    "foto": "aulenti-stringa-coffee-table.jpg"
+  },
+  {
+    "nome": "Aprilina",
+    "anno": 1964,
+    "designer": "Gae Aulenti",
+    "azienda": "Zanotta",
+    "azienda_attuale": null,
+    "categoria": "sedia pieghevole",
+    "foto": "aulenti-aprilina.jpg"
+  },
+  {
+    "nome": "Giova",
+    "anno": 1964,
+    "designer": "Gae Aulenti",
+    "azienda": "Fontana Arte",
+    "azienda_attuale": "Fontana Arte",
+    "categoria": "lampada da tavolo",
+    "foto": "aulenti-giova.jpg"
+  },
+  {
+    "nome": "King Sun 4045/5",
+    "anno": 1967,
+    "designer": "Gae Aulenti",
+    "azienda": "Kartell",
+    "azienda_attuale": null,
+    "categoria": "lampada da tavolo",
+    "foto": "aulenti-king-sun-4045-5.jpg"
+  },
+  {
+    "nome": "Rimorchiatore",
+    "anno": 1967,
+    "designer": "Gae Aulenti",
+    "azienda": "Candle",
+    "azienda_attuale": null,
+    "categoria": "lampada da tavolo",
+    "foto": "aulenti-rimorchiatore.jpg"
+  },
+  {
+    "nome": "4794",
+    "anno": 1968,
+    "designer": "Gae Aulenti",
+    "azienda": "Kartell",
+    "azienda_attuale": null,
+    "categoria": "poltrona",
+    "foto": "aulenti-4794.jpg"
+  },
+  {
+    "nome": "Ruspa",
+    "anno": 1968,
+    "designer": "Gae Aulenti",
+    "azienda": "Martinelli Luce",
+    "azienda_attuale": "Martinelli Luce",
+    "categoria": "lampada da tavolo",
+    "foto": "aulenti-ruspa.jpg"
+  },
+  {
+    "nome": "Oracolo",
+    "anno": 1969,
+    "designer": "Gae Aulenti",
+    "azienda": "Artemide",
+    "azienda_attuale": null,
+    "categoria": "lampada da terra",
+    "foto": "aulenti-oracolo.jpg"
+  },
+  {
+    "nome": "Mezzo Oracolo",
+    "anno": 1969,
+    "designer": "Gae Aulenti",
+    "azienda": "Artemide",
+    "azienda_attuale": null,
+    "categoria": "lampada da tavolo",
+    "foto": "aulenti-mezzo-oracolo.jpg"
+  },
+  {
+    "nome": "Neverrino",
+    "anno": 1970,
+    "designer": "Gae Aulenti",
+    "azienda": "Vistosi",
+    "azienda_attuale": null,
+    "categoria": "lampada",
+    "foto": "aulenti-neverrino.jpg"
+  },
+  {
+    "nome": "Pileino",
+    "anno": 1972,
+    "designer": "Gae Aulenti",
+    "azienda": "Artemide",
+    "azienda_attuale": null,
+    "categoria": "lampada da tavolo",
+    "foto": "aulenti-pileino.jpg"
+  },
+  {
+    "nome": "Mezzo Pileo",
+    "anno": 1972,
+    "designer": "Gae Aulenti",
+    "azienda": "Artemide",
+    "azienda_attuale": null,
+    "categoria": "lampada da terra",
+    "foto": "aulenti-mezzo-pileo.jpg"
+  },
+  {
+    "nome": "Trepiù",
+    "anno": 1972,
+    "designer": [
+      "Gae Aulenti",
+      "Livio Castiglioni"
+    ],
+    "azienda": "Stilnovo",
+    "azienda_attuale": "Stilnovo",
+    "categoria": "sistema di illuminazione",
+    "foto": "aulenti-castiglioni-trepiu.jpg"
+  },
+  {
+    "nome": "Gaetano",
+    "anno": 1973,
+    "designer": "Gae Aulenti",
+    "azienda": "Zanotta",
+    "azienda_attuale": null,
+    "categoria": "tavolo",
+    "foto": "aulenti-gaetano.jpg"
+  },
+  {
+    "nome": "4854",
+    "anno": 1974,
+    "designer": "Gae Aulenti",
+    "azienda": "Kartell",
+    "azienda_attuale": null,
+    "categoria": "sedia",
+    "foto": "aulenti-4854.jpg"
+  },
+  {
+    "nome": "4894",
+    "anno": 1974,
+    "designer": "Gae Aulenti",
+    "azienda": "Kartell",
+    "azienda_attuale": null,
+    "categoria": "tavolo",
+    "foto": "aulenti-4894.jpg"
+  },
+  {
+    "nome": "Patroclo",
+    "anno": 1975,
+    "designer": "Gae Aulenti",
+    "azienda": "Artemide",
+    "azienda_attuale": "Artemide",
+    "categoria": "lampada da tavolo",
+    "foto": "aulenti-patroclo.jpg"
+  },
+  {
+    "nome": "Alcinoo",
+    "anno": 1975,
+    "designer": "Gae Aulenti",
+    "azienda": "Artemide",
+    "azienda_attuale": null,
+    "categoria": "lampada da tavolo",
+    "foto": "aulenti-alcinoo.jpg"
+  },
+  {
+    "nome": "Aulenti Collection",
+    "anno": 1976,
+    "designer": "Gae Aulenti",
+    "azienda": "Knoll",
+    "azienda_attuale": null,
+    "categoria": "sistema di sedute e tavoli",
+    "foto": "aulenti-aulenti-collection.jpg"
+  },
+  {
+    "nome": "Cassiopea",
+    "anno": 1976,
+    "designer": "Gae Aulenti",
+    "azienda": "Elam",
+    "azienda_attuale": null,
+    "categoria": "sedia",
+    "foto": "aulenti-cassiopea.jpg"
+  },
+  {
+    "nome": "La Torre",
+    "anno": 1978,
+    "designer": "Gae Aulenti",
+    "azienda": "Martinelli Luce",
+    "azienda_attuale": null,
+    "categoria": "lampada da terra",
+    "foto": "aulenti-la-torre.jpg"
+  },
+  {
+    "nome": "Parola",
+    "anno": 1980,
+    "designer": [
+      "Gae Aulenti",
+      "Piero Castiglioni"
+    ],
+    "azienda": "Fontana Arte",
+    "azienda_attuale": "Fontana Arte",
+    "categoria": "famiglia di lampade",
+    "foto": "aulenti-castiglioni-parola.jpg"
+  },
+  {
+    "nome": "Parolona",
+    "anno": 1980,
+    "designer": [
+      "Gae Aulenti",
+      "Piero Castiglioni"
+    ],
+    "azienda": "Fontana Arte",
+    "azienda_attuale": "Fontana Arte",
+    "categoria": "lampada da terra",
+    "foto": "aulenti-castiglioni-parolona.jpg"
+  },
+  {
+    "nome": "Nina",
+    "anno": 1981,
+    "designer": [
+      "Gae Aulenti",
+      "Piero Castiglioni"
+    ],
+    "azienda": "Fontana Arte",
+    "azienda_attuale": null,
+    "categoria": "lampada da tavolo",
+    "foto": "aulenti-castiglioni-nina.jpg"
+  },
+  {
+    "nome": "Minibox",
+    "anno": 1981,
+    "designer": [
+      "Gae Aulenti",
+      "Piero Castiglioni"
+    ],
+    "azienda": "Stilnovo",
+    "azienda_attuale": "Stilnovo",
+    "categoria": "lampada da tavolo",
+    "foto": "aulenti-castiglioni-minibox.jpg"
+  },
+  {
+    "nome": "Cardine",
+    "anno": 1983,
+    "designer": "Gae Aulenti",
+    "azienda": "Zanotta",
+    "azienda_attuale": null,
+    "categoria": "tavolo da lavoro",
+    "foto": "aulenti-cardine.jpg"
+  },
+  {
+    "nome": "Sanmarco Tavolo",
+    "anno": 1984,
+    "designer": "Gae Aulenti",
+    "azienda": "Zanotta",
+    "azienda_attuale": null,
+    "categoria": "tavolo",
+    "foto": "aulenti-sanmarco-tavolo.jpg"
+  },
+  {
+    "nome": "Sanmarco Consolle",
+    "anno": 1984,
+    "designer": "Gae Aulenti",
+    "azienda": "Zanotta",
+    "azienda_attuale": null,
+    "categoria": "consolle",
+    "foto": "aulenti-sanmarco-consolle.jpg"
+  },
+  {
+    "nome": "Sanmarco Tavolino",
+    "anno": 1984,
+    "designer": "Gae Aulenti",
+    "azienda": "Zanotta",
+    "azienda_attuale": null,
+    "categoria": "tavolino",
+    "foto": "aulenti-sanmarco-tavolino.jpg"
+  },
+  {
+    "nome": "Rossini",
+    "anno": 1984,
+    "designer": "Gae Aulenti",
+    "azienda": "Maxalto",
+    "azienda_attuale": null,
+    "categoria": "sedia",
+    "foto": "aulenti-rossini.jpg"
+  },
+  {
+    "nome": "Bugia",
+    "anno": 1986,
+    "designer": [
+      "Gae Aulenti",
+      "Piero Castiglioni"
+    ],
+    "azienda": "Fontana Arte",
+    "azienda_attuale": null,
+    "categoria": "lampada da parete",
+    "foto": "aulenti-castiglioni-bugia.jpg"
+  },
+  {
+    "nome": "Diamante",
+    "anno": 1986,
+    "designer": [
+      "Gae Aulenti",
+      "Piero Castiglioni"
+    ],
+    "azienda": "Fontana Arte",
+    "azienda_attuale": null,
+    "categoria": "lampada da parete",
+    "foto": "aulenti-castiglioni-diamante.jpg"
+  },
+  {
+    "nome": "LV I",
+    "anno": 1988,
+    "designer": "Gae Aulenti",
+    "azienda": "Louis Vuitton",
+    "azienda_attuale": null,
+    "categoria": "orologio da polso",
+    "foto": "aulenti-lv-i.jpg"
+  },
+  {
+    "nome": "LV II",
+    "anno": 1988,
+    "designer": "Gae Aulenti",
+    "azienda": "Louis Vuitton",
+    "azienda_attuale": null,
+    "categoria": "orologio da polso",
+    "foto": "aulenti-lv-ii.jpg"
+  },
+  {
+    "nome": "Calle",
+    "anno": 1988,
+    "designer": [
+      "Gae Aulenti",
+      "Piero Castiglioni"
+    ],
+    "azienda": "Fontana Arte",
+    "azienda_attuale": null,
+    "categoria": "lampada da parete",
+    "foto": "aulenti-castiglioni-calle.jpg"
+  },
+  {
+    "nome": "Totem",
+    "anno": 1991,
+    "designer": "Gae Aulenti",
+    "azienda": "Tecno",
+    "azienda_attuale": null,
+    "categoria": "postazione per home office",
+    "foto": "aulenti-totem.jpg"
+  },
+  {
+    "nome": "Tlinkit",
+    "anno": 1991,
+    "designer": "Gae Aulenti",
+    "azienda": "Tecno",
+    "azienda_attuale": null,
+    "categoria": "poltrona",
+    "foto": "aulenti-tlinkit.jpg"
+  },
+  {
+    "nome": "Tour",
+    "anno": 1993,
+    "designer": "Gae Aulenti",
+    "azienda": "Fontana Arte",
+    "azienda_attuale": "Fontana Arte",
+    "categoria": "tavolo",
+    "foto": "aulenti-tour.jpg"
+  },
+  {
+    "nome": "Cestello",
+    "anno": 1994,
+    "designer": [
+      "Gae Aulenti",
+      "Piero Castiglioni"
+    ],
+    "azienda": "iGuzzini",
+    "azienda_attuale": null,
+    "categoria": "sistema di illuminazione",
+    "foto": "aulenti-castiglioni-cestello.jpg"
+  },
+  {
+    "nome": "Diastema",
+    "anno": 1994,
+    "designer": [
+      "Gae Aulenti",
+      "Piero Castiglioni"
+    ],
+    "azienda": "Fontana Arte",
+    "azienda_attuale": null,
+    "categoria": "faretto",
+    "foto": "aulenti-castiglioni-diastema.jpg"
+  },
+  {
+    "nome": "Roll",
+    "anno": 1962,
+    "designer": "Joe Colombo",
+    "azienda": "Sormani",
+    "azienda_attuale": null,
+    "categoria": "poltrona",
+    "foto": "colombo-roll.jpg"
+  },
+  {
+    "nome": "Cricket",
+    "anno": 1962,
+    "designer": "Joe Colombo",
+    "azienda": "ICF Industrie Carnovali",
+    "azienda_attuale": null,
+    "categoria": "sedia",
+    "foto": "colombo-cricket.jpg"
+  },
+  {
+    "nome": "Onda",
+    "anno": 1962,
+    "designer": "Joe Colombo",
+    "azienda": "ICF Industrie Carnovali",
+    "azienda_attuale": null,
+    "categoria": "divano letto",
+    "foto": "colombo-onda.jpg"
+  },
+  {
+    "nome": "Acrilica 281",
+    "anno": 1962,
+    "designer": [
+      "Joe Colombo",
+      "Gianni Colombo"
+    ],
+    "azienda": "O Luce",
+    "azienda_attuale": "O Luce",
+    "categoria": "lampada da tavolo",
+    "foto": "colombo-acrilica-281.jpg"
+  },
+  {
+    "nome": "Crossed",
+    "anno": 1963,
+    "designer": "Joe Colombo",
+    "azienda": "B-Line",
+    "azienda_attuale": "B-Line",
+    "categoria": "pouf modulare",
+    "foto": "colombo-crossed.jpg"
+  },
+  {
+    "nome": "Astrea",
+    "anno": 1963,
+    "designer": "Joe Colombo",
+    "azienda": "Comfort",
+    "azienda_attuale": "Longhi",
+    "categoria": "poltrona",
+    "foto": "colombo-astrea.jpg"
+  },
+  {
+    "nome": "Minikitchen",
+    "anno": 1963,
+    "designer": "Joe Colombo",
+    "azienda": "Boffi",
+    "azienda_attuale": "Boffi",
+    "categoria": "cucina compatta mobile",
+    "foto": "colombo-minikitchen.jpg"
+  },
+  {
+    "nome": "Combi-Center",
+    "anno": 1963,
+    "designer": "Joe Colombo",
+    "azienda": "Bernini",
+    "azienda_attuale": "Cappellini",
+    "categoria": "mobile contenitore",
+    "foto": "colombo-combi-center.jpg"
+  },
+  {
+    "nome": "Sella 1001",
+    "anno": 1963,
+    "designer": "Joe Colombo",
+    "azienda": "Comfort",
+    "azienda_attuale": null,
+    "categoria": "poltrona",
+    "foto": "colombo-sella-1001.jpg"
+  },
+  {
+    "nome": "Bell Chair",
+    "anno": 1964,
+    "designer": "Joe Colombo",
+    "azienda": "Bernini",
+    "azienda_attuale": null,
+    "categoria": "poltrona",
+    "foto": "colombo-bell-chair.jpg"
+  },
+  {
+    "nome": "Nastro Armchair",
+    "anno": 1964,
+    "designer": "Joe Colombo",
+    "azienda": "Bonacina 1889",
+    "azienda_attuale": "Bonacina 1889",
+    "categoria": "poltrona",
+    "foto": "colombo-nastro-armchair.jpg"
+  },
+  {
+    "nome": "Nastro Sofa",
+    "anno": 1964,
+    "designer": "Joe Colombo",
+    "azienda": "Bonacina 1889",
+    "azienda_attuale": "Bonacina 1889",
+    "categoria": "divano",
+    "foto": "colombo-nastro-sofa.jpg"
+  },
+  {
+    "nome": "Supercomfort",
+    "anno": 1964,
+    "designer": "Joe Colombo",
+    "azienda": "Comfort",
+    "azienda_attuale": "B-Line",
+    "categoria": "poltrona",
+    "foto": "colombo-supercomfort.jpg"
+  },
+  {
+    "nome": "Ring",
+    "anno": 1964,
+    "designer": "Joe Colombo",
+    "azienda": "B-Line",
+    "azienda_attuale": "B-Line",
+    "categoria": "contenitore modulare",
+    "foto": "colombo-ring.jpg"
+  },
+  {
+    "nome": "Sbalzo",
+    "anno": 1964,
+    "designer": "Joe Colombo",
+    "azienda": "ICF Industrie Carnovali",
+    "azienda_attuale": null,
+    "categoria": "sedia",
+    "foto": "colombo-sbalzo.jpg"
+  },
+  {
+    "nome": "Bolle",
+    "anno": 1964,
+    "designer": "Joe Colombo",
+    "azienda": "Pallucco",
+    "azienda_attuale": null,
+    "categoria": "lampada da terra",
+    "foto": "colombo-bolle.jpg"
+  },
+  {
+    "nome": "The Globe",
+    "anno": 1964,
+    "designer": "Joe Colombo",
+    "azienda": "O Luce",
+    "azienda_attuale": "O Luce",
+    "categoria": "famiglia di lampade",
+    "foto": "colombo-the-globe.jpg"
+  },
+  {
+    "nome": "Ragno",
+    "anno": 1964,
+    "designer": "Joe Colombo",
+    "azienda": "O Luce",
+    "azienda_attuale": null,
+    "categoria": "lampada da giardino",
+    "foto": "colombo-ragno.jpg"
+  },
+  {
+    "nome": "Uomo-Donna",
+    "anno": 1964,
+    "designer": "Joe Colombo",
+    "azienda": "Arflex",
+    "azienda_attuale": null,
+    "categoria": "contenitore modulare",
+    "foto": "colombo-uomo-donna.jpg"
+  },
+  {
+    "nome": "Smoke",
+    "anno": 1964,
+    "designer": "Joe Colombo",
+    "azienda": "Arnolfo di Cambio",
+    "azienda_attuale": "Arnolfo di Cambio",
+    "categoria": "servizio di bicchieri",
+    "foto": "colombo-smoke.jpg"
+  },
+  {
+    "nome": "Portofino",
+    "anno": 1964,
+    "designer": "Joe Colombo",
+    "azienda": "Progetti",
+    "azienda_attuale": null,
+    "categoria": "servizio di bicchieri",
+    "foto": "colombo-portofino.jpg"
+  },
+  {
+    "nome": "Asimmetrico",
+    "anno": 1964,
+    "designer": "Joe Colombo",
+    "azienda": "Tiroler Glashütte",
+    "azienda_attuale": null,
+    "categoria": "bicchiere",
+    "foto": "colombo-asimmetrico.jpg"
+  },
+  {
+    "nome": "Chair 300",
+    "anno": 1965,
+    "designer": "Joe Colombo",
+    "azienda": "Pozzi",
+    "azienda_attuale": "Karakter",
+    "categoria": "sedia",
+    "foto": "colombo-chair-300.jpg"
+  },
+  {
+    "nome": "Domo",
+    "anno": 1965,
+    "designer": "Joe Colombo",
+    "azienda": "Karakter",
+    "azienda_attuale": "Karakter",
+    "categoria": "famiglia di lampade",
+    "foto": "colombo-domo.jpg"
+  },
+  {
+    "nome": "Continental",
+    "anno": 1965,
+    "designer": "Joe Colombo",
+    "azienda": "ICF Industrie Carnovali",
+    "azienda_attuale": null,
+    "categoria": "libreria",
+    "foto": "colombo-continental.jpg"
+  },
+  {
+    "nome": "Ellipse",
+    "anno": 1965,
+    "designer": "Joe Colombo",
+    "azienda": "ICF Industrie Carnovali",
+    "azienda_attuale": null,
+    "categoria": "mensola",
+    "foto": "colombo-ellipse.jpg"
+  },
+  {
+    "nome": "Kilometre",
+    "anno": 1965,
+    "designer": "Joe Colombo",
+    "azienda": "Karakter",
+    "azienda_attuale": null,
+    "categoria": "libreria modulare",
+    "foto": "colombo-kilometre.jpg"
+  },
+  {
+    "nome": "Joe",
+    "anno": 1965,
+    "designer": "Joe Colombo",
+    "azienda": "ICF Industrie Carnovali",
+    "azienda_attuale": null,
+    "categoria": "tavolo",
+    "foto": "colombo-joe-table.jpg"
+  },
+  {
+    "nome": "Cart",
+    "anno": 1966,
+    "designer": "Joe Colombo",
+    "azienda": "Ditre Italia",
+    "azienda_attuale": null,
+    "categoria": "sistema di sedute",
+    "foto": "colombo-cart.jpg"
+  },
+  {
+    "nome": "Fresnel",
+    "anno": 1966,
+    "designer": "Joe Colombo",
+    "azienda": "O Luce",
+    "azienda_attuale": "O Luce",
+    "categoria": "famiglia di lampade",
+    "foto": "colombo-fresnel.jpg"
+  },
+  {
+    "nome": "Spring",
+    "anno": 1966,
+    "designer": "Joe Colombo",
+    "azienda": "O Luce",
+    "azienda_attuale": null,
+    "categoria": "lampada da tavolo",
+    "foto": "colombo-spring.jpg"
+  },
+  {
+    "nome": "Central Block Kitchen",
+    "anno": 1966,
+    "designer": "Joe Colombo",
+    "azienda": "Boffi",
+    "azienda_attuale": null,
+    "categoria": "cucina a isola",
+    "foto": "colombo-central-block-kitchen.jpg"
+  },
+  {
+    "nome": "Two in One",
+    "anno": 1966,
+    "designer": "Joe Colombo",
+    "azienda": "Karakter",
+    "azienda_attuale": null,
+    "categoria": "bicchiere",
+    "foto": "colombo-two-in-one.jpg"
+  },
+  {
+    "nome": "Coupé",
+    "anno": 1967,
+    "designer": "Joe Colombo",
+    "azienda": "O Luce",
+    "azienda_attuale": "O Luce",
+    "categoria": "famiglia di lampade",
+    "foto": "colombo-coupe.jpg"
+  },
+  {
+    "nome": "Semisfera",
+    "anno": 1967,
+    "designer": "Joe Colombo",
+    "azienda": "O Luce",
+    "azienda_attuale": null,
+    "categoria": "famiglia di lampade",
+    "foto": "colombo-semisfera.jpg"
+  },
+  {
+    "nome": "KD27",
+    "anno": 1967,
+    "designer": "Joe Colombo",
+    "azienda": "Kartell",
+    "azienda_attuale": null,
+    "categoria": "lampada",
+    "foto": "colombo-kd27.jpg"
+  },
+  {
+    "nome": "KD28",
+    "anno": 1967,
+    "designer": "Joe Colombo",
+    "azienda": "Kartell",
+    "azienda_attuale": "Kartell",
+    "categoria": "lampada da tavolo",
+    "foto": "colombo-kd28.jpg"
+  },
+  {
+    "nome": "Grinta",
+    "anno": 1967,
+    "designer": "Joe Colombo",
+    "azienda": "Zanotta",
+    "azienda_attuale": null,
+    "categoria": "poltrona",
+    "foto": "colombo-grinta.jpg"
+  },
+  {
+    "nome": "Totem",
+    "anno": 1967,
+    "designer": "Joe Colombo",
+    "azienda": "ICF Novitalia",
+    "azienda_attuale": null,
+    "categoria": "appendiabiti",
+    "foto": "colombo-totem.jpg"
+  },
+  {
+    "nome": "Additional System",
+    "anno": 1967,
+    "designer": "Joe Colombo",
+    "azienda": "Sormani",
+    "azienda_attuale": "Tacchini",
+    "categoria": "sistema modulare di sedute",
+    "foto": "colombo-additional-system.jpg"
+  },
+  {
+    "nome": "Poker",
+    "anno": 1968,
+    "designer": "Joe Colombo",
+    "azienda": "Zanotta",
+    "azienda_attuale": "Zanotta",
+    "categoria": "tavolo da gioco",
+    "foto": "colombo-poker.jpg"
+  },
+  {
+    "nome": "Bubbles",
+    "anno": 1968,
+    "designer": "Joe Colombo",
+    "azienda": "Amini / ABC Italia",
+    "azienda_attuale": null,
+    "categoria": "tappeto",
+    "foto": "colombo-bubbles.jpg"
+  },
+  {
+    "nome": "KD24",
+    "anno": 1968,
+    "designer": "Joe Colombo",
+    "azienda": "Kartell",
+    "azienda_attuale": null,
+    "categoria": "lampada",
+    "foto": "colombo-kd24.jpg"
+  },
+  {
+    "nome": "KD8",
+    "anno": 1968,
+    "designer": "Joe Colombo",
+    "azienda": "Kartell",
+    "azienda_attuale": null,
+    "categoria": "lampada",
+    "foto": "colombo-kd8.jpg"
+  },
+  {
+    "nome": "Vademecum",
+    "anno": 1968,
+    "designer": "Joe Colombo",
+    "azienda": "Kartell",
+    "azienda_attuale": null,
+    "categoria": "lampada",
+    "foto": "colombo-vademecum.jpg"
+  },
+  {
+    "nome": "Bazooka",
+    "anno": 1968,
+    "designer": "Joe Colombo",
+    "azienda": "Stilnovo",
+    "azienda_attuale": null,
+    "categoria": "proiettore",
+    "foto": "colombo-bazooka.jpg"
+  },
+  {
+    "nome": "Triangular Container System",
+    "anno": 1968,
+    "designer": "Joe Colombo",
+    "azienda": "Elco",
+    "azienda_attuale": null,
+    "categoria": "sistema di contenitori",
+    "foto": "colombo-triangular-container-system.jpg"
+  },
+  {
+    "nome": "Sferico",
+    "anno": 1968,
+    "designer": "Joe Colombo",
+    "azienda": "Karakter",
+    "azienda_attuale": "Karakter",
+    "categoria": "servizio di bicchieri",
+    "foto": "colombo-sferico.jpg"
+  },
+  {
+    "nome": "Clessidra",
+    "anno": 1968,
+    "designer": "Joe Colombo",
+    "azienda": "Karakter",
+    "azienda_attuale": "Karakter",
+    "categoria": "vaso",
+    "foto": "colombo-clessidra.jpg"
+  },
+  {
+    "nome": "Biglia",
+    "anno": 1968,
+    "designer": "Joe Colombo",
+    "azienda": "Arnolfo di Cambio",
+    "azienda_attuale": null,
+    "categoria": "posacenere",
+    "foto": "colombo-biglia.jpg"
+  },
+  {
+    "nome": "Square Plastic System",
+    "anno": 1969,
+    "designer": "Joe Colombo",
+    "azienda": "Elco",
+    "azienda_attuale": null,
+    "categoria": "sistema di contenitori",
+    "foto": "colombo-square-plastic-system.jpg"
+  },
+  {
+    "nome": "Robo",
+    "anno": 1969,
+    "designer": "Joe Colombo",
+    "azienda": "ICF Industrie Carnovali",
+    "azienda_attuale": null,
+    "categoria": "carrello contenitore",
+    "foto": "colombo-robo.jpg"
+  },
+  {
+    "nome": "Tube Carpet",
+    "anno": 1969,
+    "designer": "Joe Colombo",
+    "azienda": "Amini / ABC Italia",
+    "azienda_attuale": "Cappellini",
+    "categoria": "tappeto",
+    "foto": "colombo-tube-carpet.jpg"
+  },
+  {
+    "nome": "Trisystem",
+    "anno": 1969,
+    "designer": "Joe Colombo",
+    "azienda": "Fatif",
+    "azienda_attuale": null,
+    "categoria": "sistema fotografico",
+    "foto": "colombo-trisystem.jpg"
+  },
+  {
+    "nome": "Mastro",
+    "anno": 1969,
+    "designer": "Joe Colombo",
+    "azienda": "Zanotta",
+    "azienda_attuale": null,
+    "categoria": "tavolo",
+    "foto": "colombo-mastro.jpg"
+  },
+  {
+    "nome": "Flash",
+    "anno": 1969,
+    "designer": "Joe Colombo",
+    "azienda": "O Luce",
+    "azienda_attuale": null,
+    "categoria": "lampada",
+    "foto": "colombo-flash.jpg"
+  },
+  {
+    "nome": "Multi Chair",
+    "anno": 1970,
+    "designer": "Joe Colombo",
+    "azienda": "Sormani",
+    "azienda_attuale": "B-Line",
+    "categoria": "seduta trasformabile",
+    "foto": "colombo-multi-chair.jpg"
+  },
+  {
+    "nome": "Bob",
+    "anno": 1970,
+    "designer": "Joe Colombo",
+    "azienda": "B-Line",
+    "azienda_attuale": "B-Line",
+    "categoria": "portaoggetti",
+    "foto": "colombo-bob.jpg"
+  },
+  {
+    "nome": "Colombo 626",
+    "anno": 1970,
+    "designer": "Joe Colombo",
+    "azienda": "O Luce",
+    "azienda_attuale": "O Luce",
+    "categoria": "lampada da terra",
+    "foto": "colombo-626.jpg"
+  },
+  {
+    "nome": "Topo",
+    "anno": 1970,
+    "designer": "Joe Colombo",
+    "azienda": "Stilnovo",
+    "azienda_attuale": "Stilnovo",
+    "categoria": "famiglia di lampade",
+    "foto": "colombo-topo.jpg"
+  },
+  {
+    "nome": "Minitopo",
+    "anno": 1970,
+    "designer": "Joe Colombo",
+    "azienda": "Stilnovo",
+    "azienda_attuale": "Stilnovo",
+    "categoria": "lampada da tavolo",
+    "foto": "colombo-minitopo.jpg"
+  },
+  {
+    "nome": "Triedro",
+    "anno": 1970,
+    "designer": "Joe Colombo",
+    "azienda": "Stilnovo",
+    "azienda_attuale": "Stilnovo",
+    "categoria": "famiglia di lampade",
+    "foto": "colombo-triedro.jpg"
+  },
+  {
+    "nome": "Bistrò",
+    "anno": 1970,
+    "designer": "Joe Colombo",
+    "azienda": "Zanotta",
+    "azienda_attuale": null,
+    "categoria": "tavolino",
+    "foto": "colombo-bistro.jpg"
+  },
+  {
+    "nome": "Optic",
+    "anno": 1970,
+    "designer": "Joe Colombo",
+    "azienda": "Italora",
+    "azienda_attuale": null,
+    "categoria": "sveglia",
+    "foto": "colombo-optic.jpg"
+  },
+  {
+    "nome": "Cabrio-Bed",
+    "anno": 1970,
+    "designer": "Joe Colombo",
+    "azienda": "Sormani",
+    "azienda_attuale": null,
+    "categoria": "letto trasformabile",
+    "foto": "colombo-cabrio-bed.jpg"
+  },
+  {
+    "nome": "Living Center",
+    "anno": 1970,
+    "designer": "Joe Colombo",
+    "azienda": "Rosenthal",
+    "azienda_attuale": null,
+    "categoria": "sistema abitativo",
+    "foto": "colombo-living-center.jpg"
+  },
+  {
+    "nome": "Candyzionatore",
+    "anno": 1970,
+    "designer": "Joe Colombo",
+    "azienda": "Candy",
+    "azienda_attuale": null,
+    "categoria": "condizionatore portatile",
+    "foto": "colombo-candyzionatore.jpg"
+  },
+  {
+    "nome": "Luce",
+    "anno": 1970,
+    "designer": "Joe Colombo",
+    "azienda": "Amini / ABC Italia",
+    "azienda_attuale": null,
+    "categoria": "tappeto",
+    "foto": "colombo-luce.jpg"
+  },
+  {
+    "nome": "Isola",
+    "anno": 1970,
+    "designer": "Joe Colombo",
+    "azienda": "Amini / ABC Italia",
+    "azienda_attuale": null,
+    "categoria": "tappeto",
+    "foto": "colombo-isola.jpg"
+  },
+  {
+    "nome": "5 in 1",
+    "anno": 1970,
+    "designer": "Joe Colombo",
+    "azienda": "Progetti",
+    "azienda_attuale": "Karakter",
+    "categoria": "set di bicchieri",
+    "foto": "colombo-5-in-1.jpg"
+  },
+  {
+    "nome": "Formaggera",
+    "anno": 1970,
+    "designer": "Joe Colombo",
+    "azienda": "Design Memorabilia",
+    "azienda_attuale": null,
+    "categoria": "formaggiera",
+    "foto": "colombo-formaggera.jpg"
+  },
+  {
+    "nome": "Linea '72",
+    "anno": 1970,
+    "designer": [
+      "Joe Colombo",
+      "Ambrogio Pozzi"
+    ],
+    "azienda": "Richard Ginori",
+    "azienda_attuale": null,
+    "categoria": "servizio da tavola per aereo",
+    "foto": "colombo-pozzi-linea-72.jpg"
+  },
+  {
+    "nome": "Paracolpi Alfa",
+    "anno": 1971,
+    "designer": "Joe Colombo",
+    "azienda": "Olivari",
+    "azienda_attuale": null,
+    "categoria": "maniglia",
+    "foto": "colombo-paracolpi-alfa.jpg"
+  },
+  {
+    "nome": "Birillo",
+    "anno": 1971,
+    "designer": "Joe Colombo",
+    "azienda": "Zanotta",
+    "azienda_attuale": null,
+    "categoria": "sgabello",
+    "foto": "colombo-birillo.jpg"
+  },
+  {
+    "nome": "4630",
+    "anno": 1973,
+    "designer": "Joe Colombo",
+    "azienda": "Kartell",
+    "azienda_attuale": null,
+    "categoria": "posacenere",
+    "foto": "colombo-4630.jpg"
   }
 ]
