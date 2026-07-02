@@ -642,21 +642,233 @@
     "categoria": "macchina da cucire",
     "foto": "nizzoli-mirella.jpg"
   },
+   {
+    "nome": "E60",
+    "anno": 1946,
+    "designer": "Osvaldo Borsani",
+    "azienda": "Tecno",
+    "azienda_attuale": null,
+    "categoria": "libreria modulare",
+    "foto": "borsani-e60.jpg"
+  },
+  {
+    "nome": "T1",
+    "anno": 1949,
+    "designer": "Osvaldo Borsani",
+    "azienda": "Tecno",
+    "azienda_attuale": "Tecno",
+    "categoria": "tavolino",
+    "foto": "borsani-t1.jpg"
+  },
+  {
+    "nome": "D70",
+    "anno": 1954,
+    "designer": "Osvaldo Borsani",
+    "azienda": "Tecno",
+    "azienda_attuale": "Tecno",
+    "categoria": "divano letto",
+    "foto": "borsani-d70.jpg"
+  },
+  {
+    "nome": "D71",
+    "anno": 1954,
+    "designer": "Osvaldo Borsani",
+    "azienda": "Tecno",
+    "azienda_attuale": null,
+    "categoria": "divano",
+    "foto": "borsani-d71.jpg"
+  },
+  {
+    "nome": "T90",
+    "anno": 1954,
+    "designer": "Osvaldo Borsani",
+    "azienda": "Tecno",
+    "azienda_attuale": "Tecno",
+    "categoria": "scrivania",
+    "foto": "borsani-t90.jpg"
+  },
   {
     "nome": "P40",
     "anno": 1955,
     "designer": "Osvaldo Borsani",
     "azienda": "Tecno",
-    "categoria": "poltrona",
+    "azienda_attuale": "Tecno",
+    "categoria": "poltrona reclinabile",
     "foto": "borsani-p40.jpg"
   },
   {
-    "nome": "T90",
+    "nome": "P32",
     "anno": 1956,
     "designer": "Osvaldo Borsani",
     "azienda": "Tecno",
-    "categoria": "scrivania",
-    "foto": "borsani-t90.jpg"
+    "azienda_attuale": "Tecno",
+    "categoria": "poltrona girevole",
+    "foto": "borsani-p32.jpg"
+  },
+  {
+    "nome": "T41",
+    "anno": 1956,
+    "designer": "Osvaldo Borsani",
+    "azienda": "Tecno",
+    "azienda_attuale": null,
+    "categoria": "tavolo regolabile",
+    "foto": "borsani-t41.jpg"
+  },
+  {
+    "nome": "E22",
+    "anno": 1957,
+    "designer": "Osvaldo Borsani",
+    "azienda": "Tecno",
+    "azienda_attuale": null,
+    "categoria": "libreria modulare",
+    "foto": "borsani-e22.jpg"
+  },
+  {
+    "nome": "P99",
+    "anno": 1957,
+    "designer": "Osvaldo Borsani",
+    "azienda": "Tecno",
+    "azienda_attuale": null,
+    "categoria": "sedia da ufficio",
+    "foto": "borsani-p99.jpg"
+  },
+  {
+    "nome": "T44",
+    "anno": 1957,
+    "designer": "Osvaldo Borsani",
+    "azienda": "Tecno",
+    "azienda_attuale": null,
+    "categoria": "tavolino",
+    "foto": "borsani-t44.jpg"
+  },
+  {
+    "nome": "T61/B",
+    "anno": 1957,
+    "designer": "Osvaldo Borsani",
+    "azienda": "Tecno",
+    "azienda_attuale": null,
+    "categoria": "tavolino",
+    "foto": "borsani-t61-b.jpg"
+  },
+  {
+    "nome": "T61/C",
+    "anno": 1957,
+    "designer": "Osvaldo Borsani",
+    "azienda": "Tecno",
+    "azienda_attuale": null,
+    "categoria": "tavolino",
+    "foto": "borsani-t61-c.jpg"
+  },
+  {
+    "nome": "T61/E",
+    "anno": 1957,
+    "designer": "Osvaldo Borsani",
+    "azienda": "Tecno",
+    "azienda_attuale": null,
+    "categoria": "set di tavolini",
+    "foto": "borsani-t61-e.jpg"
+  },
+  {
+    "nome": "P24",
+    "anno": 1961,
+    "designer": "Osvaldo Borsani",
+    "azienda": "Tecno",
+    "azienda_attuale": null,
+    "categoria": "poltrona",
+    "foto": "borsani-p24.jpg"
+  },
+  {
+    "nome": "AT16",
+    "anno": 1961,
+    "designer": "Osvaldo Borsani",
+    "azienda": "Tecno",
+    "azienda_attuale": "Tecno",
+    "categoria": "appendiabiti",
+    "foto": "borsani-at16.jpg"
+  },
+  {
+    "nome": "SE3",
+    "anno": 1962,
+    "designer": "Osvaldo Borsani",
+    "azienda": "Tecno",
+    "azienda_attuale": null,
+    "categoria": "credenza",
+    "foto": "borsani-se3.jpg"
+  },
+  {
+    "nome": "P31",
+    "anno": 1963,
+    "designer": "Osvaldo Borsani",
+    "azienda": "Tecno",
+    "azienda_attuale": "Tecno",
+    "categoria": "poltrona",
+    "foto": "borsani-p31.jpg"
+  },
+  {
+    "nome": "T68",
+    "anno": 1963,
+    "designer": [
+      "Osvaldo Borsani",
+      "Eugenio Gerli"
+    ],
+    "azienda": "Tecno",
+    "azienda_attuale": null,
+    "categoria": "tavolino",
+    "foto": "borsani-gerli-t68.jpg"
+  },
+  {
+    "nome": "T69",
+    "anno": 1963,
+    "designer": [
+      "Osvaldo Borsani",
+      "Eugenio Gerli"
+    ],
+    "azienda": "Tecno",
+    "azienda_attuale": null,
+    "categoria": "tavolo",
+    "foto": "borsani-gerli-t69.jpg"
+  },
+  {
+    "nome": "T102",
+    "anno": 1964,
+    "designer": [
+      "Osvaldo Borsani",
+      "Eugenio Gerli"
+    ],
+    "azienda": "Tecno",
+    "azienda_attuale": null,
+    "categoria": "tavolo",
+    "foto": "borsani-gerli-t102.jpg"
+  },
+  {
+    "nome": "T110",
+    "anno": 1965,
+    "designer": "Osvaldo Borsani",
+    "azienda": "Tecno",
+    "azienda_attuale": null,
+    "categoria": "tavolino",
+    "foto": "borsani-t110.jpg"
+  },
+  {
+    "nome": "L150",
+    "anno": 1966,
+    "designer": "Osvaldo Borsani",
+    "azienda": "Tecno",
+    "azienda_attuale": null,
+    "categoria": "letto",
+    "foto": "borsani-l150.jpg"
+  },
+  {
+    "nome": "Graphis",
+    "anno": 1968,
+    "designer": [
+      "Osvaldo Borsani",
+      "Eugenio Gerli"
+    ],
+    "azienda": "Tecno",
+    "azienda_attuale": "Tecno",
+    "categoria": "sistema per ufficio",
+    "foto": "borsani-gerli-graphis.jpg"
   },
   {
     "nome": "2097",
@@ -695,7 +907,8 @@
     "anno": 1960,
     "designer": "Ico Parisi",
     "azienda": "Cassina",
-    "categoria": "sedia",
+    "azienda_attuale": "Cassina",
+    "categoria": "poltrona",
     "foto": "parisi-875.jpg"
   },
   {
@@ -1432,7 +1645,8 @@
     "anno": 1970,
     "designer": "Mario Bellini",
     "azienda": "B&B Italia",
-    "categoria": "divano",
+    "azienda_attuale": "B&B Italia",
+    "categoria": "divano modulare",
     "foto": "bellini-camaleonda.jpg"
   },
   {
@@ -1440,8 +1654,9 @@
     "anno": 1972,
     "designer": "Mario Bellini",
     "azienda": "B&B Italia",
-    "categoria": "poltrona",
-    "foto": "bellini-lebambole.jpg"
+    "azienda_attuale": "B&B Italia",
+    "categoria": "sistema di sedute",
+    "foto": "bellini-le-bambole.jpg"
   },
   {
     "nome": "Pratt",
@@ -1482,14 +1697,6 @@
     "azienda": "Knoll",
     "categoria": "tavolo",
     "foto": "aulenti-jumbo.jpg"
-  },
-  {
-    "nome": "D70",
-    "anno": 1954,
-    "designer": "Osvaldo Borsani",
-    "azienda": "Tecno",
-    "categoria": "divano",
-    "foto": "borsani-d70.jpg"
   },
   {
     "nome": "M1",
@@ -2320,5 +2527,572 @@
     "azienda": "BBPR",
     "categoria": "architettura",
     "foto": "belgiojoso-monumentocaduti.jpg"
+  },
+  {
+    "nome": "Neptunia",
+    "anno": 1953,
+    "designer": ["Lodovico Belgiojoso", "Enrico Peressutti", "Ernesto Nathan Rogers"],
+    "azienda": "Arflex",
+    "azienda_attuale": "Arflex",
+    "categoria": "sedia",
+    "foto": "peressutti-neptunia.jpg"
+  },
+  {
+    "nome": "Elettra Chair",
+    "anno": 1954,
+    "designer": ["Lodovico Belgiojoso", "Enrico Peressutti", "Ernesto Nathan Rogers"],
+    "azienda": "Arflex",
+    "azienda_attuale": "Arflex",
+    "categoria": "sedia",
+    "foto": "peressutti-elettra-chair.jpg"
+  },
+  {
+    "nome": "Elettra Armchair",
+    "anno": 1954,
+    "designer": ["Lodovico Belgiojoso", "Enrico Peressutti", "Ernesto Nathan Rogers"],
+    "azienda": "Arflex",
+    "azienda_attuale": "Arflex",
+    "categoria": "poltrona",
+    "foto": "peressutti-elettra-armchair.jpg"
+  },
+  {
+    "nome": "Velasca",
+    "anno": 1956,
+    "designer": ["Lodovico Belgiojoso", "Enrico Peressutti", "Ernesto Nathan Rogers"],
+    "azienda": "Olivari",
+    "azienda_attuale": null,
+    "categoria": "maniglia",
+    "foto": "peressutti-velasca.jpg"
+  },
+  {
+    "nome": "Giulietta",
+    "anno": 1958,
+    "designer": ["Lodovico Belgiojoso", "Enrico Peressutti", "Ernesto Nathan Rogers"],
+    "azienda": "Arflex",
+    "azienda_attuale": "Arflex",
+    "categoria": "poltrona",
+    "foto": "peressutti-giulietta.jpg"
+  },
+  {
+    "nome": "2045",
+    "anno": 1962,
+    "designer": ["Lodovico Belgiojoso", "Enrico Peressutti", "Ernesto Nathan Rogers"],
+    "azienda": "Arteluce",
+    "azienda_attuale": null,
+    "categoria": "sistema di illuminazione",
+    "foto": "peressutti-2045.jpg"
+  },
+  {
+    "nome": "Arco",
+    "anno": 1963,
+    "designer": ["Lodovico Belgiojoso", "Enrico Peressutti", "Ernesto Nathan Rogers"],
+    "azienda": "Olivetti Synthesis",
+    "azienda_attuale": null,
+    "categoria": "scrivania",
+    "foto": "peressutti-arco.jpg"
+  },
+  {
+    "nome": "Ro",
+    "anno": 1963,
+    "designer": ["Lodovico Belgiojoso", "Enrico Peressutti", "Ernesto Nathan Rogers"],
+    "azienda": "Artemide",
+    "azienda_attuale": null,
+    "categoria": "lampada da terra",
+    "foto": "peressutti-ro.jpg"
+  },
+  {
+    "nome": "Polimnia",
+    "anno": 1964,
+    "designer": ["Lodovico Belgiojoso", "Enrico Peressutti", "Ernesto Nathan Rogers"],
+    "azienda": "Artemide",
+    "azienda_attuale": null,
+    "categoria": "lampada da terra",
+    "foto": "peressutti-polimnia.jpg"
+  },
+  {
+    "nome": "PA' 1947",
+    "anno": 1947,
+    "designer": "Ico Parisi",
+    "azienda": "Fratelli Rizzi",
+    "azienda_attuale": "Cassina",
+    "categoria": "consolle",
+    "foto": "parisi-pa-1947.jpg"
+  },
+  {
+    "nome": "112",
+    "anno": 1950,
+    "designer": "Ico Parisi",
+    "azienda": "M. Singer & Sons",
+    "azienda_attuale": null,
+    "categoria": "tavolino",
+    "foto": "parisi-112.jpg"
+  },
+  {
+    "nome": "1109",
+    "anno": 1950,
+    "designer": "Ico Parisi",
+    "azienda": "M. Singer & Sons",
+    "azienda_attuale": null,
+    "categoria": "consolle",
+    "foto": "parisi-1109.jpg"
+  },
+  {
+    "nome": "691",
+    "anno": 1955,
+    "designer": "Ico Parisi",
+    "azienda": "Cassina",
+    "azienda_attuale": null,
+    "categoria": "sedia",
+    "foto": "parisi-691.jpg"
+  },
+  {
+    "nome": "839 Conca",
+    "anno": 1955,
+    "designer": "Ico Parisi",
+    "azienda": "Cassina",
+    "azienda_attuale": null,
+    "categoria": "poltrona",
+    "foto": "parisi-839-conca.jpg"
+  },
+  {
+    "nome": "Olimpino",
+    "anno": 1955,
+    "designer": "Ico Parisi",
+    "azienda": "Brugnoli Mobili",
+    "azienda_attuale": "Cassina",
+    "categoria": "tavolo",
+    "foto": "parisi-olimpino.jpg"
+  },
+  {
+    "nome": "856",
+    "anno": 1957,
+    "designer": "Ico Parisi",
+    "azienda": "Cassina",
+    "azienda_attuale": null,
+    "categoria": "poltrona",
+    "foto": "parisi-856-poltrona.jpg"
+  },
+  {
+    "nome": "856",
+    "anno": 1957,
+    "designer": "Ico Parisi",
+    "azienda": "Cassina",
+    "azienda_attuale": null,
+    "categoria": "tavolino",
+    "foto": "parisi-856-tavolino.jpg"
+  },
+  {
+    "nome": "Lerici",
+    "anno": 1958,
+    "designer": "Ico Parisi",
+    "azienda": "MIM Roma",
+    "azienda_attuale": null,
+    "categoria": "libreria modulare",
+    "foto": "parisi-lerici.jpg"
+  },
+  {
+    "nome": "Terni",
+    "anno": 1958,
+    "designer": "Ico Parisi",
+    "azienda": "MIM Roma",
+    "azienda_attuale": null,
+    "categoria": "scrivania",
+    "foto": "parisi-terni.jpg"
+  },
+  {
+    "nome": "M21",
+    "anno": 1958,
+    "designer": "Ico Parisi",
+    "azienda": "MIM Roma",
+    "azienda_attuale": null,
+    "categoria": "toeletta",
+    "foto": "parisi-m21.jpg"
+  },
+  {
+    "nome": "244",
+    "anno": 1960,
+    "designer": "Ico Parisi",
+    "azienda": "Arteluce",
+    "azienda_attuale": null,
+    "categoria": "lampada da parete",
+    "foto": "parisi-244.jpg"
+  },
+  {
+    "nome": "Temide 1703",
+    "anno": 1960,
+    "designer": "Ico Parisi",
+    "azienda": "Stildomuselezione",
+    "azienda_attuale": null,
+    "categoria": "portaombrelli",
+    "foto": "parisi-temide-1703.jpg"
+  },
+  {
+    "nome": "Timer 152",
+    "anno": 1960,
+    "designer": "Rodolfo Bonetto",
+    "azienda": "Veglia Borletti",
+    "azienda_attuale": null,
+    "categoria": "timer da cucina",
+    "foto": "bonetto-timer-152.jpg"
+  },
+  {
+    "nome": "Sfericlock",
+    "anno": 1963,
+    "designer": "Rodolfo Bonetto",
+    "azienda": "Fratelli Borletti",
+    "azienda_attuale": null,
+    "categoria": "sveglia",
+    "foto": "bonetto-sfericlock.jpg"
+  },
+  {
+    "nome": "Auctor Multiplex MUT/40A",
+    "anno": 1967,
+    "designer": "Rodolfo Bonetto",
+    "azienda": "Ing. C. Olivetti & C.",
+    "azienda_attuale": null,
+    "categoria": "macchina utensile",
+    "foto": "bonetto-auctor-multiplex-mut-40a.jpg"
+  },
+  {
+    "nome": "Boomerang",
+    "anno": 1968,
+    "designer": "Rodolfo Bonetto",
+    "azienda": "Flexform",
+    "azienda_attuale": "B-Line",
+    "categoria": "poltrona",
+    "foto": "bonetto-boomerang.jpg"
+  },
+  {
+    "nome": "Linea 1",
+    "anno": 1969,
+    "designer": "Rodolfo Bonetto",
+    "azienda": "Autovox",
+    "azienda_attuale": null,
+    "categoria": "televisore",
+    "foto": "bonetto-linea-1.jpg"
+  },
+  {
+    "nome": "4/4",
+    "anno": 1969,
+    "designer": "Rodolfo Bonetto",
+    "azienda": "Bernini",
+    "azienda_attuale": "B-Line",
+    "categoria": "tavolino modulare",
+    "foto": "bonetto-4-4.jpg"
+  },
+  {
+    "nome": "Apparecchio automatico per microfilm",
+    "anno": 1970,
+    "designer": "Rodolfo Bonetto",
+    "azienda": "BCM",
+    "azienda_attuale": null,
+    "categoria": "apparecchio per microfilm",
+    "foto": "bonetto-apparecchio-microfilm.jpg"
+  },
+  {
+    "nome": "Nitia",
+    "anno": 1971,
+    "designer": "Rodolfo Bonetto",
+    "azienda": "iGuzzini",
+    "azienda_attuale": "iGuzzini",
+    "categoria": "lampada da tavolo",
+    "foto": "bonetto-nitia.jpg"
+  },
+  {
+    "nome": "M15",
+    "anno": 1971,
+    "designer": "Rodolfo Bonetto",
+    "azienda": "La Cimbali",
+    "azienda_attuale": null,
+    "categoria": "macchina per caffè espresso",
+    "foto": "bonetto-m15.jpg"
+  },
+  {
+    "nome": "M20",
+    "anno": 1973,
+    "designer": "Rodolfo Bonetto",
+    "azienda": "La Cimbali",
+    "azienda_attuale": null,
+    "categoria": "macchina per caffè espresso",
+    "foto": "bonetto-m20.jpg"
+  },
+  {
+    "nome": "Inspector Midi 130 W",
+    "anno": 1979,
+    "designer": ["Rodolfo Bonetto", "Naoki Matsunaga"],
+    "azienda": "Olivetti & C.",
+    "azienda_attuale": null,
+    "categoria": "centro di misura",
+    "foto": "bonetto-matsunaga-inspector-midi-130-w.jpg"
+  },
+  {
+    "nome": "Wiz",
+    "anno": 1981,
+    "designer": "Rodolfo Bonetto",
+    "azienda": "Wizco",
+    "azienda_attuale": null,
+    "categoria": "centrale polifunzionale",
+    "foto": "bonetto-wiz.jpg"
+  },
+  {
+    "nome": "Auctor 400",
+    "anno": 1984,
+    "designer": "Rodolfo Bonetto",
+    "azienda": "Olivetti OCN",
+    "azienda_attuale": null,
+    "categoria": "centro di lavorazione",
+    "foto": "bonetto-auctor-400.jpg"
+  },
+  {
+    "nome": "Polo",
+    "anno": 1991,
+    "designer": "Rodolfo Bonetto",
+    "azienda": "Olivari",
+    "azienda_attuale": null,
+    "categoria": "maniglia",
+    "foto": "bonetto-polo.jpg"
+  },
+  {
+    "nome": "CMC 7",
+    "anno": 1963,
+    "designer": "Mario Bellini",
+    "azienda": "Olivetti",
+    "azienda_attuale": null,
+    "categoria": "codificatore di caratteri magnetici",
+    "foto": "bellini-cmc-7.jpg"
+  },
+  {
+    "nome": "Programma 101",
+    "anno": 1965,
+    "designer": "Mario Bellini",
+    "azienda": "Olivetti",
+    "azienda_attuale": null,
+    "categoria": "computer da tavolo",
+    "foto": "bellini-programma-101.jpg"
+  },
+  {
+    "nome": "932/2",
+    "anno": 1965,
+    "designer": "Mario Bellini",
+    "azienda": "Cassina",
+    "azienda_attuale": null,
+    "categoria": "poltrona",
+    "foto": "bellini-932-2.jpg"
+  },
+  {
+    "nome": "P203",
+    "anno": 1966,
+    "designer": "Mario Bellini",
+    "azienda": "Olivetti Underwood Corporation",
+    "azienda_attuale": null,
+    "categoria": "microcomputer",
+    "foto": "bellini-p203.jpg"
+  },
+  {
+    "nome": "TCV 250",
+    "anno": 1966,
+    "designer": "Mario Bellini",
+    "azienda": "Olivetti",
+    "azienda_attuale": null,
+    "categoria": "terminale video",
+    "foto": "bellini-tcv-250.jpg"
+  },
+  {
+    "nome": "Amanta",
+    "anno": 1966,
+    "designer": "Mario Bellini",
+    "azienda": "B&B Italia",
+    "azienda_attuale": "HAY",
+    "categoria": "seduta modulare",
+    "foto": "bellini-amanta.jpg"
+  },
+  {
+    "nome": "Pop GA 45",
+    "anno": 1968,
+    "designer": ["Mario Bellini", "Dario Bellini"],
+    "azienda": "Minerva",
+    "azienda_attuale": null,
+    "categoria": "giradischi",
+    "foto": "bellini-pop-ga-45.jpg"
+  },
+  {
+    "nome": "Gli Scacchi",
+    "anno": 1971,
+    "designer": "Mario Bellini",
+    "azienda": "B&B Italia",
+    "azienda_attuale": "B&B Italia",
+    "categoria": "tavolini modulari",
+    "foto": "bellini-gli-scacchi.jpg"
+  },
+  {
+    "nome": "Bamboletto",
+    "anno": 1972,
+    "designer": "Mario Bellini",
+    "azienda": "B&B Italia",
+    "azienda_attuale": "B&B Italia",
+    "categoria": "letto",
+    "foto": "bellini-bamboletto.jpg"
+  },
+  {
+    "nome": "684",
+    "anno": 1973,
+    "designer": "Mario Bellini",
+    "azienda": "Cassina",
+    "azienda_attuale": "Cassina",
+    "categoria": "poltrona",
+    "foto": "bellini-684.jpg"
+  },
+  {
+    "nome": "Tentazioni",
+    "anno": 1973,
+    "designer": "Mario Bellini",
+    "azienda": "Cassina",
+    "azienda_attuale": null,
+    "categoria": "sedia",
+    "foto": "bellini-tentazioni.jpg"
+  },
+  {
+    "nome": "Area",
+    "anno": 1974,
+    "designer": ["Mario Bellini", "Giorgio Origlia"],
+    "azienda": "Artemide",
+    "azienda_attuale": null,
+    "categoria": "lampada a sospensione",
+    "foto": "bellini-origlia-area.jpg"
+  },
+  {
+    "nome": "Le Stelle",
+    "anno": 1974,
+    "designer": "Mario Bellini",
+    "azienda": "B&B Italia",
+    "azienda_attuale": null,
+    "categoria": "poltrona",
+    "foto": "bellini-le-stelle.jpg"
+  },
+  {
+    "nome": "TC 800 GL",
+    "anno": 1974,
+    "designer": ["Mario Bellini", "Dario Bellini"],
+    "azienda": "Nippon Gakki",
+    "azienda_attuale": null,
+    "categoria": "registratore a cassette",
+    "foto": "bellini-tc-800-gl.jpg"
+  },
+  {
+    "nome": "Break",
+    "anno": 1976,
+    "designer": "Mario Bellini",
+    "azienda": "Cassina",
+    "azienda_attuale": null,
+    "categoria": "sedia",
+    "foto": "bellini-break.jpg"
+  },
+  {
+    "nome": "Duc-Duc",
+    "anno": 1976,
+    "designer": "Mario Bellini",
+    "azienda": "Cassina",
+    "azienda_attuale": "Cassina",
+    "categoria": "divano",
+    "foto": "bellini-duc-duc.jpg"
+  },
+  {
+    "nome": "La Rotonda",
+    "anno": 1976,
+    "designer": "Mario Bellini",
+    "azienda": "Cassina",
+    "azienda_attuale": "Cassina",
+    "categoria": "tavolo",
+    "foto": "bellini-la-rotonda.jpg"
+  },
+  {
+    "nome": "La Basilica",
+    "anno": 1976,
+    "designer": "Mario Bellini",
+    "azienda": "Cassina",
+    "azienda_attuale": "Cassina",
+    "categoria": "tavolo",
+    "foto": "bellini-la-basilica.jpg"
+  },
+  {
+    "nome": "Il Colonnato",
+    "anno": 1977,
+    "designer": "Mario Bellini",
+    "azienda": "Cassina",
+    "azienda_attuale": null,
+    "categoria": "tavolo",
+    "foto": "bellini-il-colonnato.jpg"
+  },
+  {
+    "nome": "Class",
+    "anno": 1978,
+    "designer": ["Mario Bellini", "Dario Bellini"],
+    "azienda": "Ideal Standard",
+    "azienda_attuale": null,
+    "categoria": "rubinetto",
+    "foto": "bellini-class.jpg"
+  },
+  {
+    "nome": "ET 111",
+    "anno": 1983,
+    "designer": "Mario Bellini",
+    "azienda": "Olivetti",
+    "azienda_attuale": null,
+    "categoria": "macchina da scrivere elettronica",
+    "foto": "bellini-et-111.jpg"
+  },
+  {
+    "nome": "Minideca",
+    "anno": 1983,
+    "designer": ["Mario Bellini", "Dario Bellini"],
+    "azienda": "Zojirushi Corporation",
+    "azienda_attuale": null,
+    "categoria": "thermos",
+    "foto": "bellini-minideca.jpg"
+  },
+  {
+    "nome": "Portatone PS 6100",
+    "anno": 1984,
+    "designer": ["Mario Bellini", "Dario Bellini"],
+    "azienda": "Nippon Gakki",
+    "azienda_attuale": null,
+    "categoria": "tastiera elettronica",
+    "foto": "bellini-portatone-ps-6100.jpg"
+  },
+  {
+    "nome": "Persona",
+    "anno": 1984,
+    "designer": ["Mario Bellini", "Dieter Thiel"],
+    "azienda": "Vitra",
+    "azienda_attuale": null,
+    "categoria": "sedia da ufficio",
+    "foto": "bellini-thiel-persona.jpg"
+  },
+  {
+    "nome": "Figura",
+    "anno": 1984,
+    "designer": ["Mario Bellini", "Dieter Thiel"],
+    "azienda": "Vitra",
+    "azienda_attuale": null,
+    "categoria": "sedia da ufficio",
+    "foto": "bellini-thiel-figura.jpg"
+  },
+  {
+    "nome": "Eclipse",
+    "anno": 1985,
+    "designer": ["Mario Bellini", "Dario Bellini"],
+    "azienda": "Erco Leuchten",
+    "azienda_attuale": null,
+    "categoria": "faretto",
+    "foto": "bellini-eclipse.jpg"
+  },
+  {
+    "nome": "Vol Au Vent",
+    "anno": 2001,
+    "designer": "Mario Bellini",
+    "azienda": "B&B Italia",
+    "azienda_attuale": "B&B Italia",
+    "categoria": "sedia",
+    "foto": "bellini-vol-au-vent.jpg"
   }
 ]

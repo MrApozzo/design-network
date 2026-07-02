@@ -53,9 +53,9 @@ const STILE = {
   //  zoom_viewport_ref → viewport di riferimento per il ridimensionamento
   // =============================================
   zoom_designer_min: 3,
-  zoom_designer_max: 25,
+  zoom_designer_max: 18,
   zoom_prodotto_min: 2,
-  zoom_prodotto_max: 36,
+  zoom_prodotto_max: 26,
   zoom_label_designer_min: 4,
   zoom_label_designer_max: 14,
   zoom_label_prodotto_max: 10,
@@ -73,20 +73,20 @@ const STILE = {
   hover_opacita_altri: 0.05,
   lerp_velocita: 0.15,
 
-  // --- Layout force-directed Y ---
-  peso_collettivo: 0.8,
-  peso_coprogettazione: 1.0,
-  peso_relazione_personale: 1.0,
-  peso_relazione_professionale: 0.5,
-  peso_scuola: 0.4,
-  force_iterazioni: 500,
-  force_repulsione: 0.8,
-  force_attrazione: 0.8,
-  min_distanza_y: 0.5,
-  orbita_raggio_min: 0.5,
-  orbita_spazio_per_prodotto: 0.08,
+  // --- Layout verticale deterministico ---
+  // Posizione Y = puramente cronologica per default (nessuna forza di attrazione da
+  // relazioni/scuole/collettivi). Solo la co-progettazione crea un'eccezione: il
+  // designer più anziano del gruppo resta nella propria fascia cronologica, i più
+  // giovani vengono inseriti subito dopo con uno scarto ridotto (passo_verticale_coprogetto)
+  // invece del passo standard, così restano vicini e nella vista timeline il prodotto
+  // co-progettato (posizionato al centro del gruppo) resta riconducibile a entrambi.
+  passo_verticale_base: 25,
+  passo_verticale_coprogetto: 6,
+  min_distanza_y: 1.6,
+  orbita_raggio_min: 0.9,
+  orbita_spazio_per_prodotto: 0.4,
   anello_raggio_interno: 1.0,
-  anello_raggio_esterno: 2.0,
+  anello_raggio_esterno: 3,
   arco_inizio: 0.15,
   arco_fine: 1.85,
   arco_perturbazione: 0.4,
@@ -137,15 +137,30 @@ function calcolaSettoriDinamici(lista, arco360 = false) {
 
 const ANNO_MIN = 1880
 const ANNO_MAX = 2020
-const X_MIN = -120
-const X_MAX = 120
-const ANNI_SINGOLI = Array.from({length: (2020-1880)+1}, (_, i) => 1880 + i)
+// Base "nominale" della griglia X: viene allargata proporzionalmente a runtime
+// (vedi fattoreScalaX più sotto) quando le orbite dei prodotti fanno crescere
+// molto l'estensione verticale, per mantenere le proporzioni dell'area di lavoro.
+const X_MIN_BASE = -170
+const X_MAX_BASE = 170
+let X_MIN = X_MIN_BASE
+let X_MAX = X_MAX_BASE
 const MARGINE_X = 20
 const MARGINE_Y = 2
 const Y_MIN = -20
 const Y_MAX = 20
 const MAX_CAMERA_RATIO = window.innerWidth < 768 ? 0.6 : 1.2
-const MIN_CAMERA_RATIO = window.innerWidth < 768 ? 0.02 : 0.05
+// minCameraRatio è una FRAZIONE del bounding box (ratio=1 → tutto il contenuto
+// visibile). Se il contenuto cresce in altezza (più designer, orbite più ampie),
+// la stessa frazione fissa mostrerebbe uno spicchio di grafo via via più grande,
+// vanificando qualunque aumento della spaziatura verticale. Per questo viene
+// ricalcolata a runtime (vedi MIN_CAMERA_RATIO_UNITA_VISIBILI più sotto) in modo
+// da garantire sempre lo stesso zoom massimo assoluto, indipendente dalla scala
+// del contenuto.
+const MIN_CAMERA_RATIO_BASE = window.innerWidth < 768 ? 0.02 : 0.05
+let MIN_CAMERA_RATIO = MIN_CAMERA_RATIO_BASE
+// Unità-grafo (verticali) visibili al massimo zoom-in, a prescindere da quanto
+// è alto il contenuto complessivo.
+const MIN_CAMERA_RATIO_UNITA_VISIBILI = 40
 
 function annoToX(anno) {
   return X_MIN + ((anno - ANNO_MIN) / (ANNO_MAX - ANNO_MIN)) * (X_MAX - X_MIN)
@@ -236,12 +251,26 @@ const CATEGORIA_EN = {
   contenitore: "storage unit", divano: "sofa", fermacarte: "paperweight", gioco: "game",
   lampada: "lamp", lampadario: "chandelier", letto: "bed", libreria: "bookcase", libro: "book",
   "macchina caffè": "coffee machine", "macchina da cucire": "sewing machine", "macchina da scrivere": "typewriter",
+  maniglia: "handle", "sistema di illuminazione": "lighting system", "lampada da terra": "floor lamp",
   orologio: "clock", "piatto decorativo": "decorative plate", poltrona: "armchair",
   portaombrelli: "umbrella stand", portariviste: "magazine rack", posacenere: "ashtray", posate: "cutlery",
   pouf: "pouf", "progetto teorico": "theoretical project", radio: "radio", scrivania: "desk",
   scultura: "sculpture", sedia: "chair", sgabello: "stool", specchio: "mirror", spremiagrumi: "juicer",
   superficie: "surface", tavolo: "table", telefono: "telephone", televisore: "television",
-  vaso: "vase", vassoio: "tray",
+  vaso: "vase", vassoio: "tray", consolle: "console table", tavolino: "side table",
+  "libreria modulare": "modular bookcase", toeletta: "dressing table", "lampada da parete": "wall lamp",
+  "timer da cucina": "kitchen timer", sveglia: "alarm clock", "macchina utensile": "machine tool",
+  "tavolino modulare": "modular side table", "apparecchio per microfilm": "microfilm device",
+  "lampada da tavolo": "table lamp", "macchina per caffè espresso": "espresso machine",
+  "centro di misura": "measuring center", "centrale polifunzionale": "multifunction control unit",
+  "centro di lavorazione": "machining center",
+  "codificatore di caratteri magnetici": "magnetic character encoder", "computer da tavolo": "desktop computer",
+  microcomputer: "microcomputer", "terminale video": "video terminal", "seduta modulare": "modular seating",
+  giradischi: "record player", "divano modulare": "modular sofa", "tavolini modulari": "modular side tables",
+  "sistema di sedute": "seating system", "lampada a sospensione": "pendant lamp",
+  "registratore a cassette": "cassette recorder", "macchina da scrivere elettronica": "electronic typewriter",
+  thermos: "thermos", "tastiera elettronica": "electronic keyboard", "sedia da ufficio": "office chair",
+  faretto: "spotlight", rubinetto: "faucet",
 }
 
 const TIPO_RELAZIONE_EN = {
@@ -420,6 +449,12 @@ function App() {
     document.body.style.background = STILE.sfondo_colore
     document.documentElement.style.overflow = "hidden"
 
+    // Riparte sempre dalla base nominale: evita che un remount (es. StrictMode)
+    // applichi il riscalamento più volte in sequenza.
+    X_MIN = X_MIN_BASE
+    X_MAX = X_MAX_BASE
+    MIN_CAMERA_RATIO = MIN_CAMERA_RATIO_BASE
+
     const isMobile = window.innerWidth < 768
     const container = document.createElement("div")
     container.style.cssText = isMobile
@@ -504,148 +539,89 @@ function App() {
 
     const designerOrdinati = [...designers].sort((a, b) => a.nato - b.nato)
 
-    const pesiCoppie = {}
-    function aggiungiPeso(a, b, peso) {
-      if (a === b) return
-      const key = [a, b].sort().join("|")
-      pesiCoppie[key] = (pesiCoppie[key] || 0) + peso
-    }
-
-    relazioni.forEach((r) => {
-      const peso = r.categoria === "personale" ? STILE.peso_relazione_personale : STILE.peso_relazione_professionale
-      aggiungiPeso(r.designer_a, r.designer_b, peso)
-    })
-
-    prodotti.forEach((p) => {
-      const ds = getDesigners(p)
-      for (let a = 0; a < ds.length; a++)
-        for (let b = a + 1; b < ds.length; b++)
-          aggiungiPeso(ds[a], ds[b], STILE.peso_coprogettazione)
-    })
-
-    const scuoleMap = {}
-    const collettiviMap = {}
-    designers.forEach((d) => {
-      ;(d.scuole || []).forEach((s) => {
-        if (!scuoleMap[s]) scuoleMap[s] = []
-        scuoleMap[s].push(d.nome)
-      })
-      ;(d.collettivi || []).forEach((c) => {
-        if (!collettiviMap[c]) collettiviMap[c] = []
-        collettiviMap[c].push(d.nome)
-      })
-    })
-    Object.values(scuoleMap).forEach((membri) => {
-      for (let a = 0; a < membri.length; a++)
-        for (let b = a + 1; b < membri.length; b++)
-          aggiungiPeso(membri[a], membri[b], STILE.peso_scuola)
-    })
-    Object.values(collettiviMap).forEach((membri) => {
-      for (let a = 0; a < membri.length; a++)
-        for (let b = a + 1; b < membri.length; b++)
-          aggiungiPeso(membri[a], membri[b], STILE.peso_collettivo)
-    })
-
-    const multiCount = {}
+    // Gruppi di co-progettazione (transitivi: se A ha co-progettato con B e B con C,
+    // A/B/C finiscono nello stesso gruppo). Nessun'altra relazione (personale,
+    // professionale, scuola, collettivo) influisce sulla posizione verticale.
+    const gruppiCoprogetto = {}
     prodotti.forEach((p) => {
       const ds = getDesigners(p)
       if (ds.length < 2) return
-      const key = ds.sort().join("|")
-      multiCount[key] = (multiCount[key] || 0) + 1
+      const set = new Set()
+      ds.forEach((n) => { if (gruppiCoprogetto[n]) gruppiCoprogetto[n].forEach((x) => set.add(x)) })
+      ds.forEach((n) => set.add(n))
+      set.forEach((n) => { gruppiCoprogetto[n] = set })
     })
 
-    const posizioniCalcolate = designerOrdinati.map((d, i) => ({
-      d,
-      x: annoToX(d.nato),
-      y: (d.y !== null && d.y !== undefined) ? d.y : (designerOrdinati.length / 2 - i) * 0.5,
-      manuale: d.y !== null && d.y !== undefined,
-      raggio: calcolaRaggio(nProdottiPerDesigner[d.nome] || 0),
-    }))
-
-    for (let iter = 0; iter < STILE.force_iterazioni; iter++) {
-      const forze = posizioniCalcolate.map(() => 0)
-      for (let i = 0; i < posizioniCalcolate.length; i++) {
-        if (posizioniCalcolate[i].manuale) continue
-        for (let j = 0; j < posizioniCalcolate.length; j++) {
-          if (i === j) continue
-          const a = posizioniCalcolate[i]
-          const b = posizioniCalcolate[j]
-          const dy = a.y - b.y
-          const dist = Math.abs(dy) || 0.01
-
-          const key = [a.d.nome, b.d.nome].sort().join("|")
-          const peso = pesiCoppie[key] || 0
-          if (peso > 0) {
-            forze[i] -= STILE.force_attrazione * peso * dy / dist
-          }
-
-          const nMulti = multiCount[key] || 0
-          const extraMulti = nMulti > 0 ? calcolaRaggio(nMulti) * 1.5 * STILE.anello_raggio_esterno : 0
-          const minDist = (a.raggio + b.raggio) * STILE.anello_raggio_esterno + STILE.min_distanza_y + extraMulti
-          if (dist < minDist) {
-            const repulsione = STILE.force_repulsione * (minDist - dist) / minDist
-            forze[i] += dy > 0 ? repulsione : -repulsione
-          }
-        }
-      }
-      for (let i = 0; i < posizioniCalcolate.length; i++) {
-        if (!posizioniCalcolate[i].manuale) {
-          posizioniCalcolate[i].y += forze[i] * 0.1
-        }
-      }
-    }
-
-    const coprogettiGruppi = {}
-    prodotti.forEach((p) => {
-      const ds = getDesigners(p)
-      if (ds.length < 2) return
-      const key = ds.sort().join("|")
-      if (!coprogettiGruppi[key]) coprogettiGruppi[key] = ds
-    })
-    const vincolato = {}
-    Object.values(coprogettiGruppi).forEach((gruppo) => {
-      gruppo.forEach((nome) => {
-        if (!vincolato[nome]) vincolato[nome] = new Set()
-        gruppo.forEach((altro) => { if (altro !== nome) vincolato[nome].add(altro) })
-      })
-    })
-    Object.values(collettiviMap).forEach((membri) => {
-      membri.forEach((nome) => {
-        if (!vincolato[nome]) vincolato[nome] = new Set()
-        membri.forEach((altro) => { if (altro !== nome) vincolato[nome].add(altro) })
-      })
-    })
-
-    posizioniCalcolate.sort((a, b) => b.y - a.y)
+    // Ordine finale: cronologico, ma quando incontriamo un designer che appartiene a un
+    // gruppo di co-progettazione, inseriamo subito dopo gli altri membri del gruppo
+    // (dal più anziano al più giovane) invece di lasciarli nella loro posizione
+    // cronologica naturale. Chi lo incontra per primo nel percorso cronologico è per
+    // costruzione il più anziano del gruppo, e resta quindi "ancora" nella propria fascia.
     const inseriti = new Set()
     const ordinato = []
+    designerOrdinati.forEach((d) => {
+      if (inseriti.has(d.nome)) return
+      ordinato.push(d)
+      inseriti.add(d.nome)
+      const gruppo = gruppiCoprogetto[d.nome]
+      if (gruppo && gruppo.size > 1) {
+        const altri = [...gruppo]
+          .filter((n) => !inseriti.has(n))
+          .map((n) => designers.find((x) => x.nome === n))
+          .filter(Boolean)
+          .sort((a, b) => a.nato - b.nato)
+        altri.forEach((pd) => { ordinato.push(pd); inseriti.add(pd.nome) })
+      }
+    })
+
+    // Passo verticale: standard tra designer non collegati, ridotto tra membri dello
+    // stesso gruppo di co-progettazione (li tiene vicini, indipendentemente dal numero
+    // di prodotti di ciascuno, per non rompere le "fasce orizzontali" della vista
+    // timeline) — ma mai meno dello spazio richiesto dalle orbite reali dei due
+    // designer coinvolti, per evitare sovrapposizioni visive. Un unico passaggio
+    // cumulativo (anziché calcolare prima le posizioni "ideali" e poi correggerle a
+    // parte) garantisce che ogni scarto sia sempre misurato dalla posizione EFFETTIVA
+    // del designer precedente: se una coppia con orbite grandi viene spinta più in
+    // basso del previsto, la coppia successiva eredita quello spostamento invece di
+    // "perdere" lo spazio che le spettava.
+    let prevY = 0
+    let prevRaggio = 0
+    const posizioniCalcolate = ordinato.map((d, i) => {
+      const raggio = calcolaRaggio(nProdottiPerDesigner[d.nome] || 0)
+      const manuale = d.y !== null && d.y !== undefined
+      let y
+      if (manuale) {
+        y = d.y
+      } else if (i === 0) {
+        y = 0
+      } else {
+        const prev = ordinato[i - 1]
+        const stessoGruppo = gruppiCoprogetto[d.nome] && gruppiCoprogetto[d.nome] === gruppiCoprogetto[prev.nome]
+        const passoStandard = stessoGruppo ? STILE.passo_verticale_coprogetto : STILE.passo_verticale_base
+        const minGap = (prevRaggio + raggio) * STILE.anello_raggio_esterno + STILE.min_distanza_y
+        y = prevY - Math.max(passoStandard, minGap)
+      }
+      prevY = y
+      prevRaggio = raggio
+      return { d, x: annoToX(d.nato), y, manuale, raggio }
+    })
+
+    // Se le orbite hanno esteso molto l'area verticale, allarghiamo anche l'asse X
+    // PRIMA di creare i nodi (designer e prodotti), così le orbite restano circolari
+    // invece di essere distorte da un riscalamento fatto a posteriori.
+    let contenutoYMinStima = Infinity, contenutoYMaxStima = -Infinity
     posizioniCalcolate.forEach((p) => {
-      if (inseriti.has(p.d.nome)) return
-      ordinato.push(p)
-      inseriti.add(p.d.nome)
-      if (vincolato[p.d.nome]) {
-        vincolato[p.d.nome].forEach((partner) => {
-          if (inseriti.has(partner)) return
-          const pp = posizioniCalcolate.find((q) => q.d.nome === partner)
-          if (pp) { ordinato.push(pp); inseriti.add(partner) }
-        })
-      }
+      contenutoYMinStima = Math.min(contenutoYMinStima, p.y - p.raggio * STILE.anello_raggio_esterno)
+      contenutoYMaxStima = Math.max(contenutoYMaxStima, p.y + p.raggio * STILE.anello_raggio_esterno)
     })
-
-    for (let i = 1; i < ordinato.length; i++) {
-      const prev = ordinato[i - 1]
-      const curr = ordinato[i]
-      if (curr.manuale) continue
-      const minGap = (prev.raggio + curr.raggio) * STILE.anello_raggio_esterno + STILE.min_distanza_y
-      if (prev.y - curr.y < minGap) {
-        curr.y = prev.y - minGap
-      }
+    if (!Number.isFinite(contenutoYMinStima)) { contenutoYMinStima = Y_MIN; contenutoYMaxStima = Y_MAX }
+    const yRangeStimato = Math.max(Y_MAX, contenutoYMaxStima) - Math.min(Y_MIN, contenutoYMinStima)
+    const fattoreScalaX = Math.max(1, Math.sqrt(yRangeStimato / (Y_MAX - Y_MIN)))
+    if (fattoreScalaX > 1) {
+      X_MIN = X_MIN_BASE * fattoreScalaX
+      X_MAX = X_MAX_BASE * fattoreScalaX
+      posizioniCalcolate.forEach((p) => { p.x = annoToX(p.d.nato) })
     }
-
-    ordinato.forEach((p, i) => {
-      const idx = posizioniCalcolate.indexOf(p)
-      if (idx !== -1) posizioniCalcolate[idx] = p
-    })
 
     posizioniCalcolate.forEach(({ d, x, y }) => {
       graph.addNode(d.nome, {
@@ -718,9 +694,9 @@ function App() {
         const nStessoAnno = conteggioPerAnno[anno]
         const idxAnno = indiceCorrentePerAnno[anno] || 0
         indiceCorrentePerAnno[anno] = idxAnno + 1
-        const offset45 = nStessoAnno > 1 ? (idxAnno - (nStessoAnno - 1) / 2) * 0.5 : 0
-        const timelineX = annoToX(anno) + offset45
-        const timelineY = dy - offset45
+        const offsetVerticale = nStessoAnno > 1 ? (idxAnno - (nStessoAnno - 1) / 2) * 1 : 0
+        const timelineX = annoToX(anno)
+        const timelineY = dy - offsetVerticale
 
         graph.addNode(prodottoId, {
           label: p.nome, size: STILE.prodotto_size,
@@ -805,9 +781,9 @@ function App() {
         const nStessoAnno = conteggioPerAnnoM[anno]
         const idxAnno = indiceCorrentePerAnnoM[anno] || 0
         indiceCorrentePerAnnoM[anno] = idxAnno + 1
-        const offset45 = nStessoAnno > 1 ? (idxAnno - (nStessoAnno - 1) / 2) * 0.5 : 0
-        const timelineX = annoToX(anno) + offset45
-        const timelineY = centroYTimeline - offset45
+        const offsetVerticale = nStessoAnno > 1 ? (idxAnno - (nStessoAnno - 1) / 2) * 1 : 0
+        const timelineX = annoToX(anno)
+        const timelineY = centroYTimeline - offsetVerticale
 
         graph.addNode(prodottoId, {
           label: p.nome, size: STILE.prodotto_size,
@@ -867,10 +843,20 @@ function App() {
       contenutoYMax = Y_MAX
     }
 
+    const bboxYMin = Math.min(Y_MIN, contenutoYMin) - MARGINE_Y
+    const bboxYMax = Math.max(Y_MAX, contenutoYMax) + MARGINE_Y
     renderer.setCustomBBox({
       x: [X_MIN - MARGINE_X, X_MAX + MARGINE_X],
-      y: [Math.min(Y_MIN, contenutoYMin) - MARGINE_Y, Math.max(Y_MAX, contenutoYMax) + MARGINE_Y],
+      y: [bboxYMin, bboxYMax],
     })
+
+    // minCameraRatio è relativo al bounding box: se il contenuto è cresciuto in
+    // altezza, ricalcoliamo la frazione così da mantenere costante lo zoom massimo
+    // assoluto (in unità-grafo), invece di lasciare che lo zoom massimo si "diluisca"
+    // proporzionalmente alla crescita del contenuto.
+    const bboxAltezza = bboxYMax - bboxYMin
+    MIN_CAMERA_RATIO = Math.min(MIN_CAMERA_RATIO_BASE, MIN_CAMERA_RATIO_UNITA_VISIBILI / bboxAltezza)
+    renderer.setSetting("minCameraRatio", MIN_CAMERA_RATIO)
 
     const overlayCanvas = document.createElement("canvas")
     overlayCanvas.style.cssText = "position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:10;"
@@ -966,11 +952,33 @@ function App() {
       ctx.rect(padSinistra, padSopra, Math.max(0, w - padSinistra - padLati), Math.max(0, h - padSopra - padBasso))
       ctx.clip()
 
-      ANNI_SINGOLI.forEach((anno, ai) => {
-        if (ogniN > 1 && ai % ogniN !== 0) return
-        const gx = annoToX(anno)
-        for (let gy = Math.ceil(yGrafoMin); gy <= Math.floor(yGrafoMax); gy++) {
-          if (ogniN > 1 && ((gy + ai) % 2 !== 0)) continue
+      // Passo fisso in unità-grafo, uguale su X e Y: celle sempre quadrate,
+      // indipendenti da quanto si è allargato X_MIN/X_MAX per le orbite.
+      // Il ciclo è limitato alla sola area visibile a schermo (+ un margine di 2 unità),
+      // altrimenti con X_MIN/X_MAX molto allargati si attraversano decine di migliaia
+      // di punti fuori schermo a ogni frame.
+      const angoloTL = renderer.viewportToGraph({ x: 0, y: 0 })
+      const angoloBR = renderer.viewportToGraph({ x: w, y: h })
+      const visXMin = Math.min(angoloTL.x, angoloBR.x) - 2
+      const visXMax = Math.max(angoloTL.x, angoloBR.x) + 2
+      const visYMin = Math.min(angoloTL.y, angoloBR.y) - 2
+      const visYMax = Math.max(angoloTL.y, angoloBR.y) + 2
+      const xGrafoMin = Math.max(X_MIN - MARGINE_X, visXMin)
+      const xGrafoMax = Math.min(X_MAX + MARGINE_X, visXMax)
+      const yGrafoMinVis = Math.max(yGrafoMin, visYMin)
+      const yGrafoMaxVis = Math.min(yGrafoMax, visYMax)
+      // Se X_MIN/X_MAX si sono allargati per far spazio alle orbite, un'unità grafo
+      // corrisponde a una frazione di anno più piccola: allarghiamo il passo della
+      // griglia in proporzione, così la densità visiva resta quella di sempre.
+      const passoGriglia = Math.max(1, Math.round((X_MAX - X_MIN) / (X_MAX_BASE - X_MIN_BASE)))
+      const gxInizio = Math.ceil(xGrafoMin / passoGriglia) * passoGriglia
+      const gyInizio = Math.ceil(yGrafoMinVis / passoGriglia) * passoGriglia
+      for (let gx = gxInizio; gx <= xGrafoMax; gx += passoGriglia) {
+        const gxi = gx / passoGriglia
+        if (ogniN > 1 && gxi % ogniN !== 0) continue
+        for (let gy = gyInizio; gy <= yGrafoMaxVis; gy += passoGriglia) {
+          const gyi = gy / passoGriglia
+          if (ogniN > 1 && ((gyi + gxi) % 2 !== 0)) continue
           const screen = renderer.graphToViewport({ x: gx, y: gy })
           if (screen.x < -2 || screen.x > w + 2 || screen.y < -2 || screen.y > h + 2) continue
           ctx.beginPath()
@@ -978,7 +986,7 @@ function App() {
           ctx.fillStyle = STILE.griglia_pallino_colore
           ctx.fill()
         }
-      })
+      }
 
       if (vistaInterna === "timeline") {
         graph.forEachNode((node, attr) => {
