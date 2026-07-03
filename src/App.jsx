@@ -40,6 +40,10 @@ const STILE = {
   edge_relazione_size: 1,
   designer_size: 8,
   prodotto_size: 5,
+  // Fattore di scala per i prodotti marcati come "top" (campo prodotti.json:
+  // top: true) — permette di dare risalto arbitrario ad alcuni pezzi senza
+  // toccare il layout/posizionamento.
+  prodotto_scala_top: 1.7,
 
   // =============================================
   //  ZOOM UNIFICATO (responsive)
@@ -84,7 +88,7 @@ const STILE = {
   passo_verticale_coprogetto: 6,
   min_distanza_y: 1.6,
   orbita_raggio_min: 0.9,
-  orbita_spazio_per_prodotto: 0.4,
+  orbita_spazio_per_prodotto: 0.55,
   anello_raggio_interno: 1.0,
   anello_raggio_esterno: 3,
   arco_inizio: 0.15,
@@ -297,6 +301,37 @@ const CATEGORIA_EN = {
   "sistema abitativo": "living system", "condizionatore portatile": "portable air conditioner",
   "set di bicchieri": "glass set", formaggiera: "cheese dish", "servizio da tavola per aereo": "airline tableware set",
   mensola: "shelf",
+  "poltrona con pouf": "armchair with pouf", "seduta scultorea": "sculptural seat",
+  "collezione di arredi": "furniture collection", "collezione di sedute scultoree": "sculptural seating collection",
+  paravento: "folding screen",
+  "lampada-scultura": "sculpture lamp", "collezione di vasi": "vase collection", credenza: "sideboard",
+  "mobile bar": "bar cabinet", "vaso-scultura": "sculpture vase", "tavolino in mosaico": "mosaic side table",
+  fiasca: "flask", "servizio di tazzine": "cup set", "tavolino trasformabile": "convertible side table",
+  "oggetto in ceramica": "ceramic object", portalibri: "bookend", oliera: "oil cruet",
+  "colonne in mosaico": "mosaic columns", contenitori: "storage units", coppa: "bowl",
+  salvadanaio: "money box", "collezione di ceramiche": "ceramics collection",
+  "collezione di librerie": "bookcase collection", "collezione di arredi e oggetti": "furniture and object collection",
+  comodino: "nightstand", scrittoio: "writing desk",
+  "collezione di mobili contenitori": "storage furniture collection", "collezione di vassoi": "tray collection",
+  arazzo: "tapestry", "totem in ceramica": "ceramic totem", "collezione di sculture in ceramica": "ceramic sculpture collection",
+  "tavolo trasformabile in sedia": "table convertible into a chair", centrotavola: "centerpiece",
+  "tavolino portafiori": "flower stand table", "collezione di sculture-arredo in mosaico": "mosaic sculpture-furniture collection",
+  macinapepe: "pepper mill", "macchina da caffè filtro": "filter coffee machine",
+  "lampada da parete o soffitto": "wall or ceiling lamp", "cavatappi da sommelier": "sommelier corkscrew",
+  "scultura in vetro": "glass sculpture", panca: "bench", "alzata pieghevole": "folding cake stand",
+  "caffettiera espresso": "espresso coffee maker", "sgabello o tavolino": "stool or side table",
+  "orologio da parete": "wall clock", "lavabo a colonna": "pedestal washbasin",
+  "sistema di tavolini": "side table system", "padella per uova": "egg pan",
+  "servizio da tavola per bambini": "children's tableware set", "famiglia di vasi": "vase family",
+  "vaso con coperchio": "lidded vase", "decorazione natalizia": "christmas decoration",
+  "set di posate": "cutlery set", bacchette: "chopsticks",
+  "set di valigie": "luggage set", "poltrona reclinabile": "reclining armchair", lettino: "daybed",
+  "armadio-libreria": "wardrobe-bookcase", "secchiello per ghiaccio": "ice bucket",
+  "faretto orientabile": "adjustable spotlight", "sedia per bambini": "children's chair",
+  "libreria girevole": "revolving bookcase", "sedia da pranzo e da ufficio": "dining and office chair",
+  "sistema per ufficio": "office system", "letto contenitore": "storage bed", porta: "door",
+  "sistema di divani": "sofa system", "sistema di arredi componibili": "modular furniture system",
+  "sistema di mensole": "shelving system",
 }
 
 const TIPO_RELAZIONE_EN = {
@@ -725,7 +760,7 @@ function App() {
         const timelineY = dy - offsetVerticale
 
         graph.addNode(prodottoId, {
-          label: p.nome, size: STILE.prodotto_size,
+          label: p.nome, size: STILE.prodotto_size * (p.top ? STILE.prodotto_scala_top : 1),
           x: orbitaX, y: orbitaY,
           color: STILE.prodotto_colore, tipo: "prodotto",
           imgSrc: `${import.meta.env.BASE_URL}immagini/${p.foto}`, dati: p,
@@ -812,7 +847,7 @@ function App() {
         const timelineY = centroYTimeline - offsetVerticale
 
         graph.addNode(prodottoId, {
-          label: p.nome, size: STILE.prodotto_size,
+          label: p.nome, size: STILE.prodotto_size * (p.top ? STILE.prodotto_scala_top : 1),
           x: orbitaX, y: orbitaY,
           color: STILE.prodotto_colore, tipo: "prodotto", multi: true,
           imgSrc: `${import.meta.env.BASE_URL}immagini/${p.foto}`, dati: p,
@@ -932,7 +967,8 @@ function App() {
       }
       if (attr.tipo === "prodotto") {
         const tDelayed = Math.max(0, (t - 0.2) / 0.8)
-        const base = lerp(STILE.zoom_prodotto_min, STILE.zoom_prodotto_max, tDelayed * tDelayed) * vs
+        const scalaTop = attr.dati?.top ? STILE.prodotto_scala_top : 1
+        const base = lerp(STILE.zoom_prodotto_min, STILE.zoom_prodotto_max, tDelayed * tDelayed) * vs * scalaTop
         if (node === prodottoCliccato) return base * 1.2
         if (prodottoCliccato) return base
         if (node === prodottoHoverAttivo) return base * STILE.hover_scala
@@ -1295,7 +1331,7 @@ function App() {
         if (!haImg) {
           ctx.beginPath()
           ctx.arc(pos.x, pos.y, r, 0, Math.PI * 2)
-          ctx.fillStyle = imgColori[attr.imgSrc] || "#cccccc"
+          ctx.fillStyle = imgColori[attr.imgSrc] || "#ffffff"
           ctx.fill()
         }
 
@@ -1311,7 +1347,7 @@ function App() {
           ctx.restore()
         }
 
-        if (attr.tipo === "prodotto") {
+        if (attr.tipo === "prodotto" && haImg) {
           ctx.beginPath()
           ctx.arc(pos.x, pos.y, r, 0, Math.PI * 2)
           ctx.strokeStyle = "#ffffff"

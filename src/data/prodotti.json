@@ -408,68 +408,79 @@
     "foto": "sapper-halley.jpg"
   },
   {
-    "nome": "Cab",
-    "anno": 1977,
-    "designer": "Mario Bellini",
-    "azienda": "Cassina",
-    "categoria": "sedia",
-    "foto": "bellini-cab.jpg"
-  },
-  {
     "nome": "Divisumma 18",
     "anno": 1973,
     "designer": "Mario Bellini",
     "azienda": "Olivetti",
     "categoria": "calcolatrice",
-    "foto": "bellini-divisumma.jpg"
+    "foto": "bellini-divisumma.jpg",
+    "top": true
   },
   {
-    "nome": "Proust",
+    "nome": "Poltrona di Proust",
     "anno": 1978,
     "designer": "Alessandro Mendini",
     "azienda": "Studio Alchimia",
+    "azienda_attuale": "Cappellini",
     "categoria": "poltrona",
-    "foto": "mendini-proust.jpg"
+    "foto": "mendini-poltrona-di-proust.jpg",
+    "top": true
   },
   {
     "nome": "Anna G.",
     "anno": 1994,
     "designer": "Alessandro Mendini",
     "azienda": "Alessi",
+    "azienda_attuale": "Alessi",
     "categoria": "cavatappi",
-    "foto": "mendini-annag.jpg"
+    "foto": "mendini-anna-g.jpg",
+    "top": true
   },
   {
-    "nome": "Up 5",
+    "nome": "UP5_6 (La Mamma)",
     "anno": 1969,
     "designer": "Gaetano Pesce",
-    "azienda": "B&B Italia",
-    "categoria": "poltrona",
-    "foto": "pesce-up5.jpg"
+    "azienda": "C&B Italia",
+    "azienda_attuale": "B&B Italia",
+    "categoria": "poltrona con pouf",
+    "foto": "pesce-up5-6-la-mamma.jpg",
+    "top": true
   },
   {
     "nome": "Feltri",
     "anno": 1987,
     "designer": "Gaetano Pesce",
     "azienda": "Cassina",
+    "azienda_attuale": "Cassina",
     "categoria": "poltrona",
-    "foto": "pesce-feltri.jpg"
+    "foto": "pesce-feltri.jpg",
+    "top": true
   },
   {
     "nome": "Strips",
     "anno": 1968,
-    "designer": "Cini Boeri",
+    "designer": [
+      "Cini Boeri",
+      "Laura Griziotti"
+    ],
     "azienda": "Arflex",
-    "categoria": "divano",
-    "foto": "boeri-strips.jpg"
+    "azienda_attuale": "Arflex",
+    "categoria": "sistema di sedute",
+    "foto": "boeri-griziotti-strips.jpg",
+    "top": true
   },
   {
     "nome": "Ghost",
     "anno": 1987,
-    "designer": "Cini Boeri",
-    "azienda": "Fiam",
-    "categoria": "sedia",
-    "foto": "boeri-ghost.jpg"
+    "designer": [
+      "Cini Boeri",
+      "Tomu Katayanagi"
+    ],
+    "azienda": "Fiam Italia",
+    "azienda_attuale": "Fiam Italia",
+    "categoria": "poltrona",
+    "foto": "boeri-katayanagi-ghost.jpg",
+    "top": true
   },
   {
     "nome": "Tema e Variazioni",
@@ -1056,18 +1067,11 @@
     "foto": "belgiojoso-lampadaneon.jpg"
   },
   {
-    "nome": "Poltrona di Proust (Alchimia)",
-    "anno": 1978,
-    "designer": "Alessandro Mendini",
-    "azienda": "Studio Alchimia",
-    "categoria": "poltrona",
-    "foto": "mendini-proustalchimia.jpg"
-  },
-  {
     "nome": "Kandissi",
     "anno": 1978,
     "designer": "Alessandro Mendini",
     "azienda": "Studio Alchimia",
+    "azienda_attuale": null,
     "categoria": "divano",
     "foto": "mendini-kandissi.jpg"
   },
@@ -1654,7 +1658,8 @@
     "azienda": "B&B Italia",
     "azienda_attuale": "B&B Italia",
     "categoria": "divano modulare",
-    "foto": "bellini-camaleonda.jpg"
+    "foto": "bellini-camaleonda.jpg",
+    "top": true
   },
   {
     "nome": "Le Bambole",
@@ -1675,11 +1680,13 @@
   },
   {
     "nome": "Nobody's Perfect",
-    "anno": 2003,
+    "anno": 2002,
     "designer": "Gaetano Pesce",
     "azienda": "Zerodisegno",
-    "categoria": "sedia",
-    "foto": "pesce-nobodysperfect.jpg"
+    "azienda_attuale": "Zerodisegno",
+    "categoria": "collezione di arredi",
+    "foto": "pesce-nobodys-perfect.jpg",
+    "top": true
   },
   {
     "nome": "Ultrafragola",
@@ -2447,7 +2454,8 @@
     "anno": 1971,
     "designer": "Cini Boeri",
     "azienda": "Arflex",
-    "categoria": "divano",
+    "azienda_attuale": null,
+    "categoria": "divano modulare",
     "foto": "boeri-serpentone.jpg"
   },
   {
@@ -3503,7 +3511,8 @@
     "azienda": "Cassina",
     "azienda_attuale": "Cassina",
     "categoria": "sedia",
-    "foto": "bellini-cab-412.jpg"
+    "foto": "bellini-cab-412.jpg",
+    "top": true
   },
   {
     "nome": "Cab 413",
@@ -4644,5 +4653,2328 @@
     "azienda_attuale": null,
     "categoria": "posacenere",
     "foto": "colombo-4630.jpg"
+  },
+  {
+    "nome": "UP1",
+    "anno": 1969,
+    "designer": "Gaetano Pesce",
+    "azienda": "C&B Italia",
+    "azienda_attuale": "B&B Italia",
+    "categoria": "poltrona",
+    "foto": "pesce-up1.jpg"
+  },
+  {
+    "nome": "UP2",
+    "anno": 1969,
+    "designer": "Gaetano Pesce",
+    "azienda": "C&B Italia",
+    "azienda_attuale": "B&B Italia",
+    "categoria": "poltroncina",
+    "foto": "pesce-up2.jpg"
+  },
+  {
+    "nome": "UP3",
+    "anno": 1969,
+    "designer": "Gaetano Pesce",
+    "azienda": "C&B Italia",
+    "azienda_attuale": "B&B Italia",
+    "categoria": "poltrona",
+    "foto": "pesce-up3.jpg"
+  },
+  {
+    "nome": "UP4",
+    "anno": 1969,
+    "designer": "Gaetano Pesce",
+    "azienda": "C&B Italia",
+    "azienda_attuale": "B&B Italia",
+    "categoria": "divano",
+    "foto": "pesce-up4.jpg"
+  },
+  {
+    "nome": "UP7 (Il Piede)",
+    "anno": 1969,
+    "designer": "Gaetano Pesce",
+    "azienda": "C&B Italia",
+    "azienda_attuale": "B&B Italia",
+    "categoria": "seduta scultorea",
+    "foto": "pesce-up7-il-piede.jpg",
+    "top": true
+  },
+  {
+    "nome": "Moloch",
+    "anno": 1971,
+    "designer": "Gaetano Pesce",
+    "azienda": "Bracciodiferro",
+    "azienda_attuale": null,
+    "categoria": "lampada da terra",
+    "foto": "pesce-moloch.jpg"
+  },
+  {
+    "nome": "Golgotha",
+    "anno": 1972,
+    "designer": "Gaetano Pesce",
+    "azienda": "Bracciodiferro",
+    "azienda_attuale": null,
+    "categoria": "sedia",
+    "foto": "pesce-golgotha.jpg"
+  },
+  {
+    "nome": "Sit Down",
+    "anno": 1975,
+    "designer": "Gaetano Pesce",
+    "azienda": "Cassina",
+    "azienda_attuale": null,
+    "categoria": "poltrona",
+    "foto": "pesce-sit-down.jpg"
+  },
+  {
+    "nome": "Sit Down Pouf",
+    "anno": 1975,
+    "designer": "Gaetano Pesce",
+    "azienda": "Cassina",
+    "azienda_attuale": null,
+    "categoria": "pouf",
+    "foto": "pesce-sit-down-pouf.jpg"
+  },
+  {
+    "nome": "Sansone I",
+    "anno": 1980,
+    "designer": "Gaetano Pesce",
+    "azienda": "Cassina",
+    "azienda_attuale": null,
+    "categoria": "tavolo",
+    "foto": "pesce-sansone-i.jpg"
+  },
+  {
+    "nome": "Dalila Uno",
+    "anno": 1980,
+    "designer": "Gaetano Pesce",
+    "azienda": "Cassina",
+    "azienda_attuale": null,
+    "categoria": "sedia",
+    "foto": "pesce-dalila-uno.jpg"
+  },
+  {
+    "nome": "Dalila Due",
+    "anno": 1980,
+    "designer": "Gaetano Pesce",
+    "azienda": "Cassina",
+    "azienda_attuale": null,
+    "categoria": "poltroncina",
+    "foto": "pesce-dalila-due.jpg"
+  },
+  {
+    "nome": "Tramonto a New York",
+    "anno": 1980,
+    "designer": "Gaetano Pesce",
+    "azienda": "Cassina",
+    "azienda_attuale": "Cassina",
+    "categoria": "divano",
+    "foto": "pesce-tramonto-a-new-york.jpg"
+  },
+  {
+    "nome": "Beaubourg",
+    "anno": 1981,
+    "designer": "Gaetano Pesce",
+    "azienda": "Écart International",
+    "azienda_attuale": null,
+    "categoria": "libreria",
+    "foto": "pesce-beaubourg.jpg"
+  },
+  {
+    "nome": "Greene Street Chair",
+    "anno": 1984,
+    "designer": "Gaetano Pesce",
+    "azienda": "Vitra Edition",
+    "azienda_attuale": null,
+    "categoria": "sedia",
+    "foto": "pesce-greene-street-chair.jpg"
+  },
+  {
+    "nome": "Cannaregio",
+    "anno": 1987,
+    "designer": "Gaetano Pesce",
+    "azienda": "Cassina",
+    "azienda_attuale": null,
+    "categoria": "divano modulare",
+    "foto": "pesce-cannaregio.jpg"
+  },
+  {
+    "nome": "Bottiglia Vittel",
+    "anno": 1989,
+    "designer": "Gaetano Pesce",
+    "azienda": "Vittel",
+    "azienda_attuale": null,
+    "categoria": "bottiglia",
+    "foto": "pesce-bottiglia-vittel.jpg"
+  },
+  {
+    "nome": "Umbrella",
+    "anno": 1992,
+    "designer": "Gaetano Pesce",
+    "azienda": "Zerodisegno",
+    "azienda_attuale": null,
+    "categoria": "poltrona",
+    "foto": "pesce-umbrella.jpg"
+  },
+  {
+    "nome": "543 Broadway",
+    "anno": 1993,
+    "designer": "Gaetano Pesce",
+    "azienda": "Bernini",
+    "azienda_attuale": "Meritalia",
+    "categoria": "sedia",
+    "foto": "pesce-543-broadway.jpg"
+  },
+  {
+    "nome": "Spaghetti Vase",
+    "anno": 1995,
+    "designer": "Gaetano Pesce",
+    "azienda": "Fish Design",
+    "azienda_attuale": "Corsi Design",
+    "categoria": "vaso",
+    "foto": "pesce-spaghetti-vase.jpg"
+  },
+  {
+    "nome": "Amazonia",
+    "anno": 1995,
+    "designer": "Gaetano Pesce",
+    "azienda": "Fish Design",
+    "azienda_attuale": "Corsi Design",
+    "categoria": "vaso",
+    "foto": "pesce-amazonia.jpg"
+  },
+  {
+    "nome": "Tutti Frutti I",
+    "anno": 1995,
+    "designer": "Gaetano Pesce",
+    "azienda": "Fish Design",
+    "azienda_attuale": "Corsi Design",
+    "categoria": "vaso",
+    "foto": "pesce-tutti-frutti-i.jpg"
+  },
+  {
+    "nome": "Tutti Frutti II",
+    "anno": 1995,
+    "designer": "Gaetano Pesce",
+    "azienda": "Fish Design",
+    "azienda_attuale": "Corsi Design",
+    "categoria": "vaso",
+    "foto": "pesce-tutti-frutti-ii.jpg"
+  },
+  {
+    "nome": "La Smorfia",
+    "anno": 2003,
+    "designer": "Gaetano Pesce",
+    "azienda": "Meritalia",
+    "azienda_attuale": "Meritalia",
+    "categoria": "seduta scultorea",
+    "foto": "pesce-la-smorfia.jpg"
+  },
+  {
+    "nome": "La Pagnotta",
+    "anno": 2005,
+    "designer": "Gaetano Pesce",
+    "azienda": "Meritalia",
+    "azienda_attuale": "Meritalia",
+    "categoria": "poltrona",
+    "foto": "pesce-la-pagnotta.jpg"
+  },
+  {
+    "nome": "La Sfogliata",
+    "anno": 2005,
+    "designer": "Gaetano Pesce",
+    "azienda": "Meritalia",
+    "azienda_attuale": "Meritalia",
+    "categoria": "poltrona",
+    "foto": "pesce-la-sfogliata.jpg"
+  },
+  {
+    "nome": "La Michetta",
+    "anno": 2005,
+    "designer": "Gaetano Pesce",
+    "azienda": "Meritalia",
+    "azienda_attuale": "Meritalia",
+    "categoria": "divano modulare",
+    "foto": "pesce-la-michetta.jpg"
+  },
+  {
+    "nome": "Us&Them",
+    "anno": 2006,
+    "designer": "Gaetano Pesce",
+    "azienda": "Meritalia",
+    "azienda_attuale": "Meritalia",
+    "categoria": "divano",
+    "foto": "pesce-us-and-them.jpg"
+  },
+  {
+    "nome": "Nubola",
+    "anno": 2007,
+    "designer": "Gaetano Pesce",
+    "azienda": "Meritalia",
+    "azienda_attuale": "Meritalia",
+    "categoria": "sistema di sedute",
+    "foto": "pesce-nubola.jpg"
+  },
+  {
+    "nome": "Shadow",
+    "anno": 2007,
+    "designer": "Gaetano Pesce",
+    "azienda": "Meritalia",
+    "azienda_attuale": "Meritalia",
+    "categoria": "poltrona",
+    "foto": "pesce-shadow.jpg"
+  },
+  {
+    "nome": "Colorado",
+    "anno": 2009,
+    "designer": "Gaetano Pesce",
+    "azienda": "Meritalia",
+    "azienda_attuale": "Meritalia",
+    "categoria": "divano modulare",
+    "foto": "pesce-colorado.jpg"
+  },
+  {
+    "nome": "Gli Amici",
+    "anno": 2009,
+    "designer": "Gaetano Pesce",
+    "azienda": "Meritalia",
+    "azienda_attuale": "Meritalia",
+    "categoria": "collezione di sedute scultoree",
+    "foto": "pesce-gli-amici.jpg"
+  },
+  {
+    "nome": "Montanara",
+    "anno": 2009,
+    "designer": "Gaetano Pesce",
+    "azienda": "Meritalia",
+    "azienda_attuale": "Meritalia",
+    "categoria": "divano",
+    "foto": "pesce-montanara.jpg"
+  },
+  {
+    "nome": "La Fiorita",
+    "anno": 2010,
+    "designer": "Gaetano Pesce",
+    "azienda": "Meritalia",
+    "azienda_attuale": "Meritalia",
+    "categoria": "divano",
+    "foto": "pesce-la-fiorita.jpg"
+  },
+  {
+    "nome": "Senzafine",
+    "anno": 2010,
+    "designer": "Gaetano Pesce",
+    "azienda": "Meritalia",
+    "azienda_attuale": "Meritalia",
+    "categoria": "poltrona",
+    "foto": "pesce-senzafine.jpg"
+  },
+  {
+    "nome": "Sessantuna",
+    "anno": 2010,
+    "designer": "Gaetano Pesce",
+    "azienda": "Cassina",
+    "azienda_attuale": null,
+    "categoria": "tavolo",
+    "foto": "pesce-sessantuna.jpg"
+  },
+  {
+    "nome": "Triple Play",
+    "anno": 2017,
+    "designer": "Gaetano Pesce",
+    "azienda": "Corsi Design",
+    "azienda_attuale": "Corsi Design",
+    "categoria": "tavolino",
+    "foto": "pesce-triple-play.jpg"
+  },
+  {
+    "nome": "Paravento Risacca",
+    "anno": 2021,
+    "designer": "Gaetano Pesce",
+    "azienda": "Cassina",
+    "azienda_attuale": "Cassina",
+    "categoria": "paravento",
+    "foto": "pesce-paravento-risacca.jpg"
+  },
+  {
+    "nome": "Come Stai?",
+    "anno": 2022,
+    "designer": "Gaetano Pesce",
+    "azienda": "Bottega Veneta",
+    "azienda_attuale": null,
+    "categoria": "sedia",
+    "foto": "pesce-come-stai.jpg"
+  },
+  {
+    "nome": "Tramonto a New York Screen",
+    "anno": 2022,
+    "designer": "Gaetano Pesce",
+    "azienda": "Cassina",
+    "azienda_attuale": "Cassina",
+    "categoria": "paravento",
+    "foto": "pesce-tramonto-a-new-york-screen.jpg"
+  },
+  {
+    "nome": "Notturno a New York",
+    "anno": 2024,
+    "designer": "Gaetano Pesce",
+    "azienda": "Cassina",
+    "azienda_attuale": "Cassina",
+    "categoria": "divano",
+    "foto": "pesce-notturno-a-new-york.jpg"
+  },
+  {
+    "nome": "Globo Tissurato",
+    "anno": 1967,
+    "designer": "Ugo La Pietra",
+    "azienda": "Poggi",
+    "azienda_attuale": null,
+    "categoria": "lampada da tavolo",
+    "foto": "lapietra-globo-tissurato.jpg"
+  },
+  {
+    "nome": "Uno sull'altro",
+    "anno": 1967,
+    "designer": "Ugo La Pietra",
+    "azienda": "Poggi",
+    "azienda_attuale": "Berdondini 1926",
+    "categoria": "libreria",
+    "foto": "lapietra-uno-sull-altro.jpg",
+    "top": true
+  },
+  {
+    "nome": "Arcangelo Metropolitano",
+    "anno": 1977,
+    "designer": "Ugo La Pietra",
+    "azienda": "Galleria Bianconi",
+    "azienda_attuale": null,
+    "categoria": "lampada-scultura",
+    "foto": "lapietra-arcangelo-metropolitano.jpg",
+    "top": true
+  },
+  {
+    "nome": "Sosia",
+    "anno": 1982,
+    "designer": "Ugo La Pietra",
+    "azienda": "Zanotta",
+    "azienda_attuale": "Zanotta",
+    "categoria": "specchio",
+    "foto": "lapietra-sosia.jpg"
+  },
+  {
+    "nome": "Agevole Poltrona",
+    "anno": 1983,
+    "designer": "Ugo La Pietra",
+    "azienda": "Busnelli",
+    "azienda_attuale": "Former",
+    "categoria": "poltrona",
+    "foto": "lapietra-agevole-poltrona.jpg"
+  },
+  {
+    "nome": "Agevole Divano",
+    "anno": 1983,
+    "designer": "Ugo La Pietra",
+    "azienda": "Busnelli",
+    "azienda_attuale": "Former",
+    "categoria": "divano",
+    "foto": "lapietra-agevole-divano.jpg"
+  },
+  {
+    "nome": "Giardino",
+    "anno": 1984,
+    "designer": "Ugo La Pietra",
+    "azienda": "Busnelli",
+    "azienda_attuale": null,
+    "categoria": "tavolo",
+    "foto": "lapietra-giardino.jpg"
+  },
+  {
+    "nome": "Flessuosa",
+    "anno": 1985,
+    "designer": "Ugo La Pietra",
+    "azienda": "Busnelli",
+    "azienda_attuale": null,
+    "categoria": "poltrona",
+    "foto": "lapietra-flessuosa.jpg"
+  },
+  {
+    "nome": "Pretenziosa",
+    "anno": 1985,
+    "designer": "Ugo La Pietra",
+    "azienda": "Busnelli",
+    "azienda_attuale": null,
+    "categoria": "poltrona",
+    "foto": "lapietra-pretenziosa.jpg"
+  },
+  {
+    "nome": "Pratica",
+    "anno": 1985,
+    "designer": "Ugo La Pietra",
+    "azienda": "Busnelli",
+    "azienda_attuale": null,
+    "categoria": "poltrona",
+    "foto": "lapietra-pratica.jpg"
+  },
+  {
+    "nome": "Autorevole",
+    "anno": 1985,
+    "designer": "Ugo La Pietra",
+    "azienda": "Busnelli",
+    "azienda_attuale": null,
+    "categoria": "poltrona",
+    "foto": "lapietra-autorevole.jpg"
+  },
+  {
+    "nome": "Postmoderna",
+    "anno": 1985,
+    "designer": "Ugo La Pietra",
+    "azienda": "Busnelli",
+    "azienda_attuale": null,
+    "categoria": "poltrona",
+    "foto": "lapietra-postmoderna.jpg"
+  },
+  {
+    "nome": "Flabello",
+    "anno": 1985,
+    "designer": "Ugo La Pietra",
+    "azienda": "Busnelli",
+    "azienda_attuale": null,
+    "categoria": "poltrona",
+    "foto": "lapietra-flabello.jpg"
+  },
+  {
+    "nome": "Vasi per giardini, giardini per vasi",
+    "anno": 1986,
+    "designer": "Ugo La Pietra",
+    "azienda": "Cooperativa Ceramica Imola",
+    "azienda_attuale": null,
+    "categoria": "collezione di vasi",
+    "foto": "lapietra-vasi-per-giardini.jpg"
+  },
+  {
+    "nome": "Credenza Plissé",
+    "anno": 1987,
+    "designer": "Ugo La Pietra",
+    "azienda": "Fratelli Boffi",
+    "azienda_attuale": null,
+    "categoria": "credenza",
+    "foto": "lapietra-credenza-plisse.jpg"
+  },
+  {
+    "nome": "Colonna Plissé",
+    "anno": 1987,
+    "designer": "Ugo La Pietra",
+    "azienda": "Fratelli Boffi",
+    "azienda_attuale": null,
+    "categoria": "mobile contenitore",
+    "foto": "lapietra-colonna-plisse.jpg"
+  },
+  {
+    "nome": "Tavolo Plissé",
+    "anno": 1987,
+    "designer": "Ugo La Pietra",
+    "azienda": "Fratelli Boffi",
+    "azienda_attuale": null,
+    "categoria": "tavolo",
+    "foto": "lapietra-tavolo-plisse.jpg"
+  },
+  {
+    "nome": "Ballerina",
+    "anno": 1987,
+    "designer": "Ugo La Pietra",
+    "azienda": "Fratelli Boffi",
+    "azienda_attuale": null,
+    "categoria": "consolle",
+    "foto": "lapietra-ballerina.jpg"
+  },
+  {
+    "nome": "Credenza a baldacchino",
+    "anno": 1987,
+    "designer": "Ugo La Pietra",
+    "azienda": "Fratelli Boffi",
+    "azienda_attuale": null,
+    "categoria": "credenza",
+    "foto": "lapietra-credenza-a-baldacchino.jpg"
+  },
+  {
+    "nome": "Il giardino delle delizie",
+    "anno": 1987,
+    "designer": "Ugo La Pietra",
+    "azienda": "Tisca",
+    "azienda_attuale": null,
+    "categoria": "tappeto",
+    "foto": "lapietra-il-giardino-delle-delizie.jpg"
+  },
+  {
+    "nome": "Ceramica di Faenza",
+    "anno": 1990,
+    "designer": "Ugo La Pietra",
+    "azienda": "Bottega Gatti",
+    "azienda_attuale": null,
+    "categoria": "vaso",
+    "foto": "lapietra-ceramica-di-faenza.jpg"
+  },
+  {
+    "nome": "Mobile bar",
+    "anno": 1991,
+    "designer": "Ugo La Pietra",
+    "azienda": "Legend",
+    "azienda_attuale": null,
+    "categoria": "mobile bar",
+    "foto": "lapietra-mobile-bar.jpg"
+  },
+  {
+    "nome": "Cuma",
+    "anno": 1992,
+    "designer": "Ugo La Pietra",
+    "azienda": "VeArt",
+    "azienda_attuale": null,
+    "categoria": "lampada da tavolo",
+    "foto": "lapietra-cuma.jpg"
+  },
+  {
+    "nome": "Alabastro di Volterra",
+    "anno": 1992,
+    "designer": "Ugo La Pietra",
+    "azienda": "Cooperativa Artieri Alabastro",
+    "azienda_attuale": null,
+    "categoria": "vaso",
+    "foto": "lapietra-alabastro-di-volterra.jpg"
+  },
+  {
+    "nome": "Cristallo di Colle Val d'Elsa",
+    "anno": 1993,
+    "designer": "Ugo La Pietra",
+    "azienda": "Vilca",
+    "azienda_attuale": null,
+    "categoria": "vaso",
+    "foto": "lapietra-cristallo-di-colle-val-delsa.jpg"
+  },
+  {
+    "nome": "Europa unita",
+    "anno": 1995,
+    "designer": "Ugo La Pietra",
+    "azienda": "Akomena",
+    "azienda_attuale": null,
+    "categoria": "tavolino in mosaico",
+    "foto": "lapietra-europa-unita-tavolino.jpg"
+  },
+  {
+    "nome": "Fiasca friulana",
+    "anno": 1997,
+    "designer": "Ugo La Pietra",
+    "azienda": "Ceramica Pezzetta",
+    "azienda_attuale": null,
+    "categoria": "fiasca",
+    "foto": "lapietra-fiasca-friulana.jpg"
+  },
+  {
+    "nome": "Tante tazzine per tanti modi di bere il caffè",
+    "anno": 1997,
+    "designer": "Ugo La Pietra",
+    "azienda": "Biesse",
+    "azienda_attuale": null,
+    "categoria": "servizio di tazzine",
+    "foto": "lapietra-tante-tazzine.jpg"
+  },
+  {
+    "nome": "Alì",
+    "anno": 1998,
+    "designer": "Ugo La Pietra",
+    "azienda": "Morelato",
+    "azienda_attuale": "Morelato",
+    "categoria": "tavolino trasformabile",
+    "foto": "lapietra-ali.jpg"
+  },
+  {
+    "nome": "Souvenir di Vietri sul Mare",
+    "anno": 1998,
+    "designer": "Ugo La Pietra",
+    "azienda": "Francesco Raimondi",
+    "azienda_attuale": null,
+    "categoria": "oggetto in ceramica",
+    "foto": "lapietra-souvenir-di-vietri.jpg"
+  },
+  {
+    "nome": "Legno intarsiato di Sorrento",
+    "anno": 1998,
+    "designer": "Ugo La Pietra",
+    "azienda": "Alessandro Fiorentino Collection",
+    "azienda_attuale": null,
+    "categoria": "portalibri",
+    "foto": "lapietra-legno-intarsiato-di-sorrento.jpg"
+  },
+  {
+    "nome": "Ceramica di Grottaglie",
+    "anno": 1998,
+    "designer": "Ugo La Pietra",
+    "azienda": "Giuseppe De Fazio",
+    "azienda_attuale": null,
+    "categoria": "oliera",
+    "foto": "lapietra-ceramica-di-grottaglie.jpg"
+  },
+  {
+    "nome": "Le diversità: tazzine neoeclettiche",
+    "anno": 1998,
+    "designer": "Ugo La Pietra",
+    "azienda": "Bertozzi & Casoni",
+    "azienda_attuale": null,
+    "categoria": "servizio di tazzine",
+    "foto": "lapietra-le-diversita-tazzine.jpg"
+  },
+  {
+    "nome": "Tazzine neoeclettiche",
+    "anno": 1998,
+    "designer": "Ugo La Pietra",
+    "azienda": "Eschenbach",
+    "azienda_attuale": null,
+    "categoria": "servizio di tazzine",
+    "foto": "lapietra-tazzine-neoeclettiche.jpg"
+  },
+  {
+    "nome": "Mosaico di Spilimbergo",
+    "anno": 1998,
+    "designer": "Ugo La Pietra",
+    "azienda": "Giovanni Travisanutto",
+    "azienda_attuale": null,
+    "categoria": "colonne in mosaico",
+    "foto": "lapietra-mosaico-di-spilimbergo.jpg"
+  },
+  {
+    "nome": "Marmo di Carrara",
+    "anno": 1999,
+    "designer": "Ugo La Pietra",
+    "azienda": "AMA",
+    "azienda_attuale": null,
+    "categoria": "collezione di vasi",
+    "foto": "lapietra-marmo-di-carrara.jpg"
+  },
+  {
+    "nome": "Pietra leccese",
+    "anno": 1999,
+    "designer": "Ugo La Pietra",
+    "azienda": "Marrocco",
+    "azienda_attuale": null,
+    "categoria": "contenitori",
+    "foto": "lapietra-pietra-leccese.jpg"
+  },
+  {
+    "nome": "Ceramica di Este",
+    "anno": 2001,
+    "designer": "Ugo La Pietra",
+    "azienda": "Este Ceramiche e Porcellane",
+    "azienda_attuale": null,
+    "categoria": "vassoio",
+    "foto": "lapietra-ceramica-di-este.jpg"
+  },
+  {
+    "nome": "Aurelia",
+    "anno": 2002,
+    "designer": "Ugo La Pietra",
+    "azienda": "Morelato",
+    "azienda_attuale": "Morelato",
+    "categoria": "poltrona",
+    "foto": "lapietra-aurelia.jpg"
+  },
+  {
+    "nome": "Vetro di Murano",
+    "anno": 2003,
+    "designer": "Ugo La Pietra",
+    "azienda": "Simone Cenedese",
+    "azienda_attuale": null,
+    "categoria": "coppa",
+    "foto": "lapietra-vetro-di-murano.jpg"
+  },
+  {
+    "nome": "Rame smaltato",
+    "anno": 2003,
+    "designer": "Ugo La Pietra",
+    "azienda": "Rosanna Migliore",
+    "azienda_attuale": null,
+    "categoria": "posacenere",
+    "foto": "lapietra-rame-smaltato.jpg"
+  },
+  {
+    "nome": "Souvenir ligure",
+    "anno": 2006,
+    "designer": "Ugo La Pietra",
+    "azienda": "Ernan",
+    "azienda_attuale": null,
+    "categoria": "salvadanaio",
+    "foto": "lapietra-souvenir-ligure.jpg"
+  },
+  {
+    "nome": "Europa unita",
+    "anno": 2009,
+    "designer": "Ugo La Pietra",
+    "azienda": "Fratelli Boffi",
+    "azienda_attuale": null,
+    "categoria": "mobile bar",
+    "foto": "lapietra-europa-unita-mobile-bar.jpg"
+  },
+  {
+    "nome": "Mediterranean Ceramics",
+    "anno": 2010,
+    "designer": "Ugo La Pietra",
+    "azienda": "Ceramiche Pierluca",
+    "azienda_attuale": null,
+    "categoria": "collezione di ceramiche",
+    "foto": "lapietra-mediterranean-ceramics.jpg"
+  },
+  {
+    "nome": "Little Houses",
+    "anno": 2011,
+    "designer": "Ugo La Pietra",
+    "azienda": "Bysteel",
+    "azienda_attuale": null,
+    "categoria": "collezione di librerie",
+    "foto": "lapietra-little-houses.jpg"
+  },
+  {
+    "nome": "Ceramica di Nove",
+    "anno": 2012,
+    "designer": "Ugo La Pietra",
+    "azienda": "Ceramiche 3B",
+    "azienda_attuale": null,
+    "categoria": "vaso",
+    "foto": "lapietra-ceramica-di-nove.jpg"
+  },
+  {
+    "nome": "Zodiac Signs",
+    "anno": 2012,
+    "designer": "Ugo La Pietra",
+    "azienda": "Francesco Raimondi",
+    "azienda_attuale": null,
+    "categoria": "collezione di vasi",
+    "foto": "lapietra-zodiac-signs.jpg"
+  },
+  {
+    "nome": "Animals",
+    "anno": 2012,
+    "designer": "Ugo La Pietra",
+    "azienda": "Biagioli",
+    "azienda_attuale": null,
+    "categoria": "collezione di ceramiche",
+    "foto": "lapietra-animals.jpg"
+  },
+  {
+    "nome": "Between Design and Art",
+    "anno": 2012,
+    "designer": "Ugo La Pietra",
+    "azienda": "De Mura",
+    "azienda_attuale": null,
+    "categoria": "collezione di arredi e oggetti",
+    "foto": "lapietra-between-design-and-art.jpg"
+  },
+  {
+    "nome": "Giano",
+    "anno": 2013,
+    "designer": "Ugo La Pietra",
+    "azienda": "Morelato",
+    "azienda_attuale": "Morelato",
+    "categoria": "mobile contenitore",
+    "foto": "lapietra-giano.jpg"
+  },
+  {
+    "nome": "The Professions: Architect",
+    "anno": 2013,
+    "designer": "Ugo La Pietra",
+    "azienda": "Nicolò Morales",
+    "azienda_attuale": null,
+    "categoria": "collezione di ceramiche",
+    "foto": "lapietra-the-professions-architect.jpg"
+  },
+  {
+    "nome": "Itineraries",
+    "anno": 2013,
+    "designer": "Ugo La Pietra",
+    "azienda": "Laboratorio 3B",
+    "azienda_attuale": null,
+    "categoria": "collezione di ceramiche",
+    "foto": "lapietra-itineraries.jpg"
+  },
+  {
+    "nome": "Filicudi Letto",
+    "anno": 2014,
+    "designer": "Ugo La Pietra",
+    "azienda": "Barel",
+    "azienda_attuale": null,
+    "categoria": "letto",
+    "foto": "lapietra-filicudi-letto.jpg"
+  },
+  {
+    "nome": "Filicudi Comodino",
+    "anno": 2014,
+    "designer": "Ugo La Pietra",
+    "azienda": "Barel",
+    "azienda_attuale": null,
+    "categoria": "comodino",
+    "foto": "lapietra-filicudi-comodino.jpg"
+  },
+  {
+    "nome": "Filicudi Scrittoio",
+    "anno": 2014,
+    "designer": "Ugo La Pietra",
+    "azienda": "Barel",
+    "azienda_attuale": null,
+    "categoria": "scrittoio",
+    "foto": "lapietra-filicudi-scrittoio.jpg"
+  },
+  {
+    "nome": "Filicudi Consolle con specchio",
+    "anno": 2014,
+    "designer": "Ugo La Pietra",
+    "azienda": "Barel",
+    "azienda_attuale": null,
+    "categoria": "consolle",
+    "foto": "lapietra-filicudi-consolle.jpg"
+  },
+  {
+    "nome": "Filicudi Specchio da terra",
+    "anno": 2014,
+    "designer": "Ugo La Pietra",
+    "azienda": "Barel",
+    "azienda_attuale": null,
+    "categoria": "specchio",
+    "foto": "lapietra-filicudi-specchio.jpg"
+  },
+  {
+    "nome": "Una forza interiore",
+    "anno": 2014,
+    "designer": "Ugo La Pietra",
+    "azienda": "Giovanni Mengoni",
+    "azienda_attuale": null,
+    "categoria": "collezione di ceramiche",
+    "foto": "lapietra-una-forza-interiore.jpg"
+  },
+  {
+    "nome": "Interrupted Furniture",
+    "anno": 2014,
+    "designer": "Ugo La Pietra",
+    "azienda": "Fratelli Boffi",
+    "azienda_attuale": null,
+    "categoria": "collezione di mobili contenitori",
+    "foto": "lapietra-interrupted-furniture.jpg"
+  },
+  {
+    "nome": "Strange Animals",
+    "anno": 2016,
+    "designer": "Ugo La Pietra",
+    "azienda": "R&Company",
+    "azienda_attuale": null,
+    "categoria": "collezione di vassoi",
+    "foto": "lapietra-strange-animals.jpg"
+  },
+  {
+    "nome": "Natura artificiale",
+    "anno": 2018,
+    "designer": "Ugo La Pietra",
+    "azienda": "Dieci26 Tapestry Editions",
+    "azienda_attuale": null,
+    "categoria": "arazzo",
+    "foto": "lapietra-natura-artificiale.jpg"
+  },
+  {
+    "nome": "Casavasetto",
+    "anno": 2018,
+    "designer": "Ugo La Pietra",
+    "azienda": "Pimar",
+    "azienda_attuale": null,
+    "categoria": "vaso-scultura",
+    "foto": "lapietra-casavasetto.jpg"
+  },
+  {
+    "nome": "Pagliara",
+    "anno": 2018,
+    "designer": "Ugo La Pietra",
+    "azienda": "Pimar",
+    "azienda_attuale": null,
+    "categoria": "vaso-scultura",
+    "foto": "lapietra-pagliara.jpg"
+  },
+  {
+    "nome": "Casetta",
+    "anno": 2018,
+    "designer": "Ugo La Pietra",
+    "azienda": "Pimar",
+    "azienda_attuale": null,
+    "categoria": "vaso-scultura",
+    "foto": "lapietra-casetta.jpg"
+  },
+  {
+    "nome": "Cattedrale",
+    "anno": 2018,
+    "designer": "Ugo La Pietra",
+    "azienda": "Pimar",
+    "azienda_attuale": null,
+    "categoria": "vaso-scultura",
+    "foto": "lapietra-cattedrale.jpg"
+  },
+  {
+    "nome": "Il Celebrante",
+    "anno": 2018,
+    "designer": "Ugo La Pietra",
+    "azienda": "Rometti",
+    "azienda_attuale": "Rometti",
+    "categoria": "totem in ceramica",
+    "foto": "lapietra-il-celebrante.jpg"
+  },
+  {
+    "nome": "L'Offerta",
+    "anno": 2018,
+    "designer": "Ugo La Pietra",
+    "azienda": "Rometti",
+    "azienda_attuale": "Rometti",
+    "categoria": "totem in ceramica",
+    "foto": "lapietra-lofferta.jpg"
+  },
+  {
+    "nome": "L'Idolo",
+    "anno": 2018,
+    "designer": "Ugo La Pietra",
+    "azienda": "Rometti",
+    "azienda_attuale": "Rometti",
+    "categoria": "totem in ceramica",
+    "foto": "lapietra-lidolo.jpg"
+  },
+  {
+    "nome": "Mani",
+    "anno": 2018,
+    "designer": "Ugo La Pietra",
+    "azienda": "Rometti",
+    "azienda_attuale": "Rometti",
+    "categoria": "collezione di sculture in ceramica",
+    "foto": "lapietra-mani.jpg"
+  },
+  {
+    "nome": "Capas",
+    "anno": 2019,
+    "designer": "Ugo La Pietra",
+    "azienda": "Natuzzi Italia",
+    "azienda_attuale": null,
+    "categoria": "vaso",
+    "foto": "lapietra-capas.jpg"
+  },
+  {
+    "nome": "Totem 20",
+    "anno": 2020,
+    "designer": "Ugo La Pietra",
+    "azienda": "Rometti",
+    "azienda_attuale": "Rometti",
+    "categoria": "totem in ceramica",
+    "foto": "lapietra-totem-20.jpg"
+  },
+  {
+    "nome": "Cubosfera",
+    "anno": 1968,
+    "designer": "Alessandro Mendini",
+    "azienda": "Fidenza Vetraria",
+    "azienda_attuale": null,
+    "categoria": "lampada da tavolo",
+    "foto": "mendini-cubosfera.jpg"
+  },
+  {
+    "nome": "Thonet Chair Redesign",
+    "anno": 1978,
+    "designer": "Alessandro Mendini",
+    "azienda": "Studio Alchimia",
+    "azienda_attuale": null,
+    "categoria": "sedia",
+    "foto": "mendini-thonet-chair-redesign.jpg"
+  },
+  {
+    "nome": "Wassily Chair Redesign",
+    "anno": 1978,
+    "designer": "Alessandro Mendini",
+    "azienda": "Studio Alchimia",
+    "azienda_attuale": null,
+    "categoria": "poltrona",
+    "foto": "mendini-wassily-chair-redesign.jpg"
+  },
+  {
+    "nome": "Superleggera Chair Redesign",
+    "anno": 1978,
+    "designer": "Alessandro Mendini",
+    "azienda": "Studio Alchimia",
+    "azienda_attuale": null,
+    "categoria": "sedia",
+    "foto": "mendini-superleggera-chair-redesign.jpg"
+  },
+  {
+    "nome": "Ondoso",
+    "anno": 1979,
+    "designer": "Alessandro Mendini",
+    "azienda": "Studio Alchimia",
+    "azienda_attuale": null,
+    "categoria": "tavolino",
+    "foto": "mendini-ondoso.jpg"
+  },
+  {
+    "nome": "L'Angoliera",
+    "anno": 1981,
+    "designer": "Alessandro Mendini",
+    "azienda": "Studio Alchimia",
+    "azienda_attuale": null,
+    "categoria": "mobile contenitore",
+    "foto": "mendini-l-angoliera.jpg"
+  },
+  {
+    "nome": "Spaziale",
+    "anno": 1981,
+    "designer": "Alessandro Mendini",
+    "azienda": "Studio Alchimia",
+    "azienda_attuale": null,
+    "categoria": "sedia",
+    "foto": "mendini-spaziale.jpg"
+  },
+  {
+    "nome": "Sabrina",
+    "anno": 1982,
+    "designer": [
+      "Alessandro Mendini",
+      "Frans Vogelaar"
+    ],
+    "azienda": "Driade",
+    "azienda_attuale": "Driade",
+    "categoria": "poltrona",
+    "foto": "mendini-vogelaar-sabrina.jpg"
+  },
+  {
+    "nome": "Agrilo",
+    "anno": 1984,
+    "designer": "Alessandro Mendini",
+    "azienda": "Zanotta",
+    "azienda_attuale": "Zanotta",
+    "categoria": "consolle",
+    "foto": "mendini-agrilo.jpg"
+  },
+  {
+    "nome": "Cetonia",
+    "anno": 1984,
+    "designer": "Alessandro Mendini",
+    "azienda": "Zanotta",
+    "azienda_attuale": "Zanotta",
+    "categoria": "cassettiera",
+    "foto": "mendini-cetonia.jpg"
+  },
+  {
+    "nome": "Zabro",
+    "anno": 1984,
+    "designer": "Alessandro Mendini",
+    "azienda": "Zanotta",
+    "azienda_attuale": "Zanotta",
+    "categoria": "tavolo trasformabile in sedia",
+    "foto": "mendini-zabro.jpg"
+  },
+  {
+    "nome": "Calamobio",
+    "anno": 1985,
+    "designer": "Alessandro Mendini",
+    "azienda": "Zanotta",
+    "azienda_attuale": "Zanotta",
+    "categoria": "cassettiera",
+    "foto": "mendini-calamobio.jpg"
+  },
+  {
+    "nome": "Cuculia",
+    "anno": 1985,
+    "designer": "Alessandro Mendini",
+    "azienda": "Zanotta",
+    "azienda_attuale": "Zanotta",
+    "categoria": "centrotavola",
+    "foto": "mendini-cuculia.jpg"
+  },
+  {
+    "nome": "Macaone",
+    "anno": 1985,
+    "designer": "Alessandro Mendini",
+    "azienda": "Zanotta",
+    "azienda_attuale": "Zanotta",
+    "categoria": "tavolo",
+    "foto": "mendini-macaone.jpg"
+  },
+  {
+    "nome": "Papilio",
+    "anno": 1985,
+    "designer": "Alessandro Mendini",
+    "azienda": "Zanotta",
+    "azienda_attuale": "Zanotta",
+    "categoria": "tavolino",
+    "foto": "mendini-papilio.jpg"
+  },
+  {
+    "nome": "Dealbata 9550",
+    "anno": 1986,
+    "designer": "Alessandro Mendini",
+    "azienda": "Zanotta",
+    "azienda_attuale": "Zanotta",
+    "categoria": "vaso",
+    "foto": "mendini-dealbata-9550.jpg"
+  },
+  {
+    "nome": "Dealbata 9551",
+    "anno": 1986,
+    "designer": "Alessandro Mendini",
+    "azienda": "Zanotta",
+    "azienda_attuale": "Zanotta",
+    "categoria": "vaso",
+    "foto": "mendini-dealbata-9551.jpg"
+  },
+  {
+    "nome": "Dealbata 9552",
+    "anno": 1986,
+    "designer": "Alessandro Mendini",
+    "azienda": "Zanotta",
+    "azienda_attuale": "Zanotta",
+    "categoria": "vaso",
+    "foto": "mendini-dealbata-9552.jpg"
+  },
+  {
+    "nome": "Hispo",
+    "anno": 1986,
+    "designer": "Alessandro Mendini",
+    "azienda": "Zanotta",
+    "azienda_attuale": "Zanotta",
+    "categoria": "tavolino portafiori",
+    "foto": "mendini-hispo.jpg"
+  },
+  {
+    "nome": "Mikiolone",
+    "anno": 1986,
+    "designer": "Alessandro Mendini",
+    "azienda": "Zanotta",
+    "azienda_attuale": "Zanotta",
+    "categoria": "mobile bar",
+    "foto": "mendini-mikiolone.jpg"
+  },
+  {
+    "nome": "Sirfo",
+    "anno": 1986,
+    "designer": "Alessandro Mendini",
+    "azienda": "Zanotta",
+    "azienda_attuale": "Zanotta",
+    "categoria": "tavolino",
+    "foto": "mendini-sirfo.jpg"
+  },
+  {
+    "nome": "Arado",
+    "anno": 1988,
+    "designer": "Alessandro Mendini",
+    "azienda": "Venini",
+    "azienda_attuale": "Venini",
+    "categoria": "vaso-scultura",
+    "foto": "mendini-arado.jpg"
+  },
+  {
+    "nome": "Berito",
+    "anno": 1988,
+    "designer": "Alessandro Mendini",
+    "azienda": "Venini",
+    "azienda_attuale": "Venini",
+    "categoria": "vaso-scultura",
+    "foto": "mendini-berito.jpg"
+  },
+  {
+    "nome": "Acco",
+    "anno": 1989,
+    "designer": "Alessandro Mendini",
+    "azienda": "Venini",
+    "azienda_attuale": "Venini",
+    "categoria": "vaso",
+    "foto": "mendini-acco.jpg"
+  },
+  {
+    "nome": "Onda",
+    "anno": 1990,
+    "designer": "Alessandro Mendini",
+    "azienda": "Glas Italia",
+    "azienda_attuale": "Glas Italia",
+    "categoria": "specchio",
+    "foto": "mendini-onda.jpg"
+  },
+  {
+    "nome": "Lesena",
+    "anno": 1990,
+    "designer": "Alessandro Mendini",
+    "azienda": "Glas Italia",
+    "azienda_attuale": "Glas Italia",
+    "categoria": "specchio",
+    "foto": "mendini-lesena.jpg"
+  },
+  {
+    "nome": "Settecento",
+    "anno": 1990,
+    "designer": "Alessandro Mendini",
+    "azienda": "Glas Italia",
+    "azienda_attuale": "Glas Italia",
+    "categoria": "specchio",
+    "foto": "mendini-settecento.jpg"
+  },
+  {
+    "nome": "Settecento Tavolino",
+    "anno": 1990,
+    "designer": "Alessandro Mendini",
+    "azienda": "Glas Italia",
+    "azienda_attuale": "Glas Italia",
+    "categoria": "tavolino",
+    "foto": "mendini-settecento-tavolino.jpg"
+  },
+  {
+    "nome": "Specchio di Proust",
+    "anno": 1990,
+    "designer": "Alessandro Mendini",
+    "azienda": "Glas Italia",
+    "azienda_attuale": "Glas Italia",
+    "categoria": "specchio",
+    "foto": "mendini-specchio-di-proust.jpg"
+  },
+  {
+    "nome": "Brillante",
+    "anno": 1990,
+    "designer": "Alessandro Mendini",
+    "azienda": "Glas Italia",
+    "azienda_attuale": "Glas Italia",
+    "categoria": "specchio",
+    "foto": "mendini-brillante.jpg"
+  },
+  {
+    "nome": "Cosmesis",
+    "anno": 1990,
+    "designer": "Alessandro Mendini",
+    "azienda": "Swatch",
+    "azienda_attuale": "Swatch",
+    "categoria": "orologio da polso",
+    "foto": "mendini-cosmesis.jpg"
+  },
+  {
+    "nome": "Metroscape",
+    "anno": 1990,
+    "designer": "Alessandro Mendini",
+    "azienda": "Swatch",
+    "azienda_attuale": "Swatch",
+    "categoria": "orologio da polso",
+    "foto": "mendini-metroscape.jpg"
+  },
+  {
+    "nome": "Sidone",
+    "anno": 1990,
+    "designer": "Alessandro Mendini",
+    "azienda": "Venini",
+    "azienda_attuale": "Venini",
+    "categoria": "vaso",
+    "foto": "mendini-sidone.jpg"
+  },
+  {
+    "nome": "Lots of Dots",
+    "anno": 1991,
+    "designer": "Alessandro Mendini",
+    "azienda": "Swatch",
+    "azienda_attuale": "Swatch",
+    "categoria": "orologio da polso",
+    "foto": "mendini-lots-of-dots.jpg"
+  },
+  {
+    "nome": "Galassia",
+    "anno": 1992,
+    "designer": "Alessandro Mendini",
+    "azienda": "Venini",
+    "azienda_attuale": "Venini",
+    "categoria": "vaso",
+    "foto": "mendini-galassia.jpg"
+  },
+  {
+    "nome": "Tebe",
+    "anno": 1992,
+    "designer": "Alessandro Mendini",
+    "azienda": "Olivari",
+    "azienda_attuale": "Olivari",
+    "categoria": "maniglia",
+    "foto": "mendini-tebe.jpg"
+  },
+  {
+    "nome": "Swatch the People",
+    "anno": 1992,
+    "designer": "Alessandro Mendini",
+    "azienda": "Swatch",
+    "azienda_attuale": "Swatch",
+    "categoria": "orologio da polso",
+    "foto": "mendini-swatch-the-people.jpg"
+  },
+  {
+    "nome": "Idalion Luminoso",
+    "anno": 1993,
+    "designer": "Alessandro Mendini",
+    "azienda": "Venini",
+    "azienda_attuale": "Venini",
+    "categoria": "lampada-scultura",
+    "foto": "mendini-idalion-luminoso.jpg"
+  },
+  {
+    "nome": "Idalion",
+    "anno": 1994,
+    "designer": "Alessandro Mendini",
+    "azienda": "Venini",
+    "azienda_attuale": "Venini",
+    "categoria": "vaso",
+    "foto": "mendini-idalion.jpg"
+  },
+  {
+    "nome": "Aurora",
+    "anno": 1994,
+    "designer": "Alessandro Mendini",
+    "azienda": "Olivari",
+    "azienda_attuale": "Olivari",
+    "categoria": "maniglia",
+    "foto": "mendini-aurora.jpg"
+  },
+  {
+    "nome": "Fandango",
+    "anno": 1994,
+    "designer": "Alessandro Mendini",
+    "azienda": "Swatch",
+    "azienda_attuale": "Swatch",
+    "categoria": "orologio da polso",
+    "foto": "mendini-fandango.jpg"
+  },
+  {
+    "nome": "Tambour",
+    "anno": 1994,
+    "designer": "Alessandro Mendini",
+    "azienda": "Swatch",
+    "azienda_attuale": "Swatch",
+    "categoria": "orologio da polso",
+    "foto": "mendini-tambour.jpg"
+  },
+  {
+    "nome": "Crystal Surprise",
+    "anno": 1994,
+    "designer": "Alessandro Mendini",
+    "azienda": "Swatch",
+    "azienda_attuale": "Swatch",
+    "categoria": "orologio da polso",
+    "foto": "mendini-crystal-surprise.jpg"
+  },
+  {
+    "nome": "Mobili per Uomo",
+    "anno": 1997,
+    "designer": "Alessandro Mendini",
+    "azienda": "Bisazza",
+    "azienda_attuale": "Bisazza",
+    "categoria": "collezione di sculture-arredo in mosaico",
+    "foto": "mendini-mobili-per-uomo.jpg"
+  },
+  {
+    "nome": "Recinto",
+    "anno": 1997,
+    "designer": "Alessandro Mendini",
+    "azienda": "Alessi",
+    "azienda_attuale": "Alessi",
+    "categoria": "vassoio",
+    "foto": "mendini-recinto.jpg"
+  },
+  {
+    "nome": "Anna Pepper",
+    "anno": 1998,
+    "designer": "Alessandro Mendini",
+    "azienda": "Alessi",
+    "azienda_attuale": "Alessi",
+    "categoria": "macinapepe",
+    "foto": "mendini-anna-pepper.jpg"
+  },
+  {
+    "nome": "Cioccolator Pad",
+    "anno": 1998,
+    "designer": "Alessandro Mendini",
+    "azienda": "Alessi",
+    "azienda_attuale": "Alessi",
+    "categoria": "calcolatrice",
+    "foto": "mendini-cioccolator-pad.jpg"
+  },
+  {
+    "nome": "Monumento Mendini",
+    "anno": 1998,
+    "designer": "Alessandro Mendini",
+    "azienda": "Swatch",
+    "azienda_attuale": "Swatch",
+    "categoria": "orologio da polso",
+    "foto": "mendini-monumento-mendini.jpg"
+  },
+  {
+    "nome": "Geo",
+    "anno": 2003,
+    "designer": "Alessandro Mendini",
+    "azienda": "Alessi",
+    "azienda_attuale": "Alessi",
+    "categoria": "macchina da caffè filtro",
+    "foto": "mendini-geo.jpg"
+  },
+  {
+    "nome": "Alessandro M.",
+    "anno": 2003,
+    "designer": "Alessandro Mendini",
+    "azienda": "Alessi",
+    "azienda_attuale": "Alessi",
+    "categoria": "cavatappi",
+    "foto": "mendini-alessandro-m.jpg"
+  },
+  {
+    "nome": "Edge",
+    "anno": 2004,
+    "designer": "Alessandro Mendini",
+    "azienda": "Artemide",
+    "azienda_attuale": "Artemide",
+    "categoria": "lampada da parete o soffitto",
+    "foto": "mendini-edge.jpg"
+  },
+  {
+    "nome": "Time",
+    "anno": 2004,
+    "designer": "Alessandro Mendini",
+    "azienda": "Olivari",
+    "azienda_attuale": "Olivari",
+    "categoria": "maniglia",
+    "foto": "mendini-time.jpg"
+  },
+  {
+    "nome": "Space",
+    "anno": 2004,
+    "designer": "Alessandro Mendini",
+    "azienda": "Olivari",
+    "azienda_attuale": "Olivari",
+    "categoria": "maniglia",
+    "foto": "mendini-space.jpg"
+  },
+  {
+    "nome": "Parrot",
+    "anno": 2005,
+    "designer": "Alessandro Mendini",
+    "azienda": "Alessi",
+    "azienda_attuale": "Alessi",
+    "categoria": "cavatappi da sommelier",
+    "foto": "mendini-parrot.jpg"
+  },
+  {
+    "nome": "Geo-Proust",
+    "anno": 2005,
+    "designer": "Alessandro Mendini",
+    "azienda": "Alessi",
+    "azienda_attuale": "Alessi",
+    "categoria": "macchina da caffè filtro",
+    "foto": "mendini-geo-proust.jpg"
+  },
+  {
+    "nome": "Giotto",
+    "anno": 2005,
+    "designer": "Alessandro Mendini",
+    "azienda": "Venini",
+    "azienda_attuale": "Venini",
+    "categoria": "scultura in vetro",
+    "foto": "mendini-giotto.jpg"
+  },
+  {
+    "nome": "Time Q",
+    "anno": 2006,
+    "designer": "Alessandro Mendini",
+    "azienda": "Olivari",
+    "azienda_attuale": "Olivari",
+    "categoria": "maniglia",
+    "foto": "mendini-time-q.jpg"
+  },
+  {
+    "nome": "Space Q",
+    "anno": 2006,
+    "designer": "Alessandro Mendini",
+    "azienda": "Olivari",
+    "azienda_attuale": "Olivari",
+    "categoria": "maniglia",
+    "foto": "mendini-space-q.jpg"
+  },
+  {
+    "nome": "Proust Geometrica",
+    "anno": 2009,
+    "designer": "Alessandro Mendini",
+    "azienda": "Cappellini",
+    "azienda_attuale": "Cappellini",
+    "categoria": "poltrona",
+    "foto": "mendini-proust-geometrica.jpg"
+  },
+  {
+    "nome": "Amuleto",
+    "anno": 2010,
+    "designer": "Alessandro Mendini",
+    "azienda": "RAMUN",
+    "azienda_attuale": "RAMUN",
+    "categoria": "lampada da tavolo",
+    "foto": "mendini-amuleto.jpg"
+  },
+  {
+    "nome": "Cavallino",
+    "anno": 2010,
+    "designer": "Alessandro Mendini",
+    "azienda": "Venini",
+    "azienda_attuale": "Venini",
+    "categoria": "scultura in vetro",
+    "foto": "mendini-cavallino.jpg"
+  },
+  {
+    "nome": "Magis Proust",
+    "anno": 2011,
+    "designer": "Alessandro Mendini",
+    "azienda": "Magis",
+    "azienda_attuale": "Magis",
+    "categoria": "poltrona",
+    "foto": "mendini-magis-proust.jpg"
+  },
+  {
+    "nome": "Unicorno",
+    "anno": 2011,
+    "designer": "Alessandro Mendini",
+    "azienda": "Riva 1920",
+    "azienda_attuale": "Riva 1920",
+    "categoria": "panca",
+    "foto": "mendini-unicorno.jpg"
+  },
+  {
+    "nome": "Anna Gong",
+    "anno": 2011,
+    "designer": "Alessandro Mendini",
+    "azienda": "Alessi",
+    "azienda_attuale": "Alessi",
+    "categoria": "alzata pieghevole",
+    "foto": "mendini-anna-gong.jpg"
+  },
+  {
+    "nome": "Rocco",
+    "anno": 2012,
+    "designer": "Alessandro Mendini",
+    "azienda": "Riva 1920",
+    "azienda_attuale": "Riva 1920",
+    "categoria": "sgabello",
+    "foto": "mendini-rocco.jpg"
+  },
+  {
+    "nome": "Moka Alessi",
+    "anno": 2012,
+    "designer": "Alessandro Mendini",
+    "azienda": "Alessi",
+    "azienda_attuale": "Alessi",
+    "categoria": "caffettiera espresso",
+    "foto": "mendini-moka-alessi.jpg"
+  },
+  {
+    "nome": "Campanello",
+    "anno": 2012,
+    "designer": "Alessandro Mendini",
+    "azienda": "RAMUN",
+    "azienda_attuale": "RAMUN",
+    "categoria": "lampada da tavolo",
+    "foto": "mendini-campanello.jpg"
+  },
+  {
+    "nome": "Poltrona Carrara",
+    "anno": 2014,
+    "designer": "Alessandro Mendini",
+    "azienda": "Gufram",
+    "azienda_attuale": "Gufram",
+    "categoria": "poltrona",
+    "foto": "mendini-poltrona-carrara.jpg"
+  },
+  {
+    "nome": "Maggio",
+    "anno": 2014,
+    "designer": "Alessandro Mendini",
+    "azienda": "Porro",
+    "azienda_attuale": "Porro",
+    "categoria": "credenza",
+    "foto": "mendini-maggio.jpg"
+  },
+  {
+    "nome": "Schermo",
+    "anno": 2014,
+    "designer": "Alessandro Mendini",
+    "azienda": "Porro",
+    "azienda_attuale": "Porro",
+    "categoria": "credenza",
+    "foto": "mendini-schermo.jpg"
+  },
+  {
+    "nome": "Roy",
+    "anno": 2015,
+    "designer": "Alessandro Mendini",
+    "azienda": "Kartell",
+    "azienda_attuale": "Kartell",
+    "categoria": "sgabello o tavolino",
+    "foto": "mendini-roy.jpg"
+  },
+  {
+    "nome": "Crystal Palace",
+    "anno": 2015,
+    "designer": "Alessandro Mendini",
+    "azienda": "Kartell",
+    "azienda_attuale": "Kartell",
+    "categoria": "orologio da parete",
+    "foto": "mendini-crystal-palace.jpg"
+  },
+  {
+    "nome": "Spot the Dot",
+    "anno": 2016,
+    "designer": "Alessandro Mendini",
+    "azienda": "Swatch",
+    "azienda_attuale": "Swatch",
+    "categoria": "orologio da polso",
+    "foto": "mendini-spot-the-dot.jpg"
+  },
+  {
+    "nome": "Nativo Atmosfera Blu",
+    "anno": 2016,
+    "designer": "Alessandro Mendini",
+    "azienda": "Azzurra Ceramica",
+    "azienda_attuale": "Azzurra Ceramica",
+    "categoria": "lavabo a colonna",
+    "foto": "mendini-nativo-atmosfera-blu.jpg"
+  },
+  {
+    "nome": "Nativo Atmosfera Multicolore",
+    "anno": 2016,
+    "designer": "Alessandro Mendini",
+    "azienda": "Azzurra Ceramica",
+    "azienda_attuale": "Azzurra Ceramica",
+    "categoria": "lavabo a colonna",
+    "foto": "mendini-nativo-atmosfera-multicolore.jpg"
+  },
+  {
+    "nome": "Nativo Stileme",
+    "anno": 2016,
+    "designer": "Alessandro Mendini",
+    "azienda": "Azzurra Ceramica",
+    "azienda_attuale": "Azzurra Ceramica",
+    "categoria": "lavabo a colonna",
+    "foto": "mendini-nativo-stileme.jpg"
+  },
+  {
+    "nome": "Ninfee Coffee Tables",
+    "anno": 2016,
+    "designer": "Alessandro Mendini",
+    "azienda": "Ghidini 1961",
+    "azienda_attuale": "Ghidini 1961",
+    "categoria": "sistema di tavolini",
+    "foto": "mendini-ninfee-coffee-tables.jpg"
+  },
+  {
+    "nome": "Tegamino",
+    "anno": 2018,
+    "designer": "Alessandro Mendini",
+    "azienda": "Alessi",
+    "azienda_attuale": "Alessi",
+    "categoria": "padella per uova",
+    "foto": "mendini-tegamino.jpg"
+  },
+  {
+    "nome": "Alessini - Proust",
+    "anno": 2018,
+    "designer": "Alessandro Mendini",
+    "azienda": "Alessi",
+    "azienda_attuale": "Alessi",
+    "categoria": "servizio da tavola per bambini",
+    "foto": "mendini-alessini-proust.jpg"
+  },
+  {
+    "nome": "Diavoletti Family",
+    "anno": 2018,
+    "designer": [
+      "Alessandro Mendini",
+      "Daniel Eltner"
+    ],
+    "azienda": "Cappellini",
+    "azienda_attuale": "Cappellini",
+    "categoria": "famiglia di vasi",
+    "foto": "mendini-eltner-diavoletti-family.jpg"
+  },
+  {
+    "nome": "100% make-up Proust",
+    "anno": 2021,
+    "designer": "Alessandro Mendini",
+    "azienda": "Alessi",
+    "azienda_attuale": "Alessi",
+    "categoria": "vaso con coperchio",
+    "foto": "mendini-100-percent-make-up-proust.jpg"
+  },
+  {
+    "nome": "Goffo",
+    "anno": 2022,
+    "designer": "Alessandro Mendini",
+    "azienda": "Riva 1920",
+    "azienda_attuale": "Riva 1920",
+    "categoria": "sedia",
+    "foto": "mendini-goffo.jpg"
+  },
+  {
+    "nome": "Rustico",
+    "anno": 2022,
+    "designer": "Alessandro Mendini",
+    "azienda": "Riva 1920",
+    "azienda_attuale": "Riva 1920",
+    "categoria": "tavolino",
+    "foto": "mendini-rustico.jpg"
+  },
+  {
+    "nome": "Linea",
+    "anno": 2023,
+    "designer": "Alessandro Mendini",
+    "azienda": "Porro",
+    "azienda_attuale": "Porro",
+    "categoria": "collezione di mobili contenitori",
+    "foto": "mendini-linea.jpg"
+  },
+  {
+    "nome": "Proust Christmas Bauble",
+    "anno": 2023,
+    "designer": "Alessandro Mendini",
+    "azienda": "Alessi",
+    "azienda_attuale": "Alessi",
+    "categoria": "decorazione natalizia",
+    "foto": "mendini-proust-christmas-bauble.jpg"
+  },
+  {
+    "nome": "Asta",
+    "anno": 2025,
+    "designer": "Alessandro Mendini",
+    "azienda": "Alessi",
+    "azienda_attuale": "Alessi",
+    "categoria": "set di posate",
+    "foto": "mendini-asta.jpg"
+  },
+  {
+    "nome": "Anna Stick",
+    "anno": 2025,
+    "designer": "Alessandro Mendini",
+    "azienda": "Alessi",
+    "azienda_attuale": "Alessi",
+    "categoria": "bacchette",
+    "foto": "mendini-anna-stick.jpg"
+  },
+  {
+    "nome": "Alessandro Stick",
+    "anno": 2025,
+    "designer": "Alessandro Mendini",
+    "azienda": "Alessi",
+    "azienda_attuale": "Alessi",
+    "categoria": "bacchette",
+    "foto": "mendini-alessandro-stick.jpg"
+  },
+  {
+    "nome": "Borgogna",
+    "anno": 1964,
+    "designer": "Cini Boeri",
+    "azienda": "Arflex",
+    "azienda_attuale": null,
+    "categoria": "poltrona",
+    "foto": "boeri-borgogna.jpg"
+  },
+  {
+    "nome": "Partner",
+    "anno": 1967,
+    "designer": "Cini Boeri",
+    "azienda": "Franzi",
+    "azienda_attuale": null,
+    "categoria": "set di valigie",
+    "foto": "boeri-partner.jpg"
+  },
+  {
+    "nome": "Bobo",
+    "anno": 1967,
+    "designer": "Cini Boeri",
+    "azienda": "Arflex",
+    "azienda_attuale": "Arflex",
+    "categoria": "poltrona",
+    "foto": "boeri-bobo.jpg"
+  },
+  {
+    "nome": "Bobolungo",
+    "anno": 1967,
+    "designer": "Cini Boeri",
+    "azienda": "Arflex",
+    "azienda_attuale": "Arflex",
+    "categoria": "poltrona reclinabile",
+    "foto": "boeri-bobolungo.jpg"
+  },
+  {
+    "nome": "Boboletto",
+    "anno": 1967,
+    "designer": "Cini Boeri",
+    "azienda": "Arflex",
+    "azienda_attuale": null,
+    "categoria": "lettino",
+    "foto": "boeri-boboletto.jpg"
+  },
+  {
+    "nome": "Cubotto",
+    "anno": 1967,
+    "designer": "Cini Boeri",
+    "azienda": "Arflex",
+    "azienda_attuale": null,
+    "categoria": "mobile bar",
+    "foto": "boeri-cubotto.jpg"
+  },
+  {
+    "nome": "Mod. 602",
+    "anno": 1968,
+    "designer": "Cini Boeri",
+    "azienda": "Arteluce",
+    "azienda_attuale": null,
+    "categoria": "lampada da tavolo",
+    "foto": "boeri-mod-602.jpg"
+  },
+  {
+    "nome": "Armadio-libreria",
+    "anno": 1969,
+    "designer": "Cini Boeri",
+    "azienda": "Arflex",
+    "azienda_attuale": null,
+    "categoria": "armadio-libreria",
+    "foto": "boeri-armadio-libreria.jpg"
+  },
+  {
+    "nome": "Bibebo",
+    "anno": 1970,
+    "designer": "Cini Boeri",
+    "azienda": "Arnolfo di Cambio",
+    "azienda_attuale": null,
+    "categoria": "secchiello per ghiaccio",
+    "foto": "boeri-bibebo.jpg"
+  },
+  {
+    "nome": "Lunario",
+    "anno": 1970,
+    "designer": "Cini Boeri",
+    "azienda": "Gavina",
+    "azienda_attuale": null,
+    "categoria": "tavolo",
+    "foto": "boeri-lunario.jpg"
+  },
+  {
+    "nome": "Gradual System 45°/180°",
+    "anno": 1970,
+    "designer": "Cini Boeri",
+    "azienda": "Knoll",
+    "azienda_attuale": null,
+    "categoria": "sistema di sedute",
+    "foto": "boeri-gradual-system.jpg"
+  },
+  {
+    "nome": "Bacone",
+    "anno": 1970,
+    "designer": "Cini Boeri",
+    "azienda": "Arflex",
+    "azienda_attuale": null,
+    "categoria": "divano",
+    "foto": "boeri-bacone.jpg"
+  },
+  {
+    "nome": "Papero",
+    "anno": 1971,
+    "designer": "Cini Boeri",
+    "azienda": "Stilnovo",
+    "azienda_attuale": null,
+    "categoria": "lampada da terra",
+    "foto": "boeri-papero.jpg"
+  },
+  {
+    "nome": "Mod. 235",
+    "anno": 1971,
+    "designer": "Cini Boeri",
+    "azienda": "Arteluce",
+    "azienda_attuale": null,
+    "categoria": "faretto orientabile",
+    "foto": "boeri-mod-235.jpg"
+  },
+  {
+    "nome": "Strips Bed",
+    "anno": 1972,
+    "designer": [
+      "Cini Boeri",
+      "Laura Griziotti"
+    ],
+    "azienda": "Arflex",
+    "azienda_attuale": "Arflex",
+    "categoria": "letto",
+    "foto": "boeri-griziotti-strips-bed.jpg"
+  },
+  {
+    "nome": "Strips Sofa Bed",
+    "anno": 1972,
+    "designer": [
+      "Cini Boeri",
+      "Laura Griziotti"
+    ],
+    "azienda": "Arflex",
+    "azienda_attuale": "Arflex",
+    "categoria": "divano letto",
+    "foto": "boeri-griziotti-strips-sofa-bed.jpg"
+  },
+  {
+    "nome": "Pecorelle",
+    "anno": 1972,
+    "designer": "Cini Boeri",
+    "azienda": "Arflex",
+    "azienda_attuale": "Arflex",
+    "categoria": "sistema di sedute",
+    "foto": "boeri-pecorelle.jpg"
+  },
+  {
+    "nome": "Cibi",
+    "anno": 1973,
+    "designer": "Cini Boeri",
+    "azienda": "Arnolfo di Cambio",
+    "azienda_attuale": null,
+    "categoria": "servizio di bicchieri",
+    "foto": "boeri-cibi.jpg"
+  },
+  {
+    "nome": "Botolo",
+    "anno": 1973,
+    "designer": "Cini Boeri",
+    "azienda": "Arflex",
+    "azienda_attuale": "Arflex",
+    "categoria": "poltrona",
+    "foto": "boeri-botolo.jpg"
+  },
+  {
+    "nome": "Botolino",
+    "anno": 1973,
+    "designer": "Cini Boeri",
+    "azienda": "Arflex",
+    "azienda_attuale": null,
+    "categoria": "sedia per bambini",
+    "foto": "boeri-botolino.jpg"
+  },
+  {
+    "nome": "Lucetta",
+    "anno": 1973,
+    "designer": "Cini Boeri",
+    "azienda": "Stilnovo",
+    "azienda_attuale": null,
+    "categoria": "lampada da tavolo",
+    "foto": "boeri-lucetta.jpg"
+  },
+  {
+    "nome": "Bengodi",
+    "anno": 1974,
+    "designer": "Cini Boeri",
+    "azienda": "Arflex",
+    "azienda_attuale": null,
+    "categoria": "divano",
+    "foto": "boeri-bengodi.jpg"
+  },
+  {
+    "nome": "Abat-Jour",
+    "anno": 1975,
+    "designer": "Cini Boeri",
+    "azienda": "Arteluce",
+    "azienda_attuale": "Tronconi",
+    "categoria": "lampada da tavolo",
+    "foto": "boeri-abat-jour.jpg"
+  },
+  {
+    "nome": "Taboga",
+    "anno": 1976,
+    "designer": "Cini Boeri",
+    "azienda": "Arflex",
+    "azienda_attuale": "Arflex",
+    "categoria": "poltrona",
+    "foto": "boeri-taboga.jpg"
+  },
+  {
+    "nome": "Talete",
+    "anno": 1976,
+    "designer": "Cini Boeri",
+    "azienda": "Arflex",
+    "azienda_attuale": null,
+    "categoria": "tavolo",
+    "foto": "boeri-talete.jpg"
+  },
+  {
+    "nome": "Strips 77",
+    "anno": 1977,
+    "designer": [
+      "Cini Boeri",
+      "Laura Griziotti"
+    ],
+    "azienda": "Arflex",
+    "azienda_attuale": "Arflex",
+    "categoria": "sistema di sedute",
+    "foto": "boeri-griziotti-strips-77.jpg"
+  },
+  {
+    "nome": "Brigadier",
+    "anno": 1978,
+    "designer": "Cini Boeri",
+    "azienda": "Knoll",
+    "azienda_attuale": null,
+    "categoria": "sistema di sedute",
+    "foto": "boeri-brigadier.jpg"
+  },
+  {
+    "nome": "Bonte",
+    "anno": 1978,
+    "designer": "Cini Boeri",
+    "azienda": "Arflex",
+    "azienda_attuale": null,
+    "categoria": "divano modulare",
+    "foto": "boeri-bonte.jpg"
+  },
+  {
+    "nome": "Tuttoletto",
+    "anno": 1978,
+    "designer": "Cini Boeri",
+    "azienda": "Arflex",
+    "azienda_attuale": null,
+    "categoria": "letto contenitore",
+    "foto": "boeri-tuttoletto.jpg"
+  },
+  {
+    "nome": "Accademia",
+    "anno": 1978,
+    "designer": "Cini Boeri",
+    "azienda": "Artemide",
+    "azienda_attuale": null,
+    "categoria": "famiglia di lampade",
+    "foto": "boeri-accademia.jpg"
+  },
+  {
+    "nome": "Strips con gambe",
+    "anno": 1979,
+    "designer": [
+      "Cini Boeri",
+      "Laura Griziotti"
+    ],
+    "azienda": "Arflex",
+    "azienda_attuale": null,
+    "categoria": "poltrona",
+    "foto": "boeri-griziotti-strips-con-gambe.jpg"
+  },
+  {
+    "nome": "Otto B",
+    "anno": 1980,
+    "designer": "Cini Boeri",
+    "azienda": "Fusital",
+    "azienda_attuale": null,
+    "categoria": "maniglia",
+    "foto": "boeri-otto-b.jpg"
+  },
+  {
+    "nome": "Double Face",
+    "anno": 1980,
+    "designer": "Cini Boeri",
+    "azienda": "Arflex",
+    "azienda_attuale": null,
+    "categoria": "libreria girevole",
+    "foto": "boeri-double-face.jpg"
+  },
+  {
+    "nome": "Folio",
+    "anno": 1980,
+    "designer": "Cini Boeri",
+    "azienda": "Rosenthal",
+    "azienda_attuale": null,
+    "categoria": "sedia da pranzo e da ufficio",
+    "foto": "boeri-folio.jpg"
+  },
+  {
+    "nome": "Prisma",
+    "anno": 1981,
+    "designer": "Cini Boeri",
+    "azienda": "Rosenthal",
+    "azienda_attuale": null,
+    "categoria": "sistema per ufficio",
+    "foto": "boeri-prisma.jpg"
+  },
+  {
+    "nome": "Tre B",
+    "anno": 1982,
+    "designer": "Cini Boeri",
+    "azienda": "Fusital",
+    "azienda_attuale": null,
+    "categoria": "maniglia",
+    "foto": "boeri-tre-b.jpg"
+  },
+  {
+    "nome": "Ditto",
+    "anno": 1982,
+    "designer": "Cini Boeri",
+    "azienda": "Tronconi",
+    "azienda_attuale": null,
+    "categoria": "lampada da tavolo",
+    "foto": "boeri-ditto.jpg"
+  },
+  {
+    "nome": "Steps",
+    "anno": 1982,
+    "designer": [
+      "Cini Boeri",
+      "Laura Griziotti"
+    ],
+    "azienda": "Estel",
+    "azienda_attuale": null,
+    "categoria": "mobile contenitore",
+    "foto": "boeri-griziotti-steps.jpg"
+  },
+  {
+    "nome": "Rever",
+    "anno": 1982,
+    "designer": [
+      "Cini Boeri",
+      "Laura Griziotti",
+      "Guido Nardi"
+    ],
+    "azienda": "Tre-P & Tre-Più",
+    "azienda_attuale": null,
+    "categoria": "porta",
+    "foto": "boeri-griziotti-nardi-rever.jpg"
+  },
+  {
+    "nome": "Pacific",
+    "anno": 1983,
+    "designer": "Cini Boeri",
+    "azienda": "Arflex",
+    "azienda_attuale": null,
+    "categoria": "sistema di divani",
+    "foto": "boeri-pacific.jpg"
+  },
+  {
+    "nome": "Shadows",
+    "anno": 1983,
+    "designer": "Cini Boeri",
+    "azienda": "ICF",
+    "azienda_attuale": null,
+    "categoria": "tavolo",
+    "foto": "boeri-shadows.jpg"
+  },
+  {
+    "nome": "Malibu",
+    "anno": 1983,
+    "designer": "Cini Boeri",
+    "azienda": "Arflex",
+    "azienda_attuale": null,
+    "categoria": "tavolo",
+    "foto": "boeri-malibu.jpg"
+  },
+  {
+    "nome": "Chiara",
+    "anno": 1984,
+    "designer": "Cini Boeri",
+    "azienda": "Venini",
+    "azienda_attuale": null,
+    "categoria": "famiglia di lampade",
+    "foto": "boeri-chiara.jpg"
+  },
+  {
+    "nome": "Brontes",
+    "anno": 1986,
+    "designer": "Cini Boeri",
+    "azienda": "Artemide",
+    "azienda_attuale": null,
+    "categoria": "lampada da tavolo",
+    "foto": "boeri-brontes.jpg"
+  },
+  {
+    "nome": "Past",
+    "anno": 1986,
+    "designer": "Cini Boeri",
+    "azienda": "Arflex",
+    "azienda_attuale": null,
+    "categoria": "divano modulare",
+    "foto": "boeri-past.jpg"
+  },
+  {
+    "nome": "Feltro",
+    "anno": 1989,
+    "designer": "Cini Boeri",
+    "azienda": "Venini",
+    "azienda_attuale": null,
+    "categoria": "lampada a sospensione",
+    "foto": "boeri-feltro.jpg"
+  },
+  {
+    "nome": "Lucia",
+    "anno": 1989,
+    "designer": "Cini Boeri",
+    "azienda": "Venini",
+    "azienda_attuale": null,
+    "categoria": "lampada a sospensione",
+    "foto": "boeri-lucia.jpg"
+  },
+  {
+    "nome": "Cini Boeri Lounge Chair",
+    "anno": 2008,
+    "designer": "Cini Boeri",
+    "azienda": "Knoll",
+    "azienda_attuale": null,
+    "categoria": "poltrona",
+    "foto": "boeri-cini-boeri-lounge-chair.jpg"
+  },
+  {
+    "nome": "Cini Boeri Sofa",
+    "anno": 2008,
+    "designer": "Cini Boeri",
+    "azienda": "Knoll",
+    "azienda_attuale": null,
+    "categoria": "divano",
+    "foto": "boeri-cini-boeri-sofa.jpg"
+  },
+  {
+    "nome": "Cini Boeri Ottoman",
+    "anno": 2008,
+    "designer": "Cini Boeri",
+    "azienda": "Knoll",
+    "azienda_attuale": null,
+    "categoria": "pouf",
+    "foto": "boeri-cini-boeri-ottoman.jpg"
+  },
+  {
+    "nome": "Collezione D'Ax Design",
+    "anno": 2008,
+    "designer": "Cini Boeri",
+    "azienda": "D'Ax Design",
+    "azienda_attuale": null,
+    "categoria": "sistema di arredi componibili",
+    "foto": "boeri-collezione-dax-design.jpg"
+  },
+  {
+    "nome": "Ben Ben",
+    "anno": 2009,
+    "designer": "Cini Boeri",
+    "azienda": "Arflex",
+    "azienda_attuale": "Arflex",
+    "categoria": "divano modulare",
+    "foto": "boeri-ben-ben.jpg"
+  },
+  {
+    "nome": "Bebop",
+    "anno": 2010,
+    "designer": "Cini Boeri",
+    "azienda": "Poltrona Frau",
+    "azienda_attuale": null,
+    "categoria": "divano",
+    "foto": "boeri-bebop.jpg"
+  },
+  {
+    "nome": "To the Wall",
+    "anno": 2011,
+    "designer": "Cini Boeri",
+    "azienda": "Magis",
+    "azienda_attuale": null,
+    "categoria": "sistema di mensole",
+    "foto": "boeri-to-the-wall.jpg"
+  },
+  {
+    "nome": "Ledletto",
+    "anno": 2014,
+    "designer": "Cini Boeri",
+    "azienda": "Arflex",
+    "azienda_attuale": null,
+    "categoria": "letto",
+    "foto": "boeri-ledletto.jpg"
   }
 ]

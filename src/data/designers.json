@@ -868,5 +868,60 @@
     "y": null,
     "scuole": [],
     "collettivi": []
+  },
+  {
+    "nome": "Daniel Eltner",
+    "nato": 1970,
+    "morto": null,
+    "bio": "Designer tedesco nato a Erlangen. Fonda nel 1994 il proprio studio, destudioeltner; dal 2015 collabora con Alessandro Mendini, con cui firma la collezione di vasi Diavoletti Family per Cappellini.",
+    "bio_en": "German designer born in Erlangen. In 1994 he founded his own studio, destudioeltner; from 2015 he collaborated with Alessandro Mendini, with whom he designed the Diavoletti Family vase collection for Cappellini.",
+    "foto": "danieleltner.jpg",
+    "y": null,
+    "scuole": [],
+    "collettivi": []
+  },
+  {
+    "nome": "Frans Vogelaar",
+    "nato": 1952,
+    "morto": null,
+    "bio": "Designer e architetto olandese, formatosi alla Design Academy Eindhoven e alla Architectural Association di Londra. Nel 1981-82 firma con Alessandro Mendini la poltrona Sabrina per Driade, in seno a Studio Alchimia. Anno di nascita non documentato: stima basata sul periodo di attività.",
+    "bio_en": "Dutch designer and architect, trained at the Design Academy Eindhoven and the Architectural Association in London. In 1981-82 he co-designed the Sabrina armchair for Driade with Alessandro Mendini, within Studio Alchimia. Birth year undocumented: estimate based on his period of activity.",
+    "foto": "fransvogelaar.jpg",
+    "y": null,
+    "scuole": [],
+    "collettivi": []
+  },
+  {
+    "nome": "Laura Griziotti",
+    "nato": 1942,
+    "morto": null,
+    "bio": "Architetta e designer, laureata al Politecnico di Milano nel 1966. Dal 1967 al 1974 collabora con Cini Boeri, con cui firma il sistema di sedute Strips per Arflex, premiato con il Compasso d'Oro nel 1979.",
+    "bio_en": "Architect and designer, graduated from Politecnico di Milano in 1966. From 1967 to 1974 she collaborated with Cini Boeri, with whom she designed the Strips seating system for Arflex, awarded the Compasso d'Oro in 1979.",
+    "foto": "lauragriziotti.jpg",
+    "y": null,
+    "scuole": [],
+    "collettivi": []
+  },
+  {
+    "nome": "Guido Nardi",
+    "nato": 1943,
+    "morto": null,
+    "bio": "Architetto milanese, con Cini Boeri e Laura Griziotti firma la porta Rever per Tre-P & Tre-Più (1982), premiata al SAIE DUE di Bologna nel 1983. Anno di nascita non documentato: stima basata sul periodo di attività.",
+    "bio_en": "Milanese architect, with Cini Boeri and Laura Griziotti he designed the Rever door for Tre-P & Tre-Più (1982), awarded at SAIE DUE in Bologna in 1983. Birth year undocumented: estimate based on his period of activity.",
+    "foto": "guidonardi.jpg",
+    "y": null,
+    "scuole": [],
+    "collettivi": []
+  },
+  {
+    "nome": "Tomu Katayanagi",
+    "nato": 1947,
+    "morto": null,
+    "bio": "Designer giapponese, nato a Tokyo. Trasferitosi a Milano nei primi anni '70, collabora con lo studio di Cini Boeri, di cui dal 1981 segue diversi progetti di architettura e industrial design. Con Boeri firma la poltrona Ghost per Fiam Italia. Anno di nascita non documentato: stima basata sul periodo di attività.",
+    "bio_en": "Japanese designer, born in Tokyo. He moved to Milan in the early 1970s and joined Cini Boeri's studio, where from 1981 he oversaw several architecture and industrial design projects. With Boeri he designed the Ghost armchair for Fiam Italia. Birth year undocumented: estimate based on his period of activity.",
+    "foto": "tomukatayanagi.jpg",
+    "y": null,
+    "scuole": [],
+    "collettivi": []
   }
 ]
