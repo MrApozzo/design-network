@@ -18,7 +18,7 @@ const STILE = {
   bordo_spessore: 0.2,
   griglia_pallino_colore: "#d8d8d8",
   griglia_label_colore: "#5a5a5a",
-  edge_prodotto_colore: "#dddddd",
+  edge_prodotto_colore: "#cccccc",
   edge_relazione_colore: "#888888",
   sfondo_colore: "#e8e8e8",
   label_sfondo_colore: "#f0f0f0",
@@ -59,7 +59,7 @@ const STILE = {
   zoom_designer_min: 3,
   zoom_designer_max: 18,
   zoom_prodotto_min: 2,
-  zoom_prodotto_max: 26,
+  zoom_prodotto_max: 35,
   zoom_label_designer_min: 4,
   zoom_label_designer_max: 14,
   zoom_label_prodotto_max: 10,
@@ -332,6 +332,96 @@ const CATEGORIA_EN = {
   "sistema per ufficio": "office system", "letto contenitore": "storage bed", porta: "door",
   "sistema di divani": "sofa system", "sistema di arredi componibili": "modular furniture system",
   "sistema di mensole": "shelving system",
+  puzzle: "puzzle", "calendario perpetuo da parete": "perpetual wall calendar", scatola: "box",
+  "vassoio rettangolare": "rectangular tray", tagliacarte: "letter opener",
+  "portamatite e vaschetta portacarte": "pen holder and paper tray",
+  "posacenere e centrotavola": "ashtray and centerpiece", portamatite: "pen holder",
+  "calendario perpetuo da tavolo": "perpetual desk calendar",
+  "appendiabiti, contenitore e portaombrelli": "coat stand, storage unit and umbrella stand",
+  "vaso reversibile": "reversible vase", "cestino gettacarte": "wastepaper basket",
+  "posate da insalata": "salad servers", "sistema di librerie": "bookcase system",
+  "sistema di lampade": "lamp system", "vaschetta portacarte": "paper tray",
+  "sistema di mobili modulari": "modular furniture system", "vaso e ciotola": "vase and bowl",
+  "kit / progetto per vasi": "vase kit / project", "appendiabiti da terra": "floor coat stand",
+  "sedia smontabile": "knock-down chair", "scatola per sale e contenitore multiuso": "salt box and multipurpose container",
+  "appendiabiti da parete": "wall coat stand", bacheca: "notice board", schiaccianoci: "nutcracker",
+  "sgabello impilabile": "stackable stool",
+  "poltrona girevole": "swivel armchair", "tavolo regolabile": "adjustable table", "set di tavolini": "set of side tables",
+  "arazzi per testiere letto": "bed headboard tapestries", candelieri: "candlesticks",
+  collezione: "collection", "collezione di specchi": "mirror collection", "collezione di specchiere": "dressing mirror collection",
+  "collezione di tavoli, tavolini e contenitori": "collection of tables, side tables and storage units",
+  "collezione di tavolo, mobile bar e specchi": "collection of table, bar cabinet and mirrors",
+  comodini: "nightstands", "consolle bar": "bar console", "consolle specchio": "mirrored console",
+  "lampada da parete e da tavolo": "wall and table lamp", lampade: "lamps", "lampade da parete": "wall lamps",
+  "lampade da terra e appliques": "floor lamps and wall sconces", "mensola luminosa": "illuminated shelf",
+  "mobile TV e audio": "TV and audio cabinet", "mobile buffet": "buffet cabinet", "mobile componibile": "modular cabinet",
+  "mobile credenza": "sideboard cabinet", "mobile per impianto audio": "audio system cabinet",
+  "oggetti per la tavola": "tableware objects", "pannelli in alluminio serigrafato": "screen-printed aluminum panels",
+  "parete decorativa": "decorative wall", "piastrella da rivestimento": "cladding tile", "piastrelle da rivestimento": "cladding tiles",
+  "serie di posate e vassoi in argento": "silver cutlery and tray series", "serie di specchi": "mirror series",
+  "serie di specchi e tavoli": "mirror and table series", "serie di specchiere e tavoli": "dressing mirror and table series",
+  "serie di specchiere in vetro fuso": "fused glass dressing mirror series", "serie di tavoli": "table series",
+  "serie di tavoli e specchi": "table and mirror series", "sistema di mobili e tavoli componibili": "modular furniture and table system",
+  specchiera: "dressing mirror", "specchiera / tavolo": "dressing mirror / table", "specchiera da bagno": "bathroom mirror",
+  "specchiera in vetro soffiato": "blown glass dressing mirror", "specchio da tavolo": "table mirror",
+  tappeti: "rugs", "tavoli bassi, ripiani e carrelli": "low tables, shelves and trolleys", tavolini: "side tables",
+  "tavolo e sedia": "table and chair", "tavolo scrivania": "desk table", vasi: "vases",
+  applique: "wall sconce", "faretto da parete / soffitto": "wall / ceiling spotlight",
+  "lampada da esterno": "outdoor lamp", "lampada da parete / soffitto": "wall / ceiling lamp",
+  "lampada da parete / tavolo": "wall / table lamp", "lampada scomponibile": "modular lamp",
+  plafoniera: "ceiling lamp", "plafoniera / lampada da parete": "ceiling / wall lamp",
+  "specchio illuminato": "illuminated mirror", "specchio illuminato / lampada da parete": "illuminated mirror / wall lamp",
+  "addizionatrice elettrica": "electric adding machine", "collezione di oggetti da cucina in legno": "wooden kitchenware collection",
+  "computer mainframe / console": "mainframe computer / console", cuscino: "cushion", fruttiera: "fruit bowl",
+  "libreria / divisorio": "bookcase / room divider", "macchina da scrivere portatile": "portable typewriter",
+  macinaspezie: "spice mill", miniatura: "miniature", "oliera / acetiera": "oil and vinegar cruet",
+  "piatto da portata": "serving plate", "scultura / vaso in vetro di Murano": "Murano glass sculpture / vase",
+  "scultura in vetro di Murano": "Murano glass sculpture", "servizio di piatti": "set of plates",
+  "servizio di posate": "cutlery set", "sgabello / tavolino": "stool / side table",
+  "specchio con consolle e lampade": "mirror with console and lamps", "specchio/lampada": "mirror/lamp",
+  "tavolino alto": "high side table", tessuto: "fabric", "vaso in porcellana": "porcelain vase",
+  "vaso in vetro di Murano": "Murano glass vase",
+  bicchieri: "glasses", "bollitore elettrico": "electric kettle", "calcolatrice / terminale da ufficio": "calculator / office terminal",
+  "caraffa termica": "thermal jug", "collezione di sedute": "seating collection", "collezione di vasi in vetro": "glass vase collection",
+  "collezione outdoor": "outdoor collection", "computer portatile": "laptop computer", "famiglia di piccoli elettrodomestici": "small appliance family",
+  frullatore: "blender", "frullatore a immersione": "immersion blender", "frullatore personale": "personal blender",
+  "lampada a pinza": "clamp lamp", "lampada da parete/soffitto": "wall/ceiling lamp", "lampada da soffitto": "ceiling lamp",
+  "lampada per esterni": "outdoor lamp", "macchina per caffè filtro": "filter coffee machine", "macinino per sale, pepe e spezie": "salt, pepper and spice mill",
+  montalatte: "milk frother", "oggetto decorativo": "decorative object", "oggetto in vetro": "glass object",
+  panchina: "small bench", "pannello acustico modulare": "modular acoustic panel", "pavimento in legno": "wood flooring",
+  "personal computer": "personal computer", portagioie: "jewelry box", "postazione scrittoio": "writing desk workstation",
+  "sedia per ufficio": "office chair", "set sale e pepe": "salt and pepper set", "sgabello e colonna appendiabiti": "stool and coat stand column",
+  "sistema contenitore": "storage system", "sistema di accessori da scrivania": "desktop accessories system",
+  "sistema di postazioni di lavoro": "workstation system", "sistema di tavoli": "table system", "sistema informatico": "computer system",
+  "spremiagrumi elettrico": "electric citrus juicer", stampante: "printer", "stampante bancaria": "banking printer",
+  "tavolo / sistema ufficio": "table / office system", tostapane: "toaster", "vasi in maiolica": "majolica vases", "vaso in vetro": "glass vase",
+  "workstation multimediale": "multimedia workstation",
+  apribottiglie: "bottle opener", "ciotola / vaso": "bowl / vase", "consolle retroilluminata": "backlit console",
+  "poltrona con poggiapiedi": "armchair with ottoman", portastuzzicadenti: "toothpick holder", salsiera: "gravy boat",
+  "scaffale / mensola": "shelving / shelf", "serie di arredi": "furniture series",
+  "serie di oggetti: posacenere, vaso e lampada": "set of objects: ashtray, vase and lamp",
+  armadio: "wardrobe", "armadio / cabina": "wardrobe / cabin", "caffettiera a pressa": "press coffee maker",
+  cassapanca: "chest", cassettone: "chest of drawers", "credenza / vetrina": "sideboard / display cabinet",
+  "libreria / sistema contenitore": "bookcase / storage system", "libreria componibile": "modular bookcase",
+  "pentola / cocotte": "pot / cocotte", "secretaire / mobile contenitore": "secretaire / storage cabinet",
+  "sedia per platea teatrale": "theatre auditorium chair", "serie di sedute": "seating series",
+  "servizio da tè e caffè": "tea and coffee service", "specchiera in marmo": "marble dressing mirror",
+  "tappeto / arazzo": "rug / tapestry", "tavolino / libreria in marmo": "marble side table / bookcase",
+  "tavolo in marmo": "marble table", teiera: "teapot",
+  "carrello in rattan": "rattan trolley", "ciotola in argento": "silver bowl", "divano in rattan": "rattan sofa",
+  "libreria a parete": "wall bookcase", "panca in rattan": "rattan bench", "poltrona bergère": "bergère armchair",
+  "poltrona in rattan": "rattan armchair", "poltrona lounge in rattan": "rattan lounge chair", "pouf in rattan": "rattan pouf",
+  "sedia con braccioli": "chair with armrests", "sedia in rattan": "rattan chair", "specchio in rattan": "rattan mirror",
+  "tavolo / scrittoio": "table / writing desk",
+  "lampada da tavolo wireless": "wireless table lamp", "lampada regolabile da tavolo/terra": "adjustable table/floor lamp",
+  "pouf / poggiapiedi": "pouf / ottoman", "tavolino regolabile": "adjustable side table",
+  "tavolo da pranzo": "dining table", "tavolo da pranzo estensibile": "extendable dining table",
+  "candelabro in argento": "silver candelabra", "collezione di utensili da cucina": "kitchen utensils collection",
+  "lampada da terra / esterni": "floor / outdoor lamp", "lampada in metallo": "metal lamp", "letto in metallo": "metal bed",
+  "poltrona in poliuretano": "polyurethane armchair", "poltrona outdoor": "outdoor armchair",
+  "sedia / sistema in rattan": "rattan chair / system", "set di ciotole in argento": "set of silver bowls",
+  "tavolino outdoor": "outdoor side table", "tavolo con piano in metallo": "table with metal top",
+  "tavolo rettangolare": "rectangular table", "tavolo rotondo": "round table",
 }
 
 const TIPO_RELAZIONE_EN = {
@@ -669,7 +759,12 @@ function App() {
 
     // Se le orbite hanno esteso molto l'area verticale, allarghiamo anche l'asse X
     // PRIMA di creare i nodi (designer e prodotti), così le orbite restano circolari
-    // invece di essere distorte da un riscalamento fatto a posteriori.
+    // invece di essere distorte da un riscalamento fatto a posteriori. L'ampiezza
+    // dell'allargamento è calcolata sull'aspect ratio REALE del contenitore (non su
+    // un fattore fisso scollegato dallo schermo): così, qualunque sia la crescita
+    // futura dei dati, la vista a zoom minimo continua a riempire il viewport senza
+    // margini vuoti. Da notare: questo NON influenza la dimensione dei pallini
+    // (calcolaRaggio dipende solo dal numero di prodotti), solo la loro posizione X.
     let contenutoYMinStima = Infinity, contenutoYMaxStima = -Infinity
     posizioniCalcolate.forEach((p) => {
       contenutoYMinStima = Math.min(contenutoYMinStima, p.y - p.raggio * STILE.anello_raggio_esterno)
@@ -677,7 +772,12 @@ function App() {
     })
     if (!Number.isFinite(contenutoYMinStima)) { contenutoYMinStima = Y_MIN; contenutoYMaxStima = Y_MAX }
     const yRangeStimato = Math.max(Y_MAX, contenutoYMaxStima) - Math.min(Y_MIN, contenutoYMinStima)
-    const fattoreScalaX = Math.max(1, Math.sqrt(yRangeStimato / (Y_MAX - Y_MIN)))
+    const rectIniziale = container.getBoundingClientRect()
+    const aspectViewport = rectIniziale.height > 0 ? rectIniziale.width / rectIniziale.height : 1.8
+    const yRangeConMargine = yRangeStimato + MARGINE_Y * 2
+    const xRangeBase = (X_MAX_BASE - X_MIN_BASE) + MARGINE_X * 2
+    const xRangeTarget = yRangeConMargine * aspectViewport
+    const fattoreScalaX = Math.max(1, xRangeTarget / xRangeBase)
     if (fattoreScalaX > 1) {
       X_MIN = X_MIN_BASE * fattoreScalaX
       X_MAX = X_MAX_BASE * fattoreScalaX
@@ -945,12 +1045,15 @@ function App() {
       return s
     }
 
-    const ZOOM_SCALA_REF = 0.05
     function zoomT() {
+      // Riferito ai limiti reali di zoom (MIN/MAX_CAMERA_RATIO), non a una soglia fissa:
+      // così t=0 e t=1 corrispondono esattamente allo 0% e al 100% mostrati nella barra
+      // di zoom, e tutte le curve di scala (prodotti, designer, griglia) si distribuiscono
+      // sull'intero intervallo reale invece di comprimersi/estrapolare vicino a un estremo.
       const ratio = Math.max(MIN_CAMERA_RATIO, Math.min(MAX_CAMERA_RATIO, cameraRatio))
       const logMax = Math.log(MAX_CAMERA_RATIO)
-      const logRef = Math.log(ZOOM_SCALA_REF)
-      return (logMax - Math.log(ratio)) / (logMax - logRef)
+      const logMin = Math.log(MIN_CAMERA_RATIO)
+      return (logMax - Math.log(ratio)) / (logMax - logMin)
     }
 
     function vScale() {
@@ -1521,6 +1624,38 @@ function App() {
           ctx.restore()
         }
       }
+
+      ctx.save()
+      const tZoomBarra = zoomT()
+      const percentualeZoom = Math.round(tZoomBarra * 100)
+
+      const barraLarghezza = 120
+      const barraX2 = w - 10
+      const barraX1 = barraX2 - barraLarghezza
+      const barraY = h - 16
+
+      ctx.strokeStyle = "rgba(0,0,0,0.2)"
+      ctx.lineWidth = 2
+      ctx.lineCap = "round"
+      ctx.beginPath()
+      ctx.moveTo(barraX1, barraY)
+      ctx.lineTo(barraX2, barraY)
+      ctx.stroke()
+
+      const marcatoreX = barraX1 + barraLarghezza * tZoomBarra
+      ctx.strokeStyle = "rgba(0,0,0,0.6)"
+      ctx.lineWidth = 2
+      ctx.beginPath()
+      ctx.moveTo(marcatoreX, barraY - 5)
+      ctx.lineTo(marcatoreX, barraY + 5)
+      ctx.stroke()
+
+      ctx.font = "600 10px Roboto, sans-serif"
+      ctx.fillStyle = "rgba(0,0,0,0.45)"
+      ctx.textAlign = "right"
+      ctx.textBaseline = "bottom"
+      ctx.fillText(`${percentualeZoom}%`, barraX1 - 8, barraY + 4)
+      ctx.restore()
     }
 
     // Il canvas overlay ha una propria animazione. In questo modo il primo frame

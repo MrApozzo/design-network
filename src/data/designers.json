@@ -250,7 +250,7 @@
     "collettivi": []
   },
   {
-    "nome": "Afra Bianchin",
+    "nome": "Afra Scarpa",
     "nato": 1937,
     "morto": 2011,
     "bio": "Architetta e designer veneziana, moglie di Tobia Scarpa. Insieme hanno firmato capolavori per Cassina, Flos e B&B Italia.",
@@ -801,7 +801,9 @@
     "foto": "giannicolombo.jpg",
     "y": null,
     "scuole": [],
-    "collettivi": ["Gruppo T"]
+    "collettivi": [
+      "Gruppo T"
+    ]
   },
   {
     "nome": "Ambrogio Pozzi",
@@ -920,6 +922,300 @@
     "bio": "Designer giapponese, nato a Tokyo. Trasferitosi a Milano nei primi anni '70, collabora con lo studio di Cini Boeri, di cui dal 1981 segue diversi progetti di architettura e industrial design. Con Boeri firma la poltrona Ghost per Fiam Italia. Anno di nascita non documentato: stima basata sul periodo di attività.",
     "bio_en": "Japanese designer, born in Tokyo. He moved to Milan in the early 1970s and joined Cini Boeri's studio, where from 1981 he oversaw several architecture and industrial design projects. With Boeri he designed the Ghost armchair for Fiam Italia. Birth year undocumented: estimate based on his period of activity.",
     "foto": "tomukatayanagi.jpg",
+    "y": null,
+    "scuole": [],
+    "collettivi": []
+  },
+  {
+    "nome": "Anna Fasolis",
+    "nato": 1935,
+    "morto": null,
+    "bio": "Designer italiana, firma con Enzo Mari la lampada da terra Polluce per Artemide (1965). Anno di nascita non documentato: stima basata sul periodo di attività.",
+    "bio_en": "Italian designer, with Enzo Mari she designed the Polluce floor lamp for Artemide (1965). Birth year undocumented: estimate based on her period of activity.",
+    "foto": "annafasolis.jpg",
+    "y": null,
+    "scuole": [],
+    "collettivi": []
+  },
+  {
+    "nome": "Giancarlo Fassina",
+    "nato": 1935,
+    "morto": 2019,
+    "bio": "Designer milanese, laureato in architettura al Politecnico. Responsabile tecnico di molti progetti Artemide, firma con Enzo Mari il sistema Aggregato, con Carlo Forcolini Dinarco e con Michele De Lucchi le varie versioni della lampada Tolomeo, premiata con il Compasso d'Oro nel 1989.",
+    "bio_en": "Milanese designer, graduated in architecture from the Politecnico. Technical lead on many Artemide projects, he co-designed the Aggregato system with Enzo Mari, Dinarco with Carlo Forcolini, and the various versions of the Tolomeo lamp with Michele De Lucchi, awarded the Compasso d'Oro in 1989.",
+    "foto": "giancarlofassina.jpg",
+    "y": null,
+    "scuole": [],
+    "collettivi": []
+  },
+  {
+    "nome": "Antonia Astori",
+    "nato": 1940,
+    "morto": null,
+    "bio": "Designer, laureata in design industriale e visivo a Losanna nel 1966. Nel 1968 co-fonda Driade con il fratello Enrico e la cognata Adelaide Acerbi; firma i sistemi modulari Oikos, Kaos, Pantos e Chef.",
+    "bio_en": "Designer, graduated in industrial and visual design in Lausanne in 1966. In 1968 she co-founded Driade with her brother Enrico and sister-in-law Adelaide Acerbi; she designed the modular systems Oikos, Kaos, Pantos and Chef.",
+    "foto": "antoniaastori.jpg",
+    "y": null,
+    "scuole": [],
+    "collettivi": []
+  },
+  {
+    "nome": "Annibale Oste",
+    "nato": 1942,
+    "morto": null,
+    "bio": "Scultore e designer napoletano, formatosi all'Accademia di Belle Arti di Napoli con Emilio Greco e Augusto Perez. Attivo dagli anni '80 nel design, ha collaborato con Nanda Vigo per Anthologie Quartett.",
+    "bio_en": "Neapolitan sculptor and designer, trained at the Academy of Fine Arts in Naples under Emilio Greco and Augusto Perez. Active in design since the 1980s, he collaborated with Nanda Vigo for Anthologie Quartett.",
+    "foto": "oste.jpg",
+    "y": null,
+    "scuole": [],
+    "collettivi": []
+  },
+  {
+    "nome": "Vittoriano Viganò",
+    "nato": 1919,
+    "morto": 1996,
+    "bio": "Architetto e designer milanese, laureato al Politecnico nel 1944. Consulente tecnico-artistico di Arteluce tra il 1947 e il 1960; autore dell'Istituto Marchiondi Spagliardi a Milano. Insignito nel 1991 del Premio dell'Architettura Italiana.",
+    "bio_en": "Milanese architect and designer, graduated from the Politecnico in 1944. Technical-artistic consultant for Arteluce between 1947 and 1960; designed the Marchiondi Spagliardi Institute in Milan. Awarded the Italian Architecture Prize in 1991.",
+    "foto": "vigano.jpg",
+    "y": null,
+    "scuole": [],
+    "collettivi": []
+  },
+  {
+    "nome": "Andries Van Onck",
+    "nato": 1928,
+    "morto": 2018,
+    "bio": "Designer olandese attivo a Milano. Nel 1959 collabora con Ettore Sottsass al progetto ergonomico della console del computer Olivetti Elea 9003. Apre un proprio studio nel 1965.",
+    "bio_en": "Dutch designer active in Milan. In 1959 he collaborated with Ettore Sottsass on the ergonomic design of the console for the Olivetti Elea 9003 computer. He opened his own studio in 1965.",
+    "foto": "vanonck.jpg",
+    "y": null,
+    "scuole": [],
+    "collettivi": []
+  },
+  {
+    "nome": "Hans von Klier",
+    "nato": 1934,
+    "morto": 2000,
+    "bio": "Designer cecoslovacco, laureato all'HfG Ulm nel 1959. Dal 1960 collabora con Ettore Sottsass a Olivetti su macchine da scrivere e calcolatrici; dal 1969 responsabile della corporate identity Olivetti.",
+    "bio_en": "Czechoslovak designer, graduated from HfG Ulm in 1959. From 1960 he collaborated with Ettore Sottsass at Olivetti on typewriters and calculators; from 1969 he was responsible for Olivetti's corporate identity.",
+    "foto": "vonklier.jpg",
+    "y": null,
+    "scuole": [
+      "HfG Ulm"
+    ],
+    "collettivi": []
+  },
+  {
+    "nome": "Perry King",
+    "nato": 1938,
+    "morto": null,
+    "bio": "Designer industriale e grafico britannico, attivo a Milano dal 1964 come consulente Olivetti. Co-autore con Ettore Sottsass della macchina da scrivere Valentine. Nel 1976 fonda con Santiago Miranda lo studio King-Miranda.",
+    "bio_en": "British industrial and graphic designer, active in Milan from 1964 as an Olivetti consultant. Co-author with Ettore Sottsass of the Valentine typewriter. In 1976 he founded the King-Miranda studio with Santiago Miranda.",
+    "foto": "king.jpg",
+    "y": null,
+    "scuole": [],
+    "collettivi": []
+  },
+  {
+    "nome": "David Kelley",
+    "nato": 1951,
+    "morto": null,
+    "bio": "Designer e imprenditore americano, fondatore di IDEO e professore alla Stanford University. Ha collaborato con Ettore Sottsass al telefono Enorme (1986).",
+    "bio_en": "American designer and entrepreneur, founder of IDEO and professor at Stanford University. He collaborated with Ettore Sottsass on the Enorme telephone (1986).",
+    "foto": "kelley.jpg",
+    "y": null,
+    "scuole": [],
+    "collettivi": []
+  },
+  {
+    "nome": "Albert Leclerc",
+    "nato": 1940,
+    "morto": null,
+    "bio": "Designer collaboratore di Ettore Sottsass presso Olivetti, coinvolto nella macchina da scrivere Valentine e nel sistema di arredi per ufficio Synthesis 45 (1972). Anno di nascita non documentato, stimato.",
+    "bio_en": "Designer who collaborated with Ettore Sottsass at Olivetti, involved in the Valentine typewriter and the Synthesis 45 office furniture system (1972). Birth year undocumented, estimated.",
+    "foto": "leclerc.jpg",
+    "y": null,
+    "scuole": [],
+    "collettivi": []
+  },
+  {
+    "nome": "Bruno Scagliola",
+    "nato": 1940,
+    "morto": null,
+    "bio": "Designer ed esperto di ergonomia, membro del team di Ettore Sottsass per il sistema di arredi Synthesis 45 (1972); ha curato volumi su ergonomia e design per Olivetti. Anno di nascita non documentato, stimato.",
+    "bio_en": "Designer and ergonomics expert, member of Ettore Sottsass's team for the Synthesis 45 furniture system (1972); edited volumes on ergonomics and design for Olivetti. Birth year undocumented, estimated.",
+    "foto": "scagliola.jpg",
+    "y": null,
+    "scuole": [],
+    "collettivi": []
+  },
+  {
+    "nome": "Tiger Umeda",
+    "nato": 1940,
+    "morto": null,
+    "bio": "Designer membro del team di Ettore Sottsass per il sistema di arredi per ufficio Synthesis 45 (1972), sviluppato per Olivetti attraverso ricerche ergonomiche su dimensioni, forme e colore. Anno di nascita non documentato, stimato.",
+    "bio_en": "Designer, member of Ettore Sottsass's team for the Synthesis 45 office furniture system (1972), developed for Olivetti through ergonomic research on dimensions, forms and color. Birth year undocumented, estimated.",
+    "foto": "umeda.jpg",
+    "y": null,
+    "scuole": [],
+    "collettivi": []
+  },
+  {
+    "nome": "Jane Young",
+    "nato": 1940,
+    "morto": null,
+    "bio": "Designer membro del team di Ettore Sottsass per il sistema di arredi per ufficio Synthesis 45 (1972), presentato da Olivetti nel 1973. Anno di nascita non documentato, stimato.",
+    "bio_en": "Designer, member of Ettore Sottsass's team for the Synthesis 45 office furniture system (1972), presented by Olivetti in 1973. Birth year undocumented, estimated.",
+    "foto": "young.jpg",
+    "y": null,
+    "scuole": [],
+    "collettivi": []
+  },
+  {
+    "nome": "Gerhard Reichert",
+    "nato": 1962,
+    "morto": null,
+    "bio": "Designer tedesco nato a Ravensburg, laureato in integral design alla SADK di Stoccarda nel 1993. Project manager nello studio di Michele De Lucchi a Milano dal 1997 al 2004; co-autore della collezione Logico per Artemide. Dal 2007 professore di design industriale a Schwäbisch Gmünd.",
+    "bio_en": "German designer born in Ravensburg, graduated in integral design from SADK Stuttgart in 1993. Project manager at Michele De Lucchi's studio in Milan from 1997 to 2004; co-author of the Logico collection for Artemide. Professor of industrial design in Schwäbisch Gmünd since 2007.",
+    "foto": "reichert.jpg",
+    "y": null,
+    "scuole": [],
+    "collettivi": []
+  },
+  {
+    "nome": "Alberto Nason",
+    "nato": 1972,
+    "morto": null,
+    "bio": "Designer industriale nato a Venezia, cresciuto a Murano. Diplomato in industrial design allo IED di Milano nel 1996; dal 1998 collabora con Michele De Lucchi e lo studio AMDL. Co-autore della collezione LED Net per Artemide.",
+    "bio_en": "Industrial designer born in Venice, raised in Murano. Graduated in industrial design from IED Milan in 1996; since 1998 he has collaborated with Michele De Lucchi and studio AMDL. Co-author of the LED Net collection for Artemide.",
+    "foto": "nason.jpg",
+    "y": null,
+    "scuole": [],
+    "collettivi": []
+  },
+  {
+    "nome": "Philippe Nigro",
+    "nato": 1975,
+    "morto": null,
+    "bio": "Designer francese nato a Nizza, formato all'École Boulle di Parigi. Dal 1999 lavora per dodici anni nello studio di Michele De Lucchi a Milano prima di affermarsi come designer indipendente; nominato Designer of the Year a Maison & Objet nel 2014.",
+    "bio_en": "French designer born in Nice, trained at École Boulle in Paris. From 1999 he worked for twelve years at Michele De Lucchi's studio in Milan before establishing himself as an independent designer; named Designer of the Year at Maison & Objet in 2014.",
+    "foto": "nigro.jpg",
+    "y": null,
+    "scuole": [],
+    "collettivi": []
+  },
+  {
+    "nome": "Mario Rossi Scola",
+    "nato": 1950,
+    "morto": null,
+    "bio": "Collaboratore di Michele De Lucchi per Produzione Privata, co-autore delle lampade in vetro di Murano Acquatinta (1996). Anno di nascita non documentato, stimato.",
+    "bio_en": "Collaborator of Michele De Lucchi for Produzione Privata, co-author of the Murano glass Acquatinta lamps (1996). Birth year undocumented, estimated.",
+    "foto": "rossiscola.jpg",
+    "y": null,
+    "scuole": [],
+    "collettivi": []
+  },
+  {
+    "nome": "Dario Bartolini",
+    "nato": 1943,
+    "morto": null,
+    "bio": "Architetto e artista nato a Trieste. Membro di Archizoom dal 1968 al 1973 insieme alla moglie Lucia; co-autore della poltrona Mies (1969). Dagli anni '90 attivo come artista, con ricerche su ferro, vetro e luce.",
+    "bio_en": "Architect and artist born in Trieste. Member of Archizoom from 1968 to 1973 together with his wife Lucia; co-author of the Mies armchair (1969). Active as an artist since the 1990s, with research on iron, glass and light.",
+    "foto": "dbartolini.jpg",
+    "y": null,
+    "scuole": [],
+    "collettivi": [
+      "Archizoom"
+    ]
+  },
+  {
+    "nome": "Lucia Bartolini",
+    "nato": 1944,
+    "morto": null,
+    "bio": "Designer, nata Lucia Morozzi, sorella di Massimo Morozzi. Membro di Archizoom dal 1968 insieme al marito Dario Bartolini; co-autrice della poltrona Mies (1969).",
+    "bio_en": "Designer, born Lucia Morozzi, sister of Massimo Morozzi. Member of Archizoom from 1968 together with her husband Dario Bartolini; co-author of the Mies armchair (1969).",
+    "foto": "lbartolini.jpg",
+    "y": null,
+    "scuole": [],
+    "collettivi": [
+      "Archizoom"
+    ]
+  },
+  {
+    "nome": "Nicoletta Morozzi",
+    "nato": 1945,
+    "morto": null,
+    "bio": "Designer di abiti, in seguito nota come Nicoletta Branzi dopo il matrimonio con Andrea Branzi. Co-autrice della collezione Animali Domestici (1985) per Zabro, per cui ha curato la parte di abbigliamento. Anno di nascita non documentato, stimato.",
+    "bio_en": "Clothing designer, later known as Nicoletta Branzi after marrying Andrea Branzi. Co-author of the Animali Domestici collection (1985) for Zabro, for which she designed the garments. Birth year undocumented, estimated.",
+    "foto": "nmorozzi.jpg",
+    "y": null,
+    "scuole": [],
+    "collettivi": []
+  },
+  {
+    "nome": "Aldo Rossi",
+    "nato": 1931,
+    "morto": 1997,
+    "bio": "Architetto e designer milanese, tra i massimi esponenti del postmoderno. Primo italiano a vincere il Premio Pritzker (1990). Autore del Teatro del Mondo e di celebri oggetti per Alessi come La Conica e Tea & Coffee Piazza.",
+    "bio_en": "Milanese architect and designer, among the leading figures of postmodernism. First Italian to win the Pritzker Prize (1990). Author of the Teatro del Mondo and celebrated objects for Alessi such as La Conica and Tea & Coffee Piazza.",
+    "foto": "aldorossi.jpg",
+    "y": null,
+    "scuole": [],
+    "collettivi": []
+  },
+  {
+    "nome": "Luca Meda",
+    "nato": 1936,
+    "morto": 1998,
+    "bio": "Architetto e designer, laureato all'Accademia di Brera e formato alla HfG Ulm. Art director di Molteni&C dal 1968; stretto collaboratore e amico di Aldo Rossi, con cui firma la Serie Teatro (1982) e la libreria Piroscafo (1992).",
+    "bio_en": "Architect and designer, graduated from the Brera Academy and trained at HfG Ulm. Art director for Molteni&C from 1968; close collaborator and friend of Aldo Rossi, with whom he designed the Teatro series (1982) and the Piroscafo bookcase (1992).",
+    "foto": "lucameda.jpg",
+    "y": null,
+    "scuole": [
+      "HfG Ulm"
+    ],
+    "collettivi": []
+  },
+  {
+    "nome": "Ezio Sgrelli",
+    "nato": 1930,
+    "morto": null,
+    "bio": "Designer collaboratore di Franco Albini, co-autore della poltrona in rattan Gala (1951) presentata alla IX Triennale di Milano per La Rinascente. Anno di nascita non documentato, stimato.",
+    "bio_en": "Designer who collaborated with Franco Albini, co-author of the rattan Gala armchair (1951) presented at the IX Milan Triennale for La Rinascente. Birth year undocumented, estimated.",
+    "foto": "sgrelli.jpg",
+    "y": null,
+    "scuole": [],
+    "collettivi": []
+  },
+  {
+    "nome": "Antonio Piva",
+    "nato": 1935,
+    "morto": null,
+    "bio": "Architetto milanese, entra nello studio Albini-Helg nel 1962; dal 1975 lo studio prende il nome Franco Albini, Franca Helg, Antonio Piva, Marco Albini. Co-autore della serie di lampade AM/AS per Sirrah (1969). Anno di nascita non documentato, stimato.",
+    "bio_en": "Milanese architect, joined the Albini-Helg studio in 1962; from 1975 the studio was renamed Franco Albini, Franca Helg, Antonio Piva, Marco Albini. Co-author of the AM/AS lamp series for Sirrah (1969). Birth year undocumented, estimated.",
+    "foto": "piva.jpg",
+    "y": null,
+    "scuole": [],
+    "collettivi": []
+  },
+  {
+    "nome": "Marco Albini",
+    "nato": 1940,
+    "morto": null,
+    "bio": "Designer milanese, figlio di Franco Albini. Entra in società con il padre nel 1965; ha codificato l'approccio progettuale paterno nei cosiddetti \"5 punti\". Co-autore della serie di lampade AM/AS per Sirrah (1969).",
+    "bio_en": "Milanese designer, son of Franco Albini. Went into partnership with his father in 1965; codified his father's design approach into the so-called \"5 points\". Co-author of the AM/AS lamp series for Sirrah (1969).",
+    "foto": "malbini.jpg",
+    "y": null,
+    "scuole": [],
+    "collettivi": []
+  },
+  {
+    "nome": "Corrado Corradi Dell'Acqua",
+    "nato": 1905,
+    "morto": 1982,
+    "bio": "Avvocato e designer milanese, cofondatore di Azucena nel 1947 insieme a Ignazio Gardella e Luigi Caccia Dominioni. Autore di pochi ma raffinati progetti, tra cui le lampade Coppa Aperta e Doppio Vetro con Gardella.",
+    "bio_en": "Milanese lawyer and designer, co-founder of Azucena in 1947 together with Ignazio Gardella and Luigi Caccia Dominioni. Author of few but refined designs, including the Coppa Aperta and Doppio Vetro lamps with Gardella.",
+    "foto": "corradidellacqua.jpg",
     "y": null,
     "scuole": [],
     "collettivi": []

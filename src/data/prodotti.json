@@ -70,8 +70,9 @@
     "anno": 1968,
     "designer": "Tobia Scarpa",
     "azienda": "Flos",
-    "categoria": "lampada",
-    "foto": "scarpa-biagio.jpg"
+    "categoria": "lampada da tavolo",
+    "foto": "scarpa-biagio.jpg",
+    "azienda_attuale": "Flos"
   },
   {
     "nome": "Parentesi",
@@ -181,26 +182,34 @@
   {
     "nome": "Valentine",
     "anno": 1969,
-    "designer": "Ettore Sottsass",
+    "designer": [
+      "Ettore Sottsass",
+      "Perry King"
+    ],
     "azienda": "Olivetti",
-    "categoria": "macchina da scrivere",
-    "foto": "sottsass-valentine.jpg"
+    "categoria": "macchina da scrivere portatile",
+    "foto": "sottsass-valentine.jpg",
+    "azienda_attuale": null,
+    "top": true
   },
   {
     "nome": "Carlton",
     "anno": 1981,
     "designer": "Ettore Sottsass",
     "azienda": "Memphis",
-    "categoria": "libreria",
-    "foto": "sottsass-carlton.jpg"
+    "categoria": "libreria / divisorio",
+    "foto": "sottsass-carlton.jpg",
+    "azienda_attuale": "Memphis",
+    "top": true
   },
   {
     "nome": "Tahiti",
     "anno": 1981,
     "designer": "Ettore Sottsass",
     "azienda": "Memphis",
-    "categoria": "lampada",
-    "foto": "sottsass-tahiti.jpg"
+    "categoria": "lampada da tavolo",
+    "foto": "sottsass-tahiti.jpg",
+    "azienda_attuale": "Memphis"
   },
   {
     "nome": "Terrazzo Flooring",
@@ -208,7 +217,8 @@
     "designer": "Ettore Sottsass",
     "azienda": "Memphis",
     "categoria": "superficie",
-    "foto": "sottsass-terrazzo.jpg"
+    "foto": "sottsass-terrazzo.jpg",
+    "azienda_attuale": "Memphis"
   },
   {
     "nome": "Selene",
@@ -292,19 +302,23 @@
   },
   {
     "nome": "Margherita",
-    "anno": 1950,
+    "anno": 1951,
     "designer": "Franco Albini",
-    "azienda": "Bonacina",
-    "categoria": "poltrona",
-    "foto": "albini-margherita.jpg"
+    "azienda": "Vittorio Bonacina",
+    "categoria": "poltrona in rattan",
+    "foto": "albini-margherita.jpg",
+    "azienda_attuale": "Bonacina 1889",
+    "top": true
   },
   {
     "nome": "Luisa",
     "anno": 1955,
     "designer": "Franco Albini",
     "azienda": "Poggi",
-    "categoria": "sedia",
-    "foto": "albini-luisa.jpg"
+    "categoria": "sedia con braccioli",
+    "foto": "albini-luisa.jpg",
+    "azienda_attuale": "Cassina",
+    "top": true
   },
   {
     "nome": "Abitacolo",
@@ -597,26 +611,29 @@
     "foto": "mollino-bolideasimmetrico.jpg"
   },
   {
-    "nome": "Bastiano",
-    "anno": 1960,
+    "nome": "Bastiano Sofa",
+    "anno": 1962,
     "designer": [
-      "Afra Bianchin",
+      "Afra Scarpa",
       "Tobia Scarpa"
     ],
-    "azienda": "Cassina",
+    "azienda": "Gavina",
     "categoria": "divano",
-    "foto": "bianchin-bastiano.jpg"
+    "foto": "scarpa-bastiano-sofa.jpg",
+    "azienda_attuale": "Knoll"
   },
   {
-    "nome": "Soriana",
+    "nome": "Soriana Armchair",
     "anno": 1969,
     "designer": [
-      "Afra Bianchin",
+      "Afra Scarpa",
       "Tobia Scarpa"
     ],
     "azienda": "Cassina",
     "categoria": "poltrona",
-    "foto": "bianchin-soriana.jpg"
+    "foto": "scarpa-soriana-armchair.jpg",
+    "azienda_attuale": "Cassina",
+    "top": true
   },
   {
     "nome": "4870",
@@ -658,7 +675,7 @@
     "categoria": "macchina da cucire",
     "foto": "nizzoli-mirella.jpg"
   },
-   {
+  {
     "nome": "E60",
     "anno": 1946,
     "designer": "Osvaldo Borsani",
@@ -887,20 +904,24 @@
     "foto": "borsani-gerli-graphis.jpg"
   },
   {
-    "nome": "2097",
+    "nome": "Mod. 2097",
     "anno": 1958,
     "designer": "Gino Sarfatti",
     "azienda": "Arteluce",
     "categoria": "lampadario",
-    "foto": "sarfatti-2097.jpg"
+    "foto": "sarfatti-mod-2097.jpg",
+    "azienda_attuale": "Flos",
+    "top": true
   },
   {
-    "nome": "1063",
+    "nome": "Mod. 1063",
     "anno": 1954,
     "designer": "Gino Sarfatti",
     "azienda": "Arteluce",
-    "categoria": "lampada",
-    "foto": "sarfatti-1063.jpg"
+    "categoria": "lampada da terra",
+    "foto": "sarfatti-mod-1063.jpg",
+    "azienda_attuale": null,
+    "top": true
   },
   {
     "nome": "Sacco",
@@ -944,47 +965,58 @@
     "designer": "Franco Albini",
     "azienda": "produzione propria",
     "categoria": "libreria",
-    "foto": "albini-veliero.jpg"
+    "foto": "albini-veliero.jpg",
+    "azienda_attuale": "Cassina",
+    "top": true
   },
   {
     "nome": "Radio in Cristallo",
     "anno": 1938,
     "designer": "Franco Albini",
-    "azienda": "CGE",
+    "azienda": "produzione propria",
     "categoria": "radio",
-    "foto": "albini-radioincristallo.jpg"
+    "foto": "albini-radio-in-cristallo.jpg",
+    "azienda_attuale": "Cassina"
   },
   {
     "nome": "Stadera",
-    "anno": 1940,
+    "anno": 1958,
     "designer": "Franco Albini",
-    "azienda": "produzione propria",
-    "categoria": "lampada",
-    "foto": "albini-stadera.jpg"
+    "azienda": "Poggi",
+    "categoria": "scrittoio",
+    "foto": "albini-stadera.jpg",
+    "azienda_attuale": "Cassina",
+    "top": true
   },
   {
     "nome": "TL3",
-    "anno": 1951,
+    "anno": 1953,
     "designer": "Franco Albini",
     "azienda": "Poggi",
     "categoria": "tavolo",
-    "foto": "albini-tl3.jpg"
+    "foto": "albini-tl3.jpg",
+    "azienda_attuale": "Cassina"
   },
   {
     "nome": "Tre Pezzi",
     "anno": 1959,
-    "designer": "Franco Albini",
+    "designer": [
+      "Franco Albini",
+      "Franca Helg"
+    ],
     "azienda": "Poggi",
     "categoria": "poltrona",
-    "foto": "albini-trepezzi.jpg"
+    "foto": "albini-tre-pezzi.jpg",
+    "azienda_attuale": "Cassina"
   },
   {
     "nome": "Cavalletto",
-    "anno": 1940,
+    "anno": 1950,
     "designer": "Franco Albini",
-    "azienda": "produzione propria",
-    "categoria": "tavolo",
-    "foto": "albini-cavalletto.jpg"
+    "azienda": "Poggi",
+    "categoria": "tavolo / scrittoio",
+    "foto": "albini-cavalletto.jpg",
+    "azienda_attuale": "Cassina"
   },
   {
     "nome": "PA 1947",
@@ -1013,10 +1045,15 @@
   {
     "nome": "Tolomeo",
     "anno": 1987,
-    "designer": "Michele De Lucchi",
+    "designer": [
+      "Michele De Lucchi",
+      "Giancarlo Fassina"
+    ],
     "azienda": "Artemide",
     "categoria": "lampada",
-    "foto": "lucchi-tolomeo.jpg"
+    "foto": "lucchi-tolomeo.jpg",
+    "azienda_attuale": "Artemide",
+    "top": true
   },
   {
     "nome": "Elettra",
@@ -1081,15 +1118,20 @@
     "designer": "Michele De Lucchi",
     "azienda": "Studio Alchimia",
     "categoria": "lampada",
-    "foto": "lucchi-sinerpica.jpg"
+    "foto": "delucchi-sinerpica.jpg",
+    "azienda_attuale": null
   },
   {
     "nome": "Animali Domestici",
     "anno": 1985,
-    "designer": "Andrea Branzi",
+    "designer": [
+      "Andrea Branzi",
+      "Nicoletta Morozzi"
+    ],
     "azienda": "Zabro",
-    "categoria": "libreria",
-    "foto": "branzi-animalidomestici.jpg"
+    "categoria": "serie di arredi",
+    "foto": "branzi-animali-domestici.jpg",
+    "azienda_attuale": null
   },
   {
     "nome": "Grandi Legni",
@@ -1114,7 +1156,7 @@
   },
   {
     "nome": "Superonda",
-    "anno": 1966,
+    "anno": 1967,
     "designer": [
       "Andrea Branzi",
       "Gilberto Corretti",
@@ -1122,8 +1164,9 @@
       "Massimo Morozzi"
     ],
     "azienda": "Poltronova",
-    "categoria": "divano",
-    "foto": "branzi-superonda.jpg"
+    "categoria": "divano modulare",
+    "foto": "branzi-superonda.jpg",
+    "top": true
   },
   {
     "nome": "Mies",
@@ -1132,11 +1175,14 @@
       "Andrea Branzi",
       "Gilberto Corretti",
       "Paolo Deganello",
-      "Massimo Morozzi"
+      "Massimo Morozzi",
+      "Dario Bartolini",
+      "Lucia Bartolini"
     ],
     "azienda": "Poltronova",
-    "categoria": "sedia",
-    "foto": "branzi-mies.jpg"
+    "categoria": "poltrona con poggiapiedi",
+    "foto": "branzi-mies.jpg",
+    "top": true
   },
   {
     "nome": "AEO",
@@ -1249,47 +1295,57 @@
     "anno": 1974,
     "designer": "Enzo Mari",
     "azienda": "Simon International",
+    "azienda_attuale": null,
     "categoria": "tavolo",
-    "foto": "mari-autoprogettazione.jpg"
+    "foto": "mari-autoprogettazione.jpg",
+    "top": true
   },
   {
     "nome": "Putrella",
     "anno": 1958,
     "designer": "Enzo Mari",
-    "azienda": "Danese",
-    "categoria": "fermacarte",
-    "foto": "mari-putrella.jpg"
+    "azienda": "Danese Milano",
+    "azienda_attuale": "Danese Milano",
+    "categoria": "centrotavola",
+    "foto": "mari-putrella.jpg",
+    "top": true
   },
   {
-    "nome": "16 Animali",
+    "nome": "16 animali",
     "anno": 1957,
     "designer": "Enzo Mari",
-    "azienda": "Danese",
-    "categoria": "gioco",
-    "foto": "mari-16animali.jpg"
+    "azienda": "Danese Milano",
+    "azienda_attuale": "Danese Milano",
+    "categoria": "puzzle",
+    "foto": "mari-16-animali.jpg",
+    "top": true
   },
   {
     "nome": "Timor",
     "anno": 1967,
     "designer": "Enzo Mari",
-    "azienda": "Danese",
-    "categoria": "calendario",
+    "azienda": "Danese Milano",
+    "azienda_attuale": "Danese Milano",
+    "categoria": "calendario perpetuo da tavolo",
     "foto": "mari-timor.jpg"
   },
   {
-    "nome": "Tonetta",
+    "nome": "Tonietta",
     "anno": 1985,
     "designer": "Enzo Mari",
     "azienda": "Zanotta",
+    "azienda_attuale": "Zanotta",
     "categoria": "sedia",
-    "foto": "mari-tonetta.jpg"
+    "foto": "mari-tonietta.jpg",
+    "top": true
   },
   {
     "nome": "Ecolo",
     "anno": 1995,
     "designer": "Enzo Mari",
     "azienda": "Alessi",
-    "categoria": "vassoio",
+    "azienda_attuale": null,
+    "categoria": "kit / progetto per vasi",
     "foto": "mari-ecolo.jpg"
   },
   {
@@ -1605,11 +1661,12 @@
   },
   {
     "nome": "Mod. 238/1",
-    "anno": 1952,
+    "anno": 1959,
     "designer": "Gino Sarfatti",
-    "azienda": "Astep",
-    "categoria": "lampada",
-    "foto": "sarfatti-238.jpg"
+    "azienda": "Arteluce",
+    "categoria": "lampada da parete / soffitto",
+    "foto": "sarfatti-mod-238-1.jpg",
+    "azienda_attuale": "Astep"
   },
   {
     "nome": "Algol",
@@ -1693,16 +1750,19 @@
     "anno": 1970,
     "designer": "Ettore Sottsass",
     "azienda": "Poltronova",
-    "categoria": "specchio",
-    "foto": "sottsass-ultrafragola.jpg"
+    "categoria": "specchio/lampada",
+    "foto": "sottsass-ultrafragola.jpg",
+    "azienda_attuale": "Poltronova",
+    "top": true
   },
   {
     "nome": "Shiva",
     "anno": 1973,
     "designer": "Ettore Sottsass",
-    "azienda": "Poltronova",
-    "categoria": "contenitore",
-    "foto": "sottsass-shiva.jpg"
+    "azienda": "BD Barcelona",
+    "categoria": "vaso",
+    "foto": "sottsass-shiva.jpg",
+    "azienda_attuale": "BD Barcelona"
   },
   {
     "nome": "Jumbo",
@@ -1727,7 +1787,9 @@
     "designer": "Michele De Lucchi",
     "azienda": "Memphis",
     "categoria": "sedia",
-    "foto": "lucchi-first.jpg"
+    "foto": "delucchi-first.jpg",
+    "azienda_attuale": "Memphis",
+    "top": true
   },
   {
     "nome": "Kartell 4675",
@@ -1742,7 +1804,8 @@
     "anno": 1974,
     "designer": "Enzo Mari",
     "azienda": "Driade",
-    "categoria": "sedia",
+    "azienda_attuale": "Rexite",
+    "categoria": "sedia impilabile",
     "foto": "mari-delfina.jpg"
   },
   {
@@ -1754,28 +1817,31 @@
     "foto": "ponti-leggera.jpg"
   },
   {
-    "nome": "Digamma",
+    "nome": "Digamma Armchair",
     "anno": 1957,
     "designer": "Ignazio Gardella",
     "azienda": "Gavina",
-    "categoria": "poltrona",
-    "foto": "gardella-digamma.jpg"
+    "categoria": "poltrona reclinabile",
+    "foto": "gardella-digamma-armchair.jpg",
+    "azienda_attuale": "Santa & Cole",
+    "top": true
   },
   {
     "nome": "Arenzano",
     "anno": 1956,
     "designer": "Ignazio Gardella",
     "azienda": "Azucena",
-    "azienda_attuale": "Tacchini",
+    "azienda_attuale": "Tato Italia",
     "categoria": "lampada",
-    "foto": "gardella-arenzano.jpg"
+    "foto": "gardella-arenzano.jpg",
+    "top": true
   },
   {
     "nome": "Paolina",
     "anno": 1958,
     "designer": "Ignazio Gardella",
     "azienda": "Azucena",
-    "azienda_attuale": "Tacchini",
+    "azienda_attuale": "Tato Italia",
     "categoria": "lampada",
     "foto": "gardella-paolina.jpg"
   },
@@ -1789,29 +1855,30 @@
     "foto": "gardella-p10.jpg"
   },
   {
-    "nome": "Lido",
-    "anno": 1959,
+    "nome": "Lido Poltrona",
+    "anno": 1966,
     "designer": "Ignazio Gardella",
     "azienda": "Azucena",
-    "azienda_attuale": "Tacchini",
+    "azienda_attuale": "Tato Italia",
     "categoria": "poltrona",
-    "foto": "gardella-lido.jpg"
+    "foto": "gardella-lido-poltrona.jpg",
+    "top": true
   },
   {
-    "nome": "Lido",
-    "anno": 1959,
+    "nome": "Lido Divano",
+    "anno": 1965,
     "designer": "Ignazio Gardella",
     "azienda": "Azucena",
-    "azienda_attuale": "Tacchini",
+    "azienda_attuale": "Tato Italia",
     "categoria": "divano",
-    "foto": "gardella-lidodivano.jpg"
+    "foto": "gardella-lido-divano.jpg"
   },
   {
     "nome": "Blevio",
-    "anno": 1958,
+    "anno": 1930,
     "designer": "Ignazio Gardella",
-    "azienda": "Azucena",
-    "azienda_attuale": "Tacchini",
+    "azienda": "produzione propria",
+    "azienda_attuale": "Molteni&C",
     "categoria": "tavolo",
     "foto": "gardella-blevio.jpg"
   },
@@ -1833,21 +1900,25 @@
     "foto": "gardella-lib2.jpg"
   },
   {
-    "nome": "Applique ottone e doppio vetro",
-    "anno": 1956,
-    "designer": "Ignazio Gardella",
+    "nome": "Doppio Vetro Applique",
+    "anno": 1955,
+    "designer": [
+      "Ignazio Gardella",
+      "Corrado Corradi Dell'Acqua"
+    ],
     "azienda": "Azucena",
-    "azienda_attuale": "Tacchini",
-    "categoria": "lampada",
-    "foto": "gardella-appliqueottonedoppiovetro.jpg"
+    "azienda_attuale": "Tato Italia",
+    "categoria": "lampada da parete",
+    "foto": "gardella-doppio-vetro-applique.jpg"
   },
   {
-    "nome": "Tavolo a piedi regolabili",
-    "anno": 1958,
+    "nome": "Tavolo Piedi Regolabili",
+    "anno": 1951,
     "designer": "Ignazio Gardella",
     "azienda": "Azucena",
-    "categoria": "tavolo",
-    "foto": "gardella-tavolopiediregolabili.jpg"
+    "categoria": "tavolo regolabile",
+    "foto": "gardella-tavolo-piedi-regolabili.jpg",
+    "azienda_attuale": "Tato Italia"
   },
   {
     "nome": "Plia",
@@ -1886,8 +1957,10 @@
     "anno": 1970,
     "designer": "Nanda Vigo",
     "azienda": "Arredoluce",
-    "categoria": "lampada",
-    "foto": "vigo-goldengate.jpg"
+    "azienda_attuale": null,
+    "categoria": "lampada da terra",
+    "foto": "vigo-golden-gate.jpg",
+    "top": true
   },
   {
     "nome": "Toga",
@@ -2293,7 +2366,9 @@
     "azienda_attuale": "Tacchini",
     "categoria": "lampada",
     "foto": "gardella-prisma.jpg",
-    "foto_dettaglio": ["gardella-prisma2.jpg"]
+    "foto_dettaglio": [
+      "gardella-prisma2.jpg"
+    ]
   },
   {
     "nome": "Quatour",
@@ -2308,24 +2383,28 @@
     "anno": 1981,
     "designer": "Ettore Sottsass",
     "azienda": "Memphis",
-    "categoria": "contenitore",
-    "foto": "sottsass-casablanca.jpg"
+    "categoria": "mobile contenitore",
+    "foto": "sottsass-casablanca.jpg",
+    "azienda_attuale": "Memphis",
+    "top": true
   },
   {
     "nome": "Superbox",
     "anno": 1966,
     "designer": "Ettore Sottsass",
     "azienda": "Poltronova",
-    "categoria": "contenitore",
-    "foto": "sottsass-superbox.jpg"
+    "categoria": "mobile contenitore",
+    "foto": "sottsass-superbox.jpg",
+    "azienda_attuale": null
   },
   {
     "nome": "Ashoka",
     "anno": 1981,
     "designer": "Ettore Sottsass",
     "azienda": "Memphis",
-    "categoria": "lampada",
-    "foto": "sottsass-ashoka.jpg"
+    "categoria": "lampada da tavolo",
+    "foto": "sottsass-ashoka.jpg",
+    "azienda_attuale": "Memphis"
   },
   {
     "nome": "Distex",
@@ -2442,12 +2521,17 @@
     "foto": "aulenti-tavolo-con-ruote.jpg"
   },
   {
-    "nome": "Coronado",
+    "nome": "Coronado Armchair",
     "anno": 1966,
-    "designer": ["Tobia Scarpa", "Afra Bianchin"],
-    "azienda": "B&B Italia",
+    "designer": [
+      "Afra Scarpa",
+      "Tobia Scarpa"
+    ],
+    "azienda": "C&B Italia",
     "categoria": "poltrona",
-    "foto": "scarpa-coronado.jpg"
+    "foto": "scarpa-coronado-armchair.jpg",
+    "azienda_attuale": "B&B Italia",
+    "top": true
   },
   {
     "nome": "Serpentone",
@@ -2486,25 +2570,28 @@
     "nome": "Formosa",
     "anno": 1963,
     "designer": "Enzo Mari",
-    "azienda": "Danese",
-    "categoria": "calendario",
+    "azienda": "Danese Milano",
+    "azienda_attuale": "Danese Milano",
+    "categoria": "calendario perpetuo da parete",
     "foto": "mari-formosa.jpg"
   },
   {
     "nome": "Pago Pago",
     "anno": 1969,
     "designer": "Enzo Mari",
-    "azienda": "Danese",
-    "categoria": "vaso",
-    "foto": "mari-pagopago.jpg"
+    "azienda": "Danese Milano",
+    "azienda_attuale": null,
+    "categoria": "vaso reversibile",
+    "foto": "mari-pago-pago.jpg"
   },
   {
     "nome": "Sof Sof",
     "anno": 1971,
     "designer": "Enzo Mari",
     "azienda": "Driade",
+    "azienda_attuale": "Driade",
     "categoria": "sedia",
-    "foto": "mari-sofsof.jpg"
+    "foto": "mari-sof-sof.jpg"
   },
   {
     "nome": "4801",
@@ -2518,7 +2605,10 @@
   {
     "nome": "Eames Storage Unit",
     "anno": 1950,
-    "designer": ["Charles Eames", "Ray Eames"],
+    "designer": [
+      "Charles Eames",
+      "Ray Eames"
+    ],
     "azienda": "Herman Miller",
     "categoria": "libreria",
     "foto": "eames-esu.jpg"
@@ -2526,7 +2616,10 @@
   {
     "nome": "Sofa Compact",
     "anno": 1954,
-    "designer": ["Charles Eames", "Ray Eames"],
+    "designer": [
+      "Charles Eames",
+      "Ray Eames"
+    ],
     "azienda": "Herman Miller",
     "categoria": "divano",
     "foto": "eames-sofacompact.jpg"
@@ -2534,7 +2627,10 @@
   {
     "nome": "Aluminum Group",
     "anno": 1958,
-    "designer": ["Charles Eames", "Ray Eames"],
+    "designer": [
+      "Charles Eames",
+      "Ray Eames"
+    ],
     "azienda": "Herman Miller",
     "categoria": "poltrona",
     "foto": "eames-aluminumgroup.jpg"
@@ -2542,7 +2638,10 @@
   {
     "nome": "Time-Life Stool",
     "anno": 1960,
-    "designer": ["Charles Eames", "Ray Eames"],
+    "designer": [
+      "Charles Eames",
+      "Ray Eames"
+    ],
     "azienda": "Herman Miller",
     "categoria": "sgabello",
     "foto": "eames-timelifestool.jpg"
@@ -2569,20 +2668,25 @@
     "designer": "Franco Albini",
     "azienda": "Arflex",
     "categoria": "poltrona",
-    "foto": "albini-fiorenza.jpg"
+    "foto": "albini-fiorenza.jpg",
+    "azienda_attuale": "Arflex"
   },
   {
     "nome": "Cicognino",
-    "anno": 1952,
+    "anno": 1958,
     "designer": "Franco Albini",
     "azienda": "Poggi",
-    "categoria": "tavolo",
-    "foto": "albini-cicognino.jpg"
+    "categoria": "tavolino",
+    "foto": "albini-cicognino.jpg",
+    "azienda_attuale": "Cassina"
   },
   {
     "nome": "San Luca",
     "anno": 1960,
-    "designer": ["Achille Castiglioni", "Pier Giacomo Castiglioni"],
+    "designer": [
+      "Achille Castiglioni",
+      "Pier Giacomo Castiglioni"
+    ],
     "azienda": "Poggi",
     "categoria": "poltrona",
     "foto": "castiglioni-sanluca.jpg"
@@ -2614,7 +2718,12 @@
   {
     "nome": "Monumento ai Caduti nei Campi di Concentramento",
     "anno": 1946,
-    "designer": ["Gianluigi Banfi", "Lodovico Belgiojoso", "Enrico Peressutti", "Ernesto Nathan Rogers"],
+    "designer": [
+      "Gianluigi Banfi",
+      "Lodovico Belgiojoso",
+      "Enrico Peressutti",
+      "Ernesto Nathan Rogers"
+    ],
     "azienda": "BBPR",
     "categoria": "architettura",
     "foto": "belgiojoso-monumentocaduti.jpg"
@@ -2622,7 +2731,11 @@
   {
     "nome": "Neptunia",
     "anno": 1953,
-    "designer": ["Lodovico Belgiojoso", "Enrico Peressutti", "Ernesto Nathan Rogers"],
+    "designer": [
+      "Lodovico Belgiojoso",
+      "Enrico Peressutti",
+      "Ernesto Nathan Rogers"
+    ],
     "azienda": "Arflex",
     "azienda_attuale": "Arflex",
     "categoria": "sedia",
@@ -2631,7 +2744,11 @@
   {
     "nome": "Elettra Chair",
     "anno": 1954,
-    "designer": ["Lodovico Belgiojoso", "Enrico Peressutti", "Ernesto Nathan Rogers"],
+    "designer": [
+      "Lodovico Belgiojoso",
+      "Enrico Peressutti",
+      "Ernesto Nathan Rogers"
+    ],
     "azienda": "Arflex",
     "azienda_attuale": "Arflex",
     "categoria": "sedia",
@@ -2640,7 +2757,11 @@
   {
     "nome": "Elettra Armchair",
     "anno": 1954,
-    "designer": ["Lodovico Belgiojoso", "Enrico Peressutti", "Ernesto Nathan Rogers"],
+    "designer": [
+      "Lodovico Belgiojoso",
+      "Enrico Peressutti",
+      "Ernesto Nathan Rogers"
+    ],
     "azienda": "Arflex",
     "azienda_attuale": "Arflex",
     "categoria": "poltrona",
@@ -2649,7 +2770,11 @@
   {
     "nome": "Velasca",
     "anno": 1956,
-    "designer": ["Lodovico Belgiojoso", "Enrico Peressutti", "Ernesto Nathan Rogers"],
+    "designer": [
+      "Lodovico Belgiojoso",
+      "Enrico Peressutti",
+      "Ernesto Nathan Rogers"
+    ],
     "azienda": "Olivari",
     "azienda_attuale": null,
     "categoria": "maniglia",
@@ -2658,7 +2783,11 @@
   {
     "nome": "Giulietta",
     "anno": 1958,
-    "designer": ["Lodovico Belgiojoso", "Enrico Peressutti", "Ernesto Nathan Rogers"],
+    "designer": [
+      "Lodovico Belgiojoso",
+      "Enrico Peressutti",
+      "Ernesto Nathan Rogers"
+    ],
     "azienda": "Arflex",
     "azienda_attuale": "Arflex",
     "categoria": "poltrona",
@@ -2667,7 +2796,11 @@
   {
     "nome": "2045",
     "anno": 1962,
-    "designer": ["Lodovico Belgiojoso", "Enrico Peressutti", "Ernesto Nathan Rogers"],
+    "designer": [
+      "Lodovico Belgiojoso",
+      "Enrico Peressutti",
+      "Ernesto Nathan Rogers"
+    ],
     "azienda": "Arteluce",
     "azienda_attuale": null,
     "categoria": "sistema di illuminazione",
@@ -2676,7 +2809,11 @@
   {
     "nome": "Arco",
     "anno": 1963,
-    "designer": ["Lodovico Belgiojoso", "Enrico Peressutti", "Ernesto Nathan Rogers"],
+    "designer": [
+      "Lodovico Belgiojoso",
+      "Enrico Peressutti",
+      "Ernesto Nathan Rogers"
+    ],
     "azienda": "Olivetti Synthesis",
     "azienda_attuale": null,
     "categoria": "scrivania",
@@ -2685,7 +2822,11 @@
   {
     "nome": "Ro",
     "anno": 1963,
-    "designer": ["Lodovico Belgiojoso", "Enrico Peressutti", "Ernesto Nathan Rogers"],
+    "designer": [
+      "Lodovico Belgiojoso",
+      "Enrico Peressutti",
+      "Ernesto Nathan Rogers"
+    ],
     "azienda": "Artemide",
     "azienda_attuale": null,
     "categoria": "lampada da terra",
@@ -2694,7 +2835,11 @@
   {
     "nome": "Polimnia",
     "anno": 1964,
-    "designer": ["Lodovico Belgiojoso", "Enrico Peressutti", "Ernesto Nathan Rogers"],
+    "designer": [
+      "Lodovico Belgiojoso",
+      "Enrico Peressutti",
+      "Ernesto Nathan Rogers"
+    ],
     "azienda": "Artemide",
     "azienda_attuale": null,
     "categoria": "lampada da terra",
@@ -2910,7 +3055,10 @@
   {
     "nome": "Inspector Midi 130 W",
     "anno": 1979,
-    "designer": ["Rodolfo Bonetto", "Naoki Matsunaga"],
+    "designer": [
+      "Rodolfo Bonetto",
+      "Naoki Matsunaga"
+    ],
     "azienda": "Olivetti & C.",
     "azienda_attuale": null,
     "categoria": "centro di misura",
@@ -3000,7 +3148,10 @@
   {
     "nome": "Pop GA 45",
     "anno": 1968,
-    "designer": ["Mario Bellini", "Dario Bellini"],
+    "designer": [
+      "Mario Bellini",
+      "Dario Bellini"
+    ],
     "azienda": "Minerva",
     "azienda_attuale": null,
     "categoria": "giradischi",
@@ -3045,7 +3196,10 @@
   {
     "nome": "Area",
     "anno": 1974,
-    "designer": ["Mario Bellini", "Giorgio Origlia"],
+    "designer": [
+      "Mario Bellini",
+      "Giorgio Origlia"
+    ],
     "azienda": "Artemide",
     "azienda_attuale": null,
     "categoria": "lampada a sospensione",
@@ -3063,7 +3217,10 @@
   {
     "nome": "TC 800 GL",
     "anno": 1974,
-    "designer": ["Mario Bellini", "Dario Bellini"],
+    "designer": [
+      "Mario Bellini",
+      "Dario Bellini"
+    ],
     "azienda": "Nippon Gakki",
     "azienda_attuale": null,
     "categoria": "registratore a cassette",
@@ -3117,7 +3274,10 @@
   {
     "nome": "Class",
     "anno": 1978,
-    "designer": ["Mario Bellini", "Dario Bellini"],
+    "designer": [
+      "Mario Bellini",
+      "Dario Bellini"
+    ],
     "azienda": "Ideal Standard",
     "azienda_attuale": null,
     "categoria": "rubinetto",
@@ -3135,7 +3295,10 @@
   {
     "nome": "Minideca",
     "anno": 1983,
-    "designer": ["Mario Bellini", "Dario Bellini"],
+    "designer": [
+      "Mario Bellini",
+      "Dario Bellini"
+    ],
     "azienda": "Zojirushi Corporation",
     "azienda_attuale": null,
     "categoria": "thermos",
@@ -3144,7 +3307,10 @@
   {
     "nome": "Portatone PS 6100",
     "anno": 1984,
-    "designer": ["Mario Bellini", "Dario Bellini"],
+    "designer": [
+      "Mario Bellini",
+      "Dario Bellini"
+    ],
     "azienda": "Nippon Gakki",
     "azienda_attuale": null,
     "categoria": "tastiera elettronica",
@@ -3153,7 +3319,10 @@
   {
     "nome": "Persona",
     "anno": 1984,
-    "designer": ["Mario Bellini", "Dieter Thiel"],
+    "designer": [
+      "Mario Bellini",
+      "Dieter Thiel"
+    ],
     "azienda": "Vitra",
     "azienda_attuale": null,
     "categoria": "sedia da ufficio",
@@ -3162,7 +3331,10 @@
   {
     "nome": "Figura",
     "anno": 1984,
-    "designer": ["Mario Bellini", "Dieter Thiel"],
+    "designer": [
+      "Mario Bellini",
+      "Dieter Thiel"
+    ],
     "azienda": "Vitra",
     "azienda_attuale": null,
     "categoria": "sedia da ufficio",
@@ -3171,7 +3343,10 @@
   {
     "nome": "Eclipse",
     "anno": 1985,
-    "designer": ["Mario Bellini", "Dario Bellini"],
+    "designer": [
+      "Mario Bellini",
+      "Dario Bellini"
+    ],
     "azienda": "Erco Leuchten",
     "azienda_attuale": null,
     "categoria": "faretto",
@@ -6976,5 +7151,6407 @@
     "azienda_attuale": null,
     "categoria": "letto",
     "foto": "boeri-ledletto.jpg"
+  },
+  {
+    "nome": "Calendario Bilancia",
+    "anno": 1959,
+    "designer": "Enzo Mari",
+    "azienda": "Danese Milano",
+    "azienda_attuale": "Danese Milano",
+    "categoria": "calendario perpetuo da parete",
+    "foto": "mari-calendario-bilancia.jpg"
+  },
+  {
+    "nome": "Citera",
+    "anno": 1960,
+    "designer": "Enzo Mari",
+    "azienda": "Danese Milano",
+    "azienda_attuale": "Danese Milano",
+    "categoria": "scatola",
+    "foto": "mari-citera.jpg"
+  },
+  {
+    "nome": "Arran",
+    "anno": 1961,
+    "designer": "Enzo Mari",
+    "azienda": "Danese Milano",
+    "azienda_attuale": "Alessi",
+    "categoria": "vassoio rettangolare",
+    "foto": "mari-arran.jpg"
+  },
+  {
+    "nome": "Camicia",
+    "anno": 1961,
+    "designer": "Enzo Mari",
+    "azienda": "Danese Milano",
+    "azienda_attuale": "Danese Milano",
+    "categoria": "vaso",
+    "foto": "mari-camicia.jpg"
+  },
+  {
+    "nome": "Ameland",
+    "anno": 1962,
+    "designer": "Enzo Mari",
+    "azienda": "Danese Milano",
+    "azienda_attuale": "Danese Milano",
+    "categoria": "tagliacarte",
+    "foto": "mari-ameland.jpg"
+  },
+  {
+    "nome": "Ventotene",
+    "anno": 1962,
+    "designer": "Enzo Mari",
+    "azienda": "Danese Milano",
+    "azienda_attuale": "Danese Milano",
+    "categoria": "portamatite e vaschetta portacarte",
+    "foto": "mari-ventotene.jpg"
+  },
+  {
+    "nome": "Paros D1",
+    "anno": 1964,
+    "designer": "Enzo Mari",
+    "azienda": "Danese Milano",
+    "azienda_attuale": "Danese Milano",
+    "categoria": "posacenere e centrotavola",
+    "foto": "mari-paros-d1.jpg"
+  },
+  {
+    "nome": "Paros H",
+    "anno": 1964,
+    "designer": "Enzo Mari",
+    "azienda": "Danese Milano",
+    "azienda_attuale": "Danese Milano",
+    "categoria": "vaso",
+    "foto": "mari-paros-h.jpg"
+  },
+  {
+    "nome": "Paros M",
+    "anno": 1964,
+    "designer": "Enzo Mari",
+    "azienda": "Danese Milano",
+    "azienda_attuale": "Danese Milano",
+    "categoria": "vaso",
+    "foto": "mari-paros-m.jpg"
+  },
+  {
+    "nome": "Polluce",
+    "anno": 1965,
+    "designer": [
+      "Enzo Mari",
+      "Anna Fasolis"
+    ],
+    "azienda": "Artemide",
+    "azienda_attuale": null,
+    "categoria": "lampada",
+    "foto": "mari-fasolis-polluce.jpg"
+  },
+  {
+    "nome": "Lampedusa",
+    "anno": 1967,
+    "designer": "Enzo Mari",
+    "azienda": "Danese Milano",
+    "azienda_attuale": "Danese Milano",
+    "categoria": "portamatite",
+    "foto": "mari-lampedusa.jpg"
+  },
+  {
+    "nome": "Bambù",
+    "anno": 1968,
+    "designer": "Enzo Mari",
+    "azienda": "Danese Milano",
+    "azienda_attuale": "Danese Milano",
+    "categoria": "vaso",
+    "foto": "mari-bambu.jpg"
+  },
+  {
+    "nome": "Kerguelen",
+    "anno": 1968,
+    "designer": "Enzo Mari",
+    "azienda": "Danese Milano",
+    "azienda_attuale": "Danese Milano",
+    "categoria": "appendiabiti, contenitore e portaombrelli",
+    "foto": "mari-kerguelen.jpg"
+  },
+  {
+    "nome": "In Attesa",
+    "anno": 1971,
+    "designer": "Enzo Mari",
+    "azienda": "Danese Milano",
+    "azienda_attuale": "Danese Milano",
+    "categoria": "cestino gettacarte",
+    "foto": "mari-in-attesa.jpg"
+  },
+  {
+    "nome": "Cugino",
+    "anno": 1973,
+    "designer": "Enzo Mari",
+    "azienda": "Driade",
+    "azienda_attuale": "Driade",
+    "categoria": "tavolo",
+    "foto": "mari-cugino.jpg"
+  },
+  {
+    "nome": "Frate",
+    "anno": 1973,
+    "designer": "Enzo Mari",
+    "azienda": "Driade",
+    "azienda_attuale": "Driade",
+    "categoria": "tavolo",
+    "foto": "mari-frate.jpg"
+  },
+  {
+    "nome": "Fratello",
+    "anno": 1973,
+    "designer": "Enzo Mari",
+    "azienda": "Driade",
+    "azienda_attuale": "Driade",
+    "categoria": "tavolo",
+    "foto": "mari-fratello.jpg"
+  },
+  {
+    "nome": "Kurili",
+    "anno": 1973,
+    "designer": "Enzo Mari",
+    "azienda": "Danese Milano",
+    "azienda_attuale": "Danese Milano",
+    "categoria": "posate da insalata",
+    "foto": "mari-kurili.jpg"
+  },
+  {
+    "nome": "16 pesci",
+    "anno": 1974,
+    "designer": "Enzo Mari",
+    "azienda": "Danese Milano",
+    "azienda_attuale": "Danese Milano",
+    "categoria": "puzzle",
+    "foto": "mari-16-pesci.jpg"
+  },
+  {
+    "nome": "Trieste",
+    "anno": 1974,
+    "designer": "Enzo Mari",
+    "azienda": "Rexite",
+    "azienda_attuale": "Rexite",
+    "categoria": "sistema di librerie",
+    "foto": "mari-trieste.jpg"
+  },
+  {
+    "nome": "Aggregato",
+    "anno": 1976,
+    "designer": [
+      "Enzo Mari",
+      "Giancarlo Fassina"
+    ],
+    "azienda": "Artemide",
+    "azienda_attuale": "Artemide",
+    "categoria": "sistema di lampade",
+    "foto": "mari-fassina-aggregato.jpg"
+  },
+  {
+    "nome": "Sumatra",
+    "anno": 1976,
+    "designer": "Enzo Mari",
+    "azienda": "Danese Milano",
+    "azienda_attuale": "Danese Milano",
+    "categoria": "vaschetta portacarte",
+    "foto": "mari-sumatra.jpg"
+  },
+  {
+    "nome": "Bric",
+    "anno": 1977,
+    "designer": [
+      "Enzo Mari",
+      "Antonia Astori"
+    ],
+    "azienda": "Driade",
+    "azienda_attuale": null,
+    "categoria": "sistema di mobili modulari",
+    "foto": "mari-astori-bric.jpg"
+  },
+  {
+    "nome": "Cicladi",
+    "anno": 1977,
+    "designer": "Enzo Mari",
+    "azienda": "Danese Milano",
+    "azienda_attuale": "Danese Milano",
+    "categoria": "vaso e ciotola",
+    "foto": "mari-cicladi.jpg"
+  },
+  {
+    "nome": "Koro",
+    "anno": 1977,
+    "designer": "Enzo Mari",
+    "azienda": "Danese Milano",
+    "azienda_attuale": "Danese Milano",
+    "categoria": "cestino gettacarte",
+    "foto": "mari-koro.jpg"
+  },
+  {
+    "nome": "Giglio",
+    "anno": 1985,
+    "designer": "Enzo Mari",
+    "azienda": "Danese Milano",
+    "azienda_attuale": "Danese Milano",
+    "categoria": "tagliacarte",
+    "foto": "mari-giglio.jpg"
+  },
+  {
+    "nome": "Murano D",
+    "anno": 1991,
+    "designer": "Enzo Mari",
+    "azienda": "Danese Milano",
+    "azienda_attuale": "Danese Milano",
+    "categoria": "vaso",
+    "foto": "mari-murano-d.jpg"
+  },
+  {
+    "nome": "Murano E",
+    "anno": 1991,
+    "designer": "Enzo Mari",
+    "azienda": "Danese Milano",
+    "azienda_attuale": "Danese Milano",
+    "categoria": "vaso",
+    "foto": "mari-murano-e.jpg"
+  },
+  {
+    "nome": "Flores",
+    "anno": 1992,
+    "designer": "Enzo Mari",
+    "azienda": "Danese Milano",
+    "azienda_attuale": "Danese Milano",
+    "categoria": "scatola",
+    "foto": "mari-flores.jpg"
+  },
+  {
+    "nome": "Alta Tensione",
+    "anno": 1996,
+    "designer": "Enzo Mari",
+    "azienda": "Kartell",
+    "azienda_attuale": "Kartell",
+    "categoria": "appendiabiti da terra",
+    "foto": "mari-alta-tensione.jpg"
+  },
+  {
+    "nome": "Box",
+    "anno": 1996,
+    "designer": "Enzo Mari",
+    "azienda": "Driade",
+    "azienda_attuale": null,
+    "categoria": "sedia smontabile",
+    "foto": "mari-box.jpg"
+  },
+  {
+    "nome": "EM06",
+    "anno": 1997,
+    "designer": "Enzo Mari",
+    "azienda": "Alessi",
+    "azienda_attuale": null,
+    "categoria": "scatola per sale e contenitore multiuso",
+    "foto": "mari-em06.jpg"
+  },
+  {
+    "nome": "Titanic",
+    "anno": 1997,
+    "designer": "Enzo Mari",
+    "azienda": "Alessi",
+    "azienda_attuale": null,
+    "categoria": "spremiagrumi",
+    "foto": "mari-titanic.jpg"
+  },
+  {
+    "nome": "Press",
+    "anno": 1999,
+    "designer": "Enzo Mari",
+    "azienda": "Rexite",
+    "azienda_attuale": "Rexite",
+    "categoria": "portariviste",
+    "foto": "mari-press.jpg"
+  },
+  {
+    "nome": "Elisabetta",
+    "anno": 2001,
+    "designer": "Enzo Mari",
+    "azienda": "Danese Milano",
+    "azienda_attuale": "Danese Milano",
+    "categoria": "vassoio",
+    "foto": "mari-elisabetta.jpg"
+  },
+  {
+    "nome": "Globo",
+    "anno": 2001,
+    "designer": "Enzo Mari",
+    "azienda": "Magis",
+    "azienda_attuale": "Magis",
+    "categoria": "appendiabiti da parete",
+    "foto": "mari-globo.jpg"
+  },
+  {
+    "nome": "Legato",
+    "anno": 2001,
+    "designer": "Enzo Mari",
+    "azienda": "Driade",
+    "azienda_attuale": null,
+    "categoria": "tavolo",
+    "foto": "mari-legato.jpg"
+  },
+  {
+    "nome": "Mariolina",
+    "anno": 2002,
+    "designer": "Enzo Mari",
+    "azienda": "Magis",
+    "azienda_attuale": "Magis",
+    "categoria": "sedia",
+    "foto": "mari-mariolina.jpg"
+  },
+  {
+    "nome": "Memo",
+    "anno": 2003,
+    "designer": "Enzo Mari",
+    "azienda": "Magis",
+    "azienda_attuale": "Magis",
+    "categoria": "bacheca",
+    "foto": "mari-memo.jpg"
+  },
+  {
+    "nome": "Stilo",
+    "anno": 2003,
+    "designer": "Enzo Mari",
+    "azienda": "Olivari",
+    "azienda_attuale": "Olivari",
+    "categoria": "maniglia",
+    "foto": "mari-stilo.jpg"
+  },
+  {
+    "nome": "Successo",
+    "anno": 2003,
+    "designer": "Enzo Mari",
+    "azienda": "Danese Milano",
+    "azienda_attuale": "Danese Milano",
+    "categoria": "vassoio",
+    "foto": "mari-successo.jpg"
+  },
+  {
+    "nome": "Seggiolina Pop",
+    "anno": 2004,
+    "designer": "Enzo Mari",
+    "azienda": "Magis",
+    "azienda_attuale": "Magis",
+    "categoria": "sedia per bambini",
+    "foto": "mari-seggiolina-pop.jpg"
+  },
+  {
+    "nome": "Venezia",
+    "anno": 2008,
+    "designer": "Enzo Mari",
+    "azienda": "Rexite",
+    "azienda_attuale": "Rexite",
+    "categoria": "libreria",
+    "foto": "mari-venezia.jpg"
+  },
+  {
+    "nome": "Farfalla",
+    "anno": 2022,
+    "designer": "Enzo Mari",
+    "azienda": "Alessi",
+    "azienda_attuale": "Alessi",
+    "categoria": "schiaccianoci",
+    "foto": "mari-farfalla.jpg"
+  },
+  {
+    "nome": "Mariolina Stool",
+    "anno": 2026,
+    "designer": "Enzo Mari",
+    "azienda": "Magis",
+    "azienda_attuale": "Magis",
+    "categoria": "sgabello impilabile",
+    "foto": "mari-mariolina-stool.jpg"
+  },
+  {
+    "nome": "Mod. 4041",
+    "anno": 1968,
+    "designer": "Nanda Vigo",
+    "azienda": "Kartell",
+    "azienda_attuale": null,
+    "categoria": "lampada da terra",
+    "foto": "vigo-mod-4041.jpg"
+  },
+  {
+    "nome": "Iceberg",
+    "anno": 1970,
+    "designer": "Nanda Vigo",
+    "azienda": "Arredoluce",
+    "azienda_attuale": null,
+    "categoria": "lampada da tavolo",
+    "foto": "vigo-iceberg.jpg"
+  },
+  {
+    "nome": "Iceberg negativo",
+    "anno": 1970,
+    "designer": "Nanda Vigo",
+    "azienda": "Arredoluce",
+    "azienda_attuale": null,
+    "categoria": "lampada da tavolo",
+    "foto": "vigo-iceberg-negativo.jpg"
+  },
+  {
+    "nome": "Linea",
+    "anno": 1970,
+    "designer": "Nanda Vigo",
+    "azienda": "Arredoluce",
+    "azienda_attuale": null,
+    "categoria": "lampada da terra",
+    "foto": "vigo-linea.jpg"
+  },
+  {
+    "nome": "Manhattan",
+    "anno": 1970,
+    "designer": "Nanda Vigo",
+    "azienda": "Arredoluce",
+    "azienda_attuale": null,
+    "categoria": "lampada da terra",
+    "foto": "vigo-manhattan.jpg"
+  },
+  {
+    "nome": "Osiris",
+    "anno": 1970,
+    "designer": "Nanda Vigo",
+    "azienda": "Arredoluce",
+    "azienda_attuale": null,
+    "categoria": "lampada",
+    "foto": "vigo-osiris.jpg"
+  },
+  {
+    "nome": "Serie TOP - cassettiera",
+    "anno": 1970,
+    "designer": "Nanda Vigo",
+    "azienda": "Fai International",
+    "azienda_attuale": null,
+    "categoria": "cassettiera",
+    "foto": "vigo-serie-top-cassettiera.jpg"
+  },
+  {
+    "nome": "Serie TOP - cubo bar",
+    "anno": 1970,
+    "designer": "Nanda Vigo",
+    "azienda": "Fai International",
+    "azienda_attuale": null,
+    "categoria": "mobile bar",
+    "foto": "vigo-serie-top-cubo-bar.jpg"
+  },
+  {
+    "nome": "Serie TOP - divano / bar / buffet",
+    "anno": 1970,
+    "designer": "Nanda Vigo",
+    "azienda": "Fai International",
+    "azienda_attuale": null,
+    "categoria": "mobile componibile",
+    "foto": "vigo-serie-top-divano-bar-buffet.jpg"
+  },
+  {
+    "nome": "Serie TOP - letto",
+    "anno": 1970,
+    "designer": "Nanda Vigo",
+    "azienda": "Fai International",
+    "azienda_attuale": null,
+    "categoria": "letto",
+    "foto": "vigo-serie-top-letto.jpg"
+  },
+  {
+    "nome": "Serie TOP - mobile buffet",
+    "anno": 1970,
+    "designer": "Nanda Vigo",
+    "azienda": "Fai International",
+    "azienda_attuale": null,
+    "categoria": "mobile buffet",
+    "foto": "vigo-serie-top-mobile-buffet.jpg"
+  },
+  {
+    "nome": "Serie TOP - mobile sound componibile",
+    "anno": 1970,
+    "designer": "Nanda Vigo",
+    "azienda": "Fai International",
+    "azienda_attuale": null,
+    "categoria": "mobile per impianto audio",
+    "foto": "vigo-serie-top-mobile-sound-componibile.jpg"
+  },
+  {
+    "nome": "Serie TOP - mobile TV / sound",
+    "anno": 1970,
+    "designer": "Nanda Vigo",
+    "azienda": "Fai International",
+    "azienda_attuale": null,
+    "categoria": "mobile TV e audio",
+    "foto": "vigo-serie-top-mobile-tv-sound.jpg"
+  },
+  {
+    "nome": "Serie TOP - tavolini bassi",
+    "anno": 1970,
+    "designer": "Nanda Vigo",
+    "azienda": "Fai International",
+    "azienda_attuale": null,
+    "categoria": "tavolini",
+    "foto": "vigo-serie-top-tavolini-bassi.jpg"
+  },
+  {
+    "nome": "Serie TOP - tavolo e sedia",
+    "anno": 1970,
+    "designer": "Nanda Vigo",
+    "azienda": "Fai International",
+    "azienda_attuale": null,
+    "categoria": "tavolo e sedia",
+    "foto": "vigo-serie-top-tavolo-e-sedia.jpg"
+  },
+  {
+    "nome": "Utopia",
+    "anno": 1970,
+    "designer": "Nanda Vigo",
+    "azienda": "Arredoluce",
+    "azienda_attuale": null,
+    "categoria": "lampada da tavolo",
+    "foto": "vigo-utopia.jpg"
+  },
+  {
+    "nome": "Blocco",
+    "anno": 1971,
+    "designer": "Nanda Vigo",
+    "azienda": "Driade",
+    "azienda_attuale": null,
+    "categoria": "poltroncina",
+    "foto": "vigo-blocco.jpg"
+  },
+  {
+    "nome": "Corner",
+    "anno": 1971,
+    "designer": "Nanda Vigo",
+    "azienda": "Driade",
+    "azienda_attuale": null,
+    "categoria": "tavolino",
+    "foto": "vigo-corner.jpg"
+  },
+  {
+    "nome": "Due Più",
+    "anno": 1971,
+    "designer": "Nanda Vigo",
+    "azienda": "Conconi-More Coffee",
+    "azienda_attuale": null,
+    "categoria": "sedia",
+    "foto": "vigo-due-piu.jpg",
+    "top": true
+  },
+  {
+    "nome": "Explorer",
+    "anno": 1971,
+    "designer": "Nanda Vigo",
+    "azienda": "Arredoluce",
+    "azienda_attuale": null,
+    "categoria": "lampada",
+    "foto": "vigo-explorer.jpg"
+  },
+  {
+    "nome": "Geometral",
+    "anno": 1971,
+    "designer": "Nanda Vigo",
+    "azienda": "Arredoluce",
+    "azienda_attuale": null,
+    "categoria": "lampada da parete e da tavolo",
+    "foto": "vigo-geometral.jpg"
+  },
+  {
+    "nome": "Blok",
+    "anno": 1972,
+    "designer": "Nanda Vigo",
+    "azienda": "Acerbis",
+    "azienda_attuale": null,
+    "categoria": "tavolo",
+    "foto": "vigo-blok.jpg"
+  },
+  {
+    "nome": "Blok consolle bar",
+    "anno": 1972,
+    "designer": "Nanda Vigo",
+    "azienda": "Acerbis",
+    "azienda_attuale": null,
+    "categoria": "consolle bar",
+    "foto": "vigo-blok-consolle-bar.jpg"
+  },
+  {
+    "nome": "Essential",
+    "anno": 1972,
+    "designer": "Nanda Vigo",
+    "azienda": "Driade",
+    "azienda_attuale": null,
+    "categoria": "tavolo",
+    "foto": "vigo-essential.jpg"
+  },
+  {
+    "nome": "N.V. 5 bm",
+    "anno": 1972,
+    "designer": "Nanda Vigo",
+    "azienda": "Cemer",
+    "azienda_attuale": null,
+    "categoria": "piastrella da rivestimento",
+    "foto": "vigo-n-v-5-bm.jpg"
+  },
+  {
+    "nome": "N.V. 5 gn a diagonale",
+    "anno": 1972,
+    "designer": "Nanda Vigo",
+    "azienda": "Cemer",
+    "azienda_attuale": null,
+    "categoria": "piastrella da rivestimento",
+    "foto": "vigo-n-v-5-gn-a-diagonale.jpg"
+  },
+  {
+    "nome": "Wright-Wright",
+    "anno": 1972,
+    "designer": "Nanda Vigo",
+    "azienda": "Driade",
+    "azienda_attuale": null,
+    "categoria": "sedia",
+    "foto": "vigo-wright-wright.jpg"
+  },
+  {
+    "nome": "Cronotopo",
+    "anno": 1973,
+    "designer": "Nanda Vigo",
+    "azienda": "Driade",
+    "azienda_attuale": null,
+    "categoria": "mobile credenza",
+    "foto": "vigo-cronotopo.jpg"
+  },
+  {
+    "nome": "Nevada",
+    "anno": 1973,
+    "designer": "Nanda Vigo",
+    "azienda": "Driade",
+    "azienda_attuale": null,
+    "categoria": "divano",
+    "foto": "vigo-nevada.jpg"
+  },
+  {
+    "nome": "Video",
+    "anno": 1973,
+    "designer": "Nanda Vigo",
+    "azienda": "Minilumen Design",
+    "azienda_attuale": null,
+    "categoria": "lampada da tavolo e da terra",
+    "foto": "vigo-video.jpg"
+  },
+  {
+    "nome": "Andromeda",
+    "anno": 1974,
+    "designer": "Nanda Vigo",
+    "azienda": "Glas Italia",
+    "azienda_attuale": null,
+    "categoria": "specchio",
+    "foto": "vigo-andromeda.jpg"
+  },
+  {
+    "nome": "DF",
+    "anno": 1976,
+    "designer": "Nanda Vigo",
+    "azienda": "Acerbis",
+    "azienda_attuale": null,
+    "categoria": "specchio",
+    "foto": "vigo-df.jpg"
+  },
+  {
+    "nome": "Easy",
+    "anno": 1976,
+    "designer": "Nanda Vigo",
+    "azienda": "Glas Italia",
+    "azienda_attuale": null,
+    "categoria": "sistema di mobili e tavoli componibili",
+    "foto": "vigo-easy.jpg"
+  },
+  {
+    "nome": "Collezione n. 5",
+    "anno": 1977,
+    "designer": "Nanda Vigo",
+    "azienda": "Artelano",
+    "azienda_attuale": null,
+    "categoria": "collezione di tavoli, tavolini e contenitori",
+    "foto": "vigo-collezione-n-5.jpg"
+  },
+  {
+    "nome": "Pannelli per controsoffittature",
+    "anno": 1978,
+    "designer": "Nanda Vigo",
+    "azienda": "Galvar",
+    "azienda_attuale": null,
+    "categoria": "pannelli in alluminio serigrafato",
+    "foto": "vigo-pannelli-per-controsoffittature.jpg"
+  },
+  {
+    "nome": "Classico",
+    "anno": 1980,
+    "designer": "Nanda Vigo",
+    "azienda": "Glas Italia",
+    "azienda_attuale": null,
+    "categoria": "tavoli bassi, ripiani e carrelli",
+    "foto": "vigo-classico.jpg"
+  },
+  {
+    "nome": "Stripes blu e gialle",
+    "anno": 1980,
+    "designer": "Nanda Vigo",
+    "azienda": "Interior Gabbianelli",
+    "azienda_attuale": null,
+    "categoria": "piastrelle da rivestimento",
+    "foto": "vigo-stripes-blu-e-gialle.jpg"
+  },
+  {
+    "nome": "Cosmos",
+    "anno": 1981,
+    "designer": "Nanda Vigo",
+    "azienda": "Glas Italia",
+    "azienda_attuale": null,
+    "categoria": "serie di specchi",
+    "foto": "vigo-cosmos.jpg"
+  },
+  {
+    "nome": "Stripes gialle",
+    "anno": 1981,
+    "designer": "Nanda Vigo",
+    "azienda": "Interior Gabbianelli",
+    "azienda_attuale": null,
+    "categoria": "piastrelle da rivestimento",
+    "foto": "vigo-stripes-gialle.jpg"
+  },
+  {
+    "nome": "Stripes rosse",
+    "anno": 1981,
+    "designer": "Nanda Vigo",
+    "azienda": "Interior Gabbianelli",
+    "azienda_attuale": null,
+    "categoria": "piastrelle da rivestimento",
+    "foto": "vigo-stripes-rosse.jpg"
+  },
+  {
+    "nome": "Light Tree",
+    "anno": 1983,
+    "designer": "Nanda Vigo",
+    "azienda": "Anthologie Quartett",
+    "azienda_attuale": null,
+    "categoria": "lampade",
+    "foto": "vigo-light-tree.jpg"
+  },
+  {
+    "nome": "Modern Art",
+    "anno": 1983,
+    "designer": "Nanda Vigo",
+    "azienda": "Glas Italia",
+    "azienda_attuale": null,
+    "categoria": "serie di tavoli e specchi",
+    "foto": "vigo-modern-art.jpg"
+  },
+  {
+    "nome": "Splash",
+    "anno": 1983,
+    "designer": "Nanda Vigo",
+    "azienda": "Interior Gabbianelli",
+    "azienda_attuale": null,
+    "categoria": "piastrelle da rivestimento",
+    "foto": "vigo-splash.jpg"
+  },
+  {
+    "nome": "Star Sistem",
+    "anno": 1983,
+    "designer": "Nanda Vigo",
+    "azienda": "Interior Gabbianelli",
+    "azienda_attuale": null,
+    "categoria": "piastrelle da rivestimento",
+    "foto": "vigo-star-sistem.jpg"
+  },
+  {
+    "nome": "Stripes New",
+    "anno": 1983,
+    "designer": "Nanda Vigo",
+    "azienda": "Interior Gabbianelli",
+    "azienda_attuale": null,
+    "categoria": "piastrelle da rivestimento",
+    "foto": "vigo-stripes-new.jpg"
+  },
+  {
+    "nome": "Border",
+    "anno": 1984,
+    "designer": "Nanda Vigo",
+    "azienda": "Interior Gabbianelli",
+    "azienda_attuale": null,
+    "categoria": "piastrelle da rivestimento",
+    "foto": "vigo-border.jpg"
+  },
+  {
+    "nome": "Forty",
+    "anno": 1985,
+    "designer": "Nanda Vigo",
+    "azienda": "Glas Italia",
+    "azienda_attuale": null,
+    "categoria": "tavolo",
+    "foto": "vigo-forty.jpg"
+  },
+  {
+    "nome": "Border",
+    "anno": 1986,
+    "designer": "Nanda Vigo",
+    "azienda": "Glas Italia",
+    "azienda_attuale": null,
+    "categoria": "serie di tavoli",
+    "foto": "vigo-border-glas-italia.jpg"
+  },
+  {
+    "nome": "Gral",
+    "anno": 1986,
+    "designer": "Nanda Vigo",
+    "azienda": "Anthologie Quartett",
+    "azienda_attuale": null,
+    "categoria": "oggetti per la tavola",
+    "foto": "vigo-gral.jpg"
+  },
+  {
+    "nome": "Nul",
+    "anno": 1986,
+    "designer": "Nanda Vigo",
+    "azienda": "Glas Italia",
+    "azienda_attuale": null,
+    "categoria": "serie di tavoli",
+    "foto": "vigo-nul.jpg"
+  },
+  {
+    "nome": "On Ice",
+    "anno": 1987,
+    "designer": "Nanda Vigo",
+    "azienda": "Glas Italia",
+    "azienda_attuale": null,
+    "categoria": "serie di specchi",
+    "foto": "vigo-on-ice.jpg"
+  },
+  {
+    "nome": "Round Round",
+    "anno": 1987,
+    "designer": "Nanda Vigo",
+    "azienda": "Glas Italia",
+    "azienda_attuale": null,
+    "categoria": "serie di specchi",
+    "foto": "vigo-round-round.jpg"
+  },
+  {
+    "nome": "Venezia",
+    "anno": 1987,
+    "designer": "Nanda Vigo",
+    "azienda": "Acerbis",
+    "azienda_attuale": null,
+    "categoria": "serie di specchi",
+    "foto": "vigo-venezia.jpg"
+  },
+  {
+    "nome": "Bric",
+    "anno": 1988,
+    "designer": "Nanda Vigo",
+    "azienda": "Glas Italia",
+    "azienda_attuale": null,
+    "categoria": "serie di specchi",
+    "foto": "vigo-bric.jpg"
+  },
+  {
+    "nome": "Comodini",
+    "anno": 1988,
+    "designer": "Nanda Vigo",
+    "azienda": "Gola Design",
+    "azienda_attuale": null,
+    "categoria": "comodini",
+    "foto": "vigo-comodini.jpg"
+  },
+  {
+    "nome": "Funny",
+    "anno": 1988,
+    "designer": "Nanda Vigo",
+    "azienda": "Glas Italia",
+    "azienda_attuale": null,
+    "categoria": "specchio da tavolo",
+    "foto": "vigo-funny.jpg"
+  },
+  {
+    "nome": "Scornice",
+    "anno": 1988,
+    "designer": "Nanda Vigo",
+    "azienda": "Glas Italia",
+    "azienda_attuale": null,
+    "categoria": "specchio",
+    "foto": "vigo-scornice.jpg"
+  },
+  {
+    "nome": "Candelieri",
+    "anno": 1989,
+    "designer": "Nanda Vigo",
+    "azienda": "Nuova Vilca",
+    "azienda_attuale": null,
+    "categoria": "candelieri",
+    "foto": "vigo-candelieri.jpg"
+  },
+  {
+    "nome": "Centro tavola",
+    "anno": 1989,
+    "designer": "Nanda Vigo",
+    "azienda": "Nuova Vilca",
+    "azienda_attuale": null,
+    "categoria": "centrotavola",
+    "foto": "vigo-centro-tavola.jpg"
+  },
+  {
+    "nome": "Epoca",
+    "anno": 1989,
+    "designer": "Nanda Vigo",
+    "azienda": "Sica",
+    "azienda_attuale": null,
+    "categoria": "specchio",
+    "foto": "vigo-epoca.jpg"
+  },
+  {
+    "nome": "Flù",
+    "anno": 1989,
+    "designer": "Nanda Vigo",
+    "azienda": "Glas Italia",
+    "azienda_attuale": null,
+    "categoria": "parete decorativa",
+    "foto": "vigo-flu.jpg"
+  },
+  {
+    "nome": "I nuovi barbari",
+    "anno": 1989,
+    "designer": "Nanda Vigo",
+    "azienda": "Glas Italia",
+    "azienda_attuale": null,
+    "categoria": "serie di tavoli",
+    "foto": "vigo-i-nuovi-barbari.jpg"
+  },
+  {
+    "nome": "Light Tree",
+    "anno": 1989,
+    "designer": "Nanda Vigo",
+    "azienda": "Lumi",
+    "azienda_attuale": null,
+    "categoria": "lampade da terra e appliques",
+    "foto": "vigo-light-tree-lumi.jpg"
+  },
+  {
+    "nome": "Serie di tappeti",
+    "anno": 1989,
+    "designer": "Nanda Vigo",
+    "azienda": "Driade",
+    "azienda_attuale": null,
+    "categoria": "tappeti",
+    "foto": "vigo-serie-di-tappeti.jpg"
+  },
+  {
+    "nome": "Style",
+    "anno": 1989,
+    "designer": "Nanda Vigo",
+    "azienda": "Glas Italia",
+    "azienda_attuale": null,
+    "categoria": "serie di specchi",
+    "foto": "vigo-style.jpg"
+  },
+  {
+    "nome": "Appliques",
+    "anno": 1990,
+    "designer": "Nanda Vigo",
+    "azienda": "Murano Due",
+    "azienda_attuale": null,
+    "categoria": "lampade da parete",
+    "foto": "vigo-appliques.jpg"
+  },
+  {
+    "nome": "Colours / Colours Light",
+    "anno": 1990,
+    "designer": "Nanda Vigo",
+    "azienda": "Glas Italia",
+    "azienda_attuale": null,
+    "categoria": "serie di specchi",
+    "foto": "vigo-colours-colours-light.jpg"
+  },
+  {
+    "nome": "Go-on",
+    "anno": 1990,
+    "designer": "Nanda Vigo",
+    "azienda": "Glas Italia",
+    "azienda_attuale": null,
+    "categoria": "serie di specchi e tavoli",
+    "foto": "vigo-go-on.jpg"
+  },
+  {
+    "nome": "Mediterraneo",
+    "anno": 1990,
+    "designer": "Nanda Vigo",
+    "azienda": "Effepi Marmi",
+    "azienda_attuale": null,
+    "categoria": "serie di tavoli",
+    "foto": "vigo-mediterraneo.jpg"
+  },
+  {
+    "nome": "Pompei",
+    "anno": 1990,
+    "designer": [
+      "Nanda Vigo",
+      "Annibale Oste"
+    ],
+    "azienda": "Anthologie Quartett",
+    "azienda_attuale": null,
+    "categoria": "serie di posate e vassoi in argento",
+    "foto": "vigo-oste-pompei.jpg"
+  },
+  {
+    "nome": "A Elisa",
+    "anno": 1991,
+    "designer": "Nanda Vigo",
+    "azienda": "Glas Italia",
+    "azienda_attuale": null,
+    "categoria": "consolle",
+    "foto": "vigo-a-elisa.jpg"
+  },
+  {
+    "nome": "Antiko",
+    "anno": 1991,
+    "designer": "Nanda Vigo",
+    "azienda": "Glas Italia",
+    "azienda_attuale": null,
+    "categoria": "tavolini",
+    "foto": "vigo-antiko.jpg"
+  },
+  {
+    "nome": "Arazzi per testiere letto",
+    "anno": 1991,
+    "designer": "Nanda Vigo",
+    "azienda": "Flou",
+    "azienda_attuale": null,
+    "categoria": "arazzi per testiere letto",
+    "foto": "vigo-arazzi-per-testiere-letto.jpg"
+  },
+  {
+    "nome": "Hergrace",
+    "anno": 1991,
+    "designer": "Nanda Vigo",
+    "azienda": "Genius",
+    "azienda_attuale": null,
+    "categoria": "sedia",
+    "foto": "vigo-hergrace.jpg"
+  },
+  {
+    "nome": "Linear",
+    "anno": 1991,
+    "designer": "Nanda Vigo",
+    "azienda": "Glas Italia",
+    "azienda_attuale": null,
+    "categoria": "serie di specchi",
+    "foto": "vigo-linear.jpg"
+  },
+  {
+    "nome": "Tifortri",
+    "anno": 1991,
+    "designer": "Nanda Vigo",
+    "azienda": "Genius",
+    "azienda_attuale": null,
+    "categoria": "divano",
+    "foto": "vigo-tifortri.jpg"
+  },
+  {
+    "nome": "Tifortù",
+    "anno": 1991,
+    "designer": "Nanda Vigo",
+    "azienda": "Genius",
+    "azienda_attuale": null,
+    "categoria": "divano",
+    "foto": "vigo-tifortu.jpg"
+  },
+  {
+    "nome": "Epoca Up",
+    "anno": 1992,
+    "designer": "Nanda Vigo",
+    "azienda": "Sica",
+    "azienda_attuale": null,
+    "categoria": "specchio",
+    "foto": "vigo-epoca-up.jpg"
+  },
+  {
+    "nome": "Holiday on Ice",
+    "anno": 1992,
+    "designer": "Nanda Vigo",
+    "azienda": "Glas Italia",
+    "azienda_attuale": null,
+    "categoria": "serie di specchiere e tavoli",
+    "foto": "vigo-holiday-on-ice.jpg"
+  },
+  {
+    "nome": "Lady Placidia",
+    "anno": 1992,
+    "designer": "Nanda Vigo",
+    "azienda": "Glas Italia",
+    "azienda_attuale": null,
+    "categoria": "specchiera / tavolo",
+    "foto": "vigo-lady-placidia.jpg"
+  },
+  {
+    "nome": "Lady Theodora",
+    "anno": 1992,
+    "designer": "Nanda Vigo",
+    "azienda": "Glas Italia",
+    "azienda_attuale": null,
+    "categoria": "specchiera / tavolo",
+    "foto": "vigo-lady-theodora.jpg"
+  },
+  {
+    "nome": "Nianda",
+    "anno": 1992,
+    "designer": "Nanda Vigo",
+    "azienda": "Gallotti & Radice",
+    "azienda_attuale": null,
+    "categoria": "tavolo scrivania",
+    "foto": "vigo-nianda.jpg"
+  },
+  {
+    "nome": "Opera",
+    "anno": 1993,
+    "designer": "Nanda Vigo",
+    "azienda": "Sica",
+    "azienda_attuale": null,
+    "categoria": "specchio",
+    "foto": "vigo-opera.jpg"
+  },
+  {
+    "nome": "Serie di cavatappi",
+    "anno": 1993,
+    "designer": "Nanda Vigo",
+    "azienda": "Arti e Mestieri",
+    "azienda_attuale": null,
+    "categoria": "cavatappi",
+    "foto": "vigo-serie-di-cavatappi.jpg"
+  },
+  {
+    "nome": "Alice",
+    "anno": 1994,
+    "designer": "Nanda Vigo",
+    "azienda": "Sica",
+    "azienda_attuale": null,
+    "categoria": "mensola",
+    "foto": "vigo-alice.jpg"
+  },
+  {
+    "nome": "Draped",
+    "anno": 1994,
+    "designer": "Nanda Vigo",
+    "azienda": "Glas Italia",
+    "azienda_attuale": null,
+    "categoria": "specchiera",
+    "foto": "vigo-draped.jpg"
+  },
+  {
+    "nome": "Frammento",
+    "anno": 1994,
+    "designer": "Nanda Vigo",
+    "azienda": "Sica",
+    "azienda_attuale": null,
+    "categoria": "mensola",
+    "foto": "vigo-frammento.jpg"
+  },
+  {
+    "nome": "Positano",
+    "anno": 1994,
+    "designer": "Nanda Vigo",
+    "azienda": "Sica",
+    "azienda_attuale": null,
+    "categoria": "tavolo",
+    "foto": "vigo-positano.jpg"
+  },
+  {
+    "nome": "Rokokò",
+    "anno": 1994,
+    "designer": "Nanda Vigo",
+    "azienda": "Arvex",
+    "azienda_attuale": null,
+    "categoria": "serie di specchiere in vetro fuso",
+    "foto": "vigo-rokoko.jpg"
+  },
+  {
+    "nome": "Storet",
+    "anno": 1994,
+    "designer": "Nanda Vigo",
+    "azienda": "Acerbis",
+    "azienda_attuale": "Acerbis",
+    "categoria": "cassettiera",
+    "foto": "vigo-storet.jpg"
+  },
+  {
+    "nome": "Puzzle",
+    "anno": 1995,
+    "designer": "Nanda Vigo",
+    "azienda": "Glas Italia",
+    "azienda_attuale": null,
+    "categoria": "serie di specchi",
+    "foto": "vigo-puzzle.jpg"
+  },
+  {
+    "nome": "Rokokò",
+    "anno": 1995,
+    "designer": "Nanda Vigo",
+    "azienda": "Glas Italia",
+    "azienda_attuale": null,
+    "categoria": "serie di specchi",
+    "foto": "vigo-rokoko-glas-italia.jpg"
+  },
+  {
+    "nome": "Dreams-off",
+    "anno": 1996,
+    "designer": "Nanda Vigo",
+    "azienda": "Linn-Sui International",
+    "azienda_attuale": null,
+    "categoria": "letto",
+    "foto": "vigo-dreams-off.jpg"
+  },
+  {
+    "nome": "Klassico",
+    "anno": 1996,
+    "designer": "Nanda Vigo",
+    "azienda": "Glas Italia",
+    "azienda_attuale": null,
+    "categoria": "serie di tavoli",
+    "foto": "vigo-klassico.jpg"
+  },
+  {
+    "nome": "Vasi in argento",
+    "anno": 1996,
+    "designer": "Nanda Vigo",
+    "azienda": "Pampaloni",
+    "azienda_attuale": null,
+    "categoria": "vasi",
+    "foto": "vigo-vasi-in-argento.jpg"
+  },
+  {
+    "nome": "Ratio",
+    "anno": 1998,
+    "designer": "Nanda Vigo",
+    "azienda": "Glas Italia",
+    "azienda_attuale": null,
+    "categoria": "serie di specchi",
+    "foto": "vigo-ratio.jpg"
+  },
+  {
+    "nome": "Gloria",
+    "anno": 1999,
+    "designer": "Nanda Vigo",
+    "azienda": "Baleri",
+    "azienda_attuale": null,
+    "categoria": "lampada da tavolo",
+    "foto": "vigo-gloria.jpg"
+  },
+  {
+    "nome": "Light-Light",
+    "anno": 1999,
+    "designer": "Nanda Vigo",
+    "azienda": "Glas Italia",
+    "azienda_attuale": "Glas Italia",
+    "categoria": "mensola luminosa",
+    "foto": "vigo-light-light.jpg"
+  },
+  {
+    "nome": "Hello Dolly",
+    "anno": 2001,
+    "designer": "Nanda Vigo",
+    "azienda": "Rapsel",
+    "azienda_attuale": null,
+    "categoria": "specchiera da bagno",
+    "foto": "vigo-hello-dolly.jpg"
+  },
+  {
+    "nome": "Light-Light/Mirrors (LLM)",
+    "anno": 2001,
+    "designer": "Nanda Vigo",
+    "azienda": "Glas Italia",
+    "azienda_attuale": null,
+    "categoria": "consolle specchio",
+    "foto": "vigo-light-light-mirrors-llm.jpg"
+  },
+  {
+    "nome": "Cronotopie",
+    "anno": 2002,
+    "designer": "Nanda Vigo",
+    "azienda": "Glas Italia",
+    "azienda_attuale": null,
+    "categoria": "collezione di specchi",
+    "foto": "vigo-cronotopie.jpg"
+  },
+  {
+    "nome": "Eclipse",
+    "anno": 2003,
+    "designer": "Nanda Vigo",
+    "azienda": "Sica",
+    "azienda_attuale": null,
+    "categoria": "collezione di specchi",
+    "foto": "vigo-eclipse.jpg"
+  },
+  {
+    "nome": "Moon Light",
+    "anno": 2003,
+    "designer": "Nanda Vigo",
+    "azienda": "Curvet Ambienti",
+    "azienda_attuale": null,
+    "categoria": "collezione di specchiere",
+    "foto": "vigo-moon-light.jpg"
+  },
+  {
+    "nome": "Collezione di tappeti",
+    "anno": 2004,
+    "designer": "Nanda Vigo",
+    "azienda": "Memphis Post Design",
+    "azienda_attuale": null,
+    "categoria": "tappeti",
+    "foto": "vigo-collezione-di-tappeti.jpg"
+  },
+  {
+    "nome": "Grande Corniche",
+    "anno": 2004,
+    "designer": "Nanda Vigo",
+    "azienda": "Memphis Post Design",
+    "azienda_attuale": null,
+    "categoria": "specchiera",
+    "foto": "vigo-grande-corniche.jpg"
+  },
+  {
+    "nome": "Kingdom",
+    "anno": 2004,
+    "designer": "Nanda Vigo",
+    "azienda": "Glas Italia",
+    "azienda_attuale": null,
+    "categoria": "collezione",
+    "foto": "vigo-kingdom.jpg"
+  },
+  {
+    "nome": "Psyche",
+    "anno": 2005,
+    "designer": "Nanda Vigo",
+    "azienda": "Glas Italia",
+    "azienda_attuale": null,
+    "categoria": "specchiera",
+    "foto": "vigo-psyche.jpg"
+  },
+  {
+    "nome": "Top 05",
+    "anno": 2005,
+    "designer": "Nanda Vigo",
+    "azienda": "Glas Italia",
+    "azienda_attuale": null,
+    "categoria": "tavolo",
+    "foto": "vigo-top-05.jpg"
+  },
+  {
+    "nome": "Stand by",
+    "anno": 2007,
+    "designer": "Nanda Vigo",
+    "azienda": "Glas Italia",
+    "azienda_attuale": null,
+    "categoria": "serie di specchi",
+    "foto": "vigo-stand-by.jpg"
+  },
+  {
+    "nome": "Hard & Soft",
+    "anno": 2008,
+    "designer": "Nanda Vigo",
+    "azienda": "Galerie Italienne",
+    "azienda_attuale": null,
+    "categoria": "collezione di tavolo, mobile bar e specchi",
+    "foto": "vigo-hard-and-soft.jpg"
+  },
+  {
+    "nome": "Life",
+    "anno": 2008,
+    "designer": "Nanda Vigo",
+    "azienda": "Glas Italia",
+    "azienda_attuale": null,
+    "categoria": "serie di specchi",
+    "foto": "vigo-life.jpg"
+  },
+  {
+    "nome": "Rainbow",
+    "anno": 2008,
+    "designer": "Nanda Vigo",
+    "azienda": "Glas Italia",
+    "azienda_attuale": null,
+    "categoria": "serie di specchi",
+    "foto": "vigo-rainbow.jpg"
+  },
+  {
+    "nome": "Black Iceberg",
+    "anno": 2009,
+    "designer": "Nanda Vigo",
+    "azienda": "Galleria O",
+    "azienda_attuale": null,
+    "categoria": "lampada",
+    "foto": "vigo-black-iceberg.jpg"
+  },
+  {
+    "nome": "New Osiris",
+    "anno": 2009,
+    "designer": "Nanda Vigo",
+    "azienda": "Galleria O",
+    "azienda_attuale": null,
+    "categoria": "lampada",
+    "foto": "vigo-new-osiris.jpg"
+  },
+  {
+    "nome": "New Iceberg",
+    "anno": 2010,
+    "designer": "Nanda Vigo",
+    "azienda": "Galleria O",
+    "azienda_attuale": null,
+    "categoria": "lampada",
+    "foto": "vigo-new-iceberg.jpg"
+  },
+  {
+    "nome": "Crazy Mirror",
+    "anno": 2011,
+    "designer": "Nanda Vigo",
+    "azienda": "Borek Sipek",
+    "azienda_attuale": null,
+    "categoria": "specchiera in vetro soffiato",
+    "foto": "vigo-crazy-mirror.jpg"
+  },
+  {
+    "nome": "Sun-Ra",
+    "anno": 2021,
+    "designer": "Nanda Vigo",
+    "azienda": "JCP Universe",
+    "azienda_attuale": "JCP Universe",
+    "categoria": "lampada",
+    "foto": "vigo-sun-ra.jpg",
+    "top": true
+  },
+  {
+    "nome": "Mod. 113B",
+    "anno": 1946,
+    "designer": "Gino Sarfatti",
+    "azienda": "Arteluce",
+    "azienda_attuale": null,
+    "categoria": "lampada da parete",
+    "foto": "sarfatti-mod-113b.jpg"
+  },
+  {
+    "nome": "Mod. 121",
+    "anno": 1946,
+    "designer": "Gino Sarfatti",
+    "azienda": "Arteluce",
+    "azienda_attuale": null,
+    "categoria": "applique",
+    "foto": "sarfatti-mod-121.jpg"
+  },
+  {
+    "nome": "Mod. 18VT",
+    "anno": 1946,
+    "designer": "Gino Sarfatti",
+    "azienda": "Arteluce",
+    "azienda_attuale": null,
+    "categoria": "applique",
+    "foto": "sarfatti-mod-18vt.jpg"
+  },
+  {
+    "nome": "Mod. 1025",
+    "anno": 1948,
+    "designer": "Gino Sarfatti",
+    "azienda": "Arteluce",
+    "azienda_attuale": null,
+    "categoria": "lampada da terra",
+    "foto": "sarfatti-mod-1025.jpg"
+  },
+  {
+    "nome": "Mod. 2065",
+    "anno": 1950,
+    "designer": "Gino Sarfatti",
+    "azienda": "Arteluce",
+    "azienda_attuale": "Astep",
+    "categoria": "lampada a sospensione",
+    "foto": "sarfatti-mod-2065.jpg"
+  },
+  {
+    "nome": "Mod. 3001/14",
+    "anno": 1950,
+    "designer": "Gino Sarfatti",
+    "azienda": "Arteluce",
+    "azienda_attuale": null,
+    "categoria": "plafoniera",
+    "foto": "sarfatti-mod-3001-14.jpg"
+  },
+  {
+    "nome": "Mod. 3001/16",
+    "anno": 1950,
+    "designer": "Gino Sarfatti",
+    "azienda": "Arteluce",
+    "azienda_attuale": null,
+    "categoria": "plafoniera",
+    "foto": "sarfatti-mod-3001-16.jpg"
+  },
+  {
+    "nome": "Mod. 3001/30",
+    "anno": 1950,
+    "designer": "Gino Sarfatti",
+    "azienda": "Arteluce",
+    "azienda_attuale": null,
+    "categoria": "plafoniera",
+    "foto": "sarfatti-mod-3001-30.jpg"
+  },
+  {
+    "nome": "Mod. 3001/50",
+    "anno": 1950,
+    "designer": "Gino Sarfatti",
+    "azienda": "Arteluce",
+    "azienda_attuale": null,
+    "categoria": "plafoniera",
+    "foto": "sarfatti-mod-3001-50.jpg"
+  },
+  {
+    "nome": "Mod. 31B",
+    "anno": 1950,
+    "designer": "Gino Sarfatti",
+    "azienda": "Arteluce",
+    "azienda_attuale": null,
+    "categoria": "applique",
+    "foto": "sarfatti-mod-31b.jpg"
+  },
+  {
+    "nome": "Mod. 36",
+    "anno": 1950,
+    "designer": "Gino Sarfatti",
+    "azienda": "Arteluce",
+    "azienda_attuale": null,
+    "categoria": "applique",
+    "foto": "sarfatti-mod-36.jpg"
+  },
+  {
+    "nome": "Mod. 537",
+    "anno": 1950,
+    "designer": "Gino Sarfatti",
+    "azienda": "Arteluce",
+    "azienda_attuale": "Astep",
+    "categoria": "lampada da tavolo",
+    "foto": "sarfatti-mod-537.jpg",
+    "top": true
+  },
+  {
+    "nome": "Mod. 537/G",
+    "anno": 1950,
+    "designer": "Gino Sarfatti",
+    "azienda": "Arteluce",
+    "azienda_attuale": null,
+    "categoria": "lampada da tavolo",
+    "foto": "sarfatti-mod-537-g.jpg"
+  },
+  {
+    "nome": "Mod. 1050/1",
+    "anno": 1951,
+    "designer": "Gino Sarfatti",
+    "azienda": "Arteluce",
+    "azienda_attuale": null,
+    "categoria": "lampada da terra",
+    "foto": "sarfatti-mod-1050-1.jpg"
+  },
+  {
+    "nome": "Mod. 1050/2",
+    "anno": 1951,
+    "designer": "Gino Sarfatti",
+    "azienda": "Arteluce",
+    "azienda_attuale": null,
+    "categoria": "lampada da terra",
+    "foto": "sarfatti-mod-1050-2.jpg"
+  },
+  {
+    "nome": "Mod. 199",
+    "anno": 1951,
+    "designer": [
+      "Gino Sarfatti",
+      "Vittoriano Viganò"
+    ],
+    "azienda": "Arteluce",
+    "azienda_attuale": null,
+    "categoria": "lampada da parete",
+    "foto": "sarfatti-vigano-mod-199.jpg"
+  },
+  {
+    "nome": "Mod. 534/B",
+    "anno": 1951,
+    "designer": "Gino Sarfatti",
+    "azienda": "Arteluce",
+    "azienda_attuale": null,
+    "categoria": "lampada da tavolo",
+    "foto": "sarfatti-mod-534-b.jpg"
+  },
+  {
+    "nome": "Mod. 548",
+    "anno": 1951,
+    "designer": "Gino Sarfatti",
+    "azienda": "Arteluce",
+    "azienda_attuale": "Astep",
+    "categoria": "lampada da tavolo",
+    "foto": "sarfatti-mod-548.jpg"
+  },
+  {
+    "nome": "Mod. 1061",
+    "anno": 1953,
+    "designer": "Gino Sarfatti",
+    "azienda": "Arteluce",
+    "azienda_attuale": null,
+    "categoria": "lampada da terra",
+    "foto": "sarfatti-mod-1061.jpg"
+  },
+  {
+    "nome": "Mod. 191",
+    "anno": 1953,
+    "designer": "Gino Sarfatti",
+    "azienda": "Arteluce",
+    "azienda_attuale": null,
+    "categoria": "lampada da parete",
+    "foto": "sarfatti-mod-191.jpg"
+  },
+  {
+    "nome": "Mod. 1065",
+    "anno": 1954,
+    "designer": "Gino Sarfatti",
+    "azienda": "Arteluce",
+    "azienda_attuale": null,
+    "categoria": "lampada da terra",
+    "foto": "sarfatti-mod-1065.jpg"
+  },
+  {
+    "nome": "Mod. 2058",
+    "anno": 1954,
+    "designer": "Gino Sarfatti",
+    "azienda": "Arteluce",
+    "azienda_attuale": null,
+    "categoria": "lampadario",
+    "foto": "sarfatti-mod-2058.jpg"
+  },
+  {
+    "nome": "Mod. 3030",
+    "anno": 1954,
+    "designer": "Gino Sarfatti",
+    "azienda": "Arteluce",
+    "azienda_attuale": null,
+    "categoria": "plafoniera / lampada da parete",
+    "foto": "sarfatti-mod-3030.jpg"
+  },
+  {
+    "nome": "Mod. 3031",
+    "anno": 1954,
+    "designer": "Gino Sarfatti",
+    "azienda": "Arteluce",
+    "azienda_attuale": null,
+    "categoria": "plafoniera",
+    "foto": "sarfatti-mod-3031.jpg"
+  },
+  {
+    "nome": "Mod. 3033/F",
+    "anno": 1954,
+    "designer": "Gino Sarfatti",
+    "azienda": "Arteluce",
+    "azienda_attuale": null,
+    "categoria": "plafoniera",
+    "foto": "sarfatti-mod-3033-f.jpg"
+  },
+  {
+    "nome": "Mod. 559",
+    "anno": 1954,
+    "designer": "Gino Sarfatti",
+    "azienda": "Arteluce",
+    "azienda_attuale": null,
+    "categoria": "lampada da tavolo",
+    "foto": "sarfatti-mod-559.jpg"
+  },
+  {
+    "nome": "Mod. 1055",
+    "anno": 1955,
+    "designer": "Gino Sarfatti",
+    "azienda": "Arteluce",
+    "azienda_attuale": null,
+    "categoria": "lampada scomponibile",
+    "foto": "sarfatti-mod-1055.jpg"
+  },
+  {
+    "nome": "Mod. 1055/SP",
+    "anno": 1955,
+    "designer": "Gino Sarfatti",
+    "azienda": "Arteluce",
+    "azienda_attuale": null,
+    "categoria": "lampada da terra",
+    "foto": "sarfatti-mod-1055-sp.jpg"
+  },
+  {
+    "nome": "Mod. 2065 Wall",
+    "anno": 1955,
+    "designer": "Gino Sarfatti",
+    "azienda": "Arteluce",
+    "azienda_attuale": "Astep",
+    "categoria": "lampada da parete",
+    "foto": "sarfatti-mod-2065-wall.jpg"
+  },
+  {
+    "nome": "Mod. 2079",
+    "anno": 1955,
+    "designer": "Gino Sarfatti",
+    "azienda": "Arteluce",
+    "azienda_attuale": null,
+    "categoria": "lampada a sospensione",
+    "foto": "sarfatti-mod-2079.jpg"
+  },
+  {
+    "nome": "Mod. 21",
+    "anno": 1955,
+    "designer": "Gino Sarfatti",
+    "azienda": "Arteluce",
+    "azienda_attuale": null,
+    "categoria": "applique",
+    "foto": "sarfatti-mod-21.jpg"
+  },
+  {
+    "nome": "Mod. 571",
+    "anno": 1955,
+    "designer": "Gino Sarfatti",
+    "azienda": "Arteluce",
+    "azienda_attuale": null,
+    "categoria": "lampada da tavolo",
+    "foto": "sarfatti-mod-571.jpg"
+  },
+  {
+    "nome": "Mod. 1073",
+    "anno": 1956,
+    "designer": "Gino Sarfatti",
+    "azienda": "Arteluce",
+    "azienda_attuale": null,
+    "categoria": "lampada da terra",
+    "foto": "sarfatti-mod-1073.jpg"
+  },
+  {
+    "nome": "Mod. 1073/3",
+    "anno": 1956,
+    "designer": "Gino Sarfatti",
+    "azienda": "Arteluce",
+    "azienda_attuale": null,
+    "categoria": "lampada da terra",
+    "foto": "sarfatti-mod-1073-3.jpg"
+  },
+  {
+    "nome": "Mod. 213",
+    "anno": 1956,
+    "designer": "Gino Sarfatti",
+    "azienda": "Arteluce",
+    "azienda_attuale": null,
+    "categoria": "lampada da parete",
+    "foto": "sarfatti-mod-213.jpg"
+  },
+  {
+    "nome": "Mod. 566",
+    "anno": 1956,
+    "designer": "Gino Sarfatti",
+    "azienda": "Arteluce",
+    "azienda_attuale": "Astep",
+    "categoria": "lampada da tavolo",
+    "foto": "sarfatti-mod-566.jpg"
+  },
+  {
+    "nome": "Mod. 573",
+    "anno": 1956,
+    "designer": "Gino Sarfatti",
+    "azienda": "Arteluce",
+    "azienda_attuale": null,
+    "categoria": "lampada da tavolo",
+    "foto": "sarfatti-mod-573.jpg"
+  },
+  {
+    "nome": "Mod. 1074",
+    "anno": 1957,
+    "designer": "Gino Sarfatti",
+    "azienda": "Arteluce",
+    "azienda_attuale": null,
+    "categoria": "lampada da terra",
+    "foto": "sarfatti-mod-1074.jpg"
+  },
+  {
+    "nome": "Mod. 222",
+    "anno": 1957,
+    "designer": "Gino Sarfatti",
+    "azienda": "Arteluce",
+    "azienda_attuale": null,
+    "categoria": "applique",
+    "foto": "sarfatti-mod-222.jpg"
+  },
+  {
+    "nome": "Mod. 228",
+    "anno": 1957,
+    "designer": "Gino Sarfatti",
+    "azienda": "Arteluce",
+    "azienda_attuale": null,
+    "categoria": "lampada da parete",
+    "foto": "sarfatti-mod-228.jpg"
+  },
+  {
+    "nome": "Mod. 7",
+    "anno": 1957,
+    "designer": "Gino Sarfatti",
+    "azienda": "Arteluce",
+    "azienda_attuale": null,
+    "categoria": "lampada da parete / tavolo",
+    "foto": "sarfatti-mod-7.jpg"
+  },
+  {
+    "nome": "Mod. 142",
+    "anno": 1958,
+    "designer": "Gino Sarfatti",
+    "azienda": "Arteluce",
+    "azienda_attuale": null,
+    "categoria": "lampada da parete",
+    "foto": "sarfatti-mod-142.jpg"
+  },
+  {
+    "nome": "Mod. 2097/18",
+    "anno": 1958,
+    "designer": "Gino Sarfatti",
+    "azienda": "Arteluce",
+    "azienda_attuale": "Flos",
+    "categoria": "lampadario",
+    "foto": "sarfatti-mod-2097-18.jpg"
+  },
+  {
+    "nome": "Mod. 2097/30",
+    "anno": 1958,
+    "designer": "Gino Sarfatti",
+    "azienda": "Arteluce",
+    "azienda_attuale": "Flos",
+    "categoria": "lampadario",
+    "foto": "sarfatti-mod-2097-30.jpg"
+  },
+  {
+    "nome": "Mod. 2097/50",
+    "anno": 1958,
+    "designer": "Gino Sarfatti",
+    "azienda": "Arteluce",
+    "azienda_attuale": "Flos",
+    "categoria": "lampadario",
+    "foto": "sarfatti-mod-2097-50.jpg"
+  },
+  {
+    "nome": "Mod. 230",
+    "anno": 1958,
+    "designer": "Gino Sarfatti",
+    "azienda": "Arteluce",
+    "azienda_attuale": null,
+    "categoria": "lampada da parete",
+    "foto": "sarfatti-mod-230.jpg"
+  },
+  {
+    "nome": "Mod. SP/14",
+    "anno": 1958,
+    "designer": "Gino Sarfatti",
+    "azienda": "Arteluce",
+    "azienda_attuale": null,
+    "categoria": "faretto da parete / soffitto",
+    "foto": "sarfatti-mod-sp-14.jpg"
+  },
+  {
+    "nome": "Mod. 1081",
+    "anno": 1959,
+    "designer": "Gino Sarfatti",
+    "azienda": "Arteluce",
+    "azienda_attuale": "Astep",
+    "categoria": "lampada da terra",
+    "foto": "sarfatti-mod-1081.jpg"
+  },
+  {
+    "nome": "Mod. 2109",
+    "anno": 1959,
+    "designer": "Gino Sarfatti",
+    "azienda": "Arteluce",
+    "azienda_attuale": "Astep",
+    "categoria": "lampadario",
+    "foto": "sarfatti-mod-2109.jpg"
+  },
+  {
+    "nome": "Mod. 237/1",
+    "anno": 1959,
+    "designer": "Gino Sarfatti",
+    "azienda": "Arteluce",
+    "azienda_attuale": "Astep",
+    "categoria": "lampada da parete / soffitto",
+    "foto": "sarfatti-mod-237-1.jpg"
+  },
+  {
+    "nome": "Mod. 237/2",
+    "anno": 1959,
+    "designer": "Gino Sarfatti",
+    "azienda": "Arteluce",
+    "azienda_attuale": "Astep",
+    "categoria": "lampada da parete / soffitto",
+    "foto": "sarfatti-mod-237-2.jpg"
+  },
+  {
+    "nome": "Mod. 238/2",
+    "anno": 1959,
+    "designer": "Gino Sarfatti",
+    "azienda": "Arteluce",
+    "azienda_attuale": "Astep",
+    "categoria": "lampada da parete / soffitto",
+    "foto": "sarfatti-mod-238-2.jpg"
+  },
+  {
+    "nome": "Mod. 2/2",
+    "anno": 1960,
+    "designer": "Gino Sarfatti",
+    "azienda": "Arteluce",
+    "azienda_attuale": null,
+    "categoria": "lampada da parete",
+    "foto": "sarfatti-mod-2-2.jpg"
+  },
+  {
+    "nome": "Mod. 237/3",
+    "anno": 1960,
+    "designer": "Gino Sarfatti",
+    "azienda": "Arteluce",
+    "azienda_attuale": null,
+    "categoria": "lampada da parete",
+    "foto": "sarfatti-mod-237-3.jpg"
+  },
+  {
+    "nome": "Mod. 1086",
+    "anno": 1961,
+    "designer": "Gino Sarfatti",
+    "azienda": "Arteluce",
+    "azienda_attuale": null,
+    "categoria": "lampada da terra",
+    "foto": "sarfatti-mod-1086.jpg"
+  },
+  {
+    "nome": "Mod. 2121",
+    "anno": 1961,
+    "designer": "Gino Sarfatti",
+    "azienda": "Arteluce",
+    "azienda_attuale": null,
+    "categoria": "lampadario",
+    "foto": "sarfatti-mod-2121.jpg"
+  },
+  {
+    "nome": "Mod. 595",
+    "anno": 1961,
+    "designer": "Gino Sarfatti",
+    "azienda": "Arteluce",
+    "azienda_attuale": null,
+    "categoria": "lampada da tavolo",
+    "foto": "sarfatti-mod-595.jpg"
+  },
+  {
+    "nome": "Mod. 595/P",
+    "anno": 1961,
+    "designer": "Gino Sarfatti",
+    "azienda": "Arteluce",
+    "azienda_attuale": null,
+    "categoria": "lampada da parete",
+    "foto": "sarfatti-mod-595-p.jpg"
+  },
+  {
+    "nome": "Mod. 1084",
+    "anno": 1962,
+    "designer": "Gino Sarfatti",
+    "azienda": "Arteluce",
+    "azienda_attuale": null,
+    "categoria": "lampada da terra",
+    "foto": "sarfatti-mod-1084.jpg"
+  },
+  {
+    "nome": "Mod. 3055",
+    "anno": 1962,
+    "designer": "Gino Sarfatti",
+    "azienda": "Arteluce",
+    "azienda_attuale": null,
+    "categoria": "plafoniera",
+    "foto": "sarfatti-mod-3055.jpg"
+  },
+  {
+    "nome": "Mod. 586/S",
+    "anno": 1962,
+    "designer": "Gino Sarfatti",
+    "azienda": "Arteluce",
+    "azienda_attuale": null,
+    "categoria": "lampada da parete / soffitto",
+    "foto": "sarfatti-mod-586-s.jpg"
+  },
+  {
+    "nome": "Mod. 2042/3",
+    "anno": 1963,
+    "designer": "Gino Sarfatti",
+    "azienda": "Arteluce",
+    "azienda_attuale": "Astep",
+    "categoria": "plafoniera",
+    "foto": "sarfatti-mod-2042-3.jpg"
+  },
+  {
+    "nome": "Mod. 2042/6",
+    "anno": 1963,
+    "designer": "Gino Sarfatti",
+    "azienda": "Arteluce",
+    "azienda_attuale": "Astep",
+    "categoria": "plafoniera",
+    "foto": "sarfatti-mod-2042-6.jpg"
+  },
+  {
+    "nome": "Mod. 2042/9",
+    "anno": 1963,
+    "designer": "Gino Sarfatti",
+    "azienda": "Arteluce",
+    "azienda_attuale": "Astep",
+    "categoria": "plafoniera",
+    "foto": "sarfatti-mod-2042-9.jpg"
+  },
+  {
+    "nome": "Mod. 43",
+    "anno": 1963,
+    "designer": "Gino Sarfatti",
+    "azienda": "Arteluce",
+    "azienda_attuale": null,
+    "categoria": "applique",
+    "foto": "sarfatti-mod-43.jpg"
+  },
+  {
+    "nome": "Mod. 1090",
+    "anno": 1964,
+    "designer": "Gino Sarfatti",
+    "azienda": "Arteluce",
+    "azienda_attuale": null,
+    "categoria": "lampada da terra",
+    "foto": "sarfatti-mod-1090.jpg"
+  },
+  {
+    "nome": "Mod. 1051",
+    "anno": 1966,
+    "designer": "Gino Sarfatti",
+    "azienda": "Arteluce",
+    "azienda_attuale": null,
+    "categoria": "lampada da terra",
+    "foto": "sarfatti-mod-1051.jpg"
+  },
+  {
+    "nome": "Mod. 600P",
+    "anno": 1966,
+    "designer": "Gino Sarfatti",
+    "azienda": "Arteluce",
+    "azienda_attuale": null,
+    "categoria": "lampada da tavolo",
+    "foto": "sarfatti-mod-600p.jpg"
+  },
+  {
+    "nome": "Mod. 1095",
+    "anno": 1968,
+    "designer": "Gino Sarfatti",
+    "azienda": "Arteluce",
+    "azienda_attuale": "Astep",
+    "categoria": "lampada da terra",
+    "foto": "sarfatti-mod-1095.jpg"
+  },
+  {
+    "nome": "Mod. 3061",
+    "anno": 1968,
+    "designer": "Gino Sarfatti",
+    "azienda": "Arteluce",
+    "azienda_attuale": null,
+    "categoria": "plafoniera",
+    "foto": "sarfatti-mod-3061.jpg"
+  },
+  {
+    "nome": "Mod. 50",
+    "anno": 1968,
+    "designer": "Gino Sarfatti",
+    "azienda": "Arteluce",
+    "azienda_attuale": null,
+    "categoria": "specchio illuminato / lampada da parete",
+    "foto": "sarfatti-mod-50.jpg"
+  },
+  {
+    "nome": "Mod. 540P",
+    "anno": 1968,
+    "designer": "Gino Sarfatti",
+    "azienda": "Arteluce",
+    "azienda_attuale": null,
+    "categoria": "lampada da parete",
+    "foto": "sarfatti-mod-540p.jpg"
+  },
+  {
+    "nome": "Mod. 599/N",
+    "anno": 1968,
+    "designer": "Gino Sarfatti",
+    "azienda": "Arteluce",
+    "azienda_attuale": null,
+    "categoria": "lampada da tavolo",
+    "foto": "sarfatti-mod-599-n.jpg"
+  },
+  {
+    "nome": "Mod. 2129",
+    "anno": 1969,
+    "designer": "Gino Sarfatti",
+    "azienda": "Arteluce",
+    "azienda_attuale": null,
+    "categoria": "plafoniera",
+    "foto": "sarfatti-mod-2129.jpg"
+  },
+  {
+    "nome": "Mod. 2130",
+    "anno": 1969,
+    "designer": "Gino Sarfatti",
+    "azienda": "Arteluce",
+    "azienda_attuale": null,
+    "categoria": "lampada a sospensione",
+    "foto": "sarfatti-mod-2130.jpg"
+  },
+  {
+    "nome": "Mod. 604 Moon",
+    "anno": 1969,
+    "designer": "Gino Sarfatti",
+    "azienda": "Arteluce",
+    "azienda_attuale": null,
+    "categoria": "lampada da tavolo",
+    "foto": "sarfatti-mod-604-moon.jpg"
+  },
+  {
+    "nome": "Mod. 1102",
+    "anno": 1971,
+    "designer": "Gino Sarfatti",
+    "azienda": "Arteluce",
+    "azienda_attuale": null,
+    "categoria": "lampada da esterno",
+    "foto": "sarfatti-mod-1102.jpg"
+  },
+  {
+    "nome": "Mod. 262",
+    "anno": 1971,
+    "designer": "Gino Sarfatti",
+    "azienda": "Arteluce",
+    "azienda_attuale": "Astep",
+    "categoria": "lampada da parete",
+    "foto": "sarfatti-mod-262.jpg"
+  },
+  {
+    "nome": "Mod. 51/B",
+    "anno": 1971,
+    "designer": "Gino Sarfatti",
+    "azienda": "Arteluce",
+    "azienda_attuale": null,
+    "categoria": "specchio illuminato",
+    "foto": "sarfatti-mod-51-b.jpg"
+  },
+  {
+    "nome": "Mod. 607",
+    "anno": 1971,
+    "designer": "Gino Sarfatti",
+    "azienda": "Arteluce",
+    "azienda_attuale": null,
+    "categoria": "lampada da tavolo",
+    "foto": "sarfatti-mod-607.jpg"
+  },
+  {
+    "nome": "Mod. 608",
+    "anno": 1971,
+    "designer": "Gino Sarfatti",
+    "azienda": "Arteluce",
+    "azienda_attuale": null,
+    "categoria": "lampada da parete / soffitto",
+    "foto": "sarfatti-mod-608.jpg"
+  },
+  {
+    "nome": "Mod. 194-72",
+    "anno": 1972,
+    "designer": "Gino Sarfatti",
+    "azienda": "Arteluce",
+    "azienda_attuale": null,
+    "categoria": "lampada da parete",
+    "foto": "sarfatti-mod-194-72.jpg"
+  },
+  {
+    "nome": "Mod. 2134",
+    "anno": 1972,
+    "designer": "Gino Sarfatti",
+    "azienda": "Arteluce",
+    "azienda_attuale": null,
+    "categoria": "lampada a sospensione",
+    "foto": "sarfatti-mod-2134.jpg"
+  },
+  {
+    "nome": "Elea 9003",
+    "anno": 1959,
+    "designer": [
+      "Ettore Sottsass",
+      "Andries Van Onck"
+    ],
+    "azienda": "Olivetti",
+    "azienda_attuale": null,
+    "categoria": "computer mainframe / console",
+    "foto": "sottsass-elea-9003.jpg",
+    "top": true
+  },
+  {
+    "nome": "Praxis 48",
+    "anno": 1964,
+    "designer": [
+      "Ettore Sottsass",
+      "Hans von Klier"
+    ],
+    "azienda": "Olivetti",
+    "azienda_attuale": null,
+    "categoria": "macchina da scrivere elettrica",
+    "foto": "sottsass-praxis-48.jpg"
+  },
+  {
+    "nome": "Tekne 3",
+    "anno": 1964,
+    "designer": [
+      "Ettore Sottsass",
+      "Hans von Klier"
+    ],
+    "azienda": "Olivetti",
+    "azienda_attuale": null,
+    "categoria": "macchina da scrivere elettrica",
+    "foto": "sottsass-tekne-3.jpg"
+  },
+  {
+    "nome": "Califfo",
+    "anno": 1964,
+    "designer": "Ettore Sottsass",
+    "azienda": "Poltronova",
+    "azienda_attuale": "Poltronova",
+    "categoria": "divano",
+    "foto": "sottsass-califfo.jpg"
+  },
+  {
+    "nome": "Saratoga",
+    "anno": 1964,
+    "designer": "Ettore Sottsass",
+    "azienda": "Poltronova",
+    "azienda_attuale": null,
+    "categoria": "sistema di sedute",
+    "foto": "sottsass-saratoga.jpg"
+  },
+  {
+    "nome": "Studio 45",
+    "anno": 1967,
+    "designer": [
+      "Ettore Sottsass",
+      "Hans von Klier"
+    ],
+    "azienda": "Olivetti",
+    "azienda_attuale": null,
+    "categoria": "macchina da scrivere portatile",
+    "foto": "sottsass-studio-45.jpg"
+  },
+  {
+    "nome": "Asteroide",
+    "anno": 1968,
+    "designer": "Ettore Sottsass",
+    "azienda": "Poltronova",
+    "azienda_attuale": null,
+    "categoria": "lampada",
+    "foto": "sottsass-asteroide.jpg"
+  },
+  {
+    "nome": "Barbarella",
+    "anno": 1968,
+    "designer": "Ettore Sottsass",
+    "azienda": "Poltronova",
+    "azienda_attuale": null,
+    "categoria": "lampada",
+    "foto": "sottsass-barbarella.jpg"
+  },
+  {
+    "nome": "Crazy Horse",
+    "anno": 1968,
+    "designer": "Ettore Sottsass",
+    "azienda": "Poltronova",
+    "azienda_attuale": "Poltronova",
+    "categoria": "tavolo",
+    "foto": "sottsass-crazy-horse.jpg"
+  },
+  {
+    "nome": "Nefertiti",
+    "anno": 1968,
+    "designer": "Ettore Sottsass",
+    "azienda": "Poltronova",
+    "azienda_attuale": null,
+    "categoria": "lampada",
+    "foto": "sottsass-nefertiti.jpg"
+  },
+  {
+    "nome": "Malatesta",
+    "anno": 1969,
+    "designer": "Ettore Sottsass",
+    "azienda": "Poltronova",
+    "azienda_attuale": null,
+    "categoria": "lampada",
+    "foto": "sottsass-malatesta.jpg"
+  },
+  {
+    "nome": "Yantra",
+    "anno": 1969,
+    "designer": "Ettore Sottsass",
+    "azienda": "Poltronova",
+    "azienda_attuale": null,
+    "categoria": "lampada da tavolo",
+    "foto": "sottsass-yantra.jpg"
+  },
+  {
+    "nome": "Editor 4",
+    "anno": 1970,
+    "designer": [
+      "Ettore Sottsass",
+      "Hans von Klier"
+    ],
+    "azienda": "Olivetti",
+    "azienda_attuale": null,
+    "categoria": "macchina da scrivere elettrica",
+    "foto": "sottsass-editor-4.jpg"
+  },
+  {
+    "nome": "Summa 19",
+    "anno": 1970,
+    "designer": [
+      "Ettore Sottsass",
+      "Hans von Klier"
+    ],
+    "azienda": "Olivetti",
+    "azienda_attuale": null,
+    "categoria": "addizionatrice elettrica",
+    "foto": "sottsass-summa-19.jpg"
+  },
+  {
+    "nome": "Pranzo Aromatico",
+    "anno": 1970,
+    "designer": "Ettore Sottsass",
+    "azienda": "Poltronova",
+    "azienda_attuale": null,
+    "categoria": "tavolo",
+    "foto": "sottsass-pranzo-aromatico.jpg"
+  },
+  {
+    "nome": "Mettsass",
+    "anno": 1972,
+    "designer": "Ettore Sottsass",
+    "azienda": "BD Barcelona",
+    "azienda_attuale": "BD Barcelona",
+    "categoria": "tavolo",
+    "foto": "sottsass-mettsass.jpg"
+  },
+  {
+    "nome": "Synthesis 45",
+    "anno": 1972,
+    "designer": [
+      "Ettore Sottsass",
+      "Perry King",
+      "Albert Leclerc",
+      "Bruno Scagliola",
+      "Tiger Umeda",
+      "Jane Young"
+    ],
+    "azienda": "Olivetti Synthesis",
+    "azienda_attuale": null,
+    "categoria": "sistema di arredi per ufficio",
+    "foto": "sottsass-synthesis-45.jpg"
+  },
+  {
+    "nome": "5074/AO",
+    "anno": 1978,
+    "designer": "Ettore Sottsass",
+    "azienda": "Alessi",
+    "azienda_attuale": "Alessi",
+    "categoria": "oliera / acetiera",
+    "foto": "sottsass-5074-ao.jpg"
+  },
+  {
+    "nome": "Beverly",
+    "anno": 1981,
+    "designer": "Ettore Sottsass",
+    "azienda": "Memphis",
+    "azienda_attuale": "Memphis",
+    "categoria": "mobile contenitore",
+    "foto": "sottsass-beverly.jpg"
+  },
+  {
+    "nome": "Cavalieri",
+    "anno": 1981,
+    "designer": "Ettore Sottsass",
+    "azienda": "Memphis",
+    "azienda_attuale": "Memphis",
+    "categoria": "lampada da terra",
+    "foto": "sottsass-cavalieri.jpg"
+  },
+  {
+    "nome": "King’s",
+    "anno": 1981,
+    "designer": "Ettore Sottsass",
+    "azienda": "Memphis",
+    "azienda_attuale": "Memphis",
+    "categoria": "lampada",
+    "foto": "sottsass-kings.jpg"
+  },
+  {
+    "nome": "Mandarin",
+    "anno": 1981,
+    "designer": "Ettore Sottsass",
+    "azienda": "Memphis",
+    "azienda_attuale": "Memphis",
+    "categoria": "tavolo",
+    "foto": "sottsass-mandarin.jpg"
+  },
+  {
+    "nome": "Quisisana",
+    "anno": 1981,
+    "designer": "Ettore Sottsass",
+    "azienda": "Memphis",
+    "azienda_attuale": "Memphis",
+    "categoria": "lampada",
+    "foto": "sottsass-quisisana.jpg"
+  },
+  {
+    "nome": "Suvretta",
+    "anno": 1981,
+    "designer": "Ettore Sottsass",
+    "azienda": "Memphis",
+    "azienda_attuale": "Memphis",
+    "categoria": "libreria",
+    "foto": "sottsass-suvretta.jpg"
+  },
+  {
+    "nome": "Treetops",
+    "anno": 1981,
+    "designer": "Ettore Sottsass",
+    "azienda": "Memphis",
+    "azienda_attuale": "Memphis",
+    "categoria": "lampada da terra",
+    "foto": "sottsass-treetops.jpg"
+  },
+  {
+    "nome": "Venezia",
+    "anno": 1981,
+    "designer": "Ettore Sottsass",
+    "azienda": "Memphis",
+    "azienda_attuale": "Memphis",
+    "categoria": "tavolo",
+    "foto": "sottsass-venezia-memphis.jpg"
+  },
+  {
+    "nome": "Callimaco",
+    "anno": 1982,
+    "designer": "Ettore Sottsass",
+    "azienda": "Artemide",
+    "azienda_attuale": "Artemide",
+    "categoria": "lampada da terra",
+    "foto": "sottsass-callimaco.jpg"
+  },
+  {
+    "nome": "Agra",
+    "anno": 1982,
+    "designer": "Ettore Sottsass",
+    "azienda": "Memphis",
+    "azienda_attuale": "Memphis",
+    "categoria": "divano",
+    "foto": "sottsass-agra.jpg"
+  },
+  {
+    "nome": "Alaska",
+    "anno": 1982,
+    "designer": "Ettore Sottsass",
+    "azienda": "Memphis",
+    "azienda_attuale": "Memphis",
+    "categoria": "vaso",
+    "foto": "sottsass-alaska.jpg"
+  },
+  {
+    "nome": "Altair",
+    "anno": 1982,
+    "designer": "Ettore Sottsass",
+    "azienda": "Memphis",
+    "azienda_attuale": "Memphis",
+    "categoria": "vaso in vetro di Murano",
+    "foto": "sottsass-altair.jpg"
+  },
+  {
+    "nome": "Malabar",
+    "anno": 1982,
+    "designer": "Ettore Sottsass",
+    "azienda": "Memphis",
+    "azienda_attuale": "Memphis",
+    "categoria": "mobile contenitore",
+    "foto": "sottsass-malabar.jpg"
+  },
+  {
+    "nome": "Murmansk",
+    "anno": 1982,
+    "designer": "Ettore Sottsass",
+    "azienda": "Memphis",
+    "azienda_attuale": "Memphis",
+    "categoria": "fruttiera",
+    "foto": "sottsass-murmansk.jpg"
+  },
+  {
+    "nome": "Sol",
+    "anno": 1982,
+    "designer": "Ettore Sottsass",
+    "azienda": "Memphis",
+    "azienda_attuale": "Memphis",
+    "categoria": "vaso in vetro di Murano",
+    "foto": "sottsass-sol.jpg"
+  },
+  {
+    "nome": "Pausania",
+    "anno": 1983,
+    "designer": "Ettore Sottsass",
+    "azienda": "Artemide",
+    "azienda_attuale": "Artemide",
+    "categoria": "lampada da tavolo",
+    "foto": "sottsass-pausania.jpg"
+  },
+  {
+    "nome": "EastsideWestside",
+    "anno": 1983,
+    "designer": "Ettore Sottsass",
+    "azienda": "Knoll",
+    "azienda_attuale": null,
+    "categoria": "collezione di arredi",
+    "foto": "sottsass-eastsidewestside.jpg"
+  },
+  {
+    "nome": "Alcor",
+    "anno": 1983,
+    "designer": "Ettore Sottsass",
+    "azienda": "Memphis",
+    "azienda_attuale": "Memphis",
+    "categoria": "vaso in vetro di Murano",
+    "foto": "sottsass-alcor.jpg"
+  },
+  {
+    "nome": "Aldebaran",
+    "anno": 1983,
+    "designer": "Ettore Sottsass",
+    "azienda": "Memphis",
+    "azienda_attuale": "Memphis",
+    "categoria": "vaso in vetro di Murano",
+    "foto": "sottsass-aldebaran.jpg"
+  },
+  {
+    "nome": "Alioth",
+    "anno": 1983,
+    "designer": "Ettore Sottsass",
+    "azienda": "Memphis",
+    "azienda_attuale": "Memphis",
+    "categoria": "vaso in vetro di Murano",
+    "foto": "sottsass-alioth.jpg"
+  },
+  {
+    "nome": "Bay",
+    "anno": 1983,
+    "designer": "Ettore Sottsass",
+    "azienda": "Memphis",
+    "azienda_attuale": "Memphis",
+    "categoria": "lampada da tavolo",
+    "foto": "sottsass-bay.jpg"
+  },
+  {
+    "nome": "City",
+    "anno": 1983,
+    "designer": "Ettore Sottsass",
+    "azienda": "Memphis",
+    "azienda_attuale": "Memphis",
+    "categoria": "tavolo",
+    "foto": "sottsass-city.jpg"
+  },
+  {
+    "nome": "Euphrates",
+    "anno": 1983,
+    "designer": "Ettore Sottsass",
+    "azienda": "Memphis",
+    "azienda_attuale": "Memphis",
+    "categoria": "vaso in porcellana",
+    "foto": "sottsass-euphrates.jpg"
+  },
+  {
+    "nome": "Nilo",
+    "anno": 1983,
+    "designer": "Ettore Sottsass",
+    "azienda": "Memphis",
+    "azienda_attuale": "Memphis",
+    "categoria": "vaso in porcellana",
+    "foto": "sottsass-nilo.jpg"
+  },
+  {
+    "nome": "Park",
+    "anno": 1983,
+    "designer": "Ettore Sottsass",
+    "azienda": "Memphis",
+    "azienda_attuale": "Memphis",
+    "categoria": "tavolino",
+    "foto": "sottsass-park.jpg"
+  },
+  {
+    "nome": "Park Lane",
+    "anno": 1983,
+    "designer": "Ettore Sottsass",
+    "azienda": "Memphis",
+    "azienda_attuale": "Memphis",
+    "categoria": "tavolino",
+    "foto": "sottsass-park-lane.jpg"
+  },
+  {
+    "nome": "Rete",
+    "anno": 1983,
+    "designer": "Ettore Sottsass",
+    "azienda": "Memphis",
+    "azienda_attuale": "Memphis",
+    "categoria": "tessuto",
+    "foto": "sottsass-rete.jpg"
+  },
+  {
+    "nome": "Rete Cushion",
+    "anno": 1983,
+    "designer": "Ettore Sottsass",
+    "azienda": "Memphis",
+    "azienda_attuale": "Memphis",
+    "categoria": "cuscino",
+    "foto": "sottsass-rete-cushion.jpg"
+  },
+  {
+    "nome": "Tigris",
+    "anno": 1983,
+    "designer": "Ettore Sottsass",
+    "azienda": "Memphis",
+    "azienda_attuale": "Memphis",
+    "categoria": "vaso in porcellana",
+    "foto": "sottsass-tigris.jpg"
+  },
+  {
+    "nome": "Westside",
+    "anno": 1983,
+    "designer": "Ettore Sottsass",
+    "azienda": "Memphis",
+    "azienda_attuale": "Memphis",
+    "categoria": "divano",
+    "foto": "sottsass-westside.jpg"
+  },
+  {
+    "nome": "Cream",
+    "anno": 1984,
+    "designer": "Ettore Sottsass",
+    "azienda": "Memphis",
+    "azienda_attuale": "Memphis",
+    "categoria": "tavolino",
+    "foto": "sottsass-cream.jpg"
+  },
+  {
+    "nome": "Diva",
+    "anno": 1984,
+    "designer": "Ettore Sottsass",
+    "azienda": "Memphis",
+    "azienda_attuale": "Memphis",
+    "categoria": "specchio",
+    "foto": "sottsass-diva.jpg"
+  },
+  {
+    "nome": "Holebid",
+    "anno": 1984,
+    "designer": "Ettore Sottsass",
+    "azienda": "Memphis",
+    "azienda_attuale": "Memphis",
+    "categoria": "tavolino",
+    "foto": "sottsass-holebid.jpg"
+  },
+  {
+    "nome": "Hyatt",
+    "anno": 1984,
+    "designer": "Ettore Sottsass",
+    "azienda": "Memphis",
+    "azienda_attuale": "Memphis",
+    "categoria": "tavolino",
+    "foto": "sottsass-hyatt.jpg"
+  },
+  {
+    "nome": "Mimosa",
+    "anno": 1984,
+    "designer": "Ettore Sottsass",
+    "azienda": "Memphis",
+    "azienda_attuale": "Memphis",
+    "categoria": "tavolino",
+    "foto": "sottsass-mimosa.jpg"
+  },
+  {
+    "nome": "Palm Spring",
+    "anno": 1984,
+    "designer": "Ettore Sottsass",
+    "azienda": "Memphis",
+    "azienda_attuale": "Memphis",
+    "categoria": "tavolo",
+    "foto": "sottsass-palm-spring.jpg"
+  },
+  {
+    "nome": "Freemont",
+    "anno": 1985,
+    "designer": "Ettore Sottsass",
+    "azienda": "Memphis",
+    "azienda_attuale": "Memphis",
+    "categoria": "mobile contenitore",
+    "foto": "sottsass-freemont.jpg"
+  },
+  {
+    "nome": "Indivia",
+    "anno": 1985,
+    "designer": "Ettore Sottsass",
+    "azienda": "Memphis",
+    "azienda_attuale": "Memphis",
+    "categoria": "piatto da portata",
+    "foto": "sottsass-indivia.jpg"
+  },
+  {
+    "nome": "Ivory",
+    "anno": 1985,
+    "designer": "Ettore Sottsass",
+    "azienda": "Memphis",
+    "azienda_attuale": "Memphis",
+    "categoria": "tavolino alto",
+    "foto": "sottsass-ivory.jpg"
+  },
+  {
+    "nome": "Lettuce",
+    "anno": 1985,
+    "designer": "Ettore Sottsass",
+    "azienda": "Memphis",
+    "azienda_attuale": "Memphis",
+    "categoria": "piatto da portata",
+    "foto": "sottsass-lettuce.jpg"
+  },
+  {
+    "nome": "Rucola",
+    "anno": 1985,
+    "designer": "Ettore Sottsass",
+    "azienda": "Memphis",
+    "azienda_attuale": "Memphis",
+    "categoria": "piatto da portata",
+    "foto": "sottsass-rucola.jpg"
+  },
+  {
+    "nome": "Tartar",
+    "anno": 1985,
+    "designer": "Ettore Sottsass",
+    "azienda": "Memphis",
+    "azienda_attuale": "Memphis",
+    "categoria": "consolle",
+    "foto": "sottsass-tartar.jpg"
+  },
+  {
+    "nome": "Enorme",
+    "anno": 1986,
+    "designer": [
+      "Ettore Sottsass",
+      "David Kelley"
+    ],
+    "azienda": "Brondi / Enorme Corporation",
+    "azienda_attuale": null,
+    "categoria": "telefono",
+    "foto": "sottsass-enorme.jpg"
+  },
+  {
+    "nome": "Bridge Chair",
+    "anno": 1986,
+    "designer": "Ettore Sottsass",
+    "azienda": "Knoll",
+    "azienda_attuale": null,
+    "categoria": "sedia",
+    "foto": "sottsass-bridge-chair.jpg"
+  },
+  {
+    "nome": "Mandarin Chair",
+    "anno": 1986,
+    "designer": "Ettore Sottsass",
+    "azienda": "Knoll",
+    "azienda_attuale": null,
+    "categoria": "sedia",
+    "foto": "sottsass-mandarin-chair.jpg"
+  },
+  {
+    "nome": "Shift Table",
+    "anno": 1986,
+    "designer": "Ettore Sottsass",
+    "azienda": "Knoll",
+    "azienda_attuale": null,
+    "categoria": "tavolo",
+    "foto": "sottsass-shift-table.jpg"
+  },
+  {
+    "nome": "Spider Table",
+    "anno": 1986,
+    "designer": "Ettore Sottsass",
+    "azienda": "Knoll",
+    "azienda_attuale": null,
+    "categoria": "tavolo",
+    "foto": "sottsass-spider-table.jpg"
+  },
+  {
+    "nome": "Agelada",
+    "anno": 1986,
+    "designer": "Ettore Sottsass",
+    "azienda": "Memphis",
+    "azienda_attuale": "Memphis",
+    "categoria": "vaso in vetro di Murano",
+    "foto": "sottsass-agelada.jpg"
+  },
+  {
+    "nome": "Amaltea",
+    "anno": 1986,
+    "designer": "Ettore Sottsass",
+    "azienda": "Memphis",
+    "azienda_attuale": "Memphis",
+    "categoria": "vaso in vetro di Murano",
+    "foto": "sottsass-amaltea.jpg"
+  },
+  {
+    "nome": "Ananke",
+    "anno": 1986,
+    "designer": "Ettore Sottsass",
+    "azienda": "Memphis",
+    "azienda_attuale": "Memphis",
+    "categoria": "vaso in vetro di Murano",
+    "foto": "sottsass-ananke.jpg"
+  },
+  {
+    "nome": "Astidamia",
+    "anno": 1986,
+    "designer": "Ettore Sottsass",
+    "azienda": "Memphis",
+    "azienda_attuale": "Memphis",
+    "categoria": "vaso in vetro di Murano",
+    "foto": "sottsass-astidamia.jpg"
+  },
+  {
+    "nome": "Astimelusa",
+    "anno": 1986,
+    "designer": "Ettore Sottsass",
+    "azienda": "Memphis",
+    "azienda_attuale": "Memphis",
+    "categoria": "vaso in vetro di Murano",
+    "foto": "sottsass-astimelusa.jpg"
+  },
+  {
+    "nome": "Atamante",
+    "anno": 1986,
+    "designer": "Ettore Sottsass",
+    "azienda": "Memphis",
+    "azienda_attuale": "Memphis",
+    "categoria": "vaso in vetro di Murano",
+    "foto": "sottsass-atamante.jpg"
+  },
+  {
+    "nome": "Clesitera",
+    "anno": 1986,
+    "designer": "Ettore Sottsass",
+    "azienda": "Memphis",
+    "azienda_attuale": "Memphis",
+    "categoria": "vaso in vetro di Murano",
+    "foto": "sottsass-clesitera.jpg"
+  },
+  {
+    "nome": "Deneb",
+    "anno": 1986,
+    "designer": "Ettore Sottsass",
+    "azienda": "Memphis",
+    "azienda_attuale": "Memphis",
+    "categoria": "vaso in vetro di Murano",
+    "foto": "sottsass-deneb.jpg"
+  },
+  {
+    "nome": "Erinna",
+    "anno": 1986,
+    "designer": "Ettore Sottsass",
+    "azienda": "Memphis",
+    "azienda_attuale": "Memphis",
+    "categoria": "vaso in vetro di Murano",
+    "foto": "sottsass-erinna.jpg"
+  },
+  {
+    "nome": "Fililla",
+    "anno": 1986,
+    "designer": "Ettore Sottsass",
+    "azienda": "Memphis",
+    "azienda_attuale": "Memphis",
+    "categoria": "vaso in vetro di Murano",
+    "foto": "sottsass-fililla.jpg"
+  },
+  {
+    "nome": "Imera",
+    "anno": 1986,
+    "designer": "Ettore Sottsass",
+    "azienda": "Memphis",
+    "azienda_attuale": "Memphis",
+    "categoria": "vaso in vetro di Murano",
+    "foto": "sottsass-imera.jpg"
+  },
+  {
+    "nome": "Letraset",
+    "anno": 1986,
+    "designer": "Ettore Sottsass",
+    "azienda": "Memphis",
+    "azienda_attuale": "Memphis",
+    "categoria": "tessuto",
+    "foto": "sottsass-letraset.jpg"
+  },
+  {
+    "nome": "Letraset Cushion",
+    "anno": 1986,
+    "designer": "Ettore Sottsass",
+    "azienda": "Memphis",
+    "azienda_attuale": "Memphis",
+    "categoria": "cuscino",
+    "foto": "sottsass-letraset-cushion.jpg"
+  },
+  {
+    "nome": "Malide",
+    "anno": 1986,
+    "designer": "Ettore Sottsass",
+    "azienda": "Memphis",
+    "azienda_attuale": "Memphis",
+    "categoria": "vaso in vetro di Murano",
+    "foto": "sottsass-malide.jpg"
+  },
+  {
+    "nome": "Manhattan",
+    "anno": 1986,
+    "designer": "Ettore Sottsass",
+    "azienda": "Memphis",
+    "azienda_attuale": "Memphis",
+    "categoria": "carrello",
+    "foto": "sottsass-manhattan.jpg"
+  },
+  {
+    "nome": "Mizar",
+    "anno": 1986,
+    "designer": "Ettore Sottsass",
+    "azienda": "Memphis",
+    "azienda_attuale": "Memphis",
+    "categoria": "vaso in vetro di Murano",
+    "foto": "sottsass-mizar.jpg"
+  },
+  {
+    "nome": "Neobule",
+    "anno": 1986,
+    "designer": "Ettore Sottsass",
+    "azienda": "Memphis",
+    "azienda_attuale": "Memphis",
+    "categoria": "vaso in vetro di Murano",
+    "foto": "sottsass-neobule.jpg"
+  },
+  {
+    "nome": "Niobe",
+    "anno": 1986,
+    "designer": "Ettore Sottsass",
+    "azienda": "Memphis",
+    "azienda_attuale": "Memphis",
+    "categoria": "vaso in vetro di Murano",
+    "foto": "sottsass-niobe.jpg"
+  },
+  {
+    "nome": "Pasifila",
+    "anno": 1986,
+    "designer": "Ettore Sottsass",
+    "azienda": "Memphis",
+    "azienda_attuale": "Memphis",
+    "categoria": "vaso in vetro di Murano",
+    "foto": "sottsass-pasifila.jpg"
+  },
+  {
+    "nome": "Schizzo",
+    "anno": 1986,
+    "designer": "Ettore Sottsass",
+    "azienda": "Memphis",
+    "azienda_attuale": "Memphis",
+    "categoria": "tessuto",
+    "foto": "sottsass-schizzo.jpg"
+  },
+  {
+    "nome": "Sirio",
+    "anno": 1986,
+    "designer": "Ettore Sottsass",
+    "azienda": "Memphis",
+    "azienda_attuale": "Memphis",
+    "categoria": "vaso in vetro di Murano",
+    "foto": "sottsass-sirio.jpg"
+  },
+  {
+    "nome": "Nuovo Milano",
+    "anno": 1987,
+    "designer": "Ettore Sottsass",
+    "azienda": "Alessi",
+    "azienda_attuale": "Alessi",
+    "categoria": "servizio di posate",
+    "foto": "sottsass-nuovo-milano.jpg"
+  },
+  {
+    "nome": "Twergi",
+    "anno": 1989,
+    "designer": "Ettore Sottsass",
+    "azienda": "Alessi",
+    "azienda_attuale": "Alessi",
+    "categoria": "collezione di oggetti da cucina in legno",
+    "foto": "sottsass-twergi.jpg"
+  },
+  {
+    "nome": "Twergi Spice Mill",
+    "anno": 1989,
+    "designer": "Ettore Sottsass",
+    "azienda": "Alessi",
+    "azienda_attuale": "Alessi",
+    "categoria": "macinaspezie",
+    "foto": "sottsass-twergi-spice-mill.jpg"
+  },
+  {
+    "nome": "Carabo",
+    "anno": 1989,
+    "designer": "Ettore Sottsass",
+    "azienda": "Zanotta",
+    "azienda_attuale": "Zanotta",
+    "categoria": "sedia",
+    "foto": "sottsass-carabo.jpg"
+  },
+  {
+    "nome": "Mombasa",
+    "anno": 1989,
+    "designer": "Ettore Sottsass",
+    "azienda": "Zanotta",
+    "azienda_attuale": "Zanotta",
+    "categoria": "mobile contenitore",
+    "foto": "sottsass-mombasa.jpg"
+  },
+  {
+    "nome": "Nairobi",
+    "anno": 1989,
+    "designer": "Ettore Sottsass",
+    "azienda": "Zanotta",
+    "azienda_attuale": "Zanotta",
+    "categoria": "mobile contenitore",
+    "foto": "sottsass-nairobi.jpg"
+  },
+  {
+    "nome": "Mandala",
+    "anno": 1990,
+    "designer": "Ettore Sottsass",
+    "azienda": "Glas Italia",
+    "azienda_attuale": "Glas Italia",
+    "categoria": "specchio",
+    "foto": "sottsass-mandala.jpg"
+  },
+  {
+    "nome": "Etrusco",
+    "anno": 1992,
+    "designer": "Ettore Sottsass",
+    "azienda": "Glas Italia",
+    "azienda_attuale": "Glas Italia",
+    "categoria": "tavolo",
+    "foto": "sottsass-etrusco.jpg"
+  },
+  {
+    "nome": "ES17",
+    "anno": 1993,
+    "designer": "Ettore Sottsass",
+    "azienda": "Alessi",
+    "azienda_attuale": "Alessi",
+    "categoria": "cavatappi",
+    "foto": "sottsass-es17.jpg"
+  },
+  {
+    "nome": "La Bella Tavola",
+    "anno": 1993,
+    "designer": "Ettore Sottsass",
+    "azienda": "Alessi",
+    "azienda_attuale": "Alessi",
+    "categoria": "servizio di piatti",
+    "foto": "sottsass-la-bella-tavola.jpg"
+  },
+  {
+    "nome": "Sybilla",
+    "anno": 1993,
+    "designer": "Ettore Sottsass",
+    "azienda": "Glas Italia",
+    "azienda_attuale": "Glas Italia",
+    "categoria": "specchio con consolle e lampade",
+    "foto": "sottsass-sybilla.jpg"
+  },
+  {
+    "nome": "Oman",
+    "anno": 1994,
+    "designer": "Ettore Sottsass",
+    "azienda": "Venini",
+    "azienda_attuale": "Venini",
+    "categoria": "scultura / vaso in vetro di Murano",
+    "foto": "sottsass-oman.jpg"
+  },
+  {
+    "nome": "Yemen",
+    "anno": 1994,
+    "designer": "Ettore Sottsass",
+    "azienda": "Venini",
+    "azienda_attuale": "Venini",
+    "categoria": "scultura / vaso in vetro di Murano",
+    "foto": "sottsass-yemen.jpg"
+  },
+  {
+    "nome": "Marito e Moglie",
+    "anno": 2003,
+    "designer": "Ettore Sottsass",
+    "azienda": "Venini",
+    "azienda_attuale": "Venini",
+    "categoria": "scultura in vetro di Murano",
+    "foto": "sottsass-marito-e-moglie.jpg"
+  },
+  {
+    "nome": "Carlton Miniature",
+    "anno": 2006,
+    "designer": "Ettore Sottsass",
+    "azienda": "Memphis",
+    "azienda_attuale": "Memphis",
+    "categoria": "miniatura",
+    "foto": "sottsass-carlton-miniature.jpg"
+  },
+  {
+    "nome": "Gli Specchi di Dioniso",
+    "anno": 2007,
+    "designer": "Ettore Sottsass",
+    "azienda": "Glas Italia",
+    "azienda_attuale": "Glas Italia",
+    "categoria": "collezione di specchi",
+    "foto": "sottsass-gli-specchi-di-dioniso.jpg"
+  },
+  {
+    "nome": "Shibam 1",
+    "anno": 2007,
+    "designer": "Ettore Sottsass",
+    "azienda": "Glas Italia",
+    "azienda_attuale": "Glas Italia",
+    "categoria": "specchio",
+    "foto": "sottsass-shibam-1.jpg"
+  },
+  {
+    "nome": "Shibam 2",
+    "anno": 2007,
+    "designer": "Ettore Sottsass",
+    "azienda": "Glas Italia",
+    "azienda_attuale": "Glas Italia",
+    "categoria": "specchio",
+    "foto": "sottsass-shibam-2.jpg"
+  },
+  {
+    "nome": "Calice",
+    "anno": 2015,
+    "designer": "Ettore Sottsass",
+    "azienda": "Kartell",
+    "azienda_attuale": "Kartell",
+    "categoria": "vaso",
+    "foto": "sottsass-calice.jpg"
+  },
+  {
+    "nome": "Colonna",
+    "anno": 2015,
+    "designer": "Ettore Sottsass",
+    "azienda": "Kartell",
+    "azienda_attuale": "Kartell",
+    "categoria": "sgabello / tavolino",
+    "foto": "sottsass-colonna.jpg"
+  },
+  {
+    "nome": "Pilastro",
+    "anno": 2015,
+    "designer": "Ettore Sottsass",
+    "azienda": "Kartell",
+    "azienda_attuale": "Kartell",
+    "categoria": "sgabello / tavolino",
+    "foto": "sottsass-pilastro.jpg"
+  },
+  {
+    "nome": "Synthesis",
+    "anno": 1979,
+    "designer": "Michele De Lucchi",
+    "azienda": "Olivetti Synthesis",
+    "azienda_attuale": null,
+    "categoria": "sistema di arredi per ufficio",
+    "foto": "delucchi-synthesis.jpg"
+  },
+  {
+    "nome": "Seggiolina da Pranzo",
+    "anno": 1979,
+    "designer": "Michele De Lucchi",
+    "azienda": "Studio Alchimia",
+    "azienda_attuale": null,
+    "categoria": "sedia",
+    "foto": "delucchi-seggiolina-da-pranzo.jpg"
+  },
+  {
+    "nome": "Atlantic",
+    "anno": 1981,
+    "designer": "Michele De Lucchi",
+    "azienda": "Memphis",
+    "azienda_attuale": "Memphis",
+    "categoria": "cassettiera",
+    "foto": "delucchi-atlantic.jpg"
+  },
+  {
+    "nome": "Kristall",
+    "anno": 1981,
+    "designer": "Michele De Lucchi",
+    "azienda": "Memphis",
+    "azienda_attuale": "Memphis",
+    "categoria": "tavolo",
+    "foto": "delucchi-kristall.jpg",
+    "top": true
+  },
+  {
+    "nome": "Oceanic",
+    "anno": 1981,
+    "designer": "Michele De Lucchi",
+    "azienda": "Memphis",
+    "azienda_attuale": "Memphis",
+    "categoria": "lampada da tavolo",
+    "foto": "delucchi-oceanic.jpg"
+  },
+  {
+    "nome": "Pacific",
+    "anno": 1981,
+    "designer": "Michele De Lucchi",
+    "azienda": "Memphis",
+    "azienda_attuale": "Memphis",
+    "categoria": "cassettiera",
+    "foto": "delucchi-pacific.jpg"
+  },
+  {
+    "nome": "Polar",
+    "anno": 1981,
+    "designer": "Michele De Lucchi",
+    "azienda": "Memphis",
+    "azienda_attuale": "Memphis",
+    "categoria": "tavolo",
+    "foto": "delucchi-polar.jpg"
+  },
+  {
+    "nome": "Riviera",
+    "anno": 1981,
+    "designer": "Michele De Lucchi",
+    "azienda": "Memphis",
+    "azienda_attuale": "Memphis",
+    "categoria": "divano",
+    "foto": "delucchi-riviera.jpg"
+  },
+  {
+    "nome": "Side Walk",
+    "anno": 1981,
+    "designer": "Michele De Lucchi",
+    "azienda": "Studio Alchimia",
+    "azienda_attuale": null,
+    "categoria": "lampada",
+    "foto": "delucchi-side-walk.jpg"
+  },
+  {
+    "nome": "Fortune",
+    "anno": 1982,
+    "designer": "Michele De Lucchi",
+    "azienda": "Memphis",
+    "azienda_attuale": "Memphis",
+    "categoria": "tavolo",
+    "foto": "delucchi-fortune.jpg"
+  },
+  {
+    "nome": "Lido",
+    "anno": 1982,
+    "designer": "Michele De Lucchi",
+    "azienda": "Memphis",
+    "azienda_attuale": "Memphis",
+    "categoria": "divano",
+    "foto": "delucchi-lido.jpg"
+  },
+  {
+    "nome": "Sebastopole",
+    "anno": 1982,
+    "designer": "Michele De Lucchi",
+    "azienda": "Memphis",
+    "azienda_attuale": "Memphis",
+    "categoria": "mobile contenitore",
+    "foto": "delucchi-sebastopole.jpg"
+  },
+  {
+    "nome": "Antares",
+    "anno": 1983,
+    "designer": "Michele De Lucchi",
+    "azienda": "Memphis",
+    "azienda_attuale": "Memphis",
+    "categoria": "vaso in vetro di Murano",
+    "foto": "delucchi-antares.jpg"
+  },
+  {
+    "nome": "Grand",
+    "anno": 1983,
+    "designer": "Michele De Lucchi",
+    "azienda": "Memphis",
+    "azienda_attuale": "Memphis",
+    "categoria": "tavolo",
+    "foto": "delucchi-grand.jpg"
+  },
+  {
+    "nome": "Continental",
+    "anno": 1984,
+    "designer": "Michele De Lucchi",
+    "azienda": "Memphis",
+    "azienda_attuale": "Memphis",
+    "categoria": "tavolo",
+    "foto": "delucchi-continental.jpg"
+  },
+  {
+    "nome": "Flamingo",
+    "anno": 1984,
+    "designer": "Michele De Lucchi",
+    "azienda": "Memphis",
+    "azienda_attuale": "Memphis",
+    "categoria": "tavolino",
+    "foto": "delucchi-flamingo.jpg"
+  },
+  {
+    "nome": "Horizon",
+    "anno": 1984,
+    "designer": "Michele De Lucchi",
+    "azienda": "Memphis",
+    "azienda_attuale": "Memphis",
+    "categoria": "mobile contenitore",
+    "foto": "delucchi-horizon.jpg"
+  },
+  {
+    "nome": "Burgundy",
+    "anno": 1985,
+    "designer": "Michele De Lucchi",
+    "azienda": "Memphis",
+    "azienda_attuale": "Memphis",
+    "categoria": "mobile contenitore",
+    "foto": "delucchi-burgundy.jpg"
+  },
+  {
+    "nome": "Celery",
+    "anno": 1985,
+    "designer": "Michele De Lucchi",
+    "azienda": "Memphis",
+    "azienda_attuale": "Memphis",
+    "categoria": "piatto da portata",
+    "foto": "delucchi-celery.jpg"
+  },
+  {
+    "nome": "Dorian",
+    "anno": 1985,
+    "designer": "Michele De Lucchi",
+    "azienda": "Memphis",
+    "azienda_attuale": "Memphis",
+    "categoria": "specchio da tavolo",
+    "foto": "delucchi-dorian.jpg"
+  },
+  {
+    "nome": "Ionian",
+    "anno": 1985,
+    "designer": "Michele De Lucchi",
+    "azienda": "Memphis",
+    "azienda_attuale": "Memphis",
+    "categoria": "specchio da tavolo",
+    "foto": "delucchi-ionian.jpg"
+  },
+  {
+    "nome": "Tomato",
+    "anno": 1985,
+    "designer": "Michele De Lucchi",
+    "azienda": "Memphis",
+    "azienda_attuale": "Memphis",
+    "categoria": "piatto da portata",
+    "foto": "delucchi-tomato.jpg"
+  },
+  {
+    "nome": "Tolomeo Lettura",
+    "anno": 1987,
+    "designer": [
+      "Michele De Lucchi",
+      "Giancarlo Fassina"
+    ],
+    "azienda": "Artemide",
+    "azienda_attuale": "Artemide",
+    "categoria": "lampada da terra",
+    "foto": "delucchi-tolomeo-lettura.jpg"
+  },
+  {
+    "nome": "Tolomeo Parete",
+    "anno": 1987,
+    "designer": [
+      "Michele De Lucchi",
+      "Giancarlo Fassina"
+    ],
+    "azienda": "Artemide",
+    "azienda_attuale": "Artemide",
+    "categoria": "lampada da parete",
+    "foto": "delucchi-tolomeo-parete.jpg"
+  },
+  {
+    "nome": "Tolomeo Tavolo",
+    "anno": 1987,
+    "designer": [
+      "Michele De Lucchi",
+      "Giancarlo Fassina"
+    ],
+    "azienda": "Artemide",
+    "azienda_attuale": "Artemide",
+    "categoria": "lampada da tavolo",
+    "foto": "delucchi-tolomeo-tavolo.jpg"
+  },
+  {
+    "nome": "Tolomeo Terra",
+    "anno": 1987,
+    "designer": [
+      "Michele De Lucchi",
+      "Giancarlo Fassina"
+    ],
+    "azienda": "Artemide",
+    "azienda_attuale": "Artemide",
+    "categoria": "lampada da terra",
+    "foto": "delucchi-tolomeo-terra.jpg"
+  },
+  {
+    "nome": "CD 6300",
+    "anno": 1990,
+    "designer": "Michele De Lucchi",
+    "azienda": "Olivetti",
+    "azienda_attuale": null,
+    "categoria": "calcolatrice / terminale da ufficio",
+    "foto": "delucchi-cd-6300.jpg"
+  },
+  {
+    "nome": "Segmenti",
+    "anno": 1991,
+    "designer": "Michele De Lucchi",
+    "azienda": "Kartell",
+    "azienda_attuale": null,
+    "categoria": "sistema di accessori da scrivania",
+    "foto": "delucchi-segmenti.jpg"
+  },
+  {
+    "nome": "Sigira",
+    "anno": 1992,
+    "designer": "Michele De Lucchi",
+    "azienda": "ClassiCon",
+    "azienda_attuale": null,
+    "categoria": "lampada da tavolo",
+    "foto": "delucchi-sigira.jpg"
+  },
+  {
+    "nome": "MK Sys 6000",
+    "anno": 1994,
+    "designer": "Michele De Lucchi",
+    "azienda": "Olivetti",
+    "azienda_attuale": null,
+    "categoria": "sistema informatico",
+    "foto": "delucchi-mk-sys-6000.jpg"
+  },
+  {
+    "nome": "Philos 44",
+    "anno": 1994,
+    "designer": "Michele De Lucchi",
+    "azienda": "Olivetti",
+    "azienda_attuale": null,
+    "categoria": "computer portatile",
+    "foto": "delucchi-philos-44.jpg"
+  },
+  {
+    "nome": "Tolomeo Pinza",
+    "anno": 1995,
+    "designer": [
+      "Michele De Lucchi",
+      "Giancarlo Fassina"
+    ],
+    "azienda": "Artemide",
+    "azienda_attuale": "Artemide",
+    "categoria": "lampada a pinza",
+    "foto": "delucchi-tolomeo-pinza.jpg"
+  },
+  {
+    "nome": "Envision",
+    "anno": 1995,
+    "designer": "Michele De Lucchi",
+    "azienda": "Olivetti",
+    "azienda_attuale": null,
+    "categoria": "workstation multimediale",
+    "foto": "delucchi-envision.jpg"
+  },
+  {
+    "nome": "MS 6050",
+    "anno": 1995,
+    "designer": "Michele De Lucchi",
+    "azienda": "Olivetti",
+    "azienda_attuale": null,
+    "categoria": "personal computer",
+    "foto": "delucchi-ms-6050.jpg"
+  },
+  {
+    "nome": "Ginger and Fred",
+    "anno": 1995,
+    "designer": "Michele De Lucchi",
+    "azienda": "Rosenthal",
+    "azienda_attuale": null,
+    "categoria": "set sale e pepe",
+    "foto": "delucchi-ginger-and-fred.jpg"
+  },
+  {
+    "nome": "JP 170",
+    "anno": 1996,
+    "designer": "Michele De Lucchi",
+    "azienda": "Olivetti",
+    "azienda_attuale": null,
+    "categoria": "stampante",
+    "foto": "delucchi-jp-170.jpg"
+  },
+  {
+    "nome": "PR 2",
+    "anno": 1996,
+    "designer": "Michele De Lucchi",
+    "azienda": "Olivetti",
+    "azienda_attuale": null,
+    "categoria": "stampante bancaria",
+    "foto": "delucchi-pr-2.jpg"
+  },
+  {
+    "nome": "Acquatinta - Incamiciato Ambra",
+    "anno": 1996,
+    "designer": [
+      "Michele De Lucchi",
+      "Mario Rossi Scola"
+    ],
+    "azienda": "Produzione Privata",
+    "azienda_attuale": "Produzione Privata",
+    "categoria": "lampada a sospensione",
+    "foto": "delucchi-acquatinta-incamiciato-ambra.jpg"
+  },
+  {
+    "nome": "Acquatinta - Incamiciato Bianco",
+    "anno": 1996,
+    "designer": [
+      "Michele De Lucchi",
+      "Mario Rossi Scola"
+    ],
+    "azienda": "Produzione Privata",
+    "azienda_attuale": "Produzione Privata",
+    "categoria": "lampada a sospensione",
+    "foto": "delucchi-acquatinta-incamiciato-bianco.jpg"
+  },
+  {
+    "nome": "Sistemare",
+    "anno": 1997,
+    "designer": "Michele De Lucchi",
+    "azienda": "Mauser Office",
+    "azienda_attuale": null,
+    "categoria": "sistema di arredi per ufficio",
+    "foto": "delucchi-sistemare.jpg"
+  },
+  {
+    "nome": "Eidos",
+    "anno": 1997,
+    "designer": "Michele De Lucchi",
+    "azienda": "Olivetti Synthesis",
+    "azienda_attuale": null,
+    "categoria": "sistema di arredi per ufficio",
+    "foto": "delucchi-eidos.jpg"
+  },
+  {
+    "nome": "Pegaso",
+    "anno": 1997,
+    "designer": "Michele De Lucchi",
+    "azienda": "Olivetti Synthesis",
+    "azienda_attuale": null,
+    "categoria": "sistema di arredi per ufficio",
+    "foto": "delucchi-pegaso.jpg"
+  },
+  {
+    "nome": "Dioscuri Parete/Soffitto",
+    "anno": 1999,
+    "designer": "Michele De Lucchi",
+    "azienda": "Artemide",
+    "azienda_attuale": "Artemide",
+    "categoria": "lampada da parete/soffitto",
+    "foto": "delucchi-dioscuri-parete-soffitto.jpg"
+  },
+  {
+    "nome": "Dioscuri Tavolo",
+    "anno": 1999,
+    "designer": "Michele De Lucchi",
+    "azienda": "Artemide",
+    "azienda_attuale": "Artemide",
+    "categoria": "lampada da tavolo",
+    "foto": "delucchi-dioscuri-tavolo.jpg"
+  },
+  {
+    "nome": "Attivo 480",
+    "anno": 2000,
+    "designer": "Michele De Lucchi",
+    "azienda": "Mauser Office",
+    "azienda_attuale": null,
+    "categoria": "sedia per ufficio",
+    "foto": "delucchi-attivo-480.jpg"
+  },
+  {
+    "nome": "Jet Lab 600",
+    "anno": 2000,
+    "designer": "Michele De Lucchi",
+    "azienda": "Olivetti",
+    "azienda_attuale": null,
+    "categoria": "stampante",
+    "foto": "delucchi-jet-lab-600.jpg"
+  },
+  {
+    "nome": "Logico Parete",
+    "anno": 2001,
+    "designer": [
+      "Michele De Lucchi",
+      "Gerhard Reichert"
+    ],
+    "azienda": "Artemide",
+    "azienda_attuale": "Artemide",
+    "categoria": "lampada da parete",
+    "foto": "delucchi-logico-parete.jpg"
+  },
+  {
+    "nome": "Logico Soffitto",
+    "anno": 2001,
+    "designer": [
+      "Michele De Lucchi",
+      "Gerhard Reichert"
+    ],
+    "azienda": "Artemide",
+    "azienda_attuale": "Artemide",
+    "categoria": "lampada da soffitto",
+    "foto": "delucchi-logico-soffitto.jpg"
+  },
+  {
+    "nome": "Logico Sospensione",
+    "anno": 2001,
+    "designer": [
+      "Michele De Lucchi",
+      "Gerhard Reichert"
+    ],
+    "azienda": "Artemide",
+    "azienda_attuale": "Artemide",
+    "categoria": "lampada a sospensione",
+    "foto": "delucchi-logico-sospensione.jpg"
+  },
+  {
+    "nome": "Logico Tavolo",
+    "anno": 2001,
+    "designer": [
+      "Michele De Lucchi",
+      "Gerhard Reichert"
+    ],
+    "azienda": "Artemide",
+    "azienda_attuale": "Artemide",
+    "categoria": "lampada da tavolo",
+    "foto": "delucchi-logico-tavolo.jpg"
+  },
+  {
+    "nome": "Artjet 10",
+    "anno": 2001,
+    "designer": "Michele De Lucchi",
+    "azienda": "Olivetti",
+    "azienda_attuale": null,
+    "categoria": "stampante",
+    "foto": "delucchi-artjet-10.jpg"
+  },
+  {
+    "nome": "Castore Parete/Soffitto",
+    "anno": 2003,
+    "designer": "Michele De Lucchi",
+    "azienda": "Artemide",
+    "azienda_attuale": "Artemide",
+    "categoria": "lampada da parete/soffitto",
+    "foto": "delucchi-castore-parete-soffitto.jpg"
+  },
+  {
+    "nome": "Castore Sospensione",
+    "anno": 2003,
+    "designer": "Michele De Lucchi",
+    "azienda": "Artemide",
+    "azienda_attuale": "Artemide",
+    "categoria": "lampada a sospensione",
+    "foto": "delucchi-castore-sospensione.jpg"
+  },
+  {
+    "nome": "Castore Tavolo",
+    "anno": 2003,
+    "designer": "Michele De Lucchi",
+    "azienda": "Artemide",
+    "azienda_attuale": "Artemide",
+    "categoria": "lampada da tavolo",
+    "foto": "delucchi-castore-tavolo.jpg"
+  },
+  {
+    "nome": "Castore Terra",
+    "anno": 2003,
+    "designer": "Michele De Lucchi",
+    "azienda": "Artemide",
+    "azienda_attuale": "Artemide",
+    "categoria": "lampada da terra",
+    "foto": "delucchi-castore-terra.jpg"
+  },
+  {
+    "nome": "Layout",
+    "anno": 2004,
+    "designer": "Michele De Lucchi",
+    "azienda": "Alias",
+    "azienda_attuale": "Alias",
+    "categoria": "sistema contenitore",
+    "foto": "delucchi-layout.jpg"
+  },
+  {
+    "nome": "Logico Mini",
+    "anno": 2004,
+    "designer": [
+      "Michele De Lucchi",
+      "Gerhard Reichert"
+    ],
+    "azienda": "Artemide",
+    "azienda_attuale": "Artemide",
+    "categoria": "famiglia di lampade",
+    "foto": "delucchi-logico-mini.jpg"
+  },
+  {
+    "nome": "Bisonte",
+    "anno": 2005,
+    "designer": "Michele De Lucchi",
+    "azienda": "Produzione Privata",
+    "azienda_attuale": "Produzione Privata",
+    "categoria": "sgabello e colonna appendiabiti",
+    "foto": "delucchi-bisonte.jpg"
+  },
+  {
+    "nome": "Gli Animali con il Collo Lungo",
+    "anno": 2005,
+    "designer": "Michele De Lucchi",
+    "azienda": "Produzione Privata",
+    "azienda_attuale": "Produzione Privata",
+    "categoria": "portagioie",
+    "foto": "delucchi-gli-animali-con-il-collo-lungo.jpg"
+  },
+  {
+    "nome": "Il Giardino",
+    "anno": 2005,
+    "designer": "Michele De Lucchi",
+    "azienda": "Produzione Privata",
+    "azienda_attuale": "Produzione Privata",
+    "categoria": "centrotavola",
+    "foto": "delucchi-il-giardino.jpg"
+  },
+  {
+    "nome": "La Conica",
+    "anno": 2005,
+    "designer": "Michele De Lucchi",
+    "azienda": "Produzione Privata",
+    "azienda_attuale": "Produzione Privata",
+    "categoria": "lampada",
+    "foto": "delucchi-la-conica.jpg"
+  },
+  {
+    "nome": "Lampada Nuvola",
+    "anno": 2005,
+    "designer": "Michele De Lucchi",
+    "azienda": "Produzione Privata",
+    "azienda_attuale": "Produzione Privata",
+    "categoria": "lampada",
+    "foto": "delucchi-lampada-nuvola.jpg"
+  },
+  {
+    "nome": "Orientalina",
+    "anno": 2005,
+    "designer": "Michele De Lucchi",
+    "azienda": "Produzione Privata",
+    "azienda_attuale": "Produzione Privata",
+    "categoria": "lampada da tavolo",
+    "foto": "delucchi-orientalina.jpg"
+  },
+  {
+    "nome": "MDL Light",
+    "anno": 2005,
+    "designer": "Michele De Lucchi",
+    "azienda": "UniFor",
+    "azienda_attuale": "UniFor",
+    "categoria": "sistema di postazioni di lavoro",
+    "foto": "delucchi-mdl-light.jpg"
+  },
+  {
+    "nome": "MDL System",
+    "anno": 2005,
+    "designer": "Michele De Lucchi",
+    "azienda": "UniFor",
+    "azienda_attuale": "UniFor",
+    "categoria": "sistema di arredi per ufficio",
+    "foto": "delucchi-mdl-system.jpg"
+  },
+  {
+    "nome": "Fauna",
+    "anno": 2006,
+    "designer": "Michele De Lucchi",
+    "azienda": "Produzione Privata",
+    "azienda_attuale": "Produzione Privata",
+    "categoria": "vaso in vetro",
+    "foto": "delucchi-fauna.jpg"
+  },
+  {
+    "nome": "Festa",
+    "anno": 2006,
+    "designer": "Michele De Lucchi",
+    "azienda": "Produzione Privata",
+    "azienda_attuale": "Produzione Privata",
+    "categoria": "lampada",
+    "foto": "delucchi-festa.jpg"
+  },
+  {
+    "nome": "Festina",
+    "anno": 2006,
+    "designer": "Michele De Lucchi",
+    "azienda": "Produzione Privata",
+    "azienda_attuale": "Produzione Privata",
+    "categoria": "lampada",
+    "foto": "delucchi-festina.jpg"
+  },
+  {
+    "nome": "Festina Parete",
+    "anno": 2006,
+    "designer": "Michele De Lucchi",
+    "azienda": "Produzione Privata",
+    "azienda_attuale": "Produzione Privata",
+    "categoria": "lampada da parete",
+    "foto": "delucchi-festina-parete.jpg"
+  },
+  {
+    "nome": "Flora",
+    "anno": 2006,
+    "designer": "Michele De Lucchi",
+    "azienda": "Produzione Privata",
+    "azienda_attuale": "Produzione Privata",
+    "categoria": "vaso in vetro",
+    "foto": "delucchi-flora.jpg"
+  },
+  {
+    "nome": "Ittica",
+    "anno": 2006,
+    "designer": "Michele De Lucchi",
+    "azienda": "Produzione Privata",
+    "azienda_attuale": "Produzione Privata",
+    "categoria": "vaso in vetro",
+    "foto": "delucchi-ittica.jpg"
+  },
+  {
+    "nome": "Migrante",
+    "anno": 2006,
+    "designer": "Michele De Lucchi",
+    "azienda": "Produzione Privata",
+    "azienda_attuale": "Produzione Privata",
+    "categoria": "vaso in vetro",
+    "foto": "delucchi-migrante.jpg"
+  },
+  {
+    "nome": "Vetri a Forma di Vasi",
+    "anno": 2006,
+    "designer": "Michele De Lucchi",
+    "azienda": "Produzione Privata",
+    "azienda_attuale": "Produzione Privata",
+    "categoria": "collezione di vasi in vetro",
+    "foto": "delucchi-vetri-a-forma-di-vasi.jpg"
+  },
+  {
+    "nome": "Sedia 2007",
+    "anno": 2007,
+    "designer": "Michele De Lucchi",
+    "azienda": "Produzione Privata",
+    "azienda_attuale": "Produzione Privata",
+    "categoria": "sedia",
+    "foto": "delucchi-sedia-2007.jpg"
+  },
+  {
+    "nome": "Dehors",
+    "anno": 2008,
+    "designer": "Michele De Lucchi",
+    "azienda": "Alias",
+    "azienda_attuale": "Alias",
+    "categoria": "collezione outdoor",
+    "foto": "delucchi-dehors.jpg"
+  },
+  {
+    "nome": "Noto",
+    "anno": 2008,
+    "designer": "Michele De Lucchi",
+    "azienda": "Artemide",
+    "azienda_attuale": "Artemide",
+    "categoria": "lampada da terra",
+    "foto": "delucchi-noto.jpg"
+  },
+  {
+    "nome": "Soffione",
+    "anno": 2008,
+    "designer": "Michele De Lucchi",
+    "azienda": "Artemide",
+    "azienda_attuale": "Artemide",
+    "categoria": "lampada",
+    "foto": "delucchi-soffione.jpg"
+  },
+  {
+    "nome": "Norma",
+    "anno": 2009,
+    "designer": "Michele De Lucchi",
+    "azienda": "Alias",
+    "azienda_attuale": "Alias",
+    "categoria": "sedia per ufficio",
+    "foto": "delucchi-norma.jpg"
+  },
+  {
+    "nome": "Trottola",
+    "anno": 2009,
+    "designer": "Michele De Lucchi",
+    "azienda": "Riva 1920",
+    "azienda_attuale": "Riva 1920",
+    "categoria": "sgabello",
+    "foto": "delucchi-trottola.jpg"
+  },
+  {
+    "nome": "LED Net Soffitto",
+    "anno": 2010,
+    "designer": [
+      "Michele De Lucchi",
+      "Alberto Nason"
+    ],
+    "azienda": "Artemide",
+    "azienda_attuale": "Artemide",
+    "categoria": "lampada da soffitto",
+    "foto": "delucchi-led-net-soffitto.jpg"
+  },
+  {
+    "nome": "LED Net Sospensione",
+    "anno": 2010,
+    "designer": [
+      "Michele De Lucchi",
+      "Alberto Nason"
+    ],
+    "azienda": "Artemide",
+    "azienda_attuale": "Artemide",
+    "categoria": "lampada a sospensione",
+    "foto": "delucchi-led-net-sospensione.jpg"
+  },
+  {
+    "nome": "Medoc",
+    "anno": 2010,
+    "designer": "Michele De Lucchi",
+    "azienda": "Artemide",
+    "azienda_attuale": "Artemide",
+    "categoria": "lampada",
+    "foto": "delucchi-medoc-artemide.jpg"
+  },
+  {
+    "nome": "Existence",
+    "anno": 2010,
+    "designer": "Michele De Lucchi",
+    "azienda": "De Castelli",
+    "azienda_attuale": "De Castelli",
+    "categoria": "libreria",
+    "foto": "delucchi-existence.jpg"
+  },
+  {
+    "nome": "Medoc",
+    "anno": 2010,
+    "designer": [
+      "Michele De Lucchi",
+      "Philippe Nigro"
+    ],
+    "azienda": "Listone Giordano",
+    "azienda_attuale": "Listone Giordano",
+    "categoria": "pavimento in legno",
+    "foto": "delucchi-nigro-medoc.jpg"
+  },
+  {
+    "nome": "Il Briccolone",
+    "anno": 2011,
+    "designer": "Michele De Lucchi",
+    "azienda": "Riva 1920",
+    "azienda_attuale": "Riva 1920",
+    "categoria": "tavolo",
+    "foto": "delucchi-il-briccolone.jpg"
+  },
+  {
+    "nome": "Palizzata",
+    "anno": 2011,
+    "designer": "Michele De Lucchi",
+    "azienda": "Riva 1920",
+    "azienda_attuale": "Riva 1920",
+    "categoria": "libreria",
+    "foto": "delucchi-palizzata.jpg"
+  },
+  {
+    "nome": "Mitesco",
+    "anno": 2012,
+    "designer": "Michele De Lucchi",
+    "azienda": "Caimi Brevetti",
+    "azienda_attuale": "Caimi Brevetti",
+    "categoria": "pannello acustico modulare",
+    "foto": "delucchi-mitesco.jpg"
+  },
+  {
+    "nome": "Bicchieri da Collezione 2012",
+    "anno": 2012,
+    "designer": "Michele De Lucchi",
+    "azienda": "Produzione Privata",
+    "azienda_attuale": "Produzione Privata",
+    "categoria": "bicchieri",
+    "foto": "delucchi-bicchieri-da-collezione-2012.jpg"
+  },
+  {
+    "nome": "Bicchieri Strip",
+    "anno": 2012,
+    "designer": "Michele De Lucchi",
+    "azienda": "Produzione Privata",
+    "azienda_attuale": "Produzione Privata",
+    "categoria": "bicchieri",
+    "foto": "delucchi-bicchieri-strip.jpg"
+  },
+  {
+    "nome": "Cuore Aperto",
+    "anno": 2012,
+    "designer": "Michele De Lucchi",
+    "azienda": "Produzione Privata",
+    "azienda_attuale": "Produzione Privata",
+    "categoria": "oggetto decorativo",
+    "foto": "delucchi-cuore-aperto.jpg"
+  },
+  {
+    "nome": "Vasi Maioliche Deruta",
+    "anno": 2012,
+    "designer": "Michele De Lucchi",
+    "azienda": "Produzione Privata",
+    "azienda_attuale": "Produzione Privata",
+    "categoria": "vasi in maiolica",
+    "foto": "delucchi-vasi-maioliche-deruta.jpg"
+  },
+  {
+    "nome": "Piazza Scala",
+    "anno": 2012,
+    "designer": "Michele De Lucchi",
+    "azienda": "Riva 1920",
+    "azienda_attuale": "Riva 1920",
+    "categoria": "panchina",
+    "foto": "delucchi-piazza-scala.jpg"
+  },
+  {
+    "nome": "Tool",
+    "anno": 2013,
+    "designer": "Michele De Lucchi",
+    "azienda": "Colombo Design",
+    "azienda_attuale": "Colombo Design",
+    "categoria": "maniglia",
+    "foto": "delucchi-tool.jpg"
+  },
+  {
+    "nome": "Bicchieri da Collezione 2013",
+    "anno": 2013,
+    "designer": "Michele De Lucchi",
+    "azienda": "Produzione Privata",
+    "azienda_attuale": "Produzione Privata",
+    "categoria": "bicchieri",
+    "foto": "delucchi-bicchieri-da-collezione-2013.jpg"
+  },
+  {
+    "nome": "Cipria e Frullino",
+    "anno": 2013,
+    "designer": "Michele De Lucchi",
+    "azienda": "Produzione Privata",
+    "azienda_attuale": "Produzione Privata",
+    "categoria": "oggetto in vetro",
+    "foto": "delucchi-cipria-e-frullino.jpg"
+  },
+  {
+    "nome": "Glacier",
+    "anno": 2013,
+    "designer": "Michele De Lucchi",
+    "azienda": "Produzione Privata",
+    "azienda_attuale": "Produzione Privata",
+    "categoria": "oggetto in vetro",
+    "foto": "delucchi-glacier.jpg"
+  },
+  {
+    "nome": "Seme e Semino",
+    "anno": 2013,
+    "designer": "Michele De Lucchi",
+    "azienda": "Produzione Privata",
+    "azienda_attuale": "Produzione Privata",
+    "categoria": "oggetto in vetro",
+    "foto": "delucchi-seme-e-semino.jpg"
+  },
+  {
+    "nome": "Torre Lignea",
+    "anno": 2013,
+    "designer": "Michele De Lucchi",
+    "azienda": "Riva 1920",
+    "azienda_attuale": "Riva 1920",
+    "categoria": "libreria",
+    "foto": "delucchi-torre-lignea.jpg"
+  },
+  {
+    "nome": "Secretello",
+    "anno": 2013,
+    "designer": "Michele De Lucchi",
+    "azienda": "UniFor",
+    "azienda_attuale": "UniFor",
+    "categoria": "postazione scrittoio",
+    "foto": "delucchi-secretello.jpg"
+  },
+  {
+    "nome": "Pulcina",
+    "anno": 2015,
+    "designer": "Michele De Lucchi",
+    "azienda": "Alessi",
+    "azienda_attuale": "Alessi",
+    "categoria": "caffettiera espresso",
+    "foto": "delucchi-pulcina.jpg",
+    "top": true
+  },
+  {
+    "nome": "Astrati",
+    "anno": 2015,
+    "designer": "Michele De Lucchi",
+    "azienda": "Riva 1920",
+    "azienda_attuale": "Riva 1920",
+    "categoria": "tavolo",
+    "foto": "delucchi-astrati.jpg"
+  },
+  {
+    "nome": "Pangea",
+    "anno": 2015,
+    "designer": "Michele De Lucchi",
+    "azienda": "Riva 1920",
+    "azienda_attuale": "Riva 1920",
+    "categoria": "tavolo",
+    "foto": "delucchi-pangea.jpg"
+  },
+  {
+    "nome": "Ipno",
+    "anno": 2016,
+    "designer": "Michele De Lucchi",
+    "azienda": "Artemide",
+    "azienda_attuale": "Artemide",
+    "categoria": "lampada a sospensione",
+    "foto": "delucchi-ipno.jpg"
+  },
+  {
+    "nome": "Tolomeo Outdoor",
+    "anno": 2016,
+    "designer": [
+      "Michele De Lucchi",
+      "Giancarlo Fassina"
+    ],
+    "azienda": "Artemide",
+    "azienda_attuale": "Artemide",
+    "categoria": "lampada per esterni",
+    "foto": "delucchi-tolomeo-outdoor.jpg"
+  },
+  {
+    "nome": "Teamer",
+    "anno": 2016,
+    "designer": "Michele De Lucchi",
+    "azienda": "UniFor",
+    "azienda_attuale": "UniFor",
+    "categoria": "tavolo / sistema ufficio",
+    "foto": "delucchi-teamer.jpg"
+  },
+  {
+    "nome": "Dervisci",
+    "anno": 2017,
+    "designer": "Michele De Lucchi",
+    "azienda": "Alessi",
+    "azienda_attuale": "Alessi",
+    "categoria": "bicchiere",
+    "foto": "delucchi-dervisci.jpg"
+  },
+  {
+    "nome": "Raggiante",
+    "anno": 2017,
+    "designer": "Michele De Lucchi",
+    "azienda": "Alessi",
+    "azienda_attuale": "Alessi",
+    "categoria": "orologio da parete",
+    "foto": "delucchi-raggiante.jpg"
+  },
+  {
+    "nome": "Plissé",
+    "anno": 2018,
+    "designer": "Michele De Lucchi",
+    "azienda": "Alessi",
+    "azienda_attuale": "Alessi",
+    "categoria": "famiglia di piccoli elettrodomestici",
+    "foto": "delucchi-plisse.jpg"
+  },
+  {
+    "nome": "Plissé Kettle",
+    "anno": 2018,
+    "designer": "Michele De Lucchi",
+    "azienda": "Alessi",
+    "azienda_attuale": "Alessi",
+    "categoria": "bollitore elettrico",
+    "foto": "delucchi-plisse-kettle.jpg"
+  },
+  {
+    "nome": "Biblio",
+    "anno": 2018,
+    "designer": "Michele De Lucchi",
+    "azienda": "Riva 1920",
+    "azienda_attuale": "Riva 1920",
+    "categoria": "libreria",
+    "foto": "delucchi-biblio.jpg"
+  },
+  {
+    "nome": "Trigono",
+    "anno": 2019,
+    "designer": "Michele De Lucchi",
+    "azienda": "Alias",
+    "azienda_attuale": "Alias",
+    "categoria": "sistema di tavoli",
+    "foto": "delucchi-trigono.jpg"
+  },
+  {
+    "nome": "Plissé Citrus Squeezer",
+    "anno": 2020,
+    "designer": "Michele De Lucchi",
+    "azienda": "Alessi",
+    "azienda_attuale": "Alessi",
+    "categoria": "spremiagrumi elettrico",
+    "foto": "delucchi-plisse-citrus-squeezer.jpg"
+  },
+  {
+    "nome": "Plissé Toaster",
+    "anno": 2020,
+    "designer": "Michele De Lucchi",
+    "azienda": "Alessi",
+    "azienda_attuale": "Alessi",
+    "categoria": "tostapane",
+    "foto": "delucchi-plisse-toaster.jpg"
+  },
+  {
+    "nome": "Plissé Blender",
+    "anno": 2021,
+    "designer": "Michele De Lucchi",
+    "azienda": "Alessi",
+    "azienda_attuale": "Alessi",
+    "categoria": "frullatore",
+    "foto": "delucchi-plisse-blender.jpg"
+  },
+  {
+    "nome": "Plissé Milk Frother",
+    "anno": 2022,
+    "designer": "Michele De Lucchi",
+    "azienda": "Alessi",
+    "azienda_attuale": "Alessi",
+    "categoria": "montalatte",
+    "foto": "delucchi-plisse-milk-frother.jpg"
+  },
+  {
+    "nome": "Plissé Thermo Insulated Jug",
+    "anno": 2022,
+    "designer": "Michele De Lucchi",
+    "azienda": "Alessi",
+    "azienda_attuale": "Alessi",
+    "categoria": "caraffa termica",
+    "foto": "delucchi-plisse-thermo-insulated-jug.jpg"
+  },
+  {
+    "nome": "Indoor",
+    "anno": 2022,
+    "designer": "Michele De Lucchi",
+    "azienda": "Alias",
+    "azienda_attuale": "Alias",
+    "categoria": "collezione di sedute",
+    "foto": "delucchi-indoor.jpg"
+  },
+  {
+    "nome": "Doga",
+    "anno": 2022,
+    "designer": "Michele De Lucchi",
+    "azienda": "Riva 1920",
+    "azienda_attuale": "Riva 1920",
+    "categoria": "panca",
+    "foto": "delucchi-doga.jpg"
+  },
+  {
+    "nome": "Plissé Drip Coffee Maker",
+    "anno": 2023,
+    "designer": "Michele De Lucchi",
+    "azienda": "Alessi",
+    "azienda_attuale": "Alessi",
+    "categoria": "macchina per caffè filtro",
+    "foto": "delucchi-plisse-drip-coffee-maker.jpg"
+  },
+  {
+    "nome": "Megara",
+    "anno": 2023,
+    "designer": "Michele De Lucchi",
+    "azienda": "Artemide",
+    "azienda_attuale": "Artemide",
+    "categoria": "lampada",
+    "foto": "delucchi-megara.jpg"
+  },
+  {
+    "nome": "Forella",
+    "anno": 2023,
+    "designer": "Michele De Lucchi",
+    "azienda": "Riva 1920",
+    "azienda_attuale": "Riva 1920",
+    "categoria": "panca",
+    "foto": "delucchi-forella.jpg"
+  },
+  {
+    "nome": "Plissé Hand Blender",
+    "anno": 2024,
+    "designer": "Michele De Lucchi",
+    "azienda": "Alessi",
+    "azienda_attuale": "Alessi",
+    "categoria": "frullatore a immersione",
+    "foto": "delucchi-plisse-hand-blender.jpg"
+  },
+  {
+    "nome": "Plissé Personal Blender",
+    "anno": 2024,
+    "designer": "Michele De Lucchi",
+    "azienda": "Alessi",
+    "azienda_attuale": "Alessi",
+    "categoria": "frullatore personale",
+    "foto": "delucchi-plisse-personal-blender.jpg"
+  },
+  {
+    "nome": "Oaxaca",
+    "anno": 2025,
+    "designer": "Michele De Lucchi",
+    "azienda": "Alessi",
+    "azienda_attuale": "Alessi",
+    "categoria": "macinino per sale, pepe e spezie",
+    "foto": "delucchi-oaxaca.jpg"
+  },
+  {
+    "nome": "Yucatan",
+    "anno": 2025,
+    "designer": "Michele De Lucchi",
+    "azienda": "Alessi",
+    "azienda_attuale": "Alessi",
+    "categoria": "macinino per sale, pepe e spezie",
+    "foto": "delucchi-yucatan.jpg"
+  },
+  {
+    "nome": "Safari",
+    "anno": 1967,
+    "designer": [
+      "Andrea Branzi",
+      "Gilberto Corretti",
+      "Paolo Deganello",
+      "Massimo Morozzi"
+    ],
+    "azienda": "Poltronova",
+    "azienda_attuale": "Poltronova",
+    "categoria": "divano",
+    "foto": "branzi-safari.jpg",
+    "top": true
+  },
+  {
+    "nome": "Farfalla",
+    "anno": 1968,
+    "designer": [
+      "Andrea Branzi",
+      "Gilberto Corretti",
+      "Paolo Deganello",
+      "Massimo Morozzi"
+    ],
+    "azienda": "Poltronova",
+    "azienda_attuale": "Poltronova",
+    "categoria": "tessuto",
+    "foto": "branzi-farfalla.jpg"
+  },
+  {
+    "nome": "Sanremo",
+    "anno": 1968,
+    "designer": [
+      "Andrea Branzi",
+      "Gilberto Corretti",
+      "Paolo Deganello",
+      "Massimo Morozzi"
+    ],
+    "azienda": "Poltronova",
+    "azienda_attuale": "Poltronova",
+    "categoria": "lampada da terra",
+    "foto": "branzi-sanremo.jpg"
+  },
+  {
+    "nome": "Tizio Caio Sempronio",
+    "anno": 1968,
+    "designer": [
+      "Andrea Branzi",
+      "Gilberto Corretti",
+      "Paolo Deganello",
+      "Massimo Morozzi"
+    ],
+    "azienda": "Poltronova",
+    "azienda_attuale": "Poltronova",
+    "categoria": "serie di oggetti: posacenere, vaso e lampada",
+    "foto": "branzi-tizio-caio-sempronio.jpg"
+  },
+  {
+    "nome": "Gritti",
+    "anno": 1981,
+    "designer": "Andrea Branzi",
+    "azienda": "Memphis",
+    "azienda_attuale": "Memphis",
+    "categoria": "libreria",
+    "foto": "branzi-gritti.jpg"
+  },
+  {
+    "nome": "Labrador",
+    "anno": 1982,
+    "designer": "Andrea Branzi",
+    "azienda": "Memphis",
+    "azienda_attuale": "Memphis",
+    "categoria": "salsiera",
+    "foto": "branzi-labrador.jpg"
+  },
+  {
+    "nome": "Magnolia",
+    "anno": 1985,
+    "designer": "Andrea Branzi",
+    "azienda": "Memphis",
+    "azienda_attuale": "Memphis",
+    "categoria": "libreria",
+    "foto": "branzi-magnolia.jpg"
+  },
+  {
+    "nome": "CO1369",
+    "anno": 1991,
+    "designer": "Andrea Branzi",
+    "azienda": "Alessi",
+    "azienda_attuale": "Alessi",
+    "categoria": "portastuzzicadenti",
+    "foto": "branzi-co1369.jpg"
+  },
+  {
+    "nome": "Mama-ò",
+    "anno": 1991,
+    "designer": "Andrea Branzi",
+    "azienda": "Alessi",
+    "azienda_attuale": null,
+    "categoria": "bollitore",
+    "foto": "branzi-mama-o.jpg"
+  },
+  {
+    "nome": "Niccola",
+    "anno": 1992,
+    "designer": "Andrea Branzi",
+    "azienda": "Zanotta",
+    "azienda_attuale": null,
+    "categoria": "poltrona",
+    "foto": "branzi-niccola.jpg"
+  },
+  {
+    "nome": "Revers",
+    "anno": 1993,
+    "designer": "Andrea Branzi",
+    "azienda": "Cassina",
+    "azienda_attuale": null,
+    "categoria": "poltrona",
+    "foto": "branzi-revers.jpg"
+  },
+  {
+    "nome": "Portofino",
+    "anno": 2001,
+    "designer": "Andrea Branzi",
+    "azienda": "Danese Milano",
+    "azienda_attuale": null,
+    "categoria": "vassoio",
+    "foto": "branzi-portofino.jpg"
+  },
+  {
+    "nome": "Scoiattolo",
+    "anno": 2010,
+    "designer": "Andrea Branzi",
+    "azienda": "Alessi",
+    "azienda_attuale": "Alessi",
+    "categoria": "schiaccianoci",
+    "foto": "branzi-scoiattolo.jpg"
+  },
+  {
+    "nome": "Giotto",
+    "anno": 2016,
+    "designer": "Andrea Branzi",
+    "azienda": "Ghidini 1961",
+    "azienda_attuale": "Ghidini 1961",
+    "categoria": "lampada da terra",
+    "foto": "branzi-giotto.jpg"
+  },
+  {
+    "nome": "Incrocio",
+    "anno": 2016,
+    "designer": "Andrea Branzi",
+    "azienda": "Ghidini 1961",
+    "azienda_attuale": "Ghidini 1961",
+    "categoria": "scaffale / mensola",
+    "foto": "branzi-incrocio.jpg"
+  },
+  {
+    "nome": "Porto",
+    "anno": 2016,
+    "designer": "Andrea Branzi",
+    "azienda": "Ghidini 1961",
+    "azienda_attuale": "Ghidini 1961",
+    "categoria": "consolle retroilluminata",
+    "foto": "branzi-porto.jpg"
+  },
+  {
+    "nome": "Canotta",
+    "anno": 2016,
+    "designer": "Andrea Branzi",
+    "azienda": "Qeeboo",
+    "azienda_attuale": "Qeeboo",
+    "categoria": "vaso",
+    "foto": "branzi-canotta.jpg"
+  },
+  {
+    "nome": "Guru",
+    "anno": 2016,
+    "designer": "Andrea Branzi",
+    "azienda": "Qeeboo",
+    "azienda_attuale": "Qeeboo",
+    "categoria": "lampada",
+    "foto": "branzi-guru.jpg"
+  },
+  {
+    "nome": "Korall",
+    "anno": 2016,
+    "designer": "Andrea Branzi",
+    "azienda": "Qeeboo",
+    "azienda_attuale": "Qeeboo",
+    "categoria": "vaso",
+    "foto": "branzi-korall.jpg"
+  },
+  {
+    "nome": "Pupa",
+    "anno": 2016,
+    "designer": "Andrea Branzi",
+    "azienda": "Qeeboo",
+    "azienda_attuale": "Qeeboo",
+    "categoria": "poltrona",
+    "foto": "branzi-pupa.jpg"
+  },
+  {
+    "nome": "Newton",
+    "anno": 2019,
+    "designer": "Andrea Branzi",
+    "azienda": "Nemo Lighting",
+    "azienda_attuale": "Nemo Lighting",
+    "categoria": "lampada da terra",
+    "foto": "branzi-newton.jpg"
+  },
+  {
+    "nome": "Cylinder Bowl",
+    "anno": 2020,
+    "designer": "Andrea Branzi",
+    "azienda": "Ghidini 1961",
+    "azienda_attuale": "Ghidini 1961",
+    "categoria": "ciotola / vaso",
+    "foto": "branzi-cylinder-bowl.jpg"
+  },
+  {
+    "nome": "Large Bowl",
+    "anno": 2020,
+    "designer": "Andrea Branzi",
+    "azienda": "Ghidini 1961",
+    "azienda_attuale": "Ghidini 1961",
+    "categoria": "ciotola / vaso",
+    "foto": "branzi-large-bowl.jpg"
+  },
+  {
+    "nome": "Medium Bowl",
+    "anno": 2020,
+    "designer": "Andrea Branzi",
+    "azienda": "Ghidini 1961",
+    "azienda_attuale": "Ghidini 1961",
+    "categoria": "ciotola / vaso",
+    "foto": "branzi-medium-bowl.jpg"
+  },
+  {
+    "nome": "Ercolino",
+    "anno": 2021,
+    "designer": "Andrea Branzi",
+    "azienda": "Alessi",
+    "azienda_attuale": "Alessi",
+    "categoria": "apribottiglie",
+    "foto": "branzi-ercolino.jpg"
+  },
+  {
+    "nome": "Tronchetto",
+    "anno": 2023,
+    "designer": "Andrea Branzi",
+    "azienda": "Alessi",
+    "azienda_attuale": "Alessi",
+    "categoria": "vaso",
+    "foto": "branzi-tronchetto.jpg"
+  },
+  {
+    "nome": "Tappeto Autostrada",
+    "anno": 2023,
+    "designer": [
+      "Andrea Branzi",
+      "Gilberto Corretti",
+      "Paolo Deganello",
+      "Massimo Morozzi"
+    ],
+    "azienda": "Poltronova",
+    "azienda_attuale": "Poltronova",
+    "categoria": "tappeto",
+    "foto": "branzi-tappeto-autostrada.jpg"
+  },
+  {
+    "nome": "Tappeto Cielo",
+    "anno": 2023,
+    "designer": [
+      "Andrea Branzi",
+      "Gilberto Corretti",
+      "Paolo Deganello",
+      "Massimo Morozzi"
+    ],
+    "azienda": "Poltronova",
+    "azienda_attuale": "Poltronova",
+    "categoria": "tappeto",
+    "foto": "branzi-tappeto-cielo.jpg"
+  },
+  {
+    "nome": "Tappeto Farfalla",
+    "anno": 2023,
+    "designer": [
+      "Andrea Branzi",
+      "Gilberto Corretti",
+      "Paolo Deganello",
+      "Massimo Morozzi"
+    ],
+    "azienda": "Poltronova",
+    "azienda_attuale": "Poltronova",
+    "categoria": "tappeto",
+    "foto": "branzi-tappeto-farfalla.jpg"
+  },
+  {
+    "nome": "Tappeto Prato",
+    "anno": 2023,
+    "designer": [
+      "Andrea Branzi",
+      "Gilberto Corretti",
+      "Paolo Deganello",
+      "Massimo Morozzi"
+    ],
+    "azienda": "Poltronova",
+    "azienda_attuale": "Poltronova",
+    "categoria": "tappeto",
+    "foto": "branzi-tappeto-prato.jpg"
+  },
+  {
+    "nome": "Century",
+    "anno": 2025,
+    "designer": "Andrea Branzi",
+    "azienda": "Memphis",
+    "azienda_attuale": "Memphis",
+    "categoria": "chaise longue",
+    "foto": "branzi-century.jpg"
+  },
+  {
+    "nome": "Cabina dell’Elba",
+    "anno": 1980,
+    "designer": "Aldo Rossi",
+    "azienda": "Molteni&C",
+    "azienda_attuale": null,
+    "categoria": "armadio / cabina",
+    "foto": "rossi-cabina-dellelba.jpg"
+  },
+  {
+    "nome": "Teatro",
+    "anno": 1982,
+    "designer": [
+      "Aldo Rossi",
+      "Luca Meda"
+    ],
+    "azienda": "Molteni&C",
+    "azienda_attuale": null,
+    "categoria": "serie di sedute",
+    "foto": "rossi-teatro.jpg"
+  },
+  {
+    "nome": "Tea & Coffee Piazza",
+    "anno": 1983,
+    "designer": "Aldo Rossi",
+    "azienda": "Alessi",
+    "azienda_attuale": null,
+    "categoria": "servizio da tè e caffè",
+    "foto": "rossi-tea-and-coffee-piazza.jpg",
+    "top": true
+  },
+  {
+    "nome": "AR2",
+    "anno": 1983,
+    "designer": "Aldo Rossi",
+    "azienda": "Bruno Longoni Atelier d’Arredamento",
+    "azienda_attuale": "Bruno Longoni Atelier d’Arredamento",
+    "categoria": "sedia",
+    "foto": "rossi-ar2.jpg"
+  },
+  {
+    "nome": "AR3",
+    "anno": 1983,
+    "designer": "Aldo Rossi",
+    "azienda": "Bruno Longoni Atelier d’Arredamento",
+    "azienda_attuale": "Bruno Longoni Atelier d’Arredamento",
+    "categoria": "cassettone",
+    "foto": "rossi-ar3.jpg"
+  },
+  {
+    "nome": "AR4",
+    "anno": 1983,
+    "designer": "Aldo Rossi",
+    "azienda": "Bruno Longoni Atelier d’Arredamento",
+    "azienda_attuale": "Bruno Longoni Atelier d’Arredamento",
+    "categoria": "credenza / vetrina",
+    "foto": "rossi-ar4.jpg"
+  },
+  {
+    "nome": "AR5",
+    "anno": 1983,
+    "designer": "Aldo Rossi",
+    "azienda": "Bruno Longoni Atelier d’Arredamento",
+    "azienda_attuale": "Bruno Longoni Atelier d’Arredamento",
+    "categoria": "tavolo",
+    "foto": "rossi-ar5.jpg"
+  },
+  {
+    "nome": "Cabina dell’Elba AR1",
+    "anno": 1983,
+    "designer": "Aldo Rossi",
+    "azienda": "Bruno Longoni Atelier d’Arredamento",
+    "azienda_attuale": "Bruno Longoni Atelier d’Arredamento",
+    "categoria": "armadio / cabina",
+    "foto": "rossi-cabina-dellelba-ar1.jpg"
+  },
+  {
+    "nome": "La Conica",
+    "anno": 1984,
+    "designer": "Aldo Rossi",
+    "azienda": "Alessi",
+    "azienda_attuale": "Alessi",
+    "categoria": "caffettiera espresso",
+    "foto": "rossi-la-conica.jpg",
+    "top": true
+  },
+  {
+    "nome": "Rilievo",
+    "anno": 1985,
+    "designer": "Aldo Rossi",
+    "azienda": "Up&Up",
+    "azienda_attuale": "UpGroup",
+    "categoria": "tavolo in marmo",
+    "foto": "rossi-rilievo.jpg"
+  },
+  {
+    "nome": "Sillogismo",
+    "anno": 1985,
+    "designer": "Aldo Rossi",
+    "azienda": "Up&Up",
+    "azienda_attuale": "UpGroup",
+    "categoria": "specchiera in marmo",
+    "foto": "rossi-sillogismo.jpg"
+  },
+  {
+    "nome": "Tabularium",
+    "anno": 1985,
+    "designer": "Aldo Rossi",
+    "azienda": "Up&Up",
+    "azienda_attuale": "UpGroup",
+    "categoria": "tavolino / libreria in marmo",
+    "foto": "rossi-tabularium.jpg"
+  },
+  {
+    "nome": "9094",
+    "anno": 1986,
+    "designer": "Aldo Rossi",
+    "azienda": "Alessi",
+    "azienda_attuale": "Alessi",
+    "categoria": "caffettiera a pressa",
+    "foto": "rossi-9094.jpg"
+  },
+  {
+    "nome": "Il Conico",
+    "anno": 1986,
+    "designer": "Aldo Rossi",
+    "azienda": "Alessi",
+    "azienda_attuale": "Alessi",
+    "categoria": "bollitore",
+    "foto": "rossi-il-conico.jpg"
+  },
+  {
+    "nome": "Taccas",
+    "anno": 1987,
+    "designer": "Aldo Rossi",
+    "azienda": "ARP Studio / Cooperativa Zeddiani",
+    "azienda_attuale": null,
+    "categoria": "tappeto / arazzo",
+    "foto": "rossi-taccas.jpg"
+  },
+  {
+    "nome": "Momento",
+    "anno": 1987,
+    "designer": "Aldo Rossi",
+    "azienda": "Alessi",
+    "azienda_attuale": null,
+    "categoria": "orologio da polso",
+    "foto": "rossi-momento.jpg",
+    "top": true
+  },
+  {
+    "nome": "Carteggio",
+    "anno": 1987,
+    "designer": "Aldo Rossi",
+    "azienda": "Molteni&C",
+    "azienda_attuale": "Molteni&C",
+    "categoria": "secretaire / mobile contenitore",
+    "foto": "rossi-carteggio.jpg"
+  },
+  {
+    "nome": "Milano",
+    "anno": 1987,
+    "designer": "Aldo Rossi",
+    "azienda": "Molteni&C",
+    "azienda_attuale": null,
+    "categoria": "sedia",
+    "foto": "rossi-milano.jpg"
+  },
+  {
+    "nome": "La Cupola",
+    "anno": 1988,
+    "designer": "Aldo Rossi",
+    "azienda": "Alessi",
+    "azienda_attuale": "Alessi",
+    "categoria": "caffettiera espresso",
+    "foto": "rossi-la-cupola.jpg",
+    "top": true
+  },
+  {
+    "nome": "Teatro Open",
+    "anno": 1988,
+    "designer": [
+      "Aldo Rossi",
+      "Luca Meda"
+    ],
+    "azienda": "Molteni&C",
+    "azienda_attuale": null,
+    "categoria": "sedia",
+    "foto": "rossi-teatro-open.jpg"
+  },
+  {
+    "nome": "Parigi",
+    "anno": 1989,
+    "designer": "Aldo Rossi",
+    "azienda": "UniFor",
+    "azienda_attuale": "UniFor",
+    "categoria": "poltrona",
+    "foto": "rossi-parigi.jpg"
+  },
+  {
+    "nome": "Papyro",
+    "anno": 1990,
+    "designer": "Aldo Rossi",
+    "azienda": "Molteni&C",
+    "azienda_attuale": null,
+    "categoria": "scrivania",
+    "foto": "rossi-papyro.jpg"
+  },
+  {
+    "nome": "Carlo Felice Sedia Platea Teatro",
+    "anno": 1990,
+    "designer": [
+      "Aldo Rossi",
+      "Luca Meda"
+    ],
+    "azienda": "Molteni&C / UniFor",
+    "azienda_attuale": null,
+    "categoria": "sedia per platea teatrale",
+    "foto": "rossi-carlo-felice-sedia-platea-teatro.jpg"
+  },
+  {
+    "nome": "AR04",
+    "anno": 1991,
+    "designer": "Aldo Rossi",
+    "azienda": "Alessi",
+    "azienda_attuale": "Alessi",
+    "categoria": "lampada da tavolo",
+    "foto": "rossi-ar04.jpg"
+  },
+  {
+    "nome": "La Cubica",
+    "anno": 1991,
+    "designer": "Aldo Rossi",
+    "azienda": "Alessi",
+    "azienda_attuale": "Alessi",
+    "categoria": "pentola / cocotte",
+    "foto": "rossi-la-cubica.jpg"
+  },
+  {
+    "nome": "Consiglio",
+    "anno": 1991,
+    "designer": "Aldo Rossi",
+    "azienda": "UniFor",
+    "azienda_attuale": "UniFor",
+    "categoria": "tavolo",
+    "foto": "rossi-consiglio.jpg"
+  },
+  {
+    "nome": "Piroscafo",
+    "anno": 1992,
+    "designer": [
+      "Aldo Rossi",
+      "Luca Meda"
+    ],
+    "azienda": "Molteni&C",
+    "azienda_attuale": "Molteni&C",
+    "categoria": "libreria / sistema contenitore",
+    "foto": "rossi-piroscafo.jpg"
+  },
+  {
+    "nome": "Providence Armchair",
+    "anno": 1992,
+    "designer": "Aldo Rossi",
+    "azienda": "Molteni&C",
+    "azienda_attuale": null,
+    "categoria": "poltrona",
+    "foto": "rossi-providence-armchair.jpg"
+  },
+  {
+    "nome": "Providence Sofa",
+    "anno": 1992,
+    "designer": "Aldo Rossi",
+    "azienda": "Molteni&C",
+    "azienda_attuale": null,
+    "categoria": "divano",
+    "foto": "rossi-providence-sofa.jpg"
+  },
+  {
+    "nome": "Normandie Armadio",
+    "anno": 1993,
+    "designer": "Aldo Rossi",
+    "azienda": "Molteni&C",
+    "azienda_attuale": null,
+    "categoria": "armadio",
+    "foto": "rossi-normandie-armadio.jpg"
+  },
+  {
+    "nome": "Normandie Sedia",
+    "anno": 1993,
+    "designer": "Aldo Rossi",
+    "azienda": "Molteni&C",
+    "azienda_attuale": null,
+    "categoria": "sedia",
+    "foto": "rossi-normandie-sedia.jpg"
+  },
+  {
+    "nome": "Il Faro",
+    "anno": 1994,
+    "designer": "Aldo Rossi",
+    "azienda": "Rosenthal",
+    "azienda_attuale": null,
+    "categoria": "teiera",
+    "foto": "rossi-il-faro.jpg"
+  },
+  {
+    "nome": "Cartesio",
+    "anno": 1994,
+    "designer": "Aldo Rossi",
+    "azienda": "UniFor",
+    "azienda_attuale": "UniFor",
+    "categoria": "libreria componibile",
+    "foto": "rossi-cartesio.jpg"
+  },
+  {
+    "nome": "Museo",
+    "anno": 1994,
+    "designer": "Aldo Rossi",
+    "azienda": "UniFor",
+    "azienda_attuale": "UniFor",
+    "categoria": "sedia",
+    "foto": "rossi-museo.jpg"
+  },
+  {
+    "nome": "Alfiere",
+    "anno": 1995,
+    "designer": "Aldo Rossi",
+    "azienda": "Bruno Longoni Atelier d’Arredamento",
+    "azienda_attuale": "Bruno Longoni Atelier d’Arredamento",
+    "categoria": "tavolino",
+    "foto": "rossi-alfiere.jpg"
+  },
+  {
+    "nome": "Cassapanca",
+    "anno": 1995,
+    "designer": "Aldo Rossi",
+    "azienda": "Bruno Longoni Atelier d’Arredamento",
+    "azienda_attuale": "Bruno Longoni Atelier d’Arredamento",
+    "categoria": "cassapanca",
+    "foto": "rossi-cassapanca.jpg"
+  },
+  {
+    "nome": "Cassettone Fiorentino",
+    "anno": 1995,
+    "designer": "Aldo Rossi",
+    "azienda": "Bruno Longoni Atelier d’Arredamento",
+    "azienda_attuale": "Bruno Longoni Atelier d’Arredamento",
+    "categoria": "cassettone",
+    "foto": "rossi-cassettone-fiorentino.jpg"
+  },
+  {
+    "nome": "Fiorentino doppio",
+    "anno": 1995,
+    "designer": "Aldo Rossi",
+    "azienda": "Bruno Longoni Atelier d’Arredamento",
+    "azienda_attuale": "Bruno Longoni Atelier d’Arredamento",
+    "categoria": "armadio",
+    "foto": "rossi-fiorentino-doppio.jpg"
+  },
+  {
+    "nome": "Fiorentino singolo",
+    "anno": 1995,
+    "designer": "Aldo Rossi",
+    "azienda": "Bruno Longoni Atelier d’Arredamento",
+    "azienda_attuale": "Bruno Longoni Atelier d’Arredamento",
+    "categoria": "armadio",
+    "foto": "rossi-fiorentino-singolo.jpg"
+  },
+  {
+    "nome": "Madia",
+    "anno": 1995,
+    "designer": "Aldo Rossi",
+    "azienda": "Bruno Longoni Atelier d’Arredamento",
+    "azienda_attuale": "Bruno Longoni Atelier d’Arredamento",
+    "categoria": "mobile contenitore",
+    "foto": "rossi-madia.jpg"
+  },
+  {
+    "nome": "Prometeo",
+    "anno": 1996,
+    "designer": "Aldo Rossi",
+    "azienda": "Artemide",
+    "azienda_attuale": null,
+    "categoria": "lampada da terra",
+    "foto": "rossi-prometeo.jpg"
+  },
+  {
+    "nome": "La Conica Manico Lungo",
+    "anno": 2021,
+    "designer": "Aldo Rossi",
+    "azienda": "Alessi",
+    "azienda_attuale": "Alessi",
+    "categoria": "caffettiera espresso",
+    "foto": "rossi-la-conica-manico-lungo.jpg"
+  },
+  {
+    "nome": "Momento Wall Clock",
+    "anno": 2023,
+    "designer": "Aldo Rossi",
+    "azienda": "Alessi",
+    "azienda_attuale": "Alessi",
+    "categoria": "orologio da parete",
+    "foto": "rossi-momento-wall-clock.jpg"
+  },
+  {
+    "nome": "Poltrona 1938",
+    "anno": 1938,
+    "designer": "Franco Albini",
+    "azienda": "Exteta",
+    "azienda_attuale": "Exteta",
+    "categoria": "poltrona",
+    "foto": "albini-poltrona-1938.jpg"
+  },
+  {
+    "nome": "Sedia 1938",
+    "anno": 1938,
+    "designer": "Franco Albini",
+    "azienda": "Exteta",
+    "azienda_attuale": "Exteta",
+    "categoria": "sedia",
+    "foto": "albini-sedia-1938.jpg"
+  },
+  {
+    "nome": "Poltrona Bergère 1939",
+    "anno": 1939,
+    "designer": "Franco Albini",
+    "azienda": "Exteta",
+    "azienda_attuale": "Exteta",
+    "categoria": "poltrona bergère",
+    "foto": "albini-poltrona-bergere-1939.jpg"
+  },
+  {
+    "nome": "Sedia Lupo 1945",
+    "anno": 1945,
+    "designer": "Franco Albini",
+    "azienda": "Exteta",
+    "azienda_attuale": "Exteta",
+    "categoria": "sedia",
+    "foto": "albini-sedia-lupo-1945.jpg"
+  },
+  {
+    "nome": "Albini Desk",
+    "anno": 1949,
+    "designer": "Franco Albini",
+    "azienda": "Knoll",
+    "azienda_attuale": "Knoll",
+    "categoria": "scrivania",
+    "foto": "albini-albini-desk.jpg"
+  },
+  {
+    "nome": "Belladonna Sofa",
+    "anno": 1951,
+    "designer": [
+      "Franco Albini",
+      "Franca Helg"
+    ],
+    "azienda": "Sika-Design",
+    "azienda_attuale": "Sika-Design",
+    "categoria": "divano in rattan",
+    "foto": "albini-belladonna-sofa.jpg"
+  },
+  {
+    "nome": "Fratellino Trolley",
+    "anno": 1951,
+    "designer": [
+      "Franco Albini",
+      "Franca Helg"
+    ],
+    "azienda": "Sika-Design",
+    "azienda_attuale": "Sika-Design",
+    "categoria": "carrello in rattan",
+    "foto": "albini-fratellino-trolley.jpg"
+  },
+  {
+    "nome": "Ottoman Large",
+    "anno": 1951,
+    "designer": [
+      "Franco Albini",
+      "Franca Helg"
+    ],
+    "azienda": "Sika-Design",
+    "azienda_attuale": "Sika-Design",
+    "categoria": "pouf in rattan",
+    "foto": "albini-ottoman-large.jpg"
+  },
+  {
+    "nome": "Ottoman Small",
+    "anno": 1951,
+    "designer": [
+      "Franco Albini",
+      "Franca Helg"
+    ],
+    "azienda": "Sika-Design",
+    "azienda_attuale": "Sika-Design",
+    "categoria": "pouf in rattan",
+    "foto": "albini-ottoman-small.jpg"
+  },
+  {
+    "nome": "Gala",
+    "anno": 1951,
+    "designer": [
+      "Franco Albini",
+      "Ezio Sgrelli"
+    ],
+    "azienda": "Vittorio Bonacina",
+    "azienda_attuale": "Bonacina 1889",
+    "categoria": "poltrona in rattan",
+    "foto": "albini-gala.jpg"
+  },
+  {
+    "nome": "Bistro Bench",
+    "anno": 1955,
+    "designer": [
+      "Franco Albini",
+      "Franca Helg"
+    ],
+    "azienda": "Sika-Design",
+    "azienda_attuale": "Sika-Design",
+    "categoria": "panca in rattan",
+    "foto": "albini-bistro-bench.jpg"
+  },
+  {
+    "nome": "Bistro Chair",
+    "anno": 1955,
+    "designer": [
+      "Franco Albini",
+      "Franca Helg"
+    ],
+    "azienda": "Sika-Design",
+    "azienda_attuale": "Sika-Design",
+    "categoria": "sedia in rattan",
+    "foto": "albini-bistro-chair.jpg"
+  },
+  {
+    "nome": "Luella Mirror",
+    "anno": 1955,
+    "designer": [
+      "Franco Albini",
+      "Franca Helg"
+    ],
+    "azienda": "Sika-Design",
+    "azienda_attuale": "Sika-Design",
+    "categoria": "specchio in rattan",
+    "foto": "albini-luella-mirror.jpg"
+  },
+  {
+    "nome": "Infinito",
+    "anno": 1957,
+    "designer": [
+      "Franco Albini",
+      "Franca Helg"
+    ],
+    "azienda": "Poggi",
+    "azienda_attuale": "Cassina",
+    "categoria": "libreria componibile",
+    "foto": "albini-infinito.jpg"
+  },
+  {
+    "nome": "CR20",
+    "anno": 1958,
+    "designer": [
+      "Franco Albini",
+      "Franca Helg"
+    ],
+    "azienda": "Poggi",
+    "azienda_attuale": null,
+    "categoria": "carrello",
+    "foto": "albini-cr20.jpg"
+  },
+  {
+    "nome": "Orion 23",
+    "anno": 1959,
+    "designer": [
+      "Franco Albini",
+      "Franca Helg"
+    ],
+    "azienda": "Brionvega",
+    "azienda_attuale": null,
+    "categoria": "televisore",
+    "foto": "albini-orion-23.jpg"
+  },
+  {
+    "nome": "Luisella",
+    "anno": 1961,
+    "designer": "Franco Albini",
+    "azienda": "Poggi",
+    "azienda_attuale": null,
+    "categoria": "sedia",
+    "foto": "albini-luisella.jpg"
+  },
+  {
+    "nome": "Model 524",
+    "anno": 1963,
+    "designer": [
+      "Franco Albini",
+      "Franca Helg"
+    ],
+    "azienda": "Arteluce",
+    "azienda_attuale": null,
+    "categoria": "lampada da tavolo",
+    "foto": "albini-model-524.jpg"
+  },
+  {
+    "nome": "Model 2050",
+    "anno": 1963,
+    "designer": [
+      "Franco Albini",
+      "Franca Helg"
+    ],
+    "azienda": "Astep",
+    "azienda_attuale": "Astep",
+    "categoria": "lampada a sospensione",
+    "foto": "albini-model-2050.jpg"
+  },
+  {
+    "nome": "Agata",
+    "anno": 1965,
+    "designer": [
+      "Franco Albini",
+      "Franca Helg"
+    ],
+    "azienda": "Olivari",
+    "azienda_attuale": "Olivari",
+    "categoria": "maniglia",
+    "foto": "albini-agata.jpg"
+  },
+  {
+    "nome": "Luna Lounge Chair",
+    "anno": 1967,
+    "designer": [
+      "Franco Albini",
+      "Franca Helg"
+    ],
+    "azienda": "Sika-Design",
+    "azienda_attuale": "Sika-Design",
+    "categoria": "poltrona lounge in rattan",
+    "foto": "albini-luna-lounge-chair.jpg"
+  },
+  {
+    "nome": "AM1N",
+    "anno": 1969,
+    "designer": [
+      "Franco Albini",
+      "Franca Helg",
+      "Antonio Piva",
+      "Marco Albini"
+    ],
+    "azienda": "Sirrah",
+    "azienda_attuale": "Nemo Lighting",
+    "categoria": "lampada da tavolo",
+    "foto": "albini-am1n.jpg"
+  },
+  {
+    "nome": "AM2C",
+    "anno": 1969,
+    "designer": [
+      "Franco Albini",
+      "Franca Helg",
+      "Antonio Piva",
+      "Marco Albini"
+    ],
+    "azienda": "Sirrah",
+    "azienda_attuale": "Nemo Lighting",
+    "categoria": "lampada da terra",
+    "foto": "albini-am2c.jpg"
+  },
+  {
+    "nome": "AM2Z",
+    "anno": 1969,
+    "designer": [
+      "Franco Albini",
+      "Franca Helg",
+      "Antonio Piva",
+      "Marco Albini"
+    ],
+    "azienda": "Sirrah",
+    "azienda_attuale": "Nemo Lighting",
+    "categoria": "lampada da terra",
+    "foto": "albini-am2z.jpg"
+  },
+  {
+    "nome": "AS1C",
+    "anno": 1969,
+    "designer": [
+      "Franco Albini",
+      "Franca Helg",
+      "Antonio Piva",
+      "Marco Albini"
+    ],
+    "azienda": "Sirrah",
+    "azienda_attuale": "Nemo Lighting",
+    "categoria": "lampada da tavolo",
+    "foto": "albini-as1c.jpg"
+  },
+  {
+    "nome": "AS41C",
+    "anno": 1969,
+    "designer": [
+      "Franco Albini",
+      "Franca Helg",
+      "Antonio Piva",
+      "Marco Albini"
+    ],
+    "azienda": "Sirrah",
+    "azienda_attuale": "Nemo Lighting",
+    "categoria": "lampada a sospensione",
+    "foto": "albini-as41c.jpg"
+  },
+  {
+    "nome": "Pannocchia",
+    "anno": 1971,
+    "designer": [
+      "Franco Albini",
+      "Franca Helg"
+    ],
+    "azienda": "San Lorenzo",
+    "azienda_attuale": null,
+    "categoria": "ciotola in argento",
+    "foto": "albini-pannocchia.jpg"
+  },
+  {
+    "nome": "Ambra",
+    "anno": 1973,
+    "designer": [
+      "Franco Albini",
+      "Franca Helg"
+    ],
+    "azienda": "Olivari",
+    "azienda_attuale": null,
+    "categoria": "maniglia",
+    "foto": "albini-ambra.jpg"
+  },
+  {
+    "nome": "Infinito Wall",
+    "anno": 2020,
+    "designer": [
+      "Franco Albini",
+      "Franca Helg"
+    ],
+    "azienda": "Cassina",
+    "azienda_attuale": "Cassina",
+    "categoria": "libreria a parete",
+    "foto": "albini-infinito-wall.jpg"
+  },
+  {
+    "nome": "Alzabile",
+    "anno": 1948,
+    "designer": "Ignazio Gardella",
+    "azienda": "Azucena",
+    "azienda_attuale": "Tato Italia",
+    "categoria": "lampada regolabile da tavolo/terra",
+    "foto": "gardella-alzabile.jpg"
+  },
+  {
+    "nome": "T5",
+    "anno": 1949,
+    "designer": "Ignazio Gardella",
+    "azienda": "Azucena",
+    "azienda_attuale": null,
+    "categoria": "tavolino regolabile",
+    "foto": "gardella-t5.jpg"
+  },
+  {
+    "nome": "Elegie",
+    "anno": 1949,
+    "designer": "Ignazio Gardella",
+    "azienda": "MisuraEmme",
+    "azienda_attuale": "MisuraEmme",
+    "categoria": "libreria componibile",
+    "foto": "gardella-elegie.jpg"
+  },
+  {
+    "nome": "T1",
+    "anno": 1951,
+    "designer": "Ignazio Gardella",
+    "azienda": "Azucena",
+    "azienda_attuale": null,
+    "categoria": "tavolo da pranzo",
+    "foto": "gardella-t1.jpg"
+  },
+  {
+    "nome": "Tavolino Stand 35",
+    "anno": 1952,
+    "designer": "Ignazio Gardella",
+    "azienda": "Azucena",
+    "azienda_attuale": "Tato Italia",
+    "categoria": "tavolino",
+    "foto": "gardella-tavolino-stand-35.jpg"
+  },
+  {
+    "nome": "Tavolino Stand 55",
+    "anno": 1952,
+    "designer": "Ignazio Gardella",
+    "azienda": "Azucena",
+    "azienda_attuale": "Tato Italia",
+    "categoria": "tavolino",
+    "foto": "gardella-tavolino-stand-55.jpg"
+  },
+  {
+    "nome": "Tavolino Stand 70",
+    "anno": 1952,
+    "designer": "Ignazio Gardella",
+    "azienda": "Azucena",
+    "azienda_attuale": "Tato Italia",
+    "categoria": "tavolino",
+    "foto": "gardella-tavolino-stand-70.jpg"
+  },
+  {
+    "nome": "Tavolino Stand a due piani",
+    "anno": 1952,
+    "designer": "Ignazio Gardella",
+    "azienda": "Azucena",
+    "azienda_attuale": "Tato Italia",
+    "categoria": "tavolino",
+    "foto": "gardella-tavolino-stand-a-due-piani.jpg"
+  },
+  {
+    "nome": "Coppa Aperta Applique",
+    "anno": 1954,
+    "designer": [
+      "Ignazio Gardella",
+      "Corrado Corradi Dell'Acqua"
+    ],
+    "azienda": "Azucena",
+    "azienda_attuale": "Tato Italia",
+    "categoria": "lampada da parete",
+    "foto": "gardella-coppa-aperta-applique.jpg"
+  },
+  {
+    "nome": "Coppa Aperta Piantana",
+    "anno": 1954,
+    "designer": [
+      "Ignazio Gardella",
+      "Corrado Corradi Dell'Acqua"
+    ],
+    "azienda": "Azucena",
+    "azienda_attuale": "Tato Italia",
+    "categoria": "lampada da terra",
+    "foto": "gardella-coppa-aperta-piantana.jpg"
+  },
+  {
+    "nome": "LP5",
+    "anno": 1955,
+    "designer": "Ignazio Gardella",
+    "azienda": "Azucena",
+    "azienda_attuale": null,
+    "categoria": "lampada da parete",
+    "foto": "gardella-lp5.jpg"
+  },
+  {
+    "nome": "LP7",
+    "anno": 1955,
+    "designer": "Ignazio Gardella",
+    "azienda": "Azucena",
+    "azienda_attuale": null,
+    "categoria": "lampada da parete",
+    "foto": "gardella-lp7.jpg"
+  },
+  {
+    "nome": "Doppio Vetro Sospensione",
+    "anno": 1955,
+    "designer": [
+      "Ignazio Gardella",
+      "Corrado Corradi Dell'Acqua"
+    ],
+    "azienda": "Azucena",
+    "azienda_attuale": "Tato Italia",
+    "categoria": "lampada a sospensione",
+    "foto": "gardella-doppio-vetro-sospensione.jpg"
+  },
+  {
+    "nome": "LTE8",
+    "anno": 1956,
+    "designer": "Ignazio Gardella",
+    "azienda": "Azucena",
+    "azienda_attuale": null,
+    "categoria": "lampada da terra",
+    "foto": "gardella-lte8.jpg"
+  },
+  {
+    "nome": "Arenzano Bassa",
+    "anno": 1956,
+    "designer": "Ignazio Gardella",
+    "azienda": "Azucena",
+    "azienda_attuale": "Tato Italia",
+    "categoria": "lampada da tavolo",
+    "foto": "gardella-arenzano-bassa.jpg"
+  },
+  {
+    "nome": "Arenzano Terra",
+    "anno": 1956,
+    "designer": "Ignazio Gardella",
+    "azienda": "Azucena",
+    "azienda_attuale": "Tato Italia",
+    "categoria": "lampada da terra",
+    "foto": "gardella-arenzano-terra.jpg"
+  },
+  {
+    "nome": "T4 Ditirambo",
+    "anno": 1957,
+    "designer": "Ignazio Gardella",
+    "azienda": "Azucena",
+    "azienda_attuale": null,
+    "categoria": "tavolo da pranzo estensibile",
+    "foto": "gardella-t4-ditirambo.jpg"
+  },
+  {
+    "nome": "Digamma Ottoman",
+    "anno": 1957,
+    "designer": "Ignazio Gardella",
+    "azienda": "Gavina",
+    "azienda_attuale": "Santa & Cole",
+    "categoria": "pouf / poggiapiedi",
+    "foto": "gardella-digamma-ottoman.jpg"
+  },
+  {
+    "nome": "Digamma Settee",
+    "anno": 1957,
+    "designer": "Ignazio Gardella",
+    "azienda": "Gavina",
+    "azienda_attuale": null,
+    "categoria": "divanetto",
+    "foto": "gardella-digamma-settee.jpg"
+  },
+  {
+    "nome": "Galleria 1-braccio",
+    "anno": 1958,
+    "designer": "Ignazio Gardella",
+    "azienda": "Azucena",
+    "azienda_attuale": "Tato Italia",
+    "categoria": "lampada da parete",
+    "foto": "gardella-galleria-1-braccio.jpg"
+  },
+  {
+    "nome": "Galleria 2-bracci",
+    "anno": 1958,
+    "designer": "Ignazio Gardella",
+    "azienda": "Azucena",
+    "azienda_attuale": "Tato Italia",
+    "categoria": "lampada da parete",
+    "foto": "gardella-galleria-2-bracci.jpg"
+  },
+  {
+    "nome": "Galleria 3-bracci",
+    "anno": 1958,
+    "designer": "Ignazio Gardella",
+    "azienda": "Azucena",
+    "azienda_attuale": "Tato Italia",
+    "categoria": "lampada da parete",
+    "foto": "gardella-galleria-3-bracci.jpg"
+  },
+  {
+    "nome": "Galleria 4-bracci",
+    "anno": 1958,
+    "designer": "Ignazio Gardella",
+    "azienda": "Azucena",
+    "azienda_attuale": "Tato Italia",
+    "categoria": "lampada da parete",
+    "foto": "gardella-galleria-4-bracci.jpg"
+  },
+  {
+    "nome": "Galleria 5-bracci",
+    "anno": 1958,
+    "designer": "Ignazio Gardella",
+    "azienda": "Azucena",
+    "azienda_attuale": "Tato Italia",
+    "categoria": "lampada da parete",
+    "foto": "gardella-galleria-5-bracci.jpg"
+  },
+  {
+    "nome": "Galleria Sospensione",
+    "anno": 1958,
+    "designer": "Ignazio Gardella",
+    "azienda": "Azucena",
+    "azienda_attuale": "Tato Italia",
+    "categoria": "lampada a sospensione",
+    "foto": "gardella-galleria-sospensione.jpg"
+  },
+  {
+    "nome": "LP12",
+    "anno": 1959,
+    "designer": "Ignazio Gardella",
+    "azienda": "Azucena",
+    "azienda_attuale": null,
+    "categoria": "lampada da parete",
+    "foto": "gardella-lp12.jpg"
+  },
+  {
+    "nome": "Arenzano Tre Fiamme Tavolo",
+    "anno": 1963,
+    "designer": "Ignazio Gardella",
+    "azienda": "Azucena",
+    "azienda_attuale": "Tato Italia",
+    "categoria": "lampada da tavolo",
+    "foto": "gardella-arenzano-tre-fiamme-tavolo.jpg"
+  },
+  {
+    "nome": "Arenzano Tre Fiamme Terra",
+    "anno": 1963,
+    "designer": "Ignazio Gardella",
+    "azienda": "Azucena",
+    "azienda_attuale": "Tato Italia",
+    "categoria": "lampada da terra",
+    "foto": "gardella-arenzano-tre-fiamme-terra.jpg"
+  },
+  {
+    "nome": "Poltrona R63",
+    "anno": 1963,
+    "designer": "Ignazio Gardella",
+    "azienda": "Azucena",
+    "azienda_attuale": "Tato Italia",
+    "categoria": "poltrona",
+    "foto": "gardella-poltrona-r63.jpg"
+  },
+  {
+    "nome": "Partenio",
+    "anno": 1981,
+    "designer": "Ignazio Gardella",
+    "azienda": "MisuraEmme",
+    "azienda_attuale": "MisuraEmme",
+    "categoria": "tavolo",
+    "foto": "gardella-partenio.jpg"
+  },
+  {
+    "nome": "Arenzano Wireless",
+    "anno": 2023,
+    "designer": "Ignazio Gardella",
+    "azienda": "Tato Italia",
+    "azienda_attuale": "Tato Italia",
+    "categoria": "lampada da tavolo wireless",
+    "foto": "gardella-arenzano-wireless.jpg"
+  },
+  {
+    "nome": "Pigreco",
+    "anno": 1959,
+    "designer": "Tobia Scarpa",
+    "azienda": "Gavina",
+    "azienda_attuale": "Tacchini",
+    "categoria": "sedia",
+    "foto": "scarpa-pigreco.jpg"
+  },
+  {
+    "nome": "Vanessa",
+    "anno": 1959,
+    "designer": "Tobia Scarpa",
+    "azienda": "Gavina",
+    "azienda_attuale": null,
+    "categoria": "letto in metallo",
+    "foto": "scarpa-vanessa.jpg"
+  },
+  {
+    "nome": "Vetri a occhi",
+    "anno": 1960,
+    "designer": "Tobia Scarpa",
+    "azienda": "Venini",
+    "azienda_attuale": null,
+    "categoria": "collezione di vasi in vetro",
+    "foto": "scarpa-vetri-a-occhi.jpg"
+  },
+  {
+    "nome": "Fantasma",
+    "anno": 1961,
+    "designer": "Tobia Scarpa",
+    "azienda": "Flos",
+    "azienda_attuale": null,
+    "categoria": "lampada da terra",
+    "foto": "scarpa-fantasma.jpg"
+  },
+  {
+    "nome": "Bastiano Lounge Chair",
+    "anno": 1962,
+    "designer": [
+      "Afra Scarpa",
+      "Tobia Scarpa"
+    ],
+    "azienda": "Gavina",
+    "azienda_attuale": "Knoll",
+    "categoria": "poltrona",
+    "foto": "scarpa-bastiano-lounge-chair.jpg"
+  },
+  {
+    "nome": "Model 917",
+    "anno": 1963,
+    "designer": [
+      "Afra Scarpa",
+      "Tobia Scarpa"
+    ],
+    "azienda": "Cassina",
+    "azienda_attuale": null,
+    "categoria": "poltrona",
+    "foto": "scarpa-model-917.jpg"
+  },
+  {
+    "nome": "Seki-Han Floor",
+    "anno": 1963,
+    "designer": "Tobia Scarpa",
+    "azienda": "Flos",
+    "azienda_attuale": "Flos",
+    "categoria": "lampada da terra",
+    "foto": "scarpa-seki-han-floor.jpg"
+  },
+  {
+    "nome": "Torcello",
+    "anno": 1964,
+    "designer": [
+      "Afra Scarpa",
+      "Tobia Scarpa"
+    ],
+    "azienda": "Stildomus",
+    "azienda_attuale": null,
+    "categoria": "sistema di contenitori",
+    "foto": "scarpa-torcello.jpg"
+  },
+  {
+    "nome": "Torcello Chair",
+    "anno": 1964,
+    "designer": [
+      "Afra Scarpa",
+      "Tobia Scarpa"
+    ],
+    "azienda": "Stildomus",
+    "azienda_attuale": null,
+    "categoria": "sedia",
+    "foto": "scarpa-torcello-chair.jpg"
+  },
+  {
+    "nome": "Torcello Table",
+    "anno": 1964,
+    "designer": [
+      "Afra Scarpa",
+      "Tobia Scarpa"
+    ],
+    "azienda": "Stildomus",
+    "azienda_attuale": null,
+    "categoria": "tavolo",
+    "foto": "scarpa-torcello-table.jpg"
+  },
+  {
+    "nome": "121",
+    "anno": 1965,
+    "designer": [
+      "Afra Scarpa",
+      "Tobia Scarpa"
+    ],
+    "azienda": "Cassina",
+    "azienda_attuale": "Cassina",
+    "categoria": "sedia",
+    "foto": "scarpa-121.jpg"
+  },
+  {
+    "nome": "Coronado Sofa",
+    "anno": 1966,
+    "designer": [
+      "Afra Scarpa",
+      "Tobia Scarpa"
+    ],
+    "azienda": "C&B Italia",
+    "azienda_attuale": "B&B Italia",
+    "categoria": "divano",
+    "foto": "scarpa-coronado-sofa.jpg"
+  },
+  {
+    "nome": "925",
+    "anno": 1966,
+    "designer": [
+      "Afra Scarpa",
+      "Tobia Scarpa"
+    ],
+    "azienda": "Cassina",
+    "azienda_attuale": "Cassina",
+    "categoria": "poltrona",
+    "foto": "scarpa-925.jpg",
+    "top": true
+  },
+  {
+    "nome": "Foglio",
+    "anno": 1966,
+    "designer": "Tobia Scarpa",
+    "azienda": "Flos",
+    "azienda_attuale": "Flos",
+    "categoria": "lampada da parete",
+    "foto": "scarpa-foglio.jpg"
+  },
+  {
+    "nome": "Carlotta",
+    "anno": 1967,
+    "designer": [
+      "Afra Scarpa",
+      "Tobia Scarpa"
+    ],
+    "azienda": "Cassina",
+    "azienda_attuale": "Cassina",
+    "categoria": "poltrona outdoor",
+    "foto": "scarpa-carlotta.jpg"
+  },
+  {
+    "nome": "Carlotta Coffee Table",
+    "anno": 1967,
+    "designer": [
+      "Afra Scarpa",
+      "Tobia Scarpa"
+    ],
+    "azienda": "Cassina",
+    "azienda_attuale": "Cassina",
+    "categoria": "tavolino outdoor",
+    "foto": "scarpa-carlotta-coffee-table.jpg"
+  },
+  {
+    "nome": "Ciprea",
+    "anno": 1968,
+    "designer": [
+      "Afra Scarpa",
+      "Tobia Scarpa"
+    ],
+    "azienda": "C&B Italia",
+    "azienda_attuale": null,
+    "categoria": "poltrona in poliuretano",
+    "foto": "scarpa-ciprea.jpg"
+  },
+  {
+    "nome": "André Table",
+    "anno": 1968,
+    "designer": "Tobia Scarpa",
+    "azienda": "Knoll International",
+    "azienda_attuale": null,
+    "categoria": "tavolo",
+    "foto": "scarpa-andre-table.jpg"
+  },
+  {
+    "nome": "Soriana Chaise Longue",
+    "anno": 1969,
+    "designer": [
+      "Afra Scarpa",
+      "Tobia Scarpa"
+    ],
+    "azienda": "Cassina",
+    "azienda_attuale": "Cassina",
+    "categoria": "chaise longue",
+    "foto": "scarpa-soriana-chaise-longue.jpg"
+  },
+  {
+    "nome": "Soriana Pouf",
+    "anno": 1969,
+    "designer": [
+      "Afra Scarpa",
+      "Tobia Scarpa"
+    ],
+    "azienda": "Cassina",
+    "azienda_attuale": "Cassina",
+    "categoria": "pouf",
+    "foto": "scarpa-soriana-pouf.jpg"
+  },
+  {
+    "nome": "Soriana Sofa",
+    "anno": 1969,
+    "designer": [
+      "Afra Scarpa",
+      "Tobia Scarpa"
+    ],
+    "azienda": "Cassina",
+    "azienda_attuale": "Cassina",
+    "categoria": "divano",
+    "foto": "scarpa-soriana-sofa.jpg"
+  },
+  {
+    "nome": "Bonanza",
+    "anno": 1970,
+    "designer": [
+      "Afra Scarpa",
+      "Tobia Scarpa"
+    ],
+    "azienda": "C&B Italia",
+    "azienda_attuale": null,
+    "categoria": "sistema di sedute",
+    "foto": "scarpa-bonanza.jpg"
+  },
+  {
+    "nome": "Dialogo",
+    "anno": 1973,
+    "designer": [
+      "Afra Scarpa",
+      "Tobia Scarpa"
+    ],
+    "azienda": "B&B Italia",
+    "azienda_attuale": "Tacchini",
+    "categoria": "sedia",
+    "foto": "scarpa-dialogo.jpg"
+  },
+  {
+    "nome": "Erasmo Armchair",
+    "anno": 1973,
+    "designer": [
+      "Afra Scarpa",
+      "Tobia Scarpa"
+    ],
+    "azienda": "B&B Italia",
+    "azienda_attuale": null,
+    "categoria": "poltrona",
+    "foto": "scarpa-erasmo-armchair.jpg"
+  },
+  {
+    "nome": "Erasmo Sofa",
+    "anno": 1973,
+    "designer": [
+      "Afra Scarpa",
+      "Tobia Scarpa"
+    ],
+    "azienda": "B&B Italia",
+    "azienda_attuale": null,
+    "categoria": "divano modulare",
+    "foto": "scarpa-erasmo-sofa.jpg"
+  },
+  {
+    "nome": "Ariette",
+    "anno": 1973,
+    "designer": "Tobia Scarpa",
+    "azienda": "Flos",
+    "azienda_attuale": "Flos",
+    "categoria": "lampada da parete/soffitto",
+    "foto": "scarpa-ariette.jpg"
+  },
+  {
+    "nome": "Tamburo",
+    "anno": 1973,
+    "designer": [
+      "Afra Scarpa",
+      "Tobia Scarpa"
+    ],
+    "azienda": "Flos",
+    "azienda_attuale": null,
+    "categoria": "lampada da terra / esterni",
+    "foto": "scarpa-tamburo.jpg"
+  },
+  {
+    "nome": "Monk",
+    "anno": 1973,
+    "designer": [
+      "Afra Scarpa",
+      "Tobia Scarpa"
+    ],
+    "azienda": "Molteni&C",
+    "azienda_attuale": "Molteni&C",
+    "categoria": "sedia",
+    "foto": "scarpa-monk.jpg"
+  },
+  {
+    "nome": "Morna",
+    "anno": 1973,
+    "designer": [
+      "Afra Scarpa",
+      "Tobia Scarpa"
+    ],
+    "azienda": "Molteni&C",
+    "azienda_attuale": null,
+    "categoria": "letto",
+    "foto": "scarpa-morna.jpg"
+  },
+  {
+    "nome": "Elogio",
+    "anno": 1974,
+    "designer": [
+      "Afra Scarpa",
+      "Tobia Scarpa"
+    ],
+    "azienda": "B&B Italia",
+    "azienda_attuale": "GUBI",
+    "categoria": "divano modulare",
+    "foto": "scarpa-elogio.jpg"
+  },
+  {
+    "nome": "Mop",
+    "anno": 1974,
+    "designer": [
+      "Afra Scarpa",
+      "Tobia Scarpa"
+    ],
+    "azienda": "Molteni&C",
+    "azienda_attuale": null,
+    "categoria": "libreria",
+    "foto": "scarpa-mop.jpg"
+  },
+  {
+    "nome": "Papillona",
+    "anno": 1975,
+    "designer": [
+      "Afra Scarpa",
+      "Tobia Scarpa"
+    ],
+    "azienda": "Flos",
+    "azienda_attuale": null,
+    "categoria": "lampada da terra",
+    "foto": "scarpa-papillona.jpg"
+  },
+  {
+    "nome": "Africa",
+    "anno": 1975,
+    "designer": [
+      "Afra Scarpa",
+      "Tobia Scarpa"
+    ],
+    "azienda": "Maxalto",
+    "azienda_attuale": "Tacchini",
+    "categoria": "sedia",
+    "foto": "scarpa-africa.jpg"
+  },
+  {
+    "nome": "Artona",
+    "anno": 1975,
+    "designer": [
+      "Afra Scarpa",
+      "Tobia Scarpa"
+    ],
+    "azienda": "Maxalto",
+    "azienda_attuale": "Tacchini",
+    "categoria": "poltrona",
+    "foto": "scarpa-artona.jpg"
+  },
+  {
+    "nome": "Basilan",
+    "anno": 1975,
+    "designer": [
+      "Afra Scarpa",
+      "Tobia Scarpa"
+    ],
+    "azienda": "Maxalto",
+    "azienda_attuale": "Tacchini",
+    "categoria": "sedia / sistema in rattan",
+    "foto": "scarpa-basilan.jpg"
+  },
+  {
+    "nome": "TL59 Metal Top",
+    "anno": 1976,
+    "designer": [
+      "Afra Scarpa",
+      "Tobia Scarpa"
+    ],
+    "azienda": "Fabbrica Poggi",
+    "azienda_attuale": "Cassina",
+    "categoria": "tavolo con piano in metallo",
+    "foto": "scarpa-tl59-metal-top.jpg"
+  },
+  {
+    "nome": "TL59 Rectangular Table",
+    "anno": 1976,
+    "designer": [
+      "Afra Scarpa",
+      "Tobia Scarpa"
+    ],
+    "azienda": "Fabbrica Poggi",
+    "azienda_attuale": "Cassina",
+    "categoria": "tavolo rettangolare",
+    "foto": "scarpa-tl59-rectangular-table.jpg"
+  },
+  {
+    "nome": "TL59 Round Table",
+    "anno": 1976,
+    "designer": [
+      "Afra Scarpa",
+      "Tobia Scarpa"
+    ],
+    "azienda": "Fabbrica Poggi",
+    "azienda_attuale": "Cassina",
+    "categoria": "tavolo rotondo",
+    "foto": "scarpa-tl59-round-table.jpg"
+  },
+  {
+    "nome": "Le Due Facce Della Luna",
+    "anno": 1979,
+    "designer": [
+      "Afra Scarpa",
+      "Tobia Scarpa"
+    ],
+    "azienda": "San Lorenzo",
+    "azienda_attuale": "Cassina",
+    "categoria": "servizio di posate",
+    "foto": "scarpa-le-due-facce-della-luna.jpg"
+  },
+  {
+    "nome": "Sempronia",
+    "anno": 1980,
+    "designer": [
+      "Afra Scarpa",
+      "Tobia Scarpa"
+    ],
+    "azienda": "B&B Italia",
+    "azienda_attuale": "Tacchini",
+    "categoria": "sedia",
+    "foto": "scarpa-sempronia.jpg"
+  },
+  {
+    "nome": "Mastro",
+    "anno": 1980,
+    "designer": [
+      "Afra Scarpa",
+      "Tobia Scarpa"
+    ],
+    "azienda": "Molteni&C",
+    "azienda_attuale": null,
+    "categoria": "sedia",
+    "foto": "scarpa-mastro.jpg"
+  },
+  {
+    "nome": "Meo",
+    "anno": 1980,
+    "designer": [
+      "Afra Scarpa",
+      "Tobia Scarpa"
+    ],
+    "azienda": "Molteni&C",
+    "azienda_attuale": null,
+    "categoria": "sedia",
+    "foto": "scarpa-meo.jpg"
+  },
+  {
+    "nome": "Accademia",
+    "anno": 1981,
+    "designer": [
+      "Afra Scarpa",
+      "Tobia Scarpa"
+    ],
+    "azienda": "Stildomus",
+    "azienda_attuale": null,
+    "categoria": "letto",
+    "foto": "scarpa-accademia.jpg"
+  },
+  {
+    "nome": "Miss",
+    "anno": 1986,
+    "designer": [
+      "Afra Scarpa",
+      "Tobia Scarpa"
+    ],
+    "azienda": "Molteni&C",
+    "azienda_attuale": null,
+    "categoria": "sedia",
+    "foto": "scarpa-miss.jpg"
+  },
+  {
+    "nome": "Libertà",
+    "anno": 1989,
+    "designer": [
+      "Afra Scarpa",
+      "Tobia Scarpa"
+    ],
+    "azienda": "Meritalia",
+    "azienda_attuale": null,
+    "categoria": "sedia",
+    "foto": "scarpa-liberta.jpg"
+  },
+  {
+    "nome": "Pierrot",
+    "anno": 1990,
+    "designer": [
+      "Afra Scarpa",
+      "Tobia Scarpa"
+    ],
+    "azienda": "Flos",
+    "azienda_attuale": null,
+    "categoria": "lampada da tavolo",
+    "foto": "scarpa-pierrot.jpg"
+  },
+  {
+    "nome": "Due-Mani",
+    "anno": 1990,
+    "designer": [
+      "Afra Scarpa",
+      "Tobia Scarpa"
+    ],
+    "azienda": "San Lorenzo",
+    "azienda_attuale": null,
+    "categoria": "set di ciotole in argento",
+    "foto": "scarpa-due-mani.jpg"
+  },
+  {
+    "nome": "Veronica",
+    "anno": 1991,
+    "designer": [
+      "Afra Scarpa",
+      "Tobia Scarpa"
+    ],
+    "azienda": "Casas",
+    "azienda_attuale": null,
+    "categoria": "sedia",
+    "foto": "scarpa-veronica.jpg"
+  },
+  {
+    "nome": "No. 68 Pure Silver Candelabra",
+    "anno": 1992,
+    "designer": [
+      "Afra Scarpa",
+      "Tobia Scarpa"
+    ],
+    "azienda": "San Lorenzo",
+    "azienda_attuale": null,
+    "categoria": "candelabro in argento",
+    "foto": "scarpa-no-68-pure-silver-candelabra.jpg"
+  },
+  {
+    "nome": "Nicolò",
+    "anno": 1995,
+    "designer": [
+      "Afra Scarpa",
+      "Tobia Scarpa"
+    ],
+    "azienda": "Meritalia",
+    "azienda_attuale": null,
+    "categoria": "poltrona",
+    "foto": "scarpa-nicolo.jpg"
+  },
+  {
+    "nome": "Saturnina",
+    "anno": 1998,
+    "designer": [
+      "Afra Scarpa",
+      "Tobia Scarpa"
+    ],
+    "azienda": "Fabbian",
+    "azienda_attuale": null,
+    "categoria": "lampada",
+    "foto": "scarpa-saturnina.jpg"
+  },
+  {
+    "nome": "Mani",
+    "anno": 1998,
+    "designer": [
+      "Afra Scarpa",
+      "Tobia Scarpa"
+    ],
+    "azienda": "San Lorenzo",
+    "azienda_attuale": null,
+    "categoria": "ciotola in argento",
+    "foto": "scarpa-mani.jpg"
+  },
+  {
+    "nome": "Galeto",
+    "anno": 2001,
+    "designer": [
+      "Afra Scarpa",
+      "Tobia Scarpa"
+    ],
+    "azienda": "Fabbian",
+    "azienda_attuale": null,
+    "categoria": "lampada",
+    "foto": "scarpa-galeto.jpg"
+  },
+  {
+    "nome": "Scandola",
+    "anno": 2001,
+    "designer": [
+      "Afra Scarpa",
+      "Tobia Scarpa"
+    ],
+    "azienda": "Veas",
+    "azienda_attuale": null,
+    "categoria": "lampada in metallo",
+    "foto": "scarpa-scandola.jpg"
+  },
+  {
+    "nome": "PAN999",
+    "anno": 2015,
+    "designer": "Tobia Scarpa",
+    "azienda": "San Lorenzo",
+    "azienda_attuale": "San Lorenzo",
+    "categoria": "collezione di utensili da cucina",
+    "foto": "scarpa-pan999.jpg"
+  },
+  {
+    "nome": "Ciàcola Chair",
+    "anno": 2023,
+    "designer": "Tobia Scarpa",
+    "azienda": "Désirée",
+    "azienda_attuale": "Désirée",
+    "categoria": "sedia pieghevole",
+    "foto": "scarpa-ciacola-chair.jpg"
+  },
+  {
+    "nome": "Ciàcola Table",
+    "anno": 2023,
+    "designer": "Tobia Scarpa",
+    "azienda": "Désirée",
+    "azienda_attuale": "Désirée",
+    "categoria": "tavolo",
+    "foto": "scarpa-ciacola-table.jpg"
+  },
+  {
+    "nome": "Seki-Han Suspension",
+    "anno": 2025,
+    "designer": "Tobia Scarpa",
+    "azienda": "Flos",
+    "azienda_attuale": "Flos",
+    "categoria": "lampada a sospensione",
+    "foto": "scarpa-seki-han-suspension.jpg"
   }
 ]
