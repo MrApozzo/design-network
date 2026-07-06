@@ -69,8 +69,8 @@ const STILE = {
   zoom_viewport_ref: 800,
 
   // --- Transizione tra viste ---
-  transizione_stagger: 4,    // ritardo tra un prodotto e l'altro (ms)
-  transizione_durata: 1200,    // durata animazione per prodotto (ms)
+  transizione_stagger: 1,
+  transizione_durata: 500,
 
   // --- Hover / interazione ---
   hover_scala: 2,
@@ -784,6 +784,40 @@ function App() {
       posizioniCalcolate.forEach((p) => { p.x = annoToX(p.d.nato) })
     }
 
+    // Allinea ogni designer a un pallino della griglia (stessa formula del codice di rendering).
+    const passoGrigliaLayout = Math.max(1, Math.round((X_MAX - X_MIN) / (X_MAX_BASE - X_MIN_BASE)))
+
+    // Asse Y: arrotonda alla griglia mantenendo il gap minimo tra orbite adiacenti.
+    {
+      let snapPrevY = 0
+      let snapPrevR = 0
+      posizioniCalcolate.forEach((pos, i) => {
+        if (pos.manuale) {
+          pos.y = Math.round(pos.y / passoGrigliaLayout) * passoGrigliaLayout
+          snapPrevY = pos.y; snapPrevR = pos.raggio; return
+        }
+        if (i === 0) { pos.y = 0; snapPrevY = 0; snapPrevR = pos.raggio; return }
+        const minGap = (snapPrevR + pos.raggio) * STILE.anello_raggio_esterno + STILE.min_distanza_y
+        const yRounded = Math.round(pos.y / passoGrigliaLayout) * passoGrigliaLayout
+        pos.y = (snapPrevY - yRounded >= minGap)
+          ? yRounded
+          : Math.floor((snapPrevY - minGap) / passoGrigliaLayout) * passoGrigliaLayout
+        snapPrevY = pos.y
+        snapPrevR = pos.raggio
+      })
+    }
+
+    // Asse X: arrotonda alla griglia, almeno 1 passo di distanza tra designer adiacenti per X.
+    {
+      const byX = [...posizioniCalcolate].sort((a, b) => a.x - b.x)
+      let prevX = -Infinity
+      byX.forEach((pos) => {
+        const xSnap = Math.round(pos.x / passoGrigliaLayout) * passoGrigliaLayout
+        pos.x = xSnap > prevX ? xSnap : prevX + passoGrigliaLayout
+        prevX = pos.x
+      })
+    }
+
     posizioniCalcolate.forEach(({ d, x, y }) => {
       graph.addNode(d.nome, {
         label: d.nome, size: STILE.designer_size, x, y,
@@ -1105,8 +1139,8 @@ function App() {
       const ogniN = t < 0.3 ? 2 : 1
       const grigliaRaggioEffettivo = t < 0.3 ? grigliaRaggio * 0.7 : grigliaRaggio
 
-      const padLati = isMobile ? 10 : 240 * uiScale + 24
-      const padSinistra = isMobile ? padLati : 240 * uiScale + 24
+      const padLati = isMobile ? 10 : 40
+      const padSinistra = isMobile ? padLati : Math.max(20, 240 * uiScale - 180)
       const padBasso = isMobile ? 10 : 16
       const padSopra = isMobile
         ? (topBarRef.current ? topBarRef.current.getBoundingClientRect().height + 22 : 100)
@@ -1362,14 +1396,8 @@ function App() {
           ctx.globalAlpha = edgeAlpha
           ctx.beginPath()
           ctx.moveTo(posS.x, posS.y)
-          const prodottoNode = graph.getNodeAttribute(source, "tipo") === "prodotto" ? source : target
-          const nDesigners = graph.neighbors(prodottoNode).filter(n => graph.getNodeAttribute(n, "tipo") === "designer").length
-          if (vistaInterna === "timeline" && nDesigners > 1) {
-            const midX = (posS.x + posT.x) / 2
-            ctx.bezierCurveTo(midX, posS.y, midX, posT.y, posT.x, posT.y)
-          } else {
-            ctx.lineTo(posT.x, posT.y)
-          }
+          const midX = (posS.x + posT.x) / 2
+          ctx.bezierCurveTo(midX, posS.y, midX, posT.y, posT.x, posT.y)
           ctx.strokeStyle = edgeColor
           ctx.lineWidth = edgeWidth
           ctx.stroke()
@@ -1461,7 +1489,7 @@ function App() {
           ctx.beginPath()
           ctx.arc(pos.x, pos.y, r, 0, Math.PI * 2)
           ctx.strokeStyle = "#000000"
-          ctx.lineWidth = 2
+          ctx.lineWidth = 0.5
           ctx.stroke()
         }
 
@@ -1541,7 +1569,8 @@ function App() {
         ctx.textAlign = "center"
         const annoInizio = Math.ceil(1880 / passoAnno) * passoAnno
         for (let anno = annoInizio; anno <= 2020; anno += passoAnno) {
-          const screen = renderer.graphToViewport({ x: annoToX(anno), y: 0 })
+          const xSnap = Math.round(annoToX(anno) / passoGriglia) * passoGriglia
+          const screen = renderer.graphToViewport({ x: xSnap, y: 0 })
           if (screen.x < padSinistra - 20 || screen.x > w - padLati + 20) continue
           ctx.fillText(anno, screen.x, assePosY)
         }
@@ -1731,8 +1760,8 @@ function App() {
       const bxMin = Math.min(pTL.x, pBR.x), bxMax = Math.max(pTL.x, pBR.x)
       const byMin = Math.min(pTL.y, pBR.y), byMax = Math.max(pTL.y, pBR.y)
 
-      const margineSinistra = isMobile ? 10 : 240 * uiScale + 24
-      const margineDestra = isMobile ? 10 : 240 * uiScale + 24
+      const margineSinistra = isMobile ? 10 : Math.max(20, 240 * uiScale - 180)
+      const margineDestra = isMobile ? 10 : 40
       const margineAlto = isMobile
         ? (topBarRef.current ? topBarRef.current.getBoundingClientRect().height + 10 : 100)
         : 170 * uiScale
@@ -1890,7 +1919,7 @@ function App() {
       const cRect = container.getBoundingClientRect()
       const sState = camera.getState()
       const pannelloW = isMobile ? 0 : 340 * uiScale
-      const pannelloSx = isMobile ? 0 : 240 * uiScale + 24
+      const pannelloSx = isMobile ? 0 : Math.max(20, 240 * uiScale - 180)
       const pannelloH = isMobile ? cRect.height * 0.4 : 0
       let topBarH = 0
       if (isMobile && topBarRef.current) topBarH = topBarRef.current.getBoundingClientRect().height
@@ -2097,7 +2126,7 @@ function App() {
                 const sState = camera.getState()
                 const tRatio = 0.06
                 const pannelloW = isMobile ? 0 : 340 * uiScale
-                const pannelloSx = isMobile ? 0 : 240 * uiScale + 24
+                const pannelloSx = isMobile ? 0 : Math.max(20, 240 * uiScale - 180)
                 const pannelloH = isMobile ? cRect.height * 0.4 : 0
                 let topBarH = 0
                 if (isMobile && topBarRef.current) {
@@ -2149,7 +2178,7 @@ function App() {
               const sState = camera.getState()
               const tRatio = 0.025
               const pannelloW = isMobile ? 0 : 340 * uiScale
-              const pannelloSx = isMobile ? 0 : 240 * uiScale + 24
+              const pannelloSx = isMobile ? 0 : Math.max(20, 240 * uiScale - 180)
               const pannelloH = isMobile ? cRect.height * 0.4 : 0
               let topBarH = 0
               if (isMobile && topBarRef.current) {
