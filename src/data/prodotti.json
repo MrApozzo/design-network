@@ -1719,13 +1719,22 @@
     "top": true
   },
   {
-    "nome": "Le Bambole",
+    "nome": "Le Bambole Armchair",
     "anno": 1972,
     "designer": "Mario Bellini",
     "azienda": "B&B Italia",
     "azienda_attuale": "B&B Italia",
-    "categoria": "sistema di sedute",
-    "foto": "bellini-le-bambole.jpg"
+    "categoria": "poltrona",
+    "foto": "bellini-le-bambole-armchair.jpg"
+  },
+  {
+    "nome": "Le Bambole Sofa",
+    "anno": 1972,
+    "designer": "Mario Bellini",
+    "azienda": "B&B Italia",
+    "azienda_attuale": "B&B Italia",
+    "categoria": "divano",
+    "foto": "bellini-le-bambole-sofa.jpg"
   },
   {
     "nome": "Pratt",
@@ -2689,7 +2698,10 @@
     ],
     "azienda": "Poggi",
     "categoria": "poltrona",
-    "foto": "castiglioni-sanluca.jpg"
+    "foto": "castiglioni-sanluca.jpg",
+    "foto_dettaglio": [
+      "castiglioni-sanluca2.jpg"
+    ]
   },
   {
     "nome": "Vicario",
@@ -10613,6 +10625,30 @@
     "azienda_attuale": "Artemide",
     "categoria": "lampada da terra",
     "foto": "delucchi-tolomeo-terra.jpg"
+  },
+  {
+    "nome": "Tolomeo Mini",
+    "anno": 1987,
+    "designer": [
+      "Michele De Lucchi",
+      "Giancarlo Fassina"
+    ],
+    "azienda": "Artemide",
+    "azienda_attuale": "Artemide",
+    "categoria": "lampada da tavolo",
+    "foto": "delucchi-tolomeo-mini.jpg"
+  },
+  {
+    "nome": "Tolomeo Micro",
+    "anno": 1987,
+    "designer": [
+      "Michele De Lucchi",
+      "Giancarlo Fassina"
+    ],
+    "azienda": "Artemide",
+    "azienda_attuale": "Artemide",
+    "categoria": "lampada da tavolo",
+    "foto": "delucchi-tolomeo-micro.jpg"
   },
   {
     "nome": "CD 6300",
