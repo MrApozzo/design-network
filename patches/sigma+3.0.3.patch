@@ -1,0 +1,122 @@
+diff --git a/node_modules/sigma/dist/sigma.esm.js b/node_modules/sigma/dist/sigma.esm.js
+index 6cca733..bb1526e 100644
+--- a/node_modules/sigma/dist/sigma.esm.js
++++ b/node_modules/sigma/dist/sigma.esm.js
+@@ -813,8 +813,17 @@ var TouchCaptor = /*#__PURE__*/function (_Captor) {
+       var touches = getTouchesArray(e.touches);
+       this.touchMode = touches.length;
+       this.startCameraState = this.renderer.getCamera().getState();
++      // Patch (design-network): bbox del contenitore catturato UNA VOLTA a
++      // inizio gesto e riusato per tutta la sua durata, invece di richiamare
++      // getBoundingClientRect ad ogni frame in handleMove. Su mobile il
++      // layout della pagina (barra indirizzi che si nasconde/mostra al primo
++      // tocco) può spostarsi leggermente proprio nei primi istanti del tocco:
++      // se il riferimento del gesto e i frame successivi leggono un bbox
++      // diverso, la posizione calcolata "salta" anche se le dita non si sono
++      // mosse.
++      this._dnBBox = this.container.getBoundingClientRect();
+       this.startTouchesPositions = touches.map(function (touch) {
+-        return getPosition(touch, _this2.container);
++        return { x: touch.clientX - _this2._dnBBox.left, y: touch.clientY - _this2._dnBBox.top };
+       });
+ 
+       // When there are two touches down, let's record distance and angle as well:
+@@ -916,8 +925,9 @@ var TouchCaptor = /*#__PURE__*/function (_Captor) {
+       if (!this.enabled || !this.startTouchesPositions.length) return;
+       e.preventDefault();
+       var touches = getTouchesArray(e.touches);
++      var _dnBBox = this._dnBBox || this.container.getBoundingClientRect();
+       var touchesPositions = touches.map(function (touch) {
+-        return getPosition(touch, _this3.container);
++        return { x: touch.clientX - _dnBBox.left, y: touch.clientY - _dnBBox.top };
+       });
+       var lastTouches = this.lastTouches;
+       this.lastTouches = touches;
+@@ -976,47 +986,52 @@ var TouchCaptor = /*#__PURE__*/function (_Captor) {
+              *    position of a touch at the beginning of the d'n'd (using `startCamera.viewportToGraph`) and the viewport
+              *    position of this same touch now
+              */
+-            var newCameraState = {
+-              x: 0.5,
+-              y: 0.5,
+-              angle: 0,
+-              ratio: 1
+-            };
+             var _touchesPositions$ = touchesPositions[0],
+               x0 = _touchesPositions$.x,
+               y0 = _touchesPositions$.y;
+             var _touchesPositions$2 = touchesPositions[1],
+               x1 = _touchesPositions$2.x,
+               y1 = _touchesPositions$2.y;
+-            var angleDiff = Math.atan2(y1 - y0, x1 - x0) - this.startTouchesAngle;
+-            var ratioDiff = Math.hypot(y1 - y0, x1 - x0) / this.startTouchesDistance;
+-
+-            // 1.
+-            var newRatio = camera.getBoundedRatio(startCameraState.ratio / ratioDiff);
+-            newCameraState.ratio = newRatio;
+-            newCameraState.angle = startCameraState.angle + angleDiff;
+-
+-            // 2.
+-            var dimensions = this.getDimensions();
+-            var touchGraphPosition = this.renderer.viewportToFramedGraph((this.startTouchesPositions || [])[0], {
+-              cameraState: startCameraState
+-            });
+-            var smallestDimension = Math.min(dimensions.width, dimensions.height) - 2 * padding;
+-            var dx = smallestDimension / dimensions.width;
+-            var dy = smallestDimension / dimensions.height;
+-            var ratio = newRatio / smallestDimension;
+-
+-            // Align with center of the graph:
+-            var _x = x0 - smallestDimension / 2 / dx;
+-            var _y = y0 - smallestDimension / 2 / dy;
+-
+-            // Rotate:
+-            var _ref = [_x * Math.cos(-newCameraState.angle) - _y * Math.sin(-newCameraState.angle), _y * Math.cos(-newCameraState.angle) + _x * Math.sin(-newCameraState.angle)];
+-            _x = _ref[0];
+-            _y = _ref[1];
+-            newCameraState.x = touchGraphPosition.x - _x * ratio;
+-            newCameraState.y = touchGraphPosition.y + _y * ratio;
+-            camera.setState(newCameraState);
++            var curDist = Math.hypot(y1 - y0, x1 - x0);
++
++            // Patch (design-network): ratio calcolato SEMPRE rispetto
++            // all'inizio del gesto (mai in modo incrementale frame-per-frame,
++            // per non accumulare errore lungo la durata del pinch).
++            var rawRatio = startCameraState.ratio / (curDist / this.startTouchesDistance);
++            var newRatio = camera.getBoundedRatio(rawRatio);
++            if (newRatio !== rawRatio) {
++              // Patch (design-network): lo zoom è già al limite min/max. Senza
++              // questo controllo la posizione della camera continuerebbe comunque
++              // a inseguire le dita anche se il ratio non cambia più.
++              break;
++            }
++
++            // Patch (design-network): la posizione viene calcolata con il
++            // metodo UFFICIALE di sigma `getViewportZoomedState` (lo stesso
++            // usato dallo zoom con rotellina del mouse e dal doppio tap),
++            // invece di una formula di proiezione inversa scritta a mano
++            // (dx/dy/smallestDimension/padding). Quella formula a mano non
++            // corrispondeva esattamente alla vera trasformazione usata da
++            // viewportToFramedGraph/framedGraphToViewport internamente a
++            // sigma: la discrepanza produceva un piccolo scarto sistematico
++            // visibile a ogni pinch, che nessuna cache di dimensioni/bbox né
++            // un "assestamento" iniziale potevano correggere, trattandosi di
++            // un errore nella formula stessa e non di un problema di
++            // tempistica. getViewportZoomedState legge sempre lo stato REALE
++            // e attuale della camera (non una copia tracciata a parte), quindi
++            // non può accumulare derive frame dopo frame.
++            //
++            // Il pinch fa SOLO zoom: il punto ancorato è il punto medio delle
++            // due dita rilevato all'inizio del gesto (fisso), non quello
++            // corrente. Lo spostamento della mappa resta affidato
++            // esclusivamente al trascinamento con un dito solo (case 1, sopra).
++            var anchorTouch0 = this.startTouchesPositions[0];
++            var anchorTouch1 = this.startTouchesPositions[1];
++            var anchorMid = {
++              x: (anchorTouch0.x + anchorTouch1.x) / 2,
++              y: (anchorTouch0.y + anchorTouch1.y) / 2
++            };
++            camera.setState(this.renderer.getViewportZoomedState(anchorMid, newRatio));
+             break;
+           }
+       }

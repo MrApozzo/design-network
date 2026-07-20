@@ -60,6 +60,10 @@ const STILE = {
   zoom_designer_max: 18,
   zoom_prodotto_min: 2,
   zoom_prodotto_max: 35,
+  // Boost aggiuntivo solo mobile, applicato a prodotti e designer solo
+  // nell'ultimo tratto di zoom (da boost_soglia a 1): non tocca il resto della curva.
+  boost_mobile_max: 2,
+  boost_soglia: 0.9,
   zoom_label_designer_min: 4,
   zoom_label_designer_max: 14,
   zoom_label_prodotto_max: 10,
@@ -528,13 +532,23 @@ const TESTI = {
   },
 }
 
-function preloadImages(paths) {
+function preloadImages(paths, concorrenza = 6) {
   const cache = {}
-  paths.forEach((src) => {
-    const img = new Image()
+  const coda = [...paths]
+  paths.forEach((src) => { cache[src] = new Image() })
+  let attive = 0
+  function avviaProssima() {
+    if (coda.length === 0 || attive >= concorrenza) return
+    const src = coda.shift()
+    const img = cache[src]
+    attive++
+    const fine = () => { attive--; avviaProssima() }
+    img.addEventListener("load", fine, { once: true })
+    img.addEventListener("error", fine, { once: true })
     img.src = src
-    cache[src] = img
-  })
+    avviaProssima()
+  }
+  for (let i = 0; i < concorrenza; i++) avviaProssima()
   return cache
 }
 
@@ -627,6 +641,8 @@ function App() {
     let isDragging = false
     let cameraPrimaDiClick = null
     let cameraAnimId = null
+    let touchGestureAttiva = false
+    let touchWasMultiTouch = false
 
     function animaCamera(target, durata, callback) {
       if (cameraAnimId) cancelAnimationFrame(cameraAnimId)
@@ -1003,6 +1019,7 @@ function App() {
 
     const renderer = new Sigma(graph, container, {
       renderEdgeLabels: false,
+      enableCameraRotation: false,
       maxCameraRatio: MAX_CAMERA_RATIO,
       minCameraRatio: MIN_CAMERA_RATIO,
       zoomingRatio: 1.7,
@@ -1090,6 +1107,14 @@ function App() {
       return (logMax - Math.log(ratio)) / (logMax - logMin)
     }
 
+    // Inversa di zoomT(): converte una percentuale di zoom (0-1) nel ratio di
+    // camera corrispondente, sempre coerente con i reali limiti min/max attuali.
+    function ratioDaT(t) {
+      const logMax = Math.log(MAX_CAMERA_RATIO)
+      const logMin = Math.log(MIN_CAMERA_RATIO)
+      return Math.exp(logMax - t * (logMax - logMin))
+    }
+
     function vScale() {
       return Math.max(0.5, viewportMin / STILE.zoom_viewport_ref)
     }
@@ -1099,13 +1124,21 @@ function App() {
       const vs = vScale()
       if (attr.tipo === "designer") {
         const tCurved = Math.pow(t, 1.2)
-        const base = lerp(STILE.zoom_designer_min, STILE.zoom_designer_max, tCurved) * vs
+        let base = lerp(STILE.zoom_designer_min, STILE.zoom_designer_max, tCurved) * vs
+        if (isMobile && t > STILE.boost_soglia) {
+          const tBoost = (t - STILE.boost_soglia) / (1 - STILE.boost_soglia)
+          base *= lerp(1, STILE.boost_mobile_max, tBoost)
+        }
         return node === nodoAttivo ? base * STILE.hover_scala : base
       }
       if (attr.tipo === "prodotto") {
         const tDelayed = Math.max(0, (t - 0.2) / 0.8)
         const scalaTop = attr.dati?.top ? STILE.prodotto_scala_top : 1
-        const base = lerp(STILE.zoom_prodotto_min, STILE.zoom_prodotto_max, tDelayed * tDelayed) * vs * scalaTop
+        let base = lerp(STILE.zoom_prodotto_min, STILE.zoom_prodotto_max, tDelayed * tDelayed) * vs * scalaTop
+        if (isMobile && t > STILE.boost_soglia) {
+          const tBoost = (t - STILE.boost_soglia) / (1 - STILE.boost_soglia)
+          base *= lerp(1, STILE.boost_mobile_max, tBoost)
+        }
         if (node === prodottoCliccato) return base * 1.2
         if (prodottoCliccato) return base
         if (node === prodottoHoverAttivo) return base * STILE.hover_scala
@@ -1806,7 +1839,7 @@ function App() {
         // Movimento manuale della mappa durante navigazione collegamenti: non tornare più alla posizione pre-click
         cameraPrimaDiClick = null
       }
-      if (!clamping && !prodottoCliccato) {
+      if (!clamping && !prodottoCliccato && !touchGestureAttiva) {
         clampCameraAllaGriglia(state)
       }
 
@@ -1915,7 +1948,7 @@ function App() {
       })
       if (!nodeId || !graph.hasNode(nodeId)) return
       const attr = graph.getNodeAttributes(nodeId)
-      const tRatio = tipo === "designer" ? 0.06 : 0.025
+      const tRatio = ratioDaT(tipo === "designer" ? 0.9 : 0.95)
       const cRect = container.getBoundingClientRect()
       const sState = camera.getState()
       const pannelloW = isMobile ? 0 : 340 * uiScale
@@ -2124,7 +2157,7 @@ function App() {
                 const pAttr = graph.getNodeAttributes(trovato.node)
                 const cRect = container.getBoundingClientRect()
                 const sState = camera.getState()
-                const tRatio = 0.06
+                const tRatio = ratioDaT(0.9)
                 const pannelloW = isMobile ? 0 : 340 * uiScale
                 const pannelloSx = isMobile ? 0 : Math.max(20, 240 * uiScale - 180)
                 const pannelloH = isMobile ? cRect.height * 0.4 : 0
@@ -2176,7 +2209,7 @@ function App() {
               const pAttr = graph.getNodeAttributes(trovato.node)
               const cRect = container.getBoundingClientRect()
               const sState = camera.getState()
-              const tRatio = 0.025
+              const tRatio = ratioDaT(0.95)
               const pannelloW = isMobile ? 0 : 340 * uiScale
               const pannelloSx = isMobile ? 0 : Math.max(20, 240 * uiScale - 180)
               const pannelloH = isMobile ? cRect.height * 0.4 : 0
@@ -2276,9 +2309,15 @@ function App() {
       let touchStartPos = null
       let touchIsDragging = false
       sigmaCanvas.addEventListener("touchstart", (e) => {
-        const t = e.touches[0]
-        touchStartPos = { x: t.clientX, y: t.clientY }
-        touchIsDragging = false
+        touchGestureAttiva = true
+        if (e.touches.length === 1) {
+          touchWasMultiTouch = false
+          const t = e.touches[0]
+          touchStartPos = { x: t.clientX, y: t.clientY }
+          touchIsDragging = false
+        } else {
+          touchWasMultiTouch = true
+        }
       }, { passive: true })
       sigmaCanvas.addEventListener("touchmove", (e) => {
         if (touchStartPos && e.touches[0]) {
@@ -2287,14 +2326,27 @@ function App() {
           if (dx > 8 || dy > 8) touchIsDragging = true
         }
       }, { passive: true })
+      const fineGestoTouch = (e) => {
+        if (e.touches.length === 0 && touchGestureAttiva) {
+          touchGestureAttiva = false
+          clampCameraAllaGriglia(camera.getState())
+        }
+      }
       sigmaCanvas.addEventListener("touchend", (e) => {
-        if (touchIsDragging || !touchStartPos) { touchStartPos = null; touchIsDragging = false; return }
+        fineGestoTouch(e)
+        if (touchIsDragging || !touchStartPos || touchWasMultiTouch || e.touches.length !== 0) {
+          touchStartPos = null; touchIsDragging = false; return
+        }
         const fakeEvent = { clientX: touchStartPos.x, clientY: touchStartPos.y }
         touchStartPos = null; touchIsDragging = false
         sigmaCanvas.dispatchEvent(new MouseEvent("mouseup", {
           clientX: fakeEvent.clientX, clientY: fakeEvent.clientY,
           bubbles: true
         }))
+      })
+      sigmaCanvas.addEventListener("touchcancel", (e) => {
+        fineGestoTouch(e)
+        touchStartPos = null; touchIsDragging = false
       })
     }
 

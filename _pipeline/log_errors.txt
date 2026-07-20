@@ -1,0 +1,37 @@
+[2026-07-20 13:44:22] 4630 candidato flat: download fallito: non e' un'immagine valida (cannot identify image file <_io.BytesIO object at 0x0000024E55474400>)
+[2026-07-20 13:44:29] UP1 candidato flat: download fallito: HTTPSConnectionPool(host='images.capitoliumart.com', port=443): Max retries exceeded with url: /auction-images/265/115741.jpg (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1082)')))
+[2026-07-20 13:44:29] UP1 candidato flat: download fallito: HTTP 403
+[2026-07-20 13:44:34] UP1 candidato flat: download fallito: HTTPSConnectionPool(host='images.capitoliumart.com', port=443): Max retries exceeded with url: /auction-images/265/115740.jpg (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1082)')))
+[2026-07-20 13:44:37] UP1 candidato flat: download fallito: HTTPSConnectionPool(host='images.capitoliumart.com', port=443): Max retries exceeded with url: /auction-images/558/309327.jpg (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1082)')))
+[2026-07-20 13:44:54] UP4 candidato flat: download fallito: HTTPSConnectionPool(host='images.capitoliumart.com', port=443): Max retries exceeded with url: /auction-images/468/257243.jpg (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1082)')))
+[2026-07-20 13:44:58] UP4 candidato flat: download fallito: HTTPSConnectionPool(host='images.capitoliumart.com', port=443): Max retries exceeded with url: /auction-images/558/309327.jpg (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1082)')))
+[2026-07-20 13:45:01] UP4 candidato flat: download fallito: HTTPSConnectionPool(host='images.capitoliumart.com', port=443): Max retries exceeded with url: /auction-images/468/257245.jpg (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1082)')))
+[2026-07-20 13:45:03] UP4 candidato flat: download fallito: HTTPSConnectionPool(host='images.capitoliumart.com', port=443): Max retries exceeded with url: /auction-images/558/309329.jpg (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1082)')))
+[2026-07-20 13:45:06] UP7 (Il Piede) candidato flat: download fallito: HTTP 403
+[2026-07-20 13:45:08] UP7 (Il Piede) candidato flat: download fallito: non e' un'immagine valida (cannot identify image file <_io.BytesIO object at 0x0000024E552C2A70>)
+[2026-07-20 13:45:10] UP7 (Il Piede) candidato flat: download fallito: HTTPSConnectionPool(host='images.capitoliumart.com', port=443): Max retries exceeded with url: /auction-images/456/244999.jpg (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1082)')))
+[2026-07-20 13:45:11] UP7 (Il Piede) candidato flat: download fallito: HTTP 403
+[2026-07-20 13:45:13] UP7 (Il Piede) candidato flat: download fallito: HTTP 403
+[2026-07-20 13:45:21] Moloch candidato flat: download fallito: HTTPSConnectionPool(host='images.capitoliumart.com', port=443): Max retries exceeded with url: /auction-images/174/87431.jpg (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1082)')))
+[2026-07-20 13:45:24] Moloch candidato flat: download fallito: HTTPSConnectionPool(host='images.capitoliumart.com', port=443): Max retries exceeded with url: /auction-images/174/87430.jpg (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1082)')))
+[2026-07-20 13:45:29] Moloch candidato flat: download fallito: non e' un'immagine valida (cannot identify image file <_io.BytesIO object at 0x0000024E55473740>)
+[2026-07-20 13:45:30] Moloch candidato flat: download fallito: file vuoto o troppo piccolo
+[2026-07-20 13:45:32] Moloch candidato flat: download fallito: HTTPSConnectionPool(host='images.capitoliumart.com', port=443): Max retries exceeded with url: /auction-images/174/87428.jpg (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1082)')))
+[2026-07-20 13:45:34] Moloch candidato flat: download fallito: non e' un'immagine valida (cannot identify image file <_io.BytesIO object at 0x0000024E555672E0>)
+[2026-07-20 13:45:37] Moloch candidato flat: download fallito: HTTPSConnectionPool(host='images.capitoliumart.com', port=443): Max retries exceeded with url: /auction-images/174/87432.jpg (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1082)')))
+[2026-07-20 13:45:46] Golgotha candidato flat: download fallito: HTTP 403
+[2026-07-20 13:45:53] Sit Down candidato flat: download fallito: file vuoto o troppo piccolo
+[2026-07-20 13:45:54] Sit Down candidato flat: download fallito: HTTP 403
+[2026-07-20 13:45:58] Sit Down candidato flat: download fallito: HTTP 403
+[2026-07-20 13:45:58] Sit Down candidato flat: download fallito: HTTP 403
+[2026-07-20 13:46:47] Sansone I candidato flat: download fallito: HTTP 403
+[2026-07-20 13:46:49] Sansone I candidato flat: download fallito: non e' un'immagine valida (cannot identify image file <_io.BytesIO object at 0x0000024E554744F0>)
+[2026-07-20 13:46:52] Sansone I candidato flat: download fallito: non e' un'immagine valida (cannot identify image file <_io.BytesIO object at 0x0000024E554744F0>)
+[2026-07-20 13:46:52] Sansone I candidato flat: download fallito: HTTP 403
+[2026-07-20 13:46:52] Sansone I candidato flat: download fallito: HTTP 403
+[2026-07-20 13:46:53] Sansone I candidato flat: download fallito: HTTP 403
+[2026-07-20 13:46:57] Dalila Uno candidato flat: download fallito: non e' un'immagine valida (cannot identify image file <_io.BytesIO object at 0x0000024E567D7CE0>)
+[2026-07-20 13:47:14] Beaubourg candidato flat: download fallito: non e' un'immagine valida (cannot identify image file <_io.BytesIO object at 0x0000024E5531EAC0>)
+[2026-07-20 13:47:17] Beaubourg candidato flat: download fallito: non e' un'immagine valida (cannot identify image file <_io.BytesIO object at 0x0000024E5554BC90>)
+[2026-07-20 13:47:32] Cannaregio candidato flat: download fallito: HTTPSConnectionPool(host='images.capitoliumart.com', port=443): Max retries exceeded with url: /auction-images/194/95993.jpg (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1082)')))
+[2026-07-20 13:47:35] Cannaregio candidato flat: download fallito: HTTPSConnectionPool(host='images.capitoliumart.com', port=443): Max retries exceeded with url: /auction-images/560/328193.jpg (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1082)')))
