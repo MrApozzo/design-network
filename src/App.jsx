@@ -64,6 +64,11 @@ const STILE = {
   // nell'ultimo tratto di zoom (da boost_soglia a 1): non tocca il resto della curva.
   boost_mobile_max: 2,
   boost_soglia: 0.9,
+  // Stesso principio, ma per le etichette (nome prodotto + data): la
+  // dimensione di base resta quasi sempre sul minimo (label_min) su mobile,
+  // quindi qui il boost deve essere più marcato del solito per essere
+  // percepibile, anche se il pallino non cresce altrettanto.
+  boost_mobile_label_max: 2.2,
   zoom_label_designer_min: 4,
   zoom_label_designer_max: 14,
   zoom_label_prodotto_max: 10,
@@ -441,6 +446,9 @@ const TESTI = {
     paragrafo1: "Questa mappa rappresenta un secolo di design occidentale — i suoi protagonisti, le loro opere e i legami invisibili che li uniscono. Ogni nodo è un designer o un oggetto; ogni connessione, una relazione di collaborazione, influenza o formazione.",
     paragrafo2: "La posizione orizzontale segue una cronologia rigorosa, dal 1880 al 1980. Esplorando la mappa si scoprono le grandi concentrazioni del movimento moderno, le filiazioni tra maestri e allievi, e le convergenze tra discipline e nazionalità.",
     cerca: "Cerca...",
+    benvenutoDomanda: "Qual è il tuo designer preferito?",
+    benvenutoPlaceholder: "Scrivi un nome...",
+    benvenutoConferma: "Entra",
     designerToggle: "Designer",
     timelineToggle: "Linea del tempo",
     hoverTooltip: "Hover sui collegamenti — clicca su area vuota per uscire",
@@ -488,6 +496,9 @@ const TESTI = {
     paragrafo1: "This map represents a century of Western design — its protagonists, their works, and the invisible ties that bind them. Each node is a designer or an object; each connection, a relationship of collaboration, influence, or formation.",
     paragrafo2: "The horizontal position follows a rigorous chronology, from 1880 to 1980. Exploring the map reveals the great concentrations of the modern movement, the lineages between masters and students, and the convergences across disciplines and nationalities.",
     cerca: "Search...",
+    benvenutoDomanda: "Who's your favorite designer?",
+    benvenutoPlaceholder: "Type a name...",
+    benvenutoConferma: "Enter",
     designerToggle: "Designer",
     timelineToggle: "Timeline",
     hoverTooltip: "Hover over the connections — click an empty area to exit",
@@ -532,9 +543,11 @@ const TESTI = {
   },
 }
 
-function preloadImages(paths, concorrenza = 6) {
+function preloadImages(paths, concorrenza = 6, onDone) {
   const cache = {}
   const coda = [...paths]
+  const totale = paths.length
+  let completate = 0
   paths.forEach((src) => { cache[src] = new Image() })
   let attive = 0
   function avviaProssima() {
@@ -542,14 +555,55 @@ function preloadImages(paths, concorrenza = 6) {
     const src = coda.shift()
     const img = cache[src]
     attive++
-    const fine = () => { attive--; avviaProssima() }
+    const fine = () => {
+      attive--; completate++
+      if (completate >= totale && onDone) onDone()
+      avviaProssima()
+    }
     img.addEventListener("load", fine, { once: true })
     img.addEventListener("error", fine, { once: true })
     img.src = src
     avviaProssima()
   }
+  if (totale === 0 && onDone) onDone()
   for (let i = 0; i < concorrenza; i++) avviaProssima()
   return cache
+}
+
+// Scrollbar personalizzata per le liste di risultati (ricerca, contribuisci):
+// un binario chiaro staccato dal riquadro dei risultati, con una "pillola"
+// grigia più scura che rappresenta la porzione visibile — niente scrollbar
+// nativa del browser, che sui vari sistemi operativi ha un aspetto troppo
+// standard e non era possibile staccarla dal contenuto.
+function ListaConScroll({ children, maxHeight, wrapperStyle, innerStyle, className }) {
+  const scrollRef = useRef(null)
+  const [thumb, setThumb] = useState(null)
+
+  const aggiorna = () => {
+    const el = scrollRef.current
+    if (!el) return
+    const { scrollTop, scrollHeight, clientHeight } = el
+    if (scrollHeight <= clientHeight + 1) { setThumb(null); return }
+    const h = Math.max(24, (clientHeight / scrollHeight) * clientHeight)
+    const top = (scrollTop / (scrollHeight - clientHeight)) * (clientHeight - h)
+    setThumb({ top, height: h })
+  }
+
+  useEffect(() => { aggiorna() })
+
+  return (
+    <div style={{ position: "relative", ...wrapperStyle }}>
+      <div ref={scrollRef} onScroll={aggiorna} className={`dn-scroll-hidden ${className || ""}`}
+        style={{ maxHeight, overflowY: "auto", ...innerStyle }}>
+        {children}
+      </div>
+      {thumb && (
+        <div style={{ position: "absolute", top: 6, bottom: 6, right: -13, width: 4, borderRadius: 2, background: "#f0f0f0" }}>
+          <div style={{ position: "absolute", top: thumb.top, height: thumb.height, left: 0, right: 0, borderRadius: 2, background: "#b0b0b0" }} />
+        </div>
+      )}
+    </div>
+  )
 }
 
 function App() {
@@ -561,6 +615,37 @@ function App() {
   const [vistaCorrente, setVistaCorrente] = useState("designer")
   const [animaTransizioneFn, setAnimaTransizioneFn] = useState(null)
   const [ridisegnaFn, setRidisegnaFn] = useState(null)
+  const [primaVisita] = useState(() => {
+    try { return !localStorage.getItem("dn-camera") } catch { return true }
+  })
+  const [schermataIniziale, setSchermataIniziale] = useState(primaVisita)
+  const [immaginiPronte, setImmaginiPronte] = useState(false)
+  const [rispostaDesigner, setRispostaDesigner] = useState("")
+  const inputSchermataInizialeRef = useRef(null)
+  const [numLetterePronte, setNumLetterePronte] = useState(0)
+  const [cursoreVisibile, setCursoreVisibile] = useState(true)
+  const [campoRivelato, setCampoRivelato] = useState(false)
+
+  useEffect(() => {
+    if (immaginiPronte) setSchermataIniziale(false)
+  }, [immaginiPronte])
+
+  function confermaSchermataIniziale(nomeScelto) {
+    const nome = (nomeScelto || rispostaDesigner).trim()
+    if (nome) {
+      const match = designers.find((d) => d.nome.toLowerCase() === nome.toLowerCase())
+        || designers.find((d) => d.nome.toLowerCase().includes(nome.toLowerCase()))
+      if (match && centraFn) {
+        attesaPosizionamentoRef.current = true
+        centraFn(match.nome, "designer", {
+          apriPannello: false,
+          tPercent: 0.6,
+          onFine: () => { attesaPosizionamentoRef.current = false; setChromeVisibile(true) },
+        })
+      }
+    }
+    setSchermataIniziale(false)
+  }
   const topBarRef = useRef(null)
   const sottotitoloRef = useRef(null)
   const inputRicercaMobileRef = useRef(null)
@@ -577,6 +662,70 @@ function App() {
   const linguaRef = useRef("it")
   useEffect(() => { linguaRef.current = lingua }, [lingua])
   const t = TESTI[lingua]
+
+  // Animazione "macchina da scrivere" della domanda iniziale: prima qualche
+  // lampeggio del cursore (come una barra che ci pensa), poi la frase viene
+  // composta lettera per lettera a velocità leggermente irregolare (più
+  // naturale di un ritmo perfettamente costante), infine il cursore si ferma
+  // e il campo/bottone compaiono — il cursore lampeggiante del campo di testo
+  // (che riceve il focus) prende il posto di quello della frase.
+  useEffect(() => {
+    if (!(primaVisita && schermataIniziale)) return
+    const frase = t.benvenutoDomanda
+    let cancellato = false
+    const timeouts = []
+    const tick = (fn, ms) => { timeouts.push(setTimeout(() => { if (!cancellato) fn() }, ms)) }
+
+    setNumLetterePronte(0)
+    setCampoRivelato(false)
+    setCursoreVisibile(true)
+
+    const N_LAMPEGGI = 3
+    const durataLampeggio = 220
+    for (let i = 1; i <= N_LAMPEGGI * 2; i++) {
+      tick(() => setCursoreVisibile((v) => !v), durataLampeggio * i)
+    }
+    let quando = durataLampeggio * N_LAMPEGGI * 2 + 150
+    for (let i = 0; i <= frase.length; i++) {
+      tick(() => setNumLetterePronte(i), quando)
+      const carattere = frase[i]
+      const pausaExtra = carattere === " " ? 40 : /[,.\-—]/.test(carattere || "") ? 160 : 0
+      quando += 30 + Math.random() * 55 + pausaExtra
+    }
+    tick(() => setCursoreVisibile(false), quando + 200)
+    tick(() => setCampoRivelato(true), quando + 250)
+
+    return () => {
+      cancellato = true
+      timeouts.forEach(clearTimeout)
+    }
+  }, [primaVisita, schermataIniziale, t])
+
+  useEffect(() => {
+    if (campoRivelato && inputSchermataInizialeRef.current) inputSchermataInizialeRef.current.focus()
+  }, [campoRivelato])
+
+  // Ingresso lento e fluido di menu/barra di ricerca in alto: restano
+  // invisibili finché la schermata iniziale (se c'è) non è sparita, poi
+  // compaiono con una piccola dissolvenza + scorrimento verso il basso. Se la
+  // schermata iniziale ha appena centrato la mappa su un designer, aspettiamo
+  // che quell'animazione di posizionamento finisca prima di far comparire gli
+  // elementi dell'interfaccia (attesaPosizionamentoRef), invece di farli
+  // apparire tutti insieme.
+  const [chromeVisibile, setChromeVisibile] = useState(false)
+  const attesaPosizionamentoRef = useRef(false)
+  useEffect(() => {
+    if (primaVisita && schermataIniziale) return
+    if (attesaPosizionamentoRef.current) return
+    const id = setTimeout(() => setChromeVisibile(true), 100)
+    return () => clearTimeout(id)
+  }, [primaVisita, schermataIniziale])
+  const stileIngressoChrome = {
+    opacity: chromeVisibile ? 1 : 0,
+    transform: chromeVisibile ? "translateY(0)" : "translateY(-10px)",
+    transition: "opacity 0.9s ease, transform 0.9s ease",
+  }
+
   const [bioEspansa, setBioEspansa] = useState(false)
   const [galleriaIndice, setGalleriaIndice] = useState(0)
   const [galleriaFullscreen, setGalleriaFullscreen] = useState(false)
@@ -676,26 +825,8 @@ function App() {
     let mouseTrailX = -100, mouseTrailY = -100
     let mouseNelCanvas = false
 
-    const imgPaths = [
-      ...designers.map((d) => `${import.meta.env.BASE_URL}immagini/${d.foto}`),
-      ...prodotti.map((p) => `${import.meta.env.BASE_URL}immagini/${p.foto}`),
-    ]
-    const imgCache = preloadImages(imgPaths)
+    let imgCache = {}
     const imgColori = {}
-    const campionaColore = (src, img) => {
-      try {
-        const c = document.createElement("canvas")
-        c.width = 1; c.height = 1
-        const cx = c.getContext("2d")
-        cx.drawImage(img, 0, 0, 1, 1)
-        const [r, g, b] = cx.getImageData(0, 0, 1, 1).data
-        imgColori[src] = `rgb(${r},${g},${b})`
-      } catch {}
-    }
-    Object.entries(imgCache).forEach(([src, img]) => {
-      if (img.complete && img.naturalWidth > 0) campionaColore(src, img)
-      else img.addEventListener("load", () => campionaColore(src, img), { once: true })
-    })
 
     const nProdottiPerDesigner = {}
     prodotti.forEach((p) => {
@@ -1070,6 +1201,53 @@ function App() {
     MIN_CAMERA_RATIO = Math.min(MIN_CAMERA_RATIO_BASE, MIN_CAMERA_RATIO_UNITA_VISIBILI / bboxAltezza)
     renderer.setSetting("minCameraRatio", MIN_CAMERA_RATIO)
 
+    // Precarichiamo le immagini SOLO ora che ogni nodo ha una posizione
+    // definitiva, dando priorità a quelle vicine al punto in cui l'utente si
+    // troverà appena aperta la mappa (la camera salvata, o il designer di
+    // default alla primissima visita), invece di scaricarle tutte insieme
+    // nell'ordine arbitrario del json. Chi è vicino al centro iniziale è
+    // pronto prima, chi è lontano (zoom out o angoli mai visitati) arriva dopo.
+    let rifX = 0, rifY = 0
+    let hoRiferimento = false
+    try {
+      const saved = JSON.parse(localStorage.getItem("dn-camera"))
+      if (saved) {
+        rifX = (X_MIN - MARGINE_X) + saved.x * ((X_MAX + MARGINE_X) - (X_MIN - MARGINE_X))
+        rifY = bboxYMin + saved.y * (bboxYMax - bboxYMin)
+        hoRiferimento = true
+      }
+    } catch {}
+    if (!hoRiferimento && graph.hasNode("Achille Castiglioni")) {
+      const cAttr = graph.getNodeAttributes("Achille Castiglioni")
+      rifX = cAttr.x; rifY = cAttr.y
+    }
+    const vistiSrc = new Set()
+    const nodiConDistanza = []
+    graph.forEachNode((node, attr) => {
+      if (vistiSrc.has(attr.imgSrc)) return
+      vistiSrc.add(attr.imgSrc)
+      const dx = attr.x - rifX, dy = attr.y - rifY
+      nodiConDistanza.push({ src: attr.imgSrc, d2: dx * dx + dy * dy })
+    })
+    nodiConDistanza.sort((a, b) => a.d2 - b.d2)
+    const imgPaths = nodiConDistanza.map((n) => n.src)
+
+    const campionaColore = (src, img) => {
+      try {
+        const c = document.createElement("canvas")
+        c.width = 1; c.height = 1
+        const cx = c.getContext("2d")
+        cx.drawImage(img, 0, 0, 1, 1)
+        const [r, g, b] = cx.getImageData(0, 0, 1, 1).data
+        imgColori[src] = `rgb(${r},${g},${b})`
+      } catch {}
+    }
+    imgCache = preloadImages(imgPaths, 6, () => setImmaginiPronte(true))
+    Object.entries(imgCache).forEach(([src, img]) => {
+      if (img.complete && img.naturalWidth > 0) campionaColore(src, img)
+      else img.addEventListener("load", () => campionaColore(src, img), { once: true })
+    })
+
     const overlayCanvas = document.createElement("canvas")
     overlayCanvas.style.cssText = "position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:10;"
     container.appendChild(overlayCanvas)
@@ -1160,7 +1338,11 @@ function App() {
       const labelDesignerSize = Math.max(STILE.label_min, lerp(STILE.zoom_label_designer_min, STILE.zoom_label_designer_max, Math.pow(t, 1.2)) * vs)
       const tLabel = Math.max(0, (t - STILE.zoom_label_soglia) / (1 - STILE.zoom_label_soglia))
       const mostraLabelProdotti = t > STILE.zoom_label_soglia
-      const labelProdottoSize = mostraLabelProdotti ? Math.max(STILE.label_min, STILE.zoom_label_prodotto_max * tLabel * vs) : 0
+      let labelProdottoSize = mostraLabelProdotti ? Math.max(STILE.label_min, STILE.zoom_label_prodotto_max * tLabel * vs) : 0
+      if (isMobile && mostraLabelProdotti && t > STILE.boost_soglia) {
+        const tBoostLabel = (t - STILE.boost_soglia) / (1 - STILE.boost_soglia)
+        labelProdottoSize *= lerp(1, STILE.boost_mobile_label_max, tBoostLabel)
+      }
       const nodoAttivo = designerCliccato || nodoHoverAttivo
       const collegati = nodiCollegatiAlHover(nodoAttivo)
       const hoverAttivo = nodoAttivo !== null
@@ -1939,7 +2121,10 @@ function App() {
 
     setAnimaTransizioneFn(() => animaTransizione)
     setRidisegnaFn(() => () => richiediDisegnoOverlay(18))
-    setCentraFn(() => (cercaNome, tipo) => {
+    setCentraFn(() => (cercaNome, tipo, opzioni) => {
+      const apriPannello = !opzioni || opzioni.apriPannello !== false
+      const tPercent = opzioni && typeof opzioni.tPercent === "number" ? opzioni.tPercent : (tipo === "designer" ? 0.9 : 0.95)
+      const onFine = opzioni && opzioni.onFine
       let nodeId = null
       graph.forEachNode((node, attr) => {
         if (nodeId) return
@@ -1948,7 +2133,7 @@ function App() {
       })
       if (!nodeId || !graph.hasNode(nodeId)) return
       const attr = graph.getNodeAttributes(nodeId)
-      const tRatio = ratioDaT(tipo === "designer" ? 0.9 : 0.95)
+      const tRatio = ratioDaT(tPercent)
       const cRect = container.getBoundingClientRect()
       const sState = camera.getState()
       const pannelloW = isMobile ? 0 : 340 * uiScale
@@ -1975,21 +2160,23 @@ function App() {
       camera.setState(sState)
       renderer.refresh()
       clamping = false
-      animaCamera({ ratio: tRatio, x: tX, y: tY }, 600)
-      nodoEvidenziatoRef.current = nodeId
-      setNodoEvidenziato(nodeId)
-      if (tipo === "designer") {
-        designerCliccato = nodeId
-        setDesignerAttivo(nodeId)
-        setPannelloDesigner({ ...attr.dati, _tipo: "designer" }); setBioEspansa(false); setAziendaAttiva(null)
-        requestAnimationFrame(() => setPannelloVisibile(true))
-        graph.forEachEdge((edge, eAttr) => { if (eAttr.tipo === "relazione") graph.setEdgeAttribute(edge, "attivo", false) })
-        graph.forEachEdge(nodeId, (edge, eAttr) => { if (eAttr.tipo === "relazione") graph.setEdgeAttribute(edge, "attivo", true) })
-      } else {
-        prodottoCliccato = nodeId
-        setPannelloDesigner({ ...attr.dati, _tipo: "prodotto" })
-        setGalleriaIndice(0); setGalleriaFullscreen(false)
-        requestAnimationFrame(() => setPannelloVisibile(true))
+      animaCamera({ ratio: tRatio, x: tX, y: tY }, 600, onFine)
+      if (apriPannello) {
+        nodoEvidenziatoRef.current = nodeId
+        setNodoEvidenziato(nodeId)
+        if (tipo === "designer") {
+          designerCliccato = nodeId
+          setDesignerAttivo(nodeId)
+          setPannelloDesigner({ ...attr.dati, _tipo: "designer" }); setBioEspansa(false); setAziendaAttiva(null)
+          requestAnimationFrame(() => setPannelloVisibile(true))
+          graph.forEachEdge((edge, eAttr) => { if (eAttr.tipo === "relazione") graph.setEdgeAttribute(edge, "attivo", false) })
+          graph.forEachEdge(nodeId, (edge, eAttr) => { if (eAttr.tipo === "relazione") graph.setEdgeAttribute(edge, "attivo", true) })
+        } else {
+          prodottoCliccato = nodeId
+          setPannelloDesigner({ ...attr.dati, _tipo: "prodotto" })
+          setGalleriaIndice(0); setGalleriaFullscreen(false)
+          requestAnimationFrame(() => setPannelloVisibile(true))
+        }
       }
       richiediDisegnoOverlay(18)
     })
@@ -2547,18 +2734,21 @@ function App() {
             </div>
           ) : (
             <div style={{ position: "relative" }}>
-              <input type="text" value={contribRicerca} onChange={(e) => setContribRicerca(e.target.value)} placeholder={t.contribCercaPlaceholder}
+              <input type="text" value={contribRicerca} onChange={(e) => setContribRicerca(e.target.value)} onBlur={() => setTimeout(() => setContribRicerca(""), 150)} placeholder={t.contribCercaPlaceholder}
                 style={{ width: "100%", boxSizing: "border-box", padding: "8px 12px", borderRadius: 8, border: "1px solid #ddd", fontFamily: "Roboto, sans-serif", fontSize: 12, fontWeight: 300 }} />
               {risultatiTag.length > 0 && (
-                <div style={{ position: "absolute", top: "100%", left: 0, right: 0, marginTop: 4, background: "white", borderRadius: 8, boxShadow: "0 4px 16px rgba(0,0,0,0.12)", zIndex: 1, maxHeight: 200, overflowY: "auto" }}>
+                <ListaConScroll maxHeight={200}
+                  wrapperStyle={{ position: "absolute", top: "100%", left: 0, right: 0, marginTop: 4, zIndex: 1 }}
+                  innerStyle={{ background: "white", borderRadius: 15, boxShadow: "0 4px 16px rgba(0,0,0,0.12)" }}>
                   {risultatiTag.map((r, i) => (
                     <button key={i} type="button"
                       onClick={() => { setContribTag({ tipo: r.tipo, nome: r.nome }); setContribRicerca("") }}
                       style={{ display: "block", width: "100%", padding: "8px 12px", border: "none", background: "white", cursor: "pointer", textAlign: "left", fontFamily: "Roboto, sans-serif", fontSize: 12 }}>
                       {r.nome}{r.sub && <span style={{ color: "#999", marginLeft: 6, fontWeight: 300 }}>{r.sub}</span>}
+                      <span style={{ fontWeight: 300, color: "#ccc", marginLeft: 6, fontSize: 9, textTransform: "uppercase" }}>{lingua === "en" && r.tipo === "prodotto" ? "product" : r.tipo}</span>
                     </button>
                   ))}
-                </div>
+                </ListaConScroll>
               )}
             </div>
           )}
@@ -2602,12 +2792,86 @@ function App() {
 
   const uiScale = 0.6 + (window.innerWidth / 1440) * 0.4
 
+  const suggerimentiBenvenuto = rispostaDesigner.trim().length > 1
+    ? cercaEntita(rispostaDesigner).filter((r) => r.tipo === "designer")
+    : []
+
   return (
     <>
+      <style>{`
+        .dn-scroll-hidden { scrollbar-width: none; }
+        .dn-scroll-hidden::-webkit-scrollbar { display: none; }
+      `}</style>
+      {primaVisita && schermataIniziale && (
+        <div style={{
+          position: "fixed", inset: 0, zIndex: 1000,
+          background: STILE.sfondo_colore, fontFamily: "Roboto, sans-serif",
+          display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center",
+          padding: 24, boxSizing: "border-box", textAlign: "center",
+        }}>
+          <div style={{
+            fontFamily: "'Roboto Serif', serif", fontWeight: 500, fontStyle: "italic",
+            fontSize: window.innerWidth < 768 ? 19 : 22, color: "#1a1a1a", marginBottom: 28, maxWidth: 420, lineHeight: 1.5,
+            minHeight: "1.3em",
+          }}>
+            {t.benvenutoDomanda.slice(0, numLetterePronte)}
+            <span style={{ opacity: cursoreVisibile ? 1 : 0 }}>|</span>
+          </div>
+          <div style={{
+            display: "flex", flexDirection: "column", alignItems: "center", width: "100%",
+            opacity: campoRivelato ? 1 : 0,
+            transform: campoRivelato ? "translateY(0)" : "translateY(8px)",
+            transition: "opacity 0.6s ease, transform 0.6s ease",
+            pointerEvents: campoRivelato ? "auto" : "none",
+          }}>
+            <div style={{ position: "relative", width: "100%", maxWidth: 320 }}>
+              <input
+                ref={inputSchermataInizialeRef}
+                type="text"
+                value={rispostaDesigner}
+                onChange={(e) => setRispostaDesigner(e.target.value)}
+                onKeyDown={(e) => { if (e.key === "Enter") confermaSchermataIniziale() }}
+                placeholder={t.benvenutoPlaceholder}
+                style={{
+                  width: "100%", boxSizing: "border-box", padding: "13px 18px", borderRadius: 26,
+                  border: "1px solid rgba(0,0,0,0.15)", background: "white", fontSize: 15,
+                  fontFamily: "Roboto, sans-serif", outline: "none",
+                }}
+              />
+              {suggerimentiBenvenuto.length > 0 && (
+                <ListaConScroll maxHeight={220}
+                  wrapperStyle={{ position: "absolute", top: "100%", left: 0, right: 0, marginTop: 6, zIndex: 10 }}
+                  innerStyle={{ background: "white", borderRadius: 18, boxShadow: "0 4px 16px rgba(0,0,0,0.12)" }}>
+                  {suggerimentiBenvenuto.map((d, i) => (
+                    <button key={i} onClick={() => confermaSchermataIniziale(d.nome)}
+                      style={{
+                        display: "block", width: "100%", textAlign: "left", padding: "10px 18px",
+                        border: "none", background: "white", cursor: "pointer", fontSize: 14,
+                        fontFamily: "Roboto, sans-serif", color: "#1a1a1a",
+                      }}>
+                      {d.nome}
+                      <span style={{ fontWeight: 300, color: "#ccc", marginLeft: 6, fontSize: 9, textTransform: "uppercase" }}>{d.tipo}</span>
+                    </button>
+                  ))}
+                </ListaConScroll>
+              )}
+            </div>
+            <button onClick={() => confermaSchermataIniziale()}
+              style={{
+                marginTop: 22, padding: "11px 30px", borderRadius: 22, border: "none",
+                background: "#F34213", color: "white", fontSize: 13, fontFamily: "'Roboto Mono', monospace",
+                cursor: "pointer",
+              }}>
+              {t.benvenutoConferma}
+            </button>
+          </div>
+        </div>
+      )}
       {window.innerWidth < 768 && (
         <div ref={topBarRef} style={{
           position: "fixed", top: 0, left: 0, right: 0, zIndex: 20, padding: "14px 16px",
           background: STILE.sfondo_colore, boxSizing: "border-box",
+          ...stileIngressoChrome,
         }}>
           <div style={{ position: "relative" }}>
             <div
@@ -2671,15 +2935,18 @@ function App() {
         const inputRect = inputRicercaMobileRef.current ? inputRicercaMobileRef.current.getBoundingClientRect() : null
         if (!inputRect) return null
         return (
-          <div style={{ position: "fixed", top: inputRect.bottom + 4, left: inputRect.left, width: inputRect.width, background: "white", borderRadius: 12, boxShadow: "0 4px 16px rgba(0,0,0,0.12)", overflow: "hidden", maxHeight: 260, overflowY: "auto", zIndex: 30 }}>
+          <ListaConScroll maxHeight={260}
+            wrapperStyle={{ position: "fixed", top: inputRect.bottom + 4, left: inputRect.left, width: inputRect.width, zIndex: 30 }}
+            innerStyle={{ background: "white", borderRadius: 17, boxShadow: "0 4px 16px rgba(0,0,0,0.12)" }}>
             {risultati.map((r, i) => (
               <button key={i} onClick={() => { setRicerca(""); if (centraFn) centraFn(r.nome, r.tipo) }}
                 style={{ display: "block", width: "100%", padding: "10px 14px", border: "none", background: "white", cursor: "pointer", textAlign: "left", fontFamily: "Roboto, sans-serif", fontSize: 11, borderBottom: "1px solid #f0f0f0" }}>
                 <span style={{ fontWeight: 500, color: "#1a1a1a" }}>{r.nome}</span>
                 {r.sub && <span style={{ fontWeight: 300, color: "#999", marginLeft: 6 }}>{r.sub}</span>}
+                <span style={{ fontWeight: 300, color: "#ccc", marginLeft: 6, fontSize: 9, textTransform: "uppercase" }}>{lingua === "en" && r.tipo === "prodotto" ? "product" : r.tipo}</span>
               </button>
             ))}
-          </div>
+          </ListaConScroll>
         )
       })()}
 
@@ -2708,6 +2975,9 @@ function App() {
           padding: `${20 * uiScale}px ${16 * uiScale}px`, boxSizing: "border-box",
           display: "flex", flexDirection: "column", justifyContent: "flex-end",
           zIndex: 20, pointerEvents: "none",
+          opacity: chromeVisibile ? 1 : 0,
+          transform: `translateX(${chromeVisibile ? 0 : -10}px)`,
+          transition: "opacity 0.9s ease, transform 0.9s ease",
         }}>
           <div style={{ fontFamily: "'Roboto Serif', serif", fontWeight: 500, fontStyle: "italic", fontSize: 13 * uiScale, color: "#1a1a1a", letterSpacing: 0.3, lineHeight: 1.3 }}>
             Design — encyclopédie visuelle 1880–1980
@@ -2728,7 +2998,9 @@ function App() {
 
       {window.innerWidth >= 768 && (
         <div style={{
-          position: "fixed", top: 36 * uiScale, left: "50%", transform: "translateX(-50%)",
+          position: "fixed", top: 36 * uiScale, left: "50%",
+          transform: `translateX(-50%) translateY(${chromeVisibile ? 0 : -10}px)`,
+          opacity: chromeVisibile ? 1 : 0, transition: "opacity 0.9s ease, transform 0.9s ease",
           zIndex: 20, display: "flex", flexDirection: "row", alignItems: "center", gap: 8 * uiScale,
         }}>
           <div style={{ display: "flex", gap: 2, background: "#ffffff", borderRadius: 18 * uiScale, padding: 3, boxShadow: "0 2px 12px rgba(0,0,0,0.1)", height: 28 * uiScale, boxSizing: "border-box" }}>
@@ -2742,13 +3014,15 @@ function App() {
             </button>
           </div>
           <div style={{ position: "relative" }}>
-            <input type="text" value={ricerca} onChange={(e) => setRicerca(e.target.value)} placeholder={t.cerca}
+            <input type="text" value={ricerca} onChange={(e) => setRicerca(e.target.value)} onBlur={() => setTimeout(() => setRicerca(""), 150)} placeholder={t.cerca}
               style={{ height: 28 * uiScale, boxSizing: "border-box", padding: `0 ${11 * uiScale}px`, border: "none", borderRadius: 14 * uiScale, fontSize: 10 * uiScale, fontWeight: 300, fontFamily: "'Roboto Mono', monospace", background: "white", boxShadow: "0 2px 12px rgba(0,0,0,0.1)", outline: "none", width: 140 * uiScale, color: "#1a1a1a" }} />
             {ricerca.length > 1 && (() => {
               const risultati = cercaEntita(ricerca)
               if (risultati.length === 0) return null
               return (
-                <div style={{ position: "absolute", top: "100%", left: 0, right: 0, marginTop: 4, background: "white", borderRadius: 12, boxShadow: "0 4px 16px rgba(0,0,0,0.12)", overflow: "hidden", maxHeight: 240, overflowY: "auto" }}>
+                <ListaConScroll maxHeight={240}
+                  wrapperStyle={{ position: "absolute", top: "100%", left: 0, right: 0, marginTop: 4 }}
+                  innerStyle={{ background: "white", borderRadius: 15, boxShadow: "0 4px 16px rgba(0,0,0,0.12)" }}>
                   {risultati.map((r, i) => (
                     <button key={i} onClick={() => { setRicerca(""); if (centraFn) centraFn(r.nome, r.tipo) }}
                       style={{ display: "block", width: "100%", padding: "8px 14px", border: "none", background: "white", cursor: "pointer", textAlign: "left", fontFamily: "Roboto, sans-serif", fontSize: 11, borderBottom: "1px solid #f0f0f0" }}>
@@ -2757,7 +3031,7 @@ function App() {
                       <span style={{ fontWeight: 300, color: "#ccc", marginLeft: 6, fontSize: 9, textTransform: "uppercase" }}>{lingua === "en" && r.tipo === "prodotto" ? "product" : r.tipo}</span>
                     </button>
                   ))}
-                </div>
+                </ListaConScroll>
               )
             })()}
           </div>
@@ -2765,9 +3039,15 @@ function App() {
       )}
 
       {window.innerWidth >= 768 && (
+        <div style={{
+          position: "fixed", top: 32 * uiScale, left: 24 * uiScale, zIndex: 210,
+          opacity: chromeVisibile ? 1 : 0,
+          transform: `translateY(${chromeVisibile ? 0 : -10}px)`,
+          transition: "opacity 0.9s ease, transform 0.9s ease",
+        }}>
         <button onClick={() => menuApertoDesktop ? chiudiMenu() : setMenuApertoDesktop(true)}
           style={{
-            position: "fixed", top: 32 * uiScale, left: 24 * uiScale, zIndex: 210,
+            position: "relative",
             width: 36 * uiScale, height: 36 * uiScale, minWidth: 36 * uiScale, borderRadius: "50%", border: "none",
             background: "white", boxShadow: "0 2px 12px rgba(0,0,0,0.1)", cursor: "pointer",
             display: "flex", alignItems: "center", justifyContent: "center", padding: 0,
@@ -2779,6 +3059,7 @@ function App() {
             <span style={{ position: "absolute", left: "50%", top: 0, bottom: 0, width: 1.5, background: "#1a1a1a", transform: "translateX(-50%)" }} />
           </span>
         </button>
+        </div>
       )}
 
       {window.innerWidth >= 768 && menuApertoDesktop && (

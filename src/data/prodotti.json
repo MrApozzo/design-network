@@ -1131,7 +1131,10 @@
     "azienda": "Zabro",
     "categoria": "serie di arredi",
     "foto": "branzi-animali-domestici.jpg",
-    "azienda_attuale": null
+    "azienda_attuale": null,
+    "foto_dettaglio": [
+      "branzi-animali-domestici2.jpg"
+    ]
   },
   {
     "nome": "Grandi Legni",
@@ -1706,7 +1709,10 @@
     "azienda": "Kartell",
     "azienda_attuale": null,
     "categoria": "sedia impilabile",
-    "foto": "colombo-universale-4860.jpg"
+    "foto": "colombo-universale-4860.jpg",
+    "foto_dettaglio": [
+      "colombo-universale-48602.jpg"
+    ]
   },
   {
     "nome": "Camaleonda",
@@ -2936,7 +2942,10 @@
     "azienda": "MIM Roma",
     "azienda_attuale": null,
     "categoria": "libreria modulare",
-    "foto": "parisi-lerici.jpg"
+    "foto": "parisi-lerici.jpg",
+    "foto_dettaglio": [
+      "parisi-lerici2.jpg"
+    ]
   },
   {
     "nome": "Terni",
@@ -3281,7 +3290,10 @@
     "azienda": "Cassina",
     "azienda_attuale": null,
     "categoria": "tavolo",
-    "foto": "bellini-il-colonnato.jpg"
+    "foto": "bellini-il-colonnato.jpg",
+    "foto_dettaglio": [
+      "bellini-il-colonnato2.jpg"
+    ]
   },
   {
     "nome": "Class",
@@ -3545,7 +3557,10 @@
     "azienda": "Cassina",
     "azienda_attuale": null,
     "categoria": "tavolo",
-    "foto": "parisi-754-2.jpg"
+    "foto": "parisi-754-2.jpg",
+    "foto_dettaglio": [
+      "parisi-754-22.jpg"
+    ]
   },
   {
     "nome": "Iride",
@@ -3768,7 +3783,10 @@
     "azienda": "Poltronova",
     "azienda_attuale": "Exteta",
     "categoria": "divano",
-    "foto": "aulenti-stringa-sofa.jpg"
+    "foto": "aulenti-stringa-sofa.jpg",
+    "foto_dettaglio": [
+      "aulenti-stringa-sofa2.jpg"
+    ]
   },
   {
     "nome": "Stringa Coffee Table",
@@ -3804,7 +3822,10 @@
     "azienda": "Kartell",
     "azienda_attuale": null,
     "categoria": "lampada da tavolo",
-    "foto": "aulenti-king-sun-4045-5.jpg"
+    "foto": "aulenti-king-sun-4045-5.jpg",
+    "foto_dettaglio": [
+      "aulenti-king-sun-4045-52.jpg"
+    ]
   },
   {
     "nome": "Rimorchiatore",
@@ -3813,7 +3834,10 @@
     "azienda": "Candle",
     "azienda_attuale": null,
     "categoria": "lampada da tavolo",
-    "foto": "aulenti-rimorchiatore.jpg"
+    "foto": "aulenti-rimorchiatore.jpg",
+    "foto_dettaglio": [
+      "aulenti-rimorchiatore2.jpg"
+    ]
   },
   {
     "nome": "4794",
@@ -3906,7 +3930,10 @@
     "azienda": "Kartell",
     "azienda_attuale": null,
     "categoria": "sedia",
-    "foto": "aulenti-4854.jpg"
+    "foto": "aulenti-4854.jpg",
+    "foto_dettaglio": [
+      "aulenti-48542.jpg"
+    ]
   },
   {
     "nome": "4894",
@@ -4008,7 +4035,10 @@
     "azienda": "Stilnovo",
     "azienda_attuale": "Stilnovo",
     "categoria": "lampada da tavolo",
-    "foto": "aulenti-castiglioni-minibox.jpg"
+    "foto": "aulenti-castiglioni-minibox.jpg",
+    "foto_dettaglio": [
+      "aulenti-castiglioni-minibox2.jpg"
+    ]
   },
   {
     "nome": "Cardine",
@@ -4065,7 +4095,10 @@
     "azienda": "Fontana Arte",
     "azienda_attuale": null,
     "categoria": "lampada da parete",
-    "foto": "aulenti-castiglioni-bugia.jpg"
+    "foto": "aulenti-castiglioni-bugia.jpg",
+    "foto_dettaglio": [
+      "aulenti-castiglioni-bugia2.jpg"
+    ]
   },
   {
     "nome": "Diamante",
@@ -4125,7 +4158,10 @@
     "azienda": "Tecno",
     "azienda_attuale": null,
     "categoria": "poltrona",
-    "foto": "aulenti-tlinkit.jpg"
+    "foto": "aulenti-tlinkit.jpg",
+    "foto_dettaglio": [
+      "aulenti-tlinkit2.jpg"
+    ]
   },
   {
     "nome": "Tour",
@@ -4269,7 +4305,10 @@
     "azienda": "Bonacina 1889",
     "azienda_attuale": "Bonacina 1889",
     "categoria": "divano",
-    "foto": "colombo-nastro-sofa.jpg"
+    "foto": "colombo-nastro-sofa.jpg",
+    "foto_dettaglio": [
+      "colombo-nastro-sofa2.jpg"
+    ]
   },
   {
     "nome": "Supercomfort",
@@ -4341,7 +4380,10 @@
     "azienda": "Arnolfo di Cambio",
     "azienda_attuale": "Arnolfo di Cambio",
     "categoria": "servizio di bicchieri",
-    "foto": "colombo-smoke.jpg"
+    "foto": "colombo-smoke.jpg",
+    "foto_dettaglio": [
+      "colombo-smoke2.jpg"
+    ]
   },
   {
     "nome": "Portofino",
@@ -4512,7 +4554,10 @@
     "azienda": "ICF Novitalia",
     "azienda_attuale": null,
     "categoria": "appendiabiti",
-    "foto": "colombo-totem.jpg"
+    "foto": "colombo-totem.jpg",
+    "foto_dettaglio": [
+      "colombo-totem2.jpg"
+    ]
   },
   {
     "nome": "Additional System",
@@ -4521,7 +4566,10 @@
     "azienda": "Sormani",
     "azienda_attuale": "Tacchini",
     "categoria": "sistema modulare di sedute",
-    "foto": "colombo-additional-system.jpg"
+    "foto": "colombo-additional-system.jpg",
+    "foto_dettaglio": [
+      "colombo-additional-system2.jpg"
+    ]
   },
   {
     "nome": "Poker",
@@ -4620,7 +4668,10 @@
     "azienda": "Elco",
     "azienda_attuale": null,
     "categoria": "sistema di contenitori",
-    "foto": "colombo-square-plastic-system.jpg"
+    "foto": "colombo-square-plastic-system.jpg",
+    "foto_dettaglio": [
+      "colombo-square-plastic-system2.jpg"
+    ]
   },
   {
     "nome": "Robo",
@@ -4638,7 +4689,10 @@
     "azienda": "Amini / ABC Italia",
     "azienda_attuale": "Cappellini",
     "categoria": "tappeto",
-    "foto": "colombo-tube-carpet.jpg"
+    "foto": "colombo-tube-carpet.jpg",
+    "foto_dettaglio": [
+      "colombo-tube-carpet2.jpg"
+    ]
   },
   {
     "nome": "Trisystem",
@@ -4674,7 +4728,10 @@
     "azienda": "Sormani",
     "azienda_attuale": "B-Line",
     "categoria": "seduta trasformabile",
-    "foto": "colombo-multi-chair.jpg"
+    "foto": "colombo-multi-chair.jpg",
+    "foto_dettaglio": [
+      "colombo-multi-chair2.jpg"
+    ]
   },
   {
     "nome": "Bob",
@@ -4719,7 +4776,10 @@
     "azienda": "Stilnovo",
     "azienda_attuale": "Stilnovo",
     "categoria": "famiglia di lampade",
-    "foto": "colombo-triedro.jpg"
+    "foto": "colombo-triedro.jpg",
+    "foto_dettaglio": [
+      "colombo-triedro2.jpg"
+    ]
   },
   {
     "nome": "Bistrò",
@@ -4773,7 +4833,10 @@
     "azienda": "Amini / ABC Italia",
     "azienda_attuale": null,
     "categoria": "tappeto",
-    "foto": "colombo-luce.jpg"
+    "foto": "colombo-luce.jpg",
+    "foto_dettaglio": [
+      "colombo-luce2.jpg"
+    ]
   },
   {
     "nome": "Isola",
@@ -4875,7 +4938,10 @@
     "azienda": "C&B Italia",
     "azienda_attuale": "B&B Italia",
     "categoria": "divano",
-    "foto": "pesce-up4.jpg"
+    "foto": "pesce-up4.jpg",
+    "foto_dettaglio": [
+      "pesce-up42.jpg"
+    ]
   },
   {
     "nome": "UP7 (Il Piede)",
@@ -4885,7 +4951,10 @@
     "azienda_attuale": "B&B Italia",
     "categoria": "seduta scultorea",
     "foto": "pesce-up7-il-piede.jpg",
-    "top": true
+    "top": true,
+    "foto_dettaglio": [
+      "pesce-up7-il-piede2.jpg"
+    ]
   },
   {
     "nome": "Moloch",
@@ -4948,7 +5017,10 @@
     "azienda": "Cassina",
     "azienda_attuale": null,
     "categoria": "poltroncina",
-    "foto": "pesce-dalila-due.jpg"
+    "foto": "pesce-dalila-due.jpg",
+    "foto_dettaglio": [
+      "pesce-dalila-due2.jpg"
+    ]
   },
   {
     "nome": "Tramonto a New York",
@@ -4984,7 +5056,10 @@
     "azienda": "Cassina",
     "azienda_attuale": null,
     "categoria": "divano modulare",
-    "foto": "pesce-cannaregio.jpg"
+    "foto": "pesce-cannaregio.jpg",
+    "foto_dettaglio": [
+      "pesce-cannaregio2.jpg"
+    ]
   },
   {
     "nome": "Bottiglia Vittel",
@@ -5020,7 +5095,10 @@
     "azienda": "Fish Design",
     "azienda_attuale": "Corsi Design",
     "categoria": "vaso",
-    "foto": "pesce-spaghetti-vase.jpg"
+    "foto": "pesce-spaghetti-vase.jpg",
+    "foto_dettaglio": [
+      "pesce-spaghetti-vase2.jpg"
+    ]
   },
   {
     "nome": "Amazonia",
@@ -5029,7 +5107,10 @@
     "azienda": "Fish Design",
     "azienda_attuale": "Corsi Design",
     "categoria": "vaso",
-    "foto": "pesce-amazonia.jpg"
+    "foto": "pesce-amazonia.jpg",
+    "foto_dettaglio": [
+      "pesce-amazonia2.jpg"
+    ]
   },
   {
     "nome": "Tutti Frutti I",
@@ -5047,7 +5128,10 @@
     "azienda": "Fish Design",
     "azienda_attuale": "Corsi Design",
     "categoria": "vaso",
-    "foto": "pesce-tutti-frutti-ii.jpg"
+    "foto": "pesce-tutti-frutti-ii.jpg",
+    "foto_dettaglio": [
+      "pesce-tutti-frutti-ii2.jpg"
+    ]
   },
   {
     "nome": "La Smorfia",
@@ -5083,7 +5167,10 @@
     "azienda": "Meritalia",
     "azienda_attuale": "Meritalia",
     "categoria": "divano modulare",
-    "foto": "pesce-la-michetta.jpg"
+    "foto": "pesce-la-michetta.jpg",
+    "foto_dettaglio": [
+      "pesce-la-michetta2.jpg"
+    ]
   },
   {
     "nome": "Us&Them",
@@ -5092,7 +5179,10 @@
     "azienda": "Meritalia",
     "azienda_attuale": "Meritalia",
     "categoria": "divano",
-    "foto": "pesce-us-and-them.jpg"
+    "foto": "pesce-us-and-them.jpg",
+    "foto_dettaglio": [
+      "pesce-us-and-them2.jpg"
+    ]
   },
   {
     "nome": "Nubola",
@@ -5101,7 +5191,10 @@
     "azienda": "Meritalia",
     "azienda_attuale": "Meritalia",
     "categoria": "sistema di sedute",
-    "foto": "pesce-nubola.jpg"
+    "foto": "pesce-nubola.jpg",
+    "foto_dettaglio": [
+      "pesce-nubola2.jpg"
+    ]
   },
   {
     "nome": "Shadow",
@@ -5173,7 +5266,10 @@
     "azienda": "Corsi Design",
     "azienda_attuale": "Corsi Design",
     "categoria": "tavolino",
-    "foto": "pesce-triple-play.jpg"
+    "foto": "pesce-triple-play.jpg",
+    "foto_dettaglio": [
+      "pesce-triple-play2.jpg"
+    ]
   },
   {
     "nome": "Paravento Risacca",
@@ -5209,7 +5305,10 @@
     "azienda": "Cassina",
     "azienda_attuale": "Cassina",
     "categoria": "divano",
-    "foto": "pesce-notturno-a-new-york.jpg"
+    "foto": "pesce-notturno-a-new-york.jpg",
+    "foto_dettaglio": [
+      "pesce-notturno-a-new-york2.jpg"
+    ]
   },
   {
     "nome": "Globo Tissurato",

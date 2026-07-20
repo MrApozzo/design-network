@@ -802,7 +802,125 @@
     "pesce-bottiglia-vittel": "pesce-bottiglia-vittel",
     "pesce-bottiglia-vittel2": "pesce-bottiglia-vittel",
     "pesce-umbrella": "pesce-umbrella",
-    "pesce-umbrella2": "pesce-umbrella"
+    "pesce-umbrella2": "pesce-umbrella",
+    "pesce-543-broadway": "pesce-543-broadway",
+    "pesce-spaghetti-vase": "pesce-spaghetti-vase",
+    "pesce-spaghetti-vase2": "pesce-spaghetti-vase",
+    "pesce-amazonia": "pesce-amazonia",
+    "pesce-amazonia2": "pesce-amazonia",
+    "pesce-tutti-frutti-i": "pesce-tutti-frutti-i",
+    "pesce-tutti-frutti-ii": "pesce-tutti-frutti-ii",
+    "pesce-tutti-frutti-ii2": "pesce-tutti-frutti-ii",
+    "pesce-la-smorfia": "pesce-la-smorfia",
+    "pesce-la-pagnotta": "pesce-la-pagnotta",
+    "pesce-la-sfogliata": "pesce-la-sfogliata",
+    "pesce-la-michetta": "pesce-la-michetta",
+    "pesce-la-michetta2": "pesce-la-michetta",
+    "pesce-us-and-them": "pesce-us-and-them",
+    "pesce-us-and-them2": "pesce-us-and-them",
+    "pesce-nubola": "pesce-nubola",
+    "pesce-nubola2": "pesce-nubola",
+    "pesce-shadow": "pesce-shadow",
+    "pesce-colorado": "pesce-colorado",
+    "pesce-colorado2": "pesce-colorado",
+    "pesce-gli-amici": "pesce-gli-amici",
+    "pesce-montanara": "pesce-montanara",
+    "pesce-la-fiorita": "pesce-la-fiorita",
+    "pesce-senzafine": "pesce-senzafine",
+    "pesce-sessantuna": "pesce-sessantuna",
+    "pesce-sessantuna2": "pesce-sessantuna",
+    "pesce-triple-play": "pesce-triple-play",
+    "pesce-triple-play2": "pesce-triple-play",
+    "pesce-paravento-risacca": "pesce-paravento-risacca",
+    "pesce-come-stai": "pesce-come-stai",
+    "pesce-tramonto-a-new-york-screen": "pesce-tramonto-a-new-york-screen",
+    "pesce-tramonto-a-new-york-screen2": "pesce-tramonto-a-new-york-screen",
+    "pesce-notturno-a-new-york": "pesce-notturno-a-new-york",
+    "pesce-notturno-a-new-york2": "pesce-notturno-a-new-york",
+    "lapietra-globo-tissurato": "lapietra-globo-tissurato",
+    "lapietra-globo-tissurato2": "lapietra-globo-tissurato",
+    "lapietra-uno-sull-altro": "lapietra-uno-sull-altro",
+    "lapietra-arcangelo-metropolitano": "lapietra-arcangelo-metropolitano",
+    "lapietra-sosia": "lapietra-sosia",
+    "lapietra-agevole-poltrona": "lapietra-agevole-poltrona",
+    "lapietra-agevole-divano": "lapietra-agevole-divano",
+    "lapietra-agevole-divano2": "lapietra-agevole-divano",
+    "lapietra-giardino": "lapietra-giardino",
+    "lapietra-giardino2": "lapietra-giardino",
+    "lapietra-flessuosa": "lapietra-flessuosa",
+    "lapietra-pretenziosa": "lapietra-pretenziosa",
+    "lapietra-pretenziosa2": "lapietra-pretenziosa",
+    "lapietra-pratica": "lapietra-pratica",
+    "lapietra-pratica2": "lapietra-pratica",
+    "lapietra-autorevole": "lapietra-autorevole",
+    "lapietra-postmoderna": "lapietra-postmoderna",
+    "lapietra-postmoderna2": "lapietra-postmoderna",
+    "lapietra-flabello": "lapietra-flabello",
+    "lapietra-flabello2": "lapietra-flabello",
+    "lapietra-vasi-per-giardini": "lapietra-vasi-per-giardini",
+    "lapietra-vasi-per-giardini2": "lapietra-vasi-per-giardini",
+    "lapietra-credenza-plisse": "lapietra-credenza-plisse",
+    "lapietra-credenza-plisse2": "lapietra-credenza-plisse",
+    "lapietra-colonna-plisse": "lapietra-colonna-plisse",
+    "lapietra-tavolo-plisse": "lapietra-tavolo-plisse",
+    "lapietra-tavolo-plisse2": "lapietra-tavolo-plisse",
+    "lapietra-ballerina": "lapietra-ballerina",
+    "lapietra-ballerina2": "lapietra-ballerina",
+    "lapietra-credenza-a-baldacchino": "lapietra-credenza-a-baldacchino",
+    "lapietra-il-giardino-delle-delizie": "lapietra-il-giardino-delle-delizie",
+    "lapietra-ceramica-di-faenza": "lapietra-ceramica-di-faenza",
+    "lapietra-ceramica-di-faenza2": "lapietra-ceramica-di-faenza",
+    "lapietra-mobile-bar": "lapietra-mobile-bar",
+    "lapietra-mobile-bar2": "lapietra-mobile-bar",
+    "lapietra-cuma": "lapietra-cuma",
+    "lapietra-cuma2": "lapietra-cuma",
+    "lapietra-alabastro-di-volterra": "lapietra-alabastro-di-volterra",
+    "lapietra-cristallo-di-colle-val-delsa": "lapietra-cristallo-di-colle-val-delsa",
+    "lapietra-cristallo-di-colle-val-delsa2": "lapietra-cristallo-di-colle-val-delsa",
+    "lapietra-europa-unita-tavolino": "lapietra-europa-unita-tavolino",
+    "lapietra-europa-unita-tavolino2": "lapietra-europa-unita-tavolino",
+    "lapietra-fiasca-friulana": "lapietra-fiasca-friulana",
+    "lapietra-fiasca-friulana2": "lapietra-fiasca-friulana",
+    "lapietra-tante-tazzine": "lapietra-tante-tazzine",
+    "lapietra-tante-tazzine2": "lapietra-tante-tazzine",
+    "lapietra-ali": "lapietra-ali",
+    "lapietra-ali2": "lapietra-ali",
+    "lapietra-souvenir-di-vietri": "lapietra-souvenir-di-vietri",
+    "lapietra-legno-intarsiato-di-sorrento": "lapietra-legno-intarsiato-di-sorrento",
+    "lapietra-legno-intarsiato-di-sorrento2": "lapietra-legno-intarsiato-di-sorrento",
+    "lapietra-ceramica-di-grottaglie": "lapietra-ceramica-di-grottaglie",
+    "lapietra-ceramica-di-grottaglie2": "lapietra-ceramica-di-grottaglie",
+    "lapietra-le-diversita-tazzine": "lapietra-le-diversita-tazzine",
+    "lapietra-le-diversita-tazzine2": "lapietra-le-diversita-tazzine",
+    "lapietra-tazzine-neoeclettiche": "lapietra-tazzine-neoeclettiche",
+    "lapietra-tazzine-neoeclettiche2": "lapietra-tazzine-neoeclettiche",
+    "lapietra-mosaico-di-spilimbergo": "lapietra-mosaico-di-spilimbergo",
+    "lapietra-marmo-di-carrara": "lapietra-marmo-di-carrara",
+    "lapietra-marmo-di-carrara2": "lapietra-marmo-di-carrara",
+    "lapietra-pietra-leccese": "lapietra-pietra-leccese",
+    "lapietra-pietra-leccese2": "lapietra-pietra-leccese",
+    "lapietra-ceramica-di-este": "lapietra-ceramica-di-este",
+    "lapietra-ceramica-di-este2": "lapietra-ceramica-di-este",
+    "lapietra-aurelia": "lapietra-aurelia",
+    "lapietra-aurelia2": "lapietra-aurelia",
+    "lapietra-vetro-di-murano": "lapietra-vetro-di-murano",
+    "lapietra-vetro-di-murano2": "lapietra-vetro-di-murano",
+    "lapietra-rame-smaltato": "lapietra-rame-smaltato",
+    "lapietra-rame-smaltato2": "lapietra-rame-smaltato",
+    "lapietra-europa-unita-mobile-bar": "lapietra-europa-unita-mobile-bar",
+    "lapietra-mediterranean-ceramics": "lapietra-mediterranean-ceramics",
+    "lapietra-mediterranean-ceramics2": "lapietra-mediterranean-ceramics",
+    "lapietra-little-houses": "lapietra-little-houses",
+    "lapietra-ceramica-di-nove": "lapietra-ceramica-di-nove",
+    "lapietra-ceramica-di-nove2": "lapietra-ceramica-di-nove",
+    "lapietra-zodiac-signs": "lapietra-zodiac-signs",
+    "lapietra-zodiac-signs2": "lapietra-zodiac-signs",
+    "lapietra-animals": "lapietra-animals",
+    "lapietra-between-design-and-art": "lapietra-between-design-and-art",
+    "lapietra-giano": "lapietra-giano",
+    "lapietra-the-professions-architect": "lapietra-the-professions-architect",
+    "lapietra-itineraries": "lapietra-itineraries",
+    "lapietra-itineraries2": "lapietra-itineraries"
   },
   "sottsass-terrazzo2": {
     "image_url": "https://i.pinimg.com/originals/ca/b1/9d/cab19d383385dee6c09f97ab86349656.jpg",
@@ -3071,5 +3189,713 @@
     "source_page": "https://www.intondo.com/it/products/106641/sedute/sedie/gaetano-pesce-sedia-umbrella-per-zerodisegno-anni-90",
     "product_base": "pesce-umbrella",
     "image_hash": "115792089237316195422051108616363573575835910610129256039003991005265009836031"
+  },
+  "pesce-543-broadway": {
+    "image_url": "https://meritalia.it/wp-content/uploads/2026/05/Meritalia-543Broadway-Chair4-YR-01.jpg",
+    "source_page": "https://meritalia.it/products/543-broadway/",
+    "product_base": "pesce-543-broadway",
+    "image_hash": "115791868593745921381481831639455303323636343815796624542547607249527331356671"
+  },
+  "pesce-spaghetti-vase": {
+    "image_url": "https://cdn.shopify.com/s/files/1/0653/7697/7075/files/167654_1619186054353-SRSSNY-_0001_Spaghetti_20Special_20L-CORSVA25220210507-45-xo0z3r_dcfb17df-d77a-47bb-940f-dc34eeda0425.jpg?v=1747393721",
+    "source_page": "https://artemest.com/it-it/products/vaso-grande-spaghetti-di-gaetano-pesce-7cb5aa14-ca1c-4c5d-b4de-3cd903ebddb0",
+    "product_base": "pesce-spaghetti-vase",
+    "image_hash": "115792089236947589747900838931115056202464491261776437972389770257944654381055"
+  },
+  "pesce-spaghetti-vase2": {
+    "image_url": "https://cdn.shopify.com/s/files/1/0653/7697/7075/files/1743513635580-RMMMNY-_0024__0018_SpaghettiSpec_2025-2.jpg?v=1750423351",
+    "source_page": "https://artemest.com/it-it/products/vaso-grande-spaghetti-special-giallo-e-rosa-di-gaetano-pesce",
+    "product_base": "pesce-spaghetti-vase",
+    "image_hash": "115792089236921248819283186133287895403334027041659655105335609755155130482687"
+  },
+  "pesce-amazonia": {
+    "image_url": "https://cdn.shopify.com/s/files/1/0653/7697/7075/files/167658_1619186102585-SRSSNY-_0010_AMAZONIA_20M-CORSVA25120210507-45-wyd0v3.jpg?v=1747393701",
+    "source_page": "https://artemest.com/it-it/products/vaso-medio-amazonia-di-gaetano-pesce",
+    "product_base": "pesce-amazonia",
+    "image_hash": "115792089237158214331339099553554126761284742254279275891294579392890521255935"
+  },
+  "pesce-amazonia2": {
+    "image_url": "https://cdn.shopify.com/s/files/1/0653/7697/7075/files/167657_1619186090837-SRSSNY-_0011_AMAZONIA_20L-CORSVA25020210507-45-9m30gd_8791b037-316b-4ade-b43e-d6c5125b8915.jpg?v=1747406788",
+    "source_page": "https://artemest.com/it-it/products/vaso-grande-amazonia-di-gaetano-pesce-b9c744c6-ea51-4f46-98fd-34145a713627",
+    "product_base": "pesce-amazonia",
+    "image_hash": "115792089237224034714499201831036433344477075752586838530596333310375610023935"
+  },
+  "pesce-tutti-frutti-i": {
+    "image_url": "https://www.lamodern.com/items/index/2000/170_1_design_november_2022_gaetano_pesce_tutti_frutti_i_bowl__lama_auction.jpg?t=1693162415",
+    "source_page": "https://www.lamodern.com/auctions/2022/11/design/170",
+    "product_base": "pesce-tutti-frutti-i",
+    "image_hash": "115792089237316195423377866636622790348884213777014634987781402807894477373439"
+  },
+  "pesce-tutti-frutti-ii": {
+    "image_url": "https://cdn.shopify.com/s/files/1/0653/7697/7075/files/qs4y7rkqxbkqi3e387nl9xft1m7q.jpg?v=1747393702",
+    "source_page": "https://artemest.com/it-it/products/tutti-frutti-ii-basket-m-rosa",
+    "product_base": "pesce-tutti-frutti-ii",
+    "image_hash": "115792089235644311420748141856348074520188830745718024906222682924216634834943"
+  },
+  "pesce-tutti-frutti-ii2": {
+    "image_url": "https://cdn.shopify.com/s/files/1/0653/7697/7075/files/jua96lqyrmp8302qknfebxh233pt.jpg?v=1747406777",
+    "source_page": "https://artemest.com/it-it/products/tutti-frutti-ii-basket-l",
+    "product_base": "pesce-tutti-frutti-ii",
+    "image_hash": "115792089235637729401734219315256119547979189973359438078678896540161186725887"
+  },
+  "pesce-la-smorfia": {
+    "image_url": "https://meritalia.it/wp-content/uploads/2025/05/Meritalia-LaSmorfia-02.jpg",
+    "source_page": "https://meritalia.it/products/la-smorfia/",
+    "product_base": "pesce-la-smorfia",
+    "image_hash": "115792089237316195021445681618001868586364732789364910712111150095620003332095"
+  },
+  "pesce-la-pagnotta": {
+    "image_url": "https://meritalia.it/wp-content/uploads/2024/09/Meritalia-LaPagnotta-Viso-1.jpg",
+    "source_page": "https://meritalia.it/products/la-pagnotta/",
+    "product_base": "pesce-la-pagnotta",
+    "image_hash": "115792089237316188794758455055771659399082961491711118714813519001868860129279"
+  },
+  "pesce-la-sfogliata": {
+    "image_url": "https://meritalia.it/wp-content/uploads/2025/11/Meritalia-LaSfogliata-01.jpg",
+    "source_page": "https://meritalia.it/en/products/la-sfogliata/",
+    "product_base": "pesce-la-sfogliata",
+    "image_hash": "115792089237316182768740789084558126116725115212350082630886779267987238027263"
+  },
+  "pesce-la-michetta": {
+    "image_url": "https://www.dilmos.it/wp-content/uploads/freshizer/31a29925cd34e27d28505e9f34987c5b_La-Michetta-sofa-Gaetano-Pesce-Meritalia-6-1400-c-72.jpg",
+    "source_page": "https://www.dilmos.it/collezioni/sedute/divani/la-michetta",
+    "product_base": "pesce-la-michetta",
+    "image_hash": "115792089237316195423570980448437510388247681000201586512676194818127575384063"
+  },
+  "pesce-la-michetta2": {
+    "image_url": "https://images.homify.com/v1437565409/p/photo/image/69942/D_LaMichetta40558.jpg",
+    "source_page": "https://www.homify.it/progetti/8552/la-michetta-design-gaetano-pesce",
+    "product_base": "pesce-la-michetta",
+    "image_hash": "115792089237316195423570984844994349994997993058515413397497820438318725201919"
+  },
+  "pesce-us-and-them": {
+    "image_url": "https://meritalia.it/wp-content/uploads/2025/04/Meritalia-IlGiullare-Side.jpg",
+    "source_page": "https://meritalia.it/products/usthem/",
+    "product_base": "pesce-us-and-them",
+    "image_hash": "115792089237316195423570973059268008952210833822004968073181041219858820235263"
+  },
+  "pesce-us-and-them2": {
+    "image_url": "https://meritalia.it/wp-content/uploads/2025/05/Meritalia-StillLife-Insieme-01.jpg",
+    "source_page": "https://meritalia.it/en/products/usthem/",
+    "product_base": "pesce-us-and-them",
+    "image_hash": "115792089237316195423570973059268008954911866410764123162863707330435614769151"
+  },
+  "pesce-nubola": {
+    "image_url": "https://www.dilmos.it/wp-content/uploads/freshizer/89fa42a2ff55a5e4a3a333a9834d9526_Nubola-seating-Gaetano-Pesce-Meritalia-6-1440-c-72.jpg",
+    "source_page": "https://www.dilmos.it/collezioni/sedute/divani/nubola",
+    "product_base": "pesce-nubola",
+    "image_hash": "115792089237316195423570974532461656592742871076561448971959098236112799268863"
+  },
+  "pesce-nubola2": {
+    "image_url": "https://cdn.shopify.com/s/files/1/0653/7697/7075/files/1751271717182-AAMRNY-_0088__0026_Meritalia-Nubola-StillLife-Nubola277-Cream.jpg?v=1755767954",
+    "source_page": "https://artemest.com/it-it/products/divano-nubola-crema-di-gaetano-pesce",
+    "product_base": "pesce-nubola",
+    "image_hash": "115792089233947744772669858923183673796594103468924042696494412121323172003839"
+  },
+  "pesce-shadow": {
+    "image_url": "https://meritalia.it/wp-content/uploads/2024/10/Meritalia-Shadow-C3670-1.jpg",
+    "source_page": "https://meritalia.it/products/shadow/",
+    "product_base": "pesce-shadow",
+    "image_hash": "115792089237316182768543097159786426453986254785405864927849342582517535866879"
+  },
+  "pesce-colorado": {
+    "image_url": "https://meritalia.it/wp-content/uploads/2025/04/Meritalia-Colorado-ColoradoC02.jpg",
+    "source_page": "https://meritalia.it/products/colorado/",
+    "product_base": "pesce-colorado",
+    "image_hash": "115792089237316195423570961068925796592860588949621163720221943355974849921023"
+  },
+  "pesce-colorado2": {
+    "image_url": "https://meritalia.it/wp-content/uploads/2025/09/2-MERITALIA_COLORADO-050.jpg",
+    "source_page": "https://meritalia.it/products/colorado/",
+    "product_base": "pesce-colorado",
+    "image_hash": "115792089237311053231245158502846143704444120922126343358531542666365057892351"
+  },
+  "pesce-gli-amici": {
+    "image_url": "https://meritalia.it/wp-content/uploads/2024/10/Meritalia-GliAmici-C01-1.jpg",
+    "source_page": "https://meritalia.it/products/gli-amici-2/",
+    "product_base": "pesce-gli-amici",
+    "image_hash": "115792089237316195423181719180196060108019777394990799554862059817398551183359"
+  },
+  "pesce-montanara": {
+    "image_url": "https://meritalia.it/wp-content/uploads/2025/04/Meritalia-MontanaraSofa-01.jpg",
+    "source_page": "https://meritalia.it/products/montanara/",
+    "product_base": "pesce-montanara",
+    "image_hash": "115792089237316195423570973059268008952189607588217518875469127204188054355967"
+  },
+  "pesce-la-fiorita": {
+    "image_url": "https://meritalia.it/wp-content/uploads/2025/05/Meritalia-LaFiorita-LaFiorita-02.jpg",
+    "source_page": "https://meritalia.it/products/la-fiorita/",
+    "product_base": "pesce-la-fiorita",
+    "image_hash": "115792089237316195423570985008642591350653328508821957974664491810532842536959"
+  },
+  "pesce-senzafine": {
+    "image_url": "https://meritalia.it/wp-content/uploads/2024/10/Meritalia-Senzafine-Blue-1.jpg",
+    "source_page": "https://meritalia.it/products/senzafine/",
+    "product_base": "pesce-senzafine",
+    "image_hash": "115792089237316195423547991600865059282363411834162238444486200930703870263295"
+  },
+  "pesce-sessantuna": {
+    "image_url": "https://static.tecnichenuove.it/areaarch/2015/10/CASSINA-SESSANTUNA-table-no.-36.jpg",
+    "source_page": "https://www.area-arch.it/sessantuna/",
+    "product_base": "pesce-sessantuna",
+    "image_hash": "115792089237316195423570982249330712123094846127967030370113991512288787431423"
+  },
+  "pesce-sessantuna2": {
+    "image_url": "https://www.area-arch.it/sessantuna/dsc_8400/",
+    "source_page": "https://www.area-arch.it/sessantuna/",
+    "product_base": "pesce-sessantuna",
+    "image_hash": "115792089237316191004301331464135976159004714770739951335279033402591746719743"
+  },
+  "pesce-triple-play": {
+    "image_url": "https://www.wright20.com/items/index/2000/101_3_contemporary_design_may_2024_gaetano_pesce_triple_play_nesting_tables_set_of_three__lama_auction.jpg?t=1715205442",
+    "source_page": "https://www.wright20.com/auctions/2024/05/contemporary-design/101",
+    "product_base": "pesce-triple-play",
+    "image_hash": "115792089236973904864482304782237790044569624545623238625199403239832889065471"
+  },
+  "pesce-triple-play2": {
+    "image_url": "https://cdn.shopify.com/s/files/1/0653/7697/7075/files/1743513686767-RMMMNY-_0027__0015_TriplePlay2025-a-2.jpg?v=1750423362",
+    "source_page": "https://artemest.com/it-it/products/tavolino-rotondo-triple-play-multicolore-di-gaetano-pesce",
+    "product_base": "pesce-triple-play",
+    "image_hash": "115792089236881762635880772207045433434700726164172105250038447253403570536447"
+  },
+  "pesce-paravento-risacca": {
+    "image_url": "https://www.cassina.com/content/dam/ld/cassina/products/p/a/r/342-paravento-risacca/21_variant-image/01_dettagli-342-risacca.jpg",
+    "source_page": "https://www.cassina.com/ch/it/prodotti/paravento-risacca.html?srsltid=AfmBOopgXSy-kXNvSKNy4N89gtflkxL0GhRtNAcuc2p20X2mhA2mJ8tq",
+    "product_base": "pesce-paravento-risacca",
+    "image_hash": "115792089237316195423180192682749437455521453028398063445804307773396451590143"
+  },
+  "pesce-come-stai": {
+    "image_url": "https://s.turbifycdn.com/aah/artbook/gaetano-pesce-come-stai-59.gif",
+    "source_page": "https://www.artbook.com/9788867495429.html",
+    "product_base": "pesce-come-stai",
+    "image_hash": "115792089235637755164137482142093852439292108826039190386958368411207405142015"
+  },
+  "pesce-tramonto-a-new-york-screen": {
+    "image_url": "http://designitaly.com/cdn/shop/files/Resin-Screen-TRAMONTO-A-NEW-YORK-Gaetano-Pesce-Cassina-4.jpg?v=1682599516",
+    "source_page": "https://designitaly.com/it/products/resin-screen-tramonto-a-new-york-gaetano-pesce-cassina?srsltid=AfmBOoohsWJ6XhkvAD1m1JiPhcOUAzt4l8mOFcHIeUz6dP_dM6HHzEBX",
+    "product_base": "pesce-tramonto-a-new-york-screen",
+    "image_hash": "115792089233949441726707311611578655522879069013444759708370159199845108154367"
+  },
+  "pesce-tramonto-a-new-york-screen2": {
+    "image_url": "https://www.cassina.com/content/dam/ld/cassina/products/n/o/t/348-notturno-a-new-york/14_plp/plp-notturno-ny.jpg/jcr:content/renditions/cq5dam.thumbnail.1500.1500.jpg",
+    "source_page": "https://www.cassina.com/ch/it/prodotti/tramonto-a-new-york-screen.html?srsltid=AfmBOorc-4dHyqRv5DaUUtZKULrMw8dF4zXxyHW4Pc5zl-5Mh2F5u-FW",
+    "product_base": "pesce-tramonto-a-new-york-screen",
+    "image_hash": "115792089237316195423570937120394541701995363269105520090334360688595734364159"
+  },
+  "pesce-notturno-a-new-york": {
+    "image_url": "https://www.salvioniarredamenti.it/imgcatalogo/prodotti/cassina/cassina_divano_notturno_a_newyork.jpg",
+    "source_page": "https://www.salvioniarredamenti.it/it/prodotti/cassina-notturno-a-new-york-divano/",
+    "product_base": "pesce-notturno-a-new-york",
+    "image_hash": "115792089237316195423570985008322616073071656746022736948125853391385375277055"
+  },
+  "pesce-notturno-a-new-york2": {
+    "image_url": "https://www.cassina.com/content/dam/ld/cassina/products/t/r/a/356-tramonto-a-new-york/14_plp/plp-tramonto-new-york-sofa.jpg",
+    "source_page": "https://www.cassina.com/it/it/prodotti/tramonto-a-new-york.html?srsltid=AfmBOopojb9WRwQqyqu-a1ocZCTOAxpp9SIAbrDd7eg2gFBB-PQu57fx",
+    "product_base": "pesce-notturno-a-new-york",
+    "image_hash": "115792089237316195422002068758964432078458279319959128314214004056895818563583"
+  },
+  "lapietra-globo-tissurato": {
+    "image_url": "https://www.ugolapietra.com/wp-content/uploads/2022/10/IMG_5771-820x1093.jpg",
+    "source_page": "https://www.ugolapietra.com/prodotto/globo-tissurato-1965-2007-il-metacrilato-nellarte-e-nellarte-applicata-2/",
+    "product_base": "lapietra-globo-tissurato",
+    "image_hash": "115792089235637755164137482142093852439292108826036695125992023075237685886975"
+  },
+  "lapietra-globo-tissurato2": {
+    "image_url": "https://r-and-company.com/wp-content/uploads/2019/03/FL347_P-800x800.jpg",
+    "source_page": "https://r-and-company.com/works/ugo-la-pietra-globo-tissurato-fl347/",
+    "product_base": "lapietra-globo-tissurato",
+    "image_hash": "115792089237316195423180192682749437455521453028398063406549636384542525751295"
+  },
+  "lapietra-uno-sull-altro": {
+    "image_url": "https://www.berdondini.it/wp-content/uploads/2022/12/BERDRA-00220170614-373-pchf0v-scaled.jpg",
+    "source_page": "https://www.berdondini.it/collezioni/libreria-uno-sullaltro-ugo-la-pietra-1967-composizione-d-palissandro/",
+    "product_base": "lapietra-uno-sull-altro",
+    "image_hash": "115791673501617202548701698007937976799041590241584624730350924227863660986367"
+  },
+  "lapietra-arcangelo-metropolitano": {
+    "image_url": "https://www.galleriaconsadori.com/wp-content/uploads/2024/01/LaPietra1977-2007ArcM9_50LumenC120x50x220h-a.jpg",
+    "source_page": "https://www.galleriaconsadori.com/opere/ugo-la-pietra-arcangelo-metropolitano/",
+    "product_base": "lapietra-arcangelo-metropolitano",
+    "image_hash": "115113566475722809293277824229630523506662926784498806977369170019479636672503"
+  },
+  "lapietra-sosia": {
+    "image_url": "https://www.zanotta.com/ContentsFiles/Zanotta_specchio%20sosia_IP01.png",
+    "source_page": "https://www.zanotta.com/it/prodotti/specchi/sosia",
+    "product_base": "lapietra-sosia",
+    "image_hash": "115792089237316195423534203712649854762377183137531018064224810072034024357887"
+  },
+  "lapietra-agevole-poltrona": {
+    "image_url": "https://www.ugolapietra.com/wp-content/uploads/2018/05/busnelli_agevole_18_001.jpg",
+    "source_page": "https://www.ugolapietra.com/agevole-poltrona-e-divano/",
+    "product_base": "lapietra-agevole-poltrona",
+    "image_hash": "115792089237316195423184793232725496408112334056101353946316267405695384551423"
+  },
+  "lapietra-agevole-divano": {
+    "image_url": "https://a.1stdibscdn.com/pietra-organic-couch-upholstered-in-boucle-fabric-and-leather-arms-small-size-for-sale/f_56842/f_377991621704462164188/f_31665212_1671217014420_bg_processed.jpg?width=768",
+    "source_page": "https://www.1stdibs.com/it/arredi/sedute/divani/divano-curvo-pietra-rivestito-in-tessuto-boucl%C3%A9-e-braccioli-in-pelle-18m/id-f_37799162/",
+    "product_base": "lapietra-agevole-divano",
+    "image_hash": "115792089237316195423570985008656863827580388269891817663572350153474680291327"
+  },
+  "lapietra-agevole-divano2": {
+    "image_url": "https://a.1stdibscdn.com/pietra-organic-couch-upholstered-in-boucle-fabric-small-size-for-sale/f_56842/f_316654221671218355025/f_31665422_1671218355662_bg_processed.jpg?width=768",
+    "source_page": "https://www.1stdibs.com/it/arredi/sedute/divani/divano-curvo-pietra-rivestito-in-tessuto-boucl%C3%A9-172-m/id-f_31665422/",
+    "product_base": "lapietra-agevole-divano",
+    "image_hash": "115792089237316195423570985008679699790663683627988750239083542075656804237311"
+  },
+  "lapietra-giardino": {
+    "image_url": "https://www.pietrarredo.com/wp-content/uploads/2020/05/offerta-prezzo-vialetto-camminamento-passaggio-su-prato-pietra-naturale-antiqua-pietrarredo-milano-scorza-di-trani-gigante.jpg",
+    "source_page": "https://www.pietrarredo.com/prodotto/pavimento-in-pietra-naturale-lastre-giganti-da-giardino-camminamenti-passi-giapponesi-scorza-di-trani-prezzo-offerta-gialla/?srsltid=AfmBOoqtfPChLWPowren-huSja8sTsCfPipG3yrlVneQz0XmS-LOqq3F",
+    "product_base": "lapietra-giardino",
+    "image_hash": "115792089237316102644887342691600717743587032517663704704591544783141557239807"
+  },
+  "lapietra-giardino2": {
+    "image_url": "https://ekopietra.com/cdn/shop/products/rocce-da-giardino-3.jpg?v=1679652568&width=1445",
+    "source_page": "https://ekopietra.com/products/rocce-da-giardino?srsltid=AfmBOoqIbnfyXRHeG41wyOBV_iMmy6wRuTTIOWM0EbUAkOcGYBFmgPdG",
+    "product_base": "lapietra-giardino",
+    "image_hash": "115792089237316195423570982062255648005829744287954681837561068920986732068863"
+  },
+  "lapietra-flessuosa": {
+    "image_url": "https://www.intondo.com/media/mounted_nas/app-models-product/2025/1639244/conversions/media-libraryrRVcGY-large.webp",
+    "source_page": "https://www.intondo.com/it/products/114924/sedute/poltrone/sedia-flessuosa-di-ugo-la-pietra-per-busnelli-anni-80",
+    "product_base": "lapietra-flessuosa",
+    "image_hash": "115792033590715919295039513943502801435019216500137396840043941827221366241311"
+  },
+  "lapietra-pretenziosa": {
+    "image_url": "https://scenersgallery.com/cdn/shop/files/Screenshot2025-05-15at15.57.39.png?v=1747317618&width=480",
+    "source_page": "https://scenersgallery.com/products/ugo-la-pietra-pretenziosa-armchair-copy",
+    "product_base": "lapietra-pretenziosa",
+    "image_hash": "115792089237316195423570982062255648005829744287953443897521783540711832944639"
+  },
+  "lapietra-pretenziosa2": {
+    "image_url": "https://scenersgallery.com/cdn/shop/files/Screenshot2025-05-15at15.57.22.png?v=1747317618&width=480",
+    "source_page": "https://scenersgallery.com/products/ugo-la-pietra-pretenziosa-armchair-copy",
+    "product_base": "lapietra-pretenziosa",
+    "image_hash": "115792089237316195423570982062255648005829744287953443897521783540711832944639"
+  },
+  "lapietra-pratica": {
+    "image_url": "https://m.media-amazon.com/images/I/51QMJxsDkFL._AC_UF894,1000_QL80_.jpg",
+    "source_page": "https://www.amazon.it/Pietra-Pratica-Multifunzionale-Trasferimento-Uniforme/dp/B0CZH783BT",
+    "product_base": "lapietra-pratica",
+    "image_hash": "115792089237316195423570979419723134616300375242106392737712664750176375668735"
+  },
+  "lapietra-pratica2": {
+    "image_url": "https://m.media-amazon.com/images/I/61cBhz1I0kL._AC_UF894,1000_QL80_.jpg",
+    "source_page": "https://www.amazon.it/MOVKZACV-pratica-rilevamento-gioielli-strumento/dp/B091PXGX41",
+    "product_base": "lapietra-pratica",
+    "image_hash": "115792089237316195423552594360654251422757683513620700337763120159456822820863"
+  },
+  "lapietra-autorevole": {
+    "image_url": "https://www.ugolapietra.com/wp-content/uploads/2018/05/busnelli_agevole_18_001.jpg",
+    "source_page": "https://www.ugolapietra.com/agevole-poltrona-e-divano/",
+    "product_base": "lapietra-autorevole",
+    "image_hash": "115792089237316195423184793232725496408112334056101353946316267405695384551423"
+  },
+  "lapietra-postmoderna": {
+    "image_url": "https://cdn20.pamono.com/p/g/1/3/1313815_nxg5vxsu6j/scultura-vintage-postmoderna-in-pietra-immagine-37.jpg",
+    "source_page": "https://www.pamono.it/scultura-vintage-postmoderna-in-pietra?srsltid=AfmBOopMfXSQHz4Ssa6RQlvg55GFEUyd70gEflW3sbbN6za4WwEX6KZa",
+    "product_base": "lapietra-postmoderna",
+    "image_hash": "115792089237316195423570982062255648005829744287955881091974126633128040595455"
+  },
+  "lapietra-postmoderna2": {
+    "image_url": "https://cdn20.pamono.com/p/g/1/3/1313815_oph8yki5bt/scultura-vintage-postmoderna-in-pietra-immagine-3.jpg",
+    "source_page": "https://www.pamono.it/scultura-vintage-postmoderna-in-pietra?srsltid=AfmBOookaX3pn2D1AnrGjDgbXCMOEsZXDAh14n1WuODRGL92Mld7rrel",
+    "product_base": "lapietra-postmoderna",
+    "image_hash": "115792089237316195423570984166818005762329946501262040203421674937670902480895"
+  },
+  "lapietra-flabello": {
+    "image_url": "https://thumbs.dreamstime.com/b/flabello-bronzeo-41103969.jpg",
+    "source_page": "https://it.dreamstime.com/fotografia-stock-flabello-bronzeo-image41103969",
+    "product_base": "lapietra-flabello",
+    "image_hash": "115792089237316195423380952615188277787382675270358754161955907136123050131455"
+  },
+  "lapietra-flabello2": {
+    "image_url": "https://sigecweb.beniculturali.it/images/fullsize/ICCD1070076/ICCD15441873_31_Carrand.jpg",
+    "source_page": "https://catalogo.beniculturali.it/detail/HistoricOrArtisticProperty/0901395343-0",
+    "product_base": "lapietra-flabello",
+    "image_hash": "115792089237316195423377887624106546009676592562532504903197186358718243012607"
+  },
+  "lapietra-vasi-per-giardini": {
+    "image_url": "https://d7hftxdivxxvm.cloudfront.net/?height=556&quality=85&resize_to=fit&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net%2FpjAJ54yC7iD_CfwY4LeaPw%2Flarger.jpg&width=445",
+    "source_page": "https://www.artsy.net/artwork/ugo-la-pietra-vasi-per-giardini-giardini-per-vasi-vase-1",
+    "product_base": "lapietra-vasi-per-giardini",
+    "image_hash": "115792089237316195423570982062255648005829744287953443897521783540711832944639"
+  },
+  "lapietra-vasi-per-giardini2": {
+    "image_url": "https://d7hftxdivxxvm.cloudfront.net/?height=556&quality=85&resize_to=fit&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net%2FDNGhJOIkPopMgByu8jmiaA%2Flarger.jpg&width=445",
+    "source_page": "https://www.artsy.net/artwork/ugo-la-pietra-vasi-per-giardini-giardini-per-vasi-vase-1",
+    "product_base": "lapietra-vasi-per-giardini",
+    "image_hash": "115792089237316195423570982062255648005829744287953443897521783540711832944639"
+  },
+  "lapietra-credenza-plisse": {
+    "image_url": "https://cdn.shopify.com/s/files/1/0653/7697/7075/files/107204_SALVLU-107-A20200326-17-i3sw35.jpg?v=1747397171",
+    "source_page": "https://artemest.com/it-it/products/credenza-pliss-240",
+    "product_base": "lapietra-credenza-plisse",
+    "image_hash": "115792089237303028270532122103264274149080654376875372141497688316988572565503"
+  },
+  "lapietra-credenza-plisse2": {
+    "image_url": "https://img.fratelliboffi.it/prodotti/20240315-2318-fratelli-boffi-credenza-a-baldacchino-sideboard-ugo-la-pietra-2.jpg",
+    "source_page": "https://www.fratelliboffi.it/it/prodotti/sideboards+and+containers/credenza+a+baldacchino/206",
+    "product_base": "lapietra-credenza-plisse",
+    "image_hash": "115791979237370330811821499739469278985682467110062576139968184933179595948031"
+  },
+  "lapietra-colonna-plisse": {
+    "image_url": "https://img.fratelliboffi.it/prodotti/20240229-1848-colonna-top.jpg",
+    "source_page": "https://www.fratelliboffi.it/it/prodotti/sideboards+and+containers/colonna+pliss%26egrave%3B/114",
+    "product_base": "lapietra-colonna-plisse",
+    "image_hash": "115792089237303017024737372772490592502104113557360623317357125930342017925119"
+  },
+  "lapietra-tavolo-plisse": {
+    "image_url": "https://www.diotti.com/it/media/images/tavoli-fissi/528309/ct-tavolo-plisset-001.jpeg",
+    "source_page": "https://www.diotti.com/it/tavolo-moderno-base-marmo-plisset-cattelan.html",
+    "product_base": "lapietra-tavolo-plisse",
+    "image_hash": "115792089210408493909710564481017337914507345003569238395941980027699698073599"
+  },
+  "lapietra-tavolo-plisse2": {
+    "image_url": "https://www.197designstore.com/images/pleat-midj-gallery-prodotto-3-1696435648-3-5081.jpg",
+    "source_page": "https://www.197designstore.com/it/prod/tavoli/tavoli-zona-giorno-e-cucina/tavolo-plisse-midj.html",
+    "product_base": "lapietra-tavolo-plisse",
+    "image_hash": "93642494341142788514134625239560117078379557901242330867475675643028011466755"
+  },
+  "lapietra-ballerina": {
+    "image_url": "https://guja.it/cdn/shop/files/p23-hadel-g-pe23-290bianco3p_7c84b152-b42c-458b-82e5-f64d7c6af638.jpg?v=1737583747&width=900",
+    "source_page": "https://guja.it/products/donna-ballerina-bianca-in-pelle-con-accessorio-pietre-di-cristallo-pe23-290-459486571?srsltid=AfmBOop2_GUQMOk5BjM8S2lSVgcxkBqjDfBvjuXeNqqVPeT71xk8FNuY",
+    "product_base": "lapietra-ballerina",
+    "image_hash": "115792089235637755164137482142093852439292108826037933066031308455512585011199"
+  },
+  "lapietra-ballerina2": {
+    "image_url": "https://www.acscalzatureitaliane.it/cdn/shop/files/ballerine-donna-oro-con-pietre-strass-punta-quadrata-vera-pelle-dorata-greta-nari-elodie_1024x1024@2x.jpg?v=1775208264",
+    "source_page": "https://www.acscalzatureitaliane.it/products/ballerine-donna-oro-platino-punta-quadrata-vera-pelle-pietre-strass-suola-flessibile-tacco-basso-scarpe-artigianali-made-in-italy-greta-nari-elodie?srsltid=AfmBOopHInj7PRbkDnw0GjfnvSaeBaFQjGy0vFo19AoYzfqxl-uBE8qQ",
+    "product_base": "lapietra-ballerina",
+    "image_hash": "115792089237316195423570937118202255827080435316526863085248787599315152404479"
+  },
+  "lapietra-credenza-a-baldacchino": {
+    "image_url": "https://img.fratelliboffi.it/prodotti/20240315-2318-fratelli-boffi-credenza-a-baldacchino-sideboard-ugo-la-pietra-2.jpg",
+    "source_page": "https://www.fratelliboffi.it/it/prodotti/sideboards+and+containers/credenza+a+baldacchino/206",
+    "product_base": "lapietra-credenza-a-baldacchino",
+    "image_hash": "115791979237370330811821499739469278985682467110062576139968184933179595948031"
+  },
+  "lapietra-il-giardino-delle-delizie": {
+    "image_url": "https://www.itinerarinellarte.it/pics/Ugo-La-Pietra--Giardino-delle-delizie.webp",
+    "source_page": "https://www.itinerarinellarte.it/it/mostre/ugo-la-pietra-il-giardino-delle-delizie-13781",
+    "product_base": "lapietra-il-giardino-delle-delizie",
+    "image_hash": "115792089236486835616148855219257641170602352677457665619013689295567100313343"
+  },
+  "lapietra-ceramica-di-faenza": {
+    "image_url": "https://d2fg1aan4gy9m1.cloudfront.net/ert/images/780/conversions/Faenza-%28Ra%29%2CMuseo-Internazionale-delle-Ceramiche%2C-ph.-Clawsb%2C-WLM2016%2C-CC-BY-SA-4.0-webp.webp",
+    "source_page": "https://emiliaromagnaturismo.it/it/arte-cultura/citta-darte/ceramica-faenza",
+    "product_base": "lapietra-ceramica-di-faenza",
+    "image_hash": "115792089237316189397360218636307602439351690485067987584658205969916325003263"
+  },
+  "lapietra-ceramica-di-faenza2": {
+    "image_url": "https://www.intondo.com/media/mounted_nas/app-models-product/2024/1204790/conversions/intondo-faenza-ceramic-centerpiece-1970s-1-large.webp",
+    "source_page": "https://www.intondo.com/it/products/82187/decor/oggetti-decorativi/centrotavola-in-ceramica-di-faenza-anni-70",
+    "product_base": "lapietra-ceramica-di-faenza",
+    "image_hash": "115792089237316195423181719180013280386875329049447331577000520254872002494463"
+  },
+  "lapietra-mobile-bar": {
+    "image_url": "https://cdn.shopify.com/s/files/1/0653/7697/7075/files/1755773405587-TRAMNY-SITE_0000_300DPI-NEW_0000_20250304-Palardi3125-Edit-Edit.jpg?v=1755773643",
+    "source_page": "https://artemest.com/it-it/products/mobile-bar-arca-vinaria-con-pietra-lavica",
+    "product_base": "lapietra-mobile-bar",
+    "image_hash": "115792089233946124767269062291497317058942104921657930778181867609651243122687"
+  },
+  "lapietra-mobile-bar2": {
+    "image_url": "https://media-uk.idiocom.com/luxurygroup.idiocom.com/product/big/CLA-425V-512.png",
+    "source_page": "https://www.luxurygroupint.shop/it/sandstone-2-door-bar-cabinet-wish-you-were-here?srsltid=AfmBOor6JL3YrqTcGKvEHFerweIZ2YqUBWh-6ia-tRexY5PJvpUzS6Z_",
+    "product_base": "lapietra-mobile-bar",
+    "image_hash": "115792089236486848471912201060900627762607255007225166646360307148782689058815"
+  },
+  "lapietra-cuma": {
+    "image_url": "http://faceshop.it/cdn/shop/files/LOR-3_7cd12bb9-3f84-4899-9fb7-16ecfc7ef044.jpg?v=1764684008",
+    "source_page": "https://faceshop.it/products/cuma-orecchini-pietra-lavica-argento?srsltid=AfmBOopOt77Z01G3Xx4P1lGUi3jDFyLQiUPlkMWa0y__u894yb5V_zgh",
+    "product_base": "lapietra-cuma",
+    "image_hash": "115792089237316188794597534395237609701390694238758116086257081897556427931647"
+  },
+  "lapietra-cuma2": {
+    "image_url": "https://faceshop.it/cdn/shop/files/LOR-3.jpg?v=1764684008",
+    "source_page": "https://faceshop.it/products/cuma-orecchini-pietra-lavica-argento?srsltid=AfmBOorvjbOz3_PCMuBbweNCSSqwr4BpnbKgENFAVGpEU8FXyGNPVZF2",
+    "product_base": "lapietra-cuma",
+    "image_hash": "115233757045348395349505369047761568969069506060602480290098144864922576615487"
+  },
+  "lapietra-alabastro-di-volterra": {
+    "image_url": "https://www.agriturismovolterra.net/wp-content/uploads/2023/06/volterra-alabastro.webp",
+    "source_page": "https://www.agriturismovolterra.net/esperienze-dintorni/alabastro-di-volterra-la-pietra-traslucida-che-illumina-arte/",
+    "product_base": "lapietra-alabastro-di-volterra",
+    "image_hash": "115792089237316195422002044810433087983124052622528530257326678714848456474623"
+  },
+  "lapietra-cristallo-di-colle-val-delsa": {
+    "image_url": "https://valdelsavaldicecina.it/wp-content/uploads/2020/09/Colle-Moschini-3-2657x1853-1-scaled-e1610647153643.jpg",
+    "source_page": "https://valdelsavaldicecina.it/il-cristallo-di-colle-val-delsa/",
+    "product_base": "lapietra-cristallo-di-colle-val-delsa",
+    "image_hash": "115792089237315784650039551379998290783821350109094724846060986226046935236607"
+  },
+  "lapietra-cristallo-di-colle-val-delsa2": {
+    "image_url": "https://www.exibart.com/repository/media/eventi/2018/05/cristallo-di-colle-val-d8217elsa.jpg",
+    "source_page": "https://www.exibart.com/evento-arte/cristallo-di-colle-val-delsa/",
+    "product_base": "lapietra-cristallo-di-colle-val-delsa",
+    "image_hash": "115792089237316195423570985008642948864931190478827924052584696711619637411839"
+  },
+  "lapietra-europa-unita-tavolino": {
+    "image_url": "https://media.internazionale.it/images/2025/04/14/282172-md.jpg",
+    "source_page": "https://www.internazionale.it/opinione/pierre-haski/2025/04/14/mondo-europa",
+    "product_base": "lapietra-europa-unita-tavolino",
+    "image_hash": "115792089237316195423377118348058511272671545675776045812639207086064708616191"
+  },
+  "lapietra-europa-unita-tavolino2": {
+    "image_url": "https://media-assets.wired.it/photos/67b31b7f388f076d050b2c3e/1:1/w_3384,h_3384,c_limit/506815322",
+    "source_page": "https://www.wired.it/article/europa-unita-cosa-manca-per-completarne-il-progetto/",
+    "product_base": "lapietra-europa-unita-tavolino",
+    "image_hash": "71464722622301597434591204466554363006795440918746458473827516782668402647548"
+  },
+  "lapietra-fiasca-friulana": {
+    "image_url": "https://imageapi.cambiaste.com/api/lotto/immagine/330923.jpg",
+    "source_page": "https://www.cambiaste.com/uk/auction-1059/fiascabrarea-modenese-xvi-xvii-secolo-330923",
+    "product_base": "lapietra-fiasca-friulana",
+    "image_hash": "115792034885234354539632307306908402599037924133385383291187527889416540389375"
+  },
+  "lapietra-fiasca-friulana2": {
+    "image_url": "https://imageapi.cambiaste.com/api/lotto/immagine/163404/0/600.jpg",
+    "source_page": "https://www.cambiaste.com/it/asta-0316/fiasca-da-pellegrino-in-maiolica-area-romagnol-163404",
+    "product_base": "lapietra-fiasca-friulana",
+    "image_hash": "115792089237316195423377887624107259992861623517118008480907214095543942774783"
+  },
+  "lapietra-tante-tazzine": {
+    "image_url": "https://www.ugolapietra.com/anni-90/la-normalita-nella-differenza/002_caffebiesse_1997/",
+    "source_page": "https://www.ugolapietra.com/anni-90/la-normalita-nella-differenza/",
+    "product_base": "lapietra-tante-tazzine",
+    "image_hash": "115792089237316195422787101578423807326338400655582900736432837346249697918975"
+  },
+  "lapietra-tante-tazzine2": {
+    "image_url": "https://www.ugolapietra.com/wp-content/uploads/2017/10/002_caffeBiesse_1997-150x150.jpg",
+    "source_page": "https://www.ugolapietra.com/anni-90/la-normalita-nella-differenza/",
+    "product_base": "lapietra-tante-tazzine",
+    "image_hash": "115792089237316195423570985008687907722599561926006516695712379043523715923967"
+  },
+  "lapietra-ali": {
+    "image_url": "https://www.libraccio.it/images/9788898187836_0_170_0_75.jpg",
+    "source_page": "https://www.libraccio.it/libro/9788898187836/barbara-torretto/ali-di-pietra.html",
+    "product_base": "lapietra-ali",
+    "image_hash": "115792089237316195423570985008679344040440682789835997619514402556086052716543"
+  },
+  "lapietra-ali2": {
+    "image_url": "https://d2e2kzqsubdacz.cloudfront.net/1/146448/5.jpg",
+    "source_page": "https://www.thesofaandchair.co.uk/collection/artwork/10964-ali-pietra?srsltid=AfmBOoqtgIed9UOp32_fBcnwCM_Ful4DsQigy8LtA5SKbRuMqsAMKrbB",
+    "product_base": "lapietra-ali",
+    "image_hash": "115792089237316195423377887624106546009676592562532504903197186358718243012607"
+  },
+  "lapietra-souvenir-di-vietri": {
+    "image_url": "https://i.ebayimg.com/images/g/c10AAOSw0TxZZhxX/s-l400.jpg",
+    "source_page": "https://www.ebay.it/itm/162588425980",
+    "product_base": "lapietra-souvenir-di-vietri",
+    "image_hash": "115792089237316195423570984447449870076136617752065095386291653514610478153727"
+  },
+  "lapietra-legno-intarsiato-di-sorrento": {
+    "image_url": "https://i.etsystatic.com/42130517/r/il/4ed45a/8153102185/il_300x300.8153102185_6q0s.jpg",
+    "source_page": "https://www.etsy.com/it/market/legno_intarsiato_di_sorrento",
+    "product_base": "lapietra-legno-intarsiato-di-sorrento",
+    "image_hash": "115792089237316195423570985008666498811203338342280535376859065080091661828095"
+  },
+  "lapietra-legno-intarsiato-di-sorrento2": {
+    "image_url": "https://i.etsystatic.com/12608528/c/2114/2114/524/81/il/3df370/3882514572/il_300x300.3882514572_3w8e.jpg",
+    "source_page": "https://www.etsy.com/it/market/legno_intarsiato_di_sorrento",
+    "product_base": "lapietra-legno-intarsiato-di-sorrento",
+    "image_hash": "115792089237316195423570985008666498811203338342280535376859065080091661828095"
+  },
+  "lapietra-ceramica-di-grottaglie": {
+    "image_url": "https://www.delucaeditori.com/wp-content/uploads/2016/06/la-ceramica-di-grottagli458.jpg",
+    "source_page": "https://www.delucaeditori.com/prodotto/la-ceramica-di-grottaglie/",
+    "product_base": "lapietra-ceramica-di-grottaglie",
+    "image_hash": "101331992215599620412647348007367887844197649250467376523895225776087002243079"
+  },
+  "lapietra-ceramica-di-grottaglie2": {
+    "image_url": "https://cdn-italiani-media.italiani.it/site-italiani/2019/05/ceramica-bianca.jpg",
+    "source_page": "https://www.italiani.it/la-ceramica-di-grottaglie-uneccellenza-pugliese/",
+    "product_base": "lapietra-ceramica-di-grottaglie",
+    "image_hash": "115792089237316195423570979045670239114402831520321392323635130681434314899455"
+  },
+  "lapietra-le-diversita-tazzine": {
+    "image_url": "https://www.bertozziecasoni.it/wp-content/uploads/2022/07/998-scaled.jpg",
+    "source_page": "https://www.bertozziecasoni.it/opere/",
+    "product_base": "lapietra-le-diversita-tazzine",
+    "image_hash": "115792089237316193910593678508011528222855483523460820870157865918082230255615"
+  },
+  "lapietra-le-diversita-tazzine2": {
+    "image_url": "https://www.bertozziecasoni.it/wp-content/uploads/2023/05/955a-683x1024.jpg",
+    "source_page": "https://www.bertozziecasoni.it/mirabili-tracce-di-bertozzi-casoni/",
+    "product_base": "lapietra-le-diversita-tazzine",
+    "image_hash": "115792089237316182768789825925280425668765669713113768322762528925815528226815"
+  },
+  "lapietra-tazzine-neoeclettiche": {
+    "image_url": "https://cdn20.pamono.com/p/g/2/4/2418762_8ykqyp60qj/tazze-e-piattini-in-porcellana-di-eschenbach-germania-set-di-11-immagine-2.jpg",
+    "source_page": "https://www.pamono.it/tazze-e-piattini-in-porcellana-di-eschenbach-germania-set-di-11?srsltid=AfmBOooYKf87BCJK5MYlaFF1FhuZ32RMWcZmnaseuzphD5Pr4NYWN5a0",
+    "product_base": "lapietra-tazzine-neoeclettiche",
+    "image_hash": "115792089237316195423570984447449870076136617670935921199199703836424560181247"
+  },
+  "lapietra-tazzine-neoeclettiche2": {
+    "image_url": "https://cdn20.pamono.com/p/g/2/4/2418762_gjpttnr4o6/tazze-e-piattini-in-porcellana-di-eschenbach-germania-set-di-11-immagine-1.jpg",
+    "source_page": "https://www.pamono.it/tazze-e-piattini-in-porcellana-di-eschenbach-germania-set-di-11?srsltid=AfmBOorK8iPpB9tUh5J5-U7kN34kWLoQCUQ1gIPr0Is6mjzYvS5ogFM_",
+    "product_base": "lapietra-tazzine-neoeclettiche",
+    "image_hash": "115792089237316195423570985008666498451859675724621269225224512902833731796991"
+  },
+  "lapietra-mosaico-di-spilimbergo": {
+    "image_url": "https://res.cloudinary.com/billionhands/image/upload/v1770833455/items/m1gnors9ej2v0bbxxsb5.png",
+    "source_page": "https://spora.social/",
+    "product_base": "lapietra-mosaico-di-spilimbergo",
+    "image_hash": "115792089237316195423377884630813639660709213453790326725787331011964332670975"
+  },
+  "lapietra-marmo-di-carrara": {
+    "image_url": "https://www.pietreditrani.it/image/cache/catalog/prodotti/cubetti-in-pietra-di-trani/Cubetti_in_Marmo_di_Carrara-900x600.jpg",
+    "source_page": "https://www.pietreditrani.it/cubetti-in-marmo-di-carrara?srsltid=AfmBOopMoLq5jLfm8NFoAvUfXlucmomVYLrPK01NfN35kTKjUshxdheu",
+    "product_base": "lapietra-marmo-di-carrara",
+    "image_hash": "115792089237316195423570973047575995853542342180029754891837251158917389484031"
+  },
+  "lapietra-marmo-di-carrara2": {
+    "image_url": "https://www.pietrarredo.com/wp-content/uploads/2020/02/offerta-e-prezzo-granulato-graniglia-marmo-spaccato-arredo-giardino-bianco-carrara-aiuole-stone-garden-deco-gravels-pietrarredo-zandobbio-.jpg",
+    "source_page": "https://www.pietrarredo.com/prodotto/granulato-in-marmo-bianco-di-carrara-per-arredo-giardino-pietra-naturale-prezzo-stone-garden-zandobbio-spaccato-sassolini-ghiaia/?srsltid=AfmBOoqJn7aF8fT880eLCjb86bXJhgPvS3ENvRkd_ZFhIVvyp7iqWPwn",
+    "product_base": "lapietra-marmo-di-carrara",
+    "image_hash": "115792089233949441927632807972508064393614955270193433285767459196080060628991"
+  },
+  "lapietra-pietra-leccese": {
+    "image_url": "https://www.pietreditrani.it/image/catalog/prodotti/pietra-leccese-carparo/Pietra_Carparo_Leccese.jpg",
+    "source_page": "https://www.pietreditrani.it/pietra-naturale-leccese-carparo?srsltid=AfmBOopT5gtfrPsy4RYfhzWWdH2Z-YD4_3uFTI4Y3ONzAxnefiESk-9F",
+    "product_base": "lapietra-pietra-leccese",
+    "image_hash": "115792089237316195423570973047575995853542342180029754891837251158917389484031"
+  },
+  "lapietra-pietra-leccese2": {
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/7/7d/Lecce_facciata_barocca.jpg?utm_source=it.wikipedia.org&utm_campaign=index&utm_content=original",
+    "source_page": "https://it.wikipedia.org/wiki/Pietra_leccese",
+    "product_base": "lapietra-pietra-leccese",
+    "image_hash": "115792089210356248756420345214020892766333015321862951631415855430033844731903"
+  },
+  "lapietra-ceramica-di-este": {
+    "image_url": "https://cdn20.pamono.com/p/g/1/7/1784754_pm09i0hild/scatola-o-portasapone-in-ceramica-bianca-di-sc-richard-immagine-4.jpg",
+    "source_page": "https://www.pamono.it/scatola-o-portasapone-in-ceramica-bianca-di-sc-richard?srsltid=AfmBOordmc861KbPfNLKnCPAUVZqSwIRk-aGCtZjM5elz6-zelg35Lyl",
+    "product_base": "lapietra-ceramica-di-este",
+    "image_hash": "115792089237316195423570983605601377027263225994712004055432135888575217532927"
+  },
+  "lapietra-ceramica-di-este2": {
+    "image_url": "https://cdn20.pamono.com/p/g/1/7/1784754_jeaerpnbbe/scatola-o-portasapone-in-ceramica-bianca-di-sc-richard-immagine-7.jpg",
+    "source_page": "https://www.pamono.it/scatola-o-portasapone-in-ceramica-bianca-di-sc-richard?srsltid=AfmBOopCM5tfdqU3HrUUqSDZBtmo75ymcwAysIYI348G0Hfev_cYQI5d",
+    "product_base": "lapietra-ceramica-di-este",
+    "image_hash": "115792089237316195423570983605601377027268709060194616833407864092698873954303"
+  },
+  "lapietra-aurelia": {
+    "image_url": "https://www.ceramicheminori.com/immagini_articoli/162/offerta-pietra-di-lecce-ermes-aurelia-5688-600.jpg",
+    "source_page": "https://www.ceramicheminori.com/it/prodotti/162/offerta-pietra-di-lecce-ermes-aurelia",
+    "product_base": "lapietra-aurelia",
+    "image_hash": "115792089237316195423570973047575995853542342180030025691220844835852523667455"
+  },
+  "lapietra-aurelia2": {
+    "image_url": "https://www.ceramicheminori.com/immagini_articoli/162/offerta-pietra-di-lecce-ermes-aurelia-600.jpg",
+    "source_page": "https://www.ceramicheminori.com/it/prodotti/162/offerta-pietra-di-lecce-ermes-aurelia",
+    "product_base": "lapietra-aurelia",
+    "image_hash": "115792089237316195423570973047575995853563610152485818964387580376137492070399"
+  },
+  "lapietra-vetro-di-murano": {
+    "image_url": "https://www.muranonet.com/cdn/shop/files/murano-glass-sculpture-contemporary-art-sky-sea-alberto-dona-romano-blue-aquamarine-stone-4_11zon.jpg?v=1711796190&width=1500",
+    "source_page": "https://www.muranonet.com/it/products/copia-del-colourful-sphere?srsltid=AfmBOoroPr5PtxwP4-xIVl769tC6eqWIXygWa15lVCQsv-FM6UtenRV5",
+    "product_base": "lapietra-vetro-di-murano",
+    "image_hash": "115792034885234367496161076827445766021747721760088048035902384689211980644351"
+  },
+  "lapietra-vetro-di-murano2": {
+    "image_url": "https://www.originalmuranoglass.com/images/stories/virtuemart/product/gold_stone_lisa_original_murano_glass_omg1.jpg",
+    "source_page": "https://www.originalmuranoglass.com/it/gioielli-bigiotteria/collane-murano-glass/collana-pietra-e-oro-vetro-di-murano-originale-omg-1-detail/?srsltid=AfmBOoozz4Fgza7XghyDS5_lTftU3G8T3KePn5FHFMp6kSmktiqikHqh",
+    "product_base": "lapietra-vetro-di-murano",
+    "image_hash": "115792089230999013464433802461088641183658929520780865313728424321272147607551"
+  },
+  "lapietra-rame-smaltato": {
+    "image_url": "https://www.intondo.com/media/mounted_nas/app-models-product/2024/1311676/conversions/f7e89a9f-f23c-4a1e-8fc2-48f7cfd55539-large.webp",
+    "source_page": "https://www.intondo.com/it/products/89369/decor/oggetti-decorativi/piatto-in-rame-smaltato-anni-60",
+    "product_base": "lapietra-rame-smaltato",
+    "image_hash": "115792089237316192410369045635512318767097481131314683527239088726222850490367"
+  },
+  "lapietra-rame-smaltato2": {
+    "image_url": "https://www.intondo.com/media/mounted_nas/app-models-product/2024/1311675/conversions/db64317e-8892-4dd4-97fd-2457147c5260-large.webp",
+    "source_page": "https://www.intondo.com/it/products/89369/decor/oggetti-decorativi/piatto-in-rame-smaltato-anni-60",
+    "product_base": "lapietra-rame-smaltato",
+    "image_hash": "115792089237316195423570985008665784125638491168680252288738212847318888087551"
+  },
+  "lapietra-europa-unita-mobile-bar": {
+    "image_url": "https://www.passiglieditori.it/wp-content/uploads/2025/03/cover_9788836813858__id384_w1024_t1691752632__1x.jpg",
+    "source_page": "https://www.passiglieditori.it/libro/prove-di-europa-unita/",
+    "product_base": "lapietra-europa-unita-mobile-bar",
+    "image_hash": "101331992215599620412561525310647138220689507752485725005370136574926770397191"
+  },
+  "lapietra-mediterranean-ceramics": {
+    "image_url": "https://mediterraneanceramics.com/wp-content/uploads/2022/03/Dingli-design-6.jpg",
+    "source_page": "https://mediterraneanceramics.com/product/dingli-lava-stone-table/",
+    "product_base": "lapietra-mediterranean-ceramics",
+    "image_hash": "115792089237315989744917116134661904502896312490553916200155519157779633799167"
+  },
+  "lapietra-mediterranean-ceramics2": {
+    "image_url": "https://mediterraneanceramics.com/wp-content/uploads/2022/03/Dingli-design-4.jpg",
+    "source_page": "https://mediterraneanceramics.com/product/dingli-lava-stone-table/",
+    "product_base": "lapietra-mediterranean-ceramics",
+    "image_hash": "115792089237315989744917116134661901715994319773521840366531599985223728627711"
+  },
+  "lapietra-little-houses": {
+    "image_url": "https://egan.it/cdn/shop/files/101090.jpg?v=1759148476",
+    "source_page": "https://egan.it/en/products/painting-little-houses-50x70?srsltid=AfmBOoqh0EMR5wVnvThoQ_Y1gEizjfZVLBnvUxgdzcZR7YfAOMOKJKkJ",
+    "product_base": "lapietra-little-houses",
+    "image_hash": "115792089237316195423377887624106546009676592562532543626012050079450289668095"
+  },
+  "lapietra-ceramica-di-nove": {
+    "image_url": "https://www.viart.it/wp-content/uploads/2023/09/DSC_5490-scaled.webp",
+    "source_page": "https://www.viart.it/eventi/percorsi-artigiani/la-ceramica-di-nove-storie-di-famiglia/",
+    "product_base": "lapietra-ceramica-di-nove",
+    "image_hash": "115792089237315784047431654713024535304492990578966063772669841061737303900159"
+  },
+  "lapietra-ceramica-di-nove2": {
+    "image_url": "https://media.cultura.gov.it/mibac/files/boards/388a5474724a15af0ace7a40ab3301de/Veneto/Vicenza/Nove,%20Museo%20civico%20della%20ceramica.jpg",
+    "source_page": "https://cultura.gov.it/luogo/museo-civico-della-ceramica-di-nove-italia",
+    "product_base": "lapietra-ceramica-di-nove",
+    "image_hash": "115792089237316195423534199152689457781802231191669784866039644889903452389375"
+  },
+  "lapietra-zodiac-signs": {
+    "image_url": "https://cdn.shopify.com/s/files/1/0527/7669/8040/files/Each_Month_Birthstones_for_the_Zodiac_Signs_1024x1024.webp?v=1719492569",
+    "source_page": "https://www.ourosjewels.com/blogs/gemstones/zodiac-birthstones-for-each-sign?srsltid=AfmBOopuB4z-uzq6ZijdGCm94rqliu0T1M15hvp8zKJTT0jCVnIWVcAE",
+    "product_base": "lapietra-zodiac-signs",
+    "image_hash": "115792089237316195423570973047575995853542342180029754891837251158917389484031"
+  },
+  "lapietra-zodiac-signs2": {
+    "image_url": "https://www.zamnesia.io/it/img/cms/Blog/3161_Stone_Zodiac_Sign/The-relationship-between-stones-and-zodiac-signs.jpg",
+    "source_page": "https://www.zamnesia.io/it/blog-pietra-abbinata-segno-zodiacale-n3161",
+    "product_base": "lapietra-zodiac-signs",
+    "image_hash": "115792089237316195423570982740346378286925366875709421536049848477823572901887"
+  },
+  "lapietra-animals": {
+    "image_url": "https://www.pietrarredo.com/wp-content/uploads/2020/03/misure-gatto-cat-per-arredo-giardino-in-sasso-pietra-offerta-pietrarredo-animal-garden.jpg",
+    "source_page": "https://www.pietrarredo.com/prodotto/gatto-in-granito-grigio-fatto-a-mano-animali-decorativi-da-giardino-stone-garden-price-cat-animal/?srsltid=AfmBOorzebnj5WVJYpprs2YFzqlV0lRKF4CkYYzHWrxwkICrzXUinQ9r",
+    "product_base": "lapietra-animals",
+    "image_hash": "115792089237316192611236310170896043310852193563200944967709696496763668529151"
+  },
+  "lapietra-between-design-and-art": {
+    "image_url": "https://media.licdn.com/dms/image/v2/D4D12AQEkNVu6lkHmlg/article-cover_image-shrink_720_1280/article-cover_image-shrink_720_1280/0/1695188573373?e=2147483647&v=beta&t=hA8nvX9o9beoQeALFTrd7OHGr1nMrm4K25GzKsstCNQ",
+    "source_page": "https://www.linkedin.com/pulse/fine-line-between-design-art-what-cmos",
+    "product_base": "lapietra-between-design-and-art",
+    "image_hash": "115792089237316195422786706475887677969553147505788541859354647538762680107007"
+  },
+  "lapietra-giano": {
+    "image_url": "https://maceviweb.com/wp-content/uploads/2021/07/GIANO-COLONNA-CAPITELLO-MOD.jpg",
+    "source_page": "https://maceviweb.com/prodotto/giano/",
+    "product_base": "lapietra-giano",
+    "image_hash": "115792089224257265967196332578094273637624714529917273442565453464808403763199"
+  },
+  "lapietra-the-professions-architect": {
+    "image_url": "https://images.metmuseum.org/CRDImages/es/original/DP169163.jpg",
+    "source_page": "https://www.metmuseum.org/it/art/collection/search/194432",
+    "product_base": "lapietra-the-professions-architect",
+    "image_hash": "115792089236896587768273717002478882265032256566011096022494967187816126332931"
+  },
+  "lapietra-itineraries": {
+    "image_url": "https://i.ytimg.com/vi/z1imjCoLyLw/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLCNLxwapT3zmlBWzfR-LdML9E3DqQ",
+    "source_page": "https://www.youtube.com/watch?v=I_PbiShbYRA",
+    "product_base": "lapietra-itineraries",
+    "image_hash": "115792089237316195423570985008596919424486737791360442223413878564671891439615"
+  },
+  "lapietra-itineraries2": {
+    "image_url": "https://www.parks.it/fotoGallery/148_6_PNATE.jpeg",
+    "source_page": "https://www.parks.it/parco.nazionale.app.tosco.emil/Eiti_dettaglio.php?id_iti=2251",
+    "product_base": "lapietra-itineraries",
+    "image_hash": "115792089237316195423570979045670239114402831520321392323635130681434314899455"
   }
 }
