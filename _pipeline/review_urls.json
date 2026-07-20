@@ -109,7 +109,12 @@
   "mari-tonietta": "https://www.zanotta.com/ContentsFiles/zanotta_2090_tonietta_plus_2(0).jpg",
   "mari-ecolo": "https://alessi.com/cdn/shop/files/enzomari-web-prodotto-store_6e211c88-7ff5-458e-968e-6e5569d12109.jpg?v=1748186616&width=2000",
   "zanuso-martingala": "https://cdn20.pamono.com/p/g/2/5/2510689_u9rksupd8w/sedia-martingala-in-cotone-giallo-di-marco-zanuso-per-arflex-anni-70-immagine-1.jpg",
-  "mendini-superleggera-chair-redesign": "https://a.1stdibscdn.com/chair-model-post-steltman-by-a-guerriero-for-alchimia-redesign-collection-for-sale-picture-7/f_21403/f_206473821603437245185/DSC02148_master.jpeg?width=768",
+  "mendini-superleggera-chair-redesign": {
+    "image_url": "https://am-s3-bucket-assets.s3.eu-west-2.amazonaws.com/roseberys/prod/lot_images/xlarge/736f2c07-c94d-f011-be59-6045bdf16fdb/c63a2295-6a73-f011-8eef-7c1e52049af7.webp",
+    "source_page": "https://www.roseberys.co.uk/bidding/A0729-design-609/21-alessandro-mendini-1931-2019-for-studio-alchimiapoltrona-di-598937",
+    "product_base": "mendini-superleggera-chair-redesign",
+    "image_hash": "115792089235469887937672094016062424695846037398728459488665280947335150436351"
+  },
   "zanuso-woodline": "https://www.cassina.com/content/dam/ld/cassina/products/w/o/o/722-woodline/06_caratteristiche/01_caratteristiche-woodline.jpg/jcr:content/renditions/cq5dam.thumbnail.1500.1500.jpg",
   "zanuso-quadrata": {
     "image_url": "https://cdn20.pamono.com/p/g/2/2/2207501_44gpagr9jh/poltrona-quadrata-di-marco-zanuso-per-arflex-italia-anni-60-immagine-3.jpg",
@@ -920,7 +925,94 @@
     "lapietra-giano": "lapietra-giano",
     "lapietra-the-professions-architect": "lapietra-the-professions-architect",
     "lapietra-itineraries": "lapietra-itineraries",
-    "lapietra-itineraries2": "lapietra-itineraries"
+    "lapietra-itineraries2": "lapietra-itineraries",
+    "lapietra-filicudi-letto": "lapietra-filicudi-letto",
+    "lapietra-filicudi-letto2": "lapietra-filicudi-letto",
+    "lapietra-filicudi-comodino": "lapietra-filicudi-comodino",
+    "lapietra-filicudi-comodino2": "lapietra-filicudi-comodino",
+    "lapietra-filicudi-scrittoio": "lapietra-filicudi-scrittoio",
+    "lapietra-filicudi-scrittoio2": "lapietra-filicudi-scrittoio",
+    "lapietra-filicudi-consolle": "lapietra-filicudi-consolle",
+    "lapietra-filicudi-consolle2": "lapietra-filicudi-consolle",
+    "lapietra-filicudi-specchio": "lapietra-filicudi-specchio",
+    "lapietra-filicudi-specchio2": "lapietra-filicudi-specchio",
+    "lapietra-una-forza-interiore": "lapietra-una-forza-interiore",
+    "lapietra-una-forza-interiore2": "lapietra-una-forza-interiore",
+    "lapietra-interrupted-furniture": "lapietra-interrupted-furniture",
+    "lapietra-interrupted-furniture2": "lapietra-interrupted-furniture",
+    "lapietra-strange-animals": "lapietra-strange-animals",
+    "lapietra-strange-animals2": "lapietra-strange-animals",
+    "lapietra-natura-artificiale": "lapietra-natura-artificiale",
+    "lapietra-natura-artificiale2": "lapietra-natura-artificiale",
+    "lapietra-casavasetto": "lapietra-casavasetto",
+    "lapietra-pagliara": "lapietra-pagliara",
+    "lapietra-casetta": "lapietra-casetta",
+    "lapietra-casetta2": "lapietra-casetta",
+    "lapietra-cattedrale": "lapietra-cattedrale",
+    "lapietra-cattedrale2": "lapietra-cattedrale",
+    "lapietra-il-celebrante": "lapietra-il-celebrante",
+    "lapietra-il-celebrante2": "lapietra-il-celebrante",
+    "lapietra-lofferta": "lapietra-lofferta",
+    "lapietra-lofferta2": "lapietra-lofferta",
+    "lapietra-lidolo": "lapietra-lidolo",
+    "lapietra-lidolo2": "lapietra-lidolo",
+    "lapietra-mani": "lapietra-mani",
+    "lapietra-mani2": "lapietra-mani",
+    "lapietra-capas": "lapietra-capas",
+    "lapietra-capas2": "lapietra-capas",
+    "lapietra-totem-20": "lapietra-totem-20",
+    "lapietra-totem-202": "lapietra-totem-20",
+    "mendini-cubosfera": "mendini-cubosfera",
+    "mendini-thonet-chair-redesign": "mendini-thonet-chair-redesign",
+    "mendini-wassily-chair-redesign": "mendini-wassily-chair-redesign",
+    "mendini-superleggera-chair-redesign": "mendini-superleggera-chair-redesign",
+    "mendini-superleggera-chair-redesign2": "mendini-superleggera-chair-redesign",
+    "mendini-ondoso": "mendini-ondoso",
+    "mendini-ondoso2": "mendini-ondoso",
+    "mendini-spaziale": "mendini-spaziale",
+    "mendini-spaziale2": "mendini-spaziale",
+    "mendini-vogelaar-sabrina": "mendini-vogelaar-sabrina",
+    "mendini-agrilo": "mendini-agrilo",
+    "mendini-agrilo2": "mendini-agrilo",
+    "mendini-cetonia": "mendini-cetonia",
+    "mendini-cetonia2": "mendini-cetonia",
+    "mendini-zabro": "mendini-zabro",
+    "mendini-zabro2": "mendini-zabro",
+    "mendini-calamobio": "mendini-calamobio",
+    "mendini-calamobio2": "mendini-calamobio",
+    "mendini-cuculia": "mendini-cuculia",
+    "mendini-macaone": "mendini-macaone",
+    "mendini-macaone2": "mendini-macaone",
+    "mendini-papilio": "mendini-papilio",
+    "mendini-dealbata-9550": "mendini-dealbata-9550",
+    "mendini-dealbata-9551": "mendini-dealbata-9551",
+    "mendini-dealbata-9552": "mendini-dealbata-9552",
+    "mendini-hispo": "mendini-hispo",
+    "mendini-hispo2": "mendini-hispo",
+    "mendini-mikiolone": "mendini-mikiolone",
+    "mendini-mikiolone2": "mendini-mikiolone",
+    "mendini-sirfo": "mendini-sirfo",
+    "mendini-arado": "mendini-arado",
+    "mendini-arado2": "mendini-arado",
+    "mendini-berito": "mendini-berito",
+    "mendini-acco": "mendini-acco",
+    "mendini-acco2": "mendini-acco",
+    "mendini-onda": "mendini-onda",
+    "mendini-onda2": "mendini-onda",
+    "mendini-lesena": "mendini-lesena",
+    "mendini-lesena2": "mendini-lesena",
+    "mendini-settecento": "mendini-settecento",
+    "mendini-settecento-tavolino": "mendini-settecento-tavolino",
+    "mendini-settecento-tavolino2": "mendini-settecento-tavolino",
+    "mendini-specchio-di-proust": "mendini-specchio-di-proust",
+    "mendini-brillante": "mendini-brillante",
+    "mendini-brillante2": "mendini-brillante",
+    "mendini-cosmesis": "mendini-cosmesis",
+    "mendini-cosmesis2": "mendini-cosmesis",
+    "mendini-metroscape": "mendini-metroscape",
+    "mendini-sidone": "mendini-sidone",
+    "mendini-sidone2": "mendini-sidone",
+    "mendini-lots-of-dots": "mendini-lots-of-dots"
   },
   "sottsass-terrazzo2": {
     "image_url": "https://i.pinimg.com/originals/ca/b1/9d/cab19d383385dee6c09f97ab86349656.jpg",
@@ -3897,5 +3989,521 @@
     "source_page": "https://www.parks.it/parco.nazionale.app.tosco.emil/Eiti_dettaglio.php?id_iti=2251",
     "product_base": "lapietra-itineraries",
     "image_hash": "115792089237316195423570979045670239114402831520321392323635130681434314899455"
+  },
+  "lapietra-filicudi-letto": {
+    "image_url": "https://socialdesignmagazine.com/mag/wp-content/uploads/2014/03/users_socialdesignmagazine_barel_salone_2014_Barel_Filicudi-0003.jpg",
+    "source_page": "https://en.socialdesignmagazine.com/mag/salone-del-mobile-2014/barel-con-la-collaborazione-del-designer-ugo-la-pietra-presentera-filicudi-al-salone-del-mobile-2014/",
+    "product_base": "lapietra-filicudi-letto",
+    "image_hash": "115792089237316195423570984260376589697223500424794898801722113410003076382719"
+  },
+  "lapietra-filicudi-letto2": {
+    "image_url": "https://socialdesignmagazine.com/mag/wp-content/uploads/2014/03/users_socialdesignmagazine_barel_salone_2014_Barel_Filicudi-0002.jpg",
+    "source_page": "https://en.socialdesignmagazine.com/mag/salone-del-mobile-2014/barel-con-la-collaborazione-del-designer-ugo-la-pietra-presentera-filicudi-al-salone-del-mobile-2014/",
+    "product_base": "lapietra-filicudi-letto",
+    "image_hash": "115792089237316195423570984260376589697212700447329146360254769977638298583039"
+  },
+  "lapietra-filicudi-comodino": {
+    "image_url": "https://img.edilportale.com/product-thumbs/b_ARTE-VENEZIANA_FILICUDI_qg9udEScpU.jpeg",
+    "source_page": "https://www.archiproducts.com/it/prodotti/arte-veneziana/comodino-rettangolare-in-legno-e-vetro-con-cassetti-filicudi_748282?srsltid=AfmBOopYpMECOw-TnHvAYArNnWA1oHeG7PK6pYCdpNnRJSf3CBS2oHk2",
+    "product_base": "lapietra-filicudi-comodino",
+    "image_hash": "115792089237316195423570982389632015214402463202323183060475072101045902508031"
+  },
+  "lapietra-filicudi-comodino2": {
+    "image_url": "https://img.edilportale.com/product-thumbs/h_ARTE-VENEZIANA_SELENE_JFag2FWzGb.jpeg",
+    "source_page": "https://www.archiproducts.com/it/prodotti/arte-veneziana/comodino-rettangolare-in-legno-e-vetro-con-cassetti-filicudi_748282?srsltid=AfmBOooXwcTdXeUVDyEMrDa2Ky2VIe2h9Chs85OTyStgWZp0cHXtqSC2",
+    "product_base": "lapietra-filicudi-comodino",
+    "image_hash": "115792089237316195423570985008679344040437692026845481558800368990200421941247"
+  },
+  "lapietra-filicudi-scrittoio": {
+    "image_url": "https://cdn20.pamono.com/p/m/2/5/2517461_cmmj4rao7v/tavolo-da-pranzo-filicudi-di-ettore-sottsass-per-zanotta-italia-1993.png",
+    "source_page": "https://www.pamono.it/makers/zanotta?srsltid=AfmBOopNl003BQfUEjYaXOMPSvtyyutoqxwMMHxs_8M-HPiEAr2awXxZ",
+    "product_base": "lapietra-filicudi-scrittoio",
+    "image_hash": "115792089237316195423570985008666498811203338342280535376859065080091661828095"
+  },
+  "lapietra-filicudi-scrittoio2": {
+    "image_url": "https://imageapi.cambiaste.com/api/lotto/immagine/329872.jpg",
+    "source_page": "https://www.cambiaste.com/it/asta-1030/ugo-la-pietra-libreria-a-doppia-faccia-uno-sullaltro-329872",
+    "product_base": "lapietra-filicudi-scrittoio",
+    "image_hash": "115792089237293155170216923117404805094764912150923514746404476769724658614271"
+  },
+  "lapietra-filicudi-consolle": {
+    "image_url": "https://cdn20.pamono.com/p/s/2/1/2106196_kpcgcuau6f/specchio-da-terra-ovale-in-ferro-con-consolle-in-marmo-meta-xx-secolo-attribuito-a-pier-luigi-colli.jpg",
+    "source_page": "https://www.pamono.it/specchio-da-terra-ovale-in-ferro-con-consolle-in-marmo-meta-xx-secolo-attribuito-a-pier-luigi-colli?srsltid=AfmBOoqoV5ap1Jt6PnL9fx5o4e74Ewl3582lbH-94V4p4u60iX-_fr4b",
+    "product_base": "lapietra-filicudi-consolle",
+    "image_hash": "115792089237316195423570984447462715305370971390994619960016698970837922873343"
+  },
+  "lapietra-filicudi-consolle2": {
+    "image_url": "https://cdn20.pamono.com/p/s/2/0/2033406_e3iknwdehc/consolle-con-specchio-in-legno-intagliato-e-dorato-francia-meta-xix-secolo-set-di-2.jpg",
+    "source_page": "https://www.pamono.it/consolle-con-specchio-in-legno-intagliato-e-dorato-francia-meta-xix-secolo-set-di-2?srsltid=AfmBOop1h07OMN5OyrjrtVHuj8NJtyLBNZ87XBhnPvd5NdtqqCLFa06s",
+    "product_base": "lapietra-filicudi-consolle",
+    "image_hash": "115792089237316195423570983605624926973536536866741935400440536166388702642175"
+  },
+  "lapietra-filicudi-specchio": {
+    "image_url": "https://a.1stdibscdn.com/1980s-faux-stone-draped-wall-floor-mirror-for-sale-picture-8/f_73852/f_420287421729855872381/IMG_3450_master.jpeg?width=768",
+    "source_page": "https://www.1stdibs.com/it/arredi/specchi/specchi-da-parete/specchio-da-terra-da-parete-in-schiuma-floreale-con-drappeggio-in-finta-pietra-degli-anni-80/id-f_42028742/",
+    "product_base": "lapietra-filicudi-specchio",
+    "image_hash": "115792089237316169812611242380791489350111826494263516239514862767845150818303"
+  },
+  "lapietra-filicudi-specchio2": {
+    "image_url": "https://a.1stdibscdn.com/1980s-faux-stone-draped-wall-floor-mirror-for-sale-picture-5/f_73852/f_420287421729855870539/IMG_3456_master.jpeg?width=768",
+    "source_page": "https://www.1stdibs.com/it/arredi/specchi/specchi-da-parete/specchio-da-terra-da-parete-in-schiuma-floreale-con-drappeggio-in-finta-pietra-degli-anni-80/id-f_42028742/",
+    "product_base": "lapietra-filicudi-specchio",
+    "image_hash": "115792089237316169812605112305091921005500606341119085708938274553376733659135"
+  },
+  "lapietra-una-forza-interiore": {
+    "image_url": "https://www.itinerarinellarte.it/pics/Una_forza_interiore.jpg",
+    "source_page": "https://www.itinerarinellarte.it/it/mostre/ugo-la-pietra-una-forza-interiore-0674",
+    "product_base": "lapietra-una-forza-interiore",
+    "image_hash": "115792089237316195423570985008596919424486737791360442223413878564671891439615"
+  },
+  "lapietra-una-forza-interiore2": {
+    "image_url": "https://citynews-milanotoday.stgy.ovh/~media/original-hi/11755530707422/ugo-la-pietra-una-forza-interiore.jpg",
+    "source_page": "https://www.milanotoday.it/eventi/ugo-la-pietra-una-forza-interiore.html",
+    "product_base": "lapietra-una-forza-interiore",
+    "image_hash": "115792089237316195423377887624106546009676592562532504903197186358718243012607"
+  },
+  "lapietra-interrupted-furniture": {
+    "image_url": "https://cdn20.pamono.com/p/g/2/5/2583902_ym7529xfoi/sedia-utrecht-di-gerrit-thomas-rietveld-per-metz-co-paesi-bassi-1965-immagine-3.jpg",
+    "source_page": "https://www.pamono.it/sedia-utrecht-di-gerrit-thomas-rietveld-per-metz-and-co-paesi-bassi-1965?srsltid=AfmBOoq-gpr1kARttw5ND3HI6kePxKqoR_bFsj-WGMqIj5E8yJE6mL__",
+    "product_base": "lapietra-interrupted-furniture",
+    "image_hash": "115792089237316195423570985008597276241865066139558928966745057906921234759679"
+  },
+  "lapietra-interrupted-furniture2": {
+    "image_url": "https://cdn20.pamono.com/p/g/2/5/2583902_5clmz6zjuc/sedia-utrecht-di-gerrit-thomas-rietveld-per-metz-co-paesi-bassi-1965-immagine-8.jpg",
+    "source_page": "https://www.pamono.it/sedia-utrecht-di-gerrit-thomas-rietveld-per-metz-and-co-paesi-bassi-1965?srsltid=AfmBOoqtTdv4TgRHnpFIg0Clk8BxG20o7vOYLO9auujZcFMI6ErXip9L",
+    "product_base": "lapietra-interrupted-furniture",
+    "image_hash": "115792089237316195423570985008642948864930027386584503848000694259488047235071"
+  },
+  "lapietra-strange-animals": {
+    "image_url": "https://i0.wp.com/kateonconservation.com/wp-content/uploads/2021/12/10-Strange-Animals-You-Probably-Didnt-Know-Existed.png?fit=1170%2C862&ssl=1",
+    "source_page": "https://kateonconservation.com/2020/10/23/10-strange-animals/",
+    "product_base": "lapietra-strange-animals",
+    "image_hash": "115792089237316195070484371577310220099269466128258264255609659987842591358975"
+  },
+  "lapietra-strange-animals2": {
+    "image_url": "https://images.saymedia-content.com/.image/t_share/MTc5Njg4ODE3MzQ2MDk1MDY0/worlds-strangest-animals.jpg",
+    "source_page": "https://discover.hubpages.com/animals/Worlds-Strangest-Animals",
+    "product_base": "lapietra-strange-animals",
+    "image_hash": "115792089230627116652890161388413650682776764962048863500182825345905588174847"
+  },
+  "lapietra-natura-artificiale": {
+    "image_url": "https://a.1stdibscdn.com/ugo-la-pietra-artificial-nature-6-recycled-fibers-tapestry-for-sale/1121189/f_169710521575093006189/16971052_master.jpg?width=768",
+    "source_page": "https://www.1stdibs.com/it/arredi/decorazioni-da-parete/arazzi/ugo-la-pietra-natura-artificiale-6-fibre-riciclate-arazzo/id-f_16971052/",
+    "product_base": "lapietra-natura-artificiale",
+    "image_hash": "115792089237316195423570979045670239114402831520321392323635130681434314899455"
+  },
+  "lapietra-natura-artificiale2": {
+    "image_url": "https://www.ugolapietra.com/wp-content/uploads/2019/10/69a99f82-e7fb-4ceb-80ad-41faf52bc4a3.jpg",
+    "source_page": "https://www.ugolapietra.com/natura-artificiale-dal-naturale-allartificiale-e-viceversa-arazzi-di-ugo-la-pietra/",
+    "product_base": "lapietra-natura-artificiale",
+    "image_hash": "115792089233949441727111896607844366074090249800028201928582865038246196281343"
+  },
+  "lapietra-casavasetto": {
+    "image_url": "https://cdn.shopify.com/s/files/1/0653/7697/7075/files/1759226954031-RMMMNY-_0007__0060__0005__0005_SOLOPrimasullasinistracircolare.jpg?v=1759333478",
+    "source_page": "https://artemest.com/it-it/products/scultura-casavasetto",
+    "product_base": "lapietra-casavasetto",
+    "image_hash": "115792089236500012508309470864264878387514445233162176417771468299592227880959"
+  },
+  "lapietra-pagliara": {
+    "image_url": "https://cdn.shopify.com/s/files/1/0653/7697/7075/files/1759223064922-RMMMNY-_0026__0041__0030__0000_VASOPAGLIARA.jpg?v=1759333434",
+    "source_page": "https://artemest.com/it-it/products/vaso-in-pietra-pagliara",
+    "product_base": "lapietra-pagliara",
+    "image_hash": "115792089237158214230606630596967248299682473409437265260852569716841290661887"
+  },
+  "lapietra-casetta": {
+    "image_url": "https://lapietrataurina.it/wp-content/uploads/2019/02/casetta-giardino-attrezzi-N16.jpg",
+    "source_page": "https://lapietrataurina.it/rivestimenti-pietra-rustici-anticati/casetta-per-attrezzi-da-giardino-in-pietra/",
+    "product_base": "lapietra-casetta",
+    "image_hash": "115792089237316195423570985008666498811203338342280535376859065080091661828095"
+  },
+  "lapietra-casetta2": {
+    "image_url": "https://i.pinimg.com/236x/94/e9/5b/94e95b0ca601572a9fa9652a4afda381.jpg",
+    "source_page": "https://it.pinterest.com/ninoweb/casetta-mattoni-e-pietra/",
+    "product_base": "lapietra-casetta",
+    "image_hash": "115792089237316195423570985008666498811203338342280535376859065080091661828095"
+  },
+  "lapietra-cattedrale": {
+    "image_url": "https://sinteredstone.it/wp-content/uploads/2001/11/Cattedrale-Grey.jpg",
+    "source_page": "https://sinteredstone.it/it/pietra-sinterizzata-cattedrale-grey/",
+    "product_base": "lapietra-cattedrale",
+    "image_hash": "115792089237316195423570973047575995853542342180029754891837251158917389484031"
+  },
+  "lapietra-cattedrale2": {
+    "image_url": "https://egress.storeden.net/gallery/672c8d742026286d7d75feeb",
+    "source_page": "https://www.gaiainterni.com/concreto-pietra-cattedrale-pavimento-espc-by-wallk.html?srsltid=AfmBOoqQ-TFKoQxI-z9J0_WxuzNDCMmseehXgN90ockh46qhXl7-qXa3",
+    "product_base": "lapietra-cattedrale",
+    "image_hash": "115792089237316144050986499173827722470391408144100422211768851513813652996095"
+  },
+  "lapietra-il-celebrante": {
+    "image_url": "https://cdn.shopify.com/s/files/1/0653/7697/7075/files/s22z7ncrs2kzyl2sr0rtoit6a28q_91a04a41-ac69-4294-9953-e8463667efdc.jpg?v=1747397377",
+    "source_page": "https://artemest.com/it-it/products/il-celebrante-totem-1-di-ugo-la-pietra",
+    "product_base": "lapietra-il-celebrante",
+    "image_hash": "115792089237158224575624302385949643814307361057207258729954942978955440816127"
+  },
+  "lapietra-il-celebrante2": {
+    "image_url": "https://cdn.shopify.com/s/files/1/0653/7697/7075/files/5b6b2zwcq843ixgelu37lnuxh9yf.jpg?v=1760004987",
+    "source_page": "https://artemest.com/it-it/products/il-celebrante-totem-2-di-ugo-la-pietra",
+    "product_base": "lapietra-il-celebrante",
+    "image_hash": "115791222191952025205982709518854981026460141103725603077050522070995148341247"
+  },
+  "lapietra-lofferta": {
+    "image_url": "https://cdn.shopify.com/s/files/1/0653/7697/7075/files/jdomnvms29ym6oh6gv14n72n4k9e.jpg?v=1747397337",
+    "source_page": "https://artemest.com/it-it/products/l-offerta-totem-2-di-ugo-la-pietra",
+    "product_base": "lapietra-lofferta",
+    "image_hash": "115791222191952025205982709518854981026460141103725603077050522070995148341247"
+  },
+  "lapietra-lofferta2": {
+    "image_url": "https://cdn.shopify.com/s/files/1/0653/7697/7075/files/1ms9czokbgvi076afbprgh9spzr8.jpg?v=1747397337",
+    "source_page": "https://artemest.com/it-it/products/l-offerta-totem-2-di-ugo-la-pietra",
+    "product_base": "lapietra-lofferta",
+    "image_hash": "115792089237158224575624302385949643814307361057207258729954942978955440816127"
+  },
+  "lapietra-lidolo": {
+    "image_url": "https://c8.alamy.com/compit/3cmp573/statua-archeologica-in-pietra-raffigurante-l-idolo-della-dea-madre-della-fertilita-esposta-nel-museo-della-sardegna-3cmp573.jpg",
+    "source_page": "https://www.alamy.it/fotos-immagini/prehistoric-idol.html",
+    "product_base": "lapietra-lidolo",
+    "image_hash": "115791979237367039752286978817244452473813572144712136050896268153885439819775"
+  },
+  "lapietra-lidolo2": {
+    "image_url": "https://thumbs.dreamstime.com/b/pietra-incisa-con-l-idolo-della-rappresentazione-di-tara-dea-delle-isole-canarie-spagna-tenerife-fertilit%C3%A0-la-figura-femminile-204194273.jpg",
+    "source_page": "https://it.dreamstime.com/pietra-incisa-con-l-idolo-della-rappresentazione-di-tara-dea-delle-isole-canarie-spagna-tenerife-fertilit%C3%A0-la-figura-femminile-image204194273",
+    "product_base": "lapietra-lidolo",
+    "image_hash": "115792089237316195423570979045670239114402831520321392323635130681434314899455"
+  },
+  "lapietra-mani": {
+    "image_url": "https://v.greattibettour.com/photos/2021/01/mani-stone-25-21946.jpg",
+    "source_page": "https://www.greattibettour.com/it/tibetan-culture/mani-stones.html",
+    "product_base": "lapietra-mani",
+    "image_hash": "115792089237316195423570961068925796592818031596932712886229205211902593990655"
+  },
+  "lapietra-mani2": {
+    "image_url": "https://www.mirabiletibet.com/wp-content/uploads/2022/03/Tibetan-Stone-and-Rock-Carvings.jpg",
+    "source_page": "https://www.mirabiletibet.com/cultura/mistico-tibet-avete-mai-sentito-parlare-delle-pietra-mani/",
+    "product_base": "lapietra-mani",
+    "image_hash": "115792089237316195422811609528426748663501470644979734685746119976860619112447"
+  },
+  "lapietra-capas": {
+    "image_url": "https://www.etoffe.com/457628/tappeti-capas-olive.jpg",
+    "source_page": "https://www.etoffe.com/it/tapis/24437-tappeti-capas-olive.html",
+    "product_base": "lapietra-capas",
+    "image_hash": "115792089237316092628969082886138905127604453226897141501273050464442923352063"
+  },
+  "lapietra-capas2": {
+    "image_url": "https://www.etoffe.com/174677/tappeti-capas-olive.jpg",
+    "source_page": "https://www.etoffe.com/it/tapis/24437-tappeti-capas-olive.html",
+    "product_base": "lapietra-capas",
+    "image_hash": "115792089235637755164137482142093852439292108826036695125992023075237685886975"
+  },
+  "lapietra-totem-20": {
+    "image_url": "https://www.rometti.it/wp-content/uploads/2020/06/Totem_Ugo_la_Pietra_3_3924-480x270.jpg",
+    "source_page": "https://www.rometti.it/it/collection/totem-20/",
+    "product_base": "lapietra-totem-20",
+    "image_hash": "115792089237316195423570985008642948864930027391655106248913611865474860056575"
+  },
+  "lapietra-totem-202": {
+    "image_url": "https://www.rometti.it/wp-content/uploads/2020/11/Totem_Ugo-La-Pietra_Contemporary-Cluster_BN-682x1024.jpg",
+    "source_page": "https://www.rometti.it/it/people/ugo-la-pietra/",
+    "product_base": "lapietra-totem-20",
+    "image_hash": "115792089237316169812605112305091921010945207452133260333927602147917599604735"
+  },
+  "mendini-cubosfera": {
+    "image_url": "https://www.mizarart.com/wp-content/uploads/2017/08/78715_Cubosfera_Mendini-1.jpg",
+    "source_page": "https://www.mizarart.com/prodotto/alessandro-mendini-cubosfera/",
+    "product_base": "mendini-cubosfera",
+    "image_hash": "115792089227206060853634158216422005251704666535860219887524835509811351126015"
+  },
+  "mendini-thonet-chair-redesign": {
+    "image_url": "https://www.klatmagazine.com/wp-content/uploads/2017/02/Alessandro_Mendini_Redesign_Thonet_Studio_Alchimia_1979.jpg",
+    "source_page": "https://www.klatmagazine.com/design/londa-lunga-dei-radical/55306/attachment/alessandro_mendini_redesign_thonet_studio_alchimia_1979",
+    "product_base": "mendini-thonet-chair-redesign",
+    "image_hash": "115792089126416387351975774507678885747892561310366198825766306745149007462399"
+  },
+  "mendini-wassily-chair-redesign": {
+    "image_url": "https://i.pinimg.com/originals/de/8e/1c/de8e1c21bf0ad753291591193fd46789.jpg",
+    "source_page": "https://www.reddit.com/r/FuckYourEamesLounge/comments/ngza12/wassily_chair_redesign_by_alessandro_mendini_1978/?tl=it",
+    "product_base": "mendini-wassily-chair-redesign",
+    "image_hash": "115792089237316195423570962659039534234236481910118019993047669530633483321343"
+  },
+  "mendini-superleggera-chair-redesign2": {
+    "image_url": "https://hybridspacelab.net/wp-content/uploads/projects/studio-alchimia/alchimia_1982_sabrina_photo_018_singlemendini_final_tif_100824.png",
+    "source_page": "https://hybridspacelab.net/it/project/chair-sabrina-at-allesandro-mendini-and-studio-alchimia/",
+    "product_base": "mendini-superleggera-chair-redesign",
+    "image_hash": "115792089237316195423570985008687907853269984665640564039457584007913129639935"
+  },
+  "mendini-ondoso": {
+    "image_url": "https://ammann-gallery.com/wp-content/uploads/2025/08/Alessandro_Mendini_Ondoso_CoffeeTable_Alchimia_ammanngallery-scaled.jpg",
+    "source_page": "https://ammann-gallery.com/artists/alessandro-mendini/",
+    "product_base": "mendini-ondoso",
+    "image_hash": "28947998152848217160355942683486605585675942879583994227826133178016384090239"
+  },
+  "mendini-ondoso2": {
+    "image_url": "https://media.mutualart.com/Images/2022_10/16/11/115419178/alessandro-mendini-prototype--ondoso--co-VGI9Y-570.Jpeg",
+    "source_page": "https://www.mutualart.com/Artwork/Prototype--Ondoso--coffee-table/7E96A61534CCA0E452A8285A550CF5A1",
+    "product_base": "mendini-ondoso",
+    "image_hash": "115792089237316195423570982062255648005829744287953443897521783540711832944639"
+  },
+  "mendini-spaziale": {
+    "image_url": "https://www.avanguardiaantiquaria.com/upload/file/furnitures/files/tavolo-e-sedia-spaziale-short-stories-2009-alessandro-mendini-ottone-dorato-9-esemplari-2-prove-dautore-001-AM.jpg",
+    "source_page": "https://www.avanguardiaantiquaria.com/page/artisti-contemporanei/name/tavolo-e-sedia-spaziale-short-stories-alessandro-mendini",
+    "product_base": "mendini-spaziale",
+    "image_hash": "115792089237316195423570982038825592368092008001467929726582754936784162914303"
+  },
+  "mendini-spaziale2": {
+    "image_url": "https://www.quittenbaum.de/wp-content/themes/quittenbaum/imagecache/141087-750-0.jpg",
+    "source_page": "https://www.quittenbaum.de/en/auctions/design/180B/alessandro-mendinistudio-alchimia-mailand-milan-table-spaziale-1975-design-141087/",
+    "product_base": "mendini-spaziale",
+    "image_hash": "115792089237316195423180192682749437455521453028398063444623716152679040286719"
+  },
+  "mendini-vogelaar-sabrina": {
+    "image_url": "https://hybridspacelab.net/wp-content/uploads/projects/studio-alchimia/alchimia_1982_sabrina_photo_018_singlemendini_final_tif_100824.png",
+    "source_page": "https://hybridspacelab.net/it/project/chair-sabrina-at-allesandro-mendini-and-studio-alchimia/",
+    "product_base": "mendini-vogelaar-sabrina",
+    "image_hash": "115792089237316195423570985008687907853269984665640564039457584007913129639935"
+  },
+  "mendini-agrilo": {
+    "image_url": "https://www.zanotta.com/ContentsFiles/zanotta_7400_agrilo_plus_2.png",
+    "source_page": "https://www.zanotta.com/it/prodotti/edizioni/agrilo",
+    "product_base": "mendini-agrilo",
+    "image_hash": "115792089237316195423534203011112655201066221875649801221350394861805365100543"
+  },
+  "mendini-agrilo2": {
+    "image_url": "https://www.dorotheum.com/fileadmin/lot-images/40D230921/thumb/-agrilo-konsoltisch-entwurf-alessandro-mendini-c-8693123.jpg",
+    "source_page": "https://www.dorotheum.com/it/l/8693123/",
+    "product_base": "mendini-agrilo",
+    "image_hash": "115792089237316195423570984447471278628189178801797910737360385843574731702271"
+  },
+  "mendini-cetonia": {
+    "image_url": "https://www.zanotta.com/ContentsFiles/1_PNG_CETONIA.png",
+    "source_page": "https://www.zanotta.com/it/prodotti/edizioni/cetonia",
+    "product_base": "mendini-cetonia",
+    "image_hash": "115792089237316195423570985008665784828013322744681436423511886181670171181055"
+  },
+  "mendini-cetonia2": {
+    "image_url": "https://www.zanotta.com/ContentsFiles/zanotta_7860_cetonia_gallery_1_zoom.jpg",
+    "source_page": "https://www.zanotta.com/it/prodotti/edizioni/cetonia",
+    "product_base": "mendini-cetonia",
+    "image_hash": "115792089235637755164149742106432197531700623281302363887216568949306216677375"
+  },
+  "mendini-zabro": {
+    "image_url": "https://robertaebasta.com/wp-content/uploads/2024/05/alessandro-mendini_zabro_01-1-scaled.jpg",
+    "source_page": "https://robertaebasta.com/en/collezioni/zabro-2/",
+    "product_base": "mendini-zabro",
+    "image_hash": "115792082334812904584855368679120901075769142704126922088464696521374889410559"
+  },
+  "mendini-zabro2": {
+    "image_url": "https://robertaebasta.com/newimmaginicatalogo/MOBILI/Tavoli/alessandro%20mendini_zabro_02.jpg",
+    "source_page": "https://robertaebasta.com/en/collezioni/zabro-2/",
+    "product_base": "mendini-zabro",
+    "image_hash": "115792089237105554619949354513980284372001432639438240515171525404168388870143"
+  },
+  "mendini-calamobio": {
+    "image_url": "https://www.zanotta.com/ContentsFiles/1_PNG_CALAMOBIO.png",
+    "source_page": "https://www.zanotta.com/it/prodotti/edizioni/calamobio",
+    "product_base": "mendini-calamobio",
+    "image_hash": "115792089237316195423570985008648657855700851226108736991878492240033578221567"
+  },
+  "mendini-calamobio2": {
+    "image_url": "https://www.zanotta.com/ContentsFiles/zanotta_7820_calamobio_gallery_1_zoom.jpg",
+    "source_page": "https://www.zanotta.com/it/prodotti/edizioni/calamobio",
+    "product_base": "mendini-calamobio",
+    "image_hash": "115792089235637755164137482142093853130751112283914572772252527233241930792959"
+  },
+  "mendini-cuculia": {
+    "image_url": "http://designitaly.com/cdn/shop/files/Zanotta_ciotola-Cuculia9400_IP01_ba55a945-72bf-4049-a756-e9170fa916b4.jpg?v=1721826162",
+    "source_page": "https://designitaly.com/it/products/bowl-cuculia-alessandro-mendini-zanotta?srsltid=AfmBOorsIttEKaA2OAe4mAzjrvNttRwLyddQ1MQ03eHNWn5daYYnNl5V",
+    "product_base": "mendini-cuculia",
+    "image_hash": "115792089237316195422787867826193523857924392148504924771593421999524504666111"
+  },
+  "mendini-macaone": {
+    "image_url": "https://www.zanotta.com/ContentsFiles/1_PNG_MACAONE.png",
+    "source_page": "https://www.zanotta.com/it/prodotti/edizioni/macaone",
+    "product_base": "mendini-macaone",
+    "image_hash": "115792089237316195423570985008670780608721151780126311995868482051677655924735"
+  },
+  "mendini-macaone2": {
+    "image_url": "https://www.domusweb.it/content/dam/domusweb/it/notizie/2012/01/28/alessandro-mendini-macaone/big_372416_9498_Home%207020_A1_MACAONE_TABLE1.jpg.foto.rbig.jpg",
+    "source_page": "https://www.domusweb.it/it/notizie/2012/01/28/alessandro-mendini-macaone.html",
+    "product_base": "mendini-macaone",
+    "image_hash": "115792089237316195423473659580731011911057855126402979118296230394884817682431"
+  },
+  "mendini-papilio": {
+    "image_url": "https://images.auctionet.com/thumbs/large_item_1702780_8e476ed7f8.jpg",
+    "source_page": "https://auctionet.com/en/1702780-alessandro-mendini-side-table-papilio-zanotta-italy",
+    "product_base": "mendini-papilio",
+    "image_hash": "115792089230628762257881112079440610189529195371908562035105677929079090708479"
+  },
+  "mendini-dealbata-9550": {
+    "image_url": "https://www.zanotta.com/ContentsFiles/9550-9551-9552-Dealbata_gallery_02(1).jpg",
+    "source_page": "https://www.zanotta.com/it/prodotti/complementi-d-arredo/dealbata-9550",
+    "product_base": "mendini-dealbata-9550",
+    "image_hash": "115792089237316189396770956129946233956951142118276665238476309144293934628863"
+  },
+  "mendini-dealbata-9551": {
+    "image_url": "https://www.zanotta.com/ContentsFiles/9550-9551-9552-Dealbata_gallery_02(0).jpg",
+    "source_page": "https://www.zanotta.com/it/prodotti/complementi-d-arredo/dealbata-9551",
+    "product_base": "mendini-dealbata-9551",
+    "image_hash": "115792089237316189396770956129946233956951142118276665238476309144293934628863"
+  },
+  "mendini-dealbata-9552": {
+    "image_url": "https://www.zanotta.com/ContentsFiles/9552-Dealbata_gallery_01.jpg",
+    "source_page": "https://www.zanotta.com/it/prodotti/complementi-d-arredo/dealbata-9552",
+    "product_base": "mendini-dealbata-9552",
+    "image_hash": "115792089237316189397461367901959440381455593560762767675615753842665134751743"
+  },
+  "mendini-hispo": {
+    "image_url": "https://www.zanotta.com/ContentsFiles/1_PNG_HISPO.png",
+    "source_page": "https://www.zanotta.com/it/prodotti/edizioni/hispo",
+    "product_base": "mendini-hispo",
+    "image_hash": "115792089237316195423570985008667926254901678411612664678446322021812165148671"
+  },
+  "mendini-hispo2": {
+    "image_url": "https://a.1stdibscdn.com/hispo-mosaic-top-coffee-table-by-designed-alessandro-mendini-for-alchimia-for-sale/1121189/f_299499721688571590108/29949972_datamatics.jpg?width=768",
+    "source_page": "https://www.1stdibs.com/it/arredi/tavoli/tavolini-da-appoggio/tavolino-hispo-con-piano-a-mosaico-di-alessandro-mendini-per-alchimia/id-f_29949972/",
+    "product_base": "mendini-hispo",
+    "image_hash": "115792089237316195423479033873184391819582317833611177489942666125725923278847"
+  },
+  "mendini-mikiolone": {
+    "image_url": "https://www.zanotta.com/ContentsFiles/zanotta_7521_mikiolone_gallery_1_zoom(0).jpg",
+    "source_page": "https://www.zanotta.com/it/prodotti/edizioni/mikiolone",
+    "product_base": "mendini-mikiolone",
+    "image_hash": "115792089237316195423570984915130394022025551577243622885482577114371442343935"
+  },
+  "mendini-mikiolone2": {
+    "image_url": "https://www.zanotta.com/ContentsFiles/zanotta_edizioni_mikiolone.jpg",
+    "source_page": "https://www.zanotta.com/it/prodotti/edizioni/mikiolone",
+    "product_base": "mendini-mikiolone",
+    "image_hash": "115792089237316195423180192682749437455521453028398063406549636384542525751295"
+  },
+  "mendini-sirfo": {
+    "image_url": "https://www.arsvalue.com/Upl/Auctions/124/258/23191/929-0.jpg",
+    "source_page": "https://www.arsvalue.com/it/lotti/23191/mendini-alessandro-sirfo-tavolino-papera-in-fusione-di-alluminio-sabbiato-e",
+    "product_base": "mendini-sirfo",
+    "image_hash": "115792078884499202036025758320951484287710183618046291000717701772383974064127"
+  },
+  "mendini-arado": {
+    "image_url": "https://www.intondo.com/media/mounted_nas/app-models-product/2024/1244007/conversions/intondo-arado-vase-in-murano-glass-by-alessandro-mendini-for-venini-1988-13-large.webp",
+    "source_page": "https://www.intondo.com/it/products/85374/decor/vasi/vaso-arado-in-vetro-di-murano-di-alessandro-mendini-per-venini-1988",
+    "product_base": "mendini-arado",
+    "image_hash": "115792089237316189397461367901959440359677189765753853724170033728576248872959"
+  },
+  "mendini-arado2": {
+    "image_url": "https://dadanovecento.com/cdn/shop/files/IMG_3079.jpg?v=1700333730&width=3840",
+    "source_page": "https://dadanovecento.com/products/vaso-arado-di-alessandro-mendino-per-venini-del-1988?srsltid=AfmBOopHGS_r_J_KRE_vl5gHd4Hq7OjWaTZmbeeOEbjVGE7nr9C7saio",
+    "product_base": "mendini-arado",
+    "image_hash": "113989877731677032848885056035072580576464902402877377573501198587058857181183"
+  },
+  "mendini-berito": {
+    "image_url": "https://media.mutualart.com/Images//2024_10/27/08/77442240/alessandro-mendini-alessandro-mendini-CWXXM.Jpeg",
+    "source_page": "https://www.mutualart.com/Artwork/Una-bottiglia-della-serie--Berito--in-cr/5BD72B6E06CD10C375FE660F04457BD5",
+    "product_base": "mendini-berito",
+    "image_hash": "115792063355359303802631505923170524463557520148858793239826493069206765961215"
+  },
+  "mendini-acco": {
+    "image_url": "https://api.maisonbibelot.com/api/lotto/immagine/167035.jpg",
+    "source_page": "https://www.maisonbibelot.com/it/asta-0300/un-vasetto-acco-alessandro-mendini-per-venini-167035",
+    "product_base": "mendini-acco",
+    "image_hash": "115792089237316189397461367901935890413403878893722065459658080501002181541887"
+  },
+  "mendini-acco2": {
+    "image_url": "https://www.arsvalue.com/Upl/Auctions/1544/3035/362145/368-0.jpg",
+    "source_page": "https://www.arsvalue.com/it/lotti/362145/alessandro-mendini-milano-1931-vaso-modello-acco-venini-murano-2001",
+    "product_base": "mendini-acco",
+    "image_hash": "115792078449970774866451404220976924918438889287366565417192726810424936235007"
+  },
+  "mendini-onda": {
+    "image_url": "https://img.edilportale.com/product-thumbs/h_ONDA-GLAS-ITALIA-318470-rel69e92efa.jpg",
+    "source_page": "https://www.archiproducts.com/it/prodotti/glas-italia/specchio-rettangolare-da-parete-onda_318470?srsltid=AfmBOoqAUh-tZvZa7EzbDiXltuhAYaKL2eLB_cmUyRKEi5ZnydNZS6p3",
+    "product_base": "mendini-onda",
+    "image_hash": "115792089237316195423570985008666498811203338342280535376859065080091661828095"
+  },
+  "mendini-onda2": {
+    "image_url": "https://api.finarte.it/api/lotto/immagine/125696/0/800.jpg",
+    "source_page": "https://www.finarte.it/asta/design-e-arti-decorative-milano-2024-06-12/alessandro-mendini-onda-125696",
+    "product_base": "mendini-onda",
+    "image_hash": "115792089235637755164137482142093853136209587054943234630114526263813095817215"
+  },
+  "mendini-lesena": {
+    "image_url": "https://www.idainterni.com/961-medium_default/specchio-lesena-glas.jpg",
+    "source_page": "https://www.idainterni.com/specchio-lesena-glas/?srsltid=AfmBOoqDYE-h2d05H8Q_Pr4UclX13yqTZ7i7GdmRepK4GKMS62lNv4rO",
+    "product_base": "mendini-lesena",
+    "image_hash": "115792089237316195423570985008679344236443326131225950173505258830797729693695"
+  },
+  "mendini-lesena2": {
+    "image_url": "https://img.edilportale.com/product-thumbs/b_LESENA-GLAS-ITALIA-316642-reld53eb5fc.jpg",
+    "source_page": "https://www.archiproducts.com/it/prodotti/glas-italia/specchio-da-parete-lesena_316642?srsltid=AfmBOooTnjMhF6eW27tzcSDPPV1lXnRkCloDVpQiRJyjlj9VbvQHMwqr",
+    "product_base": "mendini-lesena",
+    "image_hash": "115792089237316195423560245578881279877684858063842491683545048832743407878143"
+  },
+  "mendini-settecento": {
+    "image_url": "https://cdn.shopify.com/s/files/1/0653/7697/7075/files/82120_GLASMB-00620190809-7-lqdtv9.jpg?v=1747395681",
+    "source_page": "https://artemest.com/de-de/products/ockerfarbener-und-brauner-settecento-spiegel-von-alessandro-mendini",
+    "product_base": "mendini-settecento",
+    "image_hash": "115792089236921261674983697389539805894152173243249287844909070134250806706175"
+  },
+  "mendini-settecento-tavolino": {
+    "image_url": "https://a.1stdibscdn.com/postmodern-vintage-side-table-sirfo-alessandro-mendini-zanotta-edizione-1986-for-sale/f_10698/f_299823521660556463083/f_29982352_1660556463271_bg_processed.jpg?width=768",
+    "source_page": "https://www.1stdibs.com/it/arredi/tavoli/tavolini-laterali/tavolino-postmoderno-vintage-alessandro-mendini-zanotta-edizione-1986/id-f_29982352/",
+    "product_base": "mendini-settecento-tavolino",
+    "image_hash": "115792089237316195423491294585800157243871478775750435922364780556422169493503"
+  },
+  "mendini-settecento-tavolino2": {
+    "image_url": "https://a.1stdibscdn.com/alessandro-mendini-papera-table-brazil-2012-for-sale-picture-9/f_87192/f_346348321686071560190/10_1__master.jpg?width=768",
+    "source_page": "https://www.1stdibs.com/it/arredi/tavoli/tavolini-laterali/alessandro-mendini-tavolo-papera-collezione-a-lot-of-brasil-brasile-2012/id-f_34634832/",
+    "product_base": "mendini-settecento-tavolino",
+    "image_hash": "115792089237316195423180192682749437455521453028398063406549636384542525751295"
+  },
+  "mendini-specchio-di-proust": {
+    "image_url": "https://www.miliashop.com/105552/specchio-di-proust-glas-italia.jpg",
+    "source_page": "https://www.miliashop.com/it/specchi/3541-specchio-di-proust-glas-italia.html",
+    "product_base": "mendini-specchio-di-proust",
+    "image_hash": "113996751975931091740974477149878591263634909993299597253101098901114479704071"
+  },
+  "mendini-brillante": {
+    "image_url": "https://classicdesign.it/media/042/brillante-glas-1.m.webp",
+    "source_page": "https://classicdesign.it/en/glas-italia/brillante-mirrors.html",
+    "product_base": "mendini-brillante",
+    "image_hash": "115792089237316195423570982062255648005829744287953443897521783540711832944639"
+  },
+  "mendini-brillante2": {
+    "image_url": "https://cdn.mohd.it/cache/image/width=800,format=webp/media/catalog/product/b/r/brillante-1.jpg",
+    "source_page": "https://shop.mohd.it/it/brillante-1-mirror-50315.html",
+    "product_base": "mendini-brillante",
+    "image_hash": "115792089237316195423570984447449870065247582051159883762767006924688397959167"
+  },
+  "mendini-cosmesis": {
+    "image_url": "https://www.arapacis.it/sites/default/files/storage/images/musei/museo_dell_ara_pacis/mostre_ed_eventi/mostre/alessandro_mendini/galleria_mendini/alessandro_mendini_cosmesis_orologio_swatch_1989/157639-1-ita-IT/alessandro_mendini_cosmesis_orologio_swatch_1989.jpg",
+    "source_page": "https://www.arapacis.it/es/immagini/alessandro-mendini-cosmesis-orologio-swatch-1989",
+    "product_base": "mendini-cosmesis",
+    "image_hash": "115792089237316195423570985008677916966972216381405883996911608508263111327743"
+  },
+  "mendini-cosmesis2": {
+    "image_url": "https://i.ebayimg.com/images/g/mx0AAOSw3IZnVDz4/s-l400.jpg",
+    "source_page": "https://www.ebay.it/itm/405405067197",
+    "product_base": "mendini-cosmesis",
+    "image_hash": "115792089237316195423570984447449870076136617752065095386291653514610478153727"
+  },
+  "mendini-metroscape": {
+    "image_url": "https://i.etsystatic.com/37776737/r/il/874cd7/5450747293/il_fullxfull.5450747293_5vcx.jpg",
+    "source_page": "https://www.etsy.com/it/listing/1574771998/swatch-vintage-del-1990-metroscape-di",
+    "product_base": "mendini-metroscape",
+    "image_hash": "115792089237158224575624302292400693599884103432672103119305892133479703904255"
+  },
+  "mendini-sidone": {
+    "image_url": "https://www.venini.com/media/catalog/product/f/o/fo370671000o0beu_2.jpg?optimize=high&fit=bounds&height=606&width=606&canvas=606:606",
+    "source_page": "https://www.venini.com/it_it/sidone-fo370672000o0beu?srsltid=AfmBOoqXnXgANs5Nn3Td5Svo_9NFAWt9FKemF1OzS1MxR-F4b0M0pixM",
+    "product_base": "mendini-sidone",
+    "image_hash": "115792089237316195423570985008679344236443326136296552574418176436784542515199"
+  },
+  "mendini-sidone2": {
+    "image_url": "https://www.venini.com/media/catalog/product/f/o/fo370672000o0ig_2.jpg?optimize=high&fit=bounds&height=606&width=606&canvas=606:606",
+    "source_page": "https://www.venini.com/it_it/sidone-fo370672000o0boj?srsltid=AfmBOoqkcBmI8XJ-Si4zpB_ZQqRZVafAZhpjeLxLg4K7g9DYce8CBM8R",
+    "product_base": "mendini-sidone",
+    "image_hash": "115792089237316195423570985008679344236443326136296552574418176436784542515199"
+  },
+  "mendini-lots-of-dots": {
+    "image_url": "https://i.etsystatic.com/9725237/r/il/a2b688/7326002364/il_fullxfull.7326002364_na2e.jpg",
+    "source_page": "https://www.etsy.com/listing/204935472/1990s-1991-swatch-watch-lots-of-dots",
+    "product_base": "mendini-lots-of-dots",
+    "image_hash": "115792089237313312582898700686714394464414574528419614897077421021237537144831"
   }
 }

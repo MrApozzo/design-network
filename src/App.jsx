@@ -446,7 +446,7 @@ const TESTI = {
     paragrafo1: "Questa mappa rappresenta un secolo di design occidentale — i suoi protagonisti, le loro opere e i legami invisibili che li uniscono. Ogni nodo è un designer o un oggetto; ogni connessione, una relazione di collaborazione, influenza o formazione.",
     paragrafo2: "La posizione orizzontale segue una cronologia rigorosa, dal 1880 al 1980. Esplorando la mappa si scoprono le grandi concentrazioni del movimento moderno, le filiazioni tra maestri e allievi, e le convergenze tra discipline e nazionalità.",
     cerca: "Cerca...",
-    benvenutoDomanda: "Qual è il tuo designer preferito?",
+    benvenutoDomanda: "Qual è il designer che ha disegnato il mondo in cui vorresti vivere?",
     benvenutoPlaceholder: "Scrivi un nome...",
     benvenutoConferma: "Entra",
     designerToggle: "Designer",
@@ -496,7 +496,7 @@ const TESTI = {
     paragrafo1: "This map represents a century of Western design — its protagonists, their works, and the invisible ties that bind them. Each node is a designer or an object; each connection, a relationship of collaboration, influence, or formation.",
     paragrafo2: "The horizontal position follows a rigorous chronology, from 1880 to 1980. Exploring the map reveals the great concentrations of the modern movement, the lineages between masters and students, and the convergences across disciplines and nationalities.",
     cerca: "Search...",
-    benvenutoDomanda: "Who's your favorite designer?",
+    benvenutoDomanda: "Which designer shaped the world you'd want to live in?",
     benvenutoPlaceholder: "Type a name...",
     benvenutoConferma: "Enter",
     designerToggle: "Designer",
@@ -616,7 +616,15 @@ function App() {
   const [animaTransizioneFn, setAnimaTransizioneFn] = useState(null)
   const [ridisegnaFn, setRidisegnaFn] = useState(null)
   const [primaVisita] = useState(() => {
-    try { return !localStorage.getItem("dn-camera") } catch { return true }
+    // Ricompare anche se non è la primissima visita in assoluto, ma sono
+    // passati alcuni giorni dall'ultima (soglia media 3.5 giorni).
+    const SOGLIA_RIVISITA_MS = 3.5 * 24 * 60 * 60 * 1000
+    try {
+      const ultimaVisita = parseInt(localStorage.getItem("dn-ultima-visita"), 10)
+      const scaduta = !ultimaVisita || Date.now() - ultimaVisita > SOGLIA_RIVISITA_MS
+      localStorage.setItem("dn-ultima-visita", String(Date.now()))
+      return !localStorage.getItem("dn-camera") || scaduta
+    } catch { return true }
   })
   const [schermataIniziale, setSchermataIniziale] = useState(primaVisita)
   const [immaginiPronte, setImmaginiPronte] = useState(false)

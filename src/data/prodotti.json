@@ -5913,7 +5913,10 @@
     "azienda": "Rometti",
     "azienda_attuale": "Rometti",
     "categoria": "totem in ceramica",
-    "foto": "lapietra-lofferta.jpg"
+    "foto": "lapietra-lofferta.jpg",
+    "foto_dettaglio": [
+      "lapietra-lofferta2.jpg"
+    ]
   },
   {
     "nome": "L'Idolo",
@@ -6033,7 +6036,10 @@
     "azienda": "Zanotta",
     "azienda_attuale": "Zanotta",
     "categoria": "consolle",
-    "foto": "mendini-agrilo.jpg"
+    "foto": "mendini-agrilo.jpg",
+    "foto_dettaglio": [
+      "mendini-agrilo2.jpg"
+    ]
   },
   {
     "nome": "Cetonia",
@@ -6042,7 +6048,10 @@
     "azienda": "Zanotta",
     "azienda_attuale": "Zanotta",
     "categoria": "cassettiera",
-    "foto": "mendini-cetonia.jpg"
+    "foto": "mendini-cetonia.jpg",
+    "foto_dettaglio": [
+      "mendini-cetonia2.jpg"
+    ]
   },
   {
     "nome": "Zabro",
@@ -6051,7 +6060,10 @@
     "azienda": "Zanotta",
     "azienda_attuale": "Zanotta",
     "categoria": "tavolo trasformabile in sedia",
-    "foto": "mendini-zabro.jpg"
+    "foto": "mendini-zabro.jpg",
+    "foto_dettaglio": [
+      "mendini-zabro2.jpg"
+    ]
   },
   {
     "nome": "Calamobio",
@@ -6060,7 +6072,10 @@
     "azienda": "Zanotta",
     "azienda_attuale": "Zanotta",
     "categoria": "cassettiera",
-    "foto": "mendini-calamobio.jpg"
+    "foto": "mendini-calamobio.jpg",
+    "foto_dettaglio": [
+      "mendini-calamobio2.jpg"
+    ]
   },
   {
     "nome": "Cuculia",
@@ -6078,7 +6093,10 @@
     "azienda": "Zanotta",
     "azienda_attuale": "Zanotta",
     "categoria": "tavolo",
-    "foto": "mendini-macaone.jpg"
+    "foto": "mendini-macaone.jpg",
+    "foto_dettaglio": [
+      "mendini-macaone2.jpg"
+    ]
   },
   {
     "nome": "Papilio",

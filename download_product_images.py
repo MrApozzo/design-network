@@ -141,9 +141,10 @@ PENALIZED_DOMAINS = [
 # stopword per lo slug quando 'foto' e' assente
 IMG_EXTS = {".jpg", ".jpeg", ".png", ".webp", ".gif", ".bmp", ".tif", ".tiff"}
 
-SCRIPT_VERSION = "2026-07-20-download-product-images-final-candidates"
+SCRIPT_VERSION = "2026-07-20-designer-in-queries-3try-bypass"
 DEBUG_CANDIDATES = False
 CANDIDATES_PER_PRODUCT = 2  # default: salva pochi candidati filtrati in review_images, non nel sito
+MAX_QUERY_ATTEMPTS_PER_PRODUCT = 3  # dopo 3 query senza esito utile, passa al prodotto successivo
 RETRY_SCARTI = False  # se False, un prodotto con file in _pipeline/scarti viene saltato del tutto
 
 # Qualita minima richiesta alla sorgente scaricata. Se la sorgente e' piu' piccola,
@@ -814,6 +815,19 @@ def designer_surnames(product):
             out.append(parts[-1])
     return out
 
+def designer_full_names(product):
+    """Ritorna i nomi completi dei designer, puliti, nell'ordine del JSON."""
+    d = product.get("designer", "")
+    names = d if isinstance(d, list) else [d]
+    out = []
+    seen = set()
+    for name in names:
+        nm = " ".join(str(name or "").split()).strip()
+        if nm and nm.lower() not in seen:
+            seen.add(nm.lower())
+            out.append(nm)
+    return out
+
 
 def product_aliases(product):
     """Frasi prodotto piu' precise del solo campo nome, soprattutto per nomi generici."""
@@ -877,63 +891,85 @@ def product_aliases(product):
 def build_queries(product):
     """
     Query ordinate per affidabilita': prima site: ufficiale + alias preciso,
-    poi query Google Images generali. L'obiettivo e' trovare immagini gia' pronte
-    da catalogo, non immagini da scontornare.
+    sempre includendo il nome completo del designer quando disponibile.
+    Questo evita casi tipo "Ugo La Pietra" -> immagini di pietre.
     """
     nome = product.get("nome", "").strip()
     azienda = product.get("azienda", "").strip()
     azienda_attuale = (product.get("azienda_attuale") or "").strip()
     anno = str(product.get("anno", "")).strip()
     dp = principal_designer(product.get("designer", "")).strip()
+    full_designers = designer_full_names(product)
     categoria = (product.get("categoria") or "").strip()
     aliases = product_aliases(product)
     domain = company_domain_for(product)
 
     queries = []
 
-    # 0) Query "come la cercheresti su Google": spesso Google Images trova la
-    # foto giusta in alto con una query molto semplice, es. "branzi mies".
-    # Queste query servono a far entrare nel pool quei risultati, poi il ranking
-    # privilegia fonte ufficiale + nome prodotto esatto.
+    # Designer completo prioritario; cognome solo come fallback finale.
+    primary_full = full_designers[0] if full_designers else dp
+    secondary_designers = full_designers[1:] if len(full_designers) > 1 else []
     surnames = designer_surnames(product)
-    if nome and surnames:
-        queries.append(f"{surnames[0]} {nome}")
-        queries.append(f'"{nome}" "{surnames[0]}"')
+
+    # 0) Query "umane" ma gia' robuste.
+    if nome and primary_full:
+        queries.append(f'"{nome}" "{primary_full}"')
+        if azienda:
+            queries.append(f'"{nome}" "{primary_full}" "{azienda}"')
+        if azienda_attuale and azienda_attuale.lower() != azienda.lower():
+            queries.append(f'"{nome}" "{primary_full}" "{azienda_attuale}"')
+        if categoria:
+            queries.append(f'"{nome}" "{primary_full}" "{categoria}"')
     if nome and azienda:
-        queries.append(f"{nome} {azienda}")
+        queries.append(f'"{nome}" "{azienda}"')
+    # Per co-autori, una query anche col secondo designer può aiutare.
+    if nome and secondary_designers:
+        for d2 in secondary_designers[:1]:
+            queries.append(f'"{nome}" "{d2}"')
 
     # 1) Prima fonte ufficiale. Se esiste una foto perfetta, spesso e' qui.
     if domain:
-        for alias in aliases[:3]:
-            if dp:
-                queries.append(f'site:{domain} "{alias}" "{dp}"')
+        for alias in aliases[:4]:
+            if primary_full:
+                queries.append(f'site:{domain} "{alias}" "{primary_full}"')
+            if azienda:
+                queries.append(f'site:{domain} "{alias}" "{azienda}"')
             queries.append(f'site:{domain} "{alias}"')
+        if nome and primary_full:
+            queries.append(f'site:{domain} "{nome}" "{primary_full}"')
 
     # 2) Query precise con alias prodotto + designer/produttore.
-    for alias in aliases[:4]:
-        if dp and azienda:
-            queries.append(f'"{alias}" "{dp}" "{azienda}"')
-        if dp and azienda_attuale and azienda_attuale.lower() != azienda.lower():
-            queries.append(f'"{alias}" "{dp}" "{azienda_attuale}"')
+    for alias in aliases[:5]:
+        if primary_full and azienda:
+            queries.append(f'"{alias}" "{primary_full}" "{azienda}"')
+        if primary_full and azienda_attuale and azienda_attuale.lower() != azienda.lower():
+            queries.append(f'"{alias}" "{primary_full}" "{azienda_attuale}"')
+        if primary_full:
+            queries.append(f'"{alias}" "{primary_full}"')
         if azienda:
             queries.append(f'"{alias}" "{azienda}"')
         if azienda_attuale and azienda_attuale.lower() != azienda.lower():
             queries.append(f'"{alias}" "{azienda_attuale}"')
 
-    # 3) Se necessario, query descrittive da catalogo. Non usiamo mai parole tipo
-    # cutout/remove background: attirano asset scontornati male.
-    for alias in aliases[:2]:
-        if categoria:
-            queries.append(f'"{alias}" {categoria} product photo white background')
+    # 3) Query descrittive da catalogo, sempre col designer se possibile.
+    for alias in aliases[:3]:
+        if primary_full and categoria:
+            queries.append(f'"{alias}" "{primary_full}" {categoria} official product image')
+            queries.append(f'"{alias}" "{primary_full}" {categoria} white background')
+        elif categoria:
+            queries.append(f'"{alias}" {categoria} official product image')
+        if primary_full:
+            queries.append(f'"{alias}" "{primary_full}" official product image')
         queries.append(f'"{alias}" official product image')
 
-    # 4) Vecchi fallback, ma solo dopo le query affidabili.
-    if nome and dp and azienda:
-        queries.append(f'"{nome}" "{dp}" "{azienda}"')
+    # 4) Fallback: anno e cognome designer solo in coda, non all'inizio.
+    if nome and primary_full and anno:
+        queries.append(f'"{nome}" "{primary_full}" "{anno}"')
     if nome and azienda and anno:
         queries.append(f'"{nome}" "{azienda}" "{anno}"')
-    if nome and azienda:
-        queries.append(f'{nome} {azienda}')
+    if nome and surnames:
+        queries.append(f'"{nome}" "{surnames[0]}"')
+        queries.append(f'{surnames[0]} {nome}')
 
     seen, out = set(), []
     for q in queries:
@@ -942,7 +978,7 @@ def build_queries(product):
         if q and key not in seen:
             seen.add(key)
             out.append(q)
-    return out[:10]
+    return out[:14]
 
 def domain_of(url):
     try:
@@ -2201,9 +2237,11 @@ def process_product(product, api_key, paths, rejected, review_names):
     candidates = []
     used_query = ""
     seen_urls = set()
-    # Cerchiamo su piu' query precise, non solo sulla prima: spesso la foto perfetta
-    # e' al primo risultato di una query ufficiale leggermente diversa.
-    for q_index, q in enumerate(queries):
+    attempted_queries = 0
+    # Cerchiamo su piu' query precise, ma non all'infinito: se dopo poche query
+    # non esce nulla di utile, bypassiamo il prodotto e passiamo oltre.
+    for q_index, q in enumerate(queries[:MAX_QUERY_ATTEMPTS_PER_PRODUCT]):
+        attempted_queries += 1
         try:
             results = searchapi_google_images(q, api_key)
         except Exception as exc:  # noqa: BLE001
@@ -2257,15 +2295,17 @@ def process_product(product, api_key, paths, rejected, review_names):
     if not candidates:
         row["status"] = "not_found"
         row["confidence"] = "da_verificare"
-        row["motivo"] = ("nessun candidato nuovo dalla ricerca"
-                         if bad_urls else "nessun candidato dalla ricerca")
+        if bad_urls:
+            row["motivo"] = f"nessun candidato nuovo dalla ricerca dopo {attempted_queries} tentativi (gli altri erano gia' in scarti o bocciati)"
+        else:
+            row["motivo"] = f"nessun candidato valido dopo {attempted_queries} tentativi: prodotto bypassato"
         return row, "review"
 
     if CANDIDATES_PER_PRODUCT > 1:
         saved_rows = save_flat_review_set(product, candidates, paths, base_no_ext, filename_finale)
         if not saved_rows:
             row["status"] = "download_failed"
-            row["motivo"] = "nessun candidato scaricabile dopo filtri scarti/download; controlla _pipeline/log_errors.txt"
+            row["motivo"] = f"nessun candidato scaricabile dopo {attempted_queries} tentativi e filtri scarti/download; controlla _pipeline/log_errors.txt"
             return row, "review"
         first = saved_rows[0]
         row["image_downloaded"] = True
