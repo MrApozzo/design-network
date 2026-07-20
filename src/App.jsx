@@ -464,7 +464,7 @@ const TESTI = {
     riconoscimenti: "Riconoscimenti",
     footerRiga1: "Un secolo di design occidentale, 1880–1980",
     footerRiga2: "Tutti i diritti riservati",
-    voci: { manifesto: "Manifesto", contatti: "Contatti", credits: "Credits", contribuisci: "Contribuisci" },
+    voci: { domanda: "Domanda", manifesto: "Manifesto", contatti: "Contatti", credits: "Credits", contribuisci: "Contribuisci" },
     email: "Email",
     contribCategorie: ["Correzione", "Aggiunta", "Miglioramento o suggerimento"],
     contribDomanda: "Quale modifica vuoi presentare?",
@@ -514,7 +514,7 @@ const TESTI = {
     riconoscimenti: "Awards",
     footerRiga1: "A century of Western design, 1880–1980",
     footerRiga2: "All rights reserved",
-    voci: { manifesto: "Manifesto", contatti: "Contact", credits: "Credits", contribuisci: "Contribute" },
+    voci: { domanda: "Question", manifesto: "Manifesto", contatti: "Contact", credits: "Credits", contribuisci: "Contribute" },
     email: "Email",
     contribCategorie: ["Correction", "Addition", "Improvement or suggestion"],
     contribDomanda: "What change would you like to submit?",
@@ -678,7 +678,7 @@ function App() {
   // e il campo/bottone compaiono — il cursore lampeggiante del campo di testo
   // (che riceve il focus) prende il posto di quello della frase.
   useEffect(() => {
-    if (!(primaVisita && schermataIniziale)) return
+    if (!schermataIniziale) return
     const frase = t.benvenutoDomanda
     let cancellato = false
     const timeouts = []
@@ -707,7 +707,7 @@ function App() {
       cancellato = true
       timeouts.forEach(clearTimeout)
     }
-  }, [primaVisita, schermataIniziale, t])
+  }, [schermataIniziale, t])
 
   useEffect(() => {
     if (campoRivelato && inputSchermataInizialeRef.current) inputSchermataInizialeRef.current.focus()
@@ -723,11 +723,11 @@ function App() {
   const [chromeVisibile, setChromeVisibile] = useState(false)
   const attesaPosizionamentoRef = useRef(false)
   useEffect(() => {
-    if (primaVisita && schermataIniziale) return
+    if (schermataIniziale) return
     if (attesaPosizionamentoRef.current) return
     const id = setTimeout(() => setChromeVisibile(true), 100)
     return () => clearTimeout(id)
-  }, [primaVisita, schermataIniziale])
+  }, [schermataIniziale])
   const stileIngressoChrome = {
     opacity: chromeVisibile ? 1 : 0,
     transform: chromeVisibile ? "translateY(0)" : "translateY(-10px)",
@@ -1604,8 +1604,9 @@ function App() {
           let edgeColor = STILE.edge_prodotto_colore
           let edgeWidth = STILE.edge_prodotto_size
           let edgeAlpha = 1
-          if (prodottoHoverAttivo) {
-            if (source === prodottoHoverAttivo || target === prodottoHoverAttivo) {
+          const prodottoInEvidenza = prodottoCliccato || prodottoHoverAttivo
+          if (prodottoInEvidenza) {
+            if (source === prodottoInEvidenza || target === prodottoInEvidenza) {
               edgeColor = "#000000"
               edgeWidth = 0.5
             } else {
@@ -2172,7 +2173,10 @@ function App() {
       if (apriPannello) {
         nodoEvidenziatoRef.current = nodeId
         setNodoEvidenziato(nodeId)
+        prodottoHoverAttivo = null
+        nodoHoverAttivo = null
         if (tipo === "designer") {
+          prodottoCliccato = null
           designerCliccato = nodeId
           setDesignerAttivo(nodeId)
           setPannelloDesigner({ ...attr.dati, _tipo: "designer" }); setBioEspansa(false); setAziendaAttiva(null)
@@ -2180,7 +2184,10 @@ function App() {
           graph.forEachEdge((edge, eAttr) => { if (eAttr.tipo === "relazione") graph.setEdgeAttribute(edge, "attivo", false) })
           graph.forEachEdge(nodeId, (edge, eAttr) => { if (eAttr.tipo === "relazione") graph.setEdgeAttribute(edge, "attivo", true) })
         } else {
+          designerCliccato = null
+          graph.forEachEdge((edge, eAttr) => { if (eAttr.tipo === "relazione") graph.setEdgeAttribute(edge, "attivo", false) })
           prodottoCliccato = nodeId
+          ultimoProdottoHover = nodeId
           setPannelloDesigner({ ...attr.dati, _tipo: "prodotto" })
           setGalleriaIndice(0); setGalleriaFullscreen(false)
           requestAnimationFrame(() => setPannelloVisibile(true))
@@ -2317,6 +2324,8 @@ function App() {
         })
 
         if (trovato) {
+          prodottoHoverAttivo = null
+          nodoHoverAttivo = null
           if (trovato.attr.tipo === "designer") {
             prodottoCliccato = null
             if (designerCliccato === trovato.node) {
@@ -2392,6 +2401,8 @@ function App() {
               annoBloccato = annoBloccato === anno ? null : anno
             }
             const pannelloEraApertoPrima = designerCliccato !== null || prodottoCliccato !== null
+            designerCliccato = null
+            graph.forEachEdge((edge, eAttr) => { if (eAttr.tipo === "relazione") graph.setEdgeAttribute(edge, "attivo", false) })
             prodottoCliccato = trovato.node
             ultimoProdottoHover = trovato.node
             nodoEvidenziatoRef.current = null; setNodoEvidenziato(null)
@@ -2587,6 +2598,12 @@ function App() {
     setMenuVista("lista")
   }
 
+  function riapriSchermataIniziale() {
+    chiudiMenu()
+    setRispostaDesigner("")
+    setSchermataIniziale(true)
+  }
+
   function inviaContribuzione() {
     setContribStato("invio")
     fetch(FORMSPREE_ENDPOINT, {
@@ -2656,6 +2673,12 @@ function App() {
       <>
         <div style={{ fontFamily: "Roboto, sans-serif", fontSize: 10, fontWeight: 600, color: "#aaa", letterSpacing: 1.5, textTransform: "uppercase", marginBottom: 10 }}>
           {t.menu}
+        </div>
+        <div onClick={riapriSchermataIniziale}
+          style={{ borderBottom: "1px solid #eee", padding: "16px 0", cursor: "pointer" }}>
+          <div style={{ fontFamily: "'Roboto Mono', monospace", fontWeight: 400, fontSize: 13, color: "#777" }}>
+            {t.voci.domanda}
+          </div>
         </div>
         {["manifesto", "contatti", "credits", "contribuisci"].map((id) => (
           <div key={id} onClick={() => setMenuVista(id)}
@@ -2810,7 +2833,7 @@ function App() {
         .dn-scroll-hidden { scrollbar-width: none; }
         .dn-scroll-hidden::-webkit-scrollbar { display: none; }
       `}</style>
-      {primaVisita && schermataIniziale && (
+      {schermataIniziale && (
         <div style={{
           position: "fixed", inset: 0, zIndex: 1000,
           background: STILE.sfondo_colore, fontFamily: "Roboto, sans-serif",
