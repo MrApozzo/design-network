@@ -4,6 +4,9 @@ import Sigma from "sigma"
 import designers from "./data/designers.json"
 import prodotti from "./data/prodotti.json"
 import relazioni from "./data/relazioni.json"
+import immaginiEsistentiArr from "./data/immagini_esistenti.json"
+
+const IMMAGINI_ESISTENTI = new Set(immaginiEsistentiArr)
 
 const STILE = {
   // --- Colori ---
@@ -184,7 +187,7 @@ function calcolaAngoliPerProdotto(settori) {
   return angoli
 }
 
-const ANNO_MIN = 1880
+const ANNO_MIN = 1830
 const ANNO_MAX = 2020
 // Base "nominale" della griglia X: viene allargata proporzionalmente a runtime
 // (vedi fattoreScalaX più sotto) quando le orbite dei prodotti fanno crescere
@@ -197,7 +200,8 @@ const MARGINE_X = 20
 const MARGINE_Y = 2
 const Y_MIN = -20
 const Y_MAX = 20
-const MAX_CAMERA_RATIO = window.innerWidth < 768 ? 0.6 : 1.2
+const MAX_CAMERA_RATIO_BASE = window.innerWidth < 768 ? 0.6 : 1.2
+let MAX_CAMERA_RATIO = MAX_CAMERA_RATIO_BASE
 // minCameraRatio è una FRAZIONE del bounding box (ratio=1 → tutto il contenuto
 // visibile). Se il contenuto cresce in altezza (più designer, orbite più ampie),
 // la stessa frazione fissa mostrerebbe uno spicchio di grafo via via più grande,
@@ -597,11 +601,17 @@ const TESTI = {
   },
 }
 
-function preloadImages(paths, concorrenza = 6, onDone) {
+// onSoglia scatta dopo le prime `sogliaPronte` immagini (le più vicine al centro
+// iniziale, essendo `paths` già ordinato per distanza): serve a sbloccare la
+// schermata iniziale senza aspettare tutto il catalogo, che con centinaia di
+// foto renderebbe l'avvio molto più lento del necessario. Il resto continua a
+// caricare in background verso onDone.
+function preloadImages(paths, concorrenza = 6, onDone, sogliaPronte, onSoglia) {
   const cache = {}
   const coda = [...paths]
   const totale = paths.length
   let completate = 0
+  let sogliaRaggiunta = false
   paths.forEach((src) => { cache[src] = new Image() })
   let attive = 0
   function avviaProssima() {
@@ -611,6 +621,10 @@ function preloadImages(paths, concorrenza = 6, onDone) {
     attive++
     const fine = () => {
       attive--; completate++
+      if (!sogliaRaggiunta && sogliaPronte && completate >= sogliaPronte) {
+        sogliaRaggiunta = true
+        if (onSoglia) onSoglia()
+      }
       if (completate >= totale && onDone) onDone()
       avviaProssima()
     }
@@ -619,7 +633,10 @@ function preloadImages(paths, concorrenza = 6, onDone) {
     img.src = src
     avviaProssima()
   }
-  if (totale === 0 && onDone) onDone()
+  if (totale === 0) {
+    if (onSoglia) onSoglia()
+    if (onDone) onDone()
+  }
   for (let i = 0; i < concorrenza; i++) avviaProssima()
   return cache
 }
@@ -833,6 +850,7 @@ function App() {
     X_MIN = X_MIN_BASE
     X_MAX = X_MAX_BASE
     MIN_CAMERA_RATIO = MIN_CAMERA_RATIO_BASE
+    MAX_CAMERA_RATIO = MAX_CAMERA_RATIO_BASE
 
     const isMobile = window.innerWidth < 768
     const container = document.createElement("div")
@@ -1356,7 +1374,18 @@ function App() {
         imgColori[src] = `rgb(${Math.round(r / conteggio)},${Math.round(g / conteggio)},${Math.round(b / conteggio)})`
       } catch {}
     }
-    imgCache = preloadImages(imgPaths, 6, () => setImmaginiPronte(true))
+    // Anche il lotto prioritario può essere lento su reti scadenti: un timeout
+    // di sicurezza mostra comunque la mappa entro un tempo massimo, coi
+    // pallini non ancora caricati che restano sul colore di base finché la
+    // loro immagine arriva (il disegno li gestisce già così).
+    let immaginiGiaPronte = false
+    const segnalaPronte = () => {
+      if (immaginiGiaPronte) return
+      immaginiGiaPronte = true
+      setImmaginiPronte(true)
+    }
+    const timeoutPronte = setTimeout(segnalaPronte, 1200)
+    imgCache = preloadImages(imgPaths, 6, undefined, 12, segnalaPronte)
     Object.entries(imgCache).forEach(([src, img]) => {
       if (img.complete && img.naturalWidth > 0) campionaColore(src, img)
       else img.addEventListener("load", () => campionaColore(src, img), { once: true })
@@ -1448,7 +1477,8 @@ function App() {
       if (attr.tipo === "prodotto") {
         const tDelayed = Math.max(0, (t - 0.2) / 0.8)
         const scalaTop = attr.dati?.top ? STILE.prodotto_scala_top : 1
-        let base = lerp(STILE.zoom_prodotto_min, STILE.zoom_prodotto_max, tDelayed * tDelayed) * vs * scalaTop
+        const scalaFoto = IMMAGINI_ESISTENTI.has(attr.dati?.foto) ? 1 : 0.5
+        let base = lerp(STILE.zoom_prodotto_min, STILE.zoom_prodotto_max, tDelayed * tDelayed) * vs * scalaTop * scalaFoto
         if (isMobile && t > STILE.boost_soglia) {
           const tBoost = (t - STILE.boost_soglia) / (1 - STILE.boost_soglia)
           base *= lerp(1, STILE.boost_mobile_max, tBoost)
@@ -1907,9 +1937,9 @@ function App() {
       ctx.restore()
 
       {
-        const a0 = renderer.graphToViewport({ x: annoToX(1880), y: 0 })
-        const a1 = renderer.graphToViewport({ x: annoToX(2020), y: 0 })
-        const pxPerAnno = Math.abs(a1.x - a0.x) / (2020 - 1880)
+        const a0 = renderer.graphToViewport({ x: annoToX(ANNO_MIN), y: 0 })
+        const a1 = renderer.graphToViewport({ x: annoToX(ANNO_MAX), y: 0 })
+        const pxPerAnno = Math.abs(a1.x - a0.x) / (ANNO_MAX - ANNO_MIN)
         const passoMinPx = isMobile ? 40 : 56
         const passiCandidati = [1, 2, 5, 10, 20, 50]
         let passoAnno = 50
@@ -1924,8 +1954,8 @@ function App() {
         ctx.font = isMobile ? "500 11px Roboto" : "500 12px Roboto"
         ctx.fillStyle = isMobile ? "#a8a8a8" : "#6a6a6a"
         ctx.textAlign = "center"
-        const annoInizio = Math.ceil(1880 / passoAnno) * passoAnno
-        for (let anno = annoInizio; anno <= 2020; anno += passoAnno) {
+        const annoInizio = Math.ceil(ANNO_MIN / passoAnno) * passoAnno
+        for (let anno = annoInizio; anno <= ANNO_MAX; anno += passoAnno) {
           const screen = renderer.graphToViewport({ x: annoToX(anno), y: 0 })
           if (screen.x < padSinistra - 20 || screen.x > w - padLati + 20) continue
           ctx.fillText(anno, screen.x, assePosY)
@@ -2106,7 +2136,7 @@ function App() {
 
       renderer.refresh()
 
-      const margineYExtra = 6
+      const margineYExtra = 180
       const dataXMin = X_MIN - MARGINE_X, dataXMax = X_MAX + MARGINE_X
       const dataYMin = Math.min(Y_MIN, contenutoYMin) - MARGINE_Y - margineYExtra
       const dataYMax = Math.max(Y_MAX, contenutoYMax) + MARGINE_Y + margineYExtra
@@ -2800,6 +2830,7 @@ function App() {
     return () => {
       window.removeEventListener("keydown", handleEscGlobale)
       resizeObserver.disconnect()
+      clearTimeout(timeoutPronte)
       if (overlayAnimationFrame !== null) cancelAnimationFrame(overlayAnimationFrame)
       if (cameraAnimId) cancelAnimationFrame(cameraAnimId)
       renderer.kill()

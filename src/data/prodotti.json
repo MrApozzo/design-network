@@ -12192,7 +12192,10 @@
     "azienda": "Nemo Lighting",
     "azienda_attuale": "Nemo Lighting",
     "categoria": "lampada da terra",
-    "foto": "branzi-newton.jpg"
+    "foto": "branzi-newton.jpg",
+    "foto_dettaglio": [
+      "branzi-newton2.jpg"
+    ]
   },
   {
     "nome": "Cylinder Bowl",
@@ -12360,7 +12363,10 @@
     "azienda": "Bruno Longoni Atelier d’Arredamento",
     "azienda_attuale": "Bruno Longoni Atelier d’Arredamento",
     "categoria": "credenza / vetrina",
-    "foto": "rossi-ar4.jpg"
+    "foto": "rossi-ar4.jpg",
+    "foto_dettaglio": [
+      "rossi-ar42.jpg"
+    ]
   },
   {
     "nome": "AR5",
@@ -12378,7 +12384,10 @@
     "azienda": "Bruno Longoni Atelier d’Arredamento",
     "azienda_attuale": "Bruno Longoni Atelier d’Arredamento",
     "categoria": "armadio / cabina",
-    "foto": "rossi-cabina-dellelba-ar1.jpg"
+    "foto": "rossi-cabina-dellelba-ar1.jpg",
+    "foto_dettaglio": [
+      "rossi-cabina-dellelba-ar12.jpg"
+    ]
   },
   {
     "nome": "La Conica",
@@ -12461,7 +12470,10 @@
     "azienda": "Molteni&C",
     "azienda_attuale": "Molteni&C",
     "categoria": "secretaire / mobile contenitore",
-    "foto": "rossi-carteggio.jpg"
+    "foto": "rossi-carteggio.jpg",
+    "foto_dettaglio": [
+      "rossi-carteggio2.jpg"
+    ]
   },
   {
     "nome": "Milano",
@@ -12501,7 +12513,10 @@
     "azienda": "UniFor",
     "azienda_attuale": "UniFor",
     "categoria": "poltrona",
-    "foto": "rossi-parigi.jpg"
+    "foto": "rossi-parigi.jpg",
+    "foto_dettaglio": [
+      "rossi-parigi2.jpg"
+    ]
   },
   {
     "nome": "Papyro",
@@ -12561,7 +12576,10 @@
     "azienda": "Molteni&C",
     "azienda_attuale": "Molteni&C",
     "categoria": "libreria / sistema contenitore",
-    "foto": "rossi-piroscafo.jpg"
+    "foto": "rossi-piroscafo.jpg",
+    "foto_dettaglio": [
+      "rossi-piroscafo2.jpg"
+    ]
   },
   {
     "nome": "Providence Armchair",
@@ -12615,7 +12633,10 @@
     "azienda": "UniFor",
     "azienda_attuale": "UniFor",
     "categoria": "libreria componibile",
-    "foto": "rossi-cartesio.jpg"
+    "foto": "rossi-cartesio.jpg",
+    "foto_dettaglio": [
+      "rossi-cartesio2.jpg"
+    ]
   },
   {
     "nome": "Museo",
@@ -12678,7 +12699,10 @@
     "azienda": "Bruno Longoni Atelier d’Arredamento",
     "azienda_attuale": "Bruno Longoni Atelier d’Arredamento",
     "categoria": "mobile contenitore",
-    "foto": "rossi-madia.jpg"
+    "foto": "rossi-madia.jpg",
+    "foto_dettaglio": [
+      "rossi-madia2.jpg"
+    ]
   },
   {
     "nome": "Prometeo",
@@ -12696,7 +12720,10 @@
     "azienda": "Alessi",
     "azienda_attuale": "Alessi",
     "categoria": "caffettiera espresso",
-    "foto": "rossi-la-conica-manico-lungo.jpg"
+    "foto": "rossi-la-conica-manico-lungo.jpg",
+    "foto_dettaglio": [
+      "rossi-la-conica-manico-lungo2.jpg"
+    ]
   },
   {
     "nome": "Momento Wall Clock",
@@ -12723,7 +12750,10 @@
     "azienda": "Exteta",
     "azienda_attuale": "Exteta",
     "categoria": "sedia",
-    "foto": "albini-sedia-1938.jpg"
+    "foto": "albini-sedia-1938.jpg",
+    "foto_dettaglio": [
+      "albini-sedia-19382.jpg"
+    ]
   },
   {
     "nome": "Poltrona Bergère 1939",
@@ -12732,7 +12762,10 @@
     "azienda": "Exteta",
     "azienda_attuale": "Exteta",
     "categoria": "poltrona bergère",
-    "foto": "albini-poltrona-bergere-1939.jpg"
+    "foto": "albini-poltrona-bergere-1939.jpg",
+    "foto_dettaglio": [
+      "albini-poltrona-bergere-19392.jpg"
+    ]
   },
   {
     "nome": "Sedia Lupo 1945",
@@ -12762,7 +12795,10 @@
     "azienda": "Sika-Design",
     "azienda_attuale": "Sika-Design",
     "categoria": "divano in rattan",
-    "foto": "albini-belladonna-sofa.jpg"
+    "foto": "albini-belladonna-sofa.jpg",
+    "foto_dettaglio": [
+      "albini-belladonna-sofa2.jpg"
+    ]
   },
   {
     "nome": "Fratellino Trolley",
@@ -12822,7 +12858,10 @@
     "azienda": "Sika-Design",
     "azienda_attuale": "Sika-Design",
     "categoria": "panca in rattan",
-    "foto": "albini-bistro-bench.jpg"
+    "foto": "albini-bistro-bench.jpg",
+    "foto_dettaglio": [
+      "albini-bistro-bench2.jpg"
+    ]
   },
   {
     "nome": "Bistro Chair",
@@ -12858,7 +12897,10 @@
     "azienda": "Poggi",
     "azienda_attuale": "Cassina",
     "categoria": "libreria componibile",
-    "foto": "albini-infinito.jpg"
+    "foto": "albini-infinito.jpg",
+    "foto_dettaglio": [
+      "albini-infinito2.jpg"
+    ]
   },
   {
     "nome": "CR20",
@@ -12870,7 +12912,10 @@
     "azienda": "Poggi",
     "azienda_attuale": null,
     "categoria": "carrello",
-    "foto": "albini-cr20.jpg"
+    "foto": "albini-cr20.jpg",
+    "foto_dettaglio": [
+      "albini-cr202.jpg"
+    ]
   },
   {
     "nome": "Orion 23",
@@ -12882,7 +12927,10 @@
     "azienda": "Brionvega",
     "azienda_attuale": null,
     "categoria": "televisore",
-    "foto": "albini-orion-23.jpg"
+    "foto": "albini-orion-23.jpg",
+    "foto_dettaglio": [
+      "albini-orion-232.jpg"
+    ]
   },
   {
     "nome": "Luisella",
@@ -12891,7 +12939,10 @@
     "azienda": "Poggi",
     "azienda_attuale": null,
     "categoria": "sedia",
-    "foto": "albini-luisella.jpg"
+    "foto": "albini-luisella.jpg",
+    "foto_dettaglio": [
+      "albini-luisella2.jpg"
+    ]
   },
   {
     "nome": "Model 524",
@@ -13129,7 +13180,10 @@
     "azienda": "Azucena",
     "azienda_attuale": "Tato Italia",
     "categoria": "lampada da parete",
-    "foto": "gardella-coppa-aperta-applique.jpg"
+    "foto": "gardella-coppa-aperta-applique.jpg",
+    "foto_dettaglio": [
+      "gardella-coppa-aperta-applique2.jpg"
+    ]
   },
   {
     "nome": "Coppa Aperta Piantana",
@@ -13180,7 +13234,10 @@
     "azienda": "Azucena",
     "azienda_attuale": null,
     "categoria": "lampada da terra",
-    "foto": "gardella-lte8.jpg"
+    "foto": "gardella-lte8.jpg",
+    "foto_dettaglio": [
+      "gardella-lte82.jpg"
+    ]
   },
   {
     "nome": "Arenzano Bassa",
@@ -13189,7 +13246,10 @@
     "azienda": "Azucena",
     "azienda_attuale": "Tato Italia",
     "categoria": "lampada da tavolo",
-    "foto": "gardella-arenzano-bassa.jpg"
+    "foto": "gardella-arenzano-bassa.jpg",
+    "foto_dettaglio": [
+      "gardella-arenzano-bassa2.jpg"
+    ]
   },
   {
     "nome": "Arenzano Terra",
@@ -13225,7 +13285,10 @@
     "azienda": "Gavina",
     "azienda_attuale": null,
     "categoria": "divanetto",
-    "foto": "gardella-digamma-settee.jpg"
+    "foto": "gardella-digamma-settee.jpg",
+    "foto_dettaglio": [
+      "gardella-digamma-settee2.jpg"
+    ]
   },
   {
     "nome": "Galleria 1-braccio",
@@ -13270,7 +13333,10 @@
     "azienda": "Azucena",
     "azienda_attuale": "Tato Italia",
     "categoria": "lampada da parete",
-    "foto": "gardella-galleria-5-bracci.jpg"
+    "foto": "gardella-galleria-5-bracci.jpg",
+    "foto_dettaglio": [
+      "gardella-galleria-5-bracci2.jpg"
+    ]
   },
   {
     "nome": "Galleria Sospensione",
@@ -13342,7 +13408,10 @@
     "azienda": "Gavina",
     "azienda_attuale": "Tacchini",
     "categoria": "sedia",
-    "foto": "scarpa-pigreco.jpg"
+    "foto": "scarpa-pigreco.jpg",
+    "foto_dettaglio": [
+      "scarpa-pigreco2.jpg"
+    ]
   },
   {
     "nome": "Vanessa",
@@ -13360,7 +13429,10 @@
     "azienda": "Venini",
     "azienda_attuale": null,
     "categoria": "collezione di vasi in vetro",
-    "foto": "scarpa-vetri-a-occhi.jpg"
+    "foto": "scarpa-vetri-a-occhi.jpg",
+    "foto_dettaglio": [
+      "scarpa-vetri-a-occhi2.jpg"
+    ]
   },
   {
     "nome": "Fantasma",
@@ -13369,7 +13441,10 @@
     "azienda": "Flos",
     "azienda_attuale": null,
     "categoria": "lampada da terra",
-    "foto": "scarpa-fantasma.jpg"
+    "foto": "scarpa-fantasma.jpg",
+    "foto_dettaglio": [
+      "scarpa-fantasma2.jpg"
+    ]
   },
   {
     "nome": "Bastiano Lounge Chair",
@@ -13381,7 +13456,10 @@
     "azienda": "Gavina",
     "azienda_attuale": "Knoll",
     "categoria": "poltrona",
-    "foto": "scarpa-bastiano-lounge-chair.jpg"
+    "foto": "scarpa-bastiano-lounge-chair.jpg",
+    "foto_dettaglio": [
+      "scarpa-bastiano-lounge-chair2.jpg"
+    ]
   },
   {
     "nome": "Model 917",
@@ -13450,7 +13528,10 @@
     "azienda": "Cassina",
     "azienda_attuale": "Cassina",
     "categoria": "sedia",
-    "foto": "scarpa-121.jpg"
+    "foto": "scarpa-121.jpg",
+    "foto_dettaglio": [
+      "scarpa-1212.jpg"
+    ]
   },
   {
     "nome": "Coronado Sofa",
@@ -13475,7 +13556,10 @@
     "azienda_attuale": "Cassina",
     "categoria": "poltrona",
     "foto": "scarpa-925.jpg",
-    "top": true
+    "top": true,
+    "foto_dettaglio": [
+      "scarpa-9252.jpg"
+    ]
   },
   {
     "nome": "Foglio",
@@ -13658,7 +13742,10 @@
     "azienda": "Molteni&C",
     "azienda_attuale": null,
     "categoria": "letto",
-    "foto": "scarpa-morna.jpg"
+    "foto": "scarpa-morna.jpg",
+    "foto_dettaglio": [
+      "scarpa-morna2.jpg"
+    ]
   },
   {
     "nome": "Elogio",
@@ -13706,7 +13793,10 @@
     "azienda": "Maxalto",
     "azienda_attuale": "Tacchini",
     "categoria": "sedia",
-    "foto": "scarpa-africa.jpg"
+    "foto": "scarpa-africa.jpg",
+    "foto_dettaglio": [
+      "scarpa-africa2.jpg"
+    ]
   },
   {
     "nome": "Artona",
@@ -13718,7 +13808,10 @@
     "azienda": "Maxalto",
     "azienda_attuale": "Tacchini",
     "categoria": "poltrona",
-    "foto": "scarpa-artona.jpg"
+    "foto": "scarpa-artona.jpg",
+    "foto_dettaglio": [
+      "scarpa-artona2.jpg"
+    ]
   },
   {
     "nome": "Basilan",
@@ -13742,7 +13835,10 @@
     "azienda": "Fabbrica Poggi",
     "azienda_attuale": "Cassina",
     "categoria": "tavolo con piano in metallo",
-    "foto": "scarpa-tl59-metal-top.jpg"
+    "foto": "scarpa-tl59-metal-top.jpg",
+    "foto_dettaglio": [
+      "scarpa-tl59-metal-top2.jpg"
+    ]
   },
   {
     "nome": "TL59 Rectangular Table",
@@ -13976,7 +14072,10 @@
     "azienda": "Désirée",
     "azienda_attuale": "Désirée",
     "categoria": "sedia pieghevole",
-    "foto": "scarpa-ciacola-chair.jpg"
+    "foto": "scarpa-ciacola-chair.jpg",
+    "foto_dettaglio": [
+      "scarpa-ciacola-chair2.jpg"
+    ]
   },
   {
     "nome": "Ciàcola Table",

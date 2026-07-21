@@ -313,5 +313,23 @@
     "filename": "rossi-fiorentino-singolo.jpg",
     "reason": "nessun candidato nuovo dalla ricerca dopo 3 tentativi (gli altri erano gia' in scarti o bocciati)",
     "time": "2026-07-21 16:52:57"
+  },
+  "borsani-t44": {
+    "nome": "T44",
+    "designer": "Osvaldo Borsani",
+    "azienda": "Tecno",
+    "foto": "borsani-t44.jpg",
+    "filename": "borsani-t44.jpg",
+    "reason": "nessun candidato scaricabile dopo 1 tentativi e filtri scarti/download; controlla _pipeline/log_errors.txt",
+    "time": "2026-07-21 17:21:08"
+  },
+  "belgiojoso-elettra": {
+    "nome": "Elettra",
+    "designer": "Lodovico Belgiojoso, Enrico Peressutti, Ernesto Nathan Rogers",
+    "azienda": "Arflex",
+    "foto": "belgiojoso-elettra.jpg",
+    "filename": "belgiojoso-elettra.jpg",
+    "reason": "nessun candidato scaricabile dopo 1 tentativi e filtri scarti/download; controlla _pipeline/log_errors.txt",
+    "time": "2026-07-21 17:22:29"
   }
 }

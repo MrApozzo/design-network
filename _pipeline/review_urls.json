@@ -52,9 +52,19 @@
     "product_base": "borsani-l150",
     "image_hash": "115792089230577751440845304400046852089260015883038634136231908357037774340095"
   },
-  "borsani-gerli-graphis": "https://www.tecnospa.com/ContentsFiles/Graphis(5).png",
+  "borsani-gerli-graphis": {
+    "image_url": "https://www.intondo.com/media/mounted_nas/app-models-product/2023/787763/conversions/intondo-graphis-desk-by-eugenio-gerli-and-osvaldo-borsani-for-tecno-1960s-9-large.webp",
+    "source_page": "https://www.intondo.com/it/products/61502/mobili/scrivanie/scrivania-graphis-di-eugenio-gerli-e-osvaldo-borsani-per-tecno-anni-60",
+    "product_base": "borsani-gerli-graphis",
+    "image_hash": "115792089237316176139627885422098983850929391994137105887032199395347173212159"
+  },
   "gatti-sacco": "https://www.zanotta.com/ContentsFiles/280-Sacco_gallery_13.jpg",
-  "lucchi-tolomeo": "https://www.artemide.com/contents/immagini/prodotto/yaf_tolomeo_tavolo_183571_1927316418b.jpg",
+  "lucchi-tolomeo": {
+    "image_url": "https://storage.googleapis.com/deesup_vendure_prod/preview/a0/lampada-da-tavolo-tolomeo-di-michele-de-lucchi-e-giacarlo-fassina-artemide__preview.jpg",
+    "source_page": "https://www.deesup.com/shop/lampada-da-tavolo-tolomeo-di-michele-de-lucchi-e-giacarlo-fassina-artemide-363873",
+    "product_base": "lucchi-tolomeo",
+    "image_hash": "86850692705581409399994587868883258975267122458051162188385676139010149564419"
+  },
   "belgiojoso-elettra": "https://www.arflex.it/media/01_global-content/00-catalogue/03-chairs-stools/elettra-sedia/arflex-elettra-chair-anteprima4.jpg",
   "belgiojoso-torrevelasca": {
     "image_url": "https://i0.wp.com/www.wearch.eu/wp-content/uploads/2024/11/01_MAXXI_TorreVelasca_F64995-Vista-della-Torre_Collezione-MAXXI-Architettura.-Archivio-Studio-BBPR-Comodato-Alberico-Belgiojoso.jpg?ssl=1",
@@ -68,7 +78,12 @@
     "product_base": "belgiojoso-castellosforzesco",
     "image_hash": "115792089237316195423570985008666498811203338342280535376859065080091661828095"
   },
-  "belgiojoso-lampadaneon": "https://wannenesgroup.com/wp-content/uploads/cssas/lotimages/hd/01910_0525_0218.jpg",
+  "belgiojoso-lampadaneon": {
+    "image_url": "https://a.1stdibscdn.com/studio-bbpr-for-arteluce-ceiling-light-for-sale/f_9331/f_437942221740755285718/50114478_00__master.jpg",
+    "source_page": "https://www.1stdibs.com/it/creators/studio-bbpr/furniture/lighting/chandeliers-pendant-lights/",
+    "product_base": "belgiojoso-lampadaneon",
+    "image_hash": "115792089237316175838553043730553606737654606000257884296622277971885521108991"
+  },
   "mendini-kandissi": "https://dist.phillips.com/auction-assets/UK050124/198654_001.jpg?fit=cover&offset-x=50&offset-y=100&width=928",
   "delucchi-sinerpica": "https://www.dorotheum.com/fileadmin/lot-images/40D191002/normal/tischleuchte-mod-sinerpica-entwurf-michele-de-lucci-6383708.jpg",
   "branzi-animali-domestici": {
@@ -97,7 +112,12 @@
   },
   "branzi-mies": "https://www.poltronova.it/wp-content/uploads/2024/07/Mies-Black-Banner_1.png",
   "deganello-aeo": "https://www.cassina.com/content/dam/ld/cassina/products/a/e/o/650-aeo/21_variant-image/650-aeo.jpg",
-  "mari-autoprogettazione": "https://www.officinaantiquaria.com/ufiles/big/UID6492276638F65-gallery-1.jpg",
+  "mari-autoprogettazione": {
+    "image_url": "https://leporello-books.com/wp-content/uploads/2021/06/09A4871-1.jpg",
+    "source_page": "https://leporello-books.com/prodotto/autoprogettazione/",
+    "product_base": "mari-autoprogettazione",
+    "image_hash": "115792089237217058595566823767204509801682076742522688780728562079485623533567"
+  },
   "mari-putrella": {
     "image_url": "https://www.wright20.com/items/index/2000/431_1_taxonomy_of_design_selections_from_thessaloniki_design_museum_august_2016_enzo_mari_putrella_tray_and_dish__wright_auction.jpg?t=1689082397",
     "source_page": "https://www.wright20.com/auctions/2016/08/taxonomy-of-design-selections-from-thessaloniki-design-museum/431",
@@ -107,7 +127,12 @@
   "mari-16-animali": "http://onlinestore.danesemilano.com/cdn/shop/products/16-1_grande_406c56db-80d7-437f-b3c6-caecac1f2ae3_grande.jpg?v=1538684614",
   "mari-timor": "https://www.newpop.it/197351-large_default/danese-milano-calendario-timor.jpg",
   "mari-tonietta": "https://www.zanotta.com/ContentsFiles/zanotta_2090_tonietta_plus_2(0).jpg",
-  "mari-ecolo": "https://alessi.com/cdn/shop/files/enzomari-web-prodotto-store_6e211c88-7ff5-458e-968e-6e5569d12109.jpg?v=1748186616&width=2000",
+  "mari-ecolo": {
+    "image_url": "https://www.designboom.com/wp-content/uploads/2020/10/enzo-mari-vase-ecolo.jpg",
+    "source_page": "https://www.designboom.com/design/enzo-mari-ecolo-vase-tag-discarded-common-plastic-containers-10-07-2020/",
+    "product_base": "mari-ecolo",
+    "image_hash": "115792089237316194820946228382821305506562564335080624760945757804800600178687"
+  },
   "zanuso-martingala": "https://cdn20.pamono.com/p/g/2/5/2510689_u9rksupd8w/sedia-martingala-in-cotone-giallo-di-marco-zanuso-per-arflex-anni-70-immagine-1.jpg",
   "mendini-superleggera-chair-redesign": {
     "image_url": "https://am-s3-bucket-assets.s3.eu-west-2.amazonaws.com/roseberys/prod/lot_images/xlarge/736f2c07-c94d-f011-be59-6045bdf16fdb/c63a2295-6a73-f011-8eef-7c1e52049af7.webp",
@@ -135,7 +160,12 @@
     "product_base": "castiglioni-luminator",
     "image_hash": "115792089237316195423570984447462715501376605546081112583850764871303358840831"
   },
-  "castiglioni-tubino": "https://storage.googleapis.com/deesup_vendure_prod/preview/12/lampada-da-tavolo-tubino-di-achille-castiglioni-flos-deesup-3__preview.webp",
+  "castiglioni-tubino": {
+    "image_url": "https://www.a15.it/wp-content/uploads/2016/10/5lampada-tubino-castiglioni.jpg",
+    "source_page": "https://www.a15.it/prodotto/achille-e-pg-castiglioni-lampada-tubino-in-metallo-orientabile-anni-70/",
+    "product_base": "castiglioni-tubino",
+    "image_hash": "115792089211830643337280569995715339586252759904520971019240744973294358233087"
+  },
   "castiglioni-boalum": "https://www.artemide.com/contents/immagini/subfamily/boalum_gallery4794534-1920x1080.jpg",
   "zanuso-algol": "https://www.brionvega.com/app/uploads/2023/01/algol.jpg",
   "zanuso-blackst201": "https://static.wixstatic.com/media/b369f0_14ae438ba71c47b6bb2fc8e10d04b27a~mv2.jpg/v1/fill/w_480,h_584,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/b369f0_14ae438ba71c47b6bb2fc8e10d04b27a~mv2.jpg",
@@ -2231,7 +2261,156 @@
     "gardella-alzabile2": "gardella-alzabile",
     "gardella-t5": "gardella-t5",
     "gardella-t52": "gardella-t5",
-    "gardella-elegie": "gardella-elegie"
+    "gardella-elegie": "gardella-elegie",
+    "gardella-t1": "gardella-t1",
+    "gardella-t12": "gardella-t1",
+    "gardella-tavolino-stand-35": "gardella-tavolino-stand-35",
+    "gardella-tavolino-stand-352": "gardella-tavolino-stand-35",
+    "gardella-tavolino-stand-55": "gardella-tavolino-stand-55",
+    "gardella-tavolino-stand-552": "gardella-tavolino-stand-55",
+    "gardella-tavolino-stand-70": "gardella-tavolino-stand-70",
+    "gardella-tavolino-stand-a-due-piani": "gardella-tavolino-stand-a-due-piani",
+    "gardella-coppa-aperta-applique": "gardella-coppa-aperta-applique",
+    "gardella-coppa-aperta-applique2": "gardella-coppa-aperta-applique",
+    "gardella-coppa-aperta-piantana": "gardella-coppa-aperta-piantana",
+    "gardella-lp5": "gardella-lp5",
+    "gardella-lp7": "gardella-lp7",
+    "gardella-doppio-vetro-sospensione": "gardella-doppio-vetro-sospensione",
+    "gardella-doppio-vetro-sospensione2": "gardella-doppio-vetro-sospensione",
+    "gardella-lte8": "gardella-lte8",
+    "gardella-lte82": "gardella-lte8",
+    "gardella-arenzano-bassa": "gardella-arenzano-bassa",
+    "gardella-arenzano-bassa2": "gardella-arenzano-bassa",
+    "gardella-arenzano-terra": "gardella-arenzano-terra",
+    "gardella-t4-ditirambo": "gardella-t4-ditirambo",
+    "gardella-digamma-ottoman": "gardella-digamma-ottoman",
+    "gardella-digamma-ottoman2": "gardella-digamma-ottoman",
+    "gardella-digamma-settee": "gardella-digamma-settee",
+    "gardella-digamma-settee2": "gardella-digamma-settee",
+    "gardella-galleria-1-braccio": "gardella-galleria-1-braccio",
+    "gardella-galleria-2-bracci": "gardella-galleria-2-bracci",
+    "gardella-galleria-2-bracci2": "gardella-galleria-2-bracci",
+    "gardella-galleria-3-bracci": "gardella-galleria-3-bracci",
+    "gardella-galleria-3-bracci2": "gardella-galleria-3-bracci",
+    "gardella-galleria-4-bracci": "gardella-galleria-4-bracci",
+    "gardella-galleria-4-bracci2": "gardella-galleria-4-bracci",
+    "gardella-galleria-5-bracci": "gardella-galleria-5-bracci",
+    "gardella-galleria-5-bracci2": "gardella-galleria-5-bracci",
+    "gardella-galleria-sospensione": "gardella-galleria-sospensione",
+    "gardella-galleria-sospensione2": "gardella-galleria-sospensione",
+    "gardella-lp12": "gardella-lp12",
+    "gardella-lp122": "gardella-lp12",
+    "gardella-arenzano-tre-fiamme-tavolo": "gardella-arenzano-tre-fiamme-tavolo",
+    "gardella-arenzano-tre-fiamme-tavolo2": "gardella-arenzano-tre-fiamme-tavolo",
+    "gardella-arenzano-tre-fiamme-terra": "gardella-arenzano-tre-fiamme-terra",
+    "gardella-poltrona-r63": "gardella-poltrona-r63",
+    "gardella-partenio": "gardella-partenio",
+    "gardella-arenzano-wireless": "gardella-arenzano-wireless",
+    "scarpa-pigreco": "scarpa-pigreco",
+    "scarpa-pigreco2": "scarpa-pigreco",
+    "scarpa-vanessa": "scarpa-vanessa",
+    "scarpa-vetri-a-occhi": "scarpa-vetri-a-occhi",
+    "scarpa-vetri-a-occhi2": "scarpa-vetri-a-occhi",
+    "scarpa-fantasma": "scarpa-fantasma",
+    "scarpa-fantasma2": "scarpa-fantasma",
+    "scarpa-bastiano-lounge-chair": "scarpa-bastiano-lounge-chair",
+    "scarpa-bastiano-lounge-chair2": "scarpa-bastiano-lounge-chair",
+    "scarpa-model-917": "scarpa-model-917",
+    "scarpa-seki-han-floor": "scarpa-seki-han-floor",
+    "scarpa-torcello": "scarpa-torcello",
+    "scarpa-torcello2": "scarpa-torcello",
+    "scarpa-torcello-chair": "scarpa-torcello-chair",
+    "scarpa-torcello-chair2": "scarpa-torcello-chair",
+    "scarpa-torcello-table": "scarpa-torcello-table",
+    "scarpa-torcello-table2": "scarpa-torcello-table",
+    "scarpa-121": "scarpa-121",
+    "scarpa-1212": "scarpa-121",
+    "scarpa-coronado-sofa": "scarpa-coronado-sofa",
+    "scarpa-925": "scarpa-925",
+    "scarpa-9252": "scarpa-925",
+    "scarpa-foglio": "scarpa-foglio",
+    "scarpa-foglio2": "scarpa-foglio",
+    "scarpa-carlotta": "scarpa-carlotta",
+    "scarpa-carlotta2": "scarpa-carlotta",
+    "scarpa-carlotta-coffee-table": "scarpa-carlotta-coffee-table",
+    "scarpa-ciprea": "scarpa-ciprea",
+    "scarpa-andre-table": "scarpa-andre-table",
+    "scarpa-soriana-chaise-longue": "scarpa-soriana-chaise-longue",
+    "scarpa-soriana-chaise-longue2": "scarpa-soriana-chaise-longue",
+    "scarpa-soriana-pouf": "scarpa-soriana-pouf",
+    "scarpa-soriana-pouf2": "scarpa-soriana-pouf",
+    "scarpa-soriana-sofa": "scarpa-soriana-sofa",
+    "scarpa-bonanza": "scarpa-bonanza",
+    "scarpa-dialogo": "scarpa-dialogo",
+    "scarpa-dialogo2": "scarpa-dialogo",
+    "scarpa-erasmo-armchair": "scarpa-erasmo-armchair",
+    "scarpa-erasmo-armchair2": "scarpa-erasmo-armchair",
+    "scarpa-erasmo-sofa": "scarpa-erasmo-sofa",
+    "scarpa-erasmo-sofa2": "scarpa-erasmo-sofa",
+    "scarpa-ariette": "scarpa-ariette",
+    "scarpa-tamburo": "scarpa-tamburo",
+    "scarpa-tamburo2": "scarpa-tamburo",
+    "scarpa-monk": "scarpa-monk",
+    "scarpa-monk2": "scarpa-monk",
+    "scarpa-morna": "scarpa-morna",
+    "scarpa-morna2": "scarpa-morna",
+    "scarpa-elogio": "scarpa-elogio",
+    "scarpa-mop": "scarpa-mop",
+    "scarpa-mop2": "scarpa-mop",
+    "scarpa-papillona": "scarpa-papillona",
+    "scarpa-papillona2": "scarpa-papillona",
+    "scarpa-africa": "scarpa-africa",
+    "scarpa-africa2": "scarpa-africa",
+    "scarpa-artona": "scarpa-artona",
+    "scarpa-artona2": "scarpa-artona",
+    "scarpa-basilan": "scarpa-basilan",
+    "scarpa-basilan2": "scarpa-basilan",
+    "scarpa-tl59-metal-top": "scarpa-tl59-metal-top",
+    "scarpa-tl59-metal-top2": "scarpa-tl59-metal-top",
+    "scarpa-tl59-rectangular-table": "scarpa-tl59-rectangular-table",
+    "scarpa-tl59-round-table": "scarpa-tl59-round-table",
+    "scarpa-le-due-facce-della-luna": "scarpa-le-due-facce-della-luna",
+    "scarpa-le-due-facce-della-luna2": "scarpa-le-due-facce-della-luna",
+    "scarpa-sempronia": "scarpa-sempronia",
+    "scarpa-mastro": "scarpa-mastro",
+    "scarpa-mastro2": "scarpa-mastro",
+    "scarpa-meo": "scarpa-meo",
+    "scarpa-meo2": "scarpa-meo",
+    "scarpa-accademia": "scarpa-accademia",
+    "scarpa-accademia2": "scarpa-accademia",
+    "scarpa-miss": "scarpa-miss",
+    "scarpa-miss2": "scarpa-miss",
+    "scarpa-liberta": "scarpa-liberta",
+    "scarpa-liberta2": "scarpa-liberta",
+    "scarpa-pierrot": "scarpa-pierrot",
+    "scarpa-pierrot2": "scarpa-pierrot",
+    "scarpa-due-mani": "scarpa-due-mani",
+    "scarpa-veronica": "scarpa-veronica",
+    "scarpa-veronica2": "scarpa-veronica",
+    "scarpa-no-68-pure-silver-candelabra": "scarpa-no-68-pure-silver-candelabra",
+    "scarpa-nicolo": "scarpa-nicolo",
+    "scarpa-saturnina": "scarpa-saturnina",
+    "scarpa-saturnina2": "scarpa-saturnina",
+    "scarpa-mani": "scarpa-mani",
+    "scarpa-galeto": "scarpa-galeto",
+    "scarpa-galeto2": "scarpa-galeto",
+    "scarpa-scandola": "scarpa-scandola",
+    "scarpa-scandola2": "scarpa-scandola",
+    "scarpa-pan999": "scarpa-pan999",
+    "scarpa-ciacola-chair": "scarpa-ciacola-chair",
+    "scarpa-ciacola-chair2": "scarpa-ciacola-chair",
+    "scarpa-ciacola-table": "scarpa-ciacola-table",
+    "scarpa-ciacola-table2": "scarpa-ciacola-table",
+    "scarpa-seki-han-suspension": "scarpa-seki-han-suspension",
+    "borsani-gerli-graphis": "borsani-gerli-graphis",
+    "lucchi-tolomeo": "lucchi-tolomeo",
+    "belgiojoso-lampadaneon": "belgiojoso-lampadaneon",
+    "mari-autoprogettazione": "mari-autoprogettazione",
+    "mari-autoprogettazione2": "mari-autoprogettazione",
+    "mari-ecolo": "mari-ecolo",
+    "mari-ecolo2": "mari-ecolo",
+    "castiglioni-tubino": "castiglioni-tubino",
+    "castiglioni-tubino2": "castiglioni-tubino"
   },
   "sottsass-terrazzo2": {
     "image_url": "https://i.pinimg.com/originals/ca/b1/9d/cab19d383385dee6c09f97ab86349656.jpg",
@@ -13038,5 +13217,863 @@
     "source_page": "https://www.misuraemme.it/it/prodotti/elegie",
     "product_base": "gardella-elegie",
     "image_hash": "115792089237303028273280694801543787764808011201625361416678483427105869660159"
+  },
+  "gardella-t1": {
+    "image_url": "https://api.incanto.auction/api/lotto/immagine/28896.jpg",
+    "source_page": "https://www.incanto.auction/uk/auction-0089/ignazio-gardella-tavolo-mod-t1-piedi-in-otto-28896",
+    "product_base": "gardella-t1",
+    "image_hash": "115792089235637755164137482142093852439292108826036849868496933747772048277503"
+  },
+  "gardella-t12": {
+    "image_url": "https://media.mutualart.com/Images/2020_07/17/07/073316513/4f8799c0-5f29-4fb5-922b-64a26c68f808_570.Jpeg",
+    "source_page": "https://www.mutualart.com/Artwork/Tavolo-mod--T1/0C6861885BC526B7",
+    "product_base": "gardella-t1",
+    "image_hash": "115792089237316195423570982062255648005829744287953443897521783540711832944639"
+  },
+  "gardella-tavolino-stand-35": {
+    "image_url": "https://shop.tatoitalia.com/cdn/shop/products/stand_35_0116_satin_copy.jpg?v=1619190035",
+    "source_page": "https://shop.tatoitalia.com/it/products/stand-table-35",
+    "product_base": "gardella-tavolino-stand-35",
+    "image_hash": "114095890173422175154610133904901958500259221856746378180093538412323655385087"
+  },
+  "gardella-tavolino-stand-352": {
+    "image_url": "https://shop.tatoitalia.com/cdn/shop/products/stand_35_0915_satin_copy.jpg?v=1619190205",
+    "source_page": "https://shop.tatoitalia.com/it/products/stand-table-35",
+    "product_base": "gardella-tavolino-stand-35",
+    "image_hash": "114208968385567991751703464944949505285272014672646905993302980565190257410047"
+  },
+  "gardella-tavolino-stand-55": {
+    "image_url": "http://shop.tatoitalia.com/cdn/shop/products/stand_55_0920_walnut_copy_1200x1200.jpg?v=1620635681",
+    "source_page": "https://shop.tatoitalia.com/it/products/stand-table-55",
+    "product_base": "gardella-tavolino-stand-55",
+    "image_hash": "115792089236921268303759449133151208413253632692498289919245170090924996296703"
+  },
+  "gardella-tavolino-stand-552": {
+    "image_url": "https://shop.tatoitalia.com/cdn/shop/products/ARCH04CLOSEUP02_7ba930ce-de6e-480a-a509-be958b58ece4.jpg?v=1620636532",
+    "source_page": "https://shop.tatoitalia.com/it/products/stand-table-55",
+    "product_base": "gardella-tavolino-stand-55",
+    "image_hash": "115792089237315784047431654707177703622152323288549939993648746736460236849151"
+  },
+  "gardella-tavolino-stand-70": {
+    "image_url": "https://shop.tatoitalia.com/cdn/shop/products/stand_70_1415_walnut.jpg?v=1620650320",
+    "source_page": "https://shop.tatoitalia.com/it/products/stand-table-70",
+    "product_base": "gardella-tavolino-stand-70",
+    "image_hash": "114208968385567991751703464944949505285197430247823147250565311894491093794815"
+  },
+  "gardella-tavolino-stand-a-due-piani": {
+    "image_url": "https://shop.tatoitalia.com/cdn/shop/products/stand_doppio_0915_walnut_copy.jpg?v=1621416330",
+    "source_page": "https://shop.tatoitalia.com/it/products/stand-table-2-shelves",
+    "product_base": "gardella-tavolino-stand-a-due-piani",
+    "image_hash": "114208968385567991751703464944949505415929726344415147952819292866647406149631"
+  },
+  "gardella-coppa-aperta-applique": {
+    "image_url": "https://a.1stdibscdn.com/1950s-ignazio-gardella-lp5-coppa-aperta-sconce-for-azucena-for-sale/f_14472/f_316093121766884912172/f_31609312_1766884913224_bg_processed.jpg?width=768",
+    "source_page": "https://www.1stdibs.com/it/arredi/illuminazione/lampade-da-parete-e-applique/sconce-lp5-di-ignazio-gardella-del-1950-per-azucena/id-f_31609312/",
+    "product_base": "gardella-coppa-aperta-applique",
+    "image_hash": "115792089237316195423469834924573746100802082213283549956822756446472859811839"
+  },
+  "gardella-coppa-aperta-applique2": {
+    "image_url": "https://a.1stdibscdn.com/ignazio-gardella-coppa-aperta-applique-wall-lamp-in-silver-and-chrome-for-sale/1121189/f_340749121767867437956/34074912_datamatics.jpg?width=768",
+    "source_page": "https://www.1stdibs.com/it/arredi/illuminazione/lampade-da-parete-e-applique/lampada-da-parete-coppa-aperta-applique-di-ignazio-gardella-in-argento-e-cromo/id-f_34074912/",
+    "product_base": "gardella-coppa-aperta-applique",
+    "image_hash": "115792089237316195423534204460931913153800437459792205575451410733317322964991"
+  },
+  "gardella-coppa-aperta-piantana": {
+    "image_url": "https://shop.tatoitalia.com/cdn/shop/products/CoppaApertaPiantana_1609_detail02.jpg?v=1605705876",
+    "source_page": "https://shop.tatoitalia.com/it/products/coppa-aperta-piantana",
+    "product_base": "gardella-coppa-aperta-piantana",
+    "image_hash": "115339766035955438001405297073614245081164747673158630833613256776600298455039"
+  },
+  "gardella-lp5": {
+    "image_url": "https://www.intondo.com/media/mounted_nas/app-models-product/2023/857523/intondo-pair-of-lp5-wall-lights-by-ignazio-gardella-for-azucena-1950s-7.png",
+    "source_page": "https://www.intondo.com/it/products/64682/illuminazione/lampade-da-parete/coppia-di-applique-lp5-di-ignazio-gardella-per-azucena-anni-50",
+    "product_base": "gardella-lp5",
+    "image_hash": "115792089237316195222693001843837202179005385481267199703017855703141293490175"
+  },
+  "gardella-lp7": {
+    "image_url": "https://side-gallery.com/wp-content/uploads/2023/07/Ignazio_Gardella_1955_LP7_Wall_Light_02.jpg",
+    "source_page": "https://side-gallery.com/ignazio_gardella_wall_light_model_lp7_doppio_vetro_1955/",
+    "product_base": "gardella-lp7",
+    "image_hash": "115792089237315784047517475954043535513887001003375674332588150769622848634879"
+  },
+  "gardella-doppio-vetro-sospensione": {
+    "image_url": "http://shop.tatoitalia.com/cdn/shop/products/TDV100-0940copy_1200x1200.jpg?v=1664972997",
+    "source_page": "https://shop.tatoitalia.com/it/products/doppio-vetro-sospensione",
+    "product_base": "gardella-doppio-vetro-sospensione",
+    "image_hash": "115792089237316189799195878966719854670407700645060521553460485150035482247167"
+  },
+  "gardella-doppio-vetro-sospensione2": {
+    "image_url": "https://www.tatoitalia.com/wp-content/uploads/doppio-vetro-sospensione-gallery-02-1.jpg",
+    "source_page": "https://www.tatoitalia.com/product/doppio-vetro-sospensione/",
+    "product_base": "gardella-doppio-vetro-sospensione",
+    "image_hash": "107664399702750737012043213666504744174167983946358071734975140935325092149767"
+  },
+  "gardella-lte8": {
+    "image_url": "https://side-gallery.com/wp-content/uploads/2023/07/Ignazio_Gardella_1956_Floor_Lamp_Model_LTE_8_02.jpg",
+    "source_page": "https://side-gallery.com/ignazio_gardella_floor_lamps_model_lte_8_1956/",
+    "product_base": "gardella-lte8",
+    "image_hash": "115792089235627554448251532174021976199211086094377583617962568697189209473023"
+  },
+  "gardella-lte82": {
+    "image_url": "https://side-gallery.com/wp-content/uploads/2023/07/Ignazio_Gardella_1956_Floor_Lamp_Model_LTE_8.jpg",
+    "source_page": "https://side-gallery.com/ignazio_gardella_floor_lamps_model_lte_8_1956/",
+    "product_base": "gardella-lte8",
+    "image_hash": "115792089237315784047431654707177369110974345328014318355491175894422269198335"
+  },
+  "gardella-arenzano-bassa": {
+    "image_url": "https://shop.tatoitalia.com/cdn/shop/products/TAR300-0140_copy.jpg?v=1604929438",
+    "source_page": "https://shop.tatoitalia.com/it/products/arenzano-bassa",
+    "product_base": "gardella-arenzano-bassa",
+    "image_hash": "115792063355372473061540638155242178052948702025839030822583509862798277476351"
+  },
+  "gardella-arenzano-bassa2": {
+    "image_url": "https://shop.tatoitalia.com/cdn/shop/products/TAR300-0939_copy.jpg?v=1645009800",
+    "source_page": "https://shop.tatoitalia.com/it/products/arenzano-bassa",
+    "product_base": "gardella-arenzano-bassa",
+    "image_hash": "115792063355583098448343709667073542419039243282502573030641030221386968203263"
+  },
+  "gardella-arenzano-terra": {
+    "image_url": "http://twoenlighten.com/cdn/shop/files/b3b65a_2ba236d3c6a24d13b9493af7df95ffa8_mv2.jpg?v=1748261565",
+    "source_page": "https://twoenlighten.com/products/ignazio-gardella-arenzano-terra-floor-lamp?srsltid=AfmBOopBzvJDJmYUfvwlbrXQqtC1kCsDdLE1bbhcLHFtqhldMpiTYMsn",
+    "product_base": "gardella-arenzano-terra",
+    "image_hash": "7720414937850233085440066964197086816454383966626836750629205600851180888063"
+  },
+  "gardella-t4-ditirambo": {
+    "image_url": "https://i.pinimg.com/736x/e2/f8/5f/e2f85f490079e2412721105152c5845a.jpg",
+    "source_page": "https://it.pinterest.com/pin/397935317054624652/",
+    "product_base": "gardella-t4-ditirambo",
+    "image_hash": "115792089237316195423570985008665784141993353967826550767681797861727233114111"
+  },
+  "gardella-digamma-ottoman": {
+    "image_url": "http://www.loftmodern.com/cdn/shop/products/Digamma_Ottoman_1__72604.jpg?v=1645696153",
+    "source_page": "https://www.loftmodern.com/products/santa-cole-digamma-ottoman?srsltid=AfmBOoogiKlollrOZ674cXhv-s1AV5xYxm_HWn_6u0TO1VJ2rEYh2BuC",
+    "product_base": "gardella-digamma-ottoman",
+    "image_hash": "115792089237316195423570983231475512085112655511170947805101419744892628762623"
+  },
+  "gardella-digamma-ottoman2": {
+    "image_url": "https://www.loftmodern.com/cdn/shop/products/DigammaOttoman_3__41798.jpg?v=1645696153&width=1920",
+    "source_page": "https://www.loftmodern.com/products/santa-cole-digamma-ottoman?srsltid=AfmBOorwrGpG0dvtj6xT35PlboPyDkgFPjHk2sFHFWnQ3o_8zq51PWJc",
+    "product_base": "gardella-digamma-ottoman",
+    "image_hash": "115791261182827580254588904821338234771290754407091002949846995037996013584383"
+  },
+  "gardella-digamma-settee": {
+    "image_url": "https://www.wright20.com/items/index/2000/366_1_important_design_december_2012_ignazio_gardella_special_order_digamma_sofa__wright_auction.jpg?t=1687362148",
+    "source_page": "https://www.wright20.com/auctions/2012/12/important-design/366",
+    "product_base": "gardella-digamma-settee",
+    "image_hash": "115792089237316195423570985008448208294779647198985957003469447557022870405119"
+  },
+  "gardella-digamma-settee2": {
+    "image_url": "https://www.wright20.com/items/index/2000/366_2_important_design_december_2012_ignazio_gardella_special_order_digamma_sofa__wright_auction.jpg?t=1687362148",
+    "source_page": "https://www.wright20.com/auctions/2012/12/important-design/366",
+    "product_base": "gardella-digamma-settee",
+    "image_hash": "115792089237316195423570985008641876330266832173253829021043134392716679446527"
+  },
+  "gardella-galleria-1-braccio": {
+    "image_url": "https://imageapi.cambiaste.com/api/lotto/immagine/114757.jpg",
+    "source_page": "https://www.cambiaste.com/it/asta-0152-2/azucena-ignazio-gardella-24-114757",
+    "product_base": "gardella-galleria-1-braccio",
+    "image_hash": "115792089236473647274373832260359965138593494408318223804068970002897287774207"
+  },
+  "gardella-galleria-2-bracci": {
+    "image_url": "http://shop.tatoitalia.com/cdn/shop/products/TGA220-0140copy_1200x1200.jpg?v=1604929599",
+    "source_page": "https://shop.tatoitalia.com/it/products/galleria-2-arms",
+    "product_base": "gardella-galleria-2-bracci",
+    "image_hash": "115792089237316195423570985008666498887421105383423198799616108441901673218047"
+  },
+  "gardella-galleria-2-bracci2": {
+    "image_url": "https://shop.tatoitalia.com/cdn/shop/products/galleria-gallery_02.jpg?v=1604929599",
+    "source_page": "https://shop.tatoitalia.com/it/products/galleria-2-arms",
+    "product_base": "gardella-galleria-2-bracci",
+    "image_hash": "115792089237315784141589617463554233349971584136752474839088941663995763359743"
+  },
+  "gardella-galleria-3-bracci": {
+    "image_url": "https://shop.tatoitalia.com/cdn/shop/products/TGA230-0940copy.jpg?v=1604929651",
+    "source_page": "https://shop.tatoitalia.com/it/products/galleria-3-arms",
+    "product_base": "gardella-galleria-3-bracci",
+    "image_hash": "115792089237316195423570984353913764927615085134155669158553488565854204329983"
+  },
+  "gardella-galleria-3-bracci2": {
+    "image_url": "https://shop.tatoitalia.com/cdn/shop/products/galleria-gallery_03.jpg?v=1604929651",
+    "source_page": "https://shop.tatoitalia.com/it/products/galleria-3-arms",
+    "product_base": "gardella-galleria-3-bracci",
+    "image_hash": "115792089237315784047431654707177369285198917232100251052826050631828429078527"
+  },
+  "gardella-galleria-4-bracci": {
+    "image_url": "https://shop.tatoitalia.com/cdn/shop/products/TGA240-0140copy_300x.jpg?v=1599033346",
+    "source_page": "https://shop.tatoitalia.com/it/collections/ignazio-gardella",
+    "product_base": "gardella-galleria-4-bracci",
+    "image_hash": "115792089237316195423570984821615697948238354286483787092410345080980229849087"
+  },
+  "gardella-galleria-4-bracci2": {
+    "image_url": "https://shop.tatoitalia.com/cdn/shop/products/TAL400-1609-copy_300x.png?v=1669726705",
+    "source_page": "https://shop.tatoitalia.com/it/collections/ignazio-gardella",
+    "product_base": "gardella-galleria-4-bracci",
+    "image_hash": "115792089237316195423570985008679344236443326136296552574418176436784542515199"
+  },
+  "gardella-galleria-5-bracci": {
+    "image_url": "https://shop.tatoitalia.com/cdn/shop/products/TGA250-1440copy.jpg?v=1599033391",
+    "source_page": "https://shop.tatoitalia.com/it/products/galleria-5-arms",
+    "product_base": "gardella-galleria-5-bracci",
+    "image_hash": "115792089237316195423570578693055918966110278166672645666206101640439652155391"
+  },
+  "gardella-galleria-5-bracci2": {
+    "image_url": "https://shop.tatoitalia.com/cdn/shop/products/TGA250-0940copy.jpg?v=1599033378",
+    "source_page": "https://shop.tatoitalia.com/it/products/galleria-5-arms",
+    "product_base": "gardella-galleria-5-bracci",
+    "image_hash": "115792089237316195423570580283215372308299243563798598829089155412115398328319"
+  },
+  "gardella-galleria-sospensione": {
+    "image_url": "https://a.1stdibscdn.com/ignazio-gardella-galleria-8-arm-brass-and-glass-chandelier-for-tato-italia-for-sale/f_14472/f_499177721777585994797/f_49917772_1777585995024_bg_processed.jpg?width=768",
+    "source_page": "https://www.1stdibs.com/it/arredi/illuminazione/lampadari-e-lampade-a-sospensione/lampadario-a-8-bracci-in-ottone-e-vetro-di-ignazio-gardella-galleria-per-tato-italia/id-f_49917772/",
+    "product_base": "gardella-galleria-sospensione",
+    "image_hash": "115792089237316195423482097320839754874335987129001310422168332910573251461119"
+  },
+  "gardella-galleria-sospensione2": {
+    "image_url": "https://a.1stdibscdn.com/ignazio-gardella-galleria-8-arm-brass-and-glass-chandelier-for-tato-italia-for-sale-picture-3/f_14472/f_499177721777585815273/Dimensions_Galleria_Chandelier_master.jpg?width=768",
+    "source_page": "https://www.1stdibs.com/it/arredi/illuminazione/lampadari-e-lampade-a-sospensione/lampadario-a-8-bracci-in-ottone-e-vetro-di-ignazio-gardella-galleria-per-tato-italia/id-f_49917772/",
+    "product_base": "gardella-galleria-sospensione",
+    "image_hash": "115792089237316195423411599509433031902367917230687277219554358089123056582655"
+  },
+  "gardella-lp12": {
+    "image_url": "https://www.capperidicasa.com/wp-content/uploads/2025/11/8825-Ignazio-Gardella-Azucena-ampade-b.jpg",
+    "source_page": "https://www.capperidicasa.com/prodotto/ignazio-gardella-azucena-lampade-lp12/",
+    "product_base": "gardella-lp12",
+    "image_hash": "86850692705686726713441082057203265923191918146080874341287962974019936043011"
+  },
+  "gardella-lp122": {
+    "image_url": "https://cdn20.pamono.com/p/g/2/3/2399174_l84rxg0mue/lampade-da-parete-lp12-vintage-in-ottone-e-vetro-di-ignazio-gardella-per-azucena-italia-anni-60-set-di-2-immagine-1.jpg",
+    "source_page": "https://www.pamono.it/lampade-da-parete-lp12-vintage-in-ottone-e-vetro-di-ignazio-gardella-per-azucena-italia-anni-39-60-set-di-2?srsltid=AfmBOooY82JbPlRKAGRyVMJLCmrCsldz0XW5MWM1fHEoLtApwtpKj4f3",
+    "product_base": "gardella-lp12",
+    "image_hash": "115792089237316195423570984447449870076136617752065559613806385532213565325311"
+  },
+  "gardella-arenzano-tre-fiamme-tavolo": {
+    "image_url": "https://www.tatoitalia.com/wp-content/uploads/TAR320-1509-500x500.jpg",
+    "source_page": "https://www.tatoitalia.com/product/arenzano-tre-fiamme-tavolo/",
+    "product_base": "gardella-arenzano-tre-fiamme-tavolo",
+    "image_hash": "115792089237316195423570984447462715501376605576505191216843002524827322941439"
+  },
+  "gardella-arenzano-tre-fiamme-tavolo2": {
+    "image_url": "https://www.tatoitalia.com/wp-content/uploads/TAR320-1601-500x500.jpg",
+    "source_page": "https://www.tatoitalia.com/product/arenzano-tre-fiamme-tavolo/",
+    "product_base": "gardella-arenzano-tre-fiamme-tavolo",
+    "image_hash": "115792089237316193013163918012208536169998220702302843643632730474080037240831"
+  },
+  "gardella-arenzano-tre-fiamme-terra": {
+    "image_url": "https://www.tatoitalia.com/wp-content/uploads/arenzanotrefiamme-gallery_02.jpg",
+    "source_page": "https://www.tatoitalia.com/product/arenzano-tre-fiamme-terra/",
+    "product_base": "gardella-arenzano-tre-fiamme-terra",
+    "image_hash": "115565929362072401803112108433972780237376480999454678940226016172841866625023"
+  },
+  "gardella-poltrona-r63": {
+    "image_url": "https://shop.tatoitalia.com/cdn/shop/products/r63_brass_pannored_copy.jpg?v=1619793525",
+    "source_page": "https://shop.tatoitalia.com/it/products/r63",
+    "product_base": "gardella-poltrona-r63",
+    "image_hash": "115792088372896421186066321589679202527605471336946647744958617395412831830015"
+  },
+  "gardella-partenio": {
+    "image_url": "https://www.misuraemme.it/files/.thumbs/prodotti/tavoli/partenio/bianche/1920x/01-partenio-gardella-table-misuraemme.jpg",
+    "source_page": "https://www.misuraemme.it/it/prodotti/partenio",
+    "product_base": "gardella-partenio",
+    "image_hash": "115792089237316195423570984996630694966338239039805988013424303693503156715519"
+  },
+  "gardella-arenzano-wireless": {
+    "image_url": "https://rewirela.com/wp-content/uploads/2024/10/Screen-shot-2024-10-08-at-93650-am.png",
+    "source_page": "https://rewirela.com/product/arenzano-wireless/?srsltid=AfmBOoo5S8fHDKWYRonMfBwl0LTJv54f6AijBJy0Rt5IVr9f2LpISjJ3",
+    "product_base": "gardella-arenzano-wireless",
+    "image_hash": "86850692705976351812341218997179078193082889857451774532640898821493851684739"
+  },
+  "scarpa-pigreco": {
+    "image_url": "https://www.intondo.com/media/mounted_nas/app-models-product/2021/164909/intondo-6-pigreco-chairs-by-tobia-scarpa-and-emilio-mantese-1959-1209020.jpg",
+    "source_page": "https://www.intondo.com/it/products/16451/sedute/sedie/6-sedie-pigreco-di-tobia-scarpa-e-emilio-mantese-1959",
+    "product_base": "scarpa-pigreco",
+    "image_hash": "115792089237316193012831350034407857419222664128556071831870504521389886668799"
+  },
+  "scarpa-pigreco2": {
+    "image_url": "https://paradisoterrestre.it/wp-content/uploads/2021/01/IMG_4995-2560-x-2560-ok.jpg",
+    "source_page": "https://paradisoterrestre.it/it/products/sedie-pigreco-tobia-scarpa/",
+    "product_base": "scarpa-pigreco",
+    "image_hash": "115792089237316195423474431909902552606060133155233518188281607901785914081279"
+  },
+  "scarpa-vanessa": {
+    "image_url": "https://www.intondo.com/media/mounted_nas/app-models-product/2021/186507/conversions/intondo-letto-matrimoniale-vanessa-di-tobia-scarpa-per-gavina-anni-70-1230463-large.webp",
+    "source_page": "https://www.intondo.com/it/products/18495/mobili/letti-e-testate/letto-matrimoniale-vanessa-di-tobia-scarpa-per-gavina-anni-70",
+    "product_base": "scarpa-vanessa",
+    "image_hash": "115792089237316195423567905472376857187087656769376029584542362183139546103807"
+  },
+  "scarpa-vetri-a-occhi": {
+    "image_url": "https://www.quittenbaum.de/wp-content/themes/quittenbaum/imagecache/89809-2000-0.jpg",
+    "source_page": "https://www.quittenbaum.de/de/auktionen/murano-glas/131C/alle-lose/tobia-scarpavenini-c-murano-vase-occhi-1959-60-89809/",
+    "product_base": "scarpa-vetri-a-occhi",
+    "image_hash": "115792035747110162411001768418826744701680825063256539934415838776462648803327"
+  },
+  "scarpa-vetri-a-occhi2": {
+    "image_url": "https://media.astrua.com/production/0190404_0.jpeg",
+    "source_page": "https://www.astrua.com/it/venini-vaso-occhi-tobia-scarpa-corallocristallo-52000?srsltid=AfmBOoocp6my8HhYYurGe8_uGRcvWv3TiwNFlEbhncy-_IHGdydyaMDb",
+    "product_base": "scarpa-vetri-a-occhi",
+    "image_hash": "115792037473389247743489751010971166390705700712954562094785835419268301193215"
+  },
+  "scarpa-fantasma": {
+    "image_url": "https://veroraro.com/cdn/shop/files/IMG_20240210_113209-01_1500x.jpg?v=1707652792",
+    "source_page": "https://veroraro.com/products/lampada-da-terra-cocoon-fantasma-flos-originale-anni-70-tobia-scarpa",
+    "product_base": "scarpa-fantasma",
+    "image_hash": "115791253735247597423634709156448675156347018713462650238296761794162858262527"
+  },
+  "scarpa-fantasma2": {
+    "image_url": "https://www.intondo.com/media/mounted_nas/app-models-product/2025/1805456/conversions/fantasma-model-lamp-by-afra-and-tobia-scarpa-for-flos-1961-1-large.webp",
+    "source_page": "https://www.intondo.com/it/products/127268/illuminazione/lampade-da-terra/lampada-fantasma-di-afra-e-tobia-scarpa-per-flos-anni-60",
+    "product_base": "scarpa-fantasma",
+    "image_hash": "86850692705581459994221909676684910196291201242073416767079272751705106677759"
+  },
+  "scarpa-bastiano-lounge-chair": {
+    "image_url": "https://cityissue.com/media/pages/shop/seating/afra-tobia-scarpa-bastiano-chair/91672c557a-1623011908/lead.jpg",
+    "source_page": "https://cityissue.com/shop/seating/afra-tobia-scarpa-bastiano-chair",
+    "product_base": "scarpa-bastiano-lounge-chair",
+    "image_hash": "115792089237276702711547492733422238250819918335355487470427989015074271395839"
+  },
+  "scarpa-bastiano-lounge-chair2": {
+    "image_url": "https://cityissue.com/media/pages/shop/seating/afra-tobia-scarpa-bastiano-chair/e2b1d72ae9-1623011908/afra-tobia-scarpa-bastiano-lounge-chair-gavina-knoll-rosewood.jpg",
+    "source_page": "https://cityissue.com/shop/seating/afra-tobia-scarpa-bastiano-chair",
+    "product_base": "scarpa-bastiano-lounge-chair",
+    "image_hash": "115792089237316195272525536606334033027365434975040410536647162314459044642815"
+  },
+  "scarpa-model-917": {
+    "image_url": "https://www.intondo.com/media/mounted_nas/app-models-product/2024/1211626/conversions/intondo-poltrona-917-di-tobia-afra-scarpa-per-cassina-1963-7-large.webp",
+    "source_page": "https://www.intondo.com/en/products/83003/seating/armchairs/917-lounge-chair-by-tobia-afra-scarpa-for-cassina-1963",
+    "product_base": "scarpa-model-917",
+    "image_hash": "115792089237316193012970821235621132696734617285011325781679370249306002948095"
+  },
+  "scarpa-seki-han-floor": {
+    "image_url": "https://www.scandinavia-design.fr/shop/195283-large_default/seki-han-floor-lamp-flos.jpg",
+    "source_page": "https://www.scandinavia-design.fr/shop/en/seki-han-lamps-tobia-scarpa-flos/78560-seki-han-floor-lamp-flos-8059607076323.html?srsltid=AfmBOoriIJx3vly-OZtya4VtyjtNr2VPFARhbyv_uxG_o82u9-LYSl_O",
+    "product_base": "scarpa-seki-han-floor",
+    "image_hash": "112230071202641144687721147429111882489232565132781307503201438599200947305535"
+  },
+  "scarpa-torcello": {
+    "image_url": "https://bus-cando.com/1539-thickbox_default/scrivania-serie-torcello-design-afra-e-tobia-scarpa-per-stildomus-anni-70.jpg",
+    "source_page": "https://bus-cando.com/it/mobili/1055-scrivania-serie-torcello-design-afra-e-tobia-scarpa-per-stildomus-anni-70.html",
+    "product_base": "scarpa-torcello",
+    "image_hash": "115792089237316195422002068758964342875434949977660471205695198810289618288639"
+  },
+  "scarpa-torcello2": {
+    "image_url": "https://www.intondo.com/media/mounted_nas/app-models-product/2020/106210/intondo-pair-of-cabinet-torcello-di-afra-and-tobia-scarpa-for-stildomus-1151051.jpg",
+    "source_page": "https://www.intondo.com/it/products/10770/mobili/credenze-e-vetrine/coppia-di-mobili-torcello-di-afra-e-tobia-scarpa-per-stildomus",
+    "product_base": "scarpa-torcello",
+    "image_hash": "115792089237316195417330759509940028830398211095535618951130596859698281971711"
+  },
+  "scarpa-torcello-chair": {
+    "image_url": "https://imgproxy.vinterior.co/is/rs:fit:848:892:0:0/quality:40/plain/https%3A%2F%2Fassets-vinterior-0.vinterior.co%2Fuploads%2Flisting_image%2Fimage%2F21696286%2Ftobia-afra-scarpa-set-of-six-black-dialogo-dining-chairs-by-b-b-1973-sku49418560_0.jpg",
+    "source_page": "https://www.vinterior.co/furniture/seating/dining-chairs/afra-tobia-scarpa-set-of-six-torcello-chairs-in-leather-and-wood-by-stildomus-sku98093966",
+    "product_base": "scarpa-torcello-chair",
+    "image_hash": "115792089237316195423570979045670239111680572584954503585947776512117618769919"
+  },
+  "scarpa-torcello-chair2": {
+    "image_url": "https://a.1stdibscdn.com/20th-century-italian-stildomus-maple-torcello-armchairs-by-afra-tobia-scarpa-for-sale/1121189/f_315457621670067661566/31545762_datamatics.jpg?width=768",
+    "source_page": "https://www.1stdibs.com/it/arredi/sedute/poltrone/poltrone-stildomus-torcello-in-acero-del-xx-secolo-di-afra-tobia-scarpa/id-f_31545762/",
+    "product_base": "scarpa-torcello-chair",
+    "image_hash": "115792089237316195423570985008602628415257561772861542592853369512848181428223"
+  },
+  "scarpa-torcello-table": {
+    "image_url": "https://cdn20.pamono.com/p/g/2/1/2133214_4psy7prgrz/tavolo-da-pranzo-torcello-in-noce-di-tobia-afra-scarpa-per-stildomus-anni-70-immagine-3.jpg",
+    "source_page": "https://www.pamono.it/tavolo-da-pranzo-torcello-in-noce-di-tobia-and-afra-scarpa-per-stildomus-anni-39-70?srsltid=AfmBOopCbt5EN4UCREDOGpAMHQj_Q1q_O3G58bCZ-JlTaaUVRmJPgvKb",
+    "product_base": "scarpa-torcello-table",
+    "image_hash": "115792089237316195423570985008642948864930027386584503848000694259488047235071"
+  },
+  "scarpa-torcello-table2": {
+    "image_url": "https://cdn20.pamono.com/p/s/2/1/2133214_3oonrm6x3f/tavolo-da-pranzo-torcello-in-noce-di-tobia-afra-scarpa-per-stildomus-anni-70.jpg",
+    "source_page": "https://www.pamono.it/tavolo-da-pranzo-torcello-in-noce-di-tobia-and-afra-scarpa-per-stildomus-anni-39-70?srsltid=AfmBOooUA2N-kNUbWBH__kShDbDmjJwHu1152ofawdgYWtD_O6A403n7",
+    "product_base": "scarpa-torcello-table",
+    "image_hash": "115792089237316195423570982062209618565386454854988659102148331237473687437311"
+  },
+  "scarpa-121": {
+    "image_url": "https://rep.karakter-copenhagen.com/files/23720.jpg",
+    "source_page": "https://www.karakter-copenhagen.com/products/furniture/scarpa-121",
+    "product_base": "scarpa-121",
+    "image_hash": "115792089237316175838702469447493461061561194603889413516554342032898391015423"
+  },
+  "scarpa-1212": {
+    "image_url": "https://robertaebasta.com/wp-content/uploads/2024/12/afra-e-tobia-scarpa_afra-e-tobia-scarpa-121-cassina_01-1200x1647.jpg",
+    "source_page": "https://robertaebasta.com/en/collezioni/afra-e-tobia-scarpa-121-cassina/",
+    "product_base": "scarpa-121",
+    "image_hash": "115792034022496327791347264936804486555535835684980602061532485308199039139839"
+  },
+  "scarpa-coronado-sofa": {
+    "image_url": "https://www.intondo.com/media/mounted_nas/app-models-product/2024/1491013/conversions/media-libraryfubG2m-large.webp",
+    "source_page": "https://www.intondo.com/en/products/105550/seating/sofas/coronado-three-seat-sofa-by-tobia-afra-scarpa-for-bb-italia-1970s",
+    "product_base": "scarpa-coronado-sofa",
+    "image_hash": "115792089237316195423570985002476564921513247920808516496236086546690199257087"
+  },
+  "scarpa-925": {
+    "image_url": "https://www.cassina.com/content/dam/ld/cassina/products/s/c/a/kar-scarpa-925/21_variant-image/925-scarpa-925.jpg",
+    "source_page": "https://www.cassina.com/it/it/prodotti/scarpa-925.html?srsltid=AfmBOorraixc8Np956BFQR2kmhrS1Fhe6bmuT3gHazL6bSCdjllDsgVT",
+    "product_base": "scarpa-925",
+    "image_hash": "115792089237316195423558719221007884857649909848859199326186369437978224230399"
+  },
+  "scarpa-9252": {
+    "image_url": "https://rep.karakter-copenhagen.com/files/22080.jpg",
+    "source_page": "https://www.karakter-copenhagen.com/products/furniture/scarpa-925",
+    "product_base": "scarpa-925",
+    "image_hash": "115792089233944479376090358685336217497727692395220848472869333894747121516543"
+  },
+  "scarpa-foglio": {
+    "image_url": "https://www.lucein.it/img/p/7/4/1/8/7418.jpg",
+    "source_page": "https://www.lucein.it/shop/1527-flos-foglio-design-tobia-scarpa-1966.html?srsltid=AfmBOoqxDQxlGS6z0MUA39P4Kfm9UQyBQ8D0BLoByw8ttkSZO1YonlnG",
+    "product_base": "scarpa-foglio",
+    "image_hash": "115792089210356248756420345214020912279700154625469054802348661045665439154175"
+  },
+  "scarpa-foglio2": {
+    "image_url": "https://www.moobilia.it/wp-content/uploads/2020/12/cs_foglio_03.jpg",
+    "source_page": "https://www.moobilia.it/prodotto/foglio-lampada-flos/?srsltid=AfmBOooAVaX655aFyvT83q2UIZ1agNxExHvRE52w20JjYRrz1JHLTeiX",
+    "product_base": "scarpa-foglio",
+    "image_hash": "115792089237316195423570982062255648005829744287953443897521783540711832944639"
+  },
+  "scarpa-carlotta": {
+    "image_url": "https://www.cassina.com/content/dam/ld/cassina/products/c/a/r/200-carlotta-armchair/21_variant-image/200-carlotta.jpg",
+    "source_page": "https://www.cassina.com/it/it/prodotti/carlotta-armchair.html?srsltid=AfmBOoqYEERwbpDC3T2kYYZoW-27OidUvNFQpA7HOfdvTr34ZOBHojJW",
+    "product_base": "scarpa-carlotta",
+    "image_hash": "115792089237316192208959274743943769792771975522265627893477905495162649313279"
+  },
+  "scarpa-carlotta2": {
+    "image_url": "https://www.intondo.com/media/mounted_nas/app-models-product/2025/1608154/conversions/media-libraryK2e3PV-large.webp",
+    "source_page": "https://www.intondo.com/it/products/111948/sedute/poltrone/poltrone-carlotta-di-tobia-e-afra-scarpa-per-cassina-anni-60",
+    "product_base": "scarpa-carlotta",
+    "image_hash": "115792089237316195423570985008323234920048219187974781239484393111978887872511"
+  },
+  "scarpa-carlotta-coffee-table": {
+    "image_url": "https://www.cassina.com/content/dam/ld/cassina/products/s/o/r/944-soriana-crafted-roy-rogers/14_plp/plp-soriana.jpg/jcr:content/renditions/cq5dam.thumbnail.1500.1500.jpg",
+    "source_page": "https://www.cassina.com/it/it/contemporanei/afra-e-tobia-scarpa.html?srsltid=AfmBOoqUTnuB8zVJKzYC8b6L21x2AJdmA5BdXeJoC18CHej5Csjr7M0q",
+    "product_base": "scarpa-carlotta-coffee-table",
+    "image_hash": "115792089237316195423570982062209618565397088800651601131736561321254101975039"
+  },
+  "scarpa-ciprea": {
+    "image_url": "https://www.intondo.com/media/mounted_nas/app-models-product/2022/327246/conversions/intondo-3-ciprea-armchairs-by-tobia-and-afra-scarpa-for-cassina-1970s-1369811-large.webp",
+    "source_page": "https://www.intondo.com/it/products/30414/sedute/poltrone/poltrone-ciprea-di-tobia-e-afra-scarpa-per-cassina-anni-70-set-di-3",
+    "product_base": "scarpa-ciprea",
+    "image_hash": "115792087724190782836614950076368797225789026380260792712530872210875542929407"
+  },
+  "scarpa-andre-table": {
+    "image_url": "https://www.wright20.com/items/index/2000/345_2_essential_design_july_2024_tobia_scarpa_andre_table_model_56_337__wright_auction.jpg?t=1721148297",
+    "source_page": "https://www.wright20.com/auctions/2024/07/essential-design/345",
+    "product_base": "scarpa-andre-table",
+    "image_hash": "115792089237316195423552590209921093059158167054487726202523314232468644560895"
+  },
+  "scarpa-soriana-chaise-longue": {
+    "image_url": "https://cdn20.pamono.com/p/g/2/3/2368935_p9qldw9dw4/soriana-chaise-longue-in-leather-by-afra-tobia-scarpa-for-cassina-1960s-1.jpg",
+    "source_page": "https://www.pamono.eu/soriana-chaise-longue-in-leather-by-afra-tobia-scarpa-for-cassina-1960s?srsltid=AfmBOoqoEqvfxlaBSPUpnbHEuPbojdAmbDLovYCHEYYMFmW3xZ2KcWq_",
+    "product_base": "scarpa-soriana-chaise-longue",
+    "image_hash": "115792089237316195423570984166818006121673609118920610013784129088524201754623"
+  },
+  "scarpa-soriana-chaise-longue2": {
+    "image_url": "https://cdn20.pamono.com/p/g/2/3/2368935_827xh9th95/soriana-chaise-longue-in-leather-by-afra-tobia-scarpa-for-cassina-1960s-8.jpg",
+    "source_page": "https://www.pamono.eu/soriana-chaise-longue-in-leather-by-afra-tobia-scarpa-for-cassina-1960s?srsltid=AfmBOoow2VwnzGDUZXaif9xVaD-1Igst4mGjQZUfim2oQLa9prZWzfSp",
+    "product_base": "scarpa-soriana-chaise-longue",
+    "image_hash": "115792089237316195423570984166818005773219148398765916894160770119157252358143"
+  },
+  "scarpa-soriana-pouf": {
+    "image_url": "https://storage.googleapis.com/deesup_vendure_prod/preview/58/pouf-soriana-in-pelle-di-afra-e-tobia-scarpa-anni-60-cassina-__preview.png",
+    "source_page": "https://www.deesup.com/shop/pouf-soriana-in-pelle-di-afra-e-tobia-scarpa-anni-60-cassina-348564",
+    "product_base": "scarpa-soriana-pouf",
+    "image_hash": "115792089237316195423570985008667926058896044347797015271044773029109359968255"
+  },
+  "scarpa-soriana-pouf2": {
+    "image_url": "https://storage.googleapis.com/deesup_vendure_prod/preview/49/pouf-soriana-in-pelle-di-afra-e-tobia-scarpa-anni-60-cassina-348564_4__preview.jpeg",
+    "source_page": "https://www.deesup.com/shop/pouf-soriana-in-pelle-di-afra-e-tobia-scarpa-anni-60-cassina-348564",
+    "product_base": "scarpa-soriana-pouf",
+    "image_hash": "115792089237316195417293884395740193811695256720995987095220703845243533918207"
+  },
+  "scarpa-soriana-sofa": {
+    "image_url": "https://www.cassina.com/content/dam/ld/cassina/products/s/o/r/944-soriana-sofa/14_plp/plp-soriana%E2%80%93sofa.jpg",
+    "source_page": "https://www.cassina.com/it/it/prodotti/soriana-sofa.html?srsltid=AfmBOornHl65l4Ea6es15rNVgEJMA4TGdjvwWd-FnK6cUODfNlb0eV7J",
+    "product_base": "scarpa-soriana-sofa",
+    "image_hash": "115792089237316195423423853557496962213670504773518876079211861706064867098623"
+  },
+  "scarpa-bonanza": {
+    "image_url": "https://assets-vinterior-1.vinterior.co/uploads/listing_image/image/13612287/sofa-bonanza-afra-tobia-scarpa-c-b-italia-sku16740467_0.jpg",
+    "source_page": "https://www.vinterior.co/furniture/seating/sofas/sofa-bonanza-afra-tobia-scarpa-c-b-italia-sku16740467",
+    "product_base": "scarpa-bonanza",
+    "image_hash": "115792089237316195423570949087169948167300840029515544358165537431841989984255"
+  },
+  "scarpa-dialogo": {
+    "image_url": "https://cdn20.pamono.com/p/g/2/0/2003251_2yb9atdd1r/sedie-da-pranzo-dialogo-nere-di-tobia-afra-scarpa-per-b-b-italia-c-b-italia-1973-set-di-6-immagine-1.jpg",
+    "source_page": "https://www.pamono.it/sedie-da-pranzo-dialogo-nere-di-tobia-and-afra-scarpa-per-bandb-italia-candb-italia-1973-set-di-6-2?srsltid=AfmBOor84FtK0msBzSJnqFwCudxwRxZSf513XWhQF5eXfeDAwkVW6ldB",
+    "product_base": "scarpa-dialogo",
+    "image_hash": "115792089237316195423570985008642948864930027386584503848000694259488047235071"
+  },
+  "scarpa-dialogo2": {
+    "image_url": "https://www.morentz.com/cdn/shop/products/50115385_PAAR_01__master.jpg?v=1707117431",
+    "source_page": "https://www.morentz.com/products/afra-tobia-scarpa-for-b-b-italia-dialogo-dessau-dining-chairs-1?srsltid=AfmBOor-EqoycnrI5TiWojEGZLnaDXfLhYp7LMKAV1wN82rn77tJJyU5",
+    "product_base": "scarpa-dialogo",
+    "image_hash": "115792089237316195422884427006379270618556234980717650437676396546858854383615"
+  },
+  "scarpa-erasmo-armchair": {
+    "image_url": "https://images.selency.com/283146f0-e320-2130-813f-64b7ec55394c?bg_colour=f5f5f5&width=1266&height=1266&func=bound",
+    "source_page": "https://www.suavisal.com/?product/review/20908806631100",
+    "product_base": "scarpa-erasmo-armchair",
+    "image_hash": "115792089237316195423475958318196212203065419383439271386753423197438214143999"
+  },
+  "scarpa-erasmo-armchair2": {
+    "image_url": "https://cocooncollectables.nl/wp-content/uploads/2025/10/BB1.jpg",
+    "source_page": "https://www.suavisal.com/?product/review/20908806631100",
+    "product_base": "scarpa-erasmo-armchair",
+    "image_hash": "115792089230577751440845304382143415218083155756767728781315572559723330797567"
+  },
+  "scarpa-erasmo-sofa": {
+    "image_url": "https://www.intondo.com/media/mounted_nas/app-models-product/2025/1889025/vintage-erasmo-sofa-by-tobia-afra-scarpa-for-b-b-italia-1974-2.jpg",
+    "source_page": "https://www.intondo.com/it/products/132086/sedute/divani/divano-erasmo-di-tobia-afra-scarpa-per-bb-italia-anni-70",
+    "product_base": "scarpa-erasmo-sofa",
+    "image_hash": "115792089237315784047431654707177385837171294433145868265584221610138304249855"
+  },
+  "scarpa-erasmo-sofa2": {
+    "image_url": "https://cdn20.pamono.com/p/g/1/7/1734535_fbez7mih2o/divano-erasmo-attribuito-ad-afra-e-tobia-scarpa-per-b-b-italia-1973-immagine-2.jpg",
+    "source_page": "https://www.pamono.it/divano-erasmo-attribuito-ad-afra-e-tobia-scarpa-per-bandb-italia-1973?srsltid=AfmBOorCiSggBNxNF95nO8SZwNw32GSHdsFy94gvqM-EERoDeDdhsPwa",
+    "product_base": "scarpa-erasmo-sofa",
+    "image_hash": "115792089237316195423570985008596920126840177224097444589925684695585240645631"
+  },
+  "scarpa-ariette": {
+    "image_url": "https://www.ambientemariociotta.it/170-thickbox_default/ariette.jpg",
+    "source_page": "https://www.ambientemariociotta.it/lampade-da-soffitto/82-ariette.html",
+    "product_base": "scarpa-ariette",
+    "image_hash": "115792089237316144050986499267385235974959784383411161808846471288641269268479"
+  },
+  "scarpa-tamburo": {
+    "image_url": "https://cdn20.pamono.com/p/g/2/3/2384000_q5jywmbo66/lampada-tamburo-attribuita-a-tobia-e-afra-scarpa-per-flos-anni-70-immagine-1.jpg",
+    "source_page": "https://www.pamono.it/lampada-tamburo-attribuita-a-tobia-e-afra-scarpa-per-flos-anni-39-70?srsltid=AfmBOoqYWzh-ockVK78Zm7BRw430D3_KLGQA-Eo2ZL0-qDx1L-_rFbcM",
+    "product_base": "scarpa-tamburo",
+    "image_hash": "115792089237316195423570985008666498811203338342280535376859065080091661828095"
+  },
+  "scarpa-tamburo2": {
+    "image_url": "https://cdn20.pamono.com/p/g/2/3/2384335_079j4mwsdg/lampada-tamburo-attribuita-a-tobia-e-afra-scarpa-per-flos-anni-70-immagine-3.jpg",
+    "source_page": "https://www.pamono.it/lampada-tamburo-attribuita-a-tobia-e-afra-scarpa-per-flos-anni-39-70-1?srsltid=AfmBOooMhyh-phzZOGt65TDJYcPd2uDVxGgRYutZqx9uc8duBodGgzM8",
+    "product_base": "scarpa-tamburo",
+    "image_hash": "115792089237316195423570985008596919424486737791360403537787650896538300841983"
+  },
+  "scarpa-monk": {
+    "image_url": "https://www.intondo.com/media/mounted_nas/app-models-product/2024/1208247/conversions/intondo-6-monk-chairs-by-afra-and-tobia-scarpa-for-molteni-1970s-1-large.webp",
+    "source_page": "https://www.intondo.com/it/products/82211/sedute/sedie/6-sedie-monk-di-afra-e-tobia-scarpa-per-molteni-anni-70",
+    "product_base": "scarpa-monk",
+    "image_hash": "115792089237092400576795363310002081900874824180180377865339158180423798882303"
+  },
+  "scarpa-monk2": {
+    "image_url": "https://archivio.dimanoinmano.it/img/945320/full/modernariato/sedie/quattro-sedie-monk-afra-e-tobia-scarpa-per-molteni-anni-70.jpg",
+    "source_page": "https://archivio.dimanoinmano.it/it/cp264510/modernariato/sedie/quattro-sedie-monk-afra-e-tobia-scarpa-per-molteni-anni-70",
+    "product_base": "scarpa-monk",
+    "image_hash": "115792075433507533631367355914585763530373469452269027084459727660828508291071"
+  },
+  "scarpa-morna": {
+    "image_url": "https://cdn20.pamono.com/p/g/2/0/2036702_aidk9beros/dormeuse-morna-di-afra-tobia-scarpa-per-molteni-immagine-1.jpg",
+    "source_page": "https://www.pamono.it/dormeuse-morna-di-afra-and-tobia-scarpa-per-molteni?srsltid=AfmBOoqG_JpKyI-SD26_ZtEeOjfFe4pzlPbiJccEec6KnP5R0q9u0ksd",
+    "product_base": "scarpa-morna",
+    "image_hash": "115792089237316195423570983792673586964962462058777292838415676056605470752767"
+  },
+  "scarpa-morna2": {
+    "image_url": "https://spaccapanico.com/wp-content/uploads/2024/06/PFG8009-Q-a-scaled.jpg",
+    "source_page": "https://spaccapanico.com/prodotto/letto-morna-afra-e-tobia-scarpa-1972/",
+    "product_base": "scarpa-morna",
+    "image_hash": "115791979237366885446027590279887826396187856175915853170937976052200410972159"
+  },
+  "scarpa-elogio": {
+    "image_url": "http://luminaire.com/cdn/shop/files/Elogio-Sofa-Tobia-Afra-Scarpa-Gubi-7-02.jpg?v=1783014557",
+    "source_page": "https://luminaire.com/it/products/elogio-sofa-tobia-scarpa-gubi?srsltid=AfmBOoog-2PCov-XG8mw6t6mL0TMy6KgG5uRmLv4mwZj9TntRPaq8dnt",
+    "product_base": "scarpa-elogio",
+    "image_hash": "115792089237316195423570984827096362866533526213743303150207220818223260762111"
+  },
+  "scarpa-mop": {
+    "image_url": "https://a.1stdibscdn.com/mop-modular-bookcase-by-afra-tobia-scarpa-molteni-italy-1974-for-sale/f_73422/f_360397121694011870094/f_36039712_1694011870571_bg_processed.jpg?width=768",
+    "source_page": "https://www.1stdibs.com/it/arredi/armadi-e-contenitori/librerie/libreria-modulare-mop-di-afra-tobia-scarpa-molteni-italia-1974/id-f_36039712/",
+    "product_base": "scarpa-mop",
+    "image_hash": "115792089237316195423521942532324306324484530891133650909236687030433852948479"
+  },
+  "scarpa-mop2": {
+    "image_url": "https://a.1stdibscdn.com/mop-modular-bookcase-by-afra-tobia-scarpa-molteni-italy-1974-for-sale-picture-2/f_73422/f_360397121694011973868/IMG_6173_master.jpg?width=768",
+    "source_page": "https://www.1stdibs.com/it/arredi/armadi-e-contenitori/librerie/libreria-modulare-mop-di-afra-tobia-scarpa-molteni-italia-1974/id-f_36039712/",
+    "product_base": "scarpa-mop",
+    "image_hash": "115792089237316172926055235558019607435804989394710279487360036198275119841279"
+  },
+  "scarpa-papillona": {
+    "image_url": "https://cdn20.pamono.com/p/g/1/5/1540256_lcnbn281e8/lampada-da-terra-papillona-vintage-di-afra-tobia-scarpa-per-flos-anni-70-immagine-20.jpg",
+    "source_page": "https://www.pamono.it/lampada-da-terra-papillona-vintage-di-afra-and-tobia-scarpa-per-flos-anni-39-70?srsltid=AfmBOoprNKKM4NzB-pHAFnjiHmD31Z2x7511MKYz-wRcGjKAzSROV-n2",
+    "product_base": "scarpa-papillona",
+    "image_hash": "115792089237316195423570983605601377027263225941470678845846501025713682907135"
+  },
+  "scarpa-papillona2": {
+    "image_url": "https://cdn20.pamono.com/p/s/1/1/1147062_ku0etszho6/lampada-da-terra-papillona-al-neon-di-tobia-afra-scarpa-per-flos-anni-70.jpg",
+    "source_page": "https://www.pamono.it/lampada-da-terra-papillona-al-neon-di-tobia-and-afra-scarpa-per-flos-anni-39-70?srsltid=AfmBOooIJaPTpFddy7xXX3b9Do8HfxBYg4pg-EH-7BHcaRPu1niDkD94",
+    "product_base": "scarpa-papillona",
+    "image_hash": "115792089237316195423570983605624926973536536866741935400440536166388702642175"
+  },
+  "scarpa-africa": {
+    "image_url": "https://www.creazionidinterni.it/wp-content/uploads/2022/10/Gruppo-di-6-sedie-mod-Africa.jpeg",
+    "source_page": "https://www.creazionidinterni.it/product/afra-tobia-scarpa-per-maxalto-gruppo-di-6-sedie-mod-africa-1976/",
+    "product_base": "scarpa-africa",
+    "image_hash": "115792089233972478941560985756581668257411127005198075426934940113038959706111"
+  },
+  "scarpa-africa2": {
+    "image_url": "https://cdn20.pamono.com/p/g/1/6/1640221_b4tzd2vtqb/sedie-africa-di-tobia-afra-scarpa-per-maxalto-1976-set-di-4-immagine-16.jpg",
+    "source_page": "https://www.pamono.it/sedie-africa-di-tobia-and-afra-scarpa-per-maxalto-1976-set-di-4-1?srsltid=AfmBOoqCIToFyBCoD0-VjN3paOlxvHL94_0YWZyyUPQexrF4NOWCVwhT",
+    "product_base": "scarpa-africa",
+    "image_hash": "115792089237316195423570985008679344040437691986280662351497028142305919369215"
+  },
+  "scarpa-artona": {
+    "image_url": "https://archivio.dimanoinmano.it/img/1181549/full/modernariato/poltrone/poltrona-serie-artona-afra-tobia-scarpa-per-maxalto.jpg",
+    "source_page": "https://archivio.dimanoinmano.it/it/cp316675/modernariato/poltrone/poltrona-serie-artona-afra-tobia-scarpa-per-maxalto",
+    "product_base": "scarpa-artona",
+    "image_hash": "115792089237296449066400289105121796770189752413220668344716000320112256090111"
+  },
+  "scarpa-artona2": {
+    "image_url": "https://content.ngv.vic.gov.au/col-images/api/Fa107116/1280",
+    "source_page": "https://www.ngv.vic.gov.au/essay/artona-chair/",
+    "product_base": "scarpa-artona",
+    "image_hash": "115792089235664089664907944723772311800146528572845571674304432699324393062399"
+  },
+  "scarpa-basilan": {
+    "image_url": "https://storage.googleapis.com/deesup_vendure_prod/preview/62/4-sedie-serie-basilan-afra-and-tobia-scarpa__07__preview.jpeg",
+    "source_page": "https://www.deesup.com/shop/set-di-4-sedie-basilan-in-bamb-di-afra-and-tobia-scarpa-anni-70-b-and-b-italia-353167",
+    "product_base": "scarpa-basilan",
+    "image_hash": "110350116808122158871307898996086573496955171518518797660418683945914465251343"
+  },
+  "scarpa-basilan2": {
+    "image_url": "https://cdn20.pamono.com/p/g/2/3/2340164_njp6r39cz4/set-da-pranzo-basilan-di-afra-tobia-scarpa-per-b-b-italia-1974-set-di-5-immagine-3.jpg",
+    "source_page": "https://www.pamono.it/set-da-pranzo-basilan-di-afra-and-tobia-scarpa-per-bandb-italia-1974-set-di-5?srsltid=AfmBOopTTV51NUIueSyHTi6vLKAgnXmCCuY7rcQoVNkvN-Gn5tCoKDQw",
+    "product_base": "scarpa-basilan",
+    "image_hash": "115792089237316195423570985008666498462748877723538818730523522265667143204863"
+  },
+  "scarpa-tl59-metal-top": {
+    "image_url": "https://www.cassina.com/content/dam/ld/cassina/products/t/l/5/059-tl59-double-base-table/21_variant-image/059-tl59-double-base-table.jpg",
+    "source_page": "https://www.cassina.com/it/it/prodotti/tl59-double-base-table.html?srsltid=AfmBOooEWdxCC5vCLxeEAWtEOb6X5zzVNwZbFRDUMrL7v8J_9ds0VK38",
+    "product_base": "scarpa-tl59-metal-top",
+    "image_hash": "115792089237316195422977047965542690551543444501521634709862082947589550899199"
+  },
+  "scarpa-tl59-metal-top2": {
+    "image_url": "https://www.cassina.com/content/dam/ld/cassina/products/t/l/5/059-tl59-rectangular-table/14_plp/14_plp-tl59-rectangular.jpg",
+    "source_page": "https://www.cassina.com/gb/en/products/tl59-rectangular-table.html?srsltid=AfmBOooLGWmgexYIZxC2c7xepfH958RCm1zSWS5SrS8SZDfQyzsdjp6X",
+    "product_base": "scarpa-tl59-metal-top",
+    "image_hash": "115792089237316195423227700395282023776227530271349339564704371889411186491391"
+  },
+  "scarpa-tl59-rectangular-table": {
+    "image_url": "https://www.cassina.com/content/dam/ld/cassina/products/t/l/5/059-tl59-rectangular-table/14_plp/14_plp-tl59-rectangular.jpg",
+    "source_page": "https://www.cassina.com/it/it/prodotti/tl59-rectangular-table.html?srsltid=AfmBOooJZm5u57NQvPJCMAmSbdBHRD4vkmn3hEhndNhEYi-P8DQHEKLj",
+    "product_base": "scarpa-tl59-rectangular-table",
+    "image_hash": "115792089237316195423227700395282023776227530271349339564704371889411186491391"
+  },
+  "scarpa-tl59-round-table": {
+    "image_url": "https://www.cassina.com/content/dam/ld/cassina/products/s/o/r/944-soriana-crafted-roy-rogers/14_plp/plp-soriana.jpg/jcr:content/renditions/cq5dam.thumbnail.1500.1500.jpg",
+    "source_page": "https://www.cassina.com/ww/es/contemporanei/afra-e-tobia-scarpa.html?srsltid=AfmBOoo14xYAbj0kNzzdb8-oO_ZU1cczIGMeyTL_hCyfb4pltFZ13RN5",
+    "product_base": "scarpa-tl59-round-table",
+    "image_hash": "115792089237316195423570982062209618565397088800651601131736561321254101975039"
+  },
+  "scarpa-le-due-facce-della-luna": {
+    "image_url": "https://www.cassina.com/content/dam/ld/cassina/products/s/c/a/kar-scarpa-925/21_variant-image/925-scarpa-925.jpg",
+    "source_page": "https://www.cassina.com/it/it/prodotti/scarpa-925.html?srsltid=AfmBOoorKAtXGNI9mnhbPluQ1v6_LzBarrahYXDSx974JVzyAAMXK-63",
+    "product_base": "scarpa-le-due-facce-della-luna",
+    "image_hash": "115792089237316195423558719221007884857649909848859199326186369437978224230399"
+  },
+  "scarpa-le-due-facce-della-luna2": {
+    "image_url": "https://www.cassina.com/content/dam/ld/cassina/products/s/c/a/kar-scarpa-121/21_variant-image/121-scarpa-121.jpg",
+    "source_page": "https://www.cassina.com/it/it/prodotti/scarpa-121.html?srsltid=AfmBOoqNx2HgiKW2lFHoy_nP8x5xbWMSFck5Dsy4Pg1gcLhV_prca5uf",
+    "product_base": "scarpa-le-due-facce-della-luna",
+    "image_hash": "115792089237316195423558713094941262689187812513691402378166185494721704493055"
+  },
+  "scarpa-sempronia": {
+    "image_url": "https://tacchini-media.fra1.cdn.digitaloceanspaces.com/Tacchini_Sempronia_thumb_01.jpg",
+    "source_page": "https://tacchini.it/prodotti/africa",
+    "product_base": "scarpa-sempronia",
+    "image_hash": "115792089237316195423570982109024414035162168037588297144795912612423787347967"
+  },
+  "scarpa-mastro": {
+    "image_url": "https://cdn20.pamono.com/p/g/2/0/2086994_yrjdinuf2x/sedie-da-pranzo-mastro-attribuite-ad-afra-tobia-scarpa-per-molteni-italia-anni-80-set-di-4-immagine-1.jpg",
+    "source_page": "https://www.pamono.it/sedie-da-pranzo-mastro-attribuite-ad-afra-and-tobia-scarpa-per-molteni-italia-anni-39-80-set-di-4?srsltid=AfmBOooCfSJLv16k26ql2BMMGXRu9T-gWL-7VoRJXK9x48dSR42FD-tT",
+    "product_base": "scarpa-mastro",
+    "image_hash": "115792089237316195423570985008666498811198021349166828843731304120855360962559"
+  },
+  "scarpa-mastro2": {
+    "image_url": "https://cdn20.pamono.com/p/g/2/0/2086994_apim8j9k7f/sedie-da-pranzo-mastro-attribuite-ad-afra-tobia-scarpa-per-molteni-italia-anni-80-set-di-4-immagine-10.jpg",
+    "source_page": "https://www.pamono.it/sedie-da-pranzo-mastro-attribuite-ad-afra-and-tobia-scarpa-per-molteni-italia-anni-39-80-set-di-4?srsltid=AfmBOopCI_7ajeqjBLc78d-hYjdgRrgZYqgx4ceN-94jVr5fUwAANLir",
+    "product_base": "scarpa-mastro",
+    "image_hash": "115792089237316195423570984260354110562396935161267296071323433273082521845759"
+  },
+  "scarpa-meo": {
+    "image_url": "https://media.mutualart.com/Images//2023_12/24/23/230648196/afra-e-LXFTX.Jpeg",
+    "source_page": "https://www.mutualart.com/Artwork/-MEO-FILO--TABLE-WITH-FOUR-SWIVELING-CHA/18F783B17EEA454450DA720BE5B25750",
+    "product_base": "scarpa-meo",
+    "image_hash": "115792089237316195423570979045670239114402831520321392323635130681434314899455"
+  },
+  "scarpa-meo2": {
+    "image_url": "https://media.mutualart.com/Images/2025_06/24/19/98234131/tobia---afra-scarpa-IHXDA-570.Jpeg",
+    "source_page": "https://www.mutualart.com/Artwork/-MEO-FILO--TABLE-WITH-FOUR-SWIVELING-CHA/18F783B17EEA454450DA720BE5B25750",
+    "product_base": "scarpa-meo",
+    "image_hash": "115792089237316195423570984821594289232842281663061324396135969861226228350975"
+  },
+  "scarpa-accademia": {
+    "image_url": "https://www.cambiaste.com/uploads/auctions/9950AUT-scarpa-1612970240.jpg",
+    "source_page": "https://www.cambiaste.com/it/artisti/afra-e-tobia-scarpa-9950",
+    "product_base": "scarpa-accademia",
+    "image_hash": "115792089237316195423521942204947939562362277185621211829767955740203853807615"
+  },
+  "scarpa-accademia2": {
+    "image_url": "https://imageapi.cambiaste.com/api/lotto/immagine/272956/0/600.jpg",
+    "source_page": "https://www.cambiaste.com/it/artisti/afra-e-tobia-scarpa-9950",
+    "product_base": "scarpa-accademia",
+    "image_hash": "115792089237316195423570982062255648005829744287953443897521783540711832944639"
+  },
+  "scarpa-miss": {
+    "image_url": "https://a.1stdibscdn.com/afra-tobia-scarpa-miss-dining-chair-for-molteni-1986-set-of-2-for-sale/f_37563/f_492082321773407734782/f_49208232_1773407734915_bg_processed.jpg?width=768",
+    "source_page": "https://www.1stdibs.com/it/arredi/sedute/poltrone/sedia-da-pranzo-miss-di-afra-tobia-scarpa-per-molteni-1986-set-di-2/id-f_49208232/",
+    "product_base": "scarpa-miss",
+    "image_hash": "115792089237316195423570985008598346672179443751239198714622781805859633627135"
+  },
+  "scarpa-miss2": {
+    "image_url": "https://a.1stdibscdn.com/afra-tobia-scarpa-miss-dining-chair-for-molteni-1986-set-of-2-for-sale-picture-2/f_37563/f_492082321773407783018/raw_060_master.jpg?width=768",
+    "source_page": "https://www.1stdibs.com/it/arredi/sedute/poltrone/sedia-da-pranzo-miss-di-afra-tobia-scarpa-per-molteni-1986-set-di-2/id-f_49208232/",
+    "product_base": "scarpa-miss",
+    "image_hash": "115792089237316195423570979045670239114402831520321392323635130681434314899455"
+  },
+  "scarpa-liberta": {
+    "image_url": "https://www.cassina.com/content/dam/ld/cassina/products/s/c/a/kar-scarpa-925/14_plp/plp-scarpa-armchair.jpg/jcr:content/renditions/cq5dam.thumbnail.1500.1500.jpg",
+    "source_page": "https://www.cassina.com/it/it/contemporanei/afra-e-tobia-scarpa.html?srsltid=AfmBOorjuyuoxyvNPoSNIy-3_JgzBiI4MCQDlDVcWawoGyQ11l4D_Cgz",
+    "product_base": "scarpa-liberta",
+    "image_hash": "115792089237316195423570973409480519297017830349382260051723096896265860939775"
+  },
+  "scarpa-liberta2": {
+    "image_url": "https://www.cassina.com/content/dam/ld/cassina/products/s/c/a/kar-scarpa-121/14_plp/plp-karakter-scarpa121.jpg/jcr:content/renditions/cq5dam.thumbnail.1500.1500.jpg",
+    "source_page": "https://www.cassina.com/it/it/contemporanei/afra-e-tobia-scarpa.html?srsltid=AfmBOooNn-Pyj0g9Aa8CkFrTVEXmpnfw3hEOUO6gOfQ8HK4J0dBLnC0x",
+    "product_base": "scarpa-liberta",
+    "image_hash": "115792089237316195423515812784009668228157283293626187257401717478019706126335"
+  },
+  "scarpa-pierrot": {
+    "image_url": "https://images.whoppah.com/products/0L9SLQKMLGJ9/OMFZ3NFDVJNT/flos-tobia-afra-scarpa-pierrot.jpeg?width=560",
+    "source_page": "https://www.whoppah.com/it/prodotti/flos-tobia-amp-afra-scarpa-pierrot-0L9SLQKMLGJ9",
+    "product_base": "scarpa-pierrot",
+    "image_hash": "115792089237316195423377887624109400505062004482294621475136085348991008505855"
+  },
+  "scarpa-pierrot2": {
+    "image_url": "https://cdn20.pamono.com/p/g/2/4/2436735_dztsjh8z2r/lampada-da-tavolo-pierrot-limited-edition-179-999-di-afra-tobia-scarpa-per-flos-italia-1991-immagine-1.jpg",
+    "source_page": "https://www.pamono.it/lampada-da-tavolo-pierrot-limited-edition-179-999-di-afra-and-tobia-scarpa-per-flos-italia-1991?srsltid=AfmBOore-Pb9BJHm4uMYRza1bD6aw68kQk_VyMTSqEmnnfKa8e_qV-oW",
+    "product_base": "scarpa-pierrot",
+    "image_hash": "115792089237316195423570985008666498811203338342280071149344333062488574656511"
+  },
+  "scarpa-due-mani": {
+    "image_url": "https://a.1stdibscdn.com/afra-tobia-scarpa-san-lorenzo-due-mani-bowls-set-in-pure-999-silver-for-sale/f_83032/f_446286721744918856837/IMG_3529_1_copy_master.jpg",
+    "source_page": "https://www.1stdibs.com/buy/afra-tobia-scarpa-san-lorenzo/",
+    "product_base": "scarpa-due-mani",
+    "image_hash": "110364121093492712445235614492542656795835378354487375317984986164809032531967"
+  },
+  "scarpa-veronica": {
+    "image_url": "https://cdn20.pamono.com/p/m/2/5/2588625_kya0byuw4v/lampade-da-tavolo-hollywood-regency-con-dettagli-in-ottone-di-tommaso-barbi-italia-anni-70-set-di-2.png",
+    "source_page": "https://www.pamono.it/dealers/s-tile-di-veronica-tironi/?srsltid=AfmBOop6nE6suoSxwklFIm2QCVd7cA4lQJ0l1PpizyABOZXeLWH_XZ1B",
+    "product_base": "scarpa-veronica",
+    "image_hash": "115792089237316195423570985008666498811203338418339571390552829169893854150655"
+  },
+  "scarpa-veronica2": {
+    "image_url": "https://cdn20.pamono.com/p/m/2/5/2522921_r5pmgcvr82/lampada-da-tavolo-in-ottone-acciaio-e-vetro-acrilico-italia-anni-70.png",
+    "source_page": "https://www.pamono.it/dealers/s-tile-di-veronica-tironi/?srsltid=AfmBOoo7dEuAfVLY-2CgDvrfcFjaYAxU1beP5oxEDu6ujuAbnyU5JoYp",
+    "product_base": "scarpa-veronica",
+    "image_hash": "115792089237316195423570985008679343887994182409255565987922578426653893984255"
+  },
+  "scarpa-no-68-pure-silver-candelabra": {
+    "image_url": "https://www.abask.com/cdn/shop/files/zvwhwgf4g5461rtdtioy.jpg?v=1771859917&width=1140",
+    "source_page": "https://www.abask.com/en-ae/products/san-lorenzo-1992-afra-and-tobia-scarpa-no-68-pure-silver-candelabra-silver-2205465013",
+    "product_base": "scarpa-no-68-pure-silver-candelabra",
+    "image_hash": "115792089237316144101203301078453749017018715691021967305928473013819445084159"
+  },
+  "scarpa-nicolo": {
+    "image_url": "https://media.mutualart.com/Images//2021_10/27/21/215302043/7adaa0cf-d751-48f8-ba3c-abba3c8d3a03.Jpeg",
+    "source_page": "https://www.mutualart.com/Artwork/Italie--Venise--XVIIe-XVIIIe-siecle--dap/AF01C6E0E6487DD0F0AA713BB7090998",
+    "product_base": "scarpa-nicolo",
+    "image_hash": "115792089231408737695263833923275544290413097373729553272696480103580534046719"
+  },
+  "scarpa-saturnina": {
+    "image_url": "https://a.1stdibscdn.com/saturnina-flor-lamp-by-afra-and-tobia-scarpa-for-fabbianitaly-90-for-sale/f_23603/f_286526521658137620544/f_28652652_1658137621458_bg_processed.jpg?width=768",
+    "source_page": "https://www.1stdibs.com/furniture/lighting/floor-lamps/saturnina-flor-lamp-afra-tobia-scarpa-fabbian-italy-90/id-f_28652652/",
+    "product_base": "scarpa-saturnina",
+    "image_hash": "115792089237210883131810477528315698681133653801914071848403212562114048688127"
+  },
+  "scarpa-saturnina2": {
+    "image_url": "https://a.1stdibscdn.com/saturnina-flor-lamp-by-afra-and-tobia-scarpa-for-fabbianitaly-90-for-sale-picture-8/f_23603/f_28652652/IMG_1658136472020_master.JPG?width=768",
+    "source_page": "https://www.1stdibs.com/furniture/lighting/floor-lamps/saturnina-flor-lamp-afra-tobia-scarpa-fabbian-italy-90/id-f_28652652/",
+    "product_base": "scarpa-saturnina",
+    "image_hash": "115792089235637755164137482142094209256659803186741975112898379167930072956927"
+  },
+  "scarpa-mani": {
+    "image_url": "https://a.1stdibscdn.com/afra-tobia-scarpa-coffee-table-from-the-70s-for-sale/f_40763/f_410039321723190703286/f_41003932_1723190703631_bg_processed.jpg",
+    "source_page": "https://www.1stdibs.com/buy/afra-tobia-scarpa-san-lorenzo/",
+    "product_base": "scarpa-mani",
+    "image_hash": "115792089237316118214041515828729418086146597245659493068405678175677610721279"
+  },
+  "scarpa-galeto": {
+    "image_url": "https://cdn20.pamono.com/p/g/2/9/297266_pbmdlurlsr/tavolino-da-caffe-mid-century-con-ripiano-in-vetro-fume-di-tobia-afra-scarpa-italia-immagine-1.jpg",
+    "source_page": "https://www.pamono.it/tavolino-da-caffe-mid-century-con-ripiano-in-vetro-fume-di-tobia-and-afra-scarpa-italia?srsltid=AfmBOoo7jN0uno1yLgCA_FqY39hEJF21QYdERaHjpjSnxFl_LMedGe91",
+    "product_base": "scarpa-galeto",
+    "image_hash": "115792089237316195423570985008679343691983065188686460586112784322064801595391"
+  },
+  "scarpa-galeto2": {
+    "image_url": "https://cdn20.pamono.com/p/g/2/9/297266_ey71p44vag/tavolino-da-caffe-mid-century-con-ripiano-in-vetro-fume-di-tobia-afra-scarpa-italia-immagine-2.jpg",
+    "source_page": "https://www.pamono.it/tavolino-da-caffe-mid-century-con-ripiano-in-vetro-fume-di-tobia-and-afra-scarpa-italia?srsltid=AfmBOop6-PTlID99hFQYO_cGjoNIcGlpGA9b-r3j490uAAoWsjn0vLWg",
+    "product_base": "scarpa-galeto",
+    "image_hash": "115792089237316195423570985008675061938021394633055867675352176602962727010303"
+  },
+  "scarpa-scandola": {
+    "image_url": "https://cdn20.pamono.com/p/g/2/9/297266_pbmdlurlsr/tavolino-da-caffe-mid-century-con-ripiano-in-vetro-fume-di-tobia-afra-scarpa-italia-immagine-1.jpg",
+    "source_page": "https://www.pamono.it/tavolino-da-caffe-mid-century-con-ripiano-in-vetro-fume-di-tobia-and-afra-scarpa-italia?srsltid=AfmBOor0twkvwugsycOEUduTb2-5CQnIr8GCHsauPI2uzQ0Q-9TTURdS",
+    "product_base": "scarpa-scandola",
+    "image_hash": "115792089237316195423570985008679343691983065188686460586112784322064801595391"
+  },
+  "scarpa-scandola2": {
+    "image_url": "https://cdn20.pamono.com/p/g/2/9/297266_ey71p44vag/tavolino-da-caffe-mid-century-con-ripiano-in-vetro-fume-di-tobia-afra-scarpa-italia-immagine-2.jpg",
+    "source_page": "https://www.pamono.it/tavolino-da-caffe-mid-century-con-ripiano-in-vetro-fume-di-tobia-and-afra-scarpa-italia?srsltid=AfmBOoo9Ri6O-zk3fMRoFAMwXaime-3sTXD3S8z6rAoISpSqJhwYzkhv",
+    "product_base": "scarpa-scandola",
+    "image_hash": "115792089237316195423570985008675061938021394633055867675352176602962727010303"
+  },
+  "scarpa-pan999": {
+    "image_url": "https://www.intondo.com/media/mounted_nas/app-models-product/2022/527884/conversions/intondo-pan999-pan-in-silver-and-iron-by-tobia-scarpa-6-large.webp",
+    "source_page": "https://www.intondo.com/it/products/43470/decor/per-la-tavola/padella-pan999-in-argento-e-ferro-di-tobia-scarpa",
+    "product_base": "scarpa-pan999",
+    "image_hash": "115792089237316195423570984646224256645715781489617265796386090521625437929471"
+  },
+  "scarpa-ciacola-chair": {
+    "image_url": "https://cdn.mohd.it/cache/image/width=1200,format=webp/media/catalog/product/c/i/ciacola-collezione-desiree-divani-12.jpg",
+    "source_page": "https://shop.mohd.it/en/ciacola-chair.html",
+    "product_base": "scarpa-ciacola-chair",
+    "image_hash": "115792089237316195423377887624115109495832828397877890652187409161176018321407"
+  },
+  "scarpa-ciacola-chair2": {
+    "image_url": "https://cdn.mohd.it/cache/image/width=800,format=webp/media/catalog/product/c/i/ciacola-collezione-desiree-divani-15.jpg",
+    "source_page": "https://shop.mohd.it/en/ciacola-chair.html",
+    "product_base": "scarpa-ciacola-chair",
+    "image_hash": "115792089237316169812605115298247274259190447436263515569822350712256721846271"
+  },
+  "scarpa-ciacola-table": {
+    "image_url": "https://cdn.mohd.it/cache/image/width=800,format=webp/media/catalog/product/c/i/ciacola-collezione-desiree-divani-11.jpg",
+    "source_page": "https://shop.mohd.it/en/ciacola-table.html",
+    "product_base": "scarpa-ciacola-table",
+    "image_hash": "115792089237316195423570985008642948995587739543232833562468161157448134033407"
+  },
+  "scarpa-ciacola-table2": {
+    "image_url": "https://cdn.mohd.it/cache/image/width=800,format=webp/media/catalog/product/c/i/ciacola-collezione-desiree-divani-13.jpg",
+    "source_page": "https://shop.mohd.it/en/ciacola-table.html",
+    "product_base": "scarpa-ciacola-table",
+    "image_hash": "115792089236473671479258187377201878082151269488043506539188671895123821330431"
+  },
+  "scarpa-seki-han-suspension": {
+    "image_url": "https://www.twentytwentyone.com/cdn/shop/files/flos-tobia-scarpa-seki-han-suspension-7_1200x1200.progressive.jpg?v=1777479406",
+    "source_page": "https://www.twentytwentyone.com/products/flos-tobia-scarpa-seki-han-suspension?srsltid=AfmBOoonXGOUDV3ui7AoBBd6cytVAlXFEdqRBlRMwJrviJV23dl7OQZS",
+    "product_base": "scarpa-seki-han-suspension",
+    "image_hash": "115792089237316195422786305387247085059391142802007225305447183109037825720319"
+  },
+  "mari-autoprogettazione2": {
+    "image_url": "https://pictures.abebooks.com/inventory/32331959624.jpg",
+    "source_page": "https://www.abebooks.it/Mari-Enzo-Proposta-unautoprogettazione-Galleria-Milano/32331959624/bd",
+    "product_base": "mari-autoprogettazione",
+    "image_hash": "115792089223784073739673360985109926965565147519052159758491393543940188667903"
+  },
+  "mari-ecolo2": {
+    "image_url": "https://gallery.artsupp.com/partners_artworks_pictures/full/5112.jpg",
+    "source_page": "https://artsupp.com/it/artisti/enzo-mari/ecolo",
+    "product_base": "mari-ecolo",
+    "image_hash": "115792089237315788874326804666823694499184320491200946173362777783267984670719"
+  },
+  "castiglioni-tubino2": {
+    "image_url": "https://www.quittenbaum.de/wp-content/themes/quittenbaum/imagecache/123265_4-2000-0.jpg",
+    "source_page": "https://www.quittenbaum.de/en/auktionen/design/167A/all-lots/achille-castiglioniflos-brescia-tubino-table-light-1949-123265/",
+    "product_base": "castiglioni-tubino",
+    "image_hash": "94079360865695947827627024579587604737354053811946424973488727644537747472408"
   }
 }
