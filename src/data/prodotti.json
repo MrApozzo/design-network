@@ -6930,10 +6930,7 @@
     "azienda": "Stilnovo",
     "azienda_attuale": null,
     "categoria": "lampada da terra",
-    "foto": "boeri-papero.jpg",
-    "foto_dettaglio": [
-      "boeri-papero2.jpg"
-    ]
+    "foto": "boeri-papero.jpg"
   },
   {
     "nome": "Mod. 235",
@@ -7273,7 +7270,10 @@
     "azienda": "Knoll",
     "azienda_attuale": null,
     "categoria": "poltrona",
-    "foto": "boeri-cini-boeri-lounge-chair.jpg"
+    "foto": "boeri-cini-boeri-lounge-chair.jpg",
+    "foto_dettaglio": [
+      "boeri-cini-boeri-lounge-chair2.jpg"
+    ]
   },
   {
     "nome": "Cini Boeri Sofa",
@@ -7354,7 +7354,10 @@
     "azienda": "Danese Milano",
     "azienda_attuale": "Danese Milano",
     "categoria": "scatola",
-    "foto": "mari-citera.jpg"
+    "foto": "mari-citera.jpg",
+    "foto_dettaglio": [
+      "mari-citera2.jpg"
+    ]
   },
   {
     "nome": "Arran",
@@ -7363,7 +7366,11 @@
     "azienda": "Danese Milano",
     "azienda_attuale": "Alessi",
     "categoria": "vassoio rettangolare",
-    "foto": "mari-arran.jpg"
+    "foto": "mari-arran.jpg",
+    "foto_dettaglio": [
+      "mari-arran2.jpg",
+      "mari-arran3.jpg"
+    ]
   },
   {
     "nome": "Camicia",
@@ -7381,7 +7388,11 @@
     "azienda": "Danese Milano",
     "azienda_attuale": "Danese Milano",
     "categoria": "tagliacarte",
-    "foto": "mari-ameland.jpg"
+    "foto": "mari-ameland.jpg",
+    "foto_dettaglio": [
+      "mari-ameland2.jpg",
+      "mari-ameland3.jpg"
+    ]
   },
   {
     "nome": "Ventotene",
@@ -7429,7 +7440,10 @@
     "azienda": "Artemide",
     "azienda_attuale": null,
     "categoria": "lampada",
-    "foto": "mari-fasolis-polluce.jpg"
+    "foto": "mari-fasolis-polluce.jpg",
+    "foto_dettaglio": [
+      "mari-fasolis-polluce2.jpg"
+    ]
   },
   {
     "nome": "Lampedusa",
@@ -7438,7 +7452,11 @@
     "azienda": "Danese Milano",
     "azienda_attuale": "Danese Milano",
     "categoria": "portamatite",
-    "foto": "mari-lampedusa.jpg"
+    "foto": "mari-lampedusa.jpg",
+    "foto_dettaglio": [
+      "mari-lampedusa2.jpg",
+      "mari-lampedusa3.jpg"
+    ]
   },
   {
     "nome": "Bambù",
@@ -7501,7 +7519,10 @@
     "azienda": "Danese Milano",
     "azienda_attuale": "Danese Milano",
     "categoria": "posate da insalata",
-    "foto": "mari-kurili.jpg"
+    "foto": "mari-kurili.jpg",
+    "foto_dettaglio": [
+      "mari-kurili2.jpg"
+    ]
   },
   {
     "nome": "16 pesci",
@@ -7510,7 +7531,10 @@
     "azienda": "Danese Milano",
     "azienda_attuale": "Danese Milano",
     "categoria": "puzzle",
-    "foto": "mari-16-pesci.jpg"
+    "foto": "mari-16-pesci.jpg",
+    "foto_dettaglio": [
+      "mari-16-pesci2.jpg"
+    ]
   },
   {
     "nome": "Trieste",
@@ -7540,7 +7564,11 @@
     "azienda": "Danese Milano",
     "azienda_attuale": "Danese Milano",
     "categoria": "vaschetta portacarte",
-    "foto": "mari-sumatra.jpg"
+    "foto": "mari-sumatra.jpg",
+    "foto_dettaglio": [
+      "mari-sumatra2.jpg",
+      "mari-sumatra3.jpg"
+    ]
   },
   {
     "nome": "Bric",
@@ -7588,7 +7616,11 @@
     "azienda": "Danese Milano",
     "azienda_attuale": "Danese Milano",
     "categoria": "vaso",
-    "foto": "mari-murano-d.jpg"
+    "foto": "mari-murano-d.jpg",
+    "foto_dettaglio": [
+      "mari-murano-d2.jpg",
+      "mari-murano-d3.jpg"
+    ]
   },
   {
     "nome": "Murano E",
@@ -7606,7 +7638,10 @@
     "azienda": "Danese Milano",
     "azienda_attuale": "Danese Milano",
     "categoria": "scatola",
-    "foto": "mari-flores.jpg"
+    "foto": "mari-flores.jpg",
+    "foto_dettaglio": [
+      "mari-flores2.jpg"
+    ]
   },
   {
     "nome": "Alta Tensione",
@@ -7669,7 +7704,11 @@
     "azienda": "Magis",
     "azienda_attuale": "Magis",
     "categoria": "appendiabiti da parete",
-    "foto": "mari-globo.jpg"
+    "foto": "mari-globo.jpg",
+    "foto_dettaglio": [
+      "mari-globo2.jpg",
+      "mari-globo3.jpg"
+    ]
   },
   {
     "nome": "Legato",
@@ -7687,7 +7726,10 @@
     "azienda": "Magis",
     "azienda_attuale": "Magis",
     "categoria": "sedia",
-    "foto": "mari-mariolina.jpg"
+    "foto": "mari-mariolina.jpg",
+    "foto_dettaglio": [
+      "mari-mariolina2.jpg"
+    ]
   },
   {
     "nome": "Memo",
@@ -7723,7 +7765,11 @@
     "azienda": "Magis",
     "azienda_attuale": "Magis",
     "categoria": "sedia per bambini",
-    "foto": "mari-seggiolina-pop.jpg"
+    "foto": "mari-seggiolina-pop.jpg",
+    "foto_dettaglio": [
+      "mari-seggiolina-pop2.jpg",
+      "mari-seggiolina-pop3.jpg"
+    ]
   },
   {
     "nome": "Venezia",
@@ -7759,7 +7805,10 @@
     "azienda": "Kartell",
     "azienda_attuale": null,
     "categoria": "lampada da terra",
-    "foto": "vigo-mod-4041.jpg"
+    "foto": "vigo-mod-4041.jpg",
+    "foto_dettaglio": [
+      "vigo-mod-40412.jpg"
+    ]
   },
   {
     "nome": "Iceberg",
@@ -7813,7 +7862,10 @@
     "azienda": "Fai International",
     "azienda_attuale": null,
     "categoria": "cassettiera",
-    "foto": "vigo-serie-top-cassettiera.jpg"
+    "foto": "vigo-serie-top-cassettiera.jpg",
+    "foto_dettaglio": [
+      "vigo-serie-top-cassettiera2.jpg"
+    ]
   },
   {
     "nome": "Serie TOP - cubo bar",
@@ -7876,7 +7928,10 @@
     "azienda": "Fai International",
     "azienda_attuale": null,
     "categoria": "tavolini",
-    "foto": "vigo-serie-top-tavolini-bassi.jpg"
+    "foto": "vigo-serie-top-tavolini-bassi.jpg",
+    "foto_dettaglio": [
+      "vigo-serie-top-tavolini-bassi2.jpg"
+    ]
   },
   {
     "nome": "Serie TOP - tavolo e sedia",
@@ -7922,7 +7977,10 @@
     "azienda_attuale": null,
     "categoria": "sedia",
     "foto": "vigo-due-piu.jpg",
-    "top": true
+    "top": true,
+    "foto_dettaglio": [
+      "vigo-due-piu2.jpg"
+    ]
   },
   {
     "nome": "Explorer",
@@ -7967,7 +8025,11 @@
     "azienda": "Driade",
     "azienda_attuale": null,
     "categoria": "tavolo",
-    "foto": "vigo-essential.jpg"
+    "foto": "vigo-essential.jpg",
+    "foto_dettaglio": [
+      "vigo-essential2.jpg",
+      "vigo-essential3.jpg"
+    ]
   },
   {
     "nome": "N.V. 5 bm",
@@ -8237,7 +8299,10 @@
     "azienda": "Glas Italia",
     "azienda_attuale": null,
     "categoria": "serie di specchi",
-    "foto": "vigo-bric.jpg"
+    "foto": "vigo-bric.jpg",
+    "foto_dettaglio": [
+      "vigo-bric2.jpg"
+    ]
   },
   {
     "nome": "Comodini",
@@ -8246,7 +8311,10 @@
     "azienda": "Gola Design",
     "azienda_attuale": null,
     "categoria": "comodini",
-    "foto": "vigo-comodini.jpg"
+    "foto": "vigo-comodini.jpg",
+    "foto_dettaglio": [
+      "vigo-comodini2.jpg"
+    ]
   },
   {
     "nome": "Funny",
@@ -8309,7 +8377,11 @@
     "azienda": "Glas Italia",
     "azienda_attuale": null,
     "categoria": "serie di tavoli",
-    "foto": "vigo-i-nuovi-barbari.jpg"
+    "foto": "vigo-i-nuovi-barbari.jpg",
+    "foto_dettaglio": [
+      "vigo-i-nuovi-barbari2.jpg",
+      "vigo-i-nuovi-barbari3.jpg"
+    ]
   },
   {
     "nome": "Light Tree",
@@ -8474,7 +8546,10 @@
     "azienda": "Glas Italia",
     "azienda_attuale": null,
     "categoria": "specchiera / tavolo",
-    "foto": "vigo-lady-placidia.jpg"
+    "foto": "vigo-lady-placidia.jpg",
+    "foto_dettaglio": [
+      "vigo-lady-placidia2.jpg"
+    ]
   },
   {
     "nome": "Lady Theodora",
@@ -9208,7 +9283,11 @@
     "azienda": "Arteluce",
     "azienda_attuale": "Flos",
     "categoria": "lampadario",
-    "foto": "sarfatti-mod-2097-30.jpg"
+    "foto": "sarfatti-mod-2097-30.jpg",
+    "foto_dettaglio": [
+      "sarfatti-mod-2097-302.jpg",
+      "sarfatti-mod-2097-303.jpg"
+    ]
   },
   {
     "nome": "Mod. 2097/50",
@@ -9244,7 +9323,10 @@
     "azienda": "Arteluce",
     "azienda_attuale": "Astep",
     "categoria": "lampada da terra",
-    "foto": "sarfatti-mod-1081.jpg"
+    "foto": "sarfatti-mod-1081.jpg",
+    "foto_dettaglio": [
+      "sarfatti-mod-10812.jpg"
+    ]
   },
   {
     "nome": "Mod. 2109",
@@ -9280,7 +9362,10 @@
     "azienda": "Arteluce",
     "azienda_attuale": "Astep",
     "categoria": "lampada da parete / soffitto",
-    "foto": "sarfatti-mod-238-2.jpg"
+    "foto": "sarfatti-mod-238-2.jpg",
+    "foto_dettaglio": [
+      "sarfatti-mod-238-22.jpg"
+    ]
   },
   {
     "nome": "Mod. 2/2",
@@ -9379,7 +9464,10 @@
     "azienda": "Arteluce",
     "azienda_attuale": "Astep",
     "categoria": "plafoniera",
-    "foto": "sarfatti-mod-2042-6.jpg"
+    "foto": "sarfatti-mod-2042-6.jpg",
+    "foto_dettaglio": [
+      "sarfatti-mod-2042-62.jpg"
+    ]
   },
   {
     "nome": "Mod. 2042/9",
@@ -9388,7 +9476,10 @@
     "azienda": "Arteluce",
     "azienda_attuale": "Astep",
     "categoria": "plafoniera",
-    "foto": "sarfatti-mod-2042-9.jpg"
+    "foto": "sarfatti-mod-2042-9.jpg",
+    "foto_dettaglio": [
+      "sarfatti-mod-2042-92.jpg"
+    ]
   },
   {
     "nome": "Mod. 43",
@@ -9605,7 +9696,10 @@
     "azienda": "Poltronova",
     "azienda_attuale": "Poltronova",
     "categoria": "divano",
-    "foto": "sottsass-califfo.jpg"
+    "foto": "sottsass-califfo.jpg",
+    "foto_dettaglio": [
+      "sottsass-califfo2.jpg"
+    ]
   },
   {
     "nome": "Saratoga",
@@ -9614,7 +9708,10 @@
     "azienda": "Poltronova",
     "azienda_attuale": null,
     "categoria": "sistema di sedute",
-    "foto": "sottsass-saratoga.jpg"
+    "foto": "sottsass-saratoga.jpg",
+    "foto_dettaglio": [
+      "sottsass-saratoga2.jpg"
+    ]
   },
   {
     "nome": "Studio 45",
@@ -9635,7 +9732,10 @@
     "azienda": "Poltronova",
     "azienda_attuale": null,
     "categoria": "lampada",
-    "foto": "sottsass-asteroide.jpg"
+    "foto": "sottsass-asteroide.jpg",
+    "foto_dettaglio": [
+      "sottsass-asteroide2.jpg"
+    ]
   },
   {
     "nome": "Barbarella",
@@ -9662,7 +9762,10 @@
     "azienda": "Poltronova",
     "azienda_attuale": null,
     "categoria": "lampada",
-    "foto": "sottsass-nefertiti.jpg"
+    "foto": "sottsass-nefertiti.jpg",
+    "foto_dettaglio": [
+      "sottsass-nefertiti2.jpg"
+    ]
   },
   {
     "nome": "Malatesta",
@@ -9680,7 +9783,10 @@
     "azienda": "Poltronova",
     "azienda_attuale": null,
     "categoria": "lampada da tavolo",
-    "foto": "sottsass-yantra.jpg"
+    "foto": "sottsass-yantra.jpg",
+    "foto_dettaglio": [
+      "sottsass-yantra2.jpg"
+    ]
   },
   {
     "nome": "Editor 4",
@@ -9722,7 +9828,10 @@
     "azienda": "BD Barcelona",
     "azienda_attuale": "BD Barcelona",
     "categoria": "tavolo",
-    "foto": "sottsass-mettsass.jpg"
+    "foto": "sottsass-mettsass.jpg",
+    "foto_dettaglio": [
+      "sottsass-mettsass2.jpg"
+    ]
   },
   {
     "nome": "Synthesis 45",
@@ -9783,7 +9892,10 @@
     "azienda": "Memphis",
     "azienda_attuale": "Memphis",
     "categoria": "tavolo",
-    "foto": "sottsass-mandarin.jpg"
+    "foto": "sottsass-mandarin.jpg",
+    "foto_dettaglio": [
+      "sottsass-mandarin2.jpg"
+    ]
   },
   {
     "nome": "Quisisana",
@@ -9792,7 +9904,10 @@
     "azienda": "Memphis",
     "azienda_attuale": "Memphis",
     "categoria": "lampada",
-    "foto": "sottsass-quisisana.jpg"
+    "foto": "sottsass-quisisana.jpg",
+    "foto_dettaglio": [
+      "sottsass-quisisana2.jpg"
+    ]
   },
   {
     "nome": "Suvretta",
@@ -9810,7 +9925,10 @@
     "azienda": "Memphis",
     "azienda_attuale": "Memphis",
     "categoria": "lampada da terra",
-    "foto": "sottsass-treetops.jpg"
+    "foto": "sottsass-treetops.jpg",
+    "foto_dettaglio": [
+      "sottsass-treetops2.jpg"
+    ]
   },
   {
     "nome": "Venezia",
@@ -9819,7 +9937,10 @@
     "azienda": "Memphis",
     "azienda_attuale": "Memphis",
     "categoria": "tavolo",
-    "foto": "sottsass-venezia-memphis.jpg"
+    "foto": "sottsass-venezia-memphis.jpg",
+    "foto_dettaglio": [
+      "sottsass-venezia-memphis2.jpg"
+    ]
   },
   {
     "nome": "Callimaco",
@@ -9846,7 +9967,10 @@
     "azienda": "Memphis",
     "azienda_attuale": "Memphis",
     "categoria": "vaso",
-    "foto": "sottsass-alaska.jpg"
+    "foto": "sottsass-alaska.jpg",
+    "foto_dettaglio": [
+      "sottsass-alaska2.jpg"
+    ]
   },
   {
     "nome": "Altair",
@@ -9918,7 +10042,10 @@
     "azienda": "Memphis",
     "azienda_attuale": "Memphis",
     "categoria": "vaso in vetro di Murano",
-    "foto": "sottsass-aldebaran.jpg"
+    "foto": "sottsass-aldebaran.jpg",
+    "foto_dettaglio": [
+      "sottsass-aldebaran2.jpg"
+    ]
   },
   {
     "nome": "Alioth",
@@ -9945,7 +10072,10 @@
     "azienda": "Memphis",
     "azienda_attuale": "Memphis",
     "categoria": "tavolo",
-    "foto": "sottsass-city.jpg"
+    "foto": "sottsass-city.jpg",
+    "foto_dettaglio": [
+      "sottsass-city2.jpg"
+    ]
   },
   {
     "nome": "Euphrates",
@@ -9954,7 +10084,10 @@
     "azienda": "Memphis",
     "azienda_attuale": "Memphis",
     "categoria": "vaso in porcellana",
-    "foto": "sottsass-euphrates.jpg"
+    "foto": "sottsass-euphrates.jpg",
+    "foto_dettaglio": [
+      "sottsass-euphrates2.jpg"
+    ]
   },
   {
     "nome": "Nilo",
@@ -9972,7 +10105,10 @@
     "azienda": "Memphis",
     "azienda_attuale": "Memphis",
     "categoria": "tavolino",
-    "foto": "sottsass-park.jpg"
+    "foto": "sottsass-park.jpg",
+    "foto_dettaglio": [
+      "sottsass-park2.jpg"
+    ]
   },
   {
     "nome": "Park Lane",
@@ -9981,7 +10117,10 @@
     "azienda": "Memphis",
     "azienda_attuale": "Memphis",
     "categoria": "tavolino",
-    "foto": "sottsass-park-lane.jpg"
+    "foto": "sottsass-park-lane.jpg",
+    "foto_dettaglio": [
+      "sottsass-park-lane2.jpg"
+    ]
   },
   {
     "nome": "Rete",
@@ -10008,7 +10147,10 @@
     "azienda": "Memphis",
     "azienda_attuale": "Memphis",
     "categoria": "vaso in porcellana",
-    "foto": "sottsass-tigris.jpg"
+    "foto": "sottsass-tigris.jpg",
+    "foto_dettaglio": [
+      "sottsass-tigris2.jpg"
+    ]
   },
   {
     "nome": "Westside",
@@ -10017,7 +10159,10 @@
     "azienda": "Memphis",
     "azienda_attuale": "Memphis",
     "categoria": "divano",
-    "foto": "sottsass-westside.jpg"
+    "foto": "sottsass-westside.jpg",
+    "foto_dettaglio": [
+      "sottsass-westside2.jpg"
+    ]
   },
   {
     "nome": "Cream",
@@ -10080,7 +10225,10 @@
     "azienda": "Memphis",
     "azienda_attuale": "Memphis",
     "categoria": "mobile contenitore",
-    "foto": "sottsass-freemont.jpg"
+    "foto": "sottsass-freemont.jpg",
+    "foto_dettaglio": [
+      "sottsass-freemont2.jpg"
+    ]
   },
   {
     "nome": "Indivia",
@@ -10164,7 +10312,10 @@
     "azienda": "Knoll",
     "azienda_attuale": null,
     "categoria": "tavolo",
-    "foto": "sottsass-shift-table.jpg"
+    "foto": "sottsass-shift-table.jpg",
+    "foto_dettaglio": [
+      "sottsass-shift-table2.jpg"
+    ]
   },
   {
     "nome": "Spider Table",
@@ -10182,7 +10333,10 @@
     "azienda": "Memphis",
     "azienda_attuale": "Memphis",
     "categoria": "vaso in vetro di Murano",
-    "foto": "sottsass-agelada.jpg"
+    "foto": "sottsass-agelada.jpg",
+    "foto_dettaglio": [
+      "sottsass-agelada2.jpg"
+    ]
   },
   {
     "nome": "Amaltea",
@@ -10191,7 +10345,10 @@
     "azienda": "Memphis",
     "azienda_attuale": "Memphis",
     "categoria": "vaso in vetro di Murano",
-    "foto": "sottsass-amaltea.jpg"
+    "foto": "sottsass-amaltea.jpg",
+    "foto_dettaglio": [
+      "sottsass-amaltea2.jpg"
+    ]
   },
   {
     "nome": "Ananke",
@@ -10209,7 +10366,10 @@
     "azienda": "Memphis",
     "azienda_attuale": "Memphis",
     "categoria": "vaso in vetro di Murano",
-    "foto": "sottsass-astidamia.jpg"
+    "foto": "sottsass-astidamia.jpg",
+    "foto_dettaglio": [
+      "sottsass-astidamia2.jpg"
+    ]
   },
   {
     "nome": "Astimelusa",
@@ -10263,7 +10423,10 @@
     "azienda": "Memphis",
     "azienda_attuale": "Memphis",
     "categoria": "vaso in vetro di Murano",
-    "foto": "sottsass-fililla.jpg"
+    "foto": "sottsass-fililla.jpg",
+    "foto_dettaglio": [
+      "sottsass-fililla2.jpg"
+    ]
   },
   {
     "nome": "Imera",
@@ -10272,7 +10435,10 @@
     "azienda": "Memphis",
     "azienda_attuale": "Memphis",
     "categoria": "vaso in vetro di Murano",
-    "foto": "sottsass-imera.jpg"
+    "foto": "sottsass-imera.jpg",
+    "foto_dettaglio": [
+      "sottsass-imera2.jpg"
+    ]
   },
   {
     "nome": "Letraset",
@@ -10317,7 +10483,10 @@
     "azienda": "Memphis",
     "azienda_attuale": "Memphis",
     "categoria": "vaso in vetro di Murano",
-    "foto": "sottsass-mizar.jpg"
+    "foto": "sottsass-mizar.jpg",
+    "foto_dettaglio": [
+      "sottsass-mizar2.jpg"
+    ]
   },
   {
     "nome": "Neobule",
@@ -10326,7 +10495,10 @@
     "azienda": "Memphis",
     "azienda_attuale": "Memphis",
     "categoria": "vaso in vetro di Murano",
-    "foto": "sottsass-neobule.jpg"
+    "foto": "sottsass-neobule.jpg",
+    "foto_dettaglio": [
+      "sottsass-neobule2.jpg"
+    ]
   },
   {
     "nome": "Niobe",
@@ -10344,7 +10516,10 @@
     "azienda": "Memphis",
     "azienda_attuale": "Memphis",
     "categoria": "vaso in vetro di Murano",
-    "foto": "sottsass-pasifila.jpg"
+    "foto": "sottsass-pasifila.jpg",
+    "foto_dettaglio": [
+      "sottsass-pasifila2.jpg"
+    ]
   },
   {
     "nome": "Schizzo",
@@ -10353,7 +10528,10 @@
     "azienda": "Memphis",
     "azienda_attuale": "Memphis",
     "categoria": "tessuto",
-    "foto": "sottsass-schizzo.jpg"
+    "foto": "sottsass-schizzo.jpg",
+    "foto_dettaglio": [
+      "sottsass-schizzo2.jpg"
+    ]
   },
   {
     "nome": "Sirio",
@@ -10443,7 +10621,10 @@
     "azienda": "Alessi",
     "azienda_attuale": "Alessi",
     "categoria": "cavatappi",
-    "foto": "sottsass-es17.jpg"
+    "foto": "sottsass-es17.jpg",
+    "foto_dettaglio": [
+      "sottsass-es172.jpg"
+    ]
   },
   {
     "nome": "La Bella Tavola",
@@ -10497,7 +10678,10 @@
     "azienda": "Memphis",
     "azienda_attuale": "Memphis",
     "categoria": "miniatura",
-    "foto": "sottsass-carlton-miniature.jpg"
+    "foto": "sottsass-carlton-miniature.jpg",
+    "foto_dettaglio": [
+      "sottsass-carlton-miniature2.jpg"
+    ]
   },
   {
     "nome": "Gli Specchi di Dioniso",
@@ -10515,7 +10699,10 @@
     "azienda": "Glas Italia",
     "azienda_attuale": "Glas Italia",
     "categoria": "specchio",
-    "foto": "sottsass-shibam-1.jpg"
+    "foto": "sottsass-shibam-1.jpg",
+    "foto_dettaglio": [
+      "sottsass-shibam-12.jpg"
+    ]
   },
   {
     "nome": "Shibam 2",
@@ -10569,7 +10756,10 @@
     "azienda": "Studio Alchimia",
     "azienda_attuale": null,
     "categoria": "sedia",
-    "foto": "delucchi-seggiolina-da-pranzo.jpg"
+    "foto": "delucchi-seggiolina-da-pranzo.jpg",
+    "foto_dettaglio": [
+      "delucchi-seggiolina-da-pranzo2.jpg"
+    ]
   },
   {
     "nome": "Atlantic",
@@ -10624,7 +10814,10 @@
     "azienda": "Memphis",
     "azienda_attuale": "Memphis",
     "categoria": "divano",
-    "foto": "delucchi-riviera.jpg"
+    "foto": "delucchi-riviera.jpg",
+    "foto_dettaglio": [
+      "delucchi-riviera2.jpg"
+    ]
   },
   {
     "nome": "Side Walk",
@@ -10642,7 +10835,10 @@
     "azienda": "Memphis",
     "azienda_attuale": "Memphis",
     "categoria": "tavolo",
-    "foto": "delucchi-fortune.jpg"
+    "foto": "delucchi-fortune.jpg",
+    "foto_dettaglio": [
+      "delucchi-fortune2.jpg"
+    ]
   },
   {
     "nome": "Lido",
@@ -10975,7 +11171,10 @@
     "azienda": "Olivetti Synthesis",
     "azienda_attuale": null,
     "categoria": "sistema di arredi per ufficio",
-    "foto": "delucchi-pegaso.jpg"
+    "foto": "delucchi-pegaso.jpg",
+    "foto_dettaglio": [
+      "delucchi-pegaso2.jpg"
+    ]
   },
   {
     "nome": "Dioscuri Parete/Soffitto",
@@ -11278,7 +11477,10 @@
     "azienda": "Produzione Privata",
     "azienda_attuale": "Produzione Privata",
     "categoria": "sedia",
-    "foto": "delucchi-sedia-2007.jpg"
+    "foto": "delucchi-sedia-2007.jpg",
+    "foto_dettaglio": [
+      "delucchi-sedia-20072.jpg"
+    ]
   },
   {
     "nome": "Dehors",
@@ -11522,7 +11724,10 @@
     "azienda_attuale": "Alessi",
     "categoria": "caffettiera espresso",
     "foto": "delucchi-pulcina.jpg",
-    "top": true
+    "top": true,
+    "foto_dettaglio": [
+      "delucchi-pulcina2.jpg"
+    ]
   },
   {
     "nome": "Astrati",
@@ -11570,7 +11775,10 @@
     "azienda": "UniFor",
     "azienda_attuale": "UniFor",
     "categoria": "tavolo / sistema ufficio",
-    "foto": "delucchi-teamer.jpg"
+    "foto": "delucchi-teamer.jpg",
+    "foto_dettaglio": [
+      "delucchi-teamer2.jpg"
+    ]
   },
   {
     "nome": "Dervisci",
@@ -11624,7 +11832,10 @@
     "azienda": "Alias",
     "azienda_attuale": "Alias",
     "categoria": "sistema di tavoli",
-    "foto": "delucchi-trigono.jpg"
+    "foto": "delucchi-trigono.jpg",
+    "foto_dettaglio": [
+      "delucchi-trigono2.jpg"
+    ]
   },
   {
     "nome": "Plissé Citrus Squeezer",
@@ -11642,7 +11853,10 @@
     "azienda": "Alessi",
     "azienda_attuale": "Alessi",
     "categoria": "tostapane",
-    "foto": "delucchi-plisse-toaster.jpg"
+    "foto": "delucchi-plisse-toaster.jpg",
+    "foto_dettaglio": [
+      "delucchi-plisse-toaster2.jpg"
+    ]
   },
   {
     "nome": "Plissé Blender",
@@ -11678,7 +11892,10 @@
     "azienda": "Alias",
     "azienda_attuale": "Alias",
     "categoria": "collezione di sedute",
-    "foto": "delucchi-indoor.jpg"
+    "foto": "delucchi-indoor.jpg",
+    "foto_dettaglio": [
+      "delucchi-indoor2.jpg"
+    ]
   },
   {
     "nome": "Doga",
@@ -11793,7 +12010,10 @@
     "azienda": "Poltronova",
     "azienda_attuale": "Poltronova",
     "categoria": "lampada da terra",
-    "foto": "branzi-sanremo.jpg"
+    "foto": "branzi-sanremo.jpg",
+    "foto_dettaglio": [
+      "branzi-sanremo2.jpg"
+    ]
   },
   {
     "nome": "Tizio Caio Sempronio",
@@ -11825,7 +12045,10 @@
     "azienda": "Memphis",
     "azienda_attuale": "Memphis",
     "categoria": "salsiera",
-    "foto": "branzi-labrador.jpg"
+    "foto": "branzi-labrador.jpg",
+    "foto_dettaglio": [
+      "branzi-labrador2.jpg"
+    ]
   },
   {
     "nome": "Magnolia",
@@ -11879,7 +12102,10 @@
     "azienda": "Danese Milano",
     "azienda_attuale": null,
     "categoria": "vassoio",
-    "foto": "branzi-portofino.jpg"
+    "foto": "branzi-portofino.jpg",
+    "foto_dettaglio": [
+      "branzi-portofino2.jpg"
+    ]
   },
   {
     "nome": "Scoiattolo",
@@ -11933,7 +12159,10 @@
     "azienda": "Qeeboo",
     "azienda_attuale": "Qeeboo",
     "categoria": "lampada",
-    "foto": "branzi-guru.jpg"
+    "foto": "branzi-guru.jpg",
+    "foto_dettaglio": [
+      "branzi-guru2.jpg"
+    ]
   },
   {
     "nome": "Korall",
@@ -11942,7 +12171,10 @@
     "azienda": "Qeeboo",
     "azienda_attuale": "Qeeboo",
     "categoria": "vaso",
-    "foto": "branzi-korall.jpg"
+    "foto": "branzi-korall.jpg",
+    "foto_dettaglio": [
+      "branzi-korall2.jpg"
+    ]
   },
   {
     "nome": "Pupa",

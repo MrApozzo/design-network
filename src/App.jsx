@@ -62,7 +62,7 @@ const STILE = {
   zoom_prodotto_max: 35,
   // Boost aggiuntivo solo mobile, applicato a prodotti e designer solo
   // nell'ultimo tratto di zoom (da boost_soglia a 1): non tocca il resto della curva.
-  boost_mobile_max: 2,
+  boost_mobile_max: 2.7,
   boost_soglia: 0.9,
   // Stesso principio, ma per le etichette (nome prodotto + data): la
   // dimensione di base resta quasi sempre sul minimo (label_min) su mobile,
@@ -96,10 +96,23 @@ const STILE = {
   passo_verticale_base: 30,
   passo_verticale_coprogetto: 6,
   min_distanza_y: 1.6,
-  orbita_raggio_min: 0.9,
+  orbita_raggio_base: 3.5,
+  orbita_soglia_prodotti: 5,
   orbita_spazio_per_prodotto: 0.55,
   anello_raggio_interno: 1.0,
   anello_raggio_esterno: 3,
+  // Raggio dell'orbita di un prodotto in base all'età del designer al momento della
+  // progettazione (anno prodotto - anno di nascita): stessa età = stessa distanza dal
+  // pallino, per qualsiasi designer, indipendentemente da quanti prodotti abbia in
+  // totale. eta_riferimento è il pavimento (età sotto cui il raggio resta quello base,
+  // niente prodotti "incollati" al pallino), eta_massima il soffitto (oltre cui non ci
+  // si allontana ulteriormente, per non farsi distorcere da rari outlier anagrafici).
+  eta_raggio_base: 26,
+  eta_riferimento: 25,
+  eta_massima: 90,
+  eta_unita_per_anno: 1.55,
+  eta_soglia_stesso_anno: 6,
+  eta_incremento_sovraffollamento: 4.2,
   arco_inizio: 0.15,
   arco_fine: 1.85,
   arco_perturbazione: 0.4,
@@ -152,6 +165,25 @@ function calcolaSettoriDinamici(lista, arco360 = false) {
   return settori
 }
 
+// Divide l'arco di ogni settore tra i suoi prodotti in proporzione alla
+// dimensione del pallino (i prodotti "top", disegnati più grandi, ottengono
+// una fetta d'arco più larga), invece di una divisione uniforme che
+// lascerebbe i pallini grandi troppo vicini ai vicini.
+function calcolaAngoliPerProdotto(settori) {
+  const angoli = new Map()
+  Object.values(settori).forEach((sett) => {
+    const pesi = sett.prodotti.map((g) => (g.p.top ? STILE.prodotto_scala_top : 1))
+    const pesoTotale = pesi.reduce((s, w) => s + w, 0) || 1
+    let cursore = sett.inizio
+    sett.prodotti.forEach((g, idx) => {
+      const sliceAngolo = (sett.fine - sett.inizio) * (pesi[idx] / pesoTotale)
+      angoli.set(g.p, { centro: cursore + sliceAngolo / 2, sliceAngolo })
+      cursore += sliceAngolo
+    })
+  })
+  return angoli
+}
+
 const ANNO_MIN = 1880
 const ANNO_MAX = 2020
 // Base "nominale" della griglia X: viene allargata proporzionalmente a runtime
@@ -184,7 +216,33 @@ function annoToX(anno) {
 }
 
 function calcolaRaggio(nProdotti) {
-  return STILE.orbita_raggio_min + nProdotti * STILE.orbita_spazio_per_prodotto
+  // Sotto la soglia il raggio resta fisso (evita che i designer con pochi
+  // prodotti li abbiano incollati al pallino); oltre la soglia cresce come
+  // prima per non affollare i designer con molti prodotti.
+  if (nProdotti <= STILE.orbita_soglia_prodotti) return STILE.orbita_raggio_base
+  return STILE.orbita_raggio_base + (nProdotti - STILE.orbita_soglia_prodotti) * STILE.orbita_spazio_per_prodotto
+}
+
+const NATO_PER_DESIGNER = {}
+designers.forEach((d) => { NATO_PER_DESIGNER[d.nome] = d.nato })
+
+function raggioBaseProdotto(anno, nomeDesigner) {
+  const nato = NATO_PER_DESIGNER[nomeDesigner]
+  const eta = (typeof anno === "number" ? anno : 1900) - (typeof nato === "number" ? nato : 1900)
+  const etaEffettiva = Math.min(STILE.eta_massima, Math.max(STILE.eta_riferimento, eta))
+  return STILE.eta_raggio_base + (etaEffettiva - STILE.eta_riferimento) * STILE.eta_unita_per_anno
+}
+
+// Stesso criterio dei prodotti singoli, ma sull'età MEDIA dei co-progettisti
+// (un prodotto co-firmato non orbita attorno a un designer solo).
+function raggioBaseProdottoMulti(anno, nomiDesigner) {
+  const annoNum = typeof anno === "number" ? anno : 1900
+  const etaMedia = nomiDesigner.reduce((s, nome) => {
+    const nato = NATO_PER_DESIGNER[nome]
+    return s + (annoNum - (typeof nato === "number" ? nato : 1900))
+  }, 0) / Math.max(1, nomiDesigner.length)
+  const etaEffettiva = Math.min(STILE.eta_massima, Math.max(STILE.eta_riferimento, etaMedia))
+  return STILE.eta_raggio_base + (etaEffettiva - STILE.eta_riferimento) * STILE.eta_unita_per_anno
 }
 
 function hashStr(str) {
@@ -447,7 +505,6 @@ const TESTI = {
     paragrafo2: "La posizione orizzontale segue una cronologia rigorosa, dal 1880 al 1980. Esplorando la mappa si scoprono le grandi concentrazioni del movimento moderno, le filiazioni tra maestri e allievi, e le convergenze tra discipline e nazionalità.",
     cerca: "Cerca...",
     benvenutoDomanda: "Qual è il designer che ha disegnato il mondo in cui vorresti vivere?",
-    benvenutoPlaceholder: "Scrivi un nome...",
     benvenutoConferma: "Entra",
     designerToggle: "Designer",
     timelineToggle: "Linea del tempo",
@@ -455,8 +512,6 @@ const TESTI = {
     sezione: "Sezione",
     menu: "Menu",
     biografia: "Biografia",
-    riduci: "— Riduci",
-    leggiTutto: "+ Leggi tutto",
     descrizioneLabel: "Descrizione",
     tipologia: "Tipologia",
     azienda: "Azienda",
@@ -465,7 +520,7 @@ const TESTI = {
     riconoscimenti: "Riconoscimenti",
     footerRiga1: "Un secolo di design occidentale, 1880–1980",
     footerRiga2: "Tutti i diritti riservati",
-    voci: { domanda: "Domanda", manifesto: "Manifesto", contatti: "Contatti", credits: "Credits", contribuisci: "Contribuisci" },
+    voci: { domanda: "Intro", manifesto: "Manifesto", contatti: "Contatti", credits: "Credits", contribuisci: "Contribuisci" },
     email: "Email",
     contribCategorie: ["Correzione", "Aggiunta", "Miglioramento o suggerimento"],
     contribDomanda: "Quale modifica vuoi presentare?",
@@ -498,7 +553,6 @@ const TESTI = {
     paragrafo2: "The horizontal position follows a rigorous chronology, from 1880 to 1980. Exploring the map reveals the great concentrations of the modern movement, the lineages between masters and students, and the convergences across disciplines and nationalities.",
     cerca: "Search...",
     benvenutoDomanda: "Which designer shaped the world you'd want to live in?",
-    benvenutoPlaceholder: "Type a name...",
     benvenutoConferma: "Enter",
     designerToggle: "Designer",
     timelineToggle: "Timeline",
@@ -506,8 +560,6 @@ const TESTI = {
     sezione: "Section",
     menu: "Menu",
     biografia: "Biography",
-    riduci: "— Show less",
-    leggiTutto: "+ Read more",
     descrizioneLabel: "Description",
     tipologia: "Type",
     azienda: "Company",
@@ -516,7 +568,7 @@ const TESTI = {
     riconoscimenti: "Awards",
     footerRiga1: "A century of Western design, 1880–1980",
     footerRiga2: "All rights reserved",
-    voci: { domanda: "Question", manifesto: "Manifesto", contatti: "Contact", credits: "Credits", contribuisci: "Contribute" },
+    voci: { domanda: "Intro", manifesto: "Manifesto", contatti: "Contact", credits: "Credits", contribuisci: "Contribute" },
     email: "Email",
     contribCategorie: ["Correction", "Addition", "Improvement or suggestion"],
     contribDomanda: "What change would you like to submit?",
@@ -736,7 +788,6 @@ function App() {
     transition: "opacity 0.9s ease, transform 0.9s ease",
   }
 
-  const [bioEspansa, setBioEspansa] = useState(false)
   const [legameHoverIdx, setLegameHoverIdx] = useState(null)
   const [galleriaIndice, setGalleriaIndice] = useState(0)
   const [galleriaFullscreen, setGalleriaFullscreen] = useState(false)
@@ -843,10 +894,49 @@ function App() {
     let imgCache = {}
     const imgColori = {}
 
-    const nProdottiPerDesigner = {}
+    const prodottiPerDesigner = {}
+    const prodottiMultiDesigner = []
     prodotti.forEach((p) => {
-      getDesigners(p).forEach((d) => {
-        nProdottiPerDesigner[d] = (nProdottiPerDesigner[d] || 0) + 1
+      const ds = getDesigners(p)
+      if (ds.length > 1) {
+        prodottiMultiDesigner.push(p)
+      } else {
+        const d = ds[0]
+        if (!prodottiPerDesigner[d]) prodottiPerDesigner[d] = []
+        prodottiPerDesigner[d].push(p)
+      }
+    })
+
+    // Raggio di ogni prodotto in base all'età del designer alla progettazione (vedi
+    // raggioBaseProdotto); se troppi prodotti dello stesso designer cadono sulla
+    // stessa età, quell'anello si allarga solo per loro, il minimo necessario per
+    // non farli sovrapporre. raggioMaxPerDesigner (il raggio più lontano di ciascun
+    // designer, prodotti multi-designer inclusi) serve poi per la spaziatura verticale
+    // tra un designer e l'altro.
+    const raggioProdottoMap = new Map()
+    const raggioMaxPerDesigner = {}
+    Object.entries(prodottiPerDesigner).forEach(([nome, lista]) => {
+      const gruppiEta = {}
+      lista.forEach((p) => {
+        const base = raggioBaseProdotto(p.anno, nome)
+        const chiave = Math.round(base * 100)
+        if (!gruppiEta[chiave]) gruppiEta[chiave] = { base, prodotti: [] }
+        gruppiEta[chiave].prodotti.push(p)
+      })
+      let maxRaggio = STILE.eta_raggio_base
+      Object.values(gruppiEta).forEach((g) => {
+        const n = g.prodotti.length
+        const extra = n > STILE.eta_soglia_stesso_anno ? (n - STILE.eta_soglia_stesso_anno) * STILE.eta_incremento_sovraffollamento : 0
+        const raggioFinale = g.base + extra
+        g.prodotti.forEach((p) => raggioProdottoMap.set(p, raggioFinale))
+        maxRaggio = Math.max(maxRaggio, raggioFinale)
+      })
+      raggioMaxPerDesigner[nome] = maxRaggio
+    })
+    prodottiMultiDesigner.forEach((p) => {
+      getDesigners(p).forEach((nome) => {
+        const base = raggioBaseProdotto(p.anno, nome)
+        raggioMaxPerDesigner[nome] = Math.max(raggioMaxPerDesigner[nome] || STILE.eta_raggio_base, base)
       })
     })
 
@@ -900,7 +990,7 @@ function App() {
     let prevY = 0
     let prevRaggio = 0
     const posizioniCalcolate = ordinato.map((d, i) => {
-      const raggio = calcolaRaggio(nProdottiPerDesigner[d.nome] || 0)
+      const raggio = raggioMaxPerDesigner[d.nome] || STILE.eta_raggio_base
       const manuale = d.y !== null && d.y !== undefined
       let y
       if (manuale) {
@@ -911,7 +1001,7 @@ function App() {
         const prev = ordinato[i - 1]
         const stessoGruppo = gruppiCoprogetto[d.nome] && gruppiCoprogetto[d.nome] === gruppiCoprogetto[prev.nome]
         const passoStandard = stessoGruppo ? STILE.passo_verticale_coprogetto : STILE.passo_verticale_base
-        const minGap = (prevRaggio + raggio) * STILE.anello_raggio_esterno + STILE.min_distanza_y
+        const minGap = (prevRaggio + raggio) + STILE.min_distanza_y
         y = prevY - Math.max(passoStandard, minGap)
       }
       prevY = y
@@ -929,8 +1019,8 @@ function App() {
     // (calcolaRaggio dipende solo dal numero di prodotti), solo la loro posizione X.
     let contenutoYMinStima = Infinity, contenutoYMaxStima = -Infinity
     posizioniCalcolate.forEach((p) => {
-      contenutoYMinStima = Math.min(contenutoYMinStima, p.y - p.raggio * STILE.anello_raggio_esterno)
-      contenutoYMaxStima = Math.max(contenutoYMaxStima, p.y + p.raggio * STILE.anello_raggio_esterno)
+      contenutoYMinStima = Math.min(contenutoYMinStima, p.y - p.raggio)
+      contenutoYMaxStima = Math.max(contenutoYMaxStima, p.y + p.raggio)
     })
     if (!Number.isFinite(contenutoYMinStima)) { contenutoYMinStima = Y_MIN; contenutoYMaxStima = Y_MAX }
     const yRangeStimato = Math.max(Y_MAX, contenutoYMaxStima) - Math.min(Y_MIN, contenutoYMinStima)
@@ -946,8 +1036,12 @@ function App() {
       posizioniCalcolate.forEach((p) => { p.x = annoToX(p.d.nato) })
     }
 
-    // Allinea ogni designer a un pallino della griglia (stessa formula del codice di rendering).
-    const passoGrigliaLayout = Math.max(1, Math.round((X_MAX - X_MIN) / (X_MAX_BASE - X_MIN_BASE)))
+    // Passo di allineamento per lo snap fine delle posizioni (indipendente dalla
+    // scala di allargamento dell'asse X): se si usasse lo stesso passo, via via
+    // più grande, della griglia decorativa di sfondo, l'anti-sovrapposizione qui
+    // sotto spingerebbe i designer nati nello stesso anno sempre più lontano dal
+    // loro vero anno di nascita quando il contenuto cresce in altezza.
+    const passoAllineamento = 1
 
     // Asse Y: arrotonda alla griglia mantenendo il gap minimo tra orbite adiacenti.
     {
@@ -955,29 +1049,39 @@ function App() {
       let snapPrevR = 0
       posizioniCalcolate.forEach((pos, i) => {
         if (pos.manuale) {
-          pos.y = Math.round(pos.y / passoGrigliaLayout) * passoGrigliaLayout
+          pos.y = Math.round(pos.y / passoAllineamento) * passoAllineamento
           snapPrevY = pos.y; snapPrevR = pos.raggio; return
         }
         if (i === 0) { pos.y = 0; snapPrevY = 0; snapPrevR = pos.raggio; return }
-        const minGap = (snapPrevR + pos.raggio) * STILE.anello_raggio_esterno + STILE.min_distanza_y
-        const yRounded = Math.round(pos.y / passoGrigliaLayout) * passoGrigliaLayout
+        const minGap = (snapPrevR + pos.raggio) + STILE.min_distanza_y
+        const yRounded = Math.round(pos.y / passoAllineamento) * passoAllineamento
         pos.y = (snapPrevY - yRounded >= minGap)
           ? yRounded
-          : Math.floor((snapPrevY - minGap) / passoGrigliaLayout) * passoGrigliaLayout
+          : Math.floor((snapPrevY - minGap) / passoAllineamento) * passoAllineamento
         snapPrevY = pos.y
         snapPrevR = pos.raggio
       })
     }
 
-    // Asse X: arrotonda alla griglia, almeno 1 passo di distanza tra designer adiacenti per X.
+    // Asse X: i designer nati lo stesso anno (o troppo vicini) vengono
+    // raggruppati e distribuiti simmetricamente attorno alla loro posizione
+    // media, invece di spingerli in avanti a catena — quella tecnica accumulava
+    // una deriva crescente rispetto all'anno reale nei tratti con molte nascite
+    // ravvicinate (es. un designer nato nel '31 finiva disegnato anni dopo).
     {
       const byX = [...posizioniCalcolate].sort((a, b) => a.x - b.x)
-      let prevX = -Infinity
-      byX.forEach((pos) => {
-        const xSnap = Math.round(pos.x / passoGrigliaLayout) * passoGrigliaLayout
-        pos.x = xSnap > prevX ? xSnap : prevX + passoGrigliaLayout
-        prevX = pos.x
-      })
+      let i = 0
+      while (i < byX.length) {
+        let j = i
+        while (j + 1 < byX.length && byX[j + 1].x - byX[j].x < passoAllineamento) j++
+        if (j > i) {
+          const gruppo = byX.slice(i, j + 1)
+          const centro = gruppo.reduce((s, p) => s + p.x, 0) / gruppo.length
+          gruppo.forEach((pos, k) => { pos.x = centro + (k - (gruppo.length - 1) / 2) * passoAllineamento })
+        }
+        i = j + 1
+      }
+      byX.forEach((pos) => { pos.x = Math.round(pos.x / passoAllineamento) * passoAllineamento })
     }
 
     posizioniCalcolate.forEach(({ d, x, y }) => {
@@ -1000,29 +1104,13 @@ function App() {
       }
     })
 
-    const prodottiPerDesigner = {}
-    const prodottiMultiDesigner = []
-    prodotti.forEach((p) => {
-      const ds = getDesigners(p)
-      if (ds.length > 1) {
-        prodottiMultiDesigner.push(p)
-      } else {
-        const d = ds[0]
-        if (!prodottiPerDesigner[d]) prodottiPerDesigner[d] = []
-        prodottiPerDesigner[d].push(p)
-      }
-    })
-
     Object.entries(prodottiPerDesigner).forEach(([designer, lista]) => {
       if (!graph.hasNode(designer)) return
       const dx = graph.getNodeAttribute(designer, "x")
       const dy = graph.getNodeAttribute(designer, "y")
-      const n = lista.length
-      const raggioMax = calcolaRaggio(n)
       const listaOrdinata = [...lista].sort((a, b) => (a.anno || 0) - (b.anno || 0))
-      const annoMin = listaOrdinata[0]?.anno || 1900
-      const annoMax = listaOrdinata[listaOrdinata.length - 1]?.anno || 1980
       const settori = calcolaSettoriDinamici(listaOrdinata)
+      const angoliProdotti = calcolaAngoliPerProdotto(settori)
 
       const conteggioPerAnno = {}
       listaOrdinata.forEach((p) => {
@@ -1032,15 +1120,10 @@ function App() {
       const indiceCorrentePerAnno = {}
 
       listaOrdinata.forEach((p, i) => {
-        const macro = getMacro(p.categoria)
-        const sett = settori[macro]
-        const idxInSettore = sett.prodotti.findIndex((g) => g.i === i)
-        const nInSettore = sett.prodotti.length
-        const sliceAngolo = (sett.fine - sett.inizio) / Math.max(1, nInSettore)
-        const angolo = sett.inizio + sliceAngolo * idxInSettore + sliceAngolo * 0.5 + (hashStr(p.nome) - 0.5) * sliceAngolo * STILE.arco_perturbazione
+        const { centro, sliceAngolo } = angoliProdotti.get(p)
+        const angolo = centro + (hashStr(p.nome) - 0.5) * sliceAngolo * STILE.arco_perturbazione
 
-        const t = annoMax === annoMin ? 0.5 : (p.anno - annoMin) / (annoMax - annoMin)
-        const raggio = raggioMax * (STILE.anello_raggio_interno + t * (STILE.anello_raggio_esterno - STILE.anello_raggio_interno))
+        const raggio = raggioProdottoMap.get(p) ?? raggioBaseProdotto(p.anno, designer)
 
         const prodottoId = `prodotto:${designer}:${p.nome}:${i}`
 
@@ -1087,7 +1170,7 @@ function App() {
       let centroY = coords.reduce((s, c) => s + c.y, 0) / coords.length
       const centroYTimeline = centroY
       const n = lista.length
-      const raggioShift = calcolaRaggio(n) * STILE.anello_raggio_esterno + 1
+      const raggioShift = STILE.eta_raggio_base + n * 2 + 1
       if (ds.length === 2) {
         const dx = coords[1].x - coords[0].x
         const dy = coords[1].y - coords[0].y
@@ -1105,12 +1188,25 @@ function App() {
       const nomeGruppo = collettiviComuni[0] || null
       const gruppoNodi = []
 
-      const raggioMax = calcolaRaggio(n)
       const listaOrdinata = [...lista].sort((a, b) => (a.anno || 0) - (b.anno || 0))
-      const annoMin = listaOrdinata[0]?.anno || 1900
-      const annoMax = listaOrdinata[listaOrdinata.length - 1]?.anno || 1980
+
+      const gruppiEtaM = {}
+      listaOrdinata.forEach((p) => {
+        const base = raggioBaseProdottoMulti(p.anno, ds)
+        const chiave = Math.round(base * 100)
+        if (!gruppiEtaM[chiave]) gruppiEtaM[chiave] = { base, prodotti: [] }
+        gruppiEtaM[chiave].prodotti.push(p)
+      })
+      const raggioProdottoMapM = new Map()
+      Object.values(gruppiEtaM).forEach((g) => {
+        const nGruppo = g.prodotti.length
+        const extra = nGruppo > STILE.eta_soglia_stesso_anno ? (nGruppo - STILE.eta_soglia_stesso_anno) * STILE.eta_incremento_sovraffollamento : 0
+        const raggioFinale = g.base + extra
+        g.prodotti.forEach((p) => raggioProdottoMapM.set(p, raggioFinale))
+      })
 
       const settoriM = calcolaSettoriDinamici(listaOrdinata, true)
+      const angoliProdottiM = calcolaAngoliPerProdotto(settoriM)
 
       const conteggioPerAnnoM = {}
       listaOrdinata.forEach((p) => {
@@ -1120,15 +1216,10 @@ function App() {
       const indiceCorrentePerAnnoM = {}
 
       listaOrdinata.forEach((p, i) => {
-        const macro = getMacro(p.categoria)
-        const sett = settoriM[macro]
-        const idxInSettore = sett.prodotti.findIndex((g) => g.i === i)
-        const nInSettore = sett.prodotti.length
-        const sliceAngolo = (sett.fine - sett.inizio) / Math.max(1, nInSettore)
-        const angolo = sett.inizio + sliceAngolo * idxInSettore + sliceAngolo * 0.5 + (hashStr(p.nome) - 0.5) * sliceAngolo * STILE.arco_perturbazione
+        const { centro, sliceAngolo } = angoliProdottiM.get(p)
+        const angolo = centro + (hashStr(p.nome) - 0.5) * sliceAngolo * STILE.arco_perturbazione
 
-        const t = annoMax === annoMin ? 0.5 : (p.anno - annoMin) / (annoMax - annoMin)
-        const raggio = raggioMax * (STILE.anello_raggio_interno + t * (STILE.anello_raggio_esterno - STILE.anello_raggio_interno))
+        const raggio = raggioProdottoMapM.get(p) ?? raggioBaseProdottoMulti(p.anno, ds)
 
         const prodottoId = `prodotto:multi:${p.nome}:${i}`
         const orbitaX = centroX + Math.cos(angolo) * raggio
@@ -1249,12 +1340,20 @@ function App() {
 
     const campionaColore = (src, img) => {
       try {
+        const dim = 24
         const c = document.createElement("canvas")
-        c.width = 1; c.height = 1
+        c.width = dim; c.height = dim
         const cx = c.getContext("2d")
-        cx.drawImage(img, 0, 0, 1, 1)
-        const [r, g, b] = cx.getImageData(0, 0, 1, 1).data
-        imgColori[src] = `rgb(${r},${g},${b})`
+        cx.drawImage(img, 0, 0, dim, dim)
+        const dati = cx.getImageData(0, 0, dim, dim).data
+        let r = 0, g = 0, b = 0, conteggio = 0
+        for (let i = 0; i < dati.length; i += 4) {
+          const pr = dati[i], pg = dati[i + 1], pb = dati[i + 2]
+          if (pr > 240 && pg > 240 && pb > 240) continue // ignora il bianco di sfondo
+          r += pr; g += pg; b += pb; conteggio++
+        }
+        if (conteggio === 0) { r = 255; g = 255; b = 255; conteggio = 1 }
+        imgColori[src] = `rgb(${Math.round(r / conteggio)},${Math.round(g / conteggio)},${Math.round(b / conteggio)})`
       } catch {}
     }
     imgCache = preloadImages(imgPaths, 6, () => setImmaginiPronte(true))
@@ -1696,6 +1795,7 @@ function App() {
           nodiProdotti.push({ node, attr })
         }
       })
+      nodiProdotti.sort((a, b) => (animated[a.node]?.r ?? STILE.zoom_prodotto_min) - (animated[b.node]?.r ?? STILE.zoom_prodotto_min))
       if (inPrimoPiano) {
         const idx = nodiProdotti.findIndex((n) => n.node === inPrimoPiano)
         if (idx !== -1) {
@@ -1703,10 +1803,7 @@ function App() {
           nodiProdotti.push(item)
         }
       }
-      const prodottoInPrimoPiano = prodottoCliccato || prodottoHoverAttivo
-      const nodiFiltrati = prodottoInPrimoPiano
-        ? [...nodiDesigner, ...nodiProdotti]
-        : [...nodiProdotti, ...nodiDesigner]
+      const nodiFiltrati = [...nodiProdotti, ...nodiDesigner]
 
       nodiFiltrati.forEach(({ node, attr }) => {
         const pos = renderer.graphToViewport({ x: attr.x, y: attr.y })
@@ -1755,9 +1852,8 @@ function App() {
         }
 
         if (attr.tipo === "designer") {
-          const parti = attr.label.split(" ")
-          const cognome = parti.pop()
-          const nome = parti.join(" ")
+          const cognome = attr.dati.cognome || attr.label.split(" ").pop()
+          const nome = attr.label.slice(0, attr.label.length - cognome.length).trim()
           const lx = pos.x + r + STILE.label_offset
           const altezzaBlocco = labelDesignerSize * 2 + 5 + (labelDesignerSize - 1)
           const lyStart = pos.y - altezzaBlocco / 2 + labelDesignerSize
@@ -1830,8 +1926,7 @@ function App() {
         ctx.textAlign = "center"
         const annoInizio = Math.ceil(1880 / passoAnno) * passoAnno
         for (let anno = annoInizio; anno <= 2020; anno += passoAnno) {
-          const xSnap = Math.round(annoToX(anno) / passoGriglia) * passoGriglia
-          const screen = renderer.graphToViewport({ x: xSnap, y: 0 })
+          const screen = renderer.graphToViewport({ x: annoToX(anno), y: 0 })
           if (screen.x < padSinistra - 20 || screen.x > w - padLati + 20) continue
           ctx.fillText(anno, screen.x, assePosY)
         }
@@ -2169,7 +2264,7 @@ function App() {
     setRidisegnaFn(() => () => richiediDisegnoOverlay(18))
     setCentraFn(() => (cercaNome, tipo, opzioni) => {
       const apriPannello = !opzioni || opzioni.apriPannello !== false
-      const tPercent = opzioni && typeof opzioni.tPercent === "number" ? opzioni.tPercent : (tipo === "designer" ? 0.9 : 0.95)
+      const tPercent = opzioni && typeof opzioni.tPercent === "number" ? opzioni.tPercent : (tipo === "designer" ? 0.75 : 0.95)
       const onFine = opzioni && opzioni.onFine
       let nodeId = null
       graph.forEachNode((node, attr) => {
@@ -2217,7 +2312,7 @@ function App() {
           prodottoCliccato = null
           designerCliccato = nodeId
           setDesignerAttivo(nodeId)
-          setPannelloDesigner({ ...attr.dati, _tipo: "designer" }); setBioEspansa(false); setAziendaAttiva(null)
+          setPannelloDesigner({ ...attr.dati, _tipo: "designer" }); setAziendaAttiva(null)
           requestAnimationFrame(() => setPannelloVisibile(true))
           graph.forEachEdge((edge, eAttr) => { if (eAttr.tipo === "relazione") graph.setEdgeAttribute(edge, "attivo", false) })
           graph.forEachEdge(nodeId, (edge, eAttr) => { if (eAttr.tipo === "relazione") graph.setEdgeAttribute(edge, "attivo", true) })
@@ -2255,46 +2350,58 @@ function App() {
       if (!legameEvidenziatoRef.current) cameraPrimaLegame = camera.getState()
       const attrA = graph.getNodeAttributes(nomeA)
       const attrB = graph.getNodeAttributes(nomeB)
-      const cRect = container.getBoundingClientRect()
       const sState = camera.getState()
-      const pannelloW = isMobile ? 0 : 340 * uiScale
-      const pannelloSx = isMobile ? 0 : Math.max(20, 240 * uiScale - 180)
-      const pannelloH = isMobile ? cRect.height * 0.4 : 0
-      let topBarH = 0
-      if (isMobile && topBarRef.current) topBarH = topBarRef.current.getBoundingClientRect().height
-      const areaW = Math.max(80, cRect.width - pannelloSx - pannelloW)
-      const areaH = Math.max(80, cRect.height - topBarH - pannelloH)
-      const centroX = pannelloSx + areaW / 2 - pannelloW * 0.25
-      const centroY = topBarH + areaH / 2
+      let tRatio = sState.ratio, tX = sState.x, tY = sState.y
+      try {
+        const cRect = container.getBoundingClientRect()
+        if (cRect.width < 1 || cRect.height < 1) throw new Error("container non ancora misurabile")
+        const pannelloW = isMobile ? 0 : 340 * uiScale
+        const pannelloSx = isMobile ? 0 : Math.max(20, 240 * uiScale - 180)
+        const pannelloH = isMobile ? cRect.height * 0.4 : 0
+        let topBarH = 0
+        if (isMobile && topBarRef.current) topBarH = topBarRef.current.getBoundingClientRect().height
+        const areaW = Math.max(80, cRect.width - pannelloSx - pannelloW)
+        const areaH = Math.max(80, cRect.height - topBarH - pannelloH)
+        const centroX = pannelloSx + areaW / 2 - pannelloW * 0.25
+        const centroY = topBarH + areaH / 2
 
-      const { ppuX: ppuXRif, ppuY: ppuYRif } = pixelPerUnita(sState, cRect.width, cRect.height)
-      const dxGraph = Math.abs(attrA.x - attrB.x)
-      const dyGraph = Math.abs(attrA.y - attrB.y)
-      const MARGINE_FIT = 1.4
-      const ratioServeX = dxGraph > 0 ? (MARGINE_FIT * dxGraph * Math.abs(ppuXRif) * sState.ratio) / areaW : 0
-      const ratioServeY = dyGraph > 0 ? (MARGINE_FIT * dyGraph * Math.abs(ppuYRif) * sState.ratio) / areaH : 0
-      let tRatio = Math.max(ratioServeX, ratioServeY, MIN_CAMERA_RATIO)
-      tRatio = Math.min(tRatio, MAX_CAMERA_RATIO)
+        const { ppuX: ppuXRif, ppuY: ppuYRif } = pixelPerUnita(sState, cRect.width, cRect.height)
+        const dxGraph = Math.abs(attrA.x - attrB.x)
+        const dyGraph = Math.abs(attrA.y - attrB.y)
+        const MARGINE_FIT = 0.85
+        const ratioServeX = dxGraph > 0 ? (MARGINE_FIT * dxGraph * Math.abs(ppuXRif) * sState.ratio) / areaW : 0
+        const ratioServeY = dyGraph > 0 ? (MARGINE_FIT * dyGraph * Math.abs(ppuYRif) * sState.ratio) / areaH : 0
+        let ratioCalcolato = Math.max(ratioServeX, ratioServeY, MIN_CAMERA_RATIO)
+        ratioCalcolato = Math.min(ratioCalcolato, MAX_CAMERA_RATIO)
 
-      const midX = (attrA.x + attrB.x) / 2
-      const midY = (attrA.y + attrB.y) / 2
-      clamping = true
-      camera.setState({ x: sState.x, y: sState.y, ratio: tRatio, angle: sState.angle })
-      renderer.refresh()
-      const p0 = renderer.graphToViewport({ x: midX, y: midY })
-      camera.setState({ x: sState.x + 0.01, y: sState.y, ratio: tRatio, angle: sState.angle })
-      renderer.refresh()
-      const pX = renderer.graphToViewport({ x: midX, y: midY })
-      camera.setState({ x: sState.x, y: sState.y + 0.01, ratio: tRatio, angle: sState.angle })
-      renderer.refresh()
-      const pY = renderer.graphToViewport({ x: midX, y: midY })
-      const ppuX = (p0.x - pX.x) / 0.01
-      const ppuY = (p0.y - pY.y) / 0.01
-      const tX = sState.x + (p0.x - centroX) / ppuX
-      const tY = sState.y + (p0.y - centroY) / ppuY
-      camera.setState(sState)
-      renderer.refresh()
-      clamping = false
+        const midX = (attrA.x + attrB.x) / 2
+        const midY = (attrA.y + attrB.y) / 2
+        clamping = true
+        camera.setState({ x: sState.x, y: sState.y, ratio: ratioCalcolato, angle: sState.angle })
+        renderer.refresh()
+        const p0 = renderer.graphToViewport({ x: midX, y: midY })
+        camera.setState({ x: sState.x + 0.01, y: sState.y, ratio: ratioCalcolato, angle: sState.angle })
+        renderer.refresh()
+        const pX = renderer.graphToViewport({ x: midX, y: midY })
+        camera.setState({ x: sState.x, y: sState.y + 0.01, ratio: ratioCalcolato, angle: sState.angle })
+        renderer.refresh()
+        const pY = renderer.graphToViewport({ x: midX, y: midY })
+        const ppuX = (p0.x - pX.x) / 0.01
+        const ppuY = (p0.y - pY.y) / 0.01
+        const xCalcolato = sState.x + (p0.x - centroX) / ppuX
+        const yCalcolato = sState.y + (p0.y - centroY) / ppuY
+        camera.setState(sState)
+        renderer.refresh()
+        if (Number.isFinite(ratioCalcolato) && Number.isFinite(xCalcolato) && Number.isFinite(yCalcolato)) {
+          tRatio = ratioCalcolato; tX = xCalcolato; tY = yCalcolato
+        }
+      } catch {
+        // Se il contenitore non è misurabile in questo istante (capita su mobile
+        // appena dopo l'apertura del pannello), evidenziamo comunque il legame
+        // senza spostare la camera, invece di propagare l'errore.
+      } finally {
+        clamping = false
+      }
 
       legameEvidenziatoRef.current = { a: nomeA, b: nomeB }
       setLegameEvidenziato({ a: nomeA, b: nomeB })
@@ -2305,6 +2412,40 @@ function App() {
       animaCamera({ ratio: tRatio, x: tX, y: tY }, 600)
       richiediDisegnoOverlay(30)
     })
+
+    // Deseleziona tutto (prodotto, designer, collegamento evidenziato, filtro
+    // azienda, popup) e torna alla vista/camera di prima — usata sia dal click
+    // su area vuota che dal tasto Esc.
+    function deselezionaTutto() {
+      if (cameraPrimaDiClick && prodottoCliccato) {
+        animaCamera(cameraPrimaDiClick, 500)
+        cameraPrimaDiClick = null
+      }
+      prodottoHoverAttivo = null; nodoHoverAttivo = null
+      designerCliccato = null; prodottoCliccato = null
+      annoBloccato = null
+      nodoEvidenziatoRef.current = null; setNodoEvidenziato(null)
+      legameEvidenziatoRef.current = null; setLegameEvidenziato(null)
+      cameraPrimaLegame = null
+      primoClickFuoriDesigner = false
+      setDesignerAttivo(null)
+      setPannelloVisibile(false)
+      setTimeout(() => setPannelloDesigner(null), 350)
+      aziendaAttivaRef.current = null; setAziendaAttiva(null); aziendaGlobaleRef.current = false
+      graph.forEachEdge((edge, attr) => { if (attr.tipo === "relazione") graph.setEdgeAttribute(edge, "attivo", false) })
+      setPopup(null); setTooltipRelazione(null)
+      richiediDisegnoOverlay(18)
+    }
+
+    function handleEscGlobale(e) {
+      if (e.key !== "Escape") return
+      const qualcosaSelezionato = designerCliccato || prodottoCliccato || nodoEvidenziatoRef.current
+        || legameEvidenziatoRef.current || aziendaAttivaRef.current || popupCanvas
+      if (!qualcosaSelezionato) return
+      popupCanvas = null
+      deselezionaTutto()
+    }
+    window.addEventListener("keydown", handleEscGlobale)
 
     const sigmaCanvas = container
     if (sigmaCanvas) {
@@ -2463,7 +2604,7 @@ function App() {
               setDesignerAttivo(trovato.node)
               nodoEvidenziatoRef.current = null; setNodoEvidenziato(null)
               aziendaAttivaRef.current = null; aziendaGlobaleRef.current = false
-              setPannelloDesigner({ ...trovato.attr.dati, _tipo: "designer" }); setBioEspansa(false); setAziendaAttiva(null)
+              setPannelloDesigner({ ...trovato.attr.dati, _tipo: "designer" }); setAziendaAttiva(null)
               requestAnimationFrame(() => setPannelloVisibile(true))
               graph.forEachEdge((edge, attr) => { if (attr.tipo === "relazione") graph.setEdgeAttribute(edge, "attivo", false) })
               graph.forEachEdge(trovato.node, (edge, edgeAttr) => { if (edgeAttr.tipo === "relazione") graph.setEdgeAttribute(edge, "attivo", true) })
@@ -2473,7 +2614,7 @@ function App() {
                 const pAttr = graph.getNodeAttributes(trovato.node)
                 const cRect = container.getBoundingClientRect()
                 const sState = camera.getState()
-                const tRatio = ratioDaT(0.9)
+                const tRatio = ratioDaT(0.75)
                 const pannelloW = isMobile ? 0 : 340 * uiScale
                 const pannelloSx = isMobile ? 0 : Math.max(20, 240 * uiScale - 180)
                 const pannelloH = isMobile ? cRect.height * 0.4 : 0
@@ -2608,22 +2749,7 @@ function App() {
             richiediDisegnoOverlay(18)
             return
           }
-          if (cameraPrimaDiClick && prodottoCliccato) {
-            animaCamera(cameraPrimaDiClick, 500)
-            cameraPrimaDiClick = null
-          }
-          prodottoHoverAttivo = null; nodoHoverAttivo = null
-          designerCliccato = null; prodottoCliccato = null
-          annoBloccato = null
-          nodoEvidenziatoRef.current = null; setNodoEvidenziato(null)
-          legameEvidenziatoRef.current = null; setLegameEvidenziato(null)
-          setDesignerAttivo(null)
-          setPannelloVisibile(false)
-          setTimeout(() => setPannelloDesigner(null), 350)
-          aziendaAttivaRef.current = null; setAziendaAttiva(null)
-          graph.forEachEdge((edge, attr) => { if (attr.tipo === "relazione") graph.setEdgeAttribute(edge, "attivo", false) })
-          setPopup(null); setTooltipRelazione(null)
-          richiediDisegnoOverlay(18)
+          deselezionaTutto()
         }
       })
 
@@ -2672,6 +2798,7 @@ function App() {
     }
 
     return () => {
+      window.removeEventListener("keydown", handleEscGlobale)
       resizeObserver.disconnect()
       if (overlayAnimationFrame !== null) cancelAnimationFrame(overlayAnimationFrame)
       if (cameraAnimId) cancelAnimationFrame(cameraAnimId)
@@ -2791,7 +2918,7 @@ function App() {
         </div>
         <div onClick={riapriSchermataIniziale}
           style={{ borderBottom: "1px solid #eee", padding: "16px 0", cursor: "pointer" }}>
-          <div style={{ fontFamily: "'Roboto Mono', monospace", fontWeight: 400, fontSize: 13, color: "#777" }}>
+          <div style={{ fontFamily: "'Roboto Serif', serif", fontStyle: "italic", fontWeight: 400, fontSize: 13, color: "#aaa" }}>
             {t.voci.domanda}
           </div>
         </div>
@@ -2953,11 +3080,11 @@ function App() {
           position: "fixed", inset: 0, zIndex: 1000,
           background: STILE.sfondo_colore, fontFamily: "Roboto, sans-serif",
           display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center",
-          padding: 24, boxSizing: "border-box", textAlign: "center",
+          padding: window.innerWidth < 768 ? "24px 36px" : 24, boxSizing: "border-box", textAlign: "center",
         }}>
           <div style={{
             fontFamily: "'Roboto Serif', serif", fontWeight: 500, fontStyle: "italic",
-            fontSize: window.innerWidth < 768 ? 19 : 22, color: "#1a1a1a", marginBottom: 28, maxWidth: 420, lineHeight: 1.5,
+            fontSize: window.innerWidth < 768 ? 15 : 17, color: "#1a1a1a", marginBottom: 20, maxWidth: 360, lineHeight: 1.5,
             minHeight: "1.3em",
           }}>
             {t.benvenutoDomanda.slice(0, numLetterePronte)}
@@ -2970,17 +3097,16 @@ function App() {
             transition: "opacity 0.6s ease, transform 0.6s ease",
             pointerEvents: campoRivelato ? "auto" : "none",
           }}>
-            <div style={{ position: "relative", width: "100%", maxWidth: 320 }}>
+            <div style={{ position: "relative", width: "100%", maxWidth: 260 }}>
               <input
                 ref={inputSchermataInizialeRef}
                 type="text"
                 value={rispostaDesigner}
                 onChange={(e) => setRispostaDesigner(e.target.value)}
                 onKeyDown={(e) => { if (e.key === "Enter") confermaSchermataIniziale() }}
-                placeholder={t.benvenutoPlaceholder}
                 style={{
-                  width: "100%", boxSizing: "border-box", padding: "13px 18px", borderRadius: 26,
-                  border: "1px solid rgba(0,0,0,0.15)", background: "white", fontSize: 15,
+                  width: "100%", boxSizing: "border-box", padding: "10px 15px", borderRadius: 20,
+                  border: "1px solid rgba(0,0,0,0.15)", background: "white", fontSize: 12,
                   fontFamily: "Roboto, sans-serif", outline: "none",
                 }}
               />
@@ -2991,8 +3117,8 @@ function App() {
                   {suggerimentiBenvenuto.map((d, i) => (
                     <button key={i} onClick={() => confermaSchermataIniziale(d.nome)}
                       style={{
-                        display: "block", width: "100%", textAlign: "left", padding: "10px 18px",
-                        border: "none", background: "white", cursor: "pointer", fontSize: 14,
+                        display: "block", width: "100%", textAlign: "left", padding: "9px 15px",
+                        border: "none", background: "white", cursor: "pointer", fontSize: 12,
                         fontFamily: "Roboto, sans-serif", color: "#1a1a1a",
                       }}>
                       {d.nome}
@@ -3004,8 +3130,8 @@ function App() {
             </div>
             <button onClick={() => confermaSchermataIniziale()}
               style={{
-                marginTop: 22, padding: "11px 30px", borderRadius: 22, border: "none",
-                background: "#F34213", color: "white", fontSize: 13, fontFamily: "'Roboto Mono', monospace",
+                marginTop: 16, padding: "8px 22px", borderRadius: 18, border: "none",
+                background: "#F34213", color: "white", fontSize: 11, fontFamily: "'Roboto Mono', monospace",
                 cursor: "pointer",
               }}>
               {t.benvenutoConferma}
@@ -3400,20 +3526,13 @@ function App() {
               return (
               <div style={{ marginBottom: 0, ...(window.innerWidth < 768 ? { marginLeft: 104 } : {}) }}>
                 <div style={{ fontSize: 9, fontWeight: 600, color: "#266DD3", textTransform: "uppercase", letterSpacing: 1.5, marginBottom: 8 }}>{t.biografia}</div>
-                <p style={{
-                  fontSize: window.innerWidth < 768 ? 11 : 13, fontWeight: 300, color: scuro ? "#999" : "#666", lineHeight: 1.6, margin: 0,
-                  maxHeight: bioEspansa ? "none" : "4.8em", overflow: "hidden",
+                <div style={{
+                  fontSize: window.innerWidth < 768 ? 11 : 13, fontWeight: 300, color: scuro ? "#999" : "#666", lineHeight: 1.6,
                 }}>
-                  {bioTesto}
-                </p>
-                {bioTesto.length > 150 && (
-                  <button onClick={() => setBioEspansa(!bioEspansa)} style={{
-                    background: "none", border: "none", cursor: "pointer", padding: 0, marginTop: 6,
-                    fontSize: 11, fontWeight: 400, color: scuro ? "#666" : "#aaa", fontFamily: "Roboto, sans-serif",
-                  }}>
-                    {bioEspansa ? t.riduci : t.leggiTutto}
-                  </button>
-                )}
+                  {bioTesto.split(/\n\n+/).map((par, i) => (
+                    <p key={i} style={{ margin: i === 0 ? 0 : "10px 0 0" }}>{par}</p>
+                  ))}
+                </div>
               </div>
               )
             })()}

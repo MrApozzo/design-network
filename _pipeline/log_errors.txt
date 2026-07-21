@@ -1,38 +1,223 @@
-[2026-07-21 12:16:14] Pacific candidato flat: download fallito: HTTP 403
-[2026-07-21 12:16:15] Pacific candidato flat: download fallito: HTTP 403
-[2026-07-21 12:16:15] Pacific candidato flat: download fallito: HTTP 403
-[2026-07-21 12:16:15] Pacific candidato flat: download fallito: HTTP 403
-[2026-07-21 12:16:15] Pacific candidato flat: download fallito: HTTP 403
-[2026-07-21 12:16:15] Pacific candidato flat: download fallito: HTTP 403
-[2026-07-21 12:16:40] Shadows candidato flat: download fallito: non e' un'immagine valida (cannot identify image file <_io.BytesIO object at 0x0000025B6ADB8860>)
-[2026-07-21 12:16:42] Shadows candidato flat: download fallito: non e' un'immagine valida (cannot identify image file <_io.BytesIO object at 0x0000025B6AFBBFB0>)
-[2026-07-21 12:16:53] Malibu: SearchApi fallita per query='"Malibu" "Cini Boeri"': HTTPSConnectionPool(host='www.searchapi.io', port=443): Read timed out. (read timeout=10)
-[2026-07-21 12:17:03] Malibu candidato flat: download fallito: HTTP 403
-[2026-07-21 12:17:20] Brontes candidato flat: download fallito: HTTPSConnectionPool(host='images.capitoliumart.com', port=443): Max retries exceeded with url: /auction-images/456/249335.jpg (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1082)')))
-[2026-07-21 12:17:23] Brontes candidato flat: download fallito: HTTPSConnectionPool(host='images.capitoliumart.com', port=443): Max retries exceeded with url: /auction-images/456/249336.jpg (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1082)')))
-[2026-07-21 12:17:24] Brontes candidato flat: download fallito: HTTP 403
-[2026-07-21 12:17:27] Brontes candidato flat: download fallito: HTTP 403
-[2026-07-21 12:17:30] Brontes candidato flat: download fallito: HTTPSConnectionPool(host='images.capitoliumart.com', port=443): Max retries exceeded with url: /auction-images/456/246251.jpg?w=360 (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1082)')))
-[2026-07-21 12:17:42] Past candidato flat: download fallito: HTTPSConnectionPool(host='images.capitoliumart.com', port=443): Max retries exceeded with url: /auction-images/503/250474.jpg (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1082)')))
-[2026-07-21 12:17:47] Past candidato flat: download fallito: HTTPSConnectionPool(host='images.capitoliumart.com', port=443): Max retries exceeded with url: /auction-images/251/127335.jpg (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1082)')))
-[2026-07-21 12:17:50] Past candidato flat: download fallito: HTTPSConnectionPool(host='images.capitoliumart.com', port=443): Max retries exceeded with url: /auction-images/348/175638.jpg (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1082)')))
-[2026-07-21 12:18:05] Feltro: SearchApi fallita per query='"Feltro" "Cini Boeri" "Venini"': HTTPSConnectionPool(host='www.searchapi.io', port=443): Read timed out. (read timeout=10)
-[2026-07-21 12:18:12] Feltro candidato flat: download fallito: No connection adapters were found for 'x-raw-image:///8fcea71108f7babc6ed6119ce8c12fe8932c056d71c61791e8906a0911c37dec'
-[2026-07-21 12:18:15] Feltro candidato flat: download fallito: No connection adapters were found for 'x-raw-image:///8c0f92229a9addf190efbfd48a0cdbe0666961e7869241ffaa5916b200d0bbd6'
-[2026-07-21 12:18:56] Cini Boeri Ottoman candidato flat: download fallito: No connection adapters were found for 'x-raw-image:///764b361fa6b8e7dea71047b817690060f922580896adb9e1da0de61d0d705be5'
-[2026-07-21 12:19:01] Cini Boeri Ottoman candidato flat: download fallito: No connection adapters were found for 'x-raw-image:///0d5b211e4e43e5e558df81dccf19e3ac96f213ba4e270844b9da15ffb76e0bdd'
-[2026-07-21 12:19:05] Cini Boeri Ottoman candidato flat: download fallito: No connection adapters were found for 'x-raw-image:///f6a289e51945478dcf0e6d4303a62d81e1bbd0fa54b083cd3406e46947f7bb8d'
-[2026-07-21 12:19:08] Cini Boeri Ottoman candidato flat: download fallito: No connection adapters were found for 'x-raw-image:///a0f93c96e53105abd68639ca193931eb3c5faf00e8fac0babbccf7e62c2ba0c7'
-[2026-07-21 12:19:10] Cini Boeri Ottoman candidato flat: download fallito: No connection adapters were found for 'x-raw-image:///26150841f9fb165b42d3adb1417755533eefb7c72d920cc3d12b22bb495c639a'
-[2026-07-21 12:19:24] Bebop candidato flat: download fallito: non e' un'immagine valida (cannot identify image file <_io.BytesIO object at 0x0000025B6B0108B0>)
-[2026-07-21 12:19:26] Bebop candidato flat: download fallito: non e' un'immagine valida (cannot identify image file <_io.BytesIO object at 0x0000025B6AFED620>)
-[2026-07-21 12:19:29] Bebop candidato flat: download fallito: HTTPSConnectionPool(host='d4lqby8rocc5r.cloudfront.net', port=443): Max retries exceeded with url: /interiu.com/1000/950492.webp (Caused by NameResolutionError("HTTPSConnection(host='d4lqby8rocc5r.cloudfront.net', port=443): Failed to resolve 'd4lqby8rocc5r.cloudfront.net' ([Errno 11001] getaddrinfo failed)"))
-[2026-07-21 12:19:31] Bebop candidato flat: download fallito: non e' un'immagine valida (cannot identify image file <_io.BytesIO object at 0x0000025B6B0141D0>)
-[2026-07-21 12:19:44] To the Wall: SearchApi fallita per query='"To the Wall" "Cini Boeri"': HTTPSConnectionPool(host='www.searchapi.io', port=443): Read timed out. (read timeout=10)
-[2026-07-21 12:19:48] To the Wall candidato flat: download fallito: No connection adapters were found for 'x-raw-image:///67afce220bf9b31efad4ec2476092a67bf7431a15ba5e0b7e897714defb67e84'
-[2026-07-21 12:19:51] Ledletto candidato flat: download fallito: HTTP 403
-[2026-07-21 12:19:52] Ledletto candidato flat: download fallito: HTTP 403
-[2026-07-21 12:20:14] Arran candidato flat: download fallito: HTTP 202
-[2026-07-21 12:20:17] Arran candidato flat: download fallito: HTTPSConnectionPool(host='www.lombardiabeniculturali.it', port=443): Max retries exceeded with url: /assets/immagini/liv2/AF310RLSUP/SW/F/SWCX1/0002/F_SUP-SWCX1-0002373_IMG-0000000001.jpg (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1082)')))
-[2026-07-21 12:20:18] Arran candidato flat: download fallito: HTTP 202
-[2026-07-21 12:20:27] Camicia candidato flat: download fallito: non e' un'immagine valida (cannot identify image file <_io.BytesIO object at 0x0000025B39ECF240>)
+[2026-07-21 16:36:37] Agelada candidato flat: download fallito: HTTP 202
+[2026-07-21 16:36:37] Agelada candidato flat: download fallito: HTTP 202
+[2026-07-21 16:36:37] Agelada candidato flat: download fallito: HTTP 202
+[2026-07-21 16:36:37] Agelada candidato flat: download fallito: HTTP 202
+[2026-07-21 16:36:37] Agelada candidato flat: download fallito: HTTP 202
+[2026-07-21 16:36:38] Agelada candidato flat: download fallito: HTTP 202
+[2026-07-21 16:36:38] Agelada candidato flat: download fallito: HTTP 202
+[2026-07-21 16:36:39] Agelada candidato flat: download fallito: HTTP 202
+[2026-07-21 16:36:39] Agelada candidato flat: download fallito: HTTP 202
+[2026-07-21 16:36:39] Agelada candidato flat: download fallito: HTTP 202
+[2026-07-21 16:36:55] Pangea candidato flat: download fallito: HTTP 202
+[2026-07-21 16:37:06] Ipno candidato flat: download fallito: non e' un'immagine valida (cannot identify image file <_io.BytesIO object at 0x000002A2C3E80270>)
+[2026-07-21 16:37:12] Ipno candidato flat: download fallito: No connection adapters were found for 'x-raw-image:///a5960e1f89ac3a44dd533e4918f2de015d367dd40d083799254bc70541876df6'
+[2026-07-21 16:37:17] Tolomeo Outdoor candidato flat: download fallito: file vuoto o troppo piccolo
+[2026-07-21 16:37:17] Tolomeo Outdoor candidato flat: download fallito: file vuoto o troppo piccolo
+[2026-07-21 16:37:28] Teamer candidato flat: download fallito: HTTP 403
+[2026-07-21 16:37:45] Plissé Kettle candidato flat: download fallito: HTTP 468
+[2026-07-21 16:37:46] Plissé Kettle candidato flat: download fallito: HTTP 468
+[2026-07-21 16:37:47] Plissé Kettle candidato flat: download fallito: non e' un'immagine valida (cannot identify image file <_io.BytesIO object at 0x000002A2C3E7C810>)
+[2026-07-21 16:37:50] Biblio candidato flat: download fallito: HTTP 400
+[2026-07-21 16:37:51] Biblio candidato flat: download fallito: HTTP 400
+[2026-07-21 16:38:18] Plissé Citrus Squeezer: SearchApi fallita per query='"Plissé Citrus Squeezer" "Michele De Lucchi" "Alessi"': HTTPSConnectionPool(host='www.searchapi.io', port=443): Read timed out. (read timeout=10)
+[2026-07-21 16:38:53] Plissé Thermo Insulated Jug candidato flat: download fallito: HTTP 403
+[2026-07-21 16:38:55] Plissé Thermo Insulated Jug candidato flat: download fallito: HTTP 403
+[2026-07-21 16:39:06] Indoor candidato flat: download fallito: non e' un'immagine valida (cannot identify image file <_io.BytesIO object at 0x000002A2C3E809A0>)
+[2026-07-21 16:39:28] Megara candidato flat: download fallito: HTTPSConnectionPool(host='www.mefsrl.com', port=443): Max retries exceeded with url: /o/adaptive-media/image/81062/galleria-dettaglio/megara+artemide.jpg (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1082)')))
+[2026-07-21 16:39:30] Megara candidato flat: download fallito: No connection adapters were found for 'x-raw-image:///258f321b1d541d301d2d513f95afcbdf99777ddc6062f5269fb1b519f1a59691'
+[2026-07-21 16:39:32] Megara candidato flat: download fallito: No connection adapters were found for 'x-raw-image:///4bc5e5a7eaa11d63ab83305dd1bff29695892d6c7e3c88610d6dc6ee10c9926e'
+[2026-07-21 16:39:35] Megara candidato flat: download fallito: No connection adapters were found for 'x-raw-image:///39b2c8d41ac4d2c95988532ad0993e5310dbac8461155cc23ff343b1d7aafde0'
+[2026-07-21 16:39:38] Megara candidato flat: download fallito: No connection adapters were found for 'x-raw-image:///15bee550e06e035e2a73c267c2164effd759a61cbf69d9830c5631af97087289'
+[2026-07-21 16:39:50] Plissé Hand Blender candidato flat: download fallito: HTTP 403
+[2026-07-21 16:39:54] Plissé Personal Blender candidato flat: download fallito: HTTP 403
+[2026-07-21 16:40:09] Safari candidato flat: download fallito: HTTP 202
+[2026-07-21 16:40:10] Safari candidato flat: download fallito: HTTP 202
+[2026-07-21 16:40:32] Safari candidato flat: download fallito: HTTPSConnectionPool(host='www.christies.com', port=443): Read timed out. (read timeout=10)
+[2026-07-21 16:40:33] Safari candidato flat: download fallito: file vuoto o troppo piccolo
+[2026-07-21 16:40:43] Sanremo candidato flat: download fallito: HTTP 403
+[2026-07-21 16:40:45] Sanremo candidato flat: download fallito: non e' un'immagine valida (cannot identify image file <_io.BytesIO object at 0x000002A2C2AD69D0>)
+[2026-07-21 16:40:53] Tizio Caio Sempronio candidato flat: download fallito: HTTP 403
+[2026-07-21 16:40:53] Tizio Caio Sempronio candidato flat: download fallito: HTTP 403
+[2026-07-21 16:40:53] Tizio Caio Sempronio candidato flat: download fallito: HTTP 403
+[2026-07-21 16:40:53] Tizio Caio Sempronio candidato flat: download fallito: HTTP 403
+[2026-07-21 16:40:53] Tizio Caio Sempronio candidato flat: download fallito: HTTP 403
+[2026-07-21 16:40:53] Tizio Caio Sempronio candidato flat: download fallito: HTTP 403
+[2026-07-21 16:40:53] Tizio Caio Sempronio fallback estremo download: download fallito: HTTP 403
+[2026-07-21 16:40:53] Tizio Caio Sempronio fallback estremo download: download fallito: HTTP 403
+[2026-07-21 16:40:53] Tizio Caio Sempronio fallback estremo download: download fallito: HTTP 403
+[2026-07-21 16:40:54] Tizio Caio Sempronio fallback estremo download: download fallito: HTTP 403
+[2026-07-21 16:40:54] Tizio Caio Sempronio fallback estremo download: download fallito: HTTP 403
+[2026-07-21 16:40:54] Tizio Caio Sempronio fallback estremo download: download fallito: HTTP 403
+[2026-07-21 16:41:02] Labrador candidato flat: download fallito: HTTP 202
+[2026-07-21 16:41:02] Labrador candidato flat: download fallito: HTTP 403
+[2026-07-21 16:41:26] Labrador candidato flat: download fallito: HTTPSConnectionPool(host='www.christies.com', port=443): Read timed out. (read timeout=10)
+[2026-07-21 16:41:35] Magnolia candidato flat: download fallito: HTTP 202
+[2026-07-21 16:41:37] Magnolia candidato flat: download fallito: HTTP 403
+[2026-07-21 16:41:48] Niccola candidato flat: download fallito: HTTP 403
+[2026-07-21 16:41:54] Revers candidato flat: download fallito: HTTP 403
+[2026-07-21 16:42:23] Giotto candidato flat: download fallito: non e' un'immagine valida (cannot identify image file <_io.BytesIO object at 0x000002A2C2CA36F0>)
+[2026-07-21 16:42:26] Giotto candidato flat: download fallito: non e' un'immagine valida (cannot identify image file <_io.BytesIO object at 0x000002A2C3E42CF0>)
+[2026-07-21 16:42:27] Giotto candidato flat: download fallito: non e' un'immagine valida (cannot identify image file <_io.BytesIO object at 0x000002A2C2CA36F0>)
+[2026-07-21 16:42:52] Korall candidato flat: download fallito: HTTP 403
+[2026-07-21 16:42:53] Korall candidato flat: download fallito: HTTP 403
+[2026-07-21 16:42:54] Korall candidato flat: download fallito: HTTP 403
+[2026-07-21 16:43:08] Pupa: SearchApi fallita per query='"Pupa" "Andrea Branzi"': HTTPSConnectionPool(host='www.searchapi.io', port=443): Read timed out. (read timeout=10)
+[2026-07-21 16:43:31] Large Bowl candidato flat: download fallito: HTTP 403
+[2026-07-21 16:43:31] Large Bowl candidato flat: download fallito: HTTP 403
+[2026-07-21 16:44:06] Tappeto Cielo candidato flat: download fallito: No connection adapters were found for 'x-raw-image:///35de9ef07fc81c4b3ceec7b6ce4240fb003ab7c26a1f9c2b0ba850d8f6730f70'
+[2026-07-21 16:44:13] Tappeto Farfalla candidato flat: download fallito: No connection adapters were found for 'x-raw-image:///35de9ef07fc81c4b3ceec7b6ce4240fb003ab7c26a1f9c2b0ba850d8f6730f70'
+[2026-07-21 16:44:20] Tappeto Prato candidato flat: download fallito: No connection adapters were found for 'x-raw-image:///35de9ef07fc81c4b3ceec7b6ce4240fb003ab7c26a1f9c2b0ba850d8f6730f70'
+[2026-07-21 16:44:31] Cabina dell’Elba candidato flat: download fallito: HTTP 500
+[2026-07-21 16:44:35] Cabina dell’Elba candidato flat: download fallito: non e' un'immagine valida (cannot identify image file <_io.BytesIO object at 0x000002A2C2BBA8E0>)
+[2026-07-21 16:44:37] Cabina dell’Elba candidato flat: download fallito: HTTP 500
+[2026-07-21 16:44:44] Teatro candidato flat: download fallito: HTTP 500
+[2026-07-21 16:44:46] Teatro candidato flat: download fallito: HTTP 500
+[2026-07-21 16:44:52] Tea & Coffee Piazza candidato flat: download fallito: HTTP 202
+[2026-07-21 16:44:54] Tea & Coffee Piazza candidato flat: download fallito: HTTP 202
+[2026-07-21 16:44:56] Tea & Coffee Piazza candidato flat: download fallito: HTTP 202
+[2026-07-21 16:45:14] AR3 candidato flat: download fallito: No connection adapters were found for 'x-raw-image:///ee30cc87c1b0bb3d82abdc08a8bdd010627fc3ce8712eebdcfce2316d175c954'
+[2026-07-21 16:45:26] AR4 candidato flat: download fallito: No connection adapters were found for 'x-raw-image:///2f4fea97de23174ae0cb0163d2b126acfe9201af506af9e47134950765dfbd6f'
+[2026-07-21 16:45:37] AR5: SearchApi fallita per query='"AR5" "Aldo Rossi"': HTTPSConnectionPool(host='www.searchapi.io', port=443): Read timed out. (read timeout=10)
+[2026-07-21 16:46:41] Taccas candidato flat: download fallito: non e' un'immagine valida (cannot identify image file <_io.BytesIO object at 0x000002A2C3E8BFB0>)
+[2026-07-21 16:46:43] Taccas candidato flat: download fallito: non e' un'immagine valida (cannot identify image file <_io.BytesIO object at 0x000002A2C3DC3FB0>)
+[2026-07-21 16:46:44] Taccas candidato flat: download fallito: HTTP 403
+[2026-07-21 16:46:45] Taccas candidato flat: download fallito: non e' un'immagine valida (cannot identify image file <_io.BytesIO object at 0x000002A2C2017E20>)
+[2026-07-21 16:46:49] Taccas candidato flat: download fallito: non e' un'immagine valida (cannot identify image file <_io.BytesIO object at 0x000002A2C3E89C10>)
+[2026-07-21 16:46:51] Taccas candidato flat: download fallito: non e' un'immagine valida (cannot identify image file <_io.BytesIO object at 0x000002A2C3E8AC50>)
+[2026-07-21 16:46:53] Taccas candidato flat: download fallito: non e' un'immagine valida (cannot identify image file <_io.BytesIO object at 0x000002A2C3E8B510>)
+[2026-07-21 16:46:55] Taccas candidato flat: download fallito: non e' un'immagine valida (cannot identify image file <_io.BytesIO object at 0x000002A2C3E89940>)
+[2026-07-21 16:47:06] Momento: SearchApi fallita per query='"Momento" "Aldo Rossi"': HTTPSConnectionPool(host='www.searchapi.io', port=443): Read timed out. (read timeout=10)
+[2026-07-21 16:47:08] Momento candidato flat: download fallito: file vuoto o troppo piccolo
+[2026-07-21 16:47:09] Momento candidato flat: download fallito: file vuoto o troppo piccolo
+[2026-07-21 16:47:17] Carteggio candidato flat: download fallito: HTTP 500
+[2026-07-21 16:47:18] Carteggio candidato flat: download fallito: HTTP 500
+[2026-07-21 16:47:19] Carteggio candidato flat: download fallito: HTTP 410
+[2026-07-21 16:47:21] Carteggio candidato flat: download fallito: HTTP 500
+[2026-07-21 16:47:25] Milano candidato flat: download fallito: HTTP 202
+[2026-07-21 16:47:29] Milano candidato flat: download fallito: HTTPSConnectionPool(host='www.lombardiabeniculturali.it', port=443): Max retries exceeded with url: /assets/immagini/liv1/AC310RL/SC/AC/p4010/00/AC_p4010-00232_IMG-0000044436.jpg (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1082)')))
+[2026-07-21 16:47:29] Milano candidato flat: download fallito: HTTP 202
+[2026-07-21 16:47:30] Milano candidato flat: download fallito: file vuoto o troppo piccolo
+[2026-07-21 16:47:30] Milano candidato flat: download fallito: HTTP 202
+[2026-07-21 16:47:31] Milano candidato flat: download fallito: HTTP 202
+[2026-07-21 16:47:41] Teatro Open candidato flat: download fallito: HTTP 500
+[2026-07-21 16:47:43] Teatro Open candidato flat: download fallito: HTTP 500
+[2026-07-21 16:47:44] Teatro Open candidato flat: download fallito: HTTP 500
+[2026-07-21 16:47:45] Teatro Open candidato flat: download fallito: HTTP 500
+[2026-07-21 16:47:49] Teatro Open candidato flat: download fallito: HTTP 500
+[2026-07-21 16:47:55] Teatro Open candidato flat: download fallito: HTTP 500
+[2026-07-21 16:48:14] Papyro: SearchApi fallita per query='"Papyro" "Aldo Rossi"': HTTPSConnectionPool(host='www.searchapi.io', port=443): Read timed out. (read timeout=10)
+[2026-07-21 16:48:19] Papyro candidato flat: download fallito: HTTP 500
+[2026-07-21 16:48:20] Papyro candidato flat: download fallito: HTTP 500
+[2026-07-21 16:48:22] Papyro candidato flat: download fallito: HTTP 500
+[2026-07-21 16:48:23] Papyro candidato flat: download fallito: HTTP 500
+[2026-07-21 16:48:25] Papyro candidato flat: download fallito: HTTP 500
+[2026-07-21 16:48:26] Papyro candidato flat: download fallito: HTTP 500
+[2026-07-21 16:48:29] Carlo Felice Sedia Platea Teatro candidato flat: download fallito: HTTP 500
+[2026-07-21 16:48:30] Carlo Felice Sedia Platea Teatro candidato flat: download fallito: HTTP 500
+[2026-07-21 16:48:31] Carlo Felice Sedia Platea Teatro candidato flat: download fallito: HTTP 500
+[2026-07-21 16:48:32] Carlo Felice Sedia Platea Teatro candidato flat: download fallito: HTTP 500
+[2026-07-21 16:48:33] Carlo Felice Sedia Platea Teatro candidato flat: download fallito: HTTP 500
+[2026-07-21 16:48:34] Carlo Felice Sedia Platea Teatro candidato flat: download fallito: HTTP 500
+[2026-07-21 16:48:36] Carlo Felice Sedia Platea Teatro candidato flat: download fallito: HTTP 500
+[2026-07-21 16:48:37] Carlo Felice Sedia Platea Teatro fallback estremo download: download fallito: HTTP 500
+[2026-07-21 16:48:38] Carlo Felice Sedia Platea Teatro fallback estremo download: download fallito: HTTP 500
+[2026-07-21 16:48:39] Carlo Felice Sedia Platea Teatro fallback estremo download: download fallito: HTTP 500
+[2026-07-21 16:48:40] Carlo Felice Sedia Platea Teatro fallback estremo download: download fallito: HTTP 500
+[2026-07-21 16:48:42] Carlo Felice Sedia Platea Teatro fallback estremo download: download fallito: HTTP 500
+[2026-07-21 16:48:43] Carlo Felice Sedia Platea Teatro fallback estremo download: download fallito: HTTP 500
+[2026-07-21 16:48:44] Carlo Felice Sedia Platea Teatro fallback estremo download: download fallito: HTTP 500
+[2026-07-21 16:48:45] Carlo Felice Sedia Platea Teatro fallback estremo download: download fallito: HTTP 500
+[2026-07-21 16:48:46] Carlo Felice Sedia Platea Teatro fallback estremo download: download fallito: HTTP 500
+[2026-07-21 16:48:47] Carlo Felice Sedia Platea Teatro fallback estremo download: download fallito: HTTP 500
+[2026-07-21 16:48:49] Carlo Felice Sedia Platea Teatro fallback estremo download: download fallito: HTTP 500
+[2026-07-21 16:48:50] Carlo Felice Sedia Platea Teatro fallback estremo download: download fallito: HTTP 500
+[2026-07-21 16:48:51] Carlo Felice Sedia Platea Teatro fallback estremo download: download fallito: HTTP 500
+[2026-07-21 16:48:52] Carlo Felice Sedia Platea Teatro fallback estremo download: download fallito: HTTP 500
+[2026-07-21 16:48:53] Carlo Felice Sedia Platea Teatro fallback estremo download: download fallito: HTTP 500
+[2026-07-21 16:48:55] Carlo Felice Sedia Platea Teatro fallback estremo download: download fallito: HTTP 500
+[2026-07-21 16:49:14] Consiglio candidato flat: download fallito: HTTP 403
+[2026-07-21 16:49:16] Consiglio candidato flat: download fallito: HTTP 500
+[2026-07-21 16:49:24] Piroscafo candidato flat: download fallito: HTTPSConnectionPool(host='cattelan.it', port=443): Max retries exceeded with url: /wp-content/uploads/libreria-Piroscafo-molteni-Piroscafo-bookcase-molteniC-aldo-rossi-luca-meda-3-1.jpg (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1082)')))
+[2026-07-21 16:49:24] Piroscafo candidato flat: download fallito: HTTP 410
+[2026-07-21 16:49:25] Piroscafo candidato flat: download fallito: HTTP 410
+[2026-07-21 16:49:28] Piroscafo candidato flat: download fallito: HTTPSConnectionPool(host='cattelan.it', port=443): Max retries exceeded with url: /wp-content/uploads/libreria-Piroscafo-molteni-Piroscafo-bookcase-molteniC-aldo-rossi-luca-meda-4-1.jpg (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1082)')))
+[2026-07-21 16:49:29] Piroscafo candidato flat: download fallito: HTTP 410
+[2026-07-21 16:49:31] Piroscafo candidato flat: download fallito: HTTPSConnectionPool(host='cattelan.it', port=443): Max retries exceeded with url: /wp-content/uploads/Piroscafo_1-1.jpg (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1082)')))
+[2026-07-21 16:50:09] Providence Sofa fallback estremo download: download fallito: HTTP 500
+[2026-07-21 16:50:10] Providence Sofa fallback estremo download: download fallito: HTTP 500
+[2026-07-21 16:50:11] Providence Sofa fallback estremo download: download fallito: HTTP 500
+[2026-07-21 16:50:13] Providence Sofa fallback estremo download: download fallito: HTTP 500
+[2026-07-21 16:50:14] Providence Sofa fallback estremo download: download fallito: HTTP 500
+[2026-07-21 16:50:15] Providence Sofa fallback estremo download: download fallito: HTTP 410
+[2026-07-21 16:50:39] Normandie Armadio: SearchApi fallita per query='"Normandie Armadio" "Aldo Rossi" "armadio"': HTTPSConnectionPool(host='www.searchapi.io', port=443): Read timed out. (read timeout=10)
+[2026-07-21 16:50:58] Il Faro candidato flat: download fallito: file vuoto o troppo piccolo
+[2026-07-21 16:51:01] Cartesio candidato flat: download fallito: HTTP 202
+[2026-07-21 16:51:04] Cartesio candidato flat: download fallito: HTTP 500
+[2026-07-21 16:51:13] Museo candidato flat: download fallito: HTTP 202
+[2026-07-21 16:51:37] Alfiere fallback estremo download: download fallito: non e' un'immagine valida (cannot identify image file <_io.BytesIO object at 0x000002A2C3E82E30>)
+[2026-07-21 16:51:39] Alfiere fallback estremo download: download fallito: non e' un'immagine valida (cannot identify image file <_io.BytesIO object at 0x000002A2C3E82B10>)
+[2026-07-21 16:51:40] Alfiere fallback estremo download: download fallito: non e' un'immagine valida (cannot identify image file <_io.BytesIO object at 0x000002A2C3E82CF0>)
+[2026-07-21 16:51:42] Alfiere fallback estremo download: download fallito: non e' un'immagine valida (cannot identify image file <_io.BytesIO object at 0x000002A2C3E83470>)
+[2026-07-21 16:51:44] Alfiere fallback estremo download: download fallito: non e' un'immagine valida (cannot identify image file <_io.BytesIO object at 0x000002A2C3E80720>)
+[2026-07-21 16:51:45] Alfiere fallback estremo download: download fallito: non e' un'immagine valida (cannot identify image file <_io.BytesIO object at 0x000002A2C3E82E30>)
+[2026-07-21 16:51:47] Alfiere fallback estremo download: download fallito: non e' un'immagine valida (cannot identify image file <_io.BytesIO object at 0x000002A2C3E82B10>)
+[2026-07-21 16:52:15] Cassettone Fiorentino fallback estremo download: download fallito: HTTP 500
+[2026-07-21 16:52:16] Cassettone Fiorentino fallback estremo download: download fallito: HTTP 500
+[2026-07-21 16:52:17] Cassettone Fiorentino fallback estremo download: download fallito: non e' un'immagine valida (cannot identify image file <_io.BytesIO object at 0x000002A2C3E80680>)
+[2026-07-21 16:52:19] Cassettone Fiorentino fallback estremo download: download fallito: HTTP 500
+[2026-07-21 16:52:21] Cassettone Fiorentino fallback estremo download: download fallito: non e' un'immagine valida (cannot identify image file <_io.BytesIO object at 0x000002A2C3E82B10>)
+[2026-07-21 16:52:22] Cassettone Fiorentino fallback estremo download: download fallito: non e' un'immagine valida (cannot identify image file <_io.BytesIO object at 0x000002A2C3E5C7C0>)
+[2026-07-21 16:52:24] Cassettone Fiorentino fallback estremo download: download fallito: non e' un'immagine valida (cannot identify image file <_io.BytesIO object at 0x000002A2C3E80720>)
+[2026-07-21 16:52:26] Cassettone Fiorentino fallback estremo download: download fallito: non e' un'immagine valida (cannot identify image file <_io.BytesIO object at 0x000002A2C3E7E7F0>)
+[2026-07-21 16:53:16] Prometeo: SearchApi fallita per query='"Prometeo" "Aldo Rossi"': HTTPSConnectionPool(host='www.searchapi.io', port=443): Read timed out. (read timeout=10)
+[2026-07-21 16:53:22] Prometeo candidato flat: download fallito: non e' un'immagine valida (cannot identify image file <_io.BytesIO object at 0x000002A2C3E816C0>)
+[2026-07-21 16:53:24] Prometeo candidato flat: download fallito: non e' un'immagine valida (cannot identify image file <_io.BytesIO object at 0x000002A2C3E808B0>)
+[2026-07-21 16:53:33] Momento Wall Clock candidato flat: download fallito: non e' un'immagine valida (cannot identify image file <_io.BytesIO object at 0x000002A2C2D9E2A0>)
+[2026-07-21 16:53:36] Momento Wall Clock candidato flat: download fallito: HTTP 403
+[2026-07-21 16:53:44] Sedia 1938 candidato flat: download fallito: file vuoto o troppo piccolo
+[2026-07-21 16:53:44] Sedia 1938 candidato flat: download fallito: non e' un'immagine valida (cannot identify image file <_io.BytesIO object at 0x000002A2C3E7E980>)
+[2026-07-21 16:54:27] Gala candidato flat: download fallito: HTTPSConnectionPool(host='images.capitoliumart.com', port=443): Max retries exceeded with url: /auction-images/434/227265.jpg (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1082)')))
+[2026-07-21 16:54:27] Gala candidato flat: download fallito: non e' un'immagine valida (cannot identify image file <_io.BytesIO object at 0x000002A2C484DEE0>)
+[2026-07-21 16:54:30] Gala candidato flat: download fallito: HTTPSConnectionPool(host='images.capitoliumart.com', port=443): Max retries exceeded with url: /auction-images/456/248903.jpg (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1082)')))
+[2026-07-21 16:54:34] Gala candidato flat: download fallito: HTTPSConnectionPool(host='images.capitoliumart.com', port=443): Max retries exceeded with url: /auction-images/434/227368.jpg (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1082)')))
+[2026-07-21 16:54:37] Gala candidato flat: download fallito: HTTPSConnectionPool(host='images.capitoliumart.com', port=443): Max retries exceeded with url: /auction-images/434/227366.jpg (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1082)')))
+[2026-07-21 16:55:04] CR20 candidato flat: download fallito: HTTPSConnectionPool(host='images.capitoliumart.com', port=443): Max retries exceeded with url: /auction-images/266/137193.jpg (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1082)')))
+[2026-07-21 16:55:04] CR20 candidato flat: download fallito: HTTP 202
+[2026-07-21 16:55:26] Luisella candidato flat: download fallito: HTTP 202
+[2026-07-21 16:55:30] Luisella candidato flat: download fallito: HTTP 202
+[2026-07-21 16:55:32] Luisella candidato flat: download fallito: HTTPSConnectionPool(host='images.capitoliumart.com', port=443): Max retries exceeded with url: /auction-images/359/185936.jpg?w=360 (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1082)')))
+[2026-07-21 16:55:36] Luisella candidato flat: download fallito: HTTPSConnectionPool(host='images.capitoliumart.com', port=443): Max retries exceeded with url: /auction-images/359/185934.jpg?w=360 (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1082)')))
+[2026-07-21 16:55:45] Model 524 candidato flat: download fallito: HTTP 403
+[2026-07-21 16:55:55] Model 2050 candidato flat: download fallito: HTTP 202
+[2026-07-21 16:56:13] Agata candidato flat: download fallito: non e' un'immagine valida (cannot identify image file <_io.BytesIO object at 0x000002A2C2D9F8D0>)
+[2026-07-21 16:56:43] AM2Z candidato flat: download fallito: HTTP 403
+[2026-07-21 16:56:55] AS41C candidato flat: download fallito: HTTPSConnectionPool(host='images.capitoliumart.com', port=443): Max retries exceeded with url: /auction-images/420/225810.jpg (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1082)')))
+[2026-07-21 16:56:58] AS41C candidato flat: download fallito: HTTPSConnectionPool(host='images.capitoliumart.com', port=443): Max retries exceeded with url: /auction-images/420/225811.jpg (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1082)')))
+[2026-07-21 16:57:01] AS41C candidato flat: download fallito: HTTPSConnectionPool(host='images.capitoliumart.com', port=443): Max retries exceeded with url: /auction-images/420/225812.jpg (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1082)')))
+[2026-07-21 16:57:01] AS41C candidato flat: download fallito: file vuoto o troppo piccolo
+[2026-07-21 16:57:09] Pannocchia candidato flat: download fallito: HTTPSConnectionPool(host='www.lombardiabeniculturali.it', port=443): Max retries exceeded with url: /assets/immagini/liv1/AF310RLSUP/SW/F/SWCX1/0010/F_SUP-SWCX1-0010332_IMG-0000000001.jpg (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1082)')))
+[2026-07-21 16:57:10] Pannocchia candidato flat: download fallito: HTTP 202
+[2026-07-21 16:57:14] Pannocchia candidato flat: download fallito: HTTPSConnectionPool(host='www.lombardiabeniculturali.it', port=443): Max retries exceeded with url: /assets/immagini/liv1/AF310RLSUP/SW/F/SWCX1/0010/F_SUP-SWCX1-0010343_IMG-0000000001.jpg (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1082)')))
+[2026-07-21 16:57:15] Pannocchia candidato flat: download fallito: HTTP 404
+[2026-07-21 16:57:15] Pannocchia candidato flat: download fallito: HTTP 404
+[2026-07-21 16:57:26] Ambra candidato flat: download fallito: non e' un'immagine valida (cannot identify image file <_io.BytesIO object at 0x000002A2C3E5D620>)
+[2026-07-21 16:57:27] Ambra candidato flat: download fallito: non e' un'immagine valida (cannot identify image file <_io.BytesIO object at 0x000002A2C3E5EE80>)
+[2026-07-21 16:57:29] Ambra candidato flat: download fallito: non e' un'immagine valida (cannot identify image file <_io.BytesIO object at 0x000002A2C3E5FA10>)
+[2026-07-21 16:57:31] Ambra candidato flat: download fallito: non e' un'immagine valida (cannot identify image file <_io.BytesIO object at 0x000002A2C3E5C4F0>)
+[2026-07-21 16:57:39] Infinito Wall candidato flat: download fallito: non e' un'immagine valida (cannot identify image file <_io.BytesIO object at 0x000002A2C3DDBC40>)
+[2026-07-21 16:57:41] Infinito Wall candidato flat: download fallito: HTTPSConnectionPool(host='cattelan.it', port=443): Max retries exceeded with url: /wp-content/uploads/835-infinito-wall-libreria-bookcase-cassina-original-design-franco-albini-promo-cattelan_2.jpg (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1082)')))
+[2026-07-21 16:57:50] Infinito Wall candidato flat: download fallito: HTTPSConnectionPool(host='cattelan.it', port=443): Max retries exceeded with url: /wp-content/uploads/835-infinito-wall-libreria-bookcase-cassina-original-design-franco-albini-promo-cattelan_3.jpg (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1082)')))
+[2026-07-21 16:57:53] Infinito Wall candidato flat: download fallito: HTTPSConnectionPool(host='cattelan.it', port=443): Max retries exceeded with url: /wp-content/uploads/835-infinito-wall-libreria-bookcase-cassina-original-design-franco-albini-promo-cattelan_header.jpg (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1082)')))
+[2026-07-21 16:58:05] Alzabile candidato flat: download fallito: HTTPSConnectionPool(host='images.capitoliumart.com', port=443): Max retries exceeded with url: /auction-images/484/281368.jpg (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1082)')))
+[2026-07-21 16:58:09] Alzabile candidato flat: download fallito: HTTPSConnectionPool(host='images.capitoliumart.com', port=443): Max retries exceeded with url: /auction-images/484/281371.jpg (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1082)')))
+[2026-07-21 16:58:12] Alzabile candidato flat: download fallito: HTTPSConnectionPool(host='images.capitoliumart.com', port=443): Max retries exceeded with url: /auction-images/224/130000.jpg (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1082)')))
+[2026-07-21 16:58:16] T5 candidato flat: download fallito: HTTP 202
+[2026-07-21 16:58:17] T5 candidato flat: download fallito: HTTP 202
+[2026-07-21 16:58:17] T5 candidato flat: download fallito: HTTP 202
+[2026-07-21 16:58:18] T5 candidato flat: download fallito: HTTP 202
+[2026-07-21 16:58:18] T5 candidato flat: download fallito: HTTP 202
+[2026-07-21 16:58:19] T5 candidato flat: download fallito: HTTP 202
+[2026-07-21 16:58:20] T5 candidato flat: download fallito: HTTP 202
+[2026-07-21 16:58:20] T5 candidato flat: download fallito: HTTP 202
+[2026-07-21 16:58:21] T5 candidato flat: download fallito: HTTP 202
+[2026-07-21 16:58:22] T5 candidato flat: download fallito: HTTP 202

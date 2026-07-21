@@ -43,5 +43,275 @@
     "filename": "boeri-otto-b.jpg",
     "reason": "nessun candidato nuovo dalla ricerca dopo 3 tentativi (gli altri erano gia' in scarti o bocciati)",
     "time": "2026-07-21 12:13:23"
+  },
+  "vigo-n-v-5-bm": {
+    "nome": "N.V. 5 bm",
+    "designer": "Nanda Vigo",
+    "azienda": "Cemer",
+    "foto": "vigo-n-v-5-bm.jpg",
+    "filename": "vigo-n-v-5-bm.jpg",
+    "reason": "nessun candidato scaricabile dopo 3 tentativi e filtri scarti/download; controlla _pipeline/log_errors.txt",
+    "time": "2026-07-21 13:03:45"
+  },
+  "vigo-n-v-5-gn-a-diagonale": {
+    "nome": "N.V. 5 gn a diagonale",
+    "designer": "Nanda Vigo",
+    "azienda": "Cemer",
+    "foto": "vigo-n-v-5-gn-a-diagonale.jpg",
+    "filename": "vigo-n-v-5-gn-a-diagonale.jpg",
+    "reason": "nessun candidato scaricabile dopo 3 tentativi e filtri scarti/download; controlla _pipeline/log_errors.txt",
+    "time": "2026-07-21 13:04:01"
+  },
+  "vigo-stripes-blu-e-gialle": {
+    "nome": "Stripes blu e gialle",
+    "designer": "Nanda Vigo",
+    "azienda": "Interior Gabbianelli",
+    "foto": "vigo-stripes-blu-e-gialle.jpg",
+    "filename": "vigo-stripes-blu-e-gialle.jpg",
+    "reason": "nessun candidato nuovo dalla ricerca dopo 3 tentativi (gli altri erano gia' in scarti o bocciati)",
+    "time": "2026-07-21 13:06:03"
+  },
+  "vigo-stripes-gialle": {
+    "nome": "Stripes gialle",
+    "designer": "Nanda Vigo",
+    "azienda": "Interior Gabbianelli",
+    "foto": "vigo-stripes-gialle.jpg",
+    "filename": "vigo-stripes-gialle.jpg",
+    "reason": "nessun candidato nuovo dalla ricerca dopo 3 tentativi (gli altri erano gia' in scarti o bocciati)",
+    "time": "2026-07-21 13:06:22"
+  },
+  "vigo-stripes-rosse": {
+    "nome": "Stripes rosse",
+    "designer": "Nanda Vigo",
+    "azienda": "Interior Gabbianelli",
+    "foto": "vigo-stripes-rosse.jpg",
+    "filename": "vigo-stripes-rosse.jpg",
+    "reason": "nessun candidato nuovo dalla ricerca dopo 3 tentativi (gli altri erano gia' in scarti o bocciati)",
+    "time": "2026-07-21 13:06:33"
+  },
+  "vigo-star-sistem": {
+    "nome": "Star Sistem",
+    "designer": "Nanda Vigo",
+    "azienda": "Interior Gabbianelli",
+    "foto": "vigo-star-sistem.jpg",
+    "filename": "vigo-star-sistem.jpg",
+    "reason": "nessun candidato nuovo dalla ricerca dopo 3 tentativi (gli altri erano gia' in scarti o bocciati)",
+    "time": "2026-07-21 13:07:16"
+  },
+  "vigo-stripes-new": {
+    "nome": "Stripes New",
+    "designer": "Nanda Vigo",
+    "azienda": "Interior Gabbianelli",
+    "foto": "vigo-stripes-new.jpg",
+    "filename": "vigo-stripes-new.jpg",
+    "reason": "nessun candidato scaricabile dopo 3 tentativi e filtri scarti/download; controlla _pipeline/log_errors.txt",
+    "time": "2026-07-21 13:08:00"
+  },
+  "vigo-colours-colours-light": {
+    "nome": "Colours / Colours Light",
+    "designer": "Nanda Vigo",
+    "azienda": "Glas Italia",
+    "foto": "vigo-colours-colours-light.jpg",
+    "filename": "vigo-colours-colours-light.jpg",
+    "reason": "nessun candidato nuovo dalla ricerca dopo 3 tentativi (gli altri erano gia' in scarti o bocciati)",
+    "time": "2026-07-21 13:14:53"
+  },
+  "vigo-a-elisa": {
+    "nome": "A Elisa",
+    "designer": "Nanda Vigo",
+    "azienda": "Glas Italia",
+    "foto": "vigo-a-elisa.jpg",
+    "filename": "vigo-a-elisa.jpg",
+    "reason": "nessun candidato nuovo dalla ricerca dopo 3 tentativi (gli altri erano gia' in scarti o bocciati)",
+    "time": "2026-07-21 13:15:39"
+  },
+  "vigo-antiko": {
+    "nome": "Antiko",
+    "designer": "Nanda Vigo",
+    "azienda": "Glas Italia",
+    "foto": "vigo-antiko.jpg",
+    "filename": "vigo-antiko.jpg",
+    "reason": "nessun candidato nuovo dalla ricerca dopo 3 tentativi (gli altri erano gia' in scarti o bocciati)",
+    "time": "2026-07-21 13:15:48"
+  },
+  "vigo-hergrace": {
+    "nome": "Hergrace",
+    "designer": "Nanda Vigo",
+    "azienda": "Genius",
+    "foto": "vigo-hergrace.jpg",
+    "filename": "vigo-hergrace.jpg",
+    "reason": "nessun candidato nuovo dalla ricerca dopo 3 tentativi (gli altri erano gia' in scarti o bocciati)",
+    "time": "2026-07-21 13:16:16"
+  },
+  "vigo-tifortri": {
+    "nome": "Tifortri",
+    "designer": "Nanda Vigo",
+    "azienda": "Genius",
+    "foto": "vigo-tifortri.jpg",
+    "filename": "vigo-tifortri.jpg",
+    "reason": "nessun candidato nuovo dalla ricerca dopo 3 tentativi (gli altri erano gia' in scarti o bocciati)",
+    "time": "2026-07-21 13:16:46"
+  },
+  "vigo-tifortu": {
+    "nome": "Tifortù",
+    "designer": "Nanda Vigo",
+    "azienda": "Genius",
+    "foto": "vigo-tifortu.jpg",
+    "filename": "vigo-tifortu.jpg",
+    "reason": "nessun candidato nuovo dalla ricerca dopo 3 tentativi (gli altri erano gia' in scarti o bocciati)",
+    "time": "2026-07-21 13:16:54"
+  },
+  "vigo-epoca-up": {
+    "nome": "Epoca Up",
+    "designer": "Nanda Vigo",
+    "azienda": "Sica",
+    "foto": "vigo-epoca-up.jpg",
+    "filename": "vigo-epoca-up.jpg",
+    "reason": "nessun candidato nuovo dalla ricerca dopo 3 tentativi (gli altri erano gia' in scarti o bocciati)",
+    "time": "2026-07-21 13:17:02"
+  },
+  "vigo-frammento": {
+    "nome": "Frammento",
+    "designer": "Nanda Vigo",
+    "azienda": "Sica",
+    "foto": "vigo-frammento.jpg",
+    "filename": "vigo-frammento.jpg",
+    "reason": "nessun candidato scaricabile dopo 3 tentativi e filtri scarti/download; controlla _pipeline/log_errors.txt",
+    "time": "2026-07-21 13:18:56"
+  },
+  "vigo-dreams-off": {
+    "nome": "Dreams-off",
+    "designer": "Nanda Vigo",
+    "azienda": "Linn-Sui International",
+    "foto": "vigo-dreams-off.jpg",
+    "filename": "vigo-dreams-off.jpg",
+    "reason": "nessun candidato nuovo dalla ricerca dopo 3 tentativi (gli altri erano gia' in scarti o bocciati)",
+    "time": "2026-07-21 13:19:52"
+  },
+  "vigo-klassico": {
+    "nome": "Klassico",
+    "designer": "Nanda Vigo",
+    "azienda": "Glas Italia",
+    "foto": "vigo-klassico.jpg",
+    "filename": "vigo-klassico.jpg",
+    "reason": "nessun candidato nuovo dalla ricerca dopo 3 tentativi (gli altri erano gia' in scarti o bocciati)",
+    "time": "2026-07-21 13:20:07"
+  },
+  "vigo-cronotopie": {
+    "nome": "Cronotopie",
+    "designer": "Nanda Vigo",
+    "azienda": "Glas Italia",
+    "foto": "vigo-cronotopie.jpg",
+    "filename": "vigo-cronotopie.jpg",
+    "reason": "nessun candidato nuovo dalla ricerca dopo 3 tentativi (gli altri erano gia' in scarti o bocciati)",
+    "time": "2026-07-21 13:21:58"
+  },
+  "vigo-collezione-di-tappeti": {
+    "nome": "Collezione di tappeti",
+    "designer": "Nanda Vigo",
+    "azienda": "Memphis Post Design",
+    "foto": "vigo-collezione-di-tappeti.jpg",
+    "filename": "vigo-collezione-di-tappeti.jpg",
+    "reason": "nessun candidato scaricabile dopo 3 tentativi e filtri scarti/download; controlla _pipeline/log_errors.txt",
+    "time": "2026-07-21 13:22:39"
+  },
+  "vigo-grande-corniche": {
+    "nome": "Grande Corniche",
+    "designer": "Nanda Vigo",
+    "azienda": "Memphis Post Design",
+    "foto": "vigo-grande-corniche.jpg",
+    "filename": "vigo-grande-corniche.jpg",
+    "reason": "nessun candidato nuovo dalla ricerca dopo 3 tentativi (gli altri erano gia' in scarti o bocciati)",
+    "time": "2026-07-21 13:22:48"
+  },
+  "vigo-top-05": {
+    "nome": "Top 05",
+    "designer": "Nanda Vigo",
+    "azienda": "Glas Italia",
+    "foto": "vigo-top-05.jpg",
+    "filename": "vigo-top-05.jpg",
+    "reason": "nessun candidato nuovo dalla ricerca dopo 3 tentativi (gli altri erano gia' in scarti o bocciati)",
+    "time": "2026-07-21 13:23:31"
+  },
+  "vigo-crazy-mirror": {
+    "nome": "Crazy Mirror",
+    "designer": "Nanda Vigo",
+    "azienda": "Borek Sipek",
+    "foto": "vigo-crazy-mirror.jpg",
+    "filename": "vigo-crazy-mirror.jpg",
+    "reason": "nessun candidato nuovo dalla ricerca dopo 3 tentativi (gli altri erano gia' in scarti o bocciati)",
+    "time": "2026-07-21 13:37:14"
+  },
+  "sarfatti-mod-1065": {
+    "nome": "Mod. 1065",
+    "designer": "Gino Sarfatti",
+    "azienda": "Arteluce",
+    "foto": "sarfatti-mod-1065.jpg",
+    "filename": "sarfatti-mod-1065.jpg",
+    "reason": "nessun candidato nuovo dalla ricerca dopo 3 tentativi (gli altri erano gia' in scarti o bocciati)",
+    "time": "2026-07-21 13:43:16"
+  },
+  "sarfatti-mod-230": {
+    "nome": "Mod. 230",
+    "designer": "Gino Sarfatti",
+    "azienda": "Arteluce",
+    "foto": "sarfatti-mod-230.jpg",
+    "filename": "sarfatti-mod-230.jpg",
+    "reason": "nessun candidato scaricabile dopo 3 tentativi e filtri scarti/download; controlla _pipeline/log_errors.txt",
+    "time": "2026-07-21 13:48:23"
+  },
+  "sarfatti-mod-sp-14": {
+    "nome": "Mod. SP/14",
+    "designer": "Gino Sarfatti",
+    "azienda": "Arteluce",
+    "foto": "sarfatti-mod-sp-14.jpg",
+    "filename": "sarfatti-mod-sp-14.jpg",
+    "reason": "nessun candidato scaricabile dopo 1 tentativi e filtri scarti/download; controlla _pipeline/log_errors.txt",
+    "time": "2026-07-21 13:49:16"
+  },
+  "sarfatti-mod-599-n": {
+    "nome": "Mod. 599/N",
+    "designer": "Gino Sarfatti",
+    "azienda": "Arteluce",
+    "foto": "sarfatti-mod-599-n.jpg",
+    "filename": "sarfatti-mod-599-n.jpg",
+    "reason": "nessun candidato nuovo dalla ricerca dopo 3 tentativi (gli altri erano gia' in scarti o bocciati)",
+    "time": "2026-07-21 13:53:59"
+  },
+  "sarfatti-mod-604-moon": {
+    "nome": "Mod. 604 Moon",
+    "designer": "Gino Sarfatti",
+    "azienda": "Arteluce",
+    "foto": "sarfatti-mod-604-moon.jpg",
+    "filename": "sarfatti-mod-604-moon.jpg",
+    "reason": "nessun candidato nuovo dalla ricerca dopo 3 tentativi (gli altri erano gia' in scarti o bocciati)",
+    "time": "2026-07-21 13:54:19"
+  },
+  "delucchi-attivo-480": {
+    "nome": "Attivo 480",
+    "designer": "Michele De Lucchi",
+    "azienda": "Mauser Office",
+    "foto": "delucchi-attivo-480.jpg",
+    "filename": "delucchi-attivo-480.jpg",
+    "reason": "nessun candidato nuovo dalla ricerca dopo 3 tentativi (gli altri erano gia' in scarti o bocciati)",
+    "time": "2026-07-21 16:10:22"
+  },
+  "rossi-carlo-felice-sedia-platea-teatro": {
+    "nome": "Carlo Felice Sedia Platea Teatro",
+    "designer": "Aldo Rossi, Luca Meda",
+    "azienda": "Molteni&C / UniFor",
+    "foto": "rossi-carlo-felice-sedia-platea-teatro.jpg",
+    "filename": "rossi-carlo-felice-sedia-platea-teatro.jpg",
+    "reason": "nessun candidato scaricabile dopo 1 tentativi e filtri scarti/download; controlla _pipeline/log_errors.txt",
+    "time": "2026-07-21 16:48:55"
+  },
+  "rossi-fiorentino-singolo": {
+    "nome": "Fiorentino singolo",
+    "designer": "Aldo Rossi",
+    "azienda": "Bruno Longoni Atelier d’Arredamento",
+    "foto": "rossi-fiorentino-singolo.jpg",
+    "filename": "rossi-fiorentino-singolo.jpg",
+    "reason": "nessun candidato nuovo dalla ricerca dopo 3 tentativi (gli altri erano gia' in scarti o bocciati)",
+    "time": "2026-07-21 16:52:57"
   }
 }
