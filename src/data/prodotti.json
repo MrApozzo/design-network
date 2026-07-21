@@ -6141,7 +6141,10 @@
     "azienda": "Zanotta",
     "azienda_attuale": "Zanotta",
     "categoria": "tavolino portafiori",
-    "foto": "mendini-hispo.jpg"
+    "foto": "mendini-hispo.jpg",
+    "foto_dettaglio": [
+      "mendini-hispo2.jpg"
+    ]
   },
   {
     "nome": "Mikiolone",
@@ -6150,7 +6153,10 @@
     "azienda": "Zanotta",
     "azienda_attuale": "Zanotta",
     "categoria": "mobile bar",
-    "foto": "mendini-mikiolone.jpg"
+    "foto": "mendini-mikiolone.jpg",
+    "foto_dettaglio": [
+      "mendini-mikiolone2.jpg"
+    ]
   },
   {
     "nome": "Sirfo",
@@ -6168,7 +6174,10 @@
     "azienda": "Venini",
     "azienda_attuale": "Venini",
     "categoria": "vaso-scultura",
-    "foto": "mendini-arado.jpg"
+    "foto": "mendini-arado.jpg",
+    "foto_dettaglio": [
+      "mendini-arado2.jpg"
+    ]
   },
   {
     "nome": "Berito",
@@ -6186,7 +6195,10 @@
     "azienda": "Venini",
     "azienda_attuale": "Venini",
     "categoria": "vaso",
-    "foto": "mendini-acco.jpg"
+    "foto": "mendini-acco.jpg",
+    "foto_dettaglio": [
+      "mendini-acco2.jpg"
+    ]
   },
   {
     "nome": "Onda",
@@ -6267,7 +6279,10 @@
     "azienda": "Venini",
     "azienda_attuale": "Venini",
     "categoria": "vaso",
-    "foto": "mendini-sidone.jpg"
+    "foto": "mendini-sidone.jpg",
+    "foto_dettaglio": [
+      "mendini-sidone2.jpg"
+    ]
   },
   {
     "nome": "Lots of Dots",
@@ -6330,7 +6345,10 @@
     "azienda": "Olivari",
     "azienda_attuale": "Olivari",
     "categoria": "maniglia",
-    "foto": "mendini-aurora.jpg"
+    "foto": "mendini-aurora.jpg",
+    "foto_dettaglio": [
+      "mendini-aurora2.jpg"
+    ]
   },
   {
     "nome": "Fandango",
@@ -6375,7 +6393,10 @@
     "azienda": "Alessi",
     "azienda_attuale": "Alessi",
     "categoria": "vassoio",
-    "foto": "mendini-recinto.jpg"
+    "foto": "mendini-recinto.jpg",
+    "foto_dettaglio": [
+      "mendini-recinto2.jpg"
+    ]
   },
   {
     "nome": "Anna Pepper",
@@ -6384,7 +6405,10 @@
     "azienda": "Alessi",
     "azienda_attuale": "Alessi",
     "categoria": "macinapepe",
-    "foto": "mendini-anna-pepper.jpg"
+    "foto": "mendini-anna-pepper.jpg",
+    "foto_dettaglio": [
+      "mendini-anna-pepper2.jpg"
+    ]
   },
   {
     "nome": "Cioccolator Pad",
@@ -6411,7 +6435,10 @@
     "azienda": "Alessi",
     "azienda_attuale": "Alessi",
     "categoria": "macchina da caffè filtro",
-    "foto": "mendini-geo.jpg"
+    "foto": "mendini-geo.jpg",
+    "foto_dettaglio": [
+      "mendini-geo2.jpg"
+    ]
   },
   {
     "nome": "Alessandro M.",
@@ -6420,7 +6447,10 @@
     "azienda": "Alessi",
     "azienda_attuale": "Alessi",
     "categoria": "cavatappi",
-    "foto": "mendini-alessandro-m.jpg"
+    "foto": "mendini-alessandro-m.jpg",
+    "foto_dettaglio": [
+      "mendini-alessandro-m2.jpg"
+    ]
   },
   {
     "nome": "Edge",
@@ -6519,7 +6549,10 @@
     "azienda": "Venini",
     "azienda_attuale": "Venini",
     "categoria": "scultura in vetro",
-    "foto": "mendini-cavallino.jpg"
+    "foto": "mendini-cavallino.jpg",
+    "foto_dettaglio": [
+      "mendini-cavallino2.jpg"
+    ]
   },
   {
     "nome": "Magis Proust",
@@ -6609,7 +6642,10 @@
     "azienda": "Kartell",
     "azienda_attuale": "Kartell",
     "categoria": "sgabello o tavolino",
-    "foto": "mendini-roy.jpg"
+    "foto": "mendini-roy.jpg",
+    "foto_dettaglio": [
+      "mendini-roy2.jpg"
+    ]
   },
   {
     "nome": "Crystal Palace",
@@ -6618,7 +6654,10 @@
     "azienda": "Kartell",
     "azienda_attuale": "Kartell",
     "categoria": "orologio da parete",
-    "foto": "mendini-crystal-palace.jpg"
+    "foto": "mendini-crystal-palace.jpg",
+    "foto_dettaglio": [
+      "mendini-crystal-palace2.jpg"
+    ]
   },
   {
     "nome": "Spot the Dot",
@@ -6729,7 +6768,10 @@
     "azienda": "Porro",
     "azienda_attuale": "Porro",
     "categoria": "collezione di mobili contenitori",
-    "foto": "mendini-linea.jpg"
+    "foto": "mendini-linea.jpg",
+    "foto_dettaglio": [
+      "mendini-linea2.jpg"
+    ]
   },
   {
     "nome": "Proust Christmas Bauble",
@@ -6819,7 +6861,10 @@
     "azienda": "Arflex",
     "azienda_attuale": null,
     "categoria": "mobile bar",
-    "foto": "boeri-cubotto.jpg"
+    "foto": "boeri-cubotto.jpg",
+    "foto_dettaglio": [
+      "boeri-cubotto2.jpg"
+    ]
   },
   {
     "nome": "Mod. 602",
@@ -6855,7 +6900,10 @@
     "azienda": "Gavina",
     "azienda_attuale": null,
     "categoria": "tavolo",
-    "foto": "boeri-lunario.jpg"
+    "foto": "boeri-lunario.jpg",
+    "foto_dettaglio": [
+      "boeri-lunario2.jpg"
+    ]
   },
   {
     "nome": "Gradual System 45°/180°",
@@ -6882,7 +6930,10 @@
     "azienda": "Stilnovo",
     "azienda_attuale": null,
     "categoria": "lampada da terra",
-    "foto": "boeri-papero.jpg"
+    "foto": "boeri-papero.jpg",
+    "foto_dettaglio": [
+      "boeri-papero2.jpg"
+    ]
   },
   {
     "nome": "Mod. 235",
@@ -7122,7 +7173,10 @@
     "azienda": "Estel",
     "azienda_attuale": null,
     "categoria": "mobile contenitore",
-    "foto": "boeri-griziotti-steps.jpg"
+    "foto": "boeri-griziotti-steps.jpg",
+    "foto_dettaglio": [
+      "boeri-griziotti-steps2.jpg"
+    ]
   },
   {
     "nome": "Rever",
@@ -7135,7 +7189,10 @@
     "azienda": "Tre-P & Tre-Più",
     "azienda_attuale": null,
     "categoria": "porta",
-    "foto": "boeri-griziotti-nardi-rever.jpg"
+    "foto": "boeri-griziotti-nardi-rever.jpg",
+    "foto_dettaglio": [
+      "boeri-griziotti-nardi-rever2.jpg"
+    ]
   },
   {
     "nome": "Pacific",

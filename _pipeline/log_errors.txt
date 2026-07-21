@@ -1,34 +1,38 @@
-[2026-07-20 18:00:15] L'Angoliera candidato flat: download fallito: HTTPSConnectionPool(host='www.christies.com', port=443): Read timed out. (read timeout=10)
-[2026-07-20 18:00:38] L'Angoliera candidato flat: download fallito: HTTPSConnectionPool(host='www.christies.com', port=443): Read timed out. (read timeout=10)
-[2026-07-20 18:01:00] L'Angoliera candidato flat: download fallito: HTTPSConnectionPool(host='www.christies.com', port=443): Read timed out. (read timeout=10)
-[2026-07-20 18:01:23] L'Angoliera candidato flat: download fallito: HTTPSConnectionPool(host='www.christies.com', port=443): Read timed out. (read timeout=10)
-[2026-07-20 18:01:45] L'Angoliera candidato flat: download fallito: HTTPSConnectionPool(host='www.christies.com', port=443): Read timed out. (read timeout=10)
-[2026-07-20 18:02:07] L'Angoliera candidato flat: download fallito: HTTPSConnectionPool(host='www.christies.com', port=443): Read timed out. (read timeout=10)
-[2026-07-20 18:02:30] L'Angoliera candidato flat: download fallito: HTTPSConnectionPool(host='www.christies.com', port=443): Read timed out. (read timeout=10)
-[2026-07-20 18:02:52] L'Angoliera fallback estremo download: download fallito: HTTPSConnectionPool(host='www.christies.com', port=443): Read timed out. (read timeout=10)
-[2026-07-20 18:03:15] L'Angoliera fallback estremo download: download fallito: HTTPSConnectionPool(host='www.christies.com', port=443): Read timed out. (read timeout=10)
-[2026-07-20 18:03:37] L'Angoliera fallback estremo download: download fallito: HTTPSConnectionPool(host='www.christies.com', port=443): Read timed out. (read timeout=10)
-[2026-07-20 18:04:00] L'Angoliera fallback estremo download: download fallito: HTTPSConnectionPool(host='www.christies.com', port=443): Read timed out. (read timeout=10)
-[2026-07-20 18:04:22] L'Angoliera fallback estremo download: download fallito: HTTPSConnectionPool(host='www.christies.com', port=443): Read timed out. (read timeout=10)
-[2026-07-20 18:04:45] L'Angoliera fallback estremo download: download fallito: HTTPSConnectionPool(host='www.christies.com', port=443): Read timed out. (read timeout=10)
-[2026-07-20 18:05:07] L'Angoliera fallback estremo download: download fallito: HTTPSConnectionPool(host='www.christies.com', port=443): Read timed out. (read timeout=10)
-[2026-07-20 18:05:31] Sirfo candidato flat: download fallito: HTTP 403
-[2026-07-20 18:05:32] Sirfo candidato flat: download fallito: HTTP 403
-[2026-07-20 18:05:32] Sirfo candidato flat: download fallito: HTTP 403
-[2026-07-20 18:05:38] Arado candidato flat: download fallito: HTTPSConnectionPool(host='images.capitoliumart.com', port=443): Max retries exceeded with url: /auction-images/456/241616.jpg (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1082)')))
-[2026-07-20 18:05:42] Arado candidato flat: download fallito: HTTPSConnectionPool(host='images.capitoliumart.com', port=443): Max retries exceeded with url: /auction-images/456/241620.jpg (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1082)')))
-[2026-07-20 18:06:01] Onda candidato flat: download fallito: HTTP 403
-[2026-07-20 18:06:06] Lesena candidato flat: download fallito: HTTP 403
-[2026-07-20 18:06:07] Lesena candidato flat: download fallito: HTTP 403
-[2026-07-20 18:06:08] Lesena candidato flat: download fallito: HTTP 403
-[2026-07-20 18:06:10] Lesena candidato flat: download fallito: No connection adapters were found for 'x-raw-image:///f44f484af4456a5413f10d5f6696a7feea21e56b17f743fdcbfe77380c2ca77d'
-[2026-07-20 18:06:14] Settecento candidato flat: download fallito: HTTP 403
-[2026-07-20 18:06:50] Specchio di Proust candidato flat: download fallito: HTTP 403
-[2026-07-20 18:07:03] Brillante: SearchApi fallita per query='"Brillante" "Alessandro Mendini"': HTTPSConnectionPool(host='www.searchapi.io', port=443): Read timed out. (read timeout=10)
-[2026-07-20 18:07:31] Lots of Dots candidato flat: download fallito: HTTP 403
-[2026-07-20 18:07:31] Lots of Dots candidato flat: download fallito: HTTP 403
-[2026-07-20 18:07:33] Lots of Dots candidato flat: download fallito: HTTP 403
-[2026-07-20 18:07:33] Lots of Dots candidato flat: download fallito: file vuoto o troppo piccolo
-[2026-07-20 18:07:34] Lots of Dots candidato flat: download fallito: HTTP 403
-[2026-07-20 18:07:35] Lots of Dots candidato flat: download fallito: HTTP 403
-[2026-07-20 18:07:35] Lots of Dots candidato flat: download fallito: HTTP 403
+[2026-07-21 12:16:14] Pacific candidato flat: download fallito: HTTP 403
+[2026-07-21 12:16:15] Pacific candidato flat: download fallito: HTTP 403
+[2026-07-21 12:16:15] Pacific candidato flat: download fallito: HTTP 403
+[2026-07-21 12:16:15] Pacific candidato flat: download fallito: HTTP 403
+[2026-07-21 12:16:15] Pacific candidato flat: download fallito: HTTP 403
+[2026-07-21 12:16:15] Pacific candidato flat: download fallito: HTTP 403
+[2026-07-21 12:16:40] Shadows candidato flat: download fallito: non e' un'immagine valida (cannot identify image file <_io.BytesIO object at 0x0000025B6ADB8860>)
+[2026-07-21 12:16:42] Shadows candidato flat: download fallito: non e' un'immagine valida (cannot identify image file <_io.BytesIO object at 0x0000025B6AFBBFB0>)
+[2026-07-21 12:16:53] Malibu: SearchApi fallita per query='"Malibu" "Cini Boeri"': HTTPSConnectionPool(host='www.searchapi.io', port=443): Read timed out. (read timeout=10)
+[2026-07-21 12:17:03] Malibu candidato flat: download fallito: HTTP 403
+[2026-07-21 12:17:20] Brontes candidato flat: download fallito: HTTPSConnectionPool(host='images.capitoliumart.com', port=443): Max retries exceeded with url: /auction-images/456/249335.jpg (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1082)')))
+[2026-07-21 12:17:23] Brontes candidato flat: download fallito: HTTPSConnectionPool(host='images.capitoliumart.com', port=443): Max retries exceeded with url: /auction-images/456/249336.jpg (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1082)')))
+[2026-07-21 12:17:24] Brontes candidato flat: download fallito: HTTP 403
+[2026-07-21 12:17:27] Brontes candidato flat: download fallito: HTTP 403
+[2026-07-21 12:17:30] Brontes candidato flat: download fallito: HTTPSConnectionPool(host='images.capitoliumart.com', port=443): Max retries exceeded with url: /auction-images/456/246251.jpg?w=360 (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1082)')))
+[2026-07-21 12:17:42] Past candidato flat: download fallito: HTTPSConnectionPool(host='images.capitoliumart.com', port=443): Max retries exceeded with url: /auction-images/503/250474.jpg (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1082)')))
+[2026-07-21 12:17:47] Past candidato flat: download fallito: HTTPSConnectionPool(host='images.capitoliumart.com', port=443): Max retries exceeded with url: /auction-images/251/127335.jpg (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1082)')))
+[2026-07-21 12:17:50] Past candidato flat: download fallito: HTTPSConnectionPool(host='images.capitoliumart.com', port=443): Max retries exceeded with url: /auction-images/348/175638.jpg (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1082)')))
+[2026-07-21 12:18:05] Feltro: SearchApi fallita per query='"Feltro" "Cini Boeri" "Venini"': HTTPSConnectionPool(host='www.searchapi.io', port=443): Read timed out. (read timeout=10)
+[2026-07-21 12:18:12] Feltro candidato flat: download fallito: No connection adapters were found for 'x-raw-image:///8fcea71108f7babc6ed6119ce8c12fe8932c056d71c61791e8906a0911c37dec'
+[2026-07-21 12:18:15] Feltro candidato flat: download fallito: No connection adapters were found for 'x-raw-image:///8c0f92229a9addf190efbfd48a0cdbe0666961e7869241ffaa5916b200d0bbd6'
+[2026-07-21 12:18:56] Cini Boeri Ottoman candidato flat: download fallito: No connection adapters were found for 'x-raw-image:///764b361fa6b8e7dea71047b817690060f922580896adb9e1da0de61d0d705be5'
+[2026-07-21 12:19:01] Cini Boeri Ottoman candidato flat: download fallito: No connection adapters were found for 'x-raw-image:///0d5b211e4e43e5e558df81dccf19e3ac96f213ba4e270844b9da15ffb76e0bdd'
+[2026-07-21 12:19:05] Cini Boeri Ottoman candidato flat: download fallito: No connection adapters were found for 'x-raw-image:///f6a289e51945478dcf0e6d4303a62d81e1bbd0fa54b083cd3406e46947f7bb8d'
+[2026-07-21 12:19:08] Cini Boeri Ottoman candidato flat: download fallito: No connection adapters were found for 'x-raw-image:///a0f93c96e53105abd68639ca193931eb3c5faf00e8fac0babbccf7e62c2ba0c7'
+[2026-07-21 12:19:10] Cini Boeri Ottoman candidato flat: download fallito: No connection adapters were found for 'x-raw-image:///26150841f9fb165b42d3adb1417755533eefb7c72d920cc3d12b22bb495c639a'
+[2026-07-21 12:19:24] Bebop candidato flat: download fallito: non e' un'immagine valida (cannot identify image file <_io.BytesIO object at 0x0000025B6B0108B0>)
+[2026-07-21 12:19:26] Bebop candidato flat: download fallito: non e' un'immagine valida (cannot identify image file <_io.BytesIO object at 0x0000025B6AFED620>)
+[2026-07-21 12:19:29] Bebop candidato flat: download fallito: HTTPSConnectionPool(host='d4lqby8rocc5r.cloudfront.net', port=443): Max retries exceeded with url: /interiu.com/1000/950492.webp (Caused by NameResolutionError("HTTPSConnection(host='d4lqby8rocc5r.cloudfront.net', port=443): Failed to resolve 'd4lqby8rocc5r.cloudfront.net' ([Errno 11001] getaddrinfo failed)"))
+[2026-07-21 12:19:31] Bebop candidato flat: download fallito: non e' un'immagine valida (cannot identify image file <_io.BytesIO object at 0x0000025B6B0141D0>)
+[2026-07-21 12:19:44] To the Wall: SearchApi fallita per query='"To the Wall" "Cini Boeri"': HTTPSConnectionPool(host='www.searchapi.io', port=443): Read timed out. (read timeout=10)
+[2026-07-21 12:19:48] To the Wall candidato flat: download fallito: No connection adapters were found for 'x-raw-image:///67afce220bf9b31efad4ec2476092a67bf7431a15ba5e0b7e897714defb67e84'
+[2026-07-21 12:19:51] Ledletto candidato flat: download fallito: HTTP 403
+[2026-07-21 12:19:52] Ledletto candidato flat: download fallito: HTTP 403
+[2026-07-21 12:20:14] Arran candidato flat: download fallito: HTTP 202
+[2026-07-21 12:20:17] Arran candidato flat: download fallito: HTTPSConnectionPool(host='www.lombardiabeniculturali.it', port=443): Max retries exceeded with url: /assets/immagini/liv2/AF310RLSUP/SW/F/SWCX1/0002/F_SUP-SWCX1-0002373_IMG-0000000001.jpg (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1082)')))
+[2026-07-21 12:20:18] Arran candidato flat: download fallito: HTTP 202
+[2026-07-21 12:20:27] Camicia candidato flat: download fallito: non e' un'immagine valida (cannot identify image file <_io.BytesIO object at 0x0000025B39ECF240>)

@@ -141,11 +141,12 @@ PENALIZED_DOMAINS = [
 # stopword per lo slug quando 'foto' e' assente
 IMG_EXTS = {".jpg", ".jpeg", ".png", ".webp", ".gif", ".bmp", ".tif", ".tiff"}
 
-SCRIPT_VERSION = "2026-07-20-designer-in-queries-3try-bypass"
+SCRIPT_VERSION = "2026-07-20-skip-not-found-memory"
 DEBUG_CANDIDATES = False
 CANDIDATES_PER_PRODUCT = 2  # default: salva pochi candidati filtrati in review_images, non nel sito
 MAX_QUERY_ATTEMPTS_PER_PRODUCT = 3  # dopo 3 query senza esito utile, passa al prodotto successivo
 RETRY_SCARTI = False  # se False, un prodotto con file in _pipeline/scarti viene saltato del tutto
+RETRY_NOT_FOUND = False  # se False, prodotti gia provati senza risultato vengono saltati
 
 # Qualita minima richiesta alla sorgente scaricata. Se la sorgente e' piu' piccola,
 # la si usa solo come fallback, non come prima scelta.
@@ -719,6 +720,64 @@ def scarti_contains_base(paths, base_no_ext):
             return True
     return False
 
+
+def product_memory_key(product):
+    """Chiave stabile per ricordare prodotti gia tentati senza risultato."""
+    filename_finale = resolve_filename(product)
+    base_no_ext = os.path.splitext(filename_finale)[0].lower()
+    return base_no_ext or slugify(_product_searchable_text(product))
+
+
+def load_not_found_memory(paths):
+    """Legge _pipeline/not_found.json: prodotti gia provati senza risultati utili."""
+    p = paths.get("not_found_json")
+    if not p or not os.path.exists(p):
+        return {}
+    try:
+        with open(p, "r", encoding="utf-8") as fh:
+            data = json.load(fh)
+        return data if isinstance(data, dict) else {}
+    except Exception:
+        return {}
+
+
+def save_not_found_memory(paths, data):
+    """Salva _pipeline/not_found.json."""
+    p = paths.get("not_found_json")
+    if not p:
+        return
+    try:
+        os.makedirs(os.path.dirname(p), exist_ok=True)
+        with open(p, "w", encoding="utf-8") as fh:
+            json.dump(data, fh, ensure_ascii=False, indent=2)
+    except Exception:
+        pass
+
+
+def mark_not_found(product, paths, reason=""):
+    """Registra un prodotto come gia tentato senza risultato, così non viene riproposto."""
+    data = load_not_found_memory(paths)
+    key = product_memory_key(product)
+    data[key] = {
+        "nome": product.get("nome", ""),
+        "designer": all_designers_str(product.get("designer", "")),
+        "azienda": product.get("azienda", ""),
+        "foto": product.get("foto", ""),
+        "filename": resolve_filename(product),
+        "reason": reason or "",
+        "time": time.strftime("%Y-%m-%d %H:%M:%S"),
+    }
+    save_not_found_memory(paths, data)
+
+
+def not_found_contains_product(product, paths):
+    """True se il prodotto e' gia finito in not_found.json."""
+    if RETRY_NOT_FOUND:
+        return False
+    data = load_not_found_memory(paths)
+    return product_memory_key(product) in data
+
+
 def product_already_handled(product, paths, review_names=None):
     """True se il prodotto ha gia' immagine approvata o candidati in review.
 
@@ -734,6 +793,8 @@ def product_already_handled(product, paths, review_names=None):
     if review_names and base_no_ext.lower() in review_names:
         return True
     if not RETRY_SCARTI and scarti_contains_base(paths, base_no_ext):
+        return True
+    if not_found_contains_product(product, paths):
         return True
     return False
 
@@ -1736,6 +1797,7 @@ def build_paths(root):
         "candidate_review_dir": os.path.join(pipeline, CANDIDATE_REVIEW_SUB),
         "scarti_dir": os.path.join(pipeline, SCARTI_SUB),
         "rejected_json": os.path.join(pipeline, "scartati.json"),
+        "not_found_json": os.path.join(pipeline, "not_found.json"),
         "review_urls_json": os.path.join(pipeline, "review_urls.json"),
         "manifest": os.path.join(pipeline, "manifest_images.csv"),
         "review": os.path.join(pipeline, "review_needed.csv"),
@@ -2556,14 +2618,17 @@ def main():
                         help="vecchia funzione opzionale; per il nuovo flusso puoi ignorarla e rinominare manualmente i file in review_images.")
     parser.add_argument("--retry-scarti", action="store_true",
                         help="forza un nuovo tentativo anche per prodotti che hanno gia' file in _pipeline/scarti")
+    parser.add_argument("--retry-not-found", action="store_true",
+                        help="forza un nuovo tentativo anche per prodotti gia segnati in _pipeline/not_found.json")
     parser.add_argument("--inspect-json", default="",
                         help="mostra i record JSON che contengono questa stringa, senza usare crediti API")
     args = parser.parse_args()
 
-    global DEBUG_CANDIDATES, CANDIDATES_PER_PRODUCT, RETRY_SCARTI
+    global DEBUG_CANDIDATES, CANDIDATES_PER_PRODUCT, RETRY_SCARTI, RETRY_NOT_FOUND
     DEBUG_CANDIDATES = bool(args.debug_candidates)
     CANDIDATES_PER_PRODUCT = max(1, int(args.candidates_per_product or 1))
     RETRY_SCARTI = bool(args.retry_scarti)
+    RETRY_NOT_FOUND = bool(args.retry_not_found)
     print(f"VERSIONE SCRIPT: {SCRIPT_VERSION}")
 
     input_path = args.input
@@ -2647,9 +2712,9 @@ def main():
             subset.append(p_)
             if len(subset) >= int(args.limit):
                 break
-        print(f"Selezione prodotti: letti {scanned_total} record dal JSON, saltati {skipped_before_limit} gia' presenti in public/review/scarti, da processare ora {len(subset)}.")
+        print(f"Selezione prodotti: letti {scanned_total} record dal JSON, saltati {skipped_before_limit} gia' presenti in public/review/scarti/not_found, da processare ora {len(subset)}.")
         if not subset:
-            print("Nessun nuovo prodotto da processare: il JSON letto e' gia' coperto da public/immagini, review_images o scarti.")
+            print("Nessun nuovo prodotto da processare: il JSON letto e' gia' coperto da public/immagini, review_images, scarti o not_found.")
             print("Se vuoi riprovare anche prodotti finiti in scarti usa: --retry-scarti")
             return
 
@@ -2669,6 +2734,11 @@ def main():
         row, flag = process_product(product, api_key, paths, rejected, review_names)
         manifest_rows.append(row)
         counts[row["status"]] = counts.get(row["status"], 0) + 1
+
+        # Se un prodotto e' stato gia provato e non ha prodotto immagini,
+        # lo ricordiamo: dalla prossima run viene saltato e non resta sempre in cima.
+        if row["status"] in ("not_found", "download_failed") and not args.only:
+            mark_not_found(product, paths, row.get("motivo", ""))
 
         # se e' finita in review in questa run, aggiorna il set cosi' un eventuale
         # duplicato nello stesso JSON viene saltato (niente doppio download)
@@ -2730,7 +2800,7 @@ def main():
     print("   Scegli il candidato buono, rinominalo con il nome finale del JSON, poi spostalo in public/immagini")
     print(f"   Output finale:               {paths['images_dir']}")
     print(f"   Le SCARTE -> spostale in:    {paths['scarti_dir']}")
-    print(f"   Report e log:                {paths['pipeline']}")
+    print(f"   Report, log e not_found:                {paths['pipeline']}")
 
     print("\n--- 5 esempi pronti in review ---")
     for r in successes:

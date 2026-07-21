@@ -1,0 +1,47 @@
+{
+  "bonetto-apparecchio-microfilm": {
+    "nome": "Apparecchio automatico per microfilm",
+    "designer": "Rodolfo Bonetto",
+    "azienda": "BCM",
+    "foto": "bonetto-apparecchio-microfilm.jpg",
+    "filename": "bonetto-apparecchio-microfilm.jpg",
+    "reason": "nessun candidato nuovo dalla ricerca dopo 3 tentativi (gli altri erano gia' in scarti o bocciati)",
+    "time": "2026-07-21 11:52:14"
+  },
+  "lapietra-souvenir-ligure": {
+    "nome": "Souvenir ligure",
+    "designer": "Ugo La Pietra",
+    "azienda": "Ernan",
+    "foto": "lapietra-souvenir-ligure.jpg",
+    "filename": "lapietra-souvenir-ligure.jpg",
+    "reason": "nessun candidato nuovo dalla ricerca dopo 3 tentativi (gli altri erano gia' in scarti o bocciati)",
+    "time": "2026-07-21 11:52:22"
+  },
+  "mendini-l-angoliera": {
+    "nome": "L'Angoliera",
+    "designer": "Alessandro Mendini",
+    "azienda": "Studio Alchimia",
+    "foto": "mendini-l-angoliera.jpg",
+    "filename": "mendini-l-angoliera.jpg",
+    "reason": "nessun candidato scaricabile dopo 1 tentativi e filtri scarti/download; controlla _pipeline/log_errors.txt",
+    "time": "2026-07-21 11:57:43"
+  },
+  "boeri-armadio-libreria": {
+    "nome": "Armadio-libreria",
+    "designer": "Cini Boeri",
+    "azienda": "Arflex",
+    "foto": "boeri-armadio-libreria.jpg",
+    "filename": "boeri-armadio-libreria.jpg",
+    "reason": "nessun candidato nuovo dalla ricerca dopo 3 tentativi (gli altri erano gia' in scarti o bocciati)",
+    "time": "2026-07-21 12:07:28"
+  },
+  "boeri-otto-b": {
+    "nome": "Otto B",
+    "designer": "Cini Boeri",
+    "azienda": "Fusital",
+    "foto": "boeri-otto-b.jpg",
+    "filename": "boeri-otto-b.jpg",
+    "reason": "nessun candidato nuovo dalla ricerca dopo 3 tentativi (gli altri erano gia' in scarti o bocciati)",
+    "time": "2026-07-21 12:13:23"
+  }
+}

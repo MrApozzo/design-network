@@ -93,7 +93,7 @@ const STILE = {
   // giovani vengono inseriti subito dopo con uno scarto ridotto (passo_verticale_coprogetto)
   // invece del passo standard, così restano vicini e nella vista timeline il prodotto
   // co-progettato (posizionato al centro del gruppo) resta riconducibile a entrambi.
-  passo_verticale_base: 25,
+  passo_verticale_base: 30,
   passo_verticale_coprogetto: 6,
   min_distanza_y: 1.6,
   orbita_raggio_min: 0.9,
@@ -461,6 +461,7 @@ const TESTI = {
     tipologia: "Tipologia",
     azienda: "Azienda",
     aziende: "Aziende",
+    legami: "Legami",
     riconoscimenti: "Riconoscimenti",
     footerRiga1: "Un secolo di design occidentale, 1880–1980",
     footerRiga2: "Tutti i diritti riservati",
@@ -511,6 +512,7 @@ const TESTI = {
     tipologia: "Type",
     azienda: "Company",
     aziende: "Companies",
+    legami: "Ties",
     riconoscimenti: "Awards",
     footerRiga1: "A century of Western design, 1880–1980",
     footerRiga2: "All rights reserved",
@@ -735,6 +737,7 @@ function App() {
   }
 
   const [bioEspansa, setBioEspansa] = useState(false)
+  const [legameHoverIdx, setLegameHoverIdx] = useState(null)
   const [galleriaIndice, setGalleriaIndice] = useState(0)
   const [galleriaFullscreen, setGalleriaFullscreen] = useState(false)
   const [galleriaOrigin, setGalleriaOrigin] = useState(null)
@@ -762,7 +765,10 @@ function App() {
   const [ricerca, setRicerca] = useState("")
   const [nodoEvidenziato, setNodoEvidenziato] = useState(null)
   const nodoEvidenziatoRef = useRef(null)
+  const [legameEvidenziato, setLegameEvidenziato] = useState(null)
+  const legameEvidenziatoRef = useRef(null)
   const [centraFn, setCentraFn] = useState(null)
+  const [evidenziaLegameFn, setEvidenziaLegameFn] = useState(null)
 
   useEffect(() => {
     document.body.style.margin = "0"
@@ -797,6 +803,7 @@ function App() {
     let mouseDownPos = null
     let isDragging = false
     let cameraPrimaDiClick = null
+    let cameraPrimaLegame = null
     let cameraAnimId = null
     let touchGestureAttiva = false
     let touchWasMultiTouch = false
@@ -1256,6 +1263,26 @@ function App() {
       else img.addEventListener("load", () => campionaColore(src, img), { once: true })
     })
 
+    // Quando si apre il pannello di un designer, "salta la coda" del preload
+    // generale per le foto dei suoi legami: sono le prossime immagini più
+    // probabili da mostrare (un click sul legame le usa subito) e altrimenti,
+    // se il preload generale non le ha ancora raggiunte, il passaggio risulta
+    // a scatti finché non finiscono di caricare.
+    function precaricaImmaginiLegami(nomeDesigner) {
+      relazioni
+        .filter((r) => r.designer_a === nomeDesigner || r.designer_b === nomeDesigner)
+        .map((r) => (r.designer_a === nomeDesigner ? r.designer_b : r.designer_a))
+        .forEach((nome) => {
+          if (!graph.hasNode(nome)) return
+          const src = graph.getNodeAttribute(nome, "imgSrc")
+          if (!src || (imgCache[src] && imgCache[src].complete)) return
+          const img = new Image()
+          img.addEventListener("load", () => { campionaColore(src, img); richiediDisegnoOverlay(2) }, { once: true })
+          imgCache[src] = img
+          img.src = src
+        })
+    }
+
     const overlayCanvas = document.createElement("canvas")
     overlayCanvas.style.cssText = "position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:10;"
     container.appendChild(overlayCanvas)
@@ -1315,6 +1342,8 @@ function App() {
           const tBoost = (t - STILE.boost_soglia) / (1 - STILE.boost_soglia)
           base *= lerp(1, STILE.boost_mobile_max, tBoost)
         }
+        const legameRT = legameEvidenziatoRef.current
+        if (legameRT && (node === legameRT.a || node === legameRT.b)) return base * STILE.hover_scala
         return node === nodoAttivo ? base * STILE.hover_scala : base
       }
       if (attr.tipo === "prodotto") {
@@ -1532,7 +1561,10 @@ function App() {
         const evid = nodoEvidenziatoRef.current
         const azFiltro = aziendaAttivaRef.current
         const designerAttuale = evid || designerCliccato
-        if (azFiltro && aziendaGlobaleRef.current) {
+        const legame = legameEvidenziatoRef.current
+        if (legame) {
+          alphaTarget = (node === legame.a || node === legame.b) ? 1 : 0.08
+        } else if (azFiltro && aziendaGlobaleRef.current) {
           if (attr.tipo === "prodotto") {
             alphaTarget = (attr.dati && (attr.dati.azienda === azFiltro || attr.dati.azienda_attuale === azFiltro)) ? 1 : 0.08
           } else if (attr.tipo === "designer") {
@@ -1588,16 +1620,18 @@ function App() {
         const posS = renderer.graphToViewport({ x: graph.getNodeAttribute(source, "x"), y: graph.getNodeAttribute(source, "y") })
         const posT = renderer.graphToViewport({ x: graph.getNodeAttribute(target, "x"), y: graph.getNodeAttribute(target, "y") })
 
-        if (attr.tipo === "relazione" && attr.attivo) {
-          ctx.globalAlpha = 1
-          ctx.beginPath()
-          ctx.moveTo(posS.x, posS.y)
-          ctx.lineTo(posT.x, posT.y)
-          ctx.strokeStyle = STILE.edge_relazione_colore
-          ctx.lineWidth = STILE.edge_relazione_size
-          ctx.setLineDash([5, 5])
-          ctx.stroke()
-          ctx.setLineDash([])
+        if (attr.tipo === "relazione") {
+          if (attr.attivo) {
+            ctx.globalAlpha = 1
+            ctx.beginPath()
+            ctx.moveTo(posS.x, posS.y)
+            ctx.lineTo(posT.x, posT.y)
+            ctx.strokeStyle = STILE.edge_relazione_colore
+            ctx.lineWidth = STILE.edge_relazione_size
+            ctx.setLineDash([5, 5])
+            ctx.stroke()
+            ctx.setLineDash([])
+          }
         }
 
         if (attr.tipo === "prodotto") {
@@ -1605,7 +1639,10 @@ function App() {
           let edgeWidth = STILE.edge_prodotto_size
           let edgeAlpha = 1
           const prodottoInEvidenza = prodottoCliccato || prodottoHoverAttivo
-          if (prodottoInEvidenza) {
+          if (legameEvidenziatoRef.current) {
+            const { a, b } = legameEvidenziatoRef.current
+            edgeAlpha = (source === a || target === a || source === b || target === b) ? 1 : 0.05
+          } else if (prodottoInEvidenza) {
             if (source === prodottoInEvidenza || target === prodottoInEvidenza) {
               edgeColor = "#000000"
               edgeWidth = 0.5
@@ -2175,6 +2212,7 @@ function App() {
         setNodoEvidenziato(nodeId)
         prodottoHoverAttivo = null
         nodoHoverAttivo = null
+        legameEvidenziatoRef.current = null; setLegameEvidenziato(null)
         if (tipo === "designer") {
           prodottoCliccato = null
           designerCliccato = nodeId
@@ -2183,6 +2221,7 @@ function App() {
           requestAnimationFrame(() => setPannelloVisibile(true))
           graph.forEachEdge((edge, eAttr) => { if (eAttr.tipo === "relazione") graph.setEdgeAttribute(edge, "attivo", false) })
           graph.forEachEdge(nodeId, (edge, eAttr) => { if (eAttr.tipo === "relazione") graph.setEdgeAttribute(edge, "attivo", true) })
+          precaricaImmaginiLegami(nodeId)
         } else {
           designerCliccato = null
           graph.forEachEdge((edge, eAttr) => { if (eAttr.tipo === "relazione") graph.setEdgeAttribute(edge, "attivo", false) })
@@ -2194,6 +2233,77 @@ function App() {
         }
       }
       richiediDisegnoOverlay(18)
+    })
+
+    // Inquadra due designer collegati mantenendo il pannello attuale aperto:
+    // calcola il ratio minimo che li fa stare entrambi a schermo (con un
+    // margine), poi centra la camera sul loro punto medio ed evidenzia sia i
+    // due nodi che il collegamento specifico (tutto il resto si affievolisce).
+    setEvidenziaLegameFn(() => (nomeA, nomeB) => {
+      const giaEvidenziato = legameEvidenziatoRef.current
+        && legameEvidenziatoRef.current.a === nomeA && legameEvidenziatoRef.current.b === nomeB
+      if (giaEvidenziato) {
+        legameEvidenziatoRef.current = null
+        setLegameEvidenziato(null)
+        graph.forEachEdge((edge, eAttr) => { if (eAttr.tipo === "relazione") graph.setEdgeAttribute(edge, "attivo", false) })
+        graph.forEachEdge(nomeA, (edge, eAttr) => { if (eAttr.tipo === "relazione") graph.setEdgeAttribute(edge, "attivo", true) })
+        if (cameraPrimaLegame) { animaCamera(cameraPrimaLegame, 600); cameraPrimaLegame = null }
+        richiediDisegnoOverlay(30)
+        return
+      }
+      if (!graph.hasNode(nomeA) || !graph.hasNode(nomeB)) return
+      if (!legameEvidenziatoRef.current) cameraPrimaLegame = camera.getState()
+      const attrA = graph.getNodeAttributes(nomeA)
+      const attrB = graph.getNodeAttributes(nomeB)
+      const cRect = container.getBoundingClientRect()
+      const sState = camera.getState()
+      const pannelloW = isMobile ? 0 : 340 * uiScale
+      const pannelloSx = isMobile ? 0 : Math.max(20, 240 * uiScale - 180)
+      const pannelloH = isMobile ? cRect.height * 0.4 : 0
+      let topBarH = 0
+      if (isMobile && topBarRef.current) topBarH = topBarRef.current.getBoundingClientRect().height
+      const areaW = Math.max(80, cRect.width - pannelloSx - pannelloW)
+      const areaH = Math.max(80, cRect.height - topBarH - pannelloH)
+      const centroX = pannelloSx + areaW / 2 - pannelloW * 0.25
+      const centroY = topBarH + areaH / 2
+
+      const { ppuX: ppuXRif, ppuY: ppuYRif } = pixelPerUnita(sState, cRect.width, cRect.height)
+      const dxGraph = Math.abs(attrA.x - attrB.x)
+      const dyGraph = Math.abs(attrA.y - attrB.y)
+      const MARGINE_FIT = 1.4
+      const ratioServeX = dxGraph > 0 ? (MARGINE_FIT * dxGraph * Math.abs(ppuXRif) * sState.ratio) / areaW : 0
+      const ratioServeY = dyGraph > 0 ? (MARGINE_FIT * dyGraph * Math.abs(ppuYRif) * sState.ratio) / areaH : 0
+      let tRatio = Math.max(ratioServeX, ratioServeY, MIN_CAMERA_RATIO)
+      tRatio = Math.min(tRatio, MAX_CAMERA_RATIO)
+
+      const midX = (attrA.x + attrB.x) / 2
+      const midY = (attrA.y + attrB.y) / 2
+      clamping = true
+      camera.setState({ x: sState.x, y: sState.y, ratio: tRatio, angle: sState.angle })
+      renderer.refresh()
+      const p0 = renderer.graphToViewport({ x: midX, y: midY })
+      camera.setState({ x: sState.x + 0.01, y: sState.y, ratio: tRatio, angle: sState.angle })
+      renderer.refresh()
+      const pX = renderer.graphToViewport({ x: midX, y: midY })
+      camera.setState({ x: sState.x, y: sState.y + 0.01, ratio: tRatio, angle: sState.angle })
+      renderer.refresh()
+      const pY = renderer.graphToViewport({ x: midX, y: midY })
+      const ppuX = (p0.x - pX.x) / 0.01
+      const ppuY = (p0.y - pY.y) / 0.01
+      const tX = sState.x + (p0.x - centroX) / ppuX
+      const tY = sState.y + (p0.y - centroY) / ppuY
+      camera.setState(sState)
+      renderer.refresh()
+      clamping = false
+
+      legameEvidenziatoRef.current = { a: nomeA, b: nomeB }
+      setLegameEvidenziato({ a: nomeA, b: nomeB })
+      graph.forEachEdge((edge, eAttr) => { if (eAttr.tipo === "relazione") graph.setEdgeAttribute(edge, "attivo", false) })
+      graph.forEachEdge(nomeA, (edge, eAttr, source, target) => {
+        if (eAttr.tipo === "relazione" && (source === nomeB || target === nomeB)) graph.setEdgeAttribute(edge, "attivo", true)
+      })
+      animaCamera({ ratio: tRatio, x: tX, y: tY }, 600)
+      richiediDisegnoOverlay(30)
     })
 
     const sigmaCanvas = container
@@ -2326,6 +2436,7 @@ function App() {
         if (trovato) {
           prodottoHoverAttivo = null
           nodoHoverAttivo = null
+          legameEvidenziatoRef.current = null; setLegameEvidenziato(null)
           if (trovato.attr.tipo === "designer") {
             prodottoCliccato = null
             if (designerCliccato === trovato.node) {
@@ -2356,6 +2467,7 @@ function App() {
               requestAnimationFrame(() => setPannelloVisibile(true))
               graph.forEachEdge((edge, attr) => { if (attr.tipo === "relazione") graph.setEdgeAttribute(edge, "attivo", false) })
               graph.forEachEdge(trovato.node, (edge, edgeAttr) => { if (edgeAttr.tipo === "relazione") graph.setEdgeAttribute(edge, "attivo", true) })
+              precaricaImmaginiLegami(trovato.node)
               cameraPrimaDiClick = camera.getState()
               {
                 const pAttr = graph.getNodeAttributes(trovato.node)
@@ -2457,6 +2569,7 @@ function App() {
             primoClickFuoriDesigner = true
             setPannelloVisibile(false)
             setDesignerAttivo(null)
+            legameEvidenziatoRef.current = null; setLegameEvidenziato(null)
             if (nodoDaEvidenziare) {
               nodoEvidenziatoRef.current = nodoDaEvidenziare
               setNodoEvidenziato(nodoDaEvidenziare)
@@ -2471,6 +2584,7 @@ function App() {
             primoClickFuoriDesigner = false
             designerCliccato = null
             nodoEvidenziatoRef.current = null; setNodoEvidenziato(null)
+            legameEvidenziatoRef.current = null; setLegameEvidenziato(null)
             aziendaAttivaRef.current = null; setAziendaAttiva(null); aziendaGlobaleRef.current = false
             annoBloccato = null
             setPannelloDesigner(null)
@@ -2502,6 +2616,7 @@ function App() {
           designerCliccato = null; prodottoCliccato = null
           annoBloccato = null
           nodoEvidenziatoRef.current = null; setNodoEvidenziato(null)
+          legameEvidenziatoRef.current = null; setLegameEvidenziato(null)
           setDesignerAttivo(null)
           setPannelloVisibile(false)
           setTimeout(() => setPannelloDesigner(null), 350)
@@ -3242,7 +3357,7 @@ function App() {
                         </div>
                       )}
                     </div>
-                    <button onClick={() => { setPannelloVisibile(false); setTimeout(() => setPannelloDesigner(null), 350) }}
+                    <button onClick={() => { setPannelloVisibile(false); setTimeout(() => setPannelloDesigner(null), 350); legameEvidenziatoRef.current = null; setLegameEvidenziato(null); if (ridisegnaFn) ridisegnaFn() }}
                       style={{ background: "none", border: "none", cursor: "pointer", fontSize: 20, color: scuro ? "#666" : "#aaa", padding: "0 4px", lineHeight: 1 }}>
                       &times;
                     </button>
@@ -3284,7 +3399,7 @@ function App() {
               const bioTesto = lingua === "en" ? (pannelloDesigner.bio_en || pannelloDesigner.bio) : pannelloDesigner.bio
               return (
               <div style={{ marginBottom: 0, ...(window.innerWidth < 768 ? { marginLeft: 104 } : {}) }}>
-                <div style={{ fontSize: 9, fontWeight: 600, color: scuro ? "#555" : "#aaa", textTransform: "uppercase", letterSpacing: 1.5, marginBottom: 8 }}>{t.biografia}</div>
+                <div style={{ fontSize: 9, fontWeight: 600, color: "#266DD3", textTransform: "uppercase", letterSpacing: 1.5, marginBottom: 8 }}>{t.biografia}</div>
                 <p style={{
                   fontSize: window.innerWidth < 768 ? 11 : 13, fontWeight: 300, color: scuro ? "#999" : "#666", lineHeight: 1.6, margin: 0,
                   maxHeight: bioEspansa ? "none" : "4.8em", overflow: "hidden",
@@ -3312,7 +3427,7 @@ function App() {
               return (
                 <div style={window.innerWidth < 768 ? { marginLeft: 104 } : {}}>
                   <hr style={{ border: "none", borderTop: `1px solid ${scuro ? "#333" : "#eee"}`, margin: "20px 0" }} />
-                  <div style={{ fontSize: 9, fontWeight: 600, color: scuro ? "#555" : "#aaa", textTransform: "uppercase", letterSpacing: 1.5, marginBottom: 10 }}>{t.aziende}</div>
+                  <div style={{ fontSize: 9, fontWeight: 600, color: "#266DD3", textTransform: "uppercase", letterSpacing: 1.5, marginBottom: 10 }}>{t.aziende}</div>
                   <div style={{ display: "flex", flexWrap: "wrap", gap: 6 }}>
                     {aziende.map((az) => {
                       const attiva = aziendaAttiva === az
@@ -3326,6 +3441,50 @@ function App() {
                           fontFamily: "Roboto, sans-serif", cursor: "pointer",
                           transition: "all 0.2s",
                         }}>{az}</button>
+                      )
+                    })}
+                  </div>
+                </div>
+              )
+            })()}
+
+            {pannelloDesigner._tipo === "designer" && (() => {
+              const legami = relazioni.filter((r) => r.designer_a === pannelloDesigner.nome || r.designer_b === pannelloDesigner.nome)
+              if (legami.length === 0) return null
+              return (
+                <div style={window.innerWidth < 768 ? { marginLeft: 104 } : {}}>
+                  <hr style={{ border: "none", borderTop: `1px solid ${scuro ? "#333" : "#eee"}`, margin: "32px 0 20px" }} />
+                  <div style={{ fontSize: 9, fontWeight: 600, color: "#266DD3", textTransform: "uppercase", letterSpacing: 1.5, marginBottom: 10 }}>{t.legami}</div>
+                  <div style={{ display: "flex", flexDirection: "column", gap: 14 }}>
+                    {legami.map((r, i) => {
+                      const altro = r.designer_a === pannelloDesigner.nome ? r.designer_b : r.designer_a
+                      const tipoTesto = (lingua === "en" ? (TIPO_RELAZIONE_EN[r.tipo] || r.tipo) : r.tipo).replace(/_/g, " ")
+                      const descrizione = lingua === "en" ? (r.descrizione_en || r.descrizione) : r.descrizione
+                      const selezionato = legameEvidenziato && legameEvidenziato.a === pannelloDesigner.nome && legameEvidenziato.b === altro
+                      const hoverato = legameHoverIdx === i
+                      return (
+                        <button key={i}
+                          onClick={() => evidenziaLegameFn && evidenziaLegameFn(pannelloDesigner.nome, altro)}
+                          onMouseEnter={() => setLegameHoverIdx(i)}
+                          onMouseLeave={() => setLegameHoverIdx(null)}
+                          style={{
+                            display: "block", width: "100%", textAlign: "left",
+                            background: selezionato ? "#ffffff" : (hoverato ? (scuro ? "rgba(255,255,255,0.06)" : "rgba(0,0,0,0.04)") : "none"),
+                            border: "none", outline: "none", cursor: "pointer", fontFamily: "Roboto, sans-serif",
+                            padding: "10px 12px", margin: "-10px -12px",
+                          }}>
+                          <div style={{ fontFamily: "'Roboto Serif', serif", fontWeight: 500, fontStyle: "italic", fontSize: 13, color: selezionato ? "#000000" : (scuro ? "#fff" : "#1a1a1a") }}>
+                            {altro}
+                          </div>
+                          <div style={{ fontSize: 10, fontWeight: 600, color: selezionato ? "#000000" : (scuro ? "#888" : "#aaa"), textTransform: "capitalize", marginTop: 3 }}>
+                            {tipoTesto}
+                          </div>
+                          {descrizione && (
+                            <div style={{ fontSize: 11, fontWeight: 300, color: selezionato ? "#000000" : (scuro ? "#999" : "#666"), lineHeight: 1.5, marginTop: 2 }}>
+                              {descrizione}
+                            </div>
+                          )}
+                        </button>
                       )
                     })}
                   </div>

@@ -1012,7 +1012,194 @@
     "mendini-metroscape": "mendini-metroscape",
     "mendini-sidone": "mendini-sidone",
     "mendini-sidone2": "mendini-sidone",
-    "mendini-lots-of-dots": "mendini-lots-of-dots"
+    "mendini-lots-of-dots": "mendini-lots-of-dots",
+    "mendini-galassia": "mendini-galassia",
+    "mendini-galassia2": "mendini-galassia",
+    "mendini-tebe": "mendini-tebe",
+    "mendini-swatch-the-people": "mendini-swatch-the-people",
+    "mendini-swatch-the-people2": "mendini-swatch-the-people",
+    "mendini-idalion-luminoso": "mendini-idalion-luminoso",
+    "mendini-idalion-luminoso2": "mendini-idalion-luminoso",
+    "mendini-idalion": "mendini-idalion",
+    "mendini-aurora": "mendini-aurora",
+    "mendini-aurora2": "mendini-aurora",
+    "mendini-fandango": "mendini-fandango",
+    "mendini-fandango2": "mendini-fandango",
+    "mendini-tambour": "mendini-tambour",
+    "mendini-tambour2": "mendini-tambour",
+    "mendini-crystal-surprise": "mendini-crystal-surprise",
+    "mendini-mobili-per-uomo": "mendini-mobili-per-uomo",
+    "mendini-recinto": "mendini-recinto",
+    "mendini-recinto2": "mendini-recinto",
+    "mendini-anna-pepper": "mendini-anna-pepper",
+    "mendini-anna-pepper2": "mendini-anna-pepper",
+    "mendini-cioccolator-pad": "mendini-cioccolator-pad",
+    "mendini-monumento-mendini": "mendini-monumento-mendini",
+    "mendini-monumento-mendini2": "mendini-monumento-mendini",
+    "mendini-geo": "mendini-geo",
+    "mendini-geo2": "mendini-geo",
+    "mendini-alessandro-m": "mendini-alessandro-m",
+    "mendini-alessandro-m2": "mendini-alessandro-m",
+    "mendini-edge": "mendini-edge",
+    "mendini-edge2": "mendini-edge",
+    "mendini-time": "mendini-time",
+    "mendini-time2": "mendini-time",
+    "mendini-space": "mendini-space",
+    "mendini-parrot": "mendini-parrot",
+    "mendini-parrot2": "mendini-parrot",
+    "mendini-geo-proust": "mendini-geo-proust",
+    "mendini-geo-proust2": "mendini-geo-proust",
+    "mendini-giotto": "mendini-giotto",
+    "mendini-time-q": "mendini-time-q",
+    "mendini-time-q2": "mendini-time-q",
+    "mendini-space-q": "mendini-space-q",
+    "mendini-space-q2": "mendini-space-q",
+    "mendini-proust-geometrica": "mendini-proust-geometrica",
+    "mendini-proust-geometrica2": "mendini-proust-geometrica",
+    "mendini-amuleto": "mendini-amuleto",
+    "mendini-amuleto2": "mendini-amuleto",
+    "mendini-cavallino": "mendini-cavallino",
+    "mendini-cavallino2": "mendini-cavallino",
+    "mendini-magis-proust": "mendini-magis-proust",
+    "mendini-magis-proust2": "mendini-magis-proust",
+    "mendini-unicorno": "mendini-unicorno",
+    "mendini-anna-gong": "mendini-anna-gong",
+    "mendini-rocco": "mendini-rocco",
+    "mendini-moka-alessi": "mendini-moka-alessi",
+    "mendini-campanello": "mendini-campanello",
+    "mendini-campanello2": "mendini-campanello",
+    "mendini-poltrona-carrara": "mendini-poltrona-carrara",
+    "mendini-poltrona-carrara2": "mendini-poltrona-carrara",
+    "mendini-maggio": "mendini-maggio",
+    "mendini-maggio2": "mendini-maggio",
+    "mendini-schermo": "mendini-schermo",
+    "mendini-roy": "mendini-roy",
+    "mendini-roy2": "mendini-roy",
+    "mendini-crystal-palace": "mendini-crystal-palace",
+    "mendini-crystal-palace2": "mendini-crystal-palace",
+    "mendini-spot-the-dot": "mendini-spot-the-dot",
+    "mendini-nativo-atmosfera-blu": "mendini-nativo-atmosfera-blu",
+    "mendini-nativo-atmosfera-blu2": "mendini-nativo-atmosfera-blu",
+    "mendini-nativo-atmosfera-multicolore": "mendini-nativo-atmosfera-multicolore",
+    "mendini-nativo-atmosfera-multicolore2": "mendini-nativo-atmosfera-multicolore",
+    "mendini-nativo-stileme": "mendini-nativo-stileme",
+    "mendini-nativo-stileme2": "mendini-nativo-stileme",
+    "mendini-ninfee-coffee-tables": "mendini-ninfee-coffee-tables",
+    "mendini-ninfee-coffee-tables2": "mendini-ninfee-coffee-tables",
+    "mendini-tegamino": "mendini-tegamino",
+    "mendini-alessini-proust": "mendini-alessini-proust",
+    "mendini-eltner-diavoletti-family": "mendini-eltner-diavoletti-family",
+    "mendini-100-percent-make-up-proust": "mendini-100-percent-make-up-proust",
+    "mendini-goffo": "mendini-goffo",
+    "mendini-rustico": "mendini-rustico",
+    "mendini-linea": "mendini-linea",
+    "mendini-linea2": "mendini-linea",
+    "mendini-proust-christmas-bauble": "mendini-proust-christmas-bauble",
+    "mendini-asta": "mendini-asta",
+    "mendini-anna-stick": "mendini-anna-stick",
+    "mendini-alessandro-stick": "mendini-alessandro-stick",
+    "mendini-alessandro-stick2": "mendini-alessandro-stick",
+    "boeri-borgogna": "boeri-borgogna",
+    "boeri-borgogna2": "boeri-borgogna",
+    "boeri-partner": "boeri-partner",
+    "boeri-partner2": "boeri-partner",
+    "boeri-bobo": "boeri-bobo",
+    "boeri-bobolungo": "boeri-bobolungo",
+    "boeri-boboletto": "boeri-boboletto",
+    "boeri-cubotto": "boeri-cubotto",
+    "boeri-cubotto2": "boeri-cubotto",
+    "boeri-mod-602": "boeri-mod-602",
+    "boeri-bibebo": "boeri-bibebo",
+    "boeri-bibebo2": "boeri-bibebo",
+    "boeri-lunario": "boeri-lunario",
+    "boeri-lunario2": "boeri-lunario",
+    "boeri-gradual-system": "boeri-gradual-system",
+    "boeri-gradual-system2": "boeri-gradual-system",
+    "boeri-bacone": "boeri-bacone",
+    "boeri-papero": "boeri-papero",
+    "boeri-papero2": "boeri-papero",
+    "boeri-mod-235": "boeri-mod-235",
+    "boeri-mod-2352": "boeri-mod-235",
+    "boeri-griziotti-strips-bed": "boeri-griziotti-strips-bed",
+    "boeri-griziotti-strips-bed2": "boeri-griziotti-strips-bed",
+    "boeri-griziotti-strips-sofa-bed": "boeri-griziotti-strips-sofa-bed",
+    "boeri-pecorelle": "boeri-pecorelle",
+    "boeri-cibi": "boeri-cibi",
+    "boeri-botolo": "boeri-botolo",
+    "boeri-botolino": "boeri-botolino",
+    "boeri-lucetta": "boeri-lucetta",
+    "boeri-lucetta2": "boeri-lucetta",
+    "boeri-bengodi": "boeri-bengodi",
+    "boeri-abat-jour": "boeri-abat-jour",
+    "boeri-taboga": "boeri-taboga",
+    "boeri-talete": "boeri-talete",
+    "boeri-talete2": "boeri-talete",
+    "boeri-griziotti-strips-77": "boeri-griziotti-strips-77",
+    "boeri-brigadier": "boeri-brigadier",
+    "boeri-brigadier2": "boeri-brigadier",
+    "boeri-bonte": "boeri-bonte",
+    "boeri-bonte2": "boeri-bonte",
+    "boeri-tuttoletto": "boeri-tuttoletto",
+    "boeri-accademia": "boeri-accademia",
+    "boeri-accademia2": "boeri-accademia",
+    "boeri-griziotti-strips-con-gambe": "boeri-griziotti-strips-con-gambe",
+    "boeri-griziotti-strips-con-gambe2": "boeri-griziotti-strips-con-gambe",
+    "boeri-double-face": "boeri-double-face",
+    "boeri-double-face2": "boeri-double-face",
+    "boeri-folio": "boeri-folio",
+    "boeri-folio2": "boeri-folio",
+    "boeri-prisma": "boeri-prisma",
+    "boeri-prisma2": "boeri-prisma",
+    "boeri-tre-b": "boeri-tre-b",
+    "boeri-tre-b2": "boeri-tre-b",
+    "boeri-ditto": "boeri-ditto",
+    "boeri-griziotti-steps": "boeri-griziotti-steps",
+    "boeri-griziotti-steps2": "boeri-griziotti-steps",
+    "boeri-griziotti-nardi-rever": "boeri-griziotti-nardi-rever",
+    "boeri-griziotti-nardi-rever2": "boeri-griziotti-nardi-rever",
+    "boeri-pacific": "boeri-pacific",
+    "boeri-shadows": "boeri-shadows",
+    "boeri-shadows2": "boeri-shadows",
+    "boeri-shadows3": "boeri-shadows",
+    "boeri-malibu": "boeri-malibu",
+    "boeri-malibu2": "boeri-malibu",
+    "boeri-malibu3": "boeri-malibu",
+    "boeri-chiara": "boeri-chiara",
+    "boeri-brontes": "boeri-brontes",
+    "boeri-brontes2": "boeri-brontes",
+    "boeri-brontes3": "boeri-brontes",
+    "boeri-past": "boeri-past",
+    "boeri-past2": "boeri-past",
+    "boeri-past3": "boeri-past",
+    "boeri-feltro": "boeri-feltro",
+    "boeri-feltro2": "boeri-feltro",
+    "boeri-feltro3": "boeri-feltro",
+    "boeri-lucia": "boeri-lucia",
+    "boeri-cini-boeri-lounge-chair": "boeri-cini-boeri-lounge-chair",
+    "boeri-cini-boeri-lounge-chair2": "boeri-cini-boeri-lounge-chair",
+    "boeri-cini-boeri-lounge-chair3": "boeri-cini-boeri-lounge-chair",
+    "boeri-cini-boeri-sofa": "boeri-cini-boeri-sofa",
+    "boeri-cini-boeri-sofa2": "boeri-cini-boeri-sofa",
+    "boeri-cini-boeri-sofa3": "boeri-cini-boeri-sofa",
+    "boeri-cini-boeri-ottoman": "boeri-cini-boeri-ottoman",
+    "boeri-collezione-dax-design": "boeri-collezione-dax-design",
+    "boeri-collezione-dax-design2": "boeri-collezione-dax-design",
+    "boeri-collezione-dax-design3": "boeri-collezione-dax-design",
+    "boeri-ben-ben": "boeri-ben-ben",
+    "boeri-bebop": "boeri-bebop",
+    "boeri-bebop2": "boeri-bebop",
+    "boeri-bebop3": "boeri-bebop",
+    "boeri-to-the-wall": "boeri-to-the-wall",
+    "boeri-ledletto": "boeri-ledletto",
+    "boeri-ledletto2": "boeri-ledletto",
+    "boeri-ledletto3": "boeri-ledletto",
+    "mari-calendario-bilancia": "mari-calendario-bilancia",
+    "mari-citera": "mari-citera",
+    "mari-citera2": "mari-citera",
+    "mari-arran": "mari-arran",
+    "mari-arran2": "mari-arran",
+    "mari-arran3": "mari-arran",
+    "mari-camicia": "mari-camicia"
   },
   "sottsass-terrazzo2": {
     "image_url": "https://i.pinimg.com/originals/ca/b1/9d/cab19d383385dee6c09f97ab86349656.jpg",
@@ -4505,5 +4692,1127 @@
     "source_page": "https://www.etsy.com/listing/204935472/1990s-1991-swatch-watch-lots-of-dots",
     "product_base": "mendini-lots-of-dots",
     "image_hash": "115792089237313312582898700686714394464414574528419614897077421021237537144831"
+  },
+  "mendini-galassia": {
+    "image_url": "https://www.wright20.com/items/index/2000/143_1_essential_design_june_2025_alessandro_mendini_agena_ceiling_lamp_from_the_galassia_series__wright_auction.jpg?t=1749586566",
+    "source_page": "https://www.wright20.com/auctions/2025/06/essential-design/143",
+    "product_base": "mendini-galassia",
+    "image_hash": "678579488927680508018683588259473159973080576636837697751813066841650889664"
+  },
+  "mendini-galassia2": {
+    "image_url": "https://www.wright20.com/items/index/2000/143_2_essential_design_june_2025_alessandro_mendini_agena_ceiling_lamp_from_the_galassia_series__wright_auction.jpg?t=1749586566",
+    "source_page": "https://www.wright20.com/auctions/2025/06/essential-design/143",
+    "product_base": "mendini-galassia",
+    "image_hash": "68167592856436728868314124866189469220608784288230419279289918064427968"
+  },
+  "mendini-tebe": {
+    "image_url": "https://storage.googleapis.com/deesup_vendure_prod/preview/4f/applique-da-parete-tebe-35-di-ernesto-gismondi-anni-80-artemide-340175-7__preview.jpeg",
+    "source_page": "https://www.deesup.com/shop/applique-da-parete-tebe-35-di-ernesto-gismondi-anni-80-artemide-340175",
+    "product_base": "mendini-tebe",
+    "image_hash": "115792089237316195423479032329803694674328243466324425333518151365489292476415"
+  },
+  "mendini-swatch-the-people": {
+    "image_url": "https://i.etsystatic.com/54731355/r/il/850061/6281096822/il_fullxfull.6281096822_ge07.jpg",
+    "source_page": "https://www.etsy.com/uk/listing/1796226671/rare-brand-new-nos-1992-swatch-the",
+    "product_base": "mendini-swatch-the-people",
+    "image_hash": "68867398406260911523162456097461398687966954213791340654240177928608365515649"
+  },
+  "mendini-swatch-the-people2": {
+    "image_url": "https://i.etsystatic.com/54731355/r/il/b22350/6329143223/il_fullxfull.6329143223_a0gr.jpg",
+    "source_page": "https://www.etsy.com/uk/listing/1796226671/rare-brand-new-nos-1992-swatch-the",
+    "product_base": "mendini-swatch-the-people",
+    "image_hash": "86850696159140085202479116085506823413782102676526322730951536517616131883011"
+  },
+  "mendini-idalion-luminoso": {
+    "image_url": "https://www.venini.com/media/catalog/product/f/l/fl389700000o0bsp_2.jpg?optimize=high&fit=bounds&height=1000&width=1000&canvas=1000:1000",
+    "source_page": "https://www.venini.com/en/idalion-luminoso-fl389700000o0bsp-c?srsltid=AfmBOopbZ-SuFC5waGyE45IB63cHqDbBIivXh0-slqoPPVPg73jdga70",
+    "product_base": "mendini-idalion-luminoso",
+    "image_hash": "115792089237316195423534203806193095855353711097143180297716830413602215165951"
+  },
+  "mendini-idalion-luminoso2": {
+    "image_url": "https://img.edilportale.com/product-thumbs/b_VENINI_IDALION_FgvhmmIXIr.jpeg",
+    "source_page": "https://www.archiproducts.com/it/prodotti/venini/lampada-da-tavolo-fatta-a-mano-in-vetro-soffiato-idalion-luminoso_739201?srsltid=AfmBOop5Y6x3X459PwzVkx7mIzczbzCGH_3lvOzlPnoVCLQlR_PJxNAS",
+    "product_base": "mendini-idalion-luminoso",
+    "image_hash": "115792089237316195423570979045670060708441243275336250366482392577508869406719"
+  },
+  "mendini-idalion": {
+    "image_url": "https://www.venini.com/media/catalog/product/f/o/fo370671000o0hs_2.jpg",
+    "source_page": "https://www.venini.com/it_it/idalion-fo370671000o0hs?srsltid=AfmBOooFuJYgDFEWtmYU2jmWQuQqDPAaueAaHPoWQALr0L29FQDPnItf",
+    "product_base": "mendini-idalion",
+    "image_hash": "115792089237316189397461367901958726376487174249283696834712543404213256847359"
+  },
+  "mendini-aurora": {
+    "image_url": "https://www.manigliemilano.com/wp-content/uploads/2020/04/aurora_C1.jpg",
+    "source_page": "https://www.manigliemilano.com/prodotto/aurora/",
+    "product_base": "mendini-aurora",
+    "image_hash": "115792089237316195423570985008687907167250265282561815484795257944868707631103"
+  },
+  "mendini-aurora2": {
+    "image_url": "https://www.manigliemilano.com/?attachment_id=19998",
+    "source_page": "https://www.manigliemilano.com/prodotto/aurora/",
+    "product_base": "mendini-aurora",
+    "image_hash": "115792089237313309369071653148508997553679901353080799575520564140512794116095"
+  },
+  "mendini-fandango": {
+    "image_url": "https://swatchandbeyond.com/cdn/shop/products/Swatch_Fandango_400x.JPG?v=1563948602",
+    "source_page": "https://swatchandbeyond.com/products/fandango-slr100?view=quick_view",
+    "product_base": "mendini-fandango",
+    "image_hash": "115792089237316195423570985008643662848114726069665161937399799126675010093055"
+  },
+  "mendini-fandango2": {
+    "image_url": "https://swatchandbeyond.com/cdn/shop/products/Swatch_Fandango_2_thm_400x.JPG?v=1563948603",
+    "source_page": "https://swatchandbeyond.com/products/fandango-slr100?view=quick_view",
+    "product_base": "mendini-fandango",
+    "image_hash": "115792089237316195423570985008666498451859675808286905181559751428020774109183"
+  },
+  "mendini-tambour": {
+    "image_url": "https://tickingfree.com/public/upload/1556316000___15086232004479.jpg",
+    "source_page": "https://www.tickingfree.com/swatch/1230/swatch-musicall-1994-slj100-tambour-nuovo-by-a-mendini",
+    "product_base": "mendini-tambour",
+    "image_hash": "115792068531247814528008263166650031036420514397142952642489342912028313911295"
+  },
+  "mendini-tambour2": {
+    "image_url": "https://tickingfree.com/public/upload/1556316000___15086232004478.jpg",
+    "source_page": "https://www.tickingfree.com/swatch/1230/swatch-musicall-1994-slj100-tambour-nuovo-by-a-mendini",
+    "product_base": "mendini-tambour",
+    "image_hash": "115792089237316195379629836058716129979300308281461476079059242640893156524031"
+  },
+  "mendini-crystal-surprise": {
+    "image_url": "https://i.ebayimg.com/00/s/MTM1NFgxMTkx/z/nsgAAOSwh2pidoOK/$_57.PNG?set_id=880000500F",
+    "source_page": "https://www.ebay.it/itm/363670281684",
+    "product_base": "mendini-crystal-surprise",
+    "image_hash": "115791927147378388531198875306768572174602598136254236157698918949740019187711"
+  },
+  "mendini-mobili-per-uomo": {
+    "image_url": "https://www.fondazionebisazza.it/site/assets/files/3091/0015323_2019.jpg",
+    "source_page": "https://www.fondazionebisazza.it/it/progetti/alessandro-mendini/mobili-per-uomo/",
+    "product_base": "mendini-mobili-per-uomo",
+    "image_hash": "115792083629489274520689634101802018260972583680865584422561156503445750939647"
+  },
+  "mendini-recinto": {
+    "image_url": "http://alessi.com/cdn/shop/files/01_AM02.jpg?v=1719309243",
+    "source_page": "https://alessi.com/it/products/recinto-rectangular-tray-with-handles",
+    "product_base": "mendini-recinto",
+    "image_hash": "115792089235637729402518880971941565903910553114628840927413389992642182381567"
+  },
+  "mendini-recinto2": {
+    "image_url": "https://m.media-amazon.com/images/I/61pNZiHMzrL.jpg",
+    "source_page": "https://www.amazon.it/-/en/Alessi-AM02-Rectangular-Scalloped-Stainless/dp/B000G8NOMM",
+    "product_base": "mendini-recinto",
+    "image_hash": "115792089237316169710993360614754508615906125236526551205780091875859453968383"
+  },
+  "mendini-anna-pepper": {
+    "image_url": "https://www.mk2shop.com/media/catalog/product/a/l/alessi_pepper_mill_anna_pepper_aam04_b_MILALE00008028800_1962.webp",
+    "source_page": "https://www.mk2shop.com/it/alessi-macina-pepe-anna-pepper-aam04-b-28-cm-nero.html?srsltid=AfmBOooYP0dH8r7166e8IdcSnpO-LOtTfSji6ipMYfOMdKRuaqV0VlVg",
+    "product_base": "mendini-anna-pepper",
+    "image_hash": "115792089237316195423534204554481934168776005217429505163443915132370952388607"
+  },
+  "mendini-anna-pepper2": {
+    "image_url": "https://m.media-amazon.com/images/I/51zSbzHSEsL._AC_UF894,1000_QL80_.jpg",
+    "source_page": "https://www.amazon.sg/Alessi-Anna-Pepper-Mill-Blue/dp/B000FVBU8U",
+    "product_base": "mendini-anna-pepper",
+    "image_hash": "115792089237316189397461367901970858537224471599888812636940287210850158116863"
+  },
+  "mendini-cioccolator-pad": {
+    "image_url": "https://store.moma.org/cdn/shop/files/362c5acd-1603-44f0-8dab-f6dbb2962170_1296x.jpg?v=1775481135",
+    "source_page": "https://www.moma.org/collection/works/82167",
+    "product_base": "mendini-cioccolator-pad",
+    "image_hash": "115792089237237159832235081283804285346168881426449868433737374220896719339519"
+  },
+  "mendini-monumento-mendini": {
+    "image_url": "https://cdn.watchcharts.com/listings/ec2b9eed-c37b-4674-9e2c-75cc78eefafd.jpeg",
+    "source_page": "https://marketplace.watchcharts.com/listing/2525670-swatch-art-special-mendini-tower-monumento-mendini-gzs02-alessandro-mendini",
+    "product_base": "mendini-monumento-mendini",
+    "image_hash": "114208942504019184851417026848589039081507912394130335053929063469379181607039"
+  },
+  "mendini-monumento-mendini2": {
+    "image_url": "https://cdn.watchcharts.com/listings/59c7d967-184e-4277-a3db-26d70100cf3f.jpeg",
+    "source_page": "https://marketplace.watchcharts.com/listing/2525670-swatch-art-special-mendini-tower-monumento-mendini-gzs02-alessandro-mendini",
+    "product_base": "mendini-monumento-mendini",
+    "image_hash": "109458839562075368458852096893298791212945424679225183945062811982449799561727"
+  },
+  "mendini-geo": {
+    "image_url": "https://media.architonic.com/m-on/3104295/product/20047472/saba-italia_baby-geo---armchair_9539b26d.jpeg",
+    "source_page": "https://www.architonic.com/fr/s/rendez-vous-with-alessandro-mendini:-saba-italia/20048970",
+    "product_base": "mendini-geo",
+    "image_hash": "115792089237316182768543094131508826057962410086724112767692868151280614244351"
+  },
+  "mendini-geo2": {
+    "image_url": "https://media.architonic.com/m-on/3104295/product/20047473/saba-italia_baby-geo---armchair_0da2aa55.jpeg",
+    "source_page": "https://www.architonic.com/fr/s/rendez-vous-with-alessandro-mendini:-saba-italia/20048970",
+    "product_base": "mendini-geo",
+    "image_hash": "115792089237316182768543094131508826055238905324629187656656970015730764349439"
+  },
+  "mendini-alessandro-m": {
+    "image_url": "https://media.madeindesign.com/cdn-cgi/image/fit=pad,format=auto,width=500,height=500,quality=70/nuxeo/products/b/5/cavatappi-sandro-m-rosso-alessi_madeindesign_415296_original.jpg",
+    "source_page": "https://www.madeindesign.it/prod-cavatappi-sandro-m-a-di-alessi-refam23-r.html",
+    "product_base": "mendini-alessandro-m",
+    "image_hash": "115792089237316195423570982062255648005829744287953443897521783540711832944639"
+  },
+  "mendini-alessandro-m2": {
+    "image_url": "https://regalcasamerate.com/wp-content/uploads/2022/02/alessi-Alessandro-m-colour-tales-family.jpeg",
+    "source_page": "https://regalcasamerate.com/product/cavatappi-alessandro-m-colour-tales/",
+    "product_base": "mendini-alessandro-m",
+    "image_hash": "115792089237316144050986499173827722470391408144100422211770004435318259843071"
+  },
+  "mendini-edge": {
+    "image_url": "https://cdn.mohd.it/cache/image/width=800,format=webp/media/catalog/product/e/d/edge-soffitto-artemide.jpg",
+    "source_page": "https://shop.mohd.it/it/edge-parete-soffitto.html",
+    "product_base": "mendini-edge",
+    "image_hash": "115792089237316195423180192682749437499077595994278186729861586135808856817663"
+  },
+  "mendini-edge2": {
+    "image_url": "https://cdn.mohd.it/cache/image/width=800,format=webp/media/catalog/product/e/d/edge-soffitto-parete-artemide.jpg",
+    "source_page": "https://shop.mohd.it/it/edge-parete-soffitto.html",
+    "product_base": "mendini-edge",
+    "image_hash": "115792089237316195423570985008667925710441583660600966955610601580286737121279"
+  },
+  "mendini-time": {
+    "image_url": "https://images.whoppah.com/image/4cee05f0-9e08-4b90-b8fc-40470d72e063/original.jpg?width=560",
+    "source_page": "https://www.whoppah.com/it/prodotti/timer-da-cucina-alessi-anna-time-design-dellera-spaziale-alessandro-mendini-1999-design-italiano",
+    "product_base": "mendini-time",
+    "image_hash": "115792089237316195423377887624106546009676592562532504903197186358718243012607"
+  },
+  "mendini-time2": {
+    "image_url": "https://images.whoppah.com/image/c517e5ca-f4c0-4f00-87f2-6444e875167a/original.jpg?height=1280",
+    "source_page": "https://www.whoppah.com/it/prodotti/timer-da-cucina-alessi-anna-time-design-dellera-spaziale-alessandro-mendini-1999-design-italiano",
+    "product_base": "mendini-time",
+    "image_hash": "115792089237316169812611242380792916619582603937084636187140287138614699098111"
+  },
+  "mendini-space": {
+    "image_url": "https://hybridspacelab.net/wp-content/uploads/projects/studio-alchimia/alchimia_1982_sabrina_photo_018_singlemendini_final_tif_100824.png",
+    "source_page": "https://hybridspacelab.net/it/project/chair-sabrina-at-allesandro-mendini-and-studio-alchimia/",
+    "product_base": "mendini-space",
+    "image_hash": "115792089237316195423570985008687907853269984665640564039457584007913129639935"
+  },
+  "mendini-parrot": {
+    "image_url": "https://moduloimola.it/wp-content/uploads/2020/07/parrot-alessi.jpg",
+    "source_page": "https://moduloimola.it/prodotto/alessi-cavatappi-sommelier-parrot/",
+    "product_base": "mendini-parrot",
+    "image_hash": "1809279001842144151701482032649840770809123653318228418078835026844473819198"
+  },
+  "mendini-parrot2": {
+    "image_url": "https://knifeleader.eu/43385-large_default/cavatappi-alessi-parrot-design-di-alessandro-mendini.jpg",
+    "source_page": "https://knifeleader.eu/it/cavatappi/11357-cavatappi-alessi-parrot-design-di-alessandro-mendini.html",
+    "product_base": "mendini-parrot",
+    "image_hash": "115792089237316195423570984821599998223618588697367989942501707644688874340351"
+  },
+  "mendini-geo-proust": {
+    "image_url": "https://cdn20.pamono.com/p/g/2/0/2020094_y80ilk09zd/macchina-da-caffe-vintage-di-alessandro-mendini-per-alessi-italia-2007-immagine-2.jpg",
+    "source_page": "https://www.pamono.it/macchina-da-caffe-vintage-di-alessandro-mendini-per-alessi-italia-2007?srsltid=AfmBOoqU_lj8UmM16SO3KYnWpvvc8Ut6pp1MlqwqeG3YdiwZIlLH2UoZ",
+    "product_base": "mendini-geo-proust",
+    "image_hash": "115792089237316195423570984634522079654492191282136367117713603349233937678335"
+  },
+  "mendini-geo-proust2": {
+    "image_url": "https://s3.eu-west-2.amazonaws.com/standfirst-designweek-production/uploads/2005/04/9e5dcf85-529d-462c-b390-c025dd1fccdb.jpg",
+    "source_page": "https://www.designweek.co.uk/issues/21-april-2005/the-geo-proust-drip-coffee-maker/",
+    "product_base": "mendini-geo-proust",
+    "image_hash": "115792089237316195423570985008682198372485075552488653356535267410907297218559"
+  },
+  "mendini-giotto": {
+    "image_url": "https://www.venini.com/media/catalog/product/t/o/to301879000h0in_2.jpg",
+    "source_page": "https://www.venini.com/it_it/giotto-to301879000h0in?srsltid=AfmBOoqtSWbAPAgwhceUjqK7Z-1mG4DbUJdD2fkEwqWTLoJ53_rjPqnF",
+    "product_base": "mendini-giotto",
+    "image_hash": "115792035747952660844785386197521872533766619404899337485926047241801519071231"
+  },
+  "mendini-time-q": {
+    "image_url": "https://www.olivari.it/wp-content/uploads/2024/02/Time-Q_IS.jpg",
+    "source_page": "https://www.olivari.it/maniglie-porte/time-q/",
+    "product_base": "mendini-time-q",
+    "image_hash": "115792089237316195423570985008687907167250265282561815484795257944868707631103"
+  },
+  "mendini-time-q2": {
+    "image_url": "https://www.olivari.it/wp-content/uploads/2024/02/Time-Q_dk_CA.jpg",
+    "source_page": "https://www.olivari.it/maniglie-finestre-dk/time-q-dk/",
+    "product_base": "mendini-time-q",
+    "image_hash": "115792089237316195423570984447462001866635733759188404054854690016528370237439"
+  },
+  "mendini-space-q": {
+    "image_url": "https://www.olivari.it/wp-content/uploads/2017/02/spaceq_CA.jpg",
+    "source_page": "https://www.olivari.it/maniglie-porte/space-q/",
+    "product_base": "mendini-space-q",
+    "image_hash": "115792089237316195423570985008687907515699409004532199670377938349012543340543"
+  },
+  "mendini-space-q2": {
+    "image_url": "https://www.olivari.it/wp-content/uploads/2021/11/i202rlr8b_CR.jpg",
+    "source_page": "https://www.olivari.it/chiavistelli-porte-blindate/space-q-bassa-mezzo-chiavistello-2/",
+    "product_base": "mendini-space-q",
+    "image_hash": "115792089237316195423570985008677916988747961750847538862180424963448476008447"
+  },
+  "mendini-proust-geometrica": {
+    "image_url": "https://www.cappellini.com/content/dam/ld/cappellini/products/p/r/o/proust-geometrica/02_thumbnails/02_proust-geometrica.jpg/jcr:content/renditions/cq5dam.thumbnail.1500.1500.jpg",
+    "source_page": "https://www.cappellini.com/it/it/prodotti/proust-geometrica.html?srsltid=AfmBOor3NN--Zp5h8Ip9pPvRQIaGloGz65w977W5rYmvKWLyKNrlhWEH",
+    "product_base": "mendini-proust-geometrica",
+    "image_hash": "115792089237316195423414667517087327342266559067217833026725891969462394945535"
+  },
+  "mendini-proust-geometrica2": {
+    "image_url": "https://i.pinimg.com/736x/6e/87/c5/6e87c52ea6fe120ed18f6c238108b257.jpg",
+    "source_page": "https://kr.pinterest.com/pin/126452702021517279/",
+    "product_base": "mendini-proust-geometrica",
+    "image_hash": "115792065080809054536731023833239728871633849541660375639039357623417905872895"
+  },
+  "mendini-amuleto": {
+    "image_url": "https://www.area-arch.it/wp-content/uploads/sites/6/2019/09/Schermata-2019-09-06-alle-11.52.42.png",
+    "source_page": "https://www.area-arch.it/edizione-speciale-per-la-lampada-amuleto-pearl-di-alessandro-mendini/",
+    "product_base": "mendini-amuleto",
+    "image_hash": "115791923588665428895677198102188932926690834231916599873549855065729860108287"
+  },
+  "mendini-amuleto2": {
+    "image_url": "https://www.ramun.com/img/Amuleto/41.jpg",
+    "source_page": "https://www.ramun.com/it/products_01.php",
+    "product_base": "mendini-amuleto",
+    "image_hash": "109007291364144954198913549354279619172459432125238697122583284053354731249657"
+  },
+  "mendini-cavallino": {
+    "image_url": "https://www.passioneantiqua.com/public/images/magazzino/Vetri/0727U/il-cavallino-di-venini-alessandro-mendini-e-pino-signoretto-_1.jpg",
+    "source_page": "https://www.passioneantiqua.com/it/cavallino-venini-alessandro-mendini-pino-signoretto-murano-0727u",
+    "product_base": "mendini-cavallino",
+    "image_hash": "115791205914885172896717035475509752897499101122545361016849484397911450058751"
+  },
+  "mendini-cavallino2": {
+    "image_url": "https://www.passioneantiqua.com/public/images/magazzino/Vetri/0727U/il-cavallino-di-venini-alessandro-mendini-e-pino-signoretto-_3.jpg",
+    "source_page": "https://www.passioneantiqua.com/it/cavallino-venini-alessandro-mendini-pino-signoretto-murano-0727u",
+    "product_base": "mendini-cavallino",
+    "image_hash": "115735543660441394198065397465397114929031569207147166398289931546334050385919"
+  },
+  "mendini-magis-proust": {
+    "image_url": "https://media.madeindesign.com/cdn-cgi/image/fit=scale-down,background=white,format=auto,quality=80,height=1000,width=1000/nuxeo/products/2/c/poltrona-magis-proust-multicolore-magis_madeindesign_1766482963_original.jpg",
+    "source_page": "https://www.madeindesign.it/prod-poltrona-magis-proust-versione-multicolore-magis-refsd592.html",
+    "product_base": "mendini-magis-proust",
+    "image_hash": "115792089237316195423469837356512469900734803788937461859732581339527091585023"
+  },
+  "mendini-magis-proust2": {
+    "image_url": "https://www.kasa-store.com/17328-large_default/proust-magis-poltrona-iconica-di-alessandro-mendini.webp",
+    "source_page": "https://www.kasa-store.com/it/poltrone-moderne/3434-proust-magis-poltrona-iconica-di-alessandro-mendini.html?srsltid=AfmBOopYaEb1C3mYRat7Q3z4tFYpQTOiLHeDYFh4K6WGsz2dTo99R2kw",
+    "product_base": "mendini-magis-proust",
+    "image_hash": "115792089237316189397461367901935890413403878810057125862303814312980939538431"
+  },
+  "mendini-unicorno": {
+    "image_url": "https://www.riva1920.it/components/com_riva/files/product_gallery/420/unicorno-1753797139.jpg",
+    "source_page": "https://www.riva1920.it/it/prodotti/mobili-zona-giorno/panche/unicorno",
+    "product_base": "mendini-unicorno",
+    "image_hash": "115792089237316185781197915005779161676058134030935832090220402864349452959743"
+  },
+  "mendini-anna-gong": {
+    "image_url": "http://alessi.com/cdn/shop/products/01_AM37.jpg?v=1599876490",
+    "source_page": "https://alessi.com/it/products/anna-gong-folding-cake-stand",
+    "product_base": "mendini-anna-gong",
+    "image_hash": "115792089237131896502701032265273912224112941427316338720046848349972297940991"
+  },
+  "mendini-rocco": {
+    "image_url": "https://www.riva1920.it/components/com_riva/files/products/rocco1743497473.jpg",
+    "source_page": "https://www.riva1920.it/it/prodotti/mobili-zona-giorno/sgabelli/rocco",
+    "product_base": "mendini-rocco",
+    "image_hash": "115792089237316195423570984447449870076136617752064399045019555488205847396351"
+  },
+  "mendini-moka-alessi": {
+    "image_url": "http://alessi.com/cdn/shop/products/01_AAM33.jpg?v=1680533701",
+    "source_page": "https://alessi.com/it/products/moka-alessi-espresso-coffee-maker",
+    "product_base": "mendini-moka-alessi",
+    "image_hash": "115792089237158220959958527632110310868282887315374649758032349936888766791679"
+  },
+  "mendini-campanello": {
+    "image_url": "https://www.ramun.com/img/Campanello/13.jpg",
+    "source_page": "https://www.ramun.com/it/products_08.php",
+    "product_base": "mendini-campanello",
+    "image_hash": "115792089237315790777269365105411864796817582009835904425341212770214267060223"
+  },
+  "mendini-campanello2": {
+    "image_url": "https://www.polkadot.it/wp-content/uploads/2015/04/Lampu-Ramun-Campanello.jpg",
+    "source_page": "https://www.polkadot.it/2015/04/14/campanello-amuleto-alessandro-mendini-per-ramun",
+    "product_base": "mendini-campanello",
+    "image_hash": "115792089237316195423570985008596919424486737791360442223413878564671891439615"
+  },
+  "mendini-poltrona-carrara": {
+    "image_url": "https://www.designperte.it/upl/poltrona-carrara-gufram-1.jpg",
+    "source_page": "https://www.designperte.it/arredo-interno/poltrone-e-chaise-longue/gufram/gufram-poltrona-carrara?srsltid=AfmBOopwn7eGPVYHrf6_-9_qCcKi_zeuqC92KzoJcdud7Ugxw8rYL0mM",
+    "product_base": "mendini-poltrona-carrara",
+    "image_hash": "115792089237316195423570979606886867849480269174784243817698717653843436371967"
+  },
+  "mendini-poltrona-carrara2": {
+    "image_url": "https://cdn.mohd.it/cache/image/format=webp/media/catalog/product/2/-/2-23-22.jpg",
+    "source_page": "https://shop.mohd.it/it/poltrona-carrara-ed-limitata.html",
+    "product_base": "mendini-poltrona-carrara",
+    "image_hash": "115792089237316195423203180115862425788396828233805318044303917471375279783935"
+  },
+  "mendini-maggio": {
+    "image_url": "https://classicdesign.it/media/019/20160307-5217-maggio_04.o.jpg",
+    "source_page": "https://classicdesign.it/it/porro/cassettiera-maggio.html",
+    "product_base": "mendini-maggio",
+    "image_hash": "115792089237316195423570985008679343877105146667785535157094590988837311217663"
+  },
+  "mendini-maggio2": {
+    "image_url": "https://classicdesign.it/media/018/20160330-14754-maggio_02.o.jpg",
+    "source_page": "https://classicdesign.it/de/porro/kommode-maggio.html",
+    "product_base": "mendini-maggio",
+    "image_hash": "115792089237316195423570985008666498811203338342280535376859065080091661828095"
+  },
+  "mendini-schermo": {
+    "image_url": "http://contemporaneo.quirinale.it/html/assets/images/news/Mendini%20news.png",
+    "source_page": "https://contemporaneo.quirinale.it/news/alessandro-mendini-schermo",
+    "product_base": "mendini-schermo",
+    "image_hash": "115792089237316195422002068758964342874073673827887583632899716834118999212031"
+  },
+  "mendini-roy": {
+    "image_url": "https://cdn.mohd.it/cache/image/width=800,format=webp/media/catalog/product/r/o/roystoolwhitekartell.jpg",
+    "source_page": "https://shop.mohd.it/it/roy-sgabello.html",
+    "product_base": "mendini-roy",
+    "image_hash": "115792089237316195423570983605624212990346521352808936630943327810757341478911"
+  },
+  "mendini-roy2": {
+    "image_url": "https://cdn.mohd.it/cache/image/width=800,format=webp/media/catalog/product/r/o/roystoolallkartell.jpg",
+    "source_page": "https://shop.mohd.it/it/roy-sgabello.html",
+    "product_base": "mendini-roy",
+    "image_hash": "115792089237316195423570979209358422495475256970769047569442534515110437715967"
+  },
+  "mendini-crystal-palace": {
+    "image_url": "https://cdn.mohd.it/cache/image/width=800,format=webp/media/catalog/product/c/l/clock-palace-yellow.jpg",
+    "source_page": "https://shop.mohd.it/it/crystal-palace-arancio.html",
+    "product_base": "mendini-crystal-palace",
+    "image_hash": "115792089237316195423570983699138195440287365739687898264744241876520004485119"
+  },
+  "mendini-crystal-palace2": {
+    "image_url": "https://i.ebayimg.com/images/g/rbwAAOSw8Ihl3vyZ/s-l400.png",
+    "source_page": "https://www.ebay.it/itm/296254711084",
+    "product_base": "mendini-crystal-palace",
+    "image_hash": "115792089237316195423570985008679344040437692026845481558800368990200421941247"
+  },
+  "mendini-spot-the-dot": {
+    "image_url": "https://www.aleecommerce.com/img2/23468.jpg",
+    "source_page": "https://www.ebay.it/itm/126921095203",
+    "product_base": "mendini-spot-the-dot",
+    "image_hash": "115792089236908104066373854217754963211082391796229898835487889202163801391103"
+  },
+  "mendini-nativo-atmosfera-blu": {
+    "image_url": "https://casaoggidomani.it/wp-content/uploads/2025/09/Azzurra-Ceramica-celebra-Alessandro-Mendini-con-la-riedizione-dei-lavabi-nativo.jpg",
+    "source_page": "https://casaoggidomani.it/azzurra-ceramica-alessandro-mendini-atmosfera/",
+    "product_base": "mendini-nativo-atmosfera-blu",
+    "image_hash": "115792089237316194645014587534837919836112996376042038988718469824889244090367"
+  },
+  "mendini-nativo-atmosfera-blu2": {
+    "image_url": "https://www.arredativo.it/wp-content/uploads/2025/07/WhatsApp-Image-2025-07-20-at-16.58.40.jpeg",
+    "source_page": "https://www.arredativo.it/2025/pezzi-storici/azzurra-ceramica-omaggia-alessandro-mendini-con-la-riedizione-del-decoro-atmosfera/",
+    "product_base": "mendini-nativo-atmosfera-blu",
+    "image_hash": "115791981827210233235988540937011711300159116234627973005166979564548947705855"
+  },
+  "mendini-nativo-atmosfera-multicolore": {
+    "image_url": "https://s3.eu-south-1.amazonaws.com/wp.cluster02.ilbagnonews.it/media/Alessandro-Mendini-decoration-on-Nativo-washbasin_Azzurra-Ceramica-ph-C.Codegoni-2-800x533.jpg",
+    "source_page": "https://www.ilbagnonews.it/azzurra-ceramica-alessandro-mendini/",
+    "product_base": "mendini-nativo-atmosfera-multicolore",
+    "image_hash": "115792089237316195423570979045670239114402831520321392323635130681434314899455"
+  },
+  "mendini-nativo-atmosfera-multicolore2": {
+    "image_url": "https://casaoggidomani.it/wp-content/uploads/2025/09/Azzurra-Ceramica-celebra-Alessandro-Mendini-con-la-riedizione-dei-lavabi-nativo.jpg",
+    "source_page": "https://casaoggidomani.it/azzurra-ceramica-alessandro-mendini-atmosfera/",
+    "product_base": "mendini-nativo-atmosfera-multicolore",
+    "image_hash": "115792089237316194645014587534837919836112996376042038988718469824889244090367"
+  },
+  "mendini-nativo-stileme": {
+    "image_url": "https://casaoggidomani.it/wp-content/uploads/2025/09/Azzurra-Ceramica-celebra-Alessandro-Mendini-con-la-riedizione-dei-lavabi-nativo.jpg",
+    "source_page": "https://casaoggidomani.it/azzurra-ceramica-alessandro-mendini-atmosfera/",
+    "product_base": "mendini-nativo-stileme",
+    "image_hash": "115792089237316194645014587534837919836112996376042038988718469824889244090367"
+  },
+  "mendini-nativo-stileme2": {
+    "image_url": "https://img.edilportale.com/news/j_Lavabo-Nativo-decorazione-Alessandro-Mendini-Atmosfera-Azzurra-Ceramica-Still-life3-106815_2.jpg",
+    "source_page": "https://www.archiproducts.com/it/notizie/i-disegni-di-alessandro-mendini-per-i-lavabi-azzurra-ceramica-nativo_106815?srsltid=AfmBOop-CjZ7Bbo1n2D9NOew8yzsa_TGSKBqt_VO0BMCsOfYE5xGvlD_",
+    "product_base": "mendini-nativo-stileme",
+    "image_hash": "115792089237316195423570979045670239114402831520321392323635130681434314899455"
+  },
+  "mendini-ninfee-coffee-tables": {
+    "image_url": "https://cdn.shopify.com/s/files/1/0653/7697/7075/files/101621_GHIDBS-25320200213-27-y5axht.jpg?v=1747391188",
+    "source_page": "https://artemest.com/products/ninfee-right-side-table-by-alessandro-mendini",
+    "product_base": "mendini-ninfee-coffee-tables",
+    "image_hash": "115792089237210881524887757616737269042259886666830264228309399694707259342847"
+  },
+  "mendini-ninfee-coffee-tables2": {
+    "image_url": "https://cdn.shopify.com/s/files/1/0653/7697/7075/files/1jw6h7unac2wama0ayr7k5ind0qs.jpg?v=1747399137&width=3840",
+    "source_page": "https://artemest.com/products/ninfee-right-side-table-by-alessandro-mendini",
+    "product_base": "mendini-ninfee-coffee-tables",
+    "image_hash": "115792089236486848472007218169687409807812631345760711047339743495691102584831"
+  },
+  "mendini-tegamino": {
+    "image_url": "http://alessi.com/cdn/shop/products/01_AM42_af24f848-216f-4a03-8744-81818e8dfd03.jpg?v=1618503365",
+    "source_page": "https://alessi.com/it/products/tegamino-egg-pan-with-two-handles",
+    "product_base": "mendini-tegamino",
+    "image_hash": "115792089236921248668238117879385219041762619977477016104472579754607125725183"
+  },
+  "mendini-alessini-proust": {
+    "image_url": "http://alessi.com/cdn/shop/products/01-1_AM39S1.jpg?v=1637257728",
+    "source_page": "https://alessi.com/it/products/alessini-proust-children-tableware",
+    "product_base": "mendini-alessini-proust",
+    "image_hash": "115792089236012904441588109986557710678199836684439989495809550238734518059007"
+  },
+  "mendini-eltner-diavoletti-family": {
+    "image_url": "https://www.internionline.it/cdn/shop/products/551017_CAPPELLINI_01_85bc74a2-5db8-4adb-9ced-459e0658269f.jpg?v=1710154409&width=2000",
+    "source_page": "https://www.internionline.it/it/products/cappellini-diavoletti-family-large",
+    "product_base": "mendini-eltner-diavoletti-family",
+    "image_hash": "115792089237316189397461367901959440359671706616604328335268608883317746434047"
+  },
+  "mendini-100-percent-make-up-proust": {
+    "image_url": "http://alessi.com/cdn/shop/products/01_TAM101_eb9ca1b7-a0e6-4ad2-bd88-6a17206edcaf.jpg?v=1622476106",
+    "source_page": "https://alessi.com/it/products/100-make-up-proust-vase-with-lid",
+    "product_base": "mendini-100-percent-make-up-proust",
+    "image_hash": "115792089237158224575569131704640683287569382693517304433220487524158544019455"
+  },
+  "mendini-goffo": {
+    "image_url": "https://www.riva1920.it/components/com_riva/files/products/goffo.jpg",
+    "source_page": "https://www.riva1920.it/en/products/living-and-dining-furniture/chairs/goffo",
+    "product_base": "mendini-goffo",
+    "image_hash": "115792078884097702539689828373138588654045027807606467538907526535573321809919"
+  },
+  "mendini-rustico": {
+    "image_url": "https://www.riva1920.it/components/com_riva/files/products/rustico.jpg",
+    "source_page": "https://www.riva1920.it/it/prodotti/mobili-zona-giorno/tavolini/rustico",
+    "product_base": "mendini-rustico",
+    "image_hash": "115792089237316182768740791469753775434724694845504406396905862547602787008511"
+  },
+  "mendini-linea": {
+    "image_url": "https://static.dezeen.com/uploads/2023/09/linea-alessandro-mendini-porro_dezeen_2364_col_3-scaled.jpg",
+    "source_page": "https://www.dezeen.com/2023/09/18/linea-alessandro-mendini-porro-dezeen-showroom/",
+    "product_base": "mendini-linea",
+    "image_hash": "115792087942402813474255229491660472521952009939588689162677686654535674626047"
+  },
+  "mendini-linea2": {
+    "image_url": "https://static.dezeen.com/uploads/2023/09/linea-alessandro-mendini-porro_dezeen_2364_col_4-scaled.jpg",
+    "source_page": "https://www.dezeen.com/2023/09/18/linea-alessandro-mendini-porro-dezeen-showroom/",
+    "product_base": "mendini-linea",
+    "image_hash": "115792088373952857659560018590354382026393799522523934106688914702879086870527"
+  },
+  "mendini-proust-christmas-bauble": {
+    "image_url": "https://alessi.com/cdn/shop/products/01_AM43-1.jpg?v=1697211073&width=1000",
+    "source_page": "https://alessi.com/it/products/proust-christmas-bauble-1",
+    "product_base": "mendini-proust-christmas-bauble",
+    "image_hash": "115792089237316193013071967484687560525099525540591548434375008011905633615871"
+  },
+  "mendini-asta": {
+    "image_url": "http://alessi.com/cdn/shop/files/04_AM242S24.jpg?v=1758816542",
+    "source_page": "https://alessi.com/it/products/asta-cutlery-flatware-set-24-pieces",
+    "product_base": "mendini-asta",
+    "image_hash": "115792089237316195423485162417159057747287554528546052890255596196712471826431"
+  },
+  "mendini-anna-stick": {
+    "image_url": "http://alessi.com/cdn/shop/files/03_AM44SET1.jpg?v=1739962904",
+    "source_page": "https://alessi.com/it/products/anna-stick-set-composed-of-two-chopsticks",
+    "product_base": "mendini-anna-stick",
+    "image_hash": "59704868101452802032076582703195935122022539953872181681060224154790793314303"
+  },
+  "mendini-alessandro-stick": {
+    "image_url": "http://alessi.com/cdn/shop/files/03_AM44SET2.jpg?v=1739962899",
+    "source_page": "https://alessi.com/it/products/alessandro-stick-set-composed-of-two-chopsticks",
+    "product_base": "mendini-alessandro-stick",
+    "image_hash": "59704868101452802032076582703195578310099363301959572273224669573869658439679"
+  },
+  "mendini-alessandro-stick2": {
+    "image_url": "https://alessi.com/cdn/shop/files/AM44SET1-AM44SET2-04.jpg?v=1739962899&width=2000",
+    "source_page": "https://alessi.com/it/products/alessandro-stick-set-composed-of-two-chopsticks",
+    "product_base": "mendini-alessandro-stick",
+    "image_hash": "115792089236473645768247163945664403388596362387578756720231756028162982543359"
+  },
+  "boeri-borgogna": {
+    "image_url": "http://www.ciniboeriarchitetti.com/img/product/borgogna_01.jpg",
+    "source_page": "http://www.ciniboeriarchitetti.com/product/borgogna.html",
+    "product_base": "boeri-borgogna",
+    "image_hash": "115792089237316195423570983699137481114103441186499037452671883971967619956735"
+  },
+  "boeri-borgogna2": {
+    "image_url": "http://www.ciniboeriarchitetti.com/img/product/borgogna_02.jpg",
+    "source_page": "http://www.ciniboeriarchitetti.com/product/borgogna.html",
+    "product_base": "boeri-borgogna",
+    "image_hash": "115792089237316195423570983652369071907575503492547256696664992204802704277503"
+  },
+  "boeri-partner": {
+    "image_url": "https://www.designculture.it/interview/img/cboeri/1967-partner.jpg",
+    "source_page": "https://www.designculture.it/interview/cini-boeri.html",
+    "product_base": "boeri-partner",
+    "image_hash": "115792089235637729452748709386633056246112003063198569564975480111497425715199"
+  },
+  "boeri-partner2": {
+    "image_url": "https://franzi1864.com/cdn/shop/files/4_9f7d818f-9839-41ee-a37f-59e11c6c4c54.jpg?v=1782728691&width=700",
+    "source_page": "https://franzi1864.com/pages/personaggi-cini-boeri",
+    "product_base": "boeri-partner",
+    "image_hash": "115792089237316195423570985008666498811203338342280535376859065080091661828095"
+  },
+  "boeri-bobo": {
+    "image_url": "https://www.arflex.it/media/01_global-content/00-catalogue/01-sofas/bobo/arflex-bobo-sofa-1.jpg",
+    "source_page": "https://www.arflex.it/us/it/bobo-sofa",
+    "product_base": "boeri-bobo",
+    "image_hash": "115792089237316195423570983605601377027263142975006544508460402467985594253311"
+  },
+  "boeri-bobolungo": {
+    "image_url": "https://media-assets.ad-italia.it/photos/661d41a54c4e4efd9a04d4e5/master/w_1600%2Cc_limit/4_C.%2520Boeri%2C%2520seduta%2520Boboletto%2520per%2520Arflex%25201967.jpg",
+    "source_page": "https://www.ad-italia.it/article/cini-boeri-archivio-mostra-triennale-milano/",
+    "product_base": "boeri-bobolungo",
+    "image_hash": "115791868593745917765871232056727183354221635964515790558637361726305570652159"
+  },
+  "boeri-boboletto": {
+    "image_url": "https://img.edilportale.com/News/4-C-Boeri-seduta-Boboletto-per-Arflex-1967-98943_3.jpg",
+    "source_page": "https://www.archiportale.com/news/2024/04/eventi/la-mostra-su-cini-boeri-nella-biblioteca-di-parco-sempione_98943_32.html",
+    "product_base": "boeri-boboletto",
+    "image_hash": "115791868593745917765871232056727183354221635964515790558637361726305570652159"
+  },
+  "boeri-cubotto": {
+    "image_url": "https://media.mutualart.com/Images//2019_08/11/08/083436001/4cab8027-80df-44ed-a0e8-711ca37990d2.Jpeg",
+    "source_page": "https://www.mutualart.com/Artwork/Cubotto-Cocktail-Cabinet/3A62EC59681CD203",
+    "product_base": "boeri-cubotto",
+    "image_hash": "115792089237316195423405472520423494527158184561661044954804474539759783378943"
+  },
+  "boeri-cubotto2": {
+    "image_url": "https://www.wright20.com/items/index/2000/258_2_important_design_day_1_december_2008_cini_boeri_cubotto__wright_auction.jpg?t=1687209453",
+    "source_page": "https://www.wright20.com/auctions/2008/12/important-design-day-1/258",
+    "product_base": "boeri-cubotto",
+    "image_hash": "115791979233994526714961993715455311886361335418120611563414830778307999432703"
+  },
+  "boeri-mod-602": {
+    "image_url": "https://hips.hearstapps.com/hmg-prod/images/5-c-boeri-lampada-602-per-arteluce-1968-661e4405496e6.jpg?resize=980:*",
+    "source_page": "https://www.elledecor.com/it/design/a60507746/fuorisalone-2024-cini-boeri-nella-biblioteca-del-parco-una-mostra-senza-etichette/",
+    "product_base": "boeri-mod-602",
+    "image_hash": "115792034021666980839627182664046954571537632984771265155465707986939047575551"
+  },
+  "boeri-bibebo": {
+    "image_url": "https://vintage-shop.it/320685-large_default/SET-6-BICCHIERI-CRISTALLO-Arnolfo-Di-Cambio-DESIGN-Cini-Boeri--BIBEBO--13-cm-h.jpg",
+    "source_page": "https://vintage-shop.it/vetri-e-cristalli/27930--SET-6-BICCHIERI-CRISTALLO-Arnolfo-Di-Cambio-DESIGN-Cini-Boeri--BIBEBO--13-cm-h",
+    "product_base": "boeri-bibebo",
+    "image_hash": "115792089237316195423570979045670239114402831520321701808644952026503039680511"
+  },
+  "boeri-bibebo2": {
+    "image_url": "https://vintage-shop.it/320687-large_default/SET-6-BICCHIERI-CRISTALLO-Arnolfo-Di-Cambio-DESIGN-Cini-Boeri--BIBEBO--13-cm-h.jpg",
+    "source_page": "https://vintage-shop.it/vetri-e-cristalli/27930--SET-6-BICCHIERI-CRISTALLO-Arnolfo-Di-Cambio-DESIGN-Cini-Boeri--BIBEBO--13-cm-h",
+    "product_base": "boeri-bibebo",
+    "image_hash": "115792089237316195423377887624106546009676592562532504903197186358718243012607"
+  },
+  "boeri-lunario": {
+    "image_url": "https://paradisoterrestre.it/wp-content/uploads/2020/10/Lunario-Cini-Boeri-table-00.jpg",
+    "source_page": "https://paradisoterrestre.it/it/products/tavolo-lunario-cini-boeri/",
+    "product_base": "boeri-lunario",
+    "image_hash": "115792089237316195417293883273301227089434195242432897623373675307522804678655"
+  },
+  "boeri-lunario2": {
+    "image_url": "http://www.ciniboeriarchitetti.com/img/product/lunario_01.jpg",
+    "source_page": "http://www.ciniboeriarchitetti.com/product/lunario.html",
+    "product_base": "boeri-lunario",
+    "image_hash": "115792089237316195423570984447426319432954385370004646618847869202542102577151"
+  },
+  "boeri-gradual-system": {
+    "image_url": "http://www.ciniboeriarchitetti.com/img/product/gradual_01.jpg",
+    "source_page": "http://www.ciniboeriarchitetti.com/product/gradual.html",
+    "product_base": "boeri-gradual-system",
+    "image_hash": "115792089237316195423570983652369072963822521161093743046013810747952785784831"
+  },
+  "boeri-gradual-system2": {
+    "image_url": "http://www.ciniboeriarchitetti.com/img/product/gradual_02.jpg",
+    "source_page": "http://www.ciniboeriarchitetti.com/product/gradual.html",
+    "product_base": "boeri-gradual-system",
+    "image_hash": "115792089237316195423570979045670239114402914597073604760955757929925380669439"
+  },
+  "boeri-bacone": {
+    "image_url": "https://i.etsystatic.com/20074099/r/il/ffd701/6423531968/il_fullxfull.6423531968_i7r1.jpg",
+    "source_page": "https://www.etsy.com/ie/listing/1797577437/pubblicita-originale-vintage-con-cornice",
+    "product_base": "boeri-bacone",
+    "image_hash": "115791868595424332414338862243110348553494109640767951527351856862407619510271"
+  },
+  "boeri-papero": {
+    "image_url": "https://codiceicona.com/wp-content/uploads/2025/02/codiceicona-lampada-papero-cini-boeri.jpg",
+    "source_page": "https://codiceicona.com/prodotto/lampada-papero/",
+    "product_base": "boeri-papero",
+    "image_hash": "115792089237316195423565525633629871212185427826640184268663034364635511783423"
+  },
+  "boeri-papero2": {
+    "image_url": "https://cdn.shopify.com/s/files/1/0653/7697/7075/files/daoz6jbv514ire7877y7vgefb2hb.jpg?v=1747398663",
+    "source_page": "https://artemest.com/it-it/products/papero-1971-lampada-da-tavolo-bianca",
+    "product_base": "boeri-papero",
+    "image_hash": "115792089237306316018496298456598086782138319629187721916314528598800455434239"
+  },
+  "boeri-mod-235": {
+    "image_url": "https://api.incanto.auction/api/lotto/immagine/62608/1.jpg",
+    "source_page": "https://www.incanto.auction/it/asta-0228/boeri-cini-cini-boeri-sei-lampade-da-parete-mod-235-62608",
+    "product_base": "boeri-mod-235",
+    "image_hash": "101473346667052717522058347654605569139825854328744548156899790108310515474439"
+  },
+  "boeri-mod-2352": {
+    "image_url": "https://api.incanto.auction/api/lotto/immagine/62608/2.jpg",
+    "source_page": "https://www.incanto.auction/it/asta-0228/boeri-cini-cini-boeri-sei-lampade-da-parete-mod-235-62608",
+    "product_base": "boeri-mod-235",
+    "image_hash": "115792089237304671718947115801859971841231163488032249610253038879214009314431"
+  },
+  "boeri-griziotti-strips-bed": {
+    "image_url": "https://img.edilportale.com/product-thumbs/h_arflex_STRIPS_fuCNGQVkyT.jpeg",
+    "source_page": "https://www.archiproducts.com/it/prodotti/arflex/letto-imbottito-in-tessuto-strips_696061?srsltid=AfmBOoqPMmmU2Tk3UfEvF2PnhwNOGLcVK2TEUvegL-uc0fJPvYpp4rop",
+    "product_base": "boeri-griziotti-strips-bed",
+    "image_hash": "115792089237316195423570985008683625086617522482829988164185205746200425267199"
+  },
+  "boeri-griziotti-strips-bed2": {
+    "image_url": "https://img.edilportale.com/product-thumbs/b_arflex_STRIPS_CWnoGZehWA.jpeg",
+    "source_page": "https://www.archiproducts.com/it/prodotti/arflex/letto-imbottito-in-tessuto-strips_696061?srsltid=AfmBOoqC1Mxelnwtw3we3Kj8re_h7GIB7heo1nbtvIiKa-lrYIMgUvBw",
+    "product_base": "boeri-griziotti-strips-bed",
+    "image_hash": "115792089237316169812605112305091921005500606341119085708938274553376733659135"
+  },
+  "boeri-griziotti-strips-sofa-bed": {
+    "image_url": "https://www.arflex.it/media/01_global-content/00-catalogue/01-sofas/strips%20sofa%20bed/arflex-strips%20divano%20letto%2003.jpg",
+    "source_page": "https://www.arflex.it/au/it/strips-sofa-bed",
+    "product_base": "boeri-griziotti-strips-sofa-bed",
+    "image_hash": "115792089237316195423570985008642591350653328750943222618256307496403154763775"
+  },
+  "boeri-pecorelle": {
+    "image_url": "https://www.arflex.it/media/01_global-content/00-catalogue/02-armchairs/pecorelle/arflex-pecorella-armchair-06.jpg",
+    "source_page": "https://www.arflex.it/us/it/pecorelle-armchair",
+    "product_base": "boeri-pecorelle",
+    "image_hash": "115792089237316195422835375550424012091095441243551788419654687898039576690687"
+  },
+  "boeri-cibi": {
+    "image_url": "https://cdn.shopify.com/s/files/1/0653/7697/7075/files/62611_ARNOSI-00420190404-7-1fgaphr.jpg?v=1747393917",
+    "source_page": "https://artemest.com/it-it/products/cibi-set-di-2-bicchieri-highball-di-cini-boeri",
+    "product_base": "boeri-cibi",
+    "image_hash": "115792089236592160763519458426015648754284320175782929957616582139043911827455"
+  },
+  "boeri-botolo": {
+    "image_url": "https://www.arflex.it/media/01_global-content/00-catalogue/03-chairs-stools/botolo/arflex-botolo-chair-11C.jpg",
+    "source_page": "https://www.arflex.it/au/it/botolo-high-version",
+    "product_base": "boeri-botolo",
+    "image_hash": "115792089237316195423567919842137667297320001873147288782441305323839183388671"
+  },
+  "boeri-botolino": {
+    "image_url": "https://www.artribune.com/wp-content/uploads/2025/02/a-casa-di-cini-boeri-rivista-botolo-e-botolino-1.png",
+    "source_page": "https://www.artribune.com/progettazione/2025/02/cini-boeri-architetta/",
+    "product_base": "boeri-botolino",
+    "image_hash": "115792089237315784047431678559248936096250898262062260542443541981883541749759"
+  },
+  "boeri-lucetta": {
+    "image_url": "https://codiceicona.com/wp-content/uploads/2025/01/codiceicona-lampada-lucetta-1973-600x400.jpg",
+    "source_page": "https://codiceicona.com/prodotto/lucetta-100-limited/",
+    "product_base": "boeri-lucetta",
+    "image_hash": "115792089237316195423570985008642948168021105946276974518812904391166497128447"
+  },
+  "boeri-lucetta2": {
+    "image_url": "https://images.divisare.com//image/upload/c_fit,f_jpg,q_80,w_1200/v1443432242/c1wklipb8gu5sf5js3gl.jpg",
+    "source_page": "https://divisare.com/projects/299280-cini-boeri-architetti-lucetta",
+    "product_base": "boeri-lucetta",
+    "image_hash": "115792089237316182768543094143201017562569975841742568544200492891495899070463"
+  },
+  "boeri-bengodi": {
+    "image_url": "https://www.intondo.com/media/mounted_nas/app-models-product/2023/796720/conversions/intondo-bengodi-sofa-by-cini-boeri-for-arflex-1970s-8-large.webp",
+    "source_page": "https://www.intondo.com/it/products/62332/sedute/divani/divano-bengodi-di-cini-boeri-per-arflex-anni-70",
+    "product_base": "boeri-bengodi",
+    "image_hash": "115792089237316195423423859637344308728068872802201877659562181794554911391743"
+  },
+  "boeri-abat-jour": {
+    "image_url": "https://www.intondo.com/media/mounted_nas/app-models-product/2023/818460/intondo-pair-of-table-lamps-by-cini-boeri-for-tronconi-1970s-6.jpg",
+    "source_page": "https://www.intondo.com/it/products/64054/illuminazione/lampade-da-tavolo/coppia-di-lampade-da-tavolo-di-cini-boeri-per-tronconi-anni-70",
+    "product_base": "boeri-abat-jour",
+    "image_hash": "115792089237316195422977121952533258359023123778194200370718160120446690787327"
+  },
+  "boeri-taboga": {
+    "image_url": "https://www.arflex.it/media/01_global-content/00-catalogue/02-armchairs/taboga/arflex-%20Taboga%20design%20Cini%20Boeri_7.jpg",
+    "source_page": "https://www.arflex.it/au/it/taboga",
+    "product_base": "boeri-taboga",
+    "image_hash": "115792089237316195423570983605601377038161566400605661709694837656635735801855"
+  },
+  "boeri-talete": {
+    "image_url": "https://img.rafuju.jp/images/product/B-065956/03261702_641ffc0660bc7.jpg",
+    "source_page": "https://www.pgalumnifoundation.org/shop/8742420562",
+    "product_base": "boeri-talete",
+    "image_hash": "115792089237316195422789388349112979564579105314865574865819902729226509352959"
+  },
+  "boeri-talete2": {
+    "image_url": "https://baseec-img-mng.akamaized.net/images/item/origin/2d70313ecfb9a04534cf6d175b319f6a.jpg",
+    "source_page": "https://www.pgalumnifoundation.org/shop/8742420562",
+    "product_base": "boeri-talete",
+    "image_hash": "115792089237316195423570982342817933629818102441918843327452503640096022462463"
+  },
+  "boeri-griziotti-strips-77": {
+    "image_url": "https://www.arflex.it/media/01_global-content/00-catalogue/01-sofas/strips77/arflex-Strips77%20design%20Cini%20Boeri_5.jpg",
+    "source_page": "https://www.arflex.it/au/it/strips-77",
+    "product_base": "boeri-griziotti-strips-77",
+    "image_hash": "115792089237316195423570984283692107305636631430768209289115192160365314047999"
+  },
+  "boeri-brigadier": {
+    "image_url": "https://cdn20.pamono.com/p/g/1/2/1232668_qe87i5duvu/divano-brigadier-in-pelle-nera-di-cini-boeri-per-knoll-italia-immagine-6.jpg",
+    "source_page": "https://www.pamono.it/divano-brigadier-in-pelle-nera-di-cini-boeri-per-knoll-italia?srsltid=AfmBOooY-11R6oLiZwYHnUO9tkCuXcPR9Carf-dWIKAPh3ivUSZ_cYEd",
+    "product_base": "boeri-brigadier",
+    "image_hash": "115792089237316195423570985008670780205826829345734010686446116808456375631871"
+  },
+  "boeri-brigadier2": {
+    "image_url": "https://cdn20.pamono.com/p/s/1/2/1215409_cxkn7wamgi/divano-brigadier-di-cini-boeri-per-knoll-inc-knoll-international-germania-1976.jpg",
+    "source_page": "https://www.pamono.it/divano-brigadier-di-cini-boeri-per-knoll-inc-knoll-international-germania-1976?srsltid=AfmBOoryoMvmigW2j_XHgcIluzlRf0gZ4pr7oObcSKS8ws9tmJiswy-_",
+    "product_base": "boeri-brigadier",
+    "image_hash": "115792089237316195423570982763730761301587632867953118520899229861376952369151"
+  },
+  "boeri-bonte": {
+    "image_url": "https://images.sbito.it/api/v1/sbt-ads-images-pro/images/4f/4f0768cf-f95b-49bc-80ce-8c82888e571d?rule=fullscreen-1x-auto",
+    "source_page": "https://www.subito.it/hobby-collezionismo/divano-modulare-pelle-arflex-bonte-cini-boeri-padova-623487198.htm",
+    "product_base": "boeri-bonte",
+    "image_hash": "115792089233949390278796455563021380074873555047641778012381373485912894210047"
+  },
+  "boeri-bonte2": {
+    "image_url": "https://images.sbito.it/api/v1/sbt-ads-images-pro/images/8a/8a19c70d-3324-4f55-a78e-396dc48b1f6c?rule=fullscreen-1x-auto",
+    "source_page": "https://www.subito.it/hobby-collezionismo/divano-modulare-pelle-arflex-bonte-cini-boeri-padova-623487198.htm",
+    "product_base": "boeri-bonte",
+    "image_hash": "115792089237315989744917128107968672247132485959409198568567529370599345356799"
+  },
+  "boeri-tuttoletto": {
+    "image_url": "https://media.mutualart.com/Images//2024_12/05/13/82076352/cini-boeri-tuttoletto-DOXHR.Jpeg",
+    "source_page": "https://www.mutualart.com/Artwork/Tuttoletto/8212E023F581BD6E2772902F519CD98F",
+    "product_base": "boeri-tuttoletto",
+    "image_hash": "115792089237316092588951852929433652291434724849974512035010251793845375205375"
+  },
+  "boeri-accademia": {
+    "image_url": "https://a.1stdibscdn.com/21st-century-ginger-and-fred-platinum-ceramic-table-lamp-by-patrizia-garganti-for-sale/f_54672/f_308293121665651610720/f_30829312_1665651611022_bg_processed.jpg?width=768",
+    "source_page": "https://www.1stdibs.com/it/arredi/illuminazione/lampade-da-tavolo/lampada-da-tavolo-in-ceramica-platino-21st-century-ginger-and-fred-di-patrizia-garganti/id-f_30829312/",
+    "product_base": "boeri-accademia",
+    "image_hash": "115792089237316195423534204554481934168773014408802948517410430698162088837119"
+  },
+  "boeri-accademia2": {
+    "image_url": "https://a.1stdibscdn.com/set-of-two-large-plume-wall-lamps-by-christophe-pillet-for-oluce-italy-for-sale/f_14272/f_484435421769081304901/f_48443542_1769081305088_bg_processed.jpg?width=768",
+    "source_page": "https://www.1stdibs.com/it/arredi/illuminazione/lampade-da-parete-e-applique/set-di-due-grandi-lampade-da-parete-plume-di-christophe-pillet-per-oluce-italia/id-f_48443542/",
+    "product_base": "boeri-accademia",
+    "image_hash": "115792089237316195423570983465342177639465904780398182618673686385309333323775"
+  },
+  "boeri-griziotti-strips-con-gambe": {
+    "image_url": "https://a.1stdibscdn.com/cini-boeri-strips-sofa-bed-for-arflex-for-sale/f_58922/f_445350121744711073668/f_44535012_1744711074418_bg_processed.jpg",
+    "source_page": "https://www.1stdibs.com/buy/strips-cini-boeri/",
+    "product_base": "boeri-griziotti-strips-con-gambe",
+    "image_hash": "115792089237316195423570961108751654881759764408148286323476989937042902220799"
+  },
+  "boeri-griziotti-strips-con-gambe2": {
+    "image_url": "https://a.1stdibscdn.com/cini-boeri-strips-daybed-for-arflex-italy-for-sale/f_81942/f_503139021780083176613/f_50313902_1780083176828_bg_processed.jpg",
+    "source_page": "https://www.1stdibs.com/buy/strips-arflex/",
+    "product_base": "boeri-griziotti-strips-con-gambe",
+    "image_hash": "115792089237316188995046382351567292502661073370335411292746658365403719270399"
+  },
+  "boeri-double-face": {
+    "image_url": "https://www.habimat.it/wp-content/uploads/2020/09/arflex-Botolo-design-Cini-Boeri-1-e1599818027882.jpg",
+    "source_page": "https://www.habimat.it/addio-cini-boeri/",
+    "product_base": "boeri-double-face",
+    "image_hash": "115792089237316195423570985008642948864930027477855347064433211167250678022143"
+  },
+  "boeri-double-face2": {
+    "image_url": "https://www.habimat.it/wp-content/uploads/2020/09/arflex-Pecorelle-design-Cini-Boeri-2-e1599817928829.jpg",
+    "source_page": "https://www.habimat.it/addio-cini-boeri/",
+    "product_base": "boeri-double-face",
+    "image_hash": "115792089237316195423570985008642591350674513401988032529359164215718674694143"
+  },
+  "boeri-folio": {
+    "image_url": "https://images5-cdn.auctionmobility.com/is3/auctionmobility-static5/NCQR-5-8PUI4/5-11NZ02/129_1.jpg?maxwidth=1600&maxheight=1600",
+    "source_page": "https://bid.aandoauctions.com/lots/view/5-11NZ02/set-of-8-folio-chairs-cini-boeri-for-rosenthal",
+    "product_base": "boeri-folio",
+    "image_hash": "115792089237316195423570972468740080766004504982214678549329484328290490515455"
+  },
+  "boeri-folio2": {
+    "image_url": "https://artenreich.design/wp-content/uploads/2020/05/IMG_2385-2000x1333.jpg",
+    "source_page": "https://artenreich.design/artikel/ledersessel-rosenthal-folio-von-cini-boeri/",
+    "product_base": "boeri-folio",
+    "image_hash": "115792089237316195423570979068963276882914031337300227829281066121611880431615"
+  },
+  "boeri-prisma": {
+    "image_url": "https://cellar-c2.services.clever-cloud.com/medias.piasa.amphibee.fr/images/cini-boeri-n-e-en1924-prisma_1516627540_5a65e654cb_662058_5b7c26eca1a88.jpg",
+    "source_page": "https://www.piasa.fr/en/products/cini-boeri-n-e-en1924-prisma_1516627540_5a65e654cb717",
+    "product_base": "boeri-prisma",
+    "image_hash": "115792089237316195423203174339736598236108774481350448400712812246542971830271"
+  },
+  "boeri-prisma2": {
+    "image_url": "https://images.auctionet.com/thumbs/large_item_3360834_841ab9d0f8.jpg",
+    "source_page": "https://auctionet.com/en/3360834-cini-boeri-prisma-desk-for-rosenthal-1980s",
+    "product_base": "boeri-prisma",
+    "image_hash": "115792089230579396945402625588550987410453128719229425038977055588875046486015"
+  },
+  "boeri-tre-b": {
+    "image_url": "https://www.ferramentaperaino.it/img/3350186458.jpg",
+    "source_page": "https://www.ferramentaperaino.it/prodotti/maniglia-per-porta-interna-fusital-serie-tre-b-cod-h-37-r8-p513215450/297894074",
+    "product_base": "boeri-tre-b",
+    "image_hash": "115792089237316195423570982062255648005829744287953443897521783540711832944639"
+  },
+  "boeri-tre-b2": {
+    "image_url": "https://storage.googleapis.com/deesup_vendure_prod/preview/34/3h37-anni-80-fusital-deesup__preview.webp",
+    "source_page": "https://www.deesup.com/shop/set-2-h37-tre-b-maniglia-porta-anni-80-modernariato-cini-boeri-fusital-26467",
+    "product_base": "boeri-tre-b",
+    "image_hash": "115792089237316169812212787460228201704231492226867790956196707786968396726271"
+  },
+  "boeri-ditto": {
+    "image_url": "https://www.intondo.com/media/mounted_nas/app-models-product/2023/818460/conversions/intondo-pair-of-table-lamps-by-cini-boeri-for-tronconi-1970s-6-large.webp",
+    "source_page": "https://www.intondo.com/it/products/64054/illuminazione/lampade-da-tavolo/coppia-di-lampade-da-tavolo-di-cini-boeri-per-tronconi-anni-70",
+    "product_base": "boeri-ditto",
+    "image_hash": "115792089237316195423570974462422513486757925336769564329939239651050323443711"
+  },
+  "boeri-griziotti-steps": {
+    "image_url": "https://images.squarespace-cdn.com/content/v1/55b7332ce4b0d6fd1d684c46/1757370979218-V52ABVLWAMHZAMNR4SWQ/Graham+Residence+%281957%29+-+Elevation+Steps.jpg?format=1500w",
+    "source_page": "https://artecinema.com/2025-programme-blog",
+    "product_base": "boeri-griziotti-steps",
+    "image_hash": "115792089223836839163620456840349471653662367107716397074596447944278311698431"
+  },
+  "boeri-griziotti-steps2": {
+    "image_url": "https://www.salvioniarredamenti.it/imgcatalogo/prodotti/flexform/flexform_sgabello_first_steps.jpg",
+    "source_page": "https://www.salvioniarredamenti.it/en/products/flexform-first-steps-stool/",
+    "product_base": "boeri-griziotti-steps",
+    "image_hash": "115792089237316195423380952615188277787398626249700937619602225749657928073215"
+  },
+  "boeri-griziotti-nardi-rever": {
+    "image_url": "http://www.ciniboeriarchitetti.com/img/product/rever_03.jpg",
+    "source_page": "http://www.ciniboeriarchitetti.com/product/rever.html",
+    "product_base": "boeri-griziotti-nardi-rever",
+    "image_hash": "115792089237316195423570983605624926973536536866741935400440536166388702642175"
+  },
+  "boeri-griziotti-nardi-rever2": {
+    "image_url": "http://www.ciniboeriarchitetti.com/img/product/rever_01.jpg",
+    "source_page": "http://www.ciniboeriarchitetti.com/product/rever.html",
+    "product_base": "boeri-griziotti-nardi-rever",
+    "image_hash": "115792089237316195423570983605624926973536536866741935400440536166388702642175"
+  },
+  "boeri-pacific": {
+    "image_url": "https://sololuxuryliving.com/cdn/shop/files/arflex-strips_divano_letto_03.jpg?v=1778861494&width=1400",
+    "source_page": "https://sololuxuryliving.com/products/strips-sofa-bed-designed-by-cini-boeri-arflex",
+    "product_base": "boeri-pacific",
+    "image_hash": "115792089237316195423570985008642948162576505240913487189748669870187250450431"
+  },
+  "boeri-shadows": {
+    "image_url": "https://lacasainordine.it/wp-content/uploads/2017/06/poltroncina-ghost-cini-boeri-design.jpg",
+    "source_page": "https://lacasainordine.it/andrea-ponti-sedersi-su-hong-kong/",
+    "product_base": "boeri-shadows",
+    "image_hash": "115792089237316195423570961068925796592818031637498151063552188749934546124799"
+  },
+  "boeri-shadows2": {
+    "image_url": "https://jacquelinesullivangallery.com/cdn/shop/files/ZzJjjq8jQArT0tdx_CS_RooomsStudio_JSG_05.jpg?v=1743899942&width=1946",
+    "source_page": "https://jacquelinesullivangallery.com/products/cast-shadows-wall-light",
+    "product_base": "boeri-shadows",
+    "image_hash": "104936467853444199659987985343532252741219783014715745328032621231554773115907"
+  },
+  "boeri-shadows3": {
+    "image_url": "https://www.internimagazine.com/content/uploads/2019/03/prima-scelta_TheJaffa-Hotel-22_alta-copia-1200x675.jpg",
+    "source_page": "https://www.internimagazine.com/design/projects/tel-aviv-light-shadows/",
+    "product_base": "boeri-shadows",
+    "image_hash": "115792089237316195422195163197113444870226825553309683271642794762329468698623"
+  },
+  "boeri-malibu": {
+    "image_url": "https://www.intondo.com/media/mounted_nas/app-models-product/2024/1431108/conversions/malibu-coffee-table-by-cini-boeri-for-arflex-italy-1980s-11-large.webp",
+    "source_page": "https://www.intondo.com/it/products/100252/mobili/tavolini-da-salotto/tavolino-da-caffe-malibu-di-cini-boeri-per-arflex-anni-80",
+    "product_base": "boeri-malibu",
+    "image_hash": "115792089237316195423375207960716857500917069964785191725081613058679855120383"
+  },
+  "boeri-malibu2": {
+    "image_url": "https://www.intondo.com/media/mounted_nas/app-models-product/2024/1431066/conversions/malibu-coffee-table-by-cini-boeri-for-arflex-italy-1980s-2-large.webp",
+    "source_page": "https://www.intondo.com/it/products/100252/mobili/tavolini-da-salotto/tavolino-da-caffe-malibu-di-cini-boeri-per-arflex-anni-80",
+    "product_base": "boeri-malibu",
+    "image_hash": "115792089237316195423180186678809098441035305913402090064256930783501639221247"
+  },
+  "boeri-malibu3": {
+    "image_url": "https://www.intondo.com/media/mounted_nas/app-models-product/2024/1431124/conversions/malibu-coffee-table-by-cini-boeri-for-arflex-italy-1980s-14-large.webp",
+    "source_page": "https://www.intondo.com/it/products/100252/mobili/tavolini-da-salotto/tavolino-da-caffe-malibu-di-cini-boeri-per-arflex-anni-80",
+    "product_base": "boeri-malibu",
+    "image_hash": "115792089237316195422789388371949380260398539100026442125439129669150223368191"
+  },
+  "boeri-chiara": {
+    "image_url": "https://www.intondo.com/media/mounted_nas/app-models-product/2022/425066/conversions/intondo-coppia-di-lampade-da-tavolo-chiara-di-boeri-in-vetro-rosa-murano-per-venini-anni-80-1464332-large.webp",
+    "source_page": "https://www.intondo.com/it/products/35671/illuminazione/lampade-da-tavolo/coppia-di-lampade-da-tavolo-chiara-di-cini-boeri-in-vetro-rosa-murano-per-venini-anni-80",
+    "product_base": "boeri-chiara",
+    "image_hash": "115792089237316195423222337713186230278859754979150545030077291196017232838655"
+  },
+  "boeri-brontes": {
+    "image_url": "https://cdn20.pamono.com/p/g/1/4/1421486_clkki5ob66/lampada-da-tavolo-brontes-di-cini-boeri-per-artemide-1981-immagine-9.jpg",
+    "source_page": "https://www.pamono.it/lampada-da-tavolo-brontes-di-cini-boeri-per-artemide-1981-2?srsltid=AfmBOoq0Y6YYKQck8vs_NhRSpkFBvv1CqS8PcghTfewuruQ60CvzbB7k",
+    "product_base": "boeri-brontes",
+    "image_hash": "115792089237316195423570983699161031762714323631778461035554747450773016150015"
+  },
+  "boeri-brontes2": {
+    "image_url": "https://cdn20.pamono.com/p/g/1/4/1421486_6gas6g7rj5/lampada-da-tavolo-brontes-di-cini-boeri-per-artemide-1981-immagine-2.jpg",
+    "source_page": "https://www.pamono.it/lampada-da-tavolo-brontes-di-cini-boeri-per-artemide-1981-2?srsltid=AfmBOoqMzmYAxOZiWWVizNVF6ncoeQJIxGArYHypqu4z_3cW7R4gD4GN",
+    "product_base": "boeri-brontes",
+    "image_hash": "115792089237316195423570984447451297323829323711946153672261103009746860900351"
+  },
+  "boeri-brontes3": {
+    "image_url": "https://imageapi.cambiaste.com/api/lotto/immagine/270775/0/600.jpg",
+    "source_page": "https://www.cambiaste.com/it/asta-0856/cini-boeri-lampada-da-tavolo-mod-brontes-270775",
+    "product_base": "boeri-brontes",
+    "image_hash": "115792089237316195423570982062255648005829744287953443897521783540711832944639"
+  },
+  "boeri-past": {
+    "image_url": "https://www.petruccimarco.it/en/wp-content/uploads/2021/06/Divano-Serpentone-per-Arflex-Cini-Boeri.jpg",
+    "source_page": "https://www.petruccimarco.it/en/great-masters-cini-boeri/",
+    "product_base": "boeri-past",
+    "image_hash": "115792089237316143999984652471275525531286719559731313839851882602043472347135"
+  },
+  "boeri-past2": {
+    "image_url": "https://img20.shop-pro.jp/PA01246/639/product/183320032_o2.jpg?cmsp_timestamp=20241029170431",
+    "source_page": "https://digitalmarketing.devamtechnologies.com/?i=02279297707611",
+    "product_base": "boeri-past",
+    "image_hash": "115792089237316174633026153977776367347315996220552344180162206835883758321663"
+  },
+  "boeri-past3": {
+    "image_url": "https://static.mercdn.net/item/detail/orig/photos/m94042560192_12.jpg?1735195552",
+    "source_page": "https://digitalmarketing.devamtechnologies.com/?i=02279297707611",
+    "product_base": "boeri-past",
+    "image_hash": "115792089233998755440624881815427048653073142325261479799403042658773234614271"
+  },
+  "boeri-feltro": {
+    "image_url": "https://a.1stdibscdn.com/orleans-silverplate-on-felt-tray-s-8-72500-for-sale/f_60052/f_307356021665075602456/f_30735602_1665075603678_bg_processed.jpg?width=768",
+    "source_page": "https://www.1stdibs.com/it/arredi/servizi-da-tavola-porcellane-argenti-e-vetreria/accessori-sheffield-e-placcati-in-argento/servizio-di-orleans-in-argento-su-vassoio-di-feltro-per-8-persone/id-f_30735602/",
+    "product_base": "boeri-feltro",
+    "image_hash": "115792089237316195423570985008596919424486737953619719052627241956249901727743"
+  },
+  "boeri-feltro2": {
+    "image_url": "http://lacasainordine.it/wp-content/uploads/2025/09/prodotti-feltro-e-materiale-edile-tessuto-scarto.jpg",
+    "source_page": "https://lacasainordine.it/davide-balda-il-changemaker-del-design/",
+    "product_base": "boeri-feltro",
+    "image_hash": "115792089237316195422787101578423093702492047675642371593448112598681506545663"
+  },
+  "boeri-feltro3": {
+    "image_url": "http://lacasainordine.it/wp-content/uploads/2026/06/lampada-dondolina-tappeto-feltro-e-tableware-legno.jpg",
+    "source_page": "https://lacasainordine.it/2026/06/venice-design-week-lisa-balasso-intervista/",
+    "product_base": "boeri-feltro",
+    "image_hash": "115792089237316195422787101578423093702492047675642371598170479081551151759359"
+  },
+  "boeri-lucia": {
+    "image_url": "https://www.veronasera.it/user/avatar/lucia/44014967065154/",
+    "source_page": "https://www.veronasera.it/visioni-architettoniche-documentario-casa-cini-boeri-ottobre-2025.html",
+    "product_base": "boeri-lucia",
+    "image_hash": "115792089237316195423570985008687907363261382457495499278388793595576484626431"
+  },
+  "boeri-cini-boeri-lounge-chair": {
+    "image_url": "https://www.format-store.com/images/poltrona-cini-boeri-knoll-1698656502.jpg",
+    "source_page": "https://www.format-store.com/it/prod/imbottiti/poltrone/poltrona-cini-boeri-knoll.html",
+    "product_base": "boeri-cini-boeri-lounge-chair",
+    "image_hash": "115792089237316195423570985008642948864930027470249443463063834758270458789887"
+  },
+  "boeri-cini-boeri-lounge-chair2": {
+    "image_url": "https://quasimodomodern.com/wp-content/uploads/2013/08/Cini-Boeri-Lounge-Chair-.jpg",
+    "source_page": "https://quasimodomodern.com/products/knoll-chair-lounge-cini-boeri/",
+    "product_base": "boeri-cini-boeri-lounge-chair",
+    "image_hash": "115792089237316195423570985008666498451859675884345941195253515517822966431743"
+  },
+  "boeri-cini-boeri-lounge-chair3": {
+    "image_url": "https://www.myconcept.com.hk/cdn/shop/products/BlobServer_d01c11c0-2a00-4917-9c32-6d4a32f9c6c0.jpg?v=1673058476&width=800",
+    "source_page": "https://www.myconcept.com.hk/products/knoll-cini-boeri-lounge-chair-with-castors?srsltid=AfmBOoq0gWOdJ1eD_oMJg8RO5jRGZe3-k8AH7x-n3In5klXgqAH2e5aU",
+    "product_base": "boeri-cini-boeri-lounge-chair",
+    "image_hash": "115792089237316195423183257673831169233238169722452364099589293873163157897215"
+  },
+  "boeri-cini-boeri-sofa": {
+    "image_url": "https://a.1stdibscdn.com/cini-boeri-sofa-plastic-leather-gavina-knoll-italy-1970s-for-sale/f_32281/f_350211321689433713441/f_35021132_1689433714089_bg_processed.jpg?width=768",
+    "source_page": "https://www.1stdibs.com/it/arredi/sedute/divani/cini-boeri-divano-plastica-pelle-gavina-knoll-italia-anni-70/id-f_35021132/",
+    "product_base": "boeri-cini-boeri-sofa",
+    "image_hash": "115792089237316195423570985008677202107201448035937621409423642067590124142591"
+  },
+  "boeri-cini-boeri-sofa2": {
+    "image_url": "https://www.proantic.com/galerie/abcv/img/1137121-main-646b98f7cdc49.jpg",
+    "source_page": "https://www.proantic.com/en/1137121-cini-boeri-gradual-lounge-sofa-black-leather-knollgavina.html",
+    "product_base": "boeri-cini-boeri-sofa",
+    "image_hash": "115792089237316092603075643125133431243927889727980351295727227477335646142463"
+  },
+  "boeri-cini-boeri-sofa3": {
+    "image_url": "https://www.format-store.com/images/divano-cini-boeri-knoll-1698659313.jpg",
+    "source_page": "https://www.format-store.com/en/prod/armchairs-and-chaise-longue/sofas/cini-boeri-sofa-knoll.html",
+    "product_base": "boeri-cini-boeri-sofa",
+    "image_hash": "115792089237316195423570983699137481114087490570976696283262425106366194515967"
+  },
+  "boeri-cini-boeri-ottoman": {
+    "image_url": "https://www.couchpotatocompany.com/cdn/shop/products/knoll_cini_boeri_ottoman_fabric_main_1700x.jpg?v=1537543942",
+    "source_page": "https://www.couchpotatocompany.com/products/boeri-ottoman?srsltid=AfmBOoptKJe6M8G3xckld7r9rP5EYoyH-C4S76A2_Exsb-Yime12xXt4",
+    "product_base": "boeri-cini-boeri-ottoman",
+    "image_hash": "115792089236526327926396417206625861505694950165579518570268058155709745856511"
+  },
+  "boeri-collezione-dax-design": {
+    "image_url": "http://www.ciniboeriarchitetti.com/img/product/daxdesign_01.jpg",
+    "source_page": "http://www.ciniboeriarchitetti.com/product/daxdesign.html",
+    "product_base": "boeri-collezione-dax-design",
+    "image_hash": "115792089237316195423570979045715911737467709690599725870540395140676453400575"
+  },
+  "boeri-collezione-dax-design2": {
+    "image_url": "http://www.ciniboeriarchitetti.com/img/product/daxdesign_04.jpg",
+    "source_page": "http://www.ciniboeriarchitetti.com/product/daxdesign.html",
+    "product_base": "boeri-collezione-dax-design",
+    "image_hash": "115792089237316195423570979045670239119847349391058902961940808994959199830015"
+  },
+  "boeri-collezione-dax-design3": {
+    "image_url": "http://www.ciniboeriarchitetti.com/img/product/daxdesign_02.jpg",
+    "source_page": "http://www.ciniboeriarchitetti.com/product/daxdesign.html",
+    "product_base": "boeri-collezione-dax-design",
+    "image_hash": "115792089237316195423570983605624926973536536866741935400440536166388702642175"
+  },
+  "boeri-ben-ben": {
+    "image_url": "https://www.arflex.it/media/01_global-content/00-catalogue/01-sofas/ben-ben/arflex-ben-ben-sofa-02B.jpg",
+    "source_page": "https://www.arflex.it/us/it/ben-ben",
+    "product_base": "boeri-ben-ben",
+    "image_hash": "115792089237316195423559490923827381205052877365920448966091502427072530219007"
+  },
+  "boeri-bebop": {
+    "image_url": "http://www.ciniboeriarchitetti.com/img/product/bebop_01.jpg",
+    "source_page": "http://www.ciniboeriarchitetti.com/product/bebop.html",
+    "product_base": "boeri-bebop",
+    "image_hash": "115792089237316195423570979045670239119847432467806163639104294722350669103103"
+  },
+  "boeri-bebop2": {
+    "image_url": "http://www.ciniboeriarchitetti.com/img/product/bebop_02.jpg",
+    "source_page": "http://www.ciniboeriarchitetti.com/product/bebop.html",
+    "product_base": "boeri-bebop",
+    "image_hash": "115792089237316195423570979045670239114402831520323887546526815276050908446719"
+  },
+  "boeri-bebop3": {
+    "image_url": "https://3rings.designerpages.com/wp-content/uploads/2011/02/bebop-sofa-by-cini-boeri-for-poltrona-frau-large2.jpg",
+    "source_page": "https://3rings.designerpages.com/2011/02/bebop-sofa-by-cini-boeri-for-poltrona-frau/",
+    "product_base": "boeri-bebop",
+    "image_hash": "115792089237316195423570985008642948864930027386584503848000694259488047235071"
+  },
+  "boeri-to-the-wall": {
+    "image_url": "https://images.auctionet.com/thumbs/large_item_4391228_f8b07ad003.jpg",
+    "source_page": "https://auctionet.com/en/4391228-cini-boeri-wall-shelves-to-the-wall-for-magis",
+    "product_base": "boeri-to-the-wall",
+    "image_hash": "115792089230628762157840184582648696221237260411075852295289681006664139931647"
+  },
+  "boeri-ledletto": {
+    "image_url": "https://images.squarespace-cdn.com/content/v1/58cc3a5ee6f2e1f85d5adbe0/1544254461506-KT9JINAESBWOZXA9STG8/ARFLEX-beds-LEDLETTO-01.jpg?format=1000w",
+    "source_page": "https://www.bellospazio.com/beds/arflex-beds-ledletto",
+    "product_base": "boeri-ledletto",
+    "image_hash": "115792089237316195423570985008505395769651824758986706312687634617037853032447"
+  },
+  "boeri-ledletto2": {
+    "image_url": "https://images.squarespace-cdn.com/content/v1/58cc3a5ee6f2e1f85d5adbe0/1600437074996-WINQ8ZIMDWQ8HXANN91W/Conte-Beds-double-1.jpg?format=1000w",
+    "source_page": "https://www.bellospazio.com/beds/arflex-beds-ledletto",
+    "product_base": "boeri-ledletto",
+    "image_hash": "115792089237316195423180192682749437455521453028398063481812352205277496344575"
+  },
+  "boeri-ledletto3": {
+    "image_url": "https://www.petruccimarco.it/wp-content/uploads/2021/06/Divano-Serpentone-per-Arflex-Cini-Boeri.jpg",
+    "source_page": "https://www.petruccimarco.it/i-grandi-maestri-cini-boeri/",
+    "product_base": "boeri-ledletto",
+    "image_hash": "115792089237316143999984652471275525531286719559731313839851882602043472347135"
+  },
+  "mari-calendario-bilancia": {
+    "image_url": "https://www.dellachiara.it/wp-content/uploads/2021/03/Danese-calendario-Bilancia-Enzo-Mari-storico.jpg",
+    "source_page": "https://www.dellachiara.it/shop/accessori/danese-bilancia-calendario-perpetuo/?srsltid=AfmBOopW71O-zl2gpliYd7Jyp5xSR8HRATf0hHSigMqdcwJF0f4mj8Sd",
+    "product_base": "mari-calendario-bilancia",
+    "image_hash": "115792089237316195423570970048391811751714588860690448027053526405372931211263"
+  },
+  "mari-citera": {
+    "image_url": "https://www.intondo.com/media/mounted_nas/app-models-product/2025/1841760/conversions/media-librarygA6pi4-large.webp",
+    "source_page": "https://www.intondo.com/it/products/128679/decor/scatole-e-bauli/scatola-citera-di-enzo-mari-per-danese-1960",
+    "product_base": "mari-citera",
+    "image_hash": "115792089237316195423570983605555700214567262920067398265239737826797856751615"
+  },
+  "mari-citera2": {
+    "image_url": "https://rewirela.com/wp-content/uploads/2024/05/Citera_citera_002_492-1.jpg",
+    "source_page": "https://rewirela.com/product/citera/?srsltid=AfmBOorL47LJX69XNi-rNWgpbRhQvm5s2akc6YNYOeWmQj-LeTix8Hyj",
+    "product_base": "mari-citera",
+    "image_hash": "86850692705581411810426186164664877680581015907069292566418485563995256258559"
+  },
+  "mari-arran": {
+    "image_url": "http://alessi.com/cdn/shop/files/90068_02.jpg?v=1741335990",
+    "source_page": "https://alessi.com/it/products/arran-rectangular-tray",
+    "product_base": "mari-arran",
+    "image_hash": "86850692705581408194791054674633418878815039933445975259530581348950147842051"
+  },
+  "mari-arran2": {
+    "image_url": "http://alessi.com/cdn/shop/files/90068_01.jpg?v=1741335990",
+    "source_page": "https://alessi.com/it/products/arran-rectangular-tray",
+    "product_base": "mari-arran",
+    "image_hash": "115792089233949441726707323572690567522606711496516553929273337052846509522943"
+  },
+  "mari-arran3": {
+    "image_url": "https://www.tendencedesign.it/wp-content/uploads/2025/04/Vassoio-ARRAN.webp",
+    "source_page": "https://www.tendencedesign.it/alessi-vassoio-arran-greenpurple/?srsltid=AfmBOor5MS6rDkXRTNf6DiNpl2OSB63Li3WPIjE9ROyWVs4y0DsJTtJS",
+    "product_base": "mari-arran",
+    "image_hash": "115792089237316195423570982202422787312202965809183620399860265089443150430207"
+  },
+  "mari-camicia": {
+    "image_url": "https://www.designperte.it/upl/camicia-vaso-danese-milano-10_1200_1200_2_0.jpg",
+    "source_page": "https://www.designperte.it/complementi/vasi/danese-milano/camicia-vaso?srsltid=AfmBOooz86C05_6Ub-WYIUOOdZDpK7oKOsXnbEGPAu97e58NUeLk-o8n",
+    "product_base": "mari-camicia",
+    "image_hash": "115792089237316183572209811214053263190797240268412457347990432210758615957503"
   }
 }
