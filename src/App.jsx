@@ -28,7 +28,7 @@ const STILE = {
   prodotto_multi_bordo: "#999999",
 
   // --- Label (stile) ---
-  label_min: 5,
+  label_min: 4,
   label_offset: 12,
   label_designer_peso: "600",
   label_designer_colore: "#222222",
@@ -72,7 +72,7 @@ const STILE = {
   // quindi qui il boost deve essere più marcato del solito per essere
   // percepibile, anche se il pallino non cresce altrettanto.
   boost_mobile_label_max: 2.2,
-  zoom_label_designer_min: 4,
+  zoom_label_designer_min: 3,
   zoom_label_designer_max: 14,
   zoom_label_prodotto_max: 10,
   zoom_label_soglia: window.innerWidth < 768 ? 0.65 : 0.4,
@@ -116,6 +116,15 @@ const STILE = {
   eta_unita_per_anno: 1.55,
   eta_soglia_stesso_anno: 6,
   eta_incremento_sovraffollamento: 4.2,
+  // Solo su mobile: avvicina i pallini prodotto al designer (schermo piccolo,
+  // orbite piene richiedono troppo pan). Non tocca raggioMaxPerDesigner, quindi
+  // la spaziatura verticale fra un designer e l'altro resta invariata: cambia
+  // solo la distanza pallino-prodotto/pallino-designer.
+  orbita_scala_mobile: 0.45,
+  // Distanza minima (in unità-grafo) fra due pallini prodotto dello stesso
+  // designer: se dopo il posizionamento normale risultano più vicini di così,
+  // vengono spinti via l'uno dall'altro finché non lo sono più.
+  prodotto_distanza_minima: 5,
   arco_inizio: 0.15,
   arco_fine: 1.85,
   arco_perturbazione: 0.4,
@@ -166,6 +175,39 @@ function calcolaSettoriDinamici(lista, arco360 = false) {
     cursore += ampiezza
   })
   return settori
+}
+
+// Spinge via dai loro vicini i punti (in coordinate assolute, mutate sul
+// posto) più vicini di distanzaMinima, per qualche iterazione — risolve le
+// sovrapposizioni residue tra prodotti di settori/età diversi che la sola
+// suddivisione angolare non copre (in particolare quando le orbite sono
+// compresse, es. su mobile, e la stessa separazione angolare corrisponde a
+// meno distanza assoluta).
+function separaPosizioniSovrapposte(items, distanzaMinima, iterazioni = 4) {
+  for (let iter = 0; iter < iterazioni; iter++) {
+    let mosso = false
+    for (let i = 0; i < items.length; i++) {
+      for (let j = i + 1; j < items.length; j++) {
+        const a = items[i], b = items[j]
+        const dx = b.orbitaX - a.orbitaX
+        const dy = b.orbitaY - a.orbitaY
+        const dist = Math.sqrt(dx * dx + dy * dy)
+        if (dist < distanzaMinima && dist > 0.0001) {
+          mosso = true
+          const push = (distanzaMinima - dist) / 2
+          const ux = dx / dist, uy = dy / dist
+          a.orbitaX -= ux * push; a.orbitaY -= uy * push
+          b.orbitaX += ux * push; b.orbitaY += uy * push
+        } else if (dist <= 0.0001) {
+          // stessa posizione esatta: spinge in una direzione arbitraria ma stabile
+          mosso = true
+          const push = distanzaMinima / 2
+          a.orbitaX -= push; b.orbitaX += push
+        }
+      }
+    }
+    if (!mosso) break
+  }
 }
 
 // Divide l'arco di ogni settore tra i suoi prodotti in proporzione alla
@@ -513,6 +555,7 @@ const TESTI = {
     designerToggle: "Designer",
     timelineToggle: "Linea del tempo",
     hoverTooltip: "Hover sui collegamenti — clicca su area vuota per uscire",
+    home: "Torna alla vista iniziale",
     sezione: "Sezione",
     menu: "Menu",
     biografia: "Biografia",
@@ -561,6 +604,7 @@ const TESTI = {
     designerToggle: "Designer",
     timelineToggle: "Timeline",
     hoverTooltip: "Hover over the connections — click an empty area to exit",
+    home: "Back to initial view",
     sezione: "Section",
     menu: "Menu",
     biografia: "Biography",
@@ -837,6 +881,7 @@ function App() {
   const legameEvidenziatoRef = useRef(null)
   const [centraFn, setCentraFn] = useState(null)
   const [evidenziaLegameFn, setEvidenziaLegameFn] = useState(null)
+  const [resetVistaFn, setResetVistaFn] = useState(null)
 
   useEffect(() => {
     document.body.style.margin = "0"
@@ -1137,16 +1182,20 @@ function App() {
       })
       const indiceCorrentePerAnno = {}
 
-      listaOrdinata.forEach((p, i) => {
+      const posizioniProdotti = listaOrdinata.map((p, i) => {
         const { centro, sliceAngolo } = angoliProdotti.get(p)
         const angolo = centro + (hashStr(p.nome) - 0.5) * sliceAngolo * STILE.arco_perturbazione
+        const raggio = (raggioProdottoMap.get(p) ?? raggioBaseProdotto(p.anno, designer)) * (isMobile ? STILE.orbita_scala_mobile : 1)
+        return {
+          p, i,
+          orbitaX: dx + Math.cos(angolo) * raggio,
+          orbitaY: dy + Math.sin(angolo) * raggio,
+        }
+      })
+      separaPosizioniSovrapposte(posizioniProdotti, STILE.prodotto_distanza_minima)
 
-        const raggio = raggioProdottoMap.get(p) ?? raggioBaseProdotto(p.anno, designer)
-
+      posizioniProdotti.forEach(({ p, i, orbitaX, orbitaY }) => {
         const prodottoId = `prodotto:${designer}:${p.nome}:${i}`
-
-        const orbitaX = dx + Math.cos(angolo) * raggio
-        const orbitaY = dy + Math.sin(angolo) * raggio
 
         const anno = p.anno || 1900
         const nStessoAnno = conteggioPerAnno[anno]
@@ -1233,15 +1282,20 @@ function App() {
       })
       const indiceCorrentePerAnnoM = {}
 
-      listaOrdinata.forEach((p, i) => {
+      const posizioniProdottiM = listaOrdinata.map((p, i) => {
         const { centro, sliceAngolo } = angoliProdottiM.get(p)
         const angolo = centro + (hashStr(p.nome) - 0.5) * sliceAngolo * STILE.arco_perturbazione
+        const raggio = (raggioProdottoMapM.get(p) ?? raggioBaseProdottoMulti(p.anno, ds)) * (isMobile ? STILE.orbita_scala_mobile : 1)
+        return {
+          p, i,
+          orbitaX: centroX + Math.cos(angolo) * raggio,
+          orbitaY: centroY + Math.sin(angolo) * raggio,
+        }
+      })
+      separaPosizioniSovrapposte(posizioniProdottiM, STILE.prodotto_distanza_minima)
 
-        const raggio = raggioProdottoMapM.get(p) ?? raggioBaseProdottoMulti(p.anno, ds)
-
+      posizioniProdottiM.forEach(({ p, i, orbitaX, orbitaY }) => {
         const prodottoId = `prodotto:multi:${p.nome}:${i}`
-        const orbitaX = centroX + Math.cos(angolo) * raggio
-        const orbitaY = centroY + Math.sin(angolo) * raggio
 
         const anno = p.anno || 1900
         const nStessoAnno = conteggioPerAnnoM[anno]
@@ -2467,6 +2521,42 @@ function App() {
       richiediDisegnoOverlay(18)
     }
 
+    // Bottone "home": deseleziona tutto e riporta la camera allo zoom minimo
+    // (0%), centrata in orizzontale ma con la parte più in alto del contenuto
+    // (i designer più anziani) vicino alla cima dello schermo, invece che il
+    // centro verticale di tutta la timeline — utile per ritrovarsi se ci si è
+    // persi navigando la mappa.
+    setResetVistaFn(() => () => {
+      deselezionaTutto()
+      const cRect = container.getBoundingClientRect()
+      const sState = camera.getState()
+      const tRatio = MAX_CAMERA_RATIO
+      const midX = (X_MIN + X_MAX) / 2
+      const topY = bboxYMax
+      let topBarH = 0
+      if (isMobile && topBarRef.current) topBarH = topBarRef.current.getBoundingClientRect().height
+      const centroX = cRect.width / 2
+      const centroY = (isMobile ? topBarH : 170 * uiScale) + 40
+      clamping = true
+      camera.setState({ x: sState.x, y: sState.y, ratio: tRatio, angle: sState.angle })
+      renderer.refresh()
+      const p0 = renderer.graphToViewport({ x: midX, y: topY })
+      camera.setState({ x: sState.x + 0.01, y: sState.y, ratio: tRatio, angle: sState.angle })
+      renderer.refresh()
+      const pX = renderer.graphToViewport({ x: midX, y: topY })
+      camera.setState({ x: sState.x, y: sState.y + 0.01, ratio: tRatio, angle: sState.angle })
+      renderer.refresh()
+      const pY = renderer.graphToViewport({ x: midX, y: topY })
+      const ppuX = (p0.x - pX.x) / 0.01
+      const ppuY = (p0.y - pY.y) / 0.01
+      const tX = sState.x + (p0.x - centroX) / ppuX
+      const tY = sState.y + (p0.y - centroY) / ppuY
+      camera.setState(sState)
+      renderer.refresh()
+      clamping = false
+      animaCamera({ ratio: tRatio, x: tX, y: tY }, 600)
+    })
+
     function handleEscGlobale(e) {
       if (e.key !== "Escape") return
       const qualcosaSelezionato = designerCliccato || prodottoCliccato || nodoEvidenziatoRef.current
@@ -3392,6 +3482,19 @@ function App() {
           {t.hoverTooltip}
         </div>
       )}
+
+      <button onClick={() => resetVistaFn && resetVistaFn()} title={t.home}
+        style={{
+          position: "fixed", right: 172, bottom: 6, zIndex: 20,
+          width: 26, height: 26, minWidth: 26, borderRadius: "50%", border: "none",
+          background: "white", boxShadow: "0 2px 12px rgba(0,0,0,0.1)", cursor: "pointer",
+          display: "flex", alignItems: "center", justifyContent: "center", padding: 0,
+        }}>
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#1a1a1a" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M3 11.5 12 4l9 7.5" />
+          <path d="M5.5 10v9h13v-9" />
+        </svg>
+      </button>
 
       {tooltipRelazione && (
         <div style={{ position: "fixed", left: tooltipRelazione.x + 14, top: tooltipRelazione.y - 10, background: "white", borderRadius: 8, padding: "8px 12px", boxShadow: "0 4px 16px rgba(0,0,0,0.12)", fontFamily: "Roboto, sans-serif", fontSize: 12, zIndex: 200, pointerEvents: "none", maxWidth: 220 }}>
