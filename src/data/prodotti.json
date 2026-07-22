@@ -386,7 +386,10 @@
     "azienda": "Martinelli Luce",
     "azienda_attuale": "Martinelli Luce",
     "categoria": "lampada da tavolo e da terra",
-    "foto": "aulenti-pipistrello.jpg"
+    "foto": "aulenti-pipistrello.jpg",
+    "foto_dettaglio": [
+      "aulenti-pipistrello2.jpg"
+    ]
   },
   {
     "nome": "April",
@@ -880,7 +883,10 @@
     "azienda": "Tecno",
     "azienda_attuale": null,
     "categoria": "tavolino",
-    "foto": "borsani-t110.jpg"
+    "foto": "borsani-t110.jpg",
+    "foto_dettaglio": [
+      "borsani-t1102.jpg"
+    ]
   },
   {
     "nome": "L150",
@@ -926,7 +932,11 @@
   {
     "nome": "Sacco",
     "anno": 1968,
-    "designer": "Piero Gatti",
+    "designer": [
+      "Piero Gatti",
+      "Cesare Paolini",
+      "Franco Teodoro"
+    ],
     "azienda": "Zanotta",
     "categoria": "poltrona",
     "foto": "gatti-sacco.jpg"
@@ -1649,7 +1659,10 @@
     ],
     "azienda": "Flos",
     "categoria": "lampada",
-    "foto": "castiglioni-tubino.jpg"
+    "foto": "castiglioni-tubino.jpg",
+    "foto_dettaglio": [
+      "castiglioni-tubino2.jpg"
+    ]
   },
   {
     "nome": "Boalum",
@@ -2524,7 +2537,10 @@
     "azienda": "Poltronova",
     "azienda_attuale": null,
     "categoria": "lampada da terra",
-    "foto": "aulenti-locus-solus-floor-lamp.jpg"
+    "foto": "aulenti-locus-solus-floor-lamp.jpg",
+    "foto_dettaglio": [
+      "aulenti-locus-solus-floor-lamp2.jpg"
+    ]
   },
   {
     "nome": "Tavolo con Ruote",
@@ -2822,7 +2838,10 @@
     "azienda": "Arteluce",
     "azienda_attuale": null,
     "categoria": "sistema di illuminazione",
-    "foto": "peressutti-2045.jpg"
+    "foto": "peressutti-2045.jpg",
+    "foto_dettaglio": [
+      "peressutti-20452.jpg"
+    ]
   },
   {
     "nome": "Arco",
@@ -2944,7 +2963,8 @@
     "categoria": "libreria modulare",
     "foto": "parisi-lerici.jpg",
     "foto_dettaglio": [
-      "parisi-lerici2.jpg"
+      "parisi-lerici2.jpg",
+      "parisi-lerici3.jpg"
     ]
   },
   {
@@ -2972,7 +2992,10 @@
     "azienda": "Arteluce",
     "azienda_attuale": null,
     "categoria": "lampada da parete",
-    "foto": "parisi-244.jpg"
+    "foto": "parisi-244.jpg",
+    "foto_dettaglio": [
+      "parisi-2442.jpg"
+    ]
   },
   {
     "nome": "Temide 1703",
@@ -3053,7 +3076,10 @@
     "azienda": "iGuzzini",
     "azienda_attuale": "iGuzzini",
     "categoria": "lampada da tavolo",
-    "foto": "bonetto-nitia.jpg"
+    "foto": "bonetto-nitia.jpg",
+    "foto_dettaglio": [
+      "bonetto-nitia2.jpg"
+    ]
   },
   {
     "nome": "M15",
@@ -3326,7 +3352,10 @@
     "azienda": "Zojirushi Corporation",
     "azienda_attuale": null,
     "categoria": "thermos",
-    "foto": "bellini-minideca.jpg"
+    "foto": "bellini-minideca.jpg",
+    "foto_dettaglio": [
+      "bellini-minideca2.jpg"
+    ]
   },
   {
     "nome": "Portatone PS 6100",
@@ -3401,7 +3430,10 @@
     "azienda": "Tecno",
     "azienda_attuale": null,
     "categoria": "poltrona",
-    "foto": "borsani-p71.jpg"
+    "foto": "borsani-p71.jpg",
+    "foto_dettaglio": [
+      "borsani-p712.jpg"
+    ]
   },
   {
     "nome": "P72",
@@ -3419,7 +3451,10 @@
     "azienda": "Tecno",
     "azienda_attuale": null,
     "categoria": "letto",
-    "foto": "borsani-l77.jpg"
+    "foto": "borsani-l77.jpg",
+    "foto_dettaglio": [
+      "borsani-l772.jpg"
+    ]
   },
   {
     "nome": "T95",
@@ -3428,7 +3463,10 @@
     "azienda": "Tecno",
     "azienda_attuale": null,
     "categoria": "scrivania",
-    "foto": "borsani-t95.jpg"
+    "foto": "borsani-t95.jpg",
+    "foto_dettaglio": [
+      "borsani-t952.jpg"
+    ]
   },
   {
     "nome": "S88",
@@ -3735,7 +3773,10 @@
     "azienda": "Brionvega",
     "azienda_attuale": null,
     "categoria": "televisore",
-    "foto": "bellini-monitor-15.jpg"
+    "foto": "bellini-monitor-15.jpg",
+    "foto_dettaglio": [
+      "bellini-monitor-152.jpg"
+    ]
   },
   {
     "nome": "Robot",
@@ -4963,7 +5004,10 @@
     "azienda": "Bracciodiferro",
     "azienda_attuale": null,
     "categoria": "lampada da terra",
-    "foto": "pesce-moloch.jpg"
+    "foto": "pesce-moloch.jpg",
+    "foto_dettaglio": [
+      "pesce-moloch2.jpg"
+    ]
   },
   {
     "nome": "Golgotha",
@@ -5427,7 +5471,10 @@
     "azienda": "Busnelli",
     "azienda_attuale": null,
     "categoria": "poltrona",
-    "foto": "lapietra-flabello.jpg"
+    "foto": "lapietra-flabello.jpg",
+    "foto_dettaglio": [
+      "lapietra-flabello2.jpg"
+    ]
   },
   {
     "nome": "Vasi per giardini, giardini per vasi",
@@ -6561,7 +6608,10 @@
     "azienda": "Magis",
     "azienda_attuale": "Magis",
     "categoria": "poltrona",
-    "foto": "mendini-magis-proust.jpg"
+    "foto": "mendini-magis-proust.jpg",
+    "foto_dettaglio": [
+      "mendini-magis-proust2.jpg"
+    ]
   },
   {
     "nome": "Unicorno",
@@ -6633,7 +6683,10 @@
     "azienda": "Porro",
     "azienda_attuale": "Porro",
     "categoria": "credenza",
-    "foto": "mendini-schermo.jpg"
+    "foto": "mendini-schermo.jpg",
+    "foto_dettaglio": [
+      "mendini-schermo2.jpg"
+    ]
   },
   {
     "nome": "Roy",
@@ -6912,7 +6965,11 @@
     "azienda": "Knoll",
     "azienda_attuale": null,
     "categoria": "sistema di sedute",
-    "foto": "boeri-gradual-system.jpg"
+    "foto": "boeri-gradual-system.jpg",
+    "foto_dettaglio": [
+      "boeri-gradual-system2.jpg",
+      "boeri-gradual-system3.jpg"
+    ]
   },
   {
     "nome": "Bacone",
@@ -6921,7 +6978,11 @@
     "azienda": "Arflex",
     "azienda_attuale": null,
     "categoria": "divano",
-    "foto": "boeri-bacone.jpg"
+    "foto": "boeri-bacone.jpg",
+    "foto_dettaglio": [
+      "boeri-bacone2.jpg",
+      "boeri-bacone3.jpg"
+    ]
   },
   {
     "nome": "Papero",
@@ -6999,7 +7060,11 @@
     "azienda": "Arflex",
     "azienda_attuale": null,
     "categoria": "sedia per bambini",
-    "foto": "boeri-botolino.jpg"
+    "foto": "boeri-botolino.jpg",
+    "foto_dettaglio": [
+      "boeri-botolino2.jpg",
+      "boeri-botolino3.jpg"
+    ]
   },
   {
     "nome": "Lucetta",
@@ -7017,7 +7082,10 @@
     "azienda": "Arflex",
     "azienda_attuale": null,
     "categoria": "divano",
-    "foto": "boeri-bengodi.jpg"
+    "foto": "boeri-bengodi.jpg",
+    "foto_dettaglio": [
+      "boeri-bengodi2.jpg"
+    ]
   },
   {
     "nome": "Abat-Jour",
@@ -7172,7 +7240,8 @@
     "categoria": "mobile contenitore",
     "foto": "boeri-griziotti-steps.jpg",
     "foto_dettaglio": [
-      "boeri-griziotti-steps2.jpg"
+      "boeri-griziotti-steps2.jpg",
+      "boeri-griziotti-steps3.jpg"
     ]
   },
   {
@@ -7198,7 +7267,11 @@
     "azienda": "Arflex",
     "azienda_attuale": null,
     "categoria": "sistema di divani",
-    "foto": "boeri-pacific.jpg"
+    "foto": "boeri-pacific.jpg",
+    "foto_dettaglio": [
+      "boeri-pacific2.jpg",
+      "boeri-pacific3.jpg"
+    ]
   },
   {
     "nome": "Shadows",
@@ -7261,7 +7334,11 @@
     "azienda": "Venini",
     "azienda_attuale": null,
     "categoria": "lampada a sospensione",
-    "foto": "boeri-lucia.jpg"
+    "foto": "boeri-lucia.jpg",
+    "foto_dettaglio": [
+      "boeri-lucia2.jpg",
+      "boeri-lucia3.jpg"
+    ]
   },
   {
     "nome": "Cini Boeri Lounge Chair",
@@ -7756,7 +7833,11 @@
     "azienda": "Danese Milano",
     "azienda_attuale": "Danese Milano",
     "categoria": "vassoio",
-    "foto": "mari-successo.jpg"
+    "foto": "mari-successo.jpg",
+    "foto_dettaglio": [
+      "mari-successo2.jpg",
+      "mari-successo3.jpg"
+    ]
   },
   {
     "nome": "Seggiolina Pop",
@@ -7796,7 +7877,10 @@
     "azienda": "Magis",
     "azienda_attuale": "Magis",
     "categoria": "sgabello impilabile",
-    "foto": "mari-mariolina-stool.jpg"
+    "foto": "mari-mariolina-stool.jpg",
+    "foto_dettaglio": [
+      "mari-mariolina-stool2.jpg"
+    ]
   },
   {
     "nome": "Mod. 4041",
@@ -7910,7 +7994,10 @@
     "azienda": "Fai International",
     "azienda_attuale": null,
     "categoria": "mobile per impianto audio",
-    "foto": "vigo-serie-top-mobile-sound-componibile.jpg"
+    "foto": "vigo-serie-top-mobile-sound-componibile.jpg",
+    "foto_dettaglio": [
+      "vigo-serie-top-mobile-sound-componibile2.jpg"
+    ]
   },
   {
     "nome": "Serie TOP - mobile TV / sound",
@@ -7928,10 +8015,7 @@
     "azienda": "Fai International",
     "azienda_attuale": null,
     "categoria": "tavolini",
-    "foto": "vigo-serie-top-tavolini-bassi.jpg",
-    "foto_dettaglio": [
-      "vigo-serie-top-tavolini-bassi2.jpg"
-    ]
+    "foto": "vigo-serie-top-tavolini-bassi.jpg"
   },
   {
     "nome": "Serie TOP - tavolo e sedia",
@@ -8350,7 +8434,10 @@
     "azienda": "Nuova Vilca",
     "azienda_attuale": null,
     "categoria": "centrotavola",
-    "foto": "vigo-centro-tavola.jpg"
+    "foto": "vigo-centro-tavola.jpg",
+    "foto_dettaglio": [
+      "vigo-centro-tavola2.jpg"
+    ]
   },
   {
     "nome": "Epoca",
@@ -8603,7 +8690,11 @@
     "azienda": "Glas Italia",
     "azienda_attuale": null,
     "categoria": "specchiera",
-    "foto": "vigo-draped.jpg"
+    "foto": "vigo-draped.jpg",
+    "foto_dettaglio": [
+      "vigo-draped2.jpg",
+      "vigo-draped3.jpg"
+    ]
   },
   {
     "nome": "Frammento",
@@ -8864,7 +8955,10 @@
     "azienda": "Galleria O",
     "azienda_attuale": null,
     "categoria": "lampada",
-    "foto": "vigo-new-iceberg.jpg"
+    "foto": "vigo-new-iceberg.jpg",
+    "foto_dettaglio": [
+      "vigo-new-iceberg2.jpg"
+    ]
   },
   {
     "nome": "Crazy Mirror",
@@ -8883,7 +8977,11 @@
     "azienda_attuale": "JCP Universe",
     "categoria": "lampada",
     "foto": "vigo-sun-ra.jpg",
-    "top": true
+    "top": true,
+    "foto_dettaglio": [
+      "vigo-sun-ra2.jpg",
+      "vigo-sun-ra3.jpg"
+    ]
   },
   {
     "nome": "Mod. 113B",
@@ -8892,7 +8990,11 @@
     "azienda": "Arteluce",
     "azienda_attuale": null,
     "categoria": "lampada da parete",
-    "foto": "sarfatti-mod-113b.jpg"
+    "foto": "sarfatti-mod-113b.jpg",
+    "foto_dettaglio": [
+      "sarfatti-mod-113b2.jpg",
+      "sarfatti-mod-113b3.jpg"
+    ]
   },
   {
     "nome": "Mod. 121",
@@ -8919,7 +9021,11 @@
     "azienda": "Arteluce",
     "azienda_attuale": null,
     "categoria": "lampada da terra",
-    "foto": "sarfatti-mod-1025.jpg"
+    "foto": "sarfatti-mod-1025.jpg",
+    "foto_dettaglio": [
+      "sarfatti-mod-10252.jpg",
+      "sarfatti-mod-10253.jpg"
+    ]
   },
   {
     "nome": "Mod. 2065",
@@ -8928,7 +9034,10 @@
     "azienda": "Arteluce",
     "azienda_attuale": "Astep",
     "categoria": "lampada a sospensione",
-    "foto": "sarfatti-mod-2065.jpg"
+    "foto": "sarfatti-mod-2065.jpg",
+    "foto_dettaglio": [
+      "sarfatti-mod-20652.jpg"
+    ]
   },
   {
     "nome": "Mod. 3001/14",
@@ -9019,7 +9128,10 @@
     "azienda": "Arteluce",
     "azienda_attuale": null,
     "categoria": "lampada da terra",
-    "foto": "sarfatti-mod-1050-2.jpg"
+    "foto": "sarfatti-mod-1050-2.jpg",
+    "foto_dettaglio": [
+      "sarfatti-mod-1050-22.jpg"
+    ]
   },
   {
     "nome": "Mod. 199",
@@ -9049,7 +9161,11 @@
     "azienda": "Arteluce",
     "azienda_attuale": "Astep",
     "categoria": "lampada da tavolo",
-    "foto": "sarfatti-mod-548.jpg"
+    "foto": "sarfatti-mod-548.jpg",
+    "foto_dettaglio": [
+      "sarfatti-mod-5482.jpg",
+      "sarfatti-mod-5483.jpg"
+    ]
   },
   {
     "nome": "Mod. 1061",
@@ -9085,7 +9201,11 @@
     "azienda": "Arteluce",
     "azienda_attuale": null,
     "categoria": "lampadario",
-    "foto": "sarfatti-mod-2058.jpg"
+    "foto": "sarfatti-mod-2058.jpg",
+    "foto_dettaglio": [
+      "sarfatti-mod-20582.jpg",
+      "sarfatti-mod-20583.jpg"
+    ]
   },
   {
     "nome": "Mod. 3030",
@@ -9296,7 +9416,10 @@
     "azienda": "Arteluce",
     "azienda_attuale": "Flos",
     "categoria": "lampadario",
-    "foto": "sarfatti-mod-2097-50.jpg"
+    "foto": "sarfatti-mod-2097-50.jpg",
+    "foto_dettaglio": [
+      "sarfatti-mod-2097-502.jpg"
+    ]
   },
   {
     "nome": "Mod. 230",
@@ -9437,7 +9560,10 @@
     "azienda": "Arteluce",
     "azienda_attuale": null,
     "categoria": "plafoniera",
-    "foto": "sarfatti-mod-3055.jpg"
+    "foto": "sarfatti-mod-3055.jpg",
+    "foto_dettaglio": [
+      "sarfatti-mod-30552.jpg"
+    ]
   },
   {
     "nome": "Mod. 586/S",
@@ -9506,7 +9632,10 @@
     "azienda": "Arteluce",
     "azienda_attuale": null,
     "categoria": "lampada da terra",
-    "foto": "sarfatti-mod-1051.jpg"
+    "foto": "sarfatti-mod-1051.jpg",
+    "foto_dettaglio": [
+      "sarfatti-mod-10512.jpg"
+    ]
   },
   {
     "nome": "Mod. 600P",
@@ -9569,7 +9698,10 @@
     "azienda": "Arteluce",
     "azienda_attuale": null,
     "categoria": "plafoniera",
-    "foto": "sarfatti-mod-2129.jpg"
+    "foto": "sarfatti-mod-2129.jpg",
+    "foto_dettaglio": [
+      "sarfatti-mod-21292.jpg"
+    ]
   },
   {
     "nome": "Mod. 2130",
@@ -9623,7 +9755,10 @@
     "azienda": "Arteluce",
     "azienda_attuale": null,
     "categoria": "lampada da tavolo",
-    "foto": "sarfatti-mod-607.jpg"
+    "foto": "sarfatti-mod-607.jpg",
+    "foto_dettaglio": [
+      "sarfatti-mod-6072.jpg"
+    ]
   },
   {
     "nome": "Mod. 608",
@@ -9710,7 +9845,8 @@
     "categoria": "sistema di sedute",
     "foto": "sottsass-saratoga.jpg",
     "foto_dettaglio": [
-      "sottsass-saratoga2.jpg"
+      "sottsass-saratoga2.jpg",
+      "sottsass-saratoga3.jpg"
     ]
   },
   {
@@ -9744,7 +9880,10 @@
     "azienda": "Poltronova",
     "azienda_attuale": null,
     "categoria": "lampada",
-    "foto": "sottsass-barbarella.jpg"
+    "foto": "sottsass-barbarella.jpg",
+    "foto_dettaglio": [
+      "sottsass-barbarella2.jpg"
+    ]
   },
   {
     "nome": "Crazy Horse",
@@ -9753,7 +9892,10 @@
     "azienda": "Poltronova",
     "azienda_attuale": "Poltronova",
     "categoria": "tavolo",
-    "foto": "sottsass-crazy-horse.jpg"
+    "foto": "sottsass-crazy-horse.jpg",
+    "foto_dettaglio": [
+      "sottsass-crazy-horse2.jpg"
+    ]
   },
   {
     "nome": "Nefertiti",
@@ -10285,7 +10427,10 @@
     "azienda": "Brondi / Enorme Corporation",
     "azienda_attuale": null,
     "categoria": "telefono",
-    "foto": "sottsass-enorme.jpg"
+    "foto": "sottsass-enorme.jpg",
+    "foto_dettaglio": [
+      "sottsass-enorme2.jpg"
+    ]
   },
   {
     "nome": "Bridge Chair",
@@ -10805,7 +10950,10 @@
     "azienda": "Memphis",
     "azienda_attuale": "Memphis",
     "categoria": "tavolo",
-    "foto": "delucchi-polar.jpg"
+    "foto": "delucchi-polar.jpg",
+    "foto_dettaglio": [
+      "delucchi-polar2.jpg"
+    ]
   },
   {
     "nome": "Riviera",
@@ -10847,7 +10995,10 @@
     "azienda": "Memphis",
     "azienda_attuale": "Memphis",
     "categoria": "divano",
-    "foto": "delucchi-lido.jpg"
+    "foto": "delucchi-lido.jpg",
+    "foto_dettaglio": [
+      "delucchi-lido2.jpg"
+    ]
   },
   {
     "nome": "Sebastopole",
@@ -10892,7 +11043,10 @@
     "azienda": "Memphis",
     "azienda_attuale": "Memphis",
     "categoria": "tavolino",
-    "foto": "delucchi-flamingo.jpg"
+    "foto": "delucchi-flamingo.jpg",
+    "foto_dettaglio": [
+      "delucchi-flamingo2.jpg"
+    ]
   },
   {
     "nome": "Horizon",
@@ -10928,7 +11082,10 @@
     "azienda": "Memphis",
     "azienda_attuale": "Memphis",
     "categoria": "specchio da tavolo",
-    "foto": "delucchi-dorian.jpg"
+    "foto": "delucchi-dorian.jpg",
+    "foto_dettaglio": [
+      "delucchi-dorian2.jpg"
+    ]
   },
   {
     "nome": "Ionian",
@@ -10937,7 +11094,10 @@
     "azienda": "Memphis",
     "azienda_attuale": "Memphis",
     "categoria": "specchio da tavolo",
-    "foto": "delucchi-ionian.jpg"
+    "foto": "delucchi-ionian.jpg",
+    "foto_dettaglio": [
+      "delucchi-ionian2.jpg"
+    ]
   },
   {
     "nome": "Tomato",
@@ -10946,7 +11106,10 @@
     "azienda": "Memphis",
     "azienda_attuale": "Memphis",
     "categoria": "piatto da portata",
-    "foto": "delucchi-tomato.jpg"
+    "foto": "delucchi-tomato.jpg",
+    "foto_dettaglio": [
+      "delucchi-tomato2.jpg"
+    ]
   },
   {
     "nome": "Tolomeo Lettura",
@@ -11414,7 +11577,10 @@
     "azienda": "Produzione Privata",
     "azienda_attuale": "Produzione Privata",
     "categoria": "lampada",
-    "foto": "delucchi-festa.jpg"
+    "foto": "delucchi-festa.jpg",
+    "foto_dettaglio": [
+      "delucchi-festa2.jpg"
+    ]
   },
   {
     "nome": "Festina",
@@ -11489,7 +11655,10 @@
     "azienda": "Alias",
     "azienda_attuale": "Alias",
     "categoria": "collezione outdoor",
-    "foto": "delucchi-dehors.jpg"
+    "foto": "delucchi-dehors.jpg",
+    "foto_dettaglio": [
+      "delucchi-dehors2.jpg"
+    ]
   },
   {
     "nome": "Noto",
@@ -11516,7 +11685,10 @@
     "azienda": "Alias",
     "azienda_attuale": "Alias",
     "categoria": "sedia per ufficio",
-    "foto": "delucchi-norma.jpg"
+    "foto": "delucchi-norma.jpg",
+    "foto_dettaglio": [
+      "delucchi-norma2.jpg"
+    ]
   },
   {
     "nome": "Trottola",
@@ -11651,7 +11823,10 @@
     "azienda": "Riva 1920",
     "azienda_attuale": "Riva 1920",
     "categoria": "panchina",
-    "foto": "delucchi-piazza-scala.jpg"
+    "foto": "delucchi-piazza-scala.jpg",
+    "foto_dettaglio": [
+      "delucchi-piazza-scala2.jpg"
+    ]
   },
   {
     "nome": "Tool",
@@ -11796,7 +11971,10 @@
     "azienda": "Alessi",
     "azienda_attuale": "Alessi",
     "categoria": "orologio da parete",
-    "foto": "delucchi-raggiante.jpg"
+    "foto": "delucchi-raggiante.jpg",
+    "foto_dettaglio": [
+      "delucchi-raggiante2.jpg"
+    ]
   },
   {
     "nome": "Plissé",
@@ -12314,7 +12492,10 @@
     "azienda": "Molteni&C",
     "azienda_attuale": null,
     "categoria": "armadio / cabina",
-    "foto": "rossi-cabina-dellelba.jpg"
+    "foto": "rossi-cabina-dellelba.jpg",
+    "foto_dettaglio": [
+      "rossi-cabina-dellelba2.jpg"
+    ]
   },
   {
     "nome": "Teatro",
@@ -12555,7 +12736,10 @@
     "azienda": "Alessi",
     "azienda_attuale": "Alessi",
     "categoria": "pentola / cocotte",
-    "foto": "rossi-la-cubica.jpg"
+    "foto": "rossi-la-cubica.jpg",
+    "foto_dettaglio": [
+      "rossi-la-cubica2.jpg"
+    ]
   },
   {
     "nome": "Consiglio",
@@ -12711,7 +12895,10 @@
     "azienda": "Artemide",
     "azienda_attuale": null,
     "categoria": "lampada da terra",
-    "foto": "rossi-prometeo.jpg"
+    "foto": "rossi-prometeo.jpg",
+    "foto_dettaglio": [
+      "rossi-prometeo2.jpg"
+    ]
   },
   {
     "nome": "La Conica Manico Lungo",
@@ -12966,7 +13153,10 @@
     "azienda": "Astep",
     "azienda_attuale": "Astep",
     "categoria": "lampada a sospensione",
-    "foto": "albini-model-2050.jpg"
+    "foto": "albini-model-2050.jpg",
+    "foto_dettaglio": [
+      "albini-model-20502.jpg"
+    ]
   },
   {
     "nome": "Agata",
@@ -13072,7 +13262,10 @@
     "azienda": "San Lorenzo",
     "azienda_attuale": null,
     "categoria": "ciotola in argento",
-    "foto": "albini-pannocchia.jpg"
+    "foto": "albini-pannocchia.jpg",
+    "foto_dettaglio": [
+      "albini-pannocchia2.jpg"
+    ]
   },
   {
     "nome": "Ambra",
@@ -13306,7 +13499,10 @@
     "azienda": "Azucena",
     "azienda_attuale": "Tato Italia",
     "categoria": "lampada da parete",
-    "foto": "gardella-galleria-2-bracci.jpg"
+    "foto": "gardella-galleria-2-bracci.jpg",
+    "foto_dettaglio": [
+      "gardella-galleria-2-bracci2.jpg"
+    ]
   },
   {
     "nome": "Galleria 3-bracci",
@@ -13324,7 +13520,10 @@
     "azienda": "Azucena",
     "azienda_attuale": "Tato Italia",
     "categoria": "lampada da parete",
-    "foto": "gardella-galleria-4-bracci.jpg"
+    "foto": "gardella-galleria-4-bracci.jpg",
+    "foto_dettaglio": [
+      "gardella-galleria-4-bracci2.jpg"
+    ]
   },
   {
     "nome": "Galleria 5-bracci",
@@ -13354,7 +13553,10 @@
     "azienda": "Azucena",
     "azienda_attuale": null,
     "categoria": "lampada da parete",
-    "foto": "gardella-lp12.jpg"
+    "foto": "gardella-lp12.jpg",
+    "foto_dettaglio": [
+      "gardella-lp122.jpg"
+    ]
   },
   {
     "nome": "Arenzano Tre Fiamme Tavolo",
@@ -13480,7 +13682,10 @@
     "azienda": "Flos",
     "azienda_attuale": "Flos",
     "categoria": "lampada da terra",
-    "foto": "scarpa-seki-han-floor.jpg"
+    "foto": "scarpa-seki-han-floor.jpg",
+    "foto_dettaglio": [
+      "scarpa-seki-han-floor2.jpg"
+    ]
   },
   {
     "nome": "Torcello",
@@ -13604,7 +13809,10 @@
     "azienda": "C&B Italia",
     "azienda_attuale": null,
     "categoria": "poltrona in poliuretano",
-    "foto": "scarpa-ciprea.jpg"
+    "foto": "scarpa-ciprea.jpg",
+    "foto_dettaglio": [
+      "scarpa-ciprea2.jpg"
+    ]
   },
   {
     "nome": "André Table",
@@ -13823,7 +14031,10 @@
     "azienda": "Maxalto",
     "azienda_attuale": "Tacchini",
     "categoria": "sedia / sistema in rattan",
-    "foto": "scarpa-basilan.jpg"
+    "foto": "scarpa-basilan.jpg",
+    "foto_dettaglio": [
+      "scarpa-basilan2.jpg"
+    ]
   },
   {
     "nome": "TL59 Metal Top",
@@ -14094,5 +14305,2267 @@
     "azienda_attuale": "Flos",
     "categoria": "lampada a sospensione",
     "foto": "scarpa-seki-han-suspension.jpg"
+  },
+  {
+    "nome": "Quaderna",
+    "anno": 1970,
+    "designer": [
+      "Adolfo Natalini",
+      "Cristiano Toraldo di Francia",
+      "Gian Piero Frassinelli",
+      "Alessandro Magris",
+      "Roberto Magris"
+    ],
+    "azienda": "Zanotta",
+    "categoria": "tavolo",
+    "foto": "natalini-quaderna.jpg",
+    "top": true,
+    "foto_dettaglio": [
+      "natalini-quaderna2.jpg"
+    ]
+  },
+  {
+    "nome": "Gherpe",
+    "anno": 1967,
+    "designer": [
+      "Adolfo Natalini",
+      "Cristiano Toraldo di Francia",
+      "Gian Piero Frassinelli",
+      "Alessandro Magris",
+      "Roberto Magris"
+    ],
+    "azienda": "Poltronova",
+    "categoria": "lampada",
+    "foto": "natalini-gherpe.jpg",
+    "foto_dettaglio": [
+      "natalini-gherpe2.jpg"
+    ]
+  },
+  {
+    "nome": "Pratone",
+    "anno": 1971,
+    "designer": [
+      "Giorgio Ceretti",
+      "Pietro Derossi",
+      "Riccardo Rosso"
+    ],
+    "azienda": "Gufram",
+    "categoria": "poltrona",
+    "foto": "ceretti-pratone.jpg",
+    "top": true
+  },
+  {
+    "nome": "Aqua Table",
+    "anno": 2005,
+    "designer": "Zaha Hadid",
+    "azienda": "Established & Sons",
+    "categoria": "tavolo",
+    "foto": "hadid-aquatable.jpg",
+    "top": true
+  },
+  {
+    "nome": "Moraine",
+    "anno": 2000,
+    "designer": "Zaha Hadid",
+    "azienda": "Sawaya & Moroni",
+    "categoria": "divano",
+    "foto": "hadid-moraine.jpg"
+  },
+  {
+    "nome": "Guerriero",
+    "anno": 1979,
+    "designer": "Alessandro Guerriero",
+    "azienda": "Studio Alchimia",
+    "categoria": "sedia",
+    "foto": "guerriero-guerriero.jpg",
+    "top": true
+  },
+  {
+    "nome": "Flap",
+    "anno": 2001,
+    "designer": "Francesco Binfaré",
+    "azienda": "Edra",
+    "categoria": "divano",
+    "foto": "binfare-flap.jpg",
+    "top": true
+  },
+  {
+    "nome": "Standard",
+    "anno": 1990,
+    "designer": "Francesco Binfaré",
+    "azienda": "Edra",
+    "categoria": "divano",
+    "foto": "binfare-standard.jpg"
+  },
+  {
+    "nome": "On the Rocks",
+    "anno": 1996,
+    "designer": "Francesco Binfaré",
+    "azienda": "Edra",
+    "categoria": "divano",
+    "foto": "binfare-ontherocks.jpg"
+  },
+  {
+    "nome": "Rover Chair",
+    "anno": 1981,
+    "designer": "Ron Arad",
+    "azienda": "One Off",
+    "categoria": "poltrona",
+    "foto": "arad-roverchair.jpg",
+    "top": true
+  },
+  {
+    "nome": "Bookworm",
+    "anno": 1993,
+    "designer": "Ron Arad",
+    "azienda": "Kartell",
+    "categoria": "libreria",
+    "foto": "arad-bookworm.jpg"
+  },
+  {
+    "nome": "Big Easy",
+    "anno": 1988,
+    "designer": "Ron Arad",
+    "azienda": "Moroso",
+    "categoria": "poltrona",
+    "foto": "arad-bigeasy.jpg"
+  },
+  {
+    "nome": "Miss Blanche",
+    "anno": 1988,
+    "designer": "Shiro Kuramata",
+    "azienda": "Ishimaru",
+    "categoria": "poltrona",
+    "foto": "kuramata-missblanche.jpg",
+    "top": true
+  },
+  {
+    "nome": "How High the Moon",
+    "anno": 1986,
+    "designer": "Shiro Kuramata",
+    "azienda": "Vitra",
+    "categoria": "poltrona",
+    "foto": "kuramata-howhighthemoon.jpg"
+  },
+  {
+    "nome": "9093",
+    "anno": 1985,
+    "designer": "Michael Graves",
+    "azienda": "Alessi",
+    "categoria": "bollitore",
+    "foto": "graves-9093.jpg",
+    "top": true
+  },
+  {
+    "nome": "Plaza",
+    "anno": 1981,
+    "designer": "Michael Graves",
+    "azienda": "Memphis",
+    "categoria": "consolle specchio",
+    "foto": "graves-plaza.jpg"
+  },
+  {
+    "nome": "Super",
+    "anno": 1981,
+    "designer": "Martine Bedin",
+    "azienda": "Memphis",
+    "categoria": "lampada",
+    "foto": "bedin-super.jpg",
+    "top": true
+  },
+  {
+    "nome": "Bel Air",
+    "anno": 1982,
+    "designer": "Peter Shire",
+    "azienda": "Memphis",
+    "categoria": "poltrona",
+    "foto": "shire-belair.jpg",
+    "top": true
+  },
+  {
+    "nome": "Metropole",
+    "anno": 1982,
+    "designer": "George Sowden",
+    "azienda": "Memphis",
+    "categoria": "orologio",
+    "foto": "sowden-metropole.jpg",
+    "top": true
+  },
+  {
+    "nome": "Neos",
+    "anno": 1986,
+    "designer": [
+      "George Sowden",
+      "Nathalie Du Pasquier"
+    ],
+    "azienda": "Memphis",
+    "categoria": "orologio",
+    "foto": "sowden-neos.jpg"
+  },
+  {
+    "nome": "Barrel Chair",
+    "anno": 1937,
+    "designer": "Frank Lloyd Wright",
+    "azienda": "Cassina",
+    "categoria": "poltrona",
+    "foto": "wright-barrelchair.jpg",
+    "top": true
+  },
+  {
+    "nome": "Peacock Chair",
+    "anno": 1922,
+    "designer": "Frank Lloyd Wright",
+    "azienda": "Imperial Hotel Tokyo",
+    "categoria": "sedia",
+    "foto": "wright-peacockchair.jpg"
+  },
+  {
+    "nome": "Sitzmaschine",
+    "anno": 1905,
+    "designer": "Josef Hoffmann",
+    "azienda": "Wiener Werkstätte",
+    "categoria": "poltrona",
+    "foto": "hoffmann-sitzmaschine.jpg",
+    "top": true
+  },
+  {
+    "nome": "E-1027",
+    "anno": 1927,
+    "designer": "Eileen Gray",
+    "azienda": "ClassiCon",
+    "categoria": "tavolino",
+    "foto": "gray-e1027.jpg",
+    "top": true
+  },
+  {
+    "nome": "Bibendum",
+    "anno": 1926,
+    "designer": "Eileen Gray",
+    "azienda": "ClassiCon",
+    "categoria": "poltrona",
+    "foto": "gray-bibendum.jpg"
+  },
+  {
+    "nome": "F51",
+    "anno": 1920,
+    "designer": "Walter Gropius",
+    "azienda": "Tecta",
+    "categoria": "poltrona",
+    "foto": "gropius-f51.jpg",
+    "top": true
+  },
+  {
+    "nome": "Barcelona Chair",
+    "anno": 1929,
+    "designer": "Ludwig Mies van der Rohe",
+    "azienda": "Knoll",
+    "categoria": "poltrona",
+    "foto": "miesvanderrohe-barcelonachair.jpg",
+    "top": true
+  },
+  {
+    "nome": "Brno Chair",
+    "anno": 1930,
+    "designer": "Ludwig Mies van der Rohe",
+    "azienda": "Knoll",
+    "categoria": "sedia",
+    "foto": "miesvanderrohe-brnochair.jpg"
+  },
+  {
+    "nome": "LC4",
+    "anno": 1928,
+    "designer": [
+      "Le Corbusier",
+      "Pierre Jeanneret",
+      "Charlotte Perriand"
+    ],
+    "azienda": "Cassina",
+    "categoria": "chaise longue",
+    "foto": "lecorbusier-lc4.jpg",
+    "top": true
+  },
+  {
+    "nome": "Grand Confort",
+    "anno": 1928,
+    "designer": [
+      "Le Corbusier",
+      "Pierre Jeanneret",
+      "Charlotte Perriand"
+    ],
+    "azienda": "Cassina",
+    "categoria": "poltrona",
+    "foto": "lecorbusier-grandconfort.jpg"
+  },
+  {
+    "nome": "Red and Blue Chair",
+    "anno": 1917,
+    "designer": "Gerrit Rietveld",
+    "azienda": "Cassina",
+    "categoria": "sedia",
+    "foto": "rietveld-redandbluechair.jpg",
+    "top": true
+  },
+  {
+    "nome": "Paimio Chair",
+    "anno": 1932,
+    "designer": "Alvar Aalto",
+    "azienda": "Artek",
+    "categoria": "poltrona",
+    "foto": "aalto-paimiochair.jpg",
+    "top": true
+  },
+  {
+    "nome": "Stool 60",
+    "anno": 1933,
+    "designer": "Alvar Aalto",
+    "azienda": "Artek",
+    "categoria": "sgabello",
+    "foto": "aalto-stool60.jpg"
+  },
+  {
+    "nome": "Wassily Chair",
+    "anno": 1925,
+    "designer": "Marcel Breuer",
+    "azienda": "Knoll",
+    "categoria": "poltrona",
+    "foto": "breuer-wassilychair.jpg",
+    "top": true
+  },
+  {
+    "nome": "Cesca Chair",
+    "anno": 1928,
+    "designer": "Marcel Breuer",
+    "azienda": "Knoll",
+    "categoria": "sedia",
+    "foto": "breuer-cescachair.jpg"
+  },
+  {
+    "nome": "Ombra",
+    "anno": 1954,
+    "designer": "Charlotte Perriand",
+    "azienda": "Cassina",
+    "categoria": "sedia",
+    "foto": "perriand-ombra.jpg"
+  },
+  {
+    "nome": "Morris Chair",
+    "anno": 1866,
+    "designer": "William Morris",
+    "azienda": "Morris & Co.",
+    "categoria": "poltrona",
+    "foto": "morris-morrischair.jpg",
+    "top": true
+  },
+  {
+    "nome": "Strawberry Thief",
+    "anno": 1883,
+    "designer": "William Morris",
+    "azienda": "Morris & Co.",
+    "categoria": "tessuto",
+    "foto": "morris-strawberrythief.jpg"
+  },
+  {
+    "nome": "Teiera per James Dixon & Sons",
+    "anno": 1879,
+    "designer": "Christopher Dresser",
+    "azienda": "James Dixon & Sons",
+    "categoria": "teiera",
+    "foto": "dresser-teiera.jpg",
+    "top": true
+  },
+  {
+    "nome": "Hill House Chair",
+    "anno": 1902,
+    "designer": "Charles Rennie Mackintosh",
+    "azienda": "Cassina",
+    "categoria": "sedia",
+    "foto": "mackintosh-hillhousechair.jpg",
+    "top": true
+  },
+  {
+    "nome": "Argyle Chair",
+    "anno": 1897,
+    "designer": "Charles Rennie Mackintosh",
+    "azienda": "Cassina",
+    "categoria": "sedia",
+    "foto": "mackintosh-argylechair.jpg"
+  },
+  {
+    "nome": "PH5",
+    "anno": 1958,
+    "designer": "Poul Henningsen",
+    "azienda": "Louis Poulsen",
+    "categoria": "lampada",
+    "foto": "henningsen-ph5.jpg",
+    "top": true
+  },
+  {
+    "nome": "Artichoke",
+    "anno": 1958,
+    "designer": "Poul Henningsen",
+    "azienda": "Louis Poulsen",
+    "categoria": "lampada",
+    "foto": "henningsen-artichoke.jpg"
+  },
+  {
+    "nome": "Egg Chair",
+    "anno": 1958,
+    "designer": "Arne Jacobsen",
+    "azienda": "Fritz Hansen",
+    "categoria": "poltrona",
+    "foto": "jacobsen-eggchair.jpg",
+    "top": true
+  },
+  {
+    "nome": "Ant Chair",
+    "anno": 1952,
+    "designer": "Arne Jacobsen",
+    "azienda": "Fritz Hansen",
+    "categoria": "sedia",
+    "foto": "jacobsen-antchair.jpg"
+  },
+  {
+    "nome": "Swan Chair",
+    "anno": 1958,
+    "designer": "Arne Jacobsen",
+    "azienda": "Fritz Hansen",
+    "categoria": "poltrona",
+    "foto": "jacobsen-swanchair.jpg"
+  },
+  {
+    "nome": "Chieftain Chair",
+    "anno": 1949,
+    "designer": "Finn Juhl",
+    "azienda": "House of Finn Juhl",
+    "categoria": "poltrona",
+    "foto": "juhl-chieftainchair.jpg",
+    "top": true
+  },
+  {
+    "nome": "Pelican Chair",
+    "anno": 1940,
+    "designer": "Finn Juhl",
+    "azienda": "House of Finn Juhl",
+    "categoria": "poltrona",
+    "foto": "juhl-pelicanchair.jpg"
+  },
+  {
+    "nome": "Wishbone Chair",
+    "anno": 1949,
+    "designer": "Hans Wegner",
+    "azienda": "Carl Hansen & Søn",
+    "categoria": "sedia",
+    "foto": "wegner-wishbonechair.jpg",
+    "top": true
+  },
+  {
+    "nome": "The Chair",
+    "anno": 1949,
+    "designer": "Hans Wegner",
+    "azienda": "PP Møbler",
+    "categoria": "poltrona",
+    "foto": "wegner-thechair.jpg"
+  },
+  {
+    "nome": "Spanish Chair",
+    "anno": 1958,
+    "designer": "Børge Mogensen",
+    "azienda": "Fredericia",
+    "categoria": "poltrona",
+    "foto": "mogensen-spanishchair.jpg",
+    "top": true
+  },
+  {
+    "nome": "Panton Chair",
+    "anno": 1967,
+    "designer": "Verner Panton",
+    "azienda": "Vitra",
+    "categoria": "sedia",
+    "foto": "panton-pantonchair.jpg",
+    "top": true
+  },
+  {
+    "nome": "Flowerpot",
+    "anno": 1968,
+    "designer": "Verner Panton",
+    "azienda": "&Tradition",
+    "categoria": "lampada",
+    "foto": "panton-flowerpot.jpg"
+  },
+  {
+    "nome": "PK22",
+    "anno": 1956,
+    "designer": "Poul Kjærholm",
+    "azienda": "Fritz Hansen",
+    "categoria": "poltrona",
+    "foto": "kjaerholm-pk22.jpg",
+    "top": true
+  },
+  {
+    "nome": "Noguchi Table",
+    "anno": 1947,
+    "designer": "Isamu Noguchi",
+    "azienda": "Herman Miller",
+    "categoria": "tavolino",
+    "foto": "noguchi-noguchitable.jpg",
+    "top": true
+  },
+  {
+    "nome": "Akari",
+    "anno": 1951,
+    "designer": "Isamu Noguchi",
+    "azienda": "Ozeki & Co.",
+    "categoria": "lampada",
+    "foto": "noguchi-akari.jpg"
+  },
+  {
+    "nome": "Tulip Chair",
+    "anno": 1956,
+    "designer": "Eero Saarinen",
+    "azienda": "Knoll",
+    "categoria": "sedia",
+    "foto": "saarinen-tulipchair.jpg",
+    "top": true
+  },
+  {
+    "nome": "Womb Chair",
+    "anno": 1948,
+    "designer": "Eero Saarinen",
+    "azienda": "Knoll",
+    "categoria": "poltrona",
+    "foto": "saarinen-wombchair.jpg"
+  },
+  {
+    "nome": "Marshmallow Sofa",
+    "anno": 1956,
+    "designer": "George Nelson",
+    "azienda": "Herman Miller",
+    "categoria": "divano",
+    "foto": "nelson-marshmallowsofa.jpg",
+    "top": true
+  },
+  {
+    "nome": "Ball Clock",
+    "anno": 1947,
+    "designer": "George Nelson",
+    "azienda": "Howard Miller",
+    "categoria": "orologio",
+    "foto": "nelson-ballclock.jpg"
+  },
+  {
+    "nome": "Florence Knoll Credenza",
+    "anno": 1954,
+    "designer": "Florence Knoll",
+    "azienda": "Knoll",
+    "categoria": "madia",
+    "foto": "knoll-credenza.jpg",
+    "top": true
+  },
+  {
+    "nome": "Florence Knoll Lounge Chair",
+    "anno": 1954,
+    "designer": "Florence Knoll",
+    "azienda": "Knoll",
+    "categoria": "poltrona",
+    "foto": "knoll-loungechair.jpg"
+  },
+  {
+    "nome": "Standard Chair",
+    "anno": 1934,
+    "designer": "Jean Prouvé",
+    "azienda": "Vitra",
+    "categoria": "sedia",
+    "foto": "prouve-standardchair.jpg",
+    "top": true
+  },
+  {
+    "nome": "Antony Chair",
+    "anno": 1954,
+    "designer": "Jean Prouvé",
+    "azienda": "Vitra",
+    "categoria": "sedia",
+    "foto": "prouve-antonychair.jpg"
+  },
+  {
+    "nome": "Ribbon Chair",
+    "anno": 1966,
+    "designer": "Pierre Paulin",
+    "azienda": "Artifort",
+    "categoria": "poltrona",
+    "foto": "paulin-ribbonchair.jpg",
+    "top": true
+  },
+  {
+    "nome": "Tongue Chair",
+    "anno": 1967,
+    "designer": "Pierre Paulin",
+    "azienda": "Artifort",
+    "categoria": "poltrona",
+    "foto": "paulin-tonguechair.jpg"
+  },
+  {
+    "nome": "Polypropylene Chair",
+    "anno": 1963,
+    "designer": "Robin Day",
+    "azienda": "Hille",
+    "categoria": "sedia",
+    "foto": "day-polypropylenechair.jpg",
+    "top": true
+  },
+  {
+    "nome": "SK4",
+    "anno": 1956,
+    "designer": [
+      "Hans Gugelot",
+      "Dieter Rams"
+    ],
+    "azienda": "Braun",
+    "categoria": "giradischi",
+    "foto": "gugelot-sk4.jpg",
+    "top": true
+  },
+  {
+    "nome": "606 Universal Shelving System",
+    "anno": 1960,
+    "designer": "Dieter Rams",
+    "azienda": "Vitsœ",
+    "categoria": "libreria",
+    "foto": "rams-606.jpg",
+    "top": true
+  },
+  {
+    "nome": "T3",
+    "anno": 1958,
+    "designer": "Dieter Rams",
+    "azienda": "Braun",
+    "categoria": "radio",
+    "foto": "rams-t3.jpg"
+  },
+  {
+    "nome": "Him & Her",
+    "anno": 2008,
+    "designer": "Fabio Novembre",
+    "azienda": "Casamania",
+    "categoria": "sedia",
+    "foto": "novembre-himeher.jpg",
+    "top": true
+  },
+  {
+    "nome": "Fjord",
+    "anno": 2002,
+    "designer": "Patricia Urquiola",
+    "azienda": "Moroso",
+    "categoria": "poltrona",
+    "foto": "urquiola-fjord.jpg",
+    "top": true
+  },
+  {
+    "nome": "Antibodi",
+    "anno": 2006,
+    "designer": "Patricia Urquiola",
+    "azienda": "Moroso",
+    "categoria": "chaise longue",
+    "foto": "urquiola-antibodi.jpg"
+  },
+  {
+    "nome": "Sity",
+    "anno": 1986,
+    "designer": "Antonio Citterio",
+    "azienda": "B&B Italia",
+    "categoria": "divano",
+    "foto": "citterio-sity.jpg",
+    "top": true
+  },
+  {
+    "nome": "Extrasoft",
+    "anno": 2008,
+    "designer": "Piero Lissoni",
+    "azienda": "Living Divani",
+    "categoria": "divano",
+    "foto": "lissoni-extrasoft.jpg",
+    "top": true
+  },
+  {
+    "nome": "Hamilton",
+    "anno": 2003,
+    "designer": "Rodolfo Dordoni",
+    "azienda": "Minotti",
+    "categoria": "divano",
+    "foto": "dordoni-hamilton.jpg",
+    "top": true
+  },
+  {
+    "nome": "Hopper",
+    "anno": 2005,
+    "designer": "Rodolfo Dordoni",
+    "azienda": "Minotti",
+    "categoria": "poltrona",
+    "foto": "dordoni-hopper.jpg"
+  },
+  {
+    "nome": "Bourgie",
+    "anno": 2004,
+    "designer": "Ferruccio Laviani",
+    "azienda": "Kartell",
+    "categoria": "lampada",
+    "foto": "laviani-bourgie.jpg",
+    "top": true
+  },
+  {
+    "nome": "Helsinki",
+    "anno": 1990,
+    "designer": "Matteo Thun",
+    "azienda": "Arflex",
+    "categoria": "poltrona",
+    "foto": "thun-helsinki.jpg",
+    "top": true
+  },
+  {
+    "nome": "Dolly",
+    "anno": 1987,
+    "designer": "Massimo Iosa Ghini",
+    "azienda": "Moroso",
+    "categoria": "poltrona",
+    "foto": "iosaghini-dolly.jpg",
+    "top": true
+  },
+  {
+    "nome": "Plass",
+    "anno": 2011,
+    "designer": "Luca Nichetto",
+    "azienda": "Foscarini",
+    "categoria": "lampada",
+    "foto": "nichetto-plass.jpg",
+    "top": true
+  },
+  {
+    "nome": "Girotondo",
+    "anno": 1989,
+    "designer": "Stefano Giovannoni",
+    "azienda": "Alessi",
+    "categoria": "scolapasta",
+    "foto": "giovannoni-girotondo.jpg",
+    "top": true
+  },
+  {
+    "nome": "Merdolino",
+    "anno": 1993,
+    "designer": "Stefano Giovannoni",
+    "azienda": "Alessi",
+    "categoria": "scopino da bagno",
+    "foto": "giovannoni-merdolino.jpg"
+  },
+  {
+    "nome": "Chair One",
+    "anno": 2004,
+    "designer": "Konstantin Grcic",
+    "azienda": "Magis",
+    "categoria": "sedia",
+    "foto": "grcic-chairone.jpg",
+    "top": true
+  },
+  {
+    "nome": "Mayday",
+    "anno": 2001,
+    "designer": "Konstantin Grcic",
+    "azienda": "Flos",
+    "categoria": "lampada",
+    "foto": "grcic-mayday.jpg"
+  },
+  {
+    "nome": "Air Chair",
+    "anno": 2000,
+    "designer": "Jasper Morrison",
+    "azienda": "Magis",
+    "categoria": "sedia",
+    "foto": "morrison-airchair.jpg",
+    "top": true
+  },
+  {
+    "nome": "Knotted Chair",
+    "anno": 1996,
+    "designer": "Marcel Wanders",
+    "azienda": "Cappellini",
+    "categoria": "sedia",
+    "foto": "wanders-knottedchair.jpg",
+    "top": true
+  },
+  {
+    "nome": "Mirror Ball",
+    "anno": 2003,
+    "designer": "Tom Dixon",
+    "azienda": "Tom Dixon",
+    "categoria": "lampada",
+    "foto": "dixon-mirrorball.jpg",
+    "top": true
+  },
+  {
+    "nome": "Green Chicken",
+    "anno": 2008,
+    "designer": "Jaime Hayon",
+    "azienda": "BD Barcelona",
+    "categoria": "sedia a dondolo",
+    "foto": "hayon-greenchicken.jpg",
+    "top": true
+  },
+  {
+    "nome": "Solar",
+    "anno": 2006,
+    "designer": "Ross Lovegrove",
+    "azienda": "Artemide",
+    "categoria": "lampada",
+    "foto": "lovegrove-solar.jpg",
+    "top": true
+  },
+  {
+    "nome": "Go Chair",
+    "anno": 2001,
+    "designer": "Ross Lovegrove",
+    "azienda": "Bernhardt Design",
+    "categoria": "sedia",
+    "foto": "lovegrove-gochair.jpg"
+  },
+  {
+    "nome": "Algues",
+    "anno": 2004,
+    "designer": [
+      "Ronan Bouroullec",
+      "Erwan Bouroullec"
+    ],
+    "azienda": "Vitra",
+    "categoria": "sistema divisorio",
+    "foto": "bouroullec-algues.jpg",
+    "top": true
+  },
+  {
+    "nome": "Alcove",
+    "anno": 2006,
+    "designer": [
+      "Ronan Bouroullec",
+      "Erwan Bouroullec"
+    ],
+    "azienda": "Vitra",
+    "categoria": "divano",
+    "foto": "bouroullec-alcove.jpg"
+  },
+  {
+    "nome": "Liquid Glacial",
+    "anno": 2012,
+    "designer": "Zaha Hadid",
+    "azienda": "David Gill Gallery",
+    "categoria": "tavolo",
+    "foto": "hadid-liquidglacial.jpg"
+  },
+  {
+    "nome": "Vortexx",
+    "anno": 2012,
+    "designer": "Zaha Hadid",
+    "azienda": "Sawaya & Moroni",
+    "categoria": "lampada",
+    "foto": "hadid-vortexx.jpg"
+  },
+  {
+    "nome": "Luna",
+    "anno": 2014,
+    "designer": "Zaha Hadid",
+    "azienda": "Citco",
+    "categoria": "tavolo",
+    "foto": "hadid-luna.jpg"
+  },
+  {
+    "nome": "Charles",
+    "anno": 1997,
+    "designer": "Antonio Citterio",
+    "azienda": "B&B Italia",
+    "categoria": "divano",
+    "foto": "citterio-charles.jpg",
+    "top": true
+  },
+  {
+    "nome": "Well Tempered Chair",
+    "anno": 1986,
+    "designer": "Ron Arad",
+    "azienda": "Vitra",
+    "categoria": "poltrona",
+    "foto": "arad-welltemperedchair.jpg"
+  },
+  {
+    "nome": "Tom Vac",
+    "anno": 1997,
+    "designer": "Ron Arad",
+    "azienda": "Vitra",
+    "categoria": "sedia",
+    "foto": "arad-tomvac.jpg",
+    "top": true
+  },
+  {
+    "nome": "Victoria and Albert",
+    "anno": 2000,
+    "designer": "Ron Arad",
+    "azienda": "Moroso",
+    "categoria": "divano",
+    "foto": "arad-victoriaandalbert.jpg"
+  },
+  {
+    "nome": "Sky Garden",
+    "anno": 2007,
+    "designer": "Marcel Wanders",
+    "azienda": "Flos",
+    "categoria": "lampada",
+    "foto": "wanders-skygarden.jpg"
+  },
+  {
+    "nome": "V.I.P. Chair",
+    "anno": 2000,
+    "designer": "Marcel Wanders",
+    "azienda": "Moooi",
+    "categoria": "sedia",
+    "foto": "wanders-vipchair.jpg"
+  },
+  {
+    "nome": "Monster Chair",
+    "anno": 2014,
+    "designer": "Marcel Wanders",
+    "azienda": "Moooi",
+    "categoria": "poltrona",
+    "foto": "wanders-monsterchair.jpg"
+  },
+  {
+    "nome": "Myto",
+    "anno": 2011,
+    "designer": "Konstantin Grcic",
+    "azienda": "Plank",
+    "categoria": "sedia",
+    "foto": "grcic-myto.jpg"
+  },
+  {
+    "nome": "Thinking Man's Chair",
+    "anno": 1988,
+    "designer": "Jasper Morrison",
+    "azienda": "Cappellini",
+    "categoria": "poltrona",
+    "foto": "morrison-thinkingmanschair.jpg"
+  },
+  {
+    "nome": "Glo-Ball",
+    "anno": 1998,
+    "designer": "Jasper Morrison",
+    "azienda": "Flos",
+    "categoria": "lampada",
+    "foto": "morrison-globall.jpg"
+  },
+  {
+    "nome": "S-Chair",
+    "anno": 1991,
+    "designer": "Tom Dixon",
+    "azienda": "Cappellini",
+    "categoria": "sedia",
+    "foto": "dixon-schair.jpg"
+  },
+  {
+    "nome": "Jack Lamp",
+    "anno": 1996,
+    "designer": "Tom Dixon",
+    "azienda": "Tom Dixon",
+    "categoria": "lampada",
+    "foto": "dixon-jacklamp.jpg"
+  },
+  {
+    "nome": "Beat Light",
+    "anno": 2005,
+    "designer": "Tom Dixon",
+    "azienda": "Tom Dixon",
+    "categoria": "lampada",
+    "foto": "dixon-beatlight.jpg"
+  },
+  {
+    "nome": "Trulli",
+    "anno": 2018,
+    "designer": "Fabio Novembre",
+    "azienda": "Kartell",
+    "categoria": "contenitore",
+    "foto": "novembre-trulli.jpg"
+  },
+  {
+    "nome": "Muse",
+    "anno": 2018,
+    "designer": "Fabio Novembre",
+    "azienda": "Venini",
+    "categoria": "lampada",
+    "foto": "novembre-muse.jpg"
+  },
+  {
+    "nome": "Vegetal Chair",
+    "anno": 2008,
+    "designer": [
+      "Ronan Bouroullec",
+      "Erwan Bouroullec"
+    ],
+    "azienda": "Vitra",
+    "categoria": "sedia",
+    "foto": "bouroullec-vegetalchair.jpg",
+    "top": true
+  },
+  {
+    "nome": "Steelwood Chair",
+    "anno": 2008,
+    "designer": [
+      "Ronan Bouroullec",
+      "Erwan Bouroullec"
+    ],
+    "azienda": "Magis",
+    "categoria": "sedia",
+    "foto": "bouroullec-steelwoodchair.jpg"
+  },
+  {
+    "nome": "Ploum",
+    "anno": 2011,
+    "designer": [
+      "Ronan Bouroullec",
+      "Erwan Bouroullec"
+    ],
+    "azienda": "Ligne Roset",
+    "categoria": "divano",
+    "foto": "bouroullec-ploum.jpg"
+  },
+  {
+    "nome": "Husk",
+    "anno": 2011,
+    "designer": "Patricia Urquiola",
+    "azienda": "B&B Italia",
+    "categoria": "poltrona",
+    "foto": "urquiola-husk.jpg"
+  },
+  {
+    "nome": "Tufty-Time",
+    "anno": 2005,
+    "designer": "Patricia Urquiola",
+    "azienda": "B&B Italia",
+    "categoria": "divano",
+    "foto": "urquiola-tuftytime.jpg",
+    "top": true
+  },
+  {
+    "nome": "8",
+    "anno": 2005,
+    "designer": "Piero Lissoni",
+    "azienda": "Cassina",
+    "categoria": "divano",
+    "foto": "lissoni-8.jpg"
+  },
+  {
+    "nome": "Met",
+    "anno": 2000,
+    "designer": "Piero Lissoni",
+    "azienda": "Cassina",
+    "categoria": "divano",
+    "foto": "lissoni-met.jpg"
+  },
+  {
+    "nome": "Naboo",
+    "anno": 1996,
+    "designer": "Massimo Iosa Ghini",
+    "azienda": "Moroso",
+    "categoria": "divano",
+    "foto": "iosaghini-naboo.jpg"
+  },
+  {
+    "nome": "Family Follows Fiction",
+    "anno": 1991,
+    "designer": [
+      "Stefano Giovannoni",
+      "Guido Venturini"
+    ],
+    "azienda": "Alessi",
+    "categoria": "collezione di oggetti",
+    "foto": "giovannoni-familyfollowsfiction.jpg"
+  },
+  {
+    "nome": "Take",
+    "anno": 2007,
+    "designer": "Ferruccio Laviani",
+    "azienda": "Emmemobili",
+    "categoria": "libreria",
+    "foto": "laviani-take.jpg"
+  },
+  {
+    "nome": "Lilo",
+    "anno": 2013,
+    "designer": "Patricia Urquiola",
+    "azienda": "Moroso",
+    "categoria": "poltrona",
+    "foto": "urquiola-lilo.jpg"
+  },
+  {
+    "nome": "Crinoline",
+    "anno": 2011,
+    "designer": "Patricia Urquiola",
+    "azienda": "B&B Italia",
+    "categoria": "poltrona",
+    "foto": "urquiola-crinoline.jpg"
+  },
+  {
+    "nome": "Bend Sofa",
+    "anno": 2013,
+    "designer": "Patricia Urquiola",
+    "azienda": "B&B Italia",
+    "categoria": "divano",
+    "foto": "urquiola-bendsofa.jpg"
+  },
+  {
+    "nome": "Maia",
+    "anno": 2010,
+    "designer": "Patricia Urquiola",
+    "azienda": "Kettal",
+    "categoria": "collezione outdoor",
+    "foto": "urquiola-maia.jpg"
+  },
+  {
+    "nome": "Panthella",
+    "anno": 1971,
+    "designer": "Verner Panton",
+    "azienda": "Louis Poulsen",
+    "categoria": "lampada",
+    "foto": "panton-panthella.jpg"
+  },
+  {
+    "nome": "S-Chair",
+    "anno": 1968,
+    "designer": "Verner Panton",
+    "azienda": "Vitra",
+    "categoria": "sedia",
+    "foto": "panton-schair.jpg"
+  },
+  {
+    "nome": "Bachelor Chair",
+    "anno": 1955,
+    "designer": "Verner Panton",
+    "azienda": "Fritz Hansen",
+    "categoria": "poltrona",
+    "foto": "panton-bachelorchair.jpg"
+  },
+  {
+    "nome": "Pantonova",
+    "anno": 1971,
+    "designer": "Verner Panton",
+    "azienda": "Fritz Hansen",
+    "categoria": "divano modulare",
+    "foto": "panton-pantonova.jpg"
+  },
+  {
+    "nome": "Series 7",
+    "anno": 1955,
+    "designer": "Arne Jacobsen",
+    "azienda": "Fritz Hansen",
+    "categoria": "sedia",
+    "foto": "jacobsen-series7.jpg",
+    "top": true
+  },
+  {
+    "nome": "Cylinda Line",
+    "anno": 1967,
+    "designer": "Arne Jacobsen",
+    "azienda": "Stelton",
+    "categoria": "collezione di oggetti da cucina",
+    "foto": "jacobsen-cylindaline.jpg"
+  },
+  {
+    "nome": "AJ Lamp",
+    "anno": 1960,
+    "designer": "Arne Jacobsen",
+    "azienda": "Louis Poulsen",
+    "categoria": "lampada",
+    "foto": "jacobsen-ajlamp.jpg"
+  },
+  {
+    "nome": "Peacock Chair",
+    "anno": 1947,
+    "designer": "Hans Wegner",
+    "azienda": "PP Møbler",
+    "categoria": "poltrona",
+    "foto": "wegner-peacockchair.jpg"
+  },
+  {
+    "nome": "Valet Chair",
+    "anno": 1953,
+    "designer": "Hans Wegner",
+    "azienda": "PP Møbler",
+    "categoria": "sedia",
+    "foto": "wegner-valetchair.jpg"
+  },
+  {
+    "nome": "China Chair",
+    "anno": 1944,
+    "designer": "Hans Wegner",
+    "azienda": "Fritz Hansen",
+    "categoria": "sedia",
+    "foto": "wegner-chinachair.jpg"
+  },
+  {
+    "nome": "CH07 Shell Chair",
+    "anno": 1963,
+    "designer": "Hans Wegner",
+    "azienda": "Carl Hansen & Søn",
+    "categoria": "poltrona",
+    "foto": "wegner-ch07.jpg"
+  },
+  {
+    "nome": "Spring Collection",
+    "anno": 1991,
+    "designer": "Ron Arad",
+    "azienda": "Moroso",
+    "categoria": "poltrona",
+    "foto": "arad-springcollection.jpg"
+  },
+  {
+    "nome": "MT3 Rocking Chair",
+    "anno": 1993,
+    "designer": "Ron Arad",
+    "azienda": "Driade",
+    "categoria": "sedia a dondolo",
+    "foto": "arad-mt3.jpg"
+  },
+  {
+    "nome": "Fantastic Plastic Elastic",
+    "anno": 1997,
+    "designer": "Ron Arad",
+    "azienda": "Kartell",
+    "categoria": "sedia",
+    "foto": "arad-fpe.jpg"
+  },
+  {
+    "nome": "Babyboop",
+    "anno": 1997,
+    "designer": "Ron Arad",
+    "azienda": "Alessi",
+    "categoria": "vaso",
+    "foto": "arad-babyboop.jpg"
+  },
+  {
+    "nome": "Pebbles",
+    "anno": 2004,
+    "designer": "Marcel Wanders",
+    "azienda": "Bisazza",
+    "categoria": "poltrona",
+    "foto": "wanders-pebbles.jpg"
+  },
+  {
+    "nome": "Carbon Chair",
+    "anno": 2004,
+    "designer": "Marcel Wanders",
+    "azienda": "Moooi",
+    "categoria": "sedia",
+    "foto": "wanders-carbonchair.jpg"
+  },
+  {
+    "nome": "Delft Blue Vase",
+    "anno": 2004,
+    "designer": "Marcel Wanders",
+    "azienda": "Royal Delft",
+    "categoria": "vaso",
+    "foto": "wanders-delftbluevase.jpg"
+  },
+  {
+    "nome": "Raimond",
+    "anno": 2007,
+    "designer": "Marcel Wanders",
+    "azienda": "Moooi",
+    "categoria": "lampada",
+    "foto": "wanders-raimond.jpg"
+  },
+  {
+    "nome": "Refolo",
+    "anno": 1995,
+    "designer": "Konstantin Grcic",
+    "azienda": "Driade",
+    "categoria": "carrello",
+    "foto": "grcic-refolo.jpg"
+  },
+  {
+    "nome": "OK Lamp",
+    "anno": 2016,
+    "designer": "Konstantin Grcic",
+    "azienda": "Flos",
+    "categoria": "lampada",
+    "foto": "grcic-oklamp.jpg"
+  },
+  {
+    "nome": "Chaos",
+    "anno": 2001,
+    "designer": "Konstantin Grcic",
+    "azienda": "ClassiCon",
+    "categoria": "poltrona",
+    "foto": "grcic-chaos.jpg"
+  },
+  {
+    "nome": "Low Pad",
+    "anno": 1999,
+    "designer": "Jasper Morrison",
+    "azienda": "Cappellini",
+    "categoria": "poltrona",
+    "foto": "morrison-lowpad.jpg"
+  },
+  {
+    "nome": "Basel Chair",
+    "anno": 2008,
+    "designer": "Jasper Morrison",
+    "azienda": "Vitra",
+    "categoria": "sedia",
+    "foto": "morrison-baselchair.jpg"
+  },
+  {
+    "nome": "Wingback",
+    "anno": 2013,
+    "designer": "Tom Dixon",
+    "azienda": "Tom Dixon",
+    "categoria": "poltrona",
+    "foto": "dixon-wingback.jpg"
+  },
+  {
+    "nome": "Copper Shade",
+    "anno": 2005,
+    "designer": "Tom Dixon",
+    "azienda": "Tom Dixon",
+    "categoria": "lampada",
+    "foto": "dixon-coppershade.jpg"
+  },
+  {
+    "nome": "Pylon",
+    "anno": 1991,
+    "designer": "Tom Dixon",
+    "azienda": "Cappellini",
+    "categoria": "sedia",
+    "foto": "dixon-pylon.jpg"
+  },
+  {
+    "nome": "Supernatural",
+    "anno": 2005,
+    "designer": "Ross Lovegrove",
+    "azienda": "Moroso",
+    "categoria": "sedia",
+    "foto": "lovegrove-supernatural.jpg"
+  },
+  {
+    "nome": "Ty Nant",
+    "anno": 2001,
+    "designer": "Ross Lovegrove",
+    "azienda": "Ty Nant",
+    "categoria": "bottiglia",
+    "foto": "lovegrove-tynant.jpg"
+  },
+  {
+    "nome": "Bombo",
+    "anno": 1997,
+    "designer": "Stefano Giovannoni",
+    "azienda": "Magis",
+    "categoria": "sgabello",
+    "foto": "giovannoni-bombo.jpg"
+  },
+  {
+    "nome": "Mago di Oz",
+    "anno": 1997,
+    "designer": "Stefano Giovannoni",
+    "azienda": "Alessi",
+    "categoria": "scolapasta",
+    "foto": "giovannoni-magodioz.jpg"
+  },
+  {
+    "nome": "Font",
+    "anno": 2015,
+    "designer": "Ferruccio Laviani",
+    "azienda": "Kartell",
+    "categoria": "sedia",
+    "foto": "laviani-font.jpg"
+  },
+  {
+    "nome": "Bin Bag",
+    "anno": 2003,
+    "designer": "Fabio Novembre",
+    "azienda": "Meritalia",
+    "categoria": "divano",
+    "foto": "novembre-binbag.jpg"
+  },
+  {
+    "nome": "LC2",
+    "anno": 1928,
+    "designer": [
+      "Le Corbusier",
+      "Pierre Jeanneret",
+      "Charlotte Perriand"
+    ],
+    "azienda": "Cassina",
+    "categoria": "poltrona",
+    "foto": "lecorbusier-lc2.jpg"
+  },
+  {
+    "nome": "LC7",
+    "anno": 1928,
+    "designer": [
+      "Le Corbusier",
+      "Pierre Jeanneret",
+      "Charlotte Perriand"
+    ],
+    "azienda": "Cassina",
+    "categoria": "sedia",
+    "foto": "lecorbusier-lc7.jpg"
+  },
+  {
+    "nome": "Barcelona Table",
+    "anno": 1929,
+    "designer": "Ludwig Mies van der Rohe",
+    "azienda": "Knoll",
+    "categoria": "tavolino",
+    "foto": "miesvanderrohe-barcelonatable.jpg"
+  },
+  {
+    "nome": "MR Chair",
+    "anno": 1927,
+    "designer": "Ludwig Mies van der Rohe",
+    "azienda": "Knoll",
+    "categoria": "sedia",
+    "foto": "miesvanderrohe-mrchair.jpg"
+  },
+  {
+    "nome": "Tugendhat Chair",
+    "anno": 1930,
+    "designer": "Ludwig Mies van der Rohe",
+    "azienda": "Knoll",
+    "categoria": "poltrona",
+    "foto": "miesvanderrohe-tugendhatchair.jpg"
+  },
+  {
+    "nome": "Savoy Vase",
+    "anno": 1936,
+    "designer": "Alvar Aalto",
+    "azienda": "Iittala",
+    "categoria": "vaso",
+    "foto": "aalto-savoyvase.jpg",
+    "top": true
+  },
+  {
+    "nome": "Grasshopper Chair",
+    "anno": 1946,
+    "designer": "Eero Saarinen",
+    "azienda": "Knoll",
+    "categoria": "poltrona",
+    "foto": "saarinen-grasshopperchair.jpg"
+  },
+  {
+    "nome": "Compas Desk",
+    "anno": 1953,
+    "designer": "Jean Prouvé",
+    "azienda": "Vitra",
+    "categoria": "scrivania",
+    "foto": "prouve-compasdesk.jpg"
+  },
+  {
+    "nome": "Fauteuil Direction",
+    "anno": 1951,
+    "designer": "Jean Prouvé",
+    "azienda": "Vitra",
+    "categoria": "poltrona",
+    "foto": "prouve-fauteuildirection.jpg"
+  },
+  {
+    "nome": "SK55",
+    "anno": 1963,
+    "designer": "Dieter Rams",
+    "azienda": "Braun",
+    "categoria": "radio",
+    "foto": "rams-sk55.jpg"
+  },
+  {
+    "nome": "ET66",
+    "anno": 1987,
+    "designer": "Dieter Rams",
+    "azienda": "Braun",
+    "categoria": "calcolatrice",
+    "foto": "rams-et66.jpg"
+  },
+  {
+    "nome": "Furniture in Irregular Forms",
+    "anno": 1970,
+    "designer": "Shiro Kuramata",
+    "azienda": "Cappellini",
+    "categoria": "cassettiera",
+    "foto": "kuramata-irregularforms.jpg"
+  },
+  {
+    "nome": "Prismatic Table",
+    "anno": 1957,
+    "designer": "Isamu Noguchi",
+    "azienda": "Herman Miller",
+    "categoria": "tavolo",
+    "foto": "noguchi-prismatictable.jpg"
+  },
+  {
+    "nome": "Coconut Chair",
+    "anno": 1955,
+    "designer": "George Nelson",
+    "azienda": "Herman Miller",
+    "categoria": "poltrona",
+    "foto": "nelson-coconutchair.jpg"
+  },
+  {
+    "nome": "Bubble Lamp",
+    "anno": 1952,
+    "designer": "George Nelson",
+    "azienda": "Herman Miller",
+    "categoria": "lampada",
+    "foto": "nelson-bubblelamp.jpg"
+  },
+  {
+    "nome": "Long Chair",
+    "anno": 1935,
+    "designer": "Marcel Breuer",
+    "azienda": "Isokon",
+    "categoria": "chaise longue",
+    "foto": "breuer-longchair.jpg"
+  },
+  {
+    "nome": "Kubus",
+    "anno": 1910,
+    "designer": "Josef Hoffmann",
+    "azienda": "Wittmann",
+    "categoria": "poltrona",
+    "foto": "hoffmann-kubus.jpg"
+  },
+  {
+    "nome": "Kabarett Fledermaus",
+    "anno": 1905,
+    "designer": "Josef Hoffmann",
+    "azienda": "Thonet",
+    "categoria": "sedia",
+    "foto": "hoffmann-kabarettfledermaus.jpg"
+  },
+  {
+    "nome": "Rundes Modell",
+    "anno": 1906,
+    "designer": "Josef Hoffmann",
+    "azienda": "Alessi",
+    "categoria": "posate",
+    "foto": "hoffmann-rundesmodell.jpg"
+  },
+  {
+    "nome": "Zig Zag Chair",
+    "anno": 1934,
+    "designer": "Gerrit Rietveld",
+    "azienda": "Cassina",
+    "categoria": "sedia",
+    "foto": "rietveld-zigzagchair.jpg",
+    "top": true
+  },
+  {
+    "nome": "Military Chair",
+    "anno": 1923,
+    "designer": "Gerrit Rietveld",
+    "azienda": "Cassina",
+    "categoria": "sedia",
+    "foto": "rietveld-militarychair.jpg"
+  },
+  {
+    "nome": "PK24",
+    "anno": 1965,
+    "designer": "Poul Kjærholm",
+    "azienda": "Fritz Hansen",
+    "categoria": "chaise longue",
+    "foto": "kjaerholm-pk24.jpg"
+  },
+  {
+    "nome": "PK11",
+    "anno": 1957,
+    "designer": "Poul Kjærholm",
+    "azienda": "Fritz Hansen",
+    "categoria": "poltrona",
+    "foto": "kjaerholm-pk11.jpg"
+  },
+  {
+    "nome": "PK9",
+    "anno": 1960,
+    "designer": "Poul Kjærholm",
+    "azienda": "Fritz Hansen",
+    "categoria": "sedia",
+    "foto": "kjaerholm-pk9.jpg"
+  },
+  {
+    "nome": "Hillestak",
+    "anno": 1951,
+    "designer": "Robin Day",
+    "azienda": "Hille",
+    "categoria": "sedia",
+    "foto": "day-hillestak.jpg"
+  },
+  {
+    "nome": "675 Chair",
+    "anno": 1953,
+    "designer": "Robin Day",
+    "azienda": "Hille",
+    "categoria": "poltrona",
+    "foto": "day-675chair.jpg"
+  },
+  {
+    "nome": "Toast Rack",
+    "anno": 1878,
+    "designer": "Christopher Dresser",
+    "azienda": "Hukin & Heath",
+    "categoria": "portatoast",
+    "foto": "dresser-toastrack.jpg"
+  },
+  {
+    "nome": "J39",
+    "anno": 1947,
+    "designer": "Børge Mogensen",
+    "azienda": "Fredericia",
+    "categoria": "sedia",
+    "foto": "mogensen-j39.jpg",
+    "top": true
+  },
+  {
+    "nome": "Hunting Chair",
+    "anno": 1950,
+    "designer": "Børge Mogensen",
+    "azienda": "Fredericia",
+    "categoria": "poltrona",
+    "foto": "mogensen-huntingchair.jpg"
+  },
+  {
+    "nome": "Spokeback Sofa",
+    "anno": 1945,
+    "designer": "Børge Mogensen",
+    "azienda": "Fredericia",
+    "categoria": "divano",
+    "foto": "mogensen-spokebacksofa.jpg"
+  },
+  {
+    "nome": "Carousel S",
+    "anno": 1962,
+    "designer": "Hans Gugelot",
+    "azienda": "Kodak",
+    "categoria": "proiettore per diapositive",
+    "foto": "gugelot-carousel.jpg"
+  },
+  {
+    "nome": "M125",
+    "anno": 1957,
+    "designer": "Hans Gugelot",
+    "azienda": "Bofinger",
+    "categoria": "sistema contenitore",
+    "foto": "gugelot-m125.jpg"
+  },
+  {
+    "nome": "Mariposa",
+    "anno": 2005,
+    "designer": "Matteo Thun",
+    "azienda": "B&B Italia",
+    "categoria": "divano",
+    "foto": "thun-mariposa.jpg"
+  },
+  {
+    "nome": "Vanilla",
+    "anno": 2000,
+    "designer": "Matteo Thun",
+    "azienda": "B&B Italia",
+    "categoria": "sedia",
+    "foto": "thun-vanilla.jpg"
+  },
+  {
+    "nome": "Vase per Venini",
+    "anno": 2009,
+    "designer": "Luca Nichetto",
+    "azienda": "Venini",
+    "categoria": "vaso",
+    "foto": "nichetto-venini.jpg"
+  },
+  {
+    "nome": "Ro Chair",
+    "anno": 2013,
+    "designer": "Jaime Hayon",
+    "azienda": "Fritz Hansen",
+    "categoria": "poltrona",
+    "foto": "hayon-rochair.jpg"
+  },
+  {
+    "nome": "Monkey",
+    "anno": 2013,
+    "designer": "Jaime Hayon",
+    "azienda": "BD Barcelona",
+    "categoria": "appendiabiti da terra",
+    "foto": "hayon-monkey.jpg"
+  },
+  {
+    "nome": "Sansone",
+    "anno": 1985,
+    "designer": "Martine Bedin",
+    "azienda": "Memphis",
+    "categoria": "carrello",
+    "foto": "bedin-sansone.jpg"
+  },
+  {
+    "nome": "Brazil",
+    "anno": 1981,
+    "designer": "Peter Shire",
+    "azienda": "Memphis",
+    "categoria": "poltrona",
+    "foto": "shire-brazil.jpg"
+  },
+  {
+    "nome": "Team Disney Building",
+    "anno": 1991,
+    "designer": "Michael Graves",
+    "azienda": "Disney",
+    "categoria": "architettura",
+    "foto": "graves-teamdisney.jpg"
+  },
+  {
+    "nome": "Divisumma 14",
+    "anno": 1948,
+    "designer": "Marcello Nizzoli",
+    "azienda": "Olivetti",
+    "categoria": "calcolatrice",
+    "foto": "nizzoli-divisumma14.jpg"
+  },
+  {
+    "nome": "Lettera 32",
+    "anno": 1963,
+    "designer": "Marcello Nizzoli",
+    "azienda": "Olivetti",
+    "categoria": "macchina da scrivere",
+    "foto": "nizzoli-lettera32.jpg"
+  },
+  {
+    "nome": "Capitello Corinzio",
+    "anno": 1955,
+    "designer": "Piero Fornasetti",
+    "azienda": "Fornasetti",
+    "categoria": "sedia",
+    "foto": "fornasetti-capitellocorinzio.jpg"
+  },
+  {
+    "nome": "Piatto Ovale",
+    "anno": 1955,
+    "designer": "Roberto Sambonet",
+    "azienda": "Sambonet",
+    "categoria": "piatto",
+    "foto": "sambonet-piattoovale.jpg"
+  },
+  {
+    "nome": "Center Line",
+    "anno": 1963,
+    "designer": "Roberto Sambonet",
+    "azienda": "Sambonet",
+    "categoria": "contenitori impilabili",
+    "foto": "sambonet-centerline.jpg"
+  },
+  {
+    "nome": "Transat Chair",
+    "anno": 1927,
+    "designer": "Eileen Gray",
+    "azienda": "ClassiCon",
+    "categoria": "poltrona",
+    "foto": "gray-transatchair.jpg"
+  },
+  {
+    "nome": "Willow Chair",
+    "anno": 1904,
+    "designer": "Charles Rennie Mackintosh",
+    "azienda": "Cassina",
+    "categoria": "sedia",
+    "foto": "mackintosh-willowchair.jpg"
+  },
+  {
+    "nome": "PH 4½-3½",
+    "anno": 1966,
+    "designer": "Poul Henningsen",
+    "azienda": "Louis Poulsen",
+    "categoria": "lampada da tavolo",
+    "foto": "henningsen-ph4535.jpg"
+  },
+  {
+    "nome": "NV45",
+    "anno": 1945,
+    "designer": "Finn Juhl",
+    "azienda": "House of Finn Juhl",
+    "categoria": "poltrona",
+    "foto": "juhl-nv45.jpg"
+  },
+  {
+    "nome": "Egyptian Chair",
+    "anno": 1949,
+    "designer": "Finn Juhl",
+    "azienda": "House of Finn Juhl",
+    "categoria": "sedia",
+    "foto": "juhl-egyptianchair.jpg"
+  },
+  {
+    "nome": "Florence Knoll Sofa",
+    "anno": 1954,
+    "designer": "Florence Knoll",
+    "azienda": "Knoll",
+    "categoria": "divano",
+    "foto": "knoll-sofa.jpg"
+  },
+  {
+    "nome": "Mushroom Chair",
+    "anno": 1960,
+    "designer": "Pierre Paulin",
+    "azienda": "Artifort",
+    "categoria": "poltrona",
+    "foto": "paulin-mushroomchair.jpg"
+  },
+  {
+    "nome": "Orange Slice Chair",
+    "anno": 1960,
+    "designer": "Pierre Paulin",
+    "azienda": "Artifort",
+    "categoria": "poltrona",
+    "foto": "paulin-orangeslicechair.jpg"
+  },
+  {
+    "nome": "Barcelona Daybed",
+    "anno": 1930,
+    "designer": [
+      "Ludwig Mies van der Rohe",
+      "Lilly Reich"
+    ],
+    "azienda": "Knoll",
+    "categoria": "chaise longue",
+    "foto": "miesvanderrohe-barcelonadaybed.jpg"
+  },
+  {
+    "nome": "Nuage",
+    "anno": 1956,
+    "designer": "Charlotte Perriand",
+    "azienda": "Cassina",
+    "categoria": "libreria",
+    "foto": "perriand-nuage.jpg"
+  },
+  {
+    "nome": "TP1",
+    "anno": 1959,
+    "designer": "Dieter Rams",
+    "azienda": "Braun",
+    "categoria": "giradischi",
+    "foto": "rams-tp1.jpg"
+  },
+  {
+    "nome": "Tulip Table",
+    "anno": 1956,
+    "designer": "Eero Saarinen",
+    "azienda": "Knoll",
+    "categoria": "tavolo",
+    "foto": "saarinen-tuliptable.jpg"
+  },
+  {
+    "nome": "Laccio Table",
+    "anno": 1925,
+    "designer": "Marcel Breuer",
+    "azienda": "Knoll",
+    "categoria": "tavolino",
+    "foto": "breuer-laccio.jpg"
+  },
+  {
+    "nome": "Tank Chair",
+    "anno": 1936,
+    "designer": "Alvar Aalto",
+    "azienda": "Artek",
+    "categoria": "poltrona",
+    "foto": "aalto-tankchair.jpg"
+  },
+  {
+    "nome": "Mobil",
+    "anno": 1993,
+    "designer": "Antonio Citterio",
+    "azienda": "Kartell",
+    "categoria": "carrello contenitore",
+    "foto": "citterio-mobil.jpg"
+  },
+  {
+    "nome": "Battista",
+    "anno": 1991,
+    "designer": "Antonio Citterio",
+    "azienda": "Kartell",
+    "categoria": "tavolo",
+    "foto": "citterio-battista.jpg"
+  },
+  {
+    "nome": "Groundpiece",
+    "anno": 2001,
+    "designer": "Antonio Citterio",
+    "azienda": "Flexform",
+    "categoria": "divano",
+    "foto": "citterio-groundpiece.jpg"
+  },
+  {
+    "nome": "Lumiere",
+    "anno": 1990,
+    "designer": "Rodolfo Dordoni",
+    "azienda": "Foscarini",
+    "categoria": "lampada",
+    "foto": "dordoni-lumiere.jpg"
+  },
+  {
+    "nome": "Suitcase",
+    "anno": 1997,
+    "designer": "Rodolfo Dordoni",
+    "azienda": "Minotti",
+    "categoria": "poltrona",
+    "foto": "dordoni-suitcase.jpg"
+  },
+  {
+    "nome": "New Tone",
+    "anno": 1988,
+    "designer": "Massimo Iosa Ghini",
+    "azienda": "Moroso",
+    "categoria": "divano",
+    "foto": "iosaghini-newtone.jpg"
+  },
+  {
+    "nome": "Eda-mame",
+    "anno": 2013,
+    "designer": "Piero Lissoni",
+    "azienda": "B&B Italia",
+    "categoria": "poltrona",
+    "foto": "lissoni-edamame.jpg"
+  },
+  {
+    "nome": "Borea",
+    "anno": 2009,
+    "designer": "Piero Lissoni",
+    "azienda": "B&B Italia",
+    "categoria": "divano outdoor",
+    "foto": "lissoni-borea.jpg"
+  },
+  {
+    "nome": "Orbital",
+    "anno": 1992,
+    "designer": "Ferruccio Laviani",
+    "azienda": "Foscarini",
+    "categoria": "lampada",
+    "foto": "laviani-orbital.jpg"
+  },
+  {
+    "nome": "Bit",
+    "anno": 1993,
+    "designer": "Ferruccio Laviani",
+    "azienda": "Foscarini",
+    "categoria": "lampada",
+    "foto": "laviani-bit.jpg"
+  },
+  {
+    "nome": "849",
+    "anno": 1956,
+    "designer": "Gianfranco Frattini",
+    "azienda": "Cassina",
+    "categoria": "sedia",
+    "foto": "frattini-849.jpg"
+  },
+  {
+    "nome": "Alberto",
+    "anno": 1958,
+    "designer": "Gianfranco Frattini",
+    "azienda": "Poltrona Frau",
+    "categoria": "libreria",
+    "foto": "frattini-alberto.jpg"
+  },
+  {
+    "nome": "Sesann",
+    "anno": 1970,
+    "designer": "Gianfranco Frattini",
+    "azienda": "Cassina",
+    "categoria": "divano",
+    "foto": "frattini-sesann.jpg",
+    "top": true
+  },
+  {
+    "nome": "Kioto",
+    "anno": 1974,
+    "designer": "Gianfranco Frattini",
+    "azienda": "Bottega Ghianda",
+    "categoria": "tavolo",
+    "foto": "frattini-kioto.jpg"
+  },
+  {
+    "nome": "Alfa",
+    "anno": 1959,
+    "designer": "Sergio Mazza",
+    "azienda": "Artemide",
+    "categoria": "lampada",
+    "foto": "mazza-alfa.jpg"
+  },
+  {
+    "nome": "Delta",
+    "anno": 1963,
+    "designer": "Sergio Mazza",
+    "azienda": "Artemide",
+    "categoria": "lampada",
+    "foto": "mazza-delta.jpg"
+  },
+  {
+    "nome": "Phonola 547",
+    "anno": 1939,
+    "designer": [
+      "Livio Castiglioni",
+      "Pier Giacomo Castiglioni",
+      "Luigi Caccia Dominioni"
+    ],
+    "azienda": "Phonola",
+    "categoria": "radio",
+    "foto": "castiglioni-phonola547.jpg",
+    "top": true
+  },
+  {
+    "nome": "Aurora 1040",
+    "anno": 1983,
+    "designer": "Perry King",
+    "azienda": "Arteluce",
+    "categoria": "lampada a sospensione",
+    "foto": "king-aurora1040.jpg"
+  },
+  {
+    "nome": "Palio",
+    "anno": 1985,
+    "designer": "Perry King",
+    "azienda": "Arteluce",
+    "categoria": "lampada da tavolo",
+    "foto": "king-palio.jpg"
+  },
+  {
+    "nome": "Tic Tac",
+    "anno": 1970,
+    "designer": "Giotto Stoppino",
+    "azienda": "Kartell",
+    "categoria": "lampada da tavolo",
+    "foto": "stoppino-tictac.jpg"
+  },
+  {
+    "nome": "Cobra",
+    "anno": 1970,
+    "designer": "Giotto Stoppino",
+    "azienda": "Kartell",
+    "categoria": "sedia",
+    "foto": "stoppino-cobra.jpg"
+  },
+  {
+    "nome": "Q Stak Chair",
+    "anno": 1954,
+    "designer": "Robin Day",
+    "azienda": "Hille",
+    "categoria": "sedia",
+    "foto": "day-qstakchair.jpg"
+  },
+  {
+    "nome": "Form Group",
+    "anno": 1960,
+    "designer": "Robin Day",
+    "azienda": "Hille",
+    "categoria": "sistema di sedute modulare",
+    "foto": "day-formgroup.jpg"
+  },
+  {
+    "nome": "Chad",
+    "anno": 1982,
+    "designer": "Matteo Thun",
+    "azienda": "Memphis",
+    "categoria": "teiera",
+    "foto": "thun-chad.jpg"
+  },
+  {
+    "nome": "Espresso Cup",
+    "anno": 1991,
+    "designer": "Matteo Thun",
+    "azienda": "Illy",
+    "categoria": "tazzina da caffè",
+    "foto": "thun-espressocup.jpg"
+  },
+  {
+    "nome": "Favn",
+    "anno": 2011,
+    "designer": "Jaime Hayon",
+    "azienda": "Fritz Hansen",
+    "categoria": "divano",
+    "foto": "hayon-favn.jpg"
+  },
+  {
+    "nome": "Nemo",
+    "anno": 2010,
+    "designer": "Fabio Novembre",
+    "azienda": "Driade",
+    "categoria": "poltrona",
+    "foto": "novembre-nemo.jpg"
+  },
+  {
+    "nome": "Mami",
+    "anno": 1999,
+    "designer": "Stefano Giovannoni",
+    "azienda": "Alessi",
+    "categoria": "pentole",
+    "foto": "giovannoni-mami.jpg"
+  },
+  {
+    "nome": "Lilliput",
+    "anno": 1993,
+    "designer": "Stefano Giovannoni",
+    "azienda": "Alessi",
+    "categoria": "saliera e pepiera",
+    "foto": "giovannoni-lilliput.jpg"
+  },
+  {
+    "nome": "Oikos",
+    "anno": 1972,
+    "designer": "Antonia Astori",
+    "azienda": "Driade",
+    "categoria": "libreria modulare",
+    "foto": "astori-oikos.jpg"
+  },
+  {
+    "nome": "Tiramisù",
+    "anno": 1991,
+    "designer": "Andries Van Onck",
+    "azienda": "Kartell",
+    "categoria": "scaletta pieghevole",
+    "foto": "vanonck-tiramisu.jpg"
+  },
+  {
+    "nome": "Pomona",
+    "anno": 1976,
+    "designer": "Ambrogio Pozzi",
+    "azienda": "Guzzini",
+    "categoria": "servizio da tavola",
+    "foto": "pozzi-pomona.jpg"
+  },
+  {
+    "nome": "D'Antibes",
+    "anno": 1981,
+    "designer": "George Sowden",
+    "azienda": "Memphis",
+    "categoria": "mobile contenitore",
+    "foto": "sowden-dantibes.jpg"
+  },
+  {
+    "nome": "OFX420",
+    "anno": 1991,
+    "designer": "George Sowden",
+    "azienda": "Olivetti",
+    "categoria": "fax",
+    "foto": "sowden-ofx420.jpg"
+  },
+  {
+    "nome": "Peninsula",
+    "anno": 1982,
+    "designer": "Peter Shire",
+    "azienda": "Memphis",
+    "categoria": "tavolo",
+    "foto": "shire-peninsula.jpg"
+  },
+  {
+    "nome": "Sing Sing Sing",
+    "anno": 1985,
+    "designer": "Shiro Kuramata",
+    "azienda": "XO",
+    "categoria": "poltrona",
+    "foto": "kuramata-singsingsing.jpg"
+  },
+  {
+    "nome": "Steltman Chair",
+    "anno": 1963,
+    "designer": "Gerrit Rietveld",
+    "azienda": "Cassina",
+    "categoria": "poltrona",
+    "foto": "rietveld-steltmanchair.jpg"
+  },
+  {
+    "nome": "Ingram Chair",
+    "anno": 1900,
+    "designer": "Charles Rennie Mackintosh",
+    "azienda": "Cassina",
+    "categoria": "sedia",
+    "foto": "mackintosh-ingramchair.jpg"
+  },
+  {
+    "nome": "Pirogue",
+    "anno": 1925,
+    "designer": "Eileen Gray",
+    "azienda": "ClassiCon",
+    "categoria": "chaise longue",
+    "foto": "gray-pirogue.jpg"
+  },
+  {
+    "nome": "Rudder Table",
+    "anno": 1944,
+    "designer": "Isamu Noguchi",
+    "azienda": "Herman Miller",
+    "categoria": "tavolino",
+    "foto": "noguchi-ruddertable.jpg"
+  },
+  {
+    "nome": "Cyclone Table",
+    "anno": 1954,
+    "designer": "Isamu Noguchi",
+    "azienda": "Knoll",
+    "categoria": "tavolino",
+    "foto": "noguchi-cyclonetable.jpg"
+  },
+  {
+    "nome": "Parallel Bar",
+    "anno": 1955,
+    "designer": "Florence Knoll",
+    "azienda": "Knoll",
+    "categoria": "poltrona",
+    "foto": "knoll-parallelbar.jpg"
+  },
+  {
+    "nome": "Ulmer Hocker",
+    "anno": 1954,
+    "designer": [
+      "Hans Gugelot",
+      "Max Bill"
+    ],
+    "azienda": "Hfg Ulm",
+    "categoria": "sgabello",
+    "foto": "gugelot-ulmerhocker.jpg"
+  },
+  {
+    "nome": "Otello",
+    "anno": 1987,
+    "designer": "Massimo Iosa Ghini",
+    "azienda": "Memphis",
+    "categoria": "poltrona",
+    "foto": "iosaghini-otello.jpg"
+  },
+  {
+    "nome": "PH Snowball",
+    "anno": 1958,
+    "designer": "Poul Henningsen",
+    "azienda": "Louis Poulsen",
+    "categoria": "lampada a sospensione",
+    "foto": "henningsen-phsnowball.jpg"
+  },
+  {
+    "nome": "Purkersdorf Chair",
+    "anno": 1905,
+    "designer": "Josef Hoffmann",
+    "azienda": "Wittmann",
+    "categoria": "sedia",
+    "foto": "hoffmann-purkersdorfchair.jpg"
+  },
+  {
+    "nome": "Pack",
+    "anno": 2017,
+    "designer": "Francesco Binfaré",
+    "azienda": "Edra",
+    "categoria": "divano",
+    "foto": "binfare-pack.jpg"
+  },
+  {
+    "nome": "LC1",
+    "anno": 1928,
+    "designer": [
+      "Le Corbusier",
+      "Pierre Jeanneret",
+      "Charlotte Perriand"
+    ],
+    "azienda": "Cassina",
+    "categoria": "poltrona",
+    "foto": "lecorbusier-lc1.jpg"
   }
 ]

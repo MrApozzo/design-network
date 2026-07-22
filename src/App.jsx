@@ -8,6 +8,16 @@ import immaginiEsistentiArr from "./data/immagini_esistenti.json"
 
 const IMMAGINI_ESISTENTI = new Set(immaginiEsistentiArr)
 
+// Designer con pochi prodotti a catalogo (spesso una singola collaborazione con
+// una figura più nota): il loro pallino viene rimpicciolito leggermente, vedi
+// STILE.designer_scala_secondario e SOGLIA_DESIGNER_SECONDARIO.
+const CONTEGGIO_PRODOTTI_PER_DESIGNER = new Map()
+for (const p of prodotti) {
+  const ds = Array.isArray(p.designer) ? p.designer : [p.designer]
+  for (const d of ds) CONTEGGIO_PRODOTTI_PER_DESIGNER.set(d, (CONTEGGIO_PRODOTTI_PER_DESIGNER.get(d) ?? 0) + 1)
+}
+const SOGLIA_DESIGNER_SECONDARIO = 2
+
 const STILE = {
   // --- Colori ---
   designer_colore: "#090e54",
@@ -61,6 +71,9 @@ const STILE = {
   // =============================================
   zoom_designer_min: 3,
   zoom_designer_max: 18,
+  // Moltiplicatore applicato ai designer con al massimo SOGLIA_DESIGNER_SECONDARIO
+  // prodotti a catalogo (vedi CONTEGGIO_PRODOTTI_PER_DESIGNER).
+  designer_scala_secondario: 0.5,
   zoom_prodotto_min: 2,
   zoom_prodotto_max: 35,
   // Boost aggiuntivo solo mobile, applicato a prodotti e designer solo
@@ -1519,7 +1532,9 @@ function App() {
       const vs = vScale()
       if (attr.tipo === "designer") {
         const tCurved = Math.pow(t, 1.2)
-        let base = lerp(STILE.zoom_designer_min, STILE.zoom_designer_max, tCurved) * vs
+        const scalaSecondario = (CONTEGGIO_PRODOTTI_PER_DESIGNER.get(node) ?? 0) <= SOGLIA_DESIGNER_SECONDARIO
+          ? STILE.designer_scala_secondario : 1
+        let base = lerp(STILE.zoom_designer_min, STILE.zoom_designer_max, tCurved) * vs * scalaSecondario
         if (isMobile && t > STILE.boost_soglia) {
           const tBoost = (t - STILE.boost_soglia) / (1 - STILE.boost_soglia)
           base *= lerp(1, STILE.boost_mobile_max, tBoost)
