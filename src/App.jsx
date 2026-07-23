@@ -3381,7 +3381,7 @@ function App() {
         <div style={{ marginBottom: 18, marginLeft: -7 }}>
           <span style={{
             display: "inline-block", fontFamily: "'Roboto Mono', monospace", fontSize: 10, fontWeight: 400,
-            color: "#ffffff", background: "#CF2B10", border: "none", borderRadius: 20, padding: "3px 12px",
+            color: "#ffffff", background: "#E11408", border: "none", borderRadius: 20, padding: "3px 12px",
           }}>
             Design
           </span>
@@ -3623,7 +3623,7 @@ function App() {
             <button onClick={() => confermaSchermataIniziale()}
               style={{
                 marginTop: 16, padding: "8px 22px", borderRadius: 18, border: "none",
-                background: "#CF2B10", color: "white", fontSize: 11, fontFamily: "'Roboto Mono', monospace",
+                background: "#E11408", color: "white", fontSize: 11, fontFamily: "'Roboto Mono', monospace",
                 cursor: "pointer",
               }}>
               {t.benvenutoConferma}
@@ -3673,32 +3673,37 @@ function App() {
             marginTop: (pannelloDesigner || nodoEvidenziato) ? 0 : 28,
             marginLeft: -6,
           }}>
-            <div style={{ display: "flex", gap: 5, alignItems: "flex-start" }}>
-              <button onClick={() => {
-                const nuovo = !correntiVisibiliRef.current
-                correntiVisibiliRef.current = nuovo
-                setCorrentiVisibili(nuovo)
-                if (ridisegnaFn) ridisegnaFn()
-              }}
-                title={correntiVisibili ? t.correntiToggleOn : t.correntiToggleOff}
-                style={{
-                  width: 28, height: 28, minWidth: 28, borderRadius: "50%", boxSizing: "border-box",
-                  border: correntiVisibili ? "3px solid #ffffff" : "none",
-                  background: correntiVisibili ? "#CF2B10" : "#ffffff", boxShadow: "0 2px 12px rgba(0,0,0,0.1)", cursor: "pointer",
-                  display: "flex", alignItems: "center", justifyContent: "center", padding: 0, transition: "background 0.2s", flexShrink: 0,
-                }}>
-                <svg width={13} height={13} viewBox="0 0 16 16" style={{ display: "block" }}>
-                  <circle cx="6" cy="6" r="5" fill="none" stroke={correntiVisibili ? "#ffffff" : "#555555"} strokeWidth="1.4" />
-                  <circle cx="10" cy="10" r="5" fill="none" stroke={correntiVisibili ? "#ffffff" : "#555555"} strokeWidth="1.4" />
-                </svg>
-              </button>
+            <div style={{ display: "flex", gap: 5, alignItems: "center" }}>
+              <div style={{
+                display: "flex", alignItems: "center", justifyContent: "center", background: "#ffffff",
+                borderRadius: "50%", padding: 3, boxShadow: "0 2px 12px rgba(0,0,0,0.1)",
+                width: 28, height: 28, boxSizing: "border-box", flexShrink: 0,
+              }}>
+                <button onClick={() => {
+                  const nuovo = !correntiVisibiliRef.current
+                  correntiVisibiliRef.current = nuovo
+                  setCorrentiVisibili(nuovo)
+                  if (ridisegnaFn) ridisegnaFn()
+                }}
+                  title={correntiVisibili ? t.correntiToggleOn : t.correntiToggleOff}
+                  style={{
+                    width: "100%", height: "100%", borderRadius: "50%", border: "none", margin: 0,
+                    background: correntiVisibili ? "#E11408" : "#ffffff", cursor: "pointer",
+                    display: "flex", alignItems: "center", justifyContent: "center", padding: 0, transition: "background 0.2s",
+                  }}>
+                  <svg width={11} height={11} viewBox="0 0 16 16" style={{ display: "block" }}>
+                    <circle cx="6" cy="6" r="5" fill="none" stroke={correntiVisibili ? "#ffffff" : "#555555"} strokeWidth="1.4" />
+                    <circle cx="10" cy="10" r="5" fill="none" stroke={correntiVisibili ? "#ffffff" : "#555555"} strokeWidth="1.4" />
+                  </svg>
+                </button>
+              </div>
               <div style={{ display: "flex", gap: 2, background: "#ffffff", borderRadius: 22, padding: 3, boxShadow: "0 2px 12px rgba(0,0,0,0.1)", height: 28, boxSizing: "border-box", alignItems: "center" }}>
                 <button onClick={() => cambiaVista("designer")}
-                  style={{ padding: "6px 12px", border: "none", borderRadius: 18, cursor: "pointer", fontSize: 9, fontWeight: vistaCorrente === "designer" ? 400 : 300, fontFamily: "'Roboto Mono', monospace", color: vistaCorrente === "designer" ? "#ffffff" : "#555555", background: vistaCorrente === "designer" ? "#CF2B10" : "#ececec", transition: "all 0.2s" }}>
+                  style={{ padding: "6px 12px", border: "none", borderRadius: 18, cursor: "pointer", fontSize: 9, fontWeight: vistaCorrente === "designer" ? 400 : 300, fontFamily: "'Roboto Mono', monospace", color: vistaCorrente === "designer" ? "#ffffff" : "#555555", background: vistaCorrente === "designer" ? "#E11408" : "#ececec", transition: "all 0.2s" }}>
                   {t.designerToggle}
                 </button>
                 <button onClick={() => cambiaVista("timeline")}
-                  style={{ padding: "6px 12px", border: "none", borderRadius: 18, cursor: "pointer", fontSize: 9, fontWeight: vistaCorrente === "timeline" ? 400 : 300, fontFamily: "'Roboto Mono', monospace", color: vistaCorrente === "timeline" ? "#ffffff" : "#555555", background: vistaCorrente === "timeline" ? "#CF2B10" : "#ececec", transition: "all 0.2s" }}>
+                  style={{ padding: "6px 12px", border: "none", borderRadius: 18, cursor: "pointer", fontSize: 9, fontWeight: vistaCorrente === "timeline" ? 400 : 300, fontFamily: "'Roboto Mono', monospace", color: vistaCorrente === "timeline" ? "#ffffff" : "#555555", background: vistaCorrente === "timeline" ? "#E11408" : "#ececec", transition: "all 0.2s" }}>
                   {t.timelineToggle}
                 </button>
               </div>
@@ -3785,31 +3790,36 @@ function App() {
           opacity: chromeVisibile ? 1 : 0, transition: "opacity 0.9s ease, transform 0.9s ease",
           zIndex: 20, display: "flex", flexDirection: "row", alignItems: "center", gap: 8 * uiScale,
         }}>
-          <button onClick={() => {
-            const nuovo = !correntiVisibiliRef.current
-            correntiVisibiliRef.current = nuovo
-            setCorrentiVisibili(nuovo)
-            if (ridisegnaFn) ridisegnaFn()
-          }}
-            title={correntiVisibili ? t.correntiToggleOn : t.correntiToggleOff}
-            style={{
-              width: 28 * uiScale, height: 28 * uiScale, minWidth: 28 * uiScale, borderRadius: "50%", boxSizing: "border-box",
-              border: correntiVisibili ? "3px solid #ffffff" : "none",
-              background: correntiVisibili ? "#CF2B10" : "#ffffff", boxShadow: "0 2px 12px rgba(0,0,0,0.1)", cursor: "pointer",
-              display: "flex", alignItems: "center", justifyContent: "center", padding: 0, transition: "background 0.2s", flexShrink: 0,
-            }}>
-            <svg width={13 * uiScale} height={13 * uiScale} viewBox="0 0 16 16" style={{ display: "block" }}>
-              <circle cx="6" cy="6" r="5" fill="none" stroke={correntiVisibili ? "#ffffff" : "#555555"} strokeWidth="1.4" />
-              <circle cx="10" cy="10" r="5" fill="none" stroke={correntiVisibili ? "#ffffff" : "#555555"} strokeWidth="1.4" />
-            </svg>
-          </button>
+          <div style={{
+            display: "flex", alignItems: "center", justifyContent: "center", background: "#ffffff",
+            borderRadius: "50%", padding: 3, boxShadow: "0 2px 12px rgba(0,0,0,0.1)",
+            width: 28 * uiScale, height: 28 * uiScale, boxSizing: "border-box", flexShrink: 0,
+          }}>
+            <button onClick={() => {
+              const nuovo = !correntiVisibiliRef.current
+              correntiVisibiliRef.current = nuovo
+              setCorrentiVisibili(nuovo)
+              if (ridisegnaFn) ridisegnaFn()
+            }}
+              title={correntiVisibili ? t.correntiToggleOn : t.correntiToggleOff}
+              style={{
+                width: "100%", height: "100%", borderRadius: "50%", border: "none", margin: 0,
+                background: correntiVisibili ? "#E11408" : "#ffffff", cursor: "pointer",
+                display: "flex", alignItems: "center", justifyContent: "center", padding: 0, transition: "background 0.2s",
+              }}>
+              <svg width={11 * uiScale} height={11 * uiScale} viewBox="0 0 16 16" style={{ display: "block" }}>
+                <circle cx="6" cy="6" r="5" fill="none" stroke={correntiVisibili ? "#ffffff" : "#555555"} strokeWidth="1.4" />
+                <circle cx="10" cy="10" r="5" fill="none" stroke={correntiVisibili ? "#ffffff" : "#555555"} strokeWidth="1.4" />
+              </svg>
+            </button>
+          </div>
           <div style={{ display: "flex", gap: 2, background: "#ffffff", borderRadius: 18 * uiScale, padding: 3, boxShadow: "0 2px 12px rgba(0,0,0,0.1)", height: 28 * uiScale, boxSizing: "border-box" }}>
             <button onClick={() => cambiaVista("designer")}
-              style={{ padding: `0 ${11 * uiScale}px`, border: "none", borderRadius: 13 * uiScale, cursor: "pointer", fontSize: 10 * uiScale, fontWeight: vistaCorrente === "designer" ? 400 : 300, fontFamily: "'Roboto Mono', monospace", color: vistaCorrente === "designer" ? "#ffffff" : "#555555", background: vistaCorrente === "designer" ? "#CF2B10" : "#ececec", transition: "all 0.2s", display: "flex", alignItems: "center" }}>
+              style={{ padding: `0 ${11 * uiScale}px`, border: "none", borderRadius: 13 * uiScale, cursor: "pointer", fontSize: 10 * uiScale, fontWeight: vistaCorrente === "designer" ? 400 : 300, fontFamily: "'Roboto Mono', monospace", color: vistaCorrente === "designer" ? "#ffffff" : "#555555", background: vistaCorrente === "designer" ? "#E11408" : "#ececec", transition: "all 0.2s", display: "flex", alignItems: "center" }}>
               {t.designerToggle}
             </button>
             <button onClick={() => cambiaVista("timeline")}
-              style={{ padding: `0 ${11 * uiScale}px`, border: "none", borderRadius: 13 * uiScale, cursor: "pointer", fontSize: 10 * uiScale, fontWeight: vistaCorrente === "timeline" ? 400 : 300, fontFamily: "'Roboto Mono', monospace", color: vistaCorrente === "timeline" ? "#ffffff" : "#555555", background: vistaCorrente === "timeline" ? "#CF2B10" : "#ececec", transition: "all 0.2s", display: "flex", alignItems: "center" }}>
+              style={{ padding: `0 ${11 * uiScale}px`, border: "none", borderRadius: 13 * uiScale, cursor: "pointer", fontSize: 10 * uiScale, fontWeight: vistaCorrente === "timeline" ? 400 : 300, fontFamily: "'Roboto Mono', monospace", color: vistaCorrente === "timeline" ? "#ffffff" : "#555555", background: vistaCorrente === "timeline" ? "#E11408" : "#ececec", transition: "all 0.2s", display: "flex", alignItems: "center" }}>
               {t.timelineToggle}
             </button>
           </div>
