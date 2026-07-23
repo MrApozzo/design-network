@@ -16567,5 +16567,21 @@
     "azienda": "Cassina",
     "categoria": "poltrona",
     "foto": "lecorbusier-lc1.jpg"
+  },
+  {
+    "nome": "Vetrata per Villa De Lange",
+    "anno": 1917,
+    "designer": "Theo van Doesburg",
+    "azienda": "Villa De Lange",
+    "categoria": "vetrata",
+    "foto": "vandoesburg-vetrata.jpg"
+  },
+  {
+    "nome": "Café de l'Aubette (interni)",
+    "anno": 1928,
+    "designer": "Theo van Doesburg",
+    "azienda": "Café de l'Aubette",
+    "categoria": "allestimento",
+    "foto": "vandoesburg-aubette.jpg"
   }
 ]

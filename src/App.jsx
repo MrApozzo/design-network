@@ -101,14 +101,21 @@ const STILE = {
   // --- Ameba correnti (scuole + collettivi) — disegno; il posizionamento che le
   // rende possibili è nella sezione "Layout verticale" più sotto ---
   corrente_raggio_punto_singolo: 20,
-  // Margine oltre il raggio reale del pallino: interpolato sullo zoom (t 0-1, vedi zoomT())
-  // invece di un valore fisso in pixel — a zoom 100% risultava sproporzionato rispetto
-  // al pallino ormai grande, a zoom 20-30% lo era rispetto al pallino ancora piccolo.
-  corrente_margine_espansione_min: 10,
-  corrente_margine_espansione_max: 16,
+  // Margine oltre il raggio reale del pallino: frazione FISSA del raggio corrente del
+  // pallino (non un valore interpolato a parte sullo zoom) — così il "di più" attorno a
+  // ogni pallino resta sempre proporzionale a quanto è già grande lui stesso, invece di
+  // gonfiarsi in modo indipendente e imprevedibile a certi livelli di zoom (a zoom alto
+  // il margine finiva quasi quanto il raggio del pallino successivo, inglobando pallini
+  // vicini che non c'entravano).
+  corrente_margine_fattore: 0.75,
   corrente_irregolarita: 0.4,
-  corrente_alpha: 0.16,
-  corrente_hover_boost: 1.8,
+  corrente_alpha: 0.045,
+  // L'alone (anello) usava globalAlpha=1 a riposo: moltiplicarlo per corrente_hover_boost
+  // in hover non cambiava nulla (il canvas blocca globalAlpha oltre 1), quindi l'hover
+  // sugli aloni isolati non produceva alcun effetto visibile. Ora ha un'opacità a riposo
+  // propria, più leggera, così l'hover ha davvero un salto percepibile.
+  corrente_alone_alpha: 0.22,
+  corrente_hover_boost: 3,
   corrente_alone_spessore: 2.5,
   corrente_alone_margine: 3,
 
@@ -357,6 +364,20 @@ function convexHull(points) {
   lower.pop()
   upper.pop()
   return lower.concat(upper)
+}
+
+// Ray-casting: test point-in-polygon in JS puro, sulle stesse coordinate schermo già
+// usate per disegnare — evita di dipendere da ctx.isPointInPath (che richiede la
+// stessa identica matrice di trasformazione attiva sia al disegno che al test).
+function puntoInPoligono(poligono, px, py) {
+  let dentro = false
+  for (let i = 0, j = poligono.length - 1; i < poligono.length; j = i++) {
+    const xi = poligono[i].x, yi = poligono[i].y
+    const xj = poligono[j].x, yj = poligono[j].y
+    const intersect = (yi > py) !== (yj > py) && px < ((xj - xi) * (py - yi)) / (yj - yi) + xi
+    if (intersect) dentro = !dentro
+  }
+  return dentro
 }
 
 function getDesigners(p) {
@@ -610,6 +631,8 @@ const TESTI = {
     benvenutoConferma: "Entra",
     designerToggle: "Designer",
     timelineToggle: "Linea del tempo",
+    correntiToggleOn: "Correnti progettuali visibili",
+    correntiToggleOff: "Correnti progettuali nascoste",
     hoverTooltip: "Hover sui collegamenti — clicca su area vuota per uscire",
     home: "Torna alla vista iniziale",
     sezione: "Sezione",
@@ -661,6 +684,8 @@ const TESTI = {
     benvenutoConferma: "Enter",
     designerToggle: "Designer",
     timelineToggle: "Timeline",
+    correntiToggleOn: "Design movements visible",
+    correntiToggleOff: "Design movements hidden",
     hoverTooltip: "Hover over the connections — click an empty area to exit",
     home: "Back to initial view",
     sezione: "Section",
@@ -940,6 +965,8 @@ function App() {
   const nodoEvidenziatoRef = useRef(null)
   const [legameEvidenziato, setLegameEvidenziato] = useState(null)
   const legameEvidenziatoRef = useRef(null)
+  const [correntiVisibili, setCorrentiVisibili] = useState(true)
+  const correntiVisibiliRef = useRef(true)
   const [centraFn, setCentraFn] = useState(null)
   const [evidenziaLegameFn, setEvidenziaLegameFn] = useState(null)
   const [resetVistaFn, setResetVistaFn] = useState(null)
@@ -1818,7 +1845,10 @@ function App() {
       // Due trattamenti: macchia piena ("diagonale") per chi ha almeno un altro membro
       // della stessa corrente vicino nell'ordine finale, semplice alone colorato per chi
       // è isolato nella propria corrente (nessuna forma connettiva, solo il colore).
+      // Svuotare correntiHit anche a interruttore spento basta a disattivare hover/click
+      // altrove (fanno già .find() su un array vuoto), senza dover duplicare il controllo.
       correntiHit = []
+      if (correntiVisibiliRef.current) {
       ctx.save()
       ctx.globalCompositeOperation = "multiply"
       correntiBlob.forEach((cb) => {
@@ -1833,8 +1863,11 @@ function App() {
         if (punti.length === 0) return
 
         const path = new Path2D()
+        let poligonoHit = null
+        let cerchioHit = null
         if (punti.length === 1) {
           path.arc(punti[0].x, punti[0].y, STILE.corrente_raggio_punto_singolo, 0, Math.PI * 2)
+          cerchioHit = { x: punti[0].x, y: punti[0].y, r: STILE.corrente_raggio_punto_singolo }
         } else {
           // Inviluppo convesso di campioni presi sul bordo reale di ogni pallino (anziché
           // un poligono coi soli centri espansi dal centroide): abbraccia meglio le orbite
@@ -1845,9 +1878,9 @@ function App() {
           // non Math.random) così il profilo resta irregolare senza tremolare da un
           // frame all'altro.
           const CAMPIONI_PER_PUNTO = 12
-          const margineBase = lerp(STILE.corrente_margine_espansione_min, STILE.corrente_margine_espansione_max, t) * vs
           const campioni = []
           punti.forEach((p) => {
+            const margineBase = p.r * STILE.corrente_margine_fattore
             for (let k = 0; k < CAMPIONI_PER_PUNTO; k++) {
               const ang = (k / CAMPIONI_PER_PUNTO) * Math.PI * 2
               const jitter = hashStr(`${cb.nomeCorrente}|${p.n}|${k}`)
@@ -1865,13 +1898,14 @@ function App() {
             path.quadraticCurveTo(curr.x, curr.y, (curr.x + next.x) / 2, (curr.y + next.y) / 2)
           }
           path.closePath()
+          poligonoHit = hull
         }
 
         const inHover = correnteHoverAttivo === cb
         ctx.globalAlpha = STILE.corrente_alpha * (inHover ? STILE.corrente_hover_boost : 1)
         ctx.fillStyle = cb.dati.colore
         ctx.fill(path)
-        correntiHit.push({ dati: cb, path })
+        correntiHit.push({ dati: cb, poligono: poligonoHit, cerchio: cerchioHit })
       })
 
       correntiAloni.forEach((al) => {
@@ -1885,13 +1919,14 @@ function App() {
         path.arc(p.x, p.y, raggioAlone, 0, Math.PI * 2)
 
         const inHover = correnteHoverAttivo === al
-        ctx.globalAlpha = (inHover ? STILE.corrente_hover_boost : 1)
+        ctx.globalAlpha = STILE.corrente_alone_alpha * (inHover ? STILE.corrente_hover_boost : 1)
         ctx.strokeStyle = al.dati.colore
         ctx.lineWidth = STILE.corrente_alone_spessore
         ctx.stroke(path)
-        correntiHit.push({ dati: al, path })
+        correntiHit.push({ dati: al, cerchio: { x: p.x, y: p.y, r: raggioAlone } })
       })
       ctx.restore()
+      }
 
       if (vistaInterna === "timeline") {
         graph.forEachNode((node, attr) => {
@@ -2842,7 +2877,21 @@ function App() {
     const sigmaCanvas = container
     if (sigmaCanvas) {
       sigmaCanvas.addEventListener("mouseenter", () => { mouseNelCanvas = true })
-      sigmaCanvas.addEventListener("mouseleave", () => { mouseNelCanvas = false; richiediDisegnoOverlay(18) })
+      sigmaCanvas.addEventListener("mouseleave", () => {
+        // Senza questo reset, lo stato di hover (ameba, nodo, prodotto) restava "incollato"
+        // all'ultimo elemento sotto al cursore anche dopo che il mouse usciva del tutto
+        // dal canvas, perché nessun altro mousemove arrivava più ad aggiornarlo.
+        mouseNelCanvas = false
+        if (nodoHoverAttivo) {
+          graph.forEachEdge((edge, attr) => { if (attr.tipo === "relazione") graph.setEdgeAttribute(edge, "attivo", false) })
+          nodoHoverAttivo = null
+        }
+        prodottoHoverAttivo = null
+        correnteHoverAttivo = null
+        setTooltipCorrente(null)
+        setTooltipRelazione(null)
+        richiediDisegnoOverlay(18)
+      })
 
       sigmaCanvas.addEventListener("mousedown", (e) => {
         mouseDownPos = { x: e.clientX, y: e.clientY }
@@ -2923,9 +2972,11 @@ function App() {
         // Ameba correnti: solo se non stiamo già interagendo con nodo/prodotto/designer
         // sopra di esse (sono sfondo, non devono mai rubare hit) e mai su mobile (niente hover reale).
         if (!isMobile && !designerCliccato && !prodottoCliccato && !nodoHoverAttivo && !prodottoHoverAttivo) {
-          const ctxHit = overlayCanvas.getContext("2d")
-          ctxHit.setTransform(dpr, 0, 0, dpr, 0, 0)
-          const trovata = correntiHit.find(({ path }) => ctxHit.isPointInPath(path, mx, my))
+          const trovata = correntiHit.find((h) => {
+            if (h.poligono) return puntoInPoligono(h.poligono, mx, my)
+            if (h.cerchio) { const dx = mx - h.cerchio.x, dy = my - h.cerchio.y; return dx * dx + dy * dy < h.cerchio.r * h.cerchio.r }
+            return false
+          })
           const nuovaHover = trovata ? trovata.dati : null
           if (nuovaHover !== correnteHoverAttivo) {
             correnteHoverAttivo = nuovaHover
@@ -3113,9 +3164,11 @@ function App() {
             richiediDisegnoOverlay(18)
           }
         } else {
-          const ctxHit = overlayCanvas.getContext("2d")
-          ctxHit.setTransform(dpr, 0, 0, dpr, 0, 0)
-          const trovataCorrente = correntiHit.find(({ path }) => ctxHit.isPointInPath(path, mx, my))
+          const trovataCorrente = correntiHit.find((h) => {
+            if (h.poligono) return puntoInPoligono(h.poligono, mx, my)
+            if (h.cerchio) { const dx = mx - h.cerchio.x, dy = my - h.cerchio.y; return dx * dx + dy * dy < h.cerchio.r * h.cerchio.r }
+            return false
+          })
           if (trovataCorrente) {
             const nomeCorrente = trovataCorrente.dati.nomeCorrente
             if (correnteCliccata === nomeCorrente) {
@@ -3328,7 +3381,7 @@ function App() {
         <div style={{ marginBottom: 18, marginLeft: -7 }}>
           <span style={{
             display: "inline-block", fontFamily: "'Roboto Mono', monospace", fontSize: 10, fontWeight: 400,
-            color: "#ffffff", background: "#F34213", border: "none", borderRadius: 20, padding: "3px 12px",
+            color: "#ffffff", background: "#CF2B10", border: "none", borderRadius: 20, padding: "3px 12px",
           }}>
             Design
           </span>
@@ -3570,7 +3623,7 @@ function App() {
             <button onClick={() => confermaSchermataIniziale()}
               style={{
                 marginTop: 16, padding: "8px 22px", borderRadius: 18, border: "none",
-                background: "#F34213", color: "white", fontSize: 11, fontFamily: "'Roboto Mono', monospace",
+                background: "#CF2B10", color: "white", fontSize: 11, fontFamily: "'Roboto Mono', monospace",
                 cursor: "pointer",
               }}>
               {t.benvenutoConferma}
@@ -3621,13 +3674,31 @@ function App() {
             marginLeft: -6,
           }}>
             <div style={{ display: "flex", gap: 5, alignItems: "flex-start" }}>
-              <div style={{ display: "flex", gap: 2, background: "#ffffff", borderRadius: 22, padding: 3, boxShadow: "0 2px 12px rgba(0,0,0,0.1)" }}>
+              <button onClick={() => {
+                const nuovo = !correntiVisibiliRef.current
+                correntiVisibiliRef.current = nuovo
+                setCorrentiVisibili(nuovo)
+                if (ridisegnaFn) ridisegnaFn()
+              }}
+                title={correntiVisibili ? t.correntiToggleOn : t.correntiToggleOff}
+                style={{
+                  width: 28, height: 28, minWidth: 28, borderRadius: "50%", boxSizing: "border-box",
+                  border: correntiVisibili ? "3px solid #ffffff" : "none",
+                  background: correntiVisibili ? "#CF2B10" : "#ffffff", boxShadow: "0 2px 12px rgba(0,0,0,0.1)", cursor: "pointer",
+                  display: "flex", alignItems: "center", justifyContent: "center", padding: 0, transition: "background 0.2s", flexShrink: 0,
+                }}>
+                <svg width={13} height={13} viewBox="0 0 16 16" style={{ display: "block" }}>
+                  <circle cx="6" cy="6" r="5" fill="none" stroke={correntiVisibili ? "#ffffff" : "#555555"} strokeWidth="1.4" />
+                  <circle cx="10" cy="10" r="5" fill="none" stroke={correntiVisibili ? "#ffffff" : "#555555"} strokeWidth="1.4" />
+                </svg>
+              </button>
+              <div style={{ display: "flex", gap: 2, background: "#ffffff", borderRadius: 22, padding: 3, boxShadow: "0 2px 12px rgba(0,0,0,0.1)", height: 28, boxSizing: "border-box", alignItems: "center" }}>
                 <button onClick={() => cambiaVista("designer")}
-                  style={{ padding: "6px 12px", border: "none", borderRadius: 18, cursor: "pointer", fontSize: 9, fontWeight: vistaCorrente === "designer" ? 400 : 300, fontFamily: "'Roboto Mono', monospace", color: vistaCorrente === "designer" ? "#ffffff" : "#555555", background: vistaCorrente === "designer" ? "#F34213" : "#ececec", transition: "all 0.2s" }}>
+                  style={{ padding: "6px 12px", border: "none", borderRadius: 18, cursor: "pointer", fontSize: 9, fontWeight: vistaCorrente === "designer" ? 400 : 300, fontFamily: "'Roboto Mono', monospace", color: vistaCorrente === "designer" ? "#ffffff" : "#555555", background: vistaCorrente === "designer" ? "#CF2B10" : "#ececec", transition: "all 0.2s" }}>
                   {t.designerToggle}
                 </button>
                 <button onClick={() => cambiaVista("timeline")}
-                  style={{ padding: "6px 12px", border: "none", borderRadius: 18, cursor: "pointer", fontSize: 9, fontWeight: vistaCorrente === "timeline" ? 400 : 300, fontFamily: "'Roboto Mono', monospace", color: vistaCorrente === "timeline" ? "#ffffff" : "#555555", background: vistaCorrente === "timeline" ? "#F34213" : "#ececec", transition: "all 0.2s" }}>
+                  style={{ padding: "6px 12px", border: "none", borderRadius: 18, cursor: "pointer", fontSize: 9, fontWeight: vistaCorrente === "timeline" ? 400 : 300, fontFamily: "'Roboto Mono', monospace", color: vistaCorrente === "timeline" ? "#ffffff" : "#555555", background: vistaCorrente === "timeline" ? "#CF2B10" : "#ececec", transition: "all 0.2s" }}>
                   {t.timelineToggle}
                 </button>
               </div>
@@ -3714,13 +3785,31 @@ function App() {
           opacity: chromeVisibile ? 1 : 0, transition: "opacity 0.9s ease, transform 0.9s ease",
           zIndex: 20, display: "flex", flexDirection: "row", alignItems: "center", gap: 8 * uiScale,
         }}>
+          <button onClick={() => {
+            const nuovo = !correntiVisibiliRef.current
+            correntiVisibiliRef.current = nuovo
+            setCorrentiVisibili(nuovo)
+            if (ridisegnaFn) ridisegnaFn()
+          }}
+            title={correntiVisibili ? t.correntiToggleOn : t.correntiToggleOff}
+            style={{
+              width: 28 * uiScale, height: 28 * uiScale, minWidth: 28 * uiScale, borderRadius: "50%", boxSizing: "border-box",
+              border: correntiVisibili ? "3px solid #ffffff" : "none",
+              background: correntiVisibili ? "#CF2B10" : "#ffffff", boxShadow: "0 2px 12px rgba(0,0,0,0.1)", cursor: "pointer",
+              display: "flex", alignItems: "center", justifyContent: "center", padding: 0, transition: "background 0.2s", flexShrink: 0,
+            }}>
+            <svg width={13 * uiScale} height={13 * uiScale} viewBox="0 0 16 16" style={{ display: "block" }}>
+              <circle cx="6" cy="6" r="5" fill="none" stroke={correntiVisibili ? "#ffffff" : "#555555"} strokeWidth="1.4" />
+              <circle cx="10" cy="10" r="5" fill="none" stroke={correntiVisibili ? "#ffffff" : "#555555"} strokeWidth="1.4" />
+            </svg>
+          </button>
           <div style={{ display: "flex", gap: 2, background: "#ffffff", borderRadius: 18 * uiScale, padding: 3, boxShadow: "0 2px 12px rgba(0,0,0,0.1)", height: 28 * uiScale, boxSizing: "border-box" }}>
             <button onClick={() => cambiaVista("designer")}
-              style={{ padding: `0 ${11 * uiScale}px`, border: "none", borderRadius: 13 * uiScale, cursor: "pointer", fontSize: 10 * uiScale, fontWeight: vistaCorrente === "designer" ? 400 : 300, fontFamily: "'Roboto Mono', monospace", color: vistaCorrente === "designer" ? "#ffffff" : "#555555", background: vistaCorrente === "designer" ? "#F34213" : "#ececec", transition: "all 0.2s", display: "flex", alignItems: "center" }}>
+              style={{ padding: `0 ${11 * uiScale}px`, border: "none", borderRadius: 13 * uiScale, cursor: "pointer", fontSize: 10 * uiScale, fontWeight: vistaCorrente === "designer" ? 400 : 300, fontFamily: "'Roboto Mono', monospace", color: vistaCorrente === "designer" ? "#ffffff" : "#555555", background: vistaCorrente === "designer" ? "#CF2B10" : "#ececec", transition: "all 0.2s", display: "flex", alignItems: "center" }}>
               {t.designerToggle}
             </button>
             <button onClick={() => cambiaVista("timeline")}
-              style={{ padding: `0 ${11 * uiScale}px`, border: "none", borderRadius: 13 * uiScale, cursor: "pointer", fontSize: 10 * uiScale, fontWeight: vistaCorrente === "timeline" ? 400 : 300, fontFamily: "'Roboto Mono', monospace", color: vistaCorrente === "timeline" ? "#ffffff" : "#555555", background: vistaCorrente === "timeline" ? "#F34213" : "#ececec", transition: "all 0.2s", display: "flex", alignItems: "center" }}>
+              style={{ padding: `0 ${11 * uiScale}px`, border: "none", borderRadius: 13 * uiScale, cursor: "pointer", fontSize: 10 * uiScale, fontWeight: vistaCorrente === "timeline" ? 400 : 300, fontFamily: "'Roboto Mono', monospace", color: vistaCorrente === "timeline" ? "#ffffff" : "#555555", background: vistaCorrente === "timeline" ? "#CF2B10" : "#ececec", transition: "all 0.2s", display: "flex", alignItems: "center" }}>
               {t.timelineToggle}
             </button>
           </div>

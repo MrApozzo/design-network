@@ -2142,5 +2142,19 @@
       "Design Francese Contemporaneo"
     ],
     "collettivi": []
+  },
+  {
+    "nome": "Theo van Doesburg",
+    "nato": 1883,
+    "morto": 1931,
+    "bio": "Pittore, teorico e cofondatore del movimento De Stijl, nel 1917 fonda l'omonima rivista che ne diventa il principale organo di diffusione. Applica i principi del Neoplasticismo anche al progetto, firmando vetrate architettoniche - come quella per Villa De Lange ad Alkmaar (1917) - e, insieme a Jean Arp e Sophie Taeuber-Arp, la celebre decorazione degli interni del Café de l'Aubette a Strasburgo (1928).",
+    "bio_en": "Painter, theorist and co-founder of the De Stijl movement, in 1917 he founded the magazine of the same name, which became the group's main platform. He applied the principles of Neoplasticism to design as well, creating architectural stained-glass windows - such as the one for Villa De Lange in Alkmaar (1917) - and, together with Jean Arp and Sophie Taeuber-Arp, the celebrated interior decoration of the Café de l'Aubette in Strasbourg (1928).",
+    "foto": "theovandoesburg.jpg",
+    "y": null,
+    "scuole": [
+      "De Stijl"
+    ],
+    "collettivi": [],
+    "cognome": "van Doesburg"
   }
 ]
