@@ -101,6 +101,12 @@ const STILE = {
   // --- Ameba correnti (scuole + collettivi) — disegno; il posizionamento che le
   // rende possibili è nella sezione "Layout verticale" più sotto ---
   corrente_raggio_punto_singolo: 20,
+  // Margine oltre il raggio reale del pallino: interpolato sullo zoom (t 0-1, vedi zoomT())
+  // invece di un valore fisso in pixel — a zoom 100% risultava sproporzionato rispetto
+  // al pallino ormai grande, a zoom 20-30% lo era rispetto al pallino ancora piccolo.
+  corrente_margine_espansione_min: 10,
+  corrente_margine_espansione_max: 16,
+  corrente_irregolarita: 0.4,
   corrente_alpha: 0.16,
   corrente_hover_boost: 1.8,
   corrente_alone_spessore: 2.5,
@@ -330,6 +336,27 @@ function hashStr(str) {
 
 function lerp(a, b, t) {
   return a + (b - a) * t
+}
+
+// Monotone chain: inviluppo convesso di un insieme di punti, in ordine antiorario.
+function convexHull(points) {
+  const pts = [...points].sort((a, b) => a.x - b.x || a.y - b.y)
+  if (pts.length < 3) return pts
+  const cross = (o, a, b) => (a.x - o.x) * (b.y - o.y) - (a.y - o.y) * (b.x - o.x)
+  const lower = []
+  for (const p of pts) {
+    while (lower.length >= 2 && cross(lower[lower.length - 2], lower[lower.length - 1], p) <= 0) lower.pop()
+    lower.push(p)
+  }
+  const upper = []
+  for (let i = pts.length - 1; i >= 0; i--) {
+    const p = pts[i]
+    while (upper.length >= 2 && cross(upper[upper.length - 2], upper[upper.length - 1], p) <= 0) upper.pop()
+    upper.push(p)
+  }
+  lower.pop()
+  upper.pop()
+  return lower.concat(upper)
 }
 
 function getDesigners(p) {
@@ -1270,12 +1297,31 @@ function App() {
       animated[d.nome] = { r: STILE.zoom_designer_min, alpha: 1 }
     })
 
-    // --- Ameba correnti: disegno derivato dall'ordine finale (già riavvicinato per
-    // corrente nella passata 2 sopra, vedi gruppiCorrenti/correntiMembri). Per ogni
-    // corrente, i membri che risultano ADIACENTI in ordinato formano un'ameba piena
-    // ("diagonale"); i membri isolati della stessa corrente (nessun altro membro finito
-    // vicino, es. per un vincolo più forte del co-progetto altrove) ottengono solo un
-    // alone colorato sul proprio pallino.
+    // Blocchi di co-progettazione nell'ordine finale (stessa partizione contigua usata
+    // nella passata 2 sopra). Serve a far ragionare l'ameba alla stessa granularità del
+    // posizionamento: un "passeggero" senza quel tag, finito lì solo perché indivisibile
+    // dal suo gruppo di co-progetto (es. Naoki Matsunaga accanto a Bonetto, o Joe Colombo
+    // trascinato dal co-progetto con Ambrogio Pozzi), non deve spezzare a metà un'ameba
+    // che altrimenti sarebbe contigua.
+    const blocchiOrdinatoFinale = []
+    {
+      let i = 0
+      while (i < ordinato.length) {
+        const gruppo = gruppiCoprogetto[ordinato[i].nome]
+        let j = i
+        if (gruppo && gruppo.size > 1) {
+          while (j + 1 < ordinato.length && gruppiCoprogetto[ordinato[j + 1].nome] === gruppo) j++
+        }
+        blocchiOrdinatoFinale.push(ordinato.slice(i, j + 1))
+        i = j + 1
+      }
+    }
+
+    // --- Ameba correnti: per ogni corrente, i BLOCCHI che contengono almeno un membro
+    // taggato e risultano ADIACENTI formano un'ameba piena ("diagonale"), che include
+    // anche gli eventuali passeggeri non taggati (fanno parte dello stesso agglomerato
+    // visivo, anche se non compaiono fra gli "esponenti" del pannello). Un solo membro
+    // taggato senza altri nelle vicinanze ottiene solo un alone colorato sul suo pallino.
     const correntiBlob = []
     const correntiAloni = []
     Object.entries(correntiMembri).forEach(([nomeCorrente, membri]) => {
@@ -1283,17 +1329,19 @@ function App() {
       if (!infoCorrente) return
       const membriSet = new Set(membri)
       const visitati = new Set()
-      ordinato.forEach((d, i) => {
-        if (!membriSet.has(d.nome) || visitati.has(d.nome)) return
+      blocchiOrdinatoFinale.forEach((blocco, i) => {
+        if (visitati.has(blocco) || !blocco.some((d) => membriSet.has(d.nome))) return
         let start = i, end = i
-        while (start > 0 && membriSet.has(ordinato[start - 1].nome)) start--
-        while (end < ordinato.length - 1 && membriSet.has(ordinato[end + 1].nome)) end++
-        const cluster = ordinato.slice(start, end + 1).map((x) => x.nome)
-        cluster.forEach((n) => visitati.add(n))
-        if (cluster.length > 1) {
+        while (start > 0 && blocchiOrdinatoFinale[start - 1].some((d) => membriSet.has(d.nome))) start--
+        while (end < blocchiOrdinatoFinale.length - 1 && blocchiOrdinatoFinale[end + 1].some((d) => membriSet.has(d.nome))) end++
+        const blocchiRun = blocchiOrdinatoFinale.slice(start, end + 1)
+        blocchiRun.forEach((b) => visitati.add(b))
+        const cluster = blocchiRun.flat().map((x) => x.nome)
+        const membriTaggati = cluster.filter((n) => membriSet.has(n))
+        if (membriTaggati.length > 1) {
           correntiBlob.push({ nomeCorrente, dati: infoCorrente, nodi: cluster })
         } else {
-          correntiAloni.push({ nomeCorrente, dati: infoCorrente, nodo: cluster[0] })
+          correntiAloni.push({ nomeCorrente, dati: infoCorrente, nodo: membriTaggati[0] })
         }
       })
     })
@@ -1780,7 +1828,7 @@ function App() {
             const a = graph.getNodeAttributes(n)
             const p = renderer.graphToViewport({ x: a.x, y: a.y })
             const r = animated[n]?.r ?? STILE.zoom_designer_min
-            return { x: p.x, y: p.y, r }
+            return { x: p.x, y: p.y, r, n }
           })
         if (punti.length === 0) return
 
@@ -1788,24 +1836,32 @@ function App() {
         if (punti.length === 1) {
           path.arc(punti[0].x, punti[0].y, STILE.corrente_raggio_punto_singolo, 0, Math.PI * 2)
         } else {
-          const cx = punti.reduce((s, p) => s + p.x, 0) / punti.length
-          const cy = punti.reduce((s, p) => s + p.y, 0) / punti.length
-          const ordinatiAngolo = punti
-            .map((p) => ({ ...p, angolo: Math.atan2(p.y - cy, p.x - cx) }))
-            .sort((a, b) => a.angolo - b.angolo)
-          const espansi = ordinatiAngolo.map((p) => {
-            const dx = p.x - cx, dy = p.y - cy
-            const dist = Math.sqrt(dx * dx + dy * dy)
-            const pad = p.r + STILE.corrente_raggio_punto_singolo
-            const scala = (dist + pad) / Math.max(dist, 0.01)
-            return { x: cx + dx * scala, y: cy + dy * scala }
+          // Inviluppo convesso di campioni presi sul bordo reale di ogni pallino (anziché
+          // un poligono coi soli centri espansi dal centroide): abbraccia meglio le orbite
+          // vere e, avendo molti più vertici ravvicinati, la successiva lisciatura elimina
+          // le punte residue tipiche di cluster piccoli (2-3 designer) e dà un profilo
+          // arrotondato "a nuvola" invece che a lente. Il raggio di ogni campione è
+          // sbalzato in modo pseudo-casuale ma stabile (hashStr su corrente+nodo+indice,
+          // non Math.random) così il profilo resta irregolare senza tremolare da un
+          // frame all'altro.
+          const CAMPIONI_PER_PUNTO = 12
+          const margineBase = lerp(STILE.corrente_margine_espansione_min, STILE.corrente_margine_espansione_max, t) * vs
+          const campioni = []
+          punti.forEach((p) => {
+            for (let k = 0; k < CAMPIONI_PER_PUNTO; k++) {
+              const ang = (k / CAMPIONI_PER_PUNTO) * Math.PI * 2
+              const jitter = hashStr(`${cb.nomeCorrente}|${p.n}|${k}`)
+              const raggio = p.r + margineBase * (1 + (jitter - 0.5) * STILE.corrente_irregolarita)
+              campioni.push({ x: p.x + Math.cos(ang) * raggio, y: p.y + Math.sin(ang) * raggio })
+            }
           })
-          const primo = espansi[0]
-          const ultimo = espansi[espansi.length - 1]
+          const hull = convexHull(campioni)
+          const primo = hull[0]
+          const ultimo = hull[hull.length - 1]
           path.moveTo((ultimo.x + primo.x) / 2, (ultimo.y + primo.y) / 2)
-          for (let i = 0; i < espansi.length; i++) {
-            const curr = espansi[i]
-            const next = espansi[(i + 1) % espansi.length]
+          for (let i = 0; i < hull.length; i++) {
+            const curr = hull[i]
+            const next = hull[(i + 1) % hull.length]
             path.quadraticCurveTo(curr.x, curr.y, (curr.x + next.x) / 2, (curr.y + next.y) / 2)
           }
           path.closePath()
