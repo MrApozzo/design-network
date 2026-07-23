@@ -1,0 +1,342 @@
+[
+  {
+    "nome": "Archizoom",
+    "annoInizio": 1966,
+    "annoFine": 1974,
+    "colore": "#c95e5e",
+    "descrizioneBreve": "Gruppo di architettura radicale fondato a Firenze nel 1966.",
+    "descrizioneBreve_en": "Radical architecture group founded in Florence in 1966.",
+    "descrizione": "Fondato a Firenze nel 1966 da Andrea Branzi, Gilberto Corretti, Paolo Deganello e Massimo Morozzi, Archizoom Associati è tra i protagonisti dell'architettura radicale italiana. Con progetti provocatori come il letto Superonda e il sistema Mies, e con la visionaria No-Stop City, mette in discussione la funzione stessa dell'oggetto di design. Si scioglie nel 1974.",
+    "descrizione_en": "Founded in Florence in 1966 by Andrea Branzi, Gilberto Corretti, Paolo Deganello and Massimo Morozzi, Archizoom Associati was among the protagonists of Italian radical architecture. With provocative projects such as the Superonda bed and the Mies seating system, and the visionary No-Stop City, the group questioned the very function of the design object. It disbanded in 1974."
+  },
+  {
+    "nome": "Azucena",
+    "annoInizio": 1947,
+    "annoFine": null,
+    "colore": "#c9725e",
+    "descrizioneBreve": "Marchio milanese fondato nel 1947 da Caccia Dominioni, Gardella e Corradi Dell'Acqua.",
+    "descrizioneBreve_en": "Milanese furniture brand founded in 1947 by Caccia Dominioni, Gardella and Corradi Dell'Acqua.",
+    "descrizione": "Fondata a Milano nel 1947 da Luigi Caccia Dominioni, Ignazio Gardella e Corrado Corradi Dell'Acqua, Azucena unisce artigianato italiano ed estetica moderna in mobili e complementi d'arredo dal linguaggio essenziale e senza tempo, diventando un punto di riferimento del design milanese del dopoguerra.",
+    "descrizione_en": "Founded in Milan in 1947 by Luigi Caccia Dominioni, Ignazio Gardella and Corrado Corradi Dell'Acqua, Azucena combined Italian craftsmanship with modern aesthetics in furniture and furnishings with an essential, timeless language, becoming a reference point of postwar Milanese design."
+  },
+  {
+    "nome": "BBPR",
+    "annoInizio": 1932,
+    "annoFine": null,
+    "colore": "#c9845e",
+    "descrizioneBreve": "Studio di architettura milanese fondato nel 1932 da quattro soci.",
+    "descrizioneBreve_en": "Milanese architecture studio founded in 1932 by four partners.",
+    "descrizione": "Fondato a Milano nel 1932 da Gian Luigi Banfi, Lodovico Barbiano di Belgiojoso, Enrico Peressutti ed Ernesto Nathan Rogers (le cui iniziali danno il nome allo studio), BBPR attraversa il razionalismo italiano e il dopoguerra firmando opere come la Torre Velasca. Banfi muore nel 1945 nel campo di concentramento di Mauthausen; lo studio prosegue con gli altri soci fino alla morte di Belgiojoso, nel 2004.",
+    "descrizione_en": "Founded in Milan in 1932 by Gian Luigi Banfi, Lodovico Barbiano di Belgiojoso, Enrico Peressutti and Ernesto Nathan Rogers (whose initials give the studio its name), BBPR spanned Italian Rationalism and the postwar years, designing works such as the Torre Velasca. Banfi died in 1945 in the Mauthausen concentration camp; the studio continued with the remaining partners until Belgiojoso's death in 2004."
+  },
+  {
+    "nome": "Gruppo N",
+    "annoInizio": 1959,
+    "annoFine": 1968,
+    "colore": "#c9975e",
+    "descrizioneBreve": "Collettivo di arte cinetica e programmata fondato a Padova nel 1959.",
+    "descrizioneBreve_en": "Kinetic and programmed art collective founded in Padua in 1959.",
+    "descrizione": "Nato a Padova nel 1959 e assestatosi nella sua formazione definitiva nel 1960, il Gruppo N esplora insieme al milanese Gruppo T le possibilità dell'arte cinetica e programmata, culminando nella mostra manifesto \"Arte Programmata\" del 1962. Si scioglie entro la fine degli anni '60.",
+    "descrizione_en": "Formed in Padua in 1959 and reaching its definitive lineup in 1960, Gruppo N explored, alongside the Milanese Gruppo T, the possibilities of kinetic and programmed art, culminating in the landmark 1962 exhibition \"Arte Programmata\". It disbanded by the late 1960s."
+  },
+  {
+    "nome": "Gruppo Strum",
+    "annoInizio": 1966,
+    "annoFine": 1974,
+    "colore": "#c9a95e",
+    "descrizioneBreve": "Collettivo di architettura radicale torinese, attivo dal 1966.",
+    "descrizioneBreve_en": "Turin-based radical architecture collective, active from 1966.",
+    "descrizione": "Fondato a Torino nel 1966 da Giorgio Ceretti, Pietro Derossi e Riccardo Rosso (nome completo Gruppo Strumentale all'Architettura), affianca Archizoom e Superstudio nella stagione del design radicale italiano, esponendo alla mostra \"Italy: The New Domestic Landscape\" del MoMA (1972) e firmando pezzi come il Pratone per Gufram.",
+    "descrizione_en": "Founded in Turin in 1966 by Giorgio Ceretti, Pietro Derossi and Riccardo Rosso (full name Gruppo Strumentale all'Architettura), the group stood alongside Archizoom and Superstudio in the Italian radical design scene, exhibiting at MoMA's \"Italy: The New Domestic Landscape\" (1972) and designing pieces such as the Pratone for Gufram."
+  },
+  {
+    "nome": "Gruppo T",
+    "annoInizio": 1959,
+    "annoFine": 1968,
+    "colore": "#c9bd5e",
+    "descrizioneBreve": "Collettivo milanese di arte cinetica e programmata, fondato nel 1959.",
+    "descrizioneBreve_en": "Milanese kinetic and programmed art collective, founded in 1959.",
+    "descrizione": "Costituitosi a Milano nell'ottobre 1959, il Gruppo T (dal francese 'temps', tempo) indaga la variazione dell'immagine nella sequenza temporale attraverso le rassegne \"Miriorama\", ponendo le basi, insieme al Gruppo N di Padova, dell'Arte Programmata.",
+    "descrizione_en": "Formed in Milan in October 1959, Gruppo T (from the French 'temps', time) explored the variation of images through time via its \"Miriorama\" exhibitions, laying, together with Padua's Gruppo N, the foundations of Programmed Art."
+  },
+  {
+    "nome": "MAC",
+    "annoInizio": 1948,
+    "annoFine": 1958,
+    "colore": "#c2c95e",
+    "descrizioneBreve": "Movimento Arte Concreta, fondato a Milano nel 1948.",
+    "descrizioneBreve_en": "Concrete Art Movement, founded in Milan in 1948.",
+    "descrizione": "Fondato a Milano nel dicembre 1948 da Atanasio Soldati, Gillo Dorfles, Bruno Munari e Gianni Monnet, il MAC promuove un'arte non figurativa costruita su forme geometriche pure, ponte tra le avanguardie storiche e il design italiano del dopoguerra. Attivo fino al 1958.",
+    "descrizione_en": "Founded in Milan in December 1948 by Atanasio Soldati, Gillo Dorfles, Bruno Munari and Gianni Monnet, the MAC promoted a non-figurative art built on pure geometric forms, bridging the historical avant-gardes and postwar Italian design. Active until 1958."
+  },
+  {
+    "nome": "Memphis",
+    "annoInizio": 1981,
+    "annoFine": 1988,
+    "colore": "#b0c95e",
+    "descrizioneBreve": "Collettivo postmoderno fondato da Ettore Sottsass a Milano nel 1981.",
+    "descrizioneBreve_en": "Postmodern collective founded by Ettore Sottsass in Milan in 1981.",
+    "descrizione": "Fondato a Milano nel dicembre 1981 da Ettore Sottsass insieme a un gruppo di giovani designer italiani e internazionali, Memphis rovescia il funzionalismo con mobili e oggetti dai colori accesi, laminati decorati e forme geometriche giocose, diventando il simbolo del design postmoderno. Il gruppo si scioglie formalmente nel 1988.",
+    "descrizione_en": "Founded in Milan in December 1981 by Ettore Sottsass together with a group of young Italian and international designers, Memphis overturned functionalism with furniture and objects in bright colors, patterned laminates and playful geometric forms, becoming the symbol of postmodern design. The group formally disbanded in 1988."
+  },
+  {
+    "nome": "Studio Alchimia",
+    "annoInizio": 1976,
+    "annoFine": 1992,
+    "colore": "#9dc95e",
+    "descrizioneBreve": "Studio-collettivo milanese fondato nel 1976 da Alessandro e Adriana Guerriero.",
+    "descrizioneBreve_en": "Milanese studio-collective founded in 1976 by Alessandro and Adriana Guerriero.",
+    "descrizione": "Fondato a Milano nel 1976 da Alessandro Guerriero insieme alla sorella Adriana, Studio Alchimia riunisce Ettore Sottsass, Alessandro Mendini, Michele De Lucchi e Andrea Branzi in un laboratorio di design concettuale e ironico, anticipatore del postmoderno e diretto precursore di Memphis. Attivo fino al 1992.",
+    "descrizione_en": "Founded in Milan in 1976 by Alessandro Guerriero together with his sister Adriana, Studio Alchimia brought together Ettore Sottsass, Alessandro Mendini, Michele De Lucchi and Andrea Branzi in a workshop of conceptual, ironic design, anticipating postmodernism and directly paving the way for Memphis. Active until 1992."
+  },
+  {
+    "nome": "Studio Caccia Dominioni-Castiglioni",
+    "annoInizio": 1938,
+    "annoFine": 1952,
+    "colore": "#8bc95e",
+    "descrizioneBreve": "Studio milanese condiviso da Caccia Dominioni e i fratelli Castiglioni, dal 1938.",
+    "descrizioneBreve_en": "Milan studio shared by Caccia Dominioni and the Castiglioni brothers, from 1938.",
+    "descrizione": "Aperto a Milano nel 1938 da Luigi Caccia Dominioni insieme a Livio e Pier Giacomo Castiglioni appena laureati, lo studio condiviso segna gli esordi professionali dei tre nel razionalismo milanese, prima che Livio lo lasci nel 1952 per dedicarsi a illuminazione e tecnologia del suono.",
+    "descrizione_en": "Opened in Milan in 1938 by Luigi Caccia Dominioni together with the newly graduated Livio and Pier Giacomo Castiglioni, the shared studio marked the three architects' professional beginnings within Milanese Rationalism, before Livio left in 1952 to focus on lighting and sound technology."
+  },
+  {
+    "nome": "Superstudio",
+    "annoInizio": 1966,
+    "annoFine": 1978,
+    "colore": "#77c95e",
+    "descrizioneBreve": "Gruppo di architettura radicale fondato a Firenze nel dicembre 1966.",
+    "descrizioneBreve_en": "Radical architecture group founded in Florence in December 1966.",
+    "descrizione": "Fondato a Firenze nel dicembre 1966 da Adolfo Natalini e Cristiano Toraldo di Francia, a cui si uniscono Gian Piero Frassinelli, Alessandro Magris e Roberto Magris, Superstudio elabora una critica radicale dell'architettura attraverso progetti visionari come Il Monumento Continuo e la serie di mobili Quaderna. Si scioglie nel 1978.",
+    "descrizione_en": "Founded in Florence in December 1966 by Adolfo Natalini and Cristiano Toraldo di Francia, joined by Gian Piero Frassinelli, Alessandro Magris and Roberto Magris, Superstudio developed a radical critique of architecture through visionary projects such as The Continuous Monument and the Quaderna furniture series. It disbanded in 1978."
+  },
+  {
+    "nome": "Art Nouveau",
+    "annoInizio": 1890,
+    "annoFine": 1910,
+    "colore": "#65c95e",
+    "descrizioneBreve": "Corrente decorativa europea di fine Ottocento, ispirata alle linee organiche della natura.",
+    "descrizioneBreve_en": "Late-19th-century European decorative movement inspired by the organic lines of nature.",
+    "descrizione": "Diffuso in Europa tra il 1890 e il 1910 con nomi diversi a seconda del paese (Jugendstil in Germania, Modernismo in Catalogna, Liberty in Italia), l'Art Nouveau applica linee sinuose e motivi vegetali all'architettura, alle arti decorative e al design, in reazione all'industrializzazione e all'eclettismo ottocentesco.",
+    "descrizione_en": "Widespread across Europe between 1890 and 1910 under different local names (Jugendstil in Germany, Modernisme in Catalonia, Stile Liberty in Italy), Art Nouveau applied sinuous lines and plant motifs to architecture, decorative arts and design, reacting against industrialization and 19th-century eclecticism."
+  },
+  {
+    "nome": "Arte Concreta",
+    "annoInizio": 1948,
+    "annoFine": 1958,
+    "colore": "#5ec96b",
+    "descrizioneBreve": "Corrente italiana di arte non figurativa basata su forme geometriche pure.",
+    "descrizioneBreve_en": "Italian non-figurative art current based on pure geometric forms.",
+    "descrizione": "Legata al MAC (Movimento Arte Concreta) fondato a Milano nel 1948, l'Arte Concreta rifiuta ogni riferimento figurativo a favore di forme, colori e superfici costruiti secondo leggi geometriche e matematiche, influenzando il design industriale italiano del dopoguerra.",
+    "descrizione_en": "Linked to the MAC (Concrete Art Movement) founded in Milan in 1948, Concrete Art rejected all figurative reference in favor of forms, colors and surfaces built according to geometric and mathematical laws, influencing postwar Italian industrial design."
+  },
+  {
+    "nome": "Arte Programmata",
+    "annoInizio": 1959,
+    "annoFine": 1968,
+    "colore": "#5ec97e",
+    "descrizioneBreve": "Arte cinetica italiana basata su strutture visive programmate e variabili.",
+    "descrizioneBreve_en": "Italian kinetic art based on programmed, variable visual structures.",
+    "descrizione": "Nata dall'incontro tra il Gruppo T di Milano e il Gruppo N di Padova, l'Arte Programmata usa strutture geometriche, luce e movimento per coinvolgere lo spettatore in opere che cambiano nel tempo. La mostra \"Arte Programmata\", curata da Bruno Munari per Olivetti nel 1962, ne è il manifesto.",
+    "descrizione_en": "Born from the encounter between Milan's Gruppo T and Padua's Gruppo N, Programmed Art used geometric structures, light and movement to involve the viewer in works that change over time. The 1962 \"Arte Programmata\" exhibition, curated by Bruno Munari for Olivetti, was its manifesto."
+  },
+  {
+    "nome": "Arts and Crafts",
+    "annoInizio": 1880,
+    "annoFine": 1910,
+    "colore": "#5ec990",
+    "descrizioneBreve": "Movimento inglese di fine Ottocento contro la produzione industriale, a favore dell'artigianato.",
+    "descrizioneBreve_en": "Late-19th-century English movement against industrial production, in favor of craftsmanship.",
+    "descrizione": "Nato in Inghilterra attorno al 1880 sull'onda del pensiero di William Morris e John Ruskin, l'Arts and Crafts rivaluta il lavoro artigianale e i materiali naturali contro l'anonimia della produzione industriale, ponendo le basi teoriche del design moderno europeo.",
+    "descrizione_en": "Born in England around 1880 on the wave of William Morris's and John Ruskin's thought, the Arts and Crafts movement championed craftsmanship and natural materials against the anonymity of industrial production, laying the theoretical foundations of modern European design."
+  },
+  {
+    "nome": "Bauhaus",
+    "annoInizio": 1919,
+    "annoFine": 1933,
+    "colore": "#5ec9a4",
+    "descrizioneBreve": "Scuola tedesca di arte, architettura e design, 1919-1933.",
+    "descrizioneBreve_en": "German school of art, architecture and design, 1919-1933.",
+    "descrizione": "Fondata a Weimar nel 1919 da Walter Gropius e trasferitasi poi a Dessau e Berlino, il Bauhaus unisce artigianato, arte e industria in una didattica sperimentale che getta le basi del design moderno. Chiusa dal regime nazista nel 1933, la sua eredità si diffonde nel mondo attraverso l'emigrazione di docenti e allievi.",
+    "descrizione_en": "Founded in Weimar in 1919 by Walter Gropius and later moved to Dessau and Berlin, the Bauhaus united craft, art and industry in an experimental curriculum that laid the foundations of modern design. Closed by the Nazi regime in 1933, its legacy spread worldwide as teachers and students emigrated."
+  },
+  {
+    "nome": "De Stijl",
+    "annoInizio": 1917,
+    "annoFine": 1931,
+    "colore": "#5ec9b6",
+    "descrizioneBreve": "Movimento olandese di astrazione geometrica, 1917-1931.",
+    "descrizioneBreve_en": "Dutch movement of geometric abstraction, 1917-1931.",
+    "descrizione": "Fondato nei Paesi Bassi nel 1917 attorno all'omonima rivista di Theo van Doesburg, De Stijl riduce arte, architettura e design a linee rette, piani e colori primari, come nella Sedia Rossa e Blu e nella Casa Schröder di Gerrit Rietveld. Si scioglie nel 1931, alla morte di van Doesburg.",
+    "descrizione_en": "Founded in the Netherlands in 1917 around Theo van Doesburg's eponymous magazine, De Stijl reduced art, architecture and design to straight lines, planes and primary colors, as in Gerrit Rietveld's Red and Blue Chair and Rietveld Schröder House. It dissolved in 1931, upon van Doesburg's death."
+  },
+  {
+    "nome": "Decostruttivismo",
+    "annoInizio": 1980,
+    "annoFine": 2000,
+    "colore": "#5ec9c9",
+    "descrizioneBreve": "Corrente architettonica che frammenta e destabilizza le forme geometriche tradizionali.",
+    "descrizioneBreve_en": "Architectural current that fragments and destabilizes traditional geometric forms.",
+    "descrizione": "Emerso negli anni '80 e consacrato dalla mostra \"Deconstructivist Architecture\" al MoMA nel 1988, il Decostruttivismo scompone e distorce le forme geometriche pure per creare architetture e oggetti dall'aspetto instabile e frammentato, come nelle opere di Zaha Hadid.",
+    "descrizione_en": "Emerging in the 1980s and consecrated by the 1988 MoMA exhibition \"Deconstructivist Architecture\", Deconstructivism fragmented and distorted pure geometric forms to create architecture and objects with an unstable, fractured appearance, as in the work of Zaha Hadid."
+  },
+  {
+    "nome": "Design Radicale",
+    "annoInizio": 1966,
+    "annoFine": 1978,
+    "colore": "#5eb6c9",
+    "descrizioneBreve": "Corrente italiana di critica utopica e provocatoria al design tradizionale.",
+    "descrizioneBreve_en": "Italian current of utopian, provocative critique of traditional design.",
+    "descrizione": "Sviluppatosi in Italia tra Firenze, Torino e Milano dal 1966, il Design Radicale — con protagonisti come Archizoom, Superstudio, Gruppo Strum, Ettore Sottsass e Ugo La Pietra (tra i fondatori di Global Tools nel 1973) — usa provocazione, ironia e utopia per contestare il funzionalismo e la società dei consumi, anticipando molti temi del postmoderno.",
+    "descrizione_en": "Developing in Italy between Florence, Turin and Milan from 1966, Radical Design — with protagonists such as Archizoom, Superstudio, Gruppo Strum, Ettore Sottsass and Ugo La Pietra (among the founders of Global Tools in 1973) — used provocation, irony and utopia to challenge functionalism and consumer society, anticipating many themes of postmodernism."
+  },
+  {
+    "nome": "Design Scandinavo",
+    "annoInizio": 1930,
+    "annoFine": 1970,
+    "colore": "#5ea4c9",
+    "descrizioneBreve": "Design nordico basato su funzionalità, materiali naturali e forme semplici.",
+    "descrizioneBreve_en": "Nordic design based on functionality, natural materials and simple forms.",
+    "descrizione": "Affermatosi tra Danimarca, Svezia, Norvegia e Finlandia dagli anni '30 e diffuso a livello internazionale nel dopoguerra, il Design Scandinavo unisce funzionalismo, artigianato e materiali naturali come legno e cuoio in oggetti sobri e accessibili, con figure come Arne Jacobsen, Hans Wegner e Alvar Aalto.",
+    "descrizione_en": "Established across Denmark, Sweden, Norway and Finland from the 1930s and spreading internationally after the war, Scandinavian Design combined functionalism, craftsmanship and natural materials such as wood and leather in sober, accessible objects, with figures such as Arne Jacobsen, Hans Wegner and Alvar Aalto."
+  },
+  {
+    "nome": "HfG Ulm",
+    "annoInizio": 1953,
+    "annoFine": 1968,
+    "colore": "#5e90c9",
+    "descrizioneBreve": "Scuola tedesca di design, erede del metodo Bauhaus, 1953-1968.",
+    "descrizioneBreve_en": "German design school, heir to the Bauhaus method, 1953-1968.",
+    "descrizione": "Fondata a Ulm nel 1953 su impulso di Inge Aicher-Scholl, Otl Aicher e Max Bill, la Hochschule für Gestaltung applica un metodo scientifico e sistemico al design industriale e alla grafica, formando figure come Hans Gugelot e Dieter Rams e definendo l'estetica del design tedesco del dopoguerra. Chiude nel 1968.",
+    "descrizione_en": "Founded in Ulm in 1953 on the initiative of Inge Aicher-Scholl, Otl Aicher and Max Bill, the Hochschule für Gestaltung applied a scientific, systemic method to industrial and graphic design, training figures such as Hans Gugelot and Dieter Rams and defining the aesthetic of postwar German design. It closed in 1968."
+  },
+  {
+    "nome": "Modernismo",
+    "annoInizio": 1920,
+    "annoFine": 1970,
+    "colore": "#5e7ec9",
+    "descrizioneBreve": "Movimento internazionale che lega forma e funzione con materiali industriali.",
+    "descrizioneBreve_en": "International movement linking form and function through industrial materials.",
+    "descrizione": "Affermatosi a partire dagli anni '20 in Europa e negli Stati Uniti, il Modernismo applica al design e all'architettura i principi del funzionalismo e dell'uso onesto dei materiali industriali — acciaio tubolare, vetro, compensato curvato — in nome di un linguaggio universale e razionale, da Le Corbusier a Charles ed Eames.",
+    "descrizione_en": "Established from the 1920s in Europe and the United States, Modernism applied to design and architecture the principles of functionalism and honest use of industrial materials — tubular steel, glass, bent plywood — in the name of a universal, rational language, from Le Corbusier to Charles and Ray Eames."
+  },
+  {
+    "nome": "Neoclassicismo",
+    "annoInizio": 1920,
+    "annoFine": 1950,
+    "colore": "#5e6bc9",
+    "descrizioneBreve": "Rilettura novecentesca delle proporzioni e degli ordini dell'architettura classica.",
+    "descrizioneBreve_en": "20th-century reinterpretation of classical architecture's proportions and orders.",
+    "descrizione": "Presente nel design e nell'architettura italiani tra gli anni '20 e '50 come rilettura misurata delle proporzioni e degli ordini classici, filtrata attraverso il gusto novecentista e messa al servizio di un'eleganza borghese moderna, come nell'opera giovanile di Gio Ponti.",
+    "descrizione_en": "Present in Italian design and architecture between the 1920s and 1950s as a measured reinterpretation of classical proportions and orders, filtered through Novecento taste and put in service of a modern bourgeois elegance, as in the early work of Gio Ponti."
+  },
+  {
+    "nome": "Organicismo",
+    "annoInizio": 1930,
+    "annoFine": 1960,
+    "colore": "#655ec9",
+    "descrizioneBreve": "Design e architettura che seguono forme fluide ispirate alla natura.",
+    "descrizioneBreve_en": "Design and architecture following fluid forms inspired by nature.",
+    "descrizione": "Diffuso tra gli anni '30 e '60, l'Organicismo preferisce alle geometrie rigide del razionalismo forme sinuose e continue ispirate alla natura e al corpo umano, adattando la struttura al contesto e alla funzione, da Frank Lloyd Wright ad Alvar Aalto, da Carlo Mollino a Carlo Scarpa.",
+    "descrizione_en": "Widespread between the 1930s and 1960s, Organicism favored, over Rationalism's rigid geometries, sinuous and continuous forms inspired by nature and the human body, adapting structure to context and function, from Frank Lloyd Wright to Alvar Aalto, from Carlo Mollino to Carlo Scarpa."
+  },
+  {
+    "nome": "Postmodernismo",
+    "annoInizio": 1975,
+    "annoFine": 1990,
+    "colore": "#775ec9",
+    "descrizioneBreve": "Reazione ironica e decorativa al rigore del modernismo, dalla metà anni '70.",
+    "descrizioneBreve_en": "Ironic, decorative reaction to the rigor of Modernism, from the mid-1970s.",
+    "descrizione": "Emerso dalla metà degli anni '70 come reazione al rigore e all'austerità del modernismo, il Postmodernismo reintroduce nel design ornamento, colore, citazione storica e ironia — da Studio Alchimia a Memphis — mescolando registri alti e bassi in una critica giocosa della serietà funzionalista.",
+    "descrizione_en": "Emerging from the mid-1970s as a reaction to Modernism's rigor and austerity, Postmodernism reintroduced ornament, color, historical quotation and irony into design — from Studio Alchimia to Memphis — mixing high and low registers in a playful critique of functionalist seriousness."
+  },
+  {
+    "nome": "Razionalismo",
+    "annoInizio": 1926,
+    "annoFine": 1943,
+    "colore": "#8b5ec9",
+    "descrizioneBreve": "Architettura razionalista italiana, nata con il Gruppo 7 nel 1926.",
+    "descrizioneBreve_en": "Italian Rationalist architecture, born with Gruppo 7 in 1926.",
+    "descrizione": "Nato nel 1926 con il manifesto del Gruppo 7, il Razionalismo italiano applica geometrie pure, funzionalità e assenza di ornamento all'architettura del ventennio, in un dialogo complesso con la retorica del regime fascista, prima di essere travolto dalla guerra nel 1943.",
+    "descrizione_en": "Born in 1926 with Gruppo 7's manifesto, Italian Rationalism applied pure geometries, functionality and an absence of ornament to the architecture of the interwar decades, in a complex dialogue with fascist-regime rhetoric, before being swept away by the war in 1943."
+  },
+  {
+    "nome": "Secessione Viennese",
+    "annoInizio": 1897,
+    "annoFine": 1905,
+    "colore": "#9d5ec9",
+    "descrizioneBreve": "Movimento artistico e decorativo austriaco, fondato a Vienna nel 1897.",
+    "descrizioneBreve_en": "Austrian artistic and decorative movement, founded in Vienna in 1897.",
+    "descrizione": "Fondata a Vienna nel 1897 da un gruppo di artisti guidato da Gustav Klimt in rottura con l'accademismo ufficiale, la Secessione Viennese promuove un linguaggio decorativo geometrico e raffinato, confluito nel 1903 nella Wiener Werkstätte di Josef Hoffmann e Koloman Moser.",
+    "descrizione_en": "Founded in Vienna in 1897 by a group of artists led by Gustav Klimt in a break from official academicism, the Vienna Secession promoted a refined, geometric decorative language, which flowed in 1903 into Josef Hoffmann and Koloman Moser's Wiener Werkstätte."
+  },
+  {
+    "nome": "Space Age",
+    "annoInizio": 1957,
+    "annoFine": 1972,
+    "colore": "#b05ec9",
+    "descrizioneBreve": "Design ispirato alla corsa allo spazio e ai nuovi materiali plastici, dagli anni '60.",
+    "descrizioneBreve_en": "Design inspired by the space race and new plastic materials, from the 1960s.",
+    "descrizione": "Ispirato dalla corsa allo spazio inaugurata dallo Sputnik nel 1957 e diffuso soprattutto negli anni '60, lo Space Age porta nel design forme futuristiche, plastiche stampate e colori accesi, in oggetti e arredi che immaginano un futuro tecnologico e ottimista, come nel lavoro di Joe Colombo.",
+    "descrizione_en": "Inspired by the space race opened by Sputnik in 1957 and most widespread in the 1960s, the Space Age brought futuristic forms, molded plastics and bright colors to design, in objects and furniture imagining an optimistic, technological future, as in the work of Joe Colombo."
+  },
+  {
+    "nome": "Surrealismo",
+    "annoInizio": 1924,
+    "annoFine": 1966,
+    "colore": "#c25ec9",
+    "descrizioneBreve": "Movimento artistico nato con il manifesto di Breton del 1924, tra sogno e inconscio.",
+    "descrizioneBreve_en": "Artistic movement born with Breton's 1924 manifesto, exploring dream and the unconscious.",
+    "descrizione": "Nato a Parigi nel 1924 con il primo manifesto di André Breton, il Surrealismo esplora sogno, inconscio e associazioni inattese. Nel design italiano il suo spirito rivive nell'opera onirica e spiazzante di Piero Fornasetti, più affine per sensibilità che per appartenenza diretta al movimento storico.",
+    "descrizione_en": "Born in Paris in 1924 with André Breton's first manifesto, Surrealism explored dream, the unconscious and unexpected association. In Italian design its spirit lives on in the dreamlike, disorienting work of Piero Fornasetti, closer in sensibility than in direct historical affiliation to the movement."
+  },
+  {
+    "nome": "Pionieri del design industriale italiano",
+    "annoInizio": 1887,
+    "annoFine": 1916,
+    "colore": "#c95ebd",
+    "descrizioneBreve": "I primi designer italiani a lavorare sistematicamente con l'industria, tra le due guerre.",
+    "descrizioneBreve_en": "The first Italian designers to work systematically with industry, between the wars.",
+    "descrizione": "I primi designer italiani a lavorare sistematicamente con l'industria — Olivetti, aziende di illuminazione e arredo — tra le due guerre e nel primo dopoguerra, gettando le basi professionali e culturali su cui si costruirà il boom del design italiano degli anni '50 e '60.",
+    "descrizione_en": "The first Italian designers to work systematically with industry — Olivetti, lighting and furniture companies — between the wars and in the early postwar years, laying the professional and cultural foundations on which the boom of Italian design in the 1950s and 60s would be built."
+  },
+  {
+    "nome": "Design italiano del boom economico",
+    "annoInizio": 1918,
+    "annoFine": 1937,
+    "colore": "#c95ea9",
+    "descrizioneBreve": "La generazione di designer italiani del \"miracolo economico\" del dopoguerra.",
+    "descrizioneBreve_en": "The generation of Italian designers of the postwar \"economic miracle\".",
+    "descrizione": "La generazione di designer italiani attiva durante il \"miracolo economico\" del dopoguerra, quando l'industria del design — il premio Compasso d'Oro dal 1954, aziende come Kartell, Brionvega, Artemide — diventa un fenomeno internazionale, tra funzionalismo, ironia e sperimentazione sui nuovi materiali plastici.",
+    "descrizione_en": "The generation of Italian designers active during the postwar \"economic miracle,\" when the design industry — the Compasso d'Oro award from 1954, companies like Kartell, Brionvega, Artemide — became an international phenomenon, blending functionalism, irony and experimentation with new plastic materials."
+  },
+  {
+    "nome": "Nuova Scuola Italiana",
+    "annoInizio": 1950,
+    "annoFine": 1966,
+    "colore": "#c95e97",
+    "descrizioneBreve": "I designer italiani che, dopo Memphis, riportano il design verso un linguaggio più misurato.",
+    "descrizioneBreve_en": "The Italian designers who, after Memphis, brought design back toward a more measured language.",
+    "descrizione": "I designer italiani che, dopo la stagione di Memphis e del postmoderno, riportano il design italiano verso un linguaggio più misurato ed export-oriented negli anni '90 e 2000, lavorando con i grandi marchi del made in Italy.",
+    "descrizione_en": "The Italian designers who, after the Memphis and postmodern years, brought Italian design back toward a more measured, export-oriented language in the 1990s and 2000s, working with the major brands of made in Italy."
+  },
+  {
+    "nome": "Nuovo Design Britannico",
+    "annoInizio": 1958,
+    "annoFine": 1959,
+    "colore": "#c95e84",
+    "descrizioneBreve": "Designer britannici che negli anni '90 propongono un linguaggio minimale e industriale.",
+    "descrizioneBreve_en": "British designers who in the 1990s proposed a minimal, industrial language.",
+    "descrizione": "Un gruppo di designer britannici che negli anni '90, insieme a Ron Arad, propone un linguaggio minimale e industriale in aperta reazione ai colori e alle geometrie del Memphis, portando Londra al centro della scena del design internazionale.",
+    "descrizione_en": "A group of British designers who in the 1990s, together with Ron Arad, proposed a minimal, industrial language in open reaction to the colors and geometries of Memphis, putting London at the center of the international design scene."
+  },
+  {
+    "nome": "Design Francese Contemporaneo",
+    "annoInizio": 1971,
+    "annoFine": 1976,
+    "colore": "#c95e72",
+    "descrizioneBreve": "Il duo dei fratelli Bouroullec, tra le voci più influenti del design francese contemporaneo.",
+    "descrizioneBreve_en": "The Bouroullec brothers duo, among the most influential voices in contemporary French design.",
+    "descrizione": "Il duo formato dai fratelli Ronan ed Erwan Bouroullec, tra le voci più influenti del design francese contemporaneo, noto per un linguaggio poetico e naturale che unisce forme organiche e rigore industriale per marchi come Vitra, Kartell e Magis.",
+    "descrizione_en": "The duo formed by brothers Ronan and Erwan Bouroullec, among the most influential voices in contemporary French design, known for a poetic, natural language that combines organic forms with industrial rigor for brands such as Vitra, Kartell and Magis."
+  }
+]

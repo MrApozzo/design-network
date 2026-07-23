@@ -4,6 +4,7 @@ import Sigma from "sigma"
 import designers from "./data/designers.json"
 import prodotti from "./data/prodotti.json"
 import relazioni from "./data/relazioni.json"
+import correnti from "./data/correnti.json"
 import immaginiEsistentiArr from "./data/immagini_esistenti.json"
 
 const IMMAGINI_ESISTENTI = new Set(immaginiEsistentiArr)
@@ -97,20 +98,35 @@ const STILE = {
   transizione_stagger: 1,
   transizione_durata: 500,
 
+  // --- Ameba correnti (scuole + collettivi) — disegno; il posizionamento che le
+  // rende possibili è nella sezione "Layout verticale" più sotto ---
+  corrente_raggio_punto_singolo: 20,
+  corrente_alpha: 0.16,
+  corrente_hover_boost: 1.8,
+  corrente_alone_spessore: 2.5,
+  corrente_alone_margine: 3,
+
   // --- Hover / interazione ---
   hover_scala: 2,
   hover_opacita_altri: 0.05,
   lerp_velocita: 0.15,
 
   // --- Layout verticale deterministico ---
-  // Posizione Y = puramente cronologica per default (nessuna forza di attrazione da
-  // relazioni/scuole/collettivi). Solo la co-progettazione crea un'eccezione: il
-  // designer più anziano del gruppo resta nella propria fascia cronologica, i più
-  // giovani vengono inseriti subito dopo con uno scarto ridotto (passo_verticale_coprogetto)
-  // invece del passo standard, così restano vicini e nella vista timeline il prodotto
-  // co-progettato (posizionato al centro del gruppo) resta riconducibile a entrambi.
+  // Posizione Y = cronologica di base, con due livelli di RIORDINO in cascata (mai la
+  // stessa forza): (1) co-progettazione — priorità massima, il designer più anziano del
+  // gruppo resta nella propria fascia cronologica, i più giovani vengono inseriti subito
+  // dopo con lo scarto minimo (passo_verticale_coprogetto), e questo blocco non viene MAI
+  // spezzato dal passo successivo; (2) correnti (scuole/collettivi) — priorità inferiore,
+  // applicata DOPO su interi blocchi già formati dal passo 1: blocchi che condividono una
+  // corrente vengono avvicinati (mai spezzati), per far sì che le ameba possano racchiudere
+  // più designer invece di ridursi quasi sempre ad aloni isolati. I legami (relazioni.json)
+  // NON riordinano mai (testato: la chiusura transitiva sui legami arriva a spostare 60-70%
+  // dei designer, un mega-gruppo che rompe la diagonale invece di ripararla) — quando però
+  // due designer sono GIÀ adiacenti nell'ordine finale e condividono anche un legame
+  // diretto, si stringe solo lo spazio verticale fra loro (passo_verticale_legame).
   passo_verticale_base: 30,
   passo_verticale_coprogetto: 6,
+  passo_verticale_legame: 18,
   min_distanza_y: 1.6,
   orbita_raggio_base: 3.5,
   orbita_soglia_prodotti: 5,
@@ -578,6 +594,8 @@ const TESTI = {
     aziende: "Aziende",
     legami: "Legami",
     riconoscimenti: "Riconoscimenti",
+    periodo: "Periodo",
+    esponenti: "Esponenti",
     footerRiga1: "Un secolo di design occidentale, 1880–1980",
     footerRiga2: "Tutti i diritti riservati",
     voci: { domanda: "Intro", manifesto: "Manifesto", contatti: "Contatti", credits: "Credits", contribuisci: "Contribuisci" },
@@ -627,6 +645,8 @@ const TESTI = {
     aziende: "Companies",
     legami: "Ties",
     riconoscimenti: "Awards",
+    periodo: "Period",
+    esponenti: "Members",
     footerRiga1: "A century of Western design, 1880–1980",
     footerRiga2: "All rights reserved",
     voci: { domanda: "Intro", manifesto: "Manifesto", contatti: "Contact", credits: "Credits", contribuisci: "Contribute" },
@@ -739,6 +759,7 @@ function App() {
   const [pannelloDesigner, setPannelloDesigner] = useState(null)
   const [pannelloVisibile, setPannelloVisibile] = useState(false)
   const [tooltipRelazione, setTooltipRelazione] = useState(null)
+  const [tooltipCorrente, setTooltipCorrente] = useState(null)
   const [designerAttivo, setDesignerAttivo] = useState(null)
   const [vistaCorrente, setVistaCorrente] = useState("designer")
   const [animaTransizioneFn, setAnimaTransizioneFn] = useState(null)
@@ -934,6 +955,9 @@ function App() {
     let cameraAnimId = null
     let touchGestureAttiva = false
     let touchWasMultiTouch = false
+    let correntiHit = []
+    let correnteHoverAttivo = null
+    let correnteCliccata = null
 
     function animaCamera(target, durata, callback) {
       if (cameraAnimId) cancelAnimationFrame(cameraAnimId)
@@ -1019,8 +1043,9 @@ function App() {
     const designerOrdinati = [...designers].sort((a, b) => a.nato - b.nato)
 
     // Gruppi di co-progettazione (transitivi: se A ha co-progettato con B e B con C,
-    // A/B/C finiscono nello stesso gruppo). Nessun'altra relazione (personale,
-    // professionale, scuola, collettivo) influisce sulla posizione verticale.
+    // A/B/C finiscono nello stesso gruppo). Priorità massima nel posizionamento: la
+    // passata 2 più sotto (correnti) può avvicinare questi blocchi ad altri, ma non li
+    // spezza mai.
     const gruppiCoprogetto = {}
     prodotti.forEach((p) => {
       const ds = getDesigners(p)
@@ -1031,16 +1056,35 @@ function App() {
       set.forEach((n) => { gruppiCoprogetto[n] = set })
     })
 
-    // Ordine finale: cronologico, ma quando incontriamo un designer che appartiene a un
+    // Gruppi per corrente (scuole + collettivi condivisi, transitivi come sopra: un
+    // designer può fare da ponte fra più correnti, es. Sottsass fra Radical Design e
+    // Memphis, e allora i due gruppi confluiscono in uno solo). Priorità inferiore al
+    // co-progetto: usati nella passata 2 per avvicinare interi blocchi già formati.
+    const correntiMembri = {}
+    designers.forEach((d) => {
+      ;[...(d.scuole || []), ...(d.collettivi || [])].forEach((nomeCorrente) => {
+        if (!correntiMembri[nomeCorrente]) correntiMembri[nomeCorrente] = []
+        correntiMembri[nomeCorrente].push(d.nome)
+      })
+    })
+    const gruppiCorrenti = {}
+    Object.values(correntiMembri).forEach((membri) => {
+      const set = new Set()
+      membri.forEach((n) => { if (gruppiCorrenti[n]) gruppiCorrenti[n].forEach((x) => set.add(x)) })
+      membri.forEach((n) => set.add(n))
+      set.forEach((n) => { gruppiCorrenti[n] = set })
+    })
+
+    // Passata 1: ordine cronologico, ma quando incontriamo un designer che appartiene a un
     // gruppo di co-progettazione, inseriamo subito dopo gli altri membri del gruppo
     // (dal più anziano al più giovane) invece di lasciarli nella loro posizione
     // cronologica naturale. Chi lo incontra per primo nel percorso cronologico è per
     // costruzione il più anziano del gruppo, e resta quindi "ancora" nella propria fascia.
     const inseriti = new Set()
-    const ordinato = []
+    const ordinatoCoprogetto = []
     designerOrdinati.forEach((d) => {
       if (inseriti.has(d.nome)) return
-      ordinato.push(d)
+      ordinatoCoprogetto.push(d)
       inseriti.add(d.nome)
       const gruppo = gruppiCoprogetto[d.nome]
       if (gruppo && gruppo.size > 1) {
@@ -1049,20 +1093,74 @@ function App() {
           .map((n) => designers.find((x) => x.nome === n))
           .filter(Boolean)
           .sort((a, b) => a.nato - b.nato)
-        altri.forEach((pd) => { ordinato.push(pd); inseriti.add(pd.nome) })
+        altri.forEach((pd) => { ordinatoCoprogetto.push(pd); inseriti.add(pd.nome) })
       }
     })
 
+    // Passata 2: i blocchi della passata 1 (ciascuno già contiguo: un singolo designer o
+    // un intero gruppo di co-progettazione) vengono ulteriormente avvicinati quando
+    // condividono una corrente. Si spostano sempre blocchi interi, mai singoli designer
+    // al loro interno, quindi la garanzia della passata 1 (co-progetto mai spezzato) resta
+    // intatta — le correnti possono solo aggiungere vicinanza, mai romperla.
+    const blocchi = []
+    {
+      let i = 0
+      while (i < ordinatoCoprogetto.length) {
+        const gruppo = gruppiCoprogetto[ordinatoCoprogetto[i].nome]
+        let j = i
+        if (gruppo && gruppo.size > 1) {
+          while (j + 1 < ordinatoCoprogetto.length && gruppiCoprogetto[ordinatoCoprogetto[j + 1].nome] === gruppo) j++
+        }
+        blocchi.push(ordinatoCoprogetto.slice(i, j + 1))
+        i = j + 1
+      }
+    }
+    const blockOf = new Map()
+    blocchi.forEach((b) => b.forEach((d) => blockOf.set(d.nome, b)))
+    const blocchiVisitati = new Set()
+    const ordinato = []
+    blocchi.forEach((blocco) => {
+      if (blocchiVisitati.has(blocco)) return
+      blocchiVisitati.add(blocco)
+      ordinato.push(...blocco)
+      const daUnire = new Set()
+      blocco.forEach((d) => {
+        const gc = gruppiCorrenti[d.nome]
+        if (!gc) return
+        gc.forEach((n) => {
+          const altroBlocco = blockOf.get(n)
+          if (altroBlocco && !blocchiVisitati.has(altroBlocco)) daUnire.add(altroBlocco)
+        })
+      })
+      ;[...daUnire]
+        .sort((a, b) => a[0].nato - b[0].nato)
+        .forEach((altroBlocco) => {
+          if (blocchiVisitati.has(altroBlocco)) return
+          blocchiVisitati.add(altroBlocco)
+          ordinato.push(...altroBlocco)
+        })
+    })
+
     // Passo verticale: standard tra designer non collegati, ridotto tra membri dello
-    // stesso gruppo di co-progettazione (li tiene vicini, indipendentemente dal numero
-    // di prodotti di ciascuno, per non rompere le "fasce orizzontali" della vista
-    // timeline) — ma mai meno dello spazio richiesto dalle orbite reali dei due
-    // designer coinvolti, per evitare sovrapposizioni visive. Un unico passaggio
-    // cumulativo (anziché calcolare prima le posizioni "ideali" e poi correggerle a
-    // parte) garantisce che ogni scarto sia sempre misurato dalla posizione EFFETTIVA
-    // del designer precedente: se una coppia con orbite grandi viene spinta più in
-    // basso del previsto, la coppia successiva eredita quello spostamento invece di
-    // "perdere" lo spazio che le spettava.
+    // stesso gruppo di affinità — co-progettazione, scuola/stile o collettivo condivisi
+    // (li tiene vicini, indipendentemente dal numero di prodotti di ciascuno, per non
+    // rompere le "fasce orizzontali" della vista timeline) — ma mai meno dello spazio
+    // richiesto dalle orbite reali dei due designer coinvolti, per evitare sovrapposizioni
+    // visive. Un unico passaggio cumulativo (anziché calcolare prima le posizioni "ideali"
+    // e poi correggerle a parte) garantisce che ogni scarto sia sempre misurato dalla
+    // posizione EFFETTIVA del designer precedente: se una coppia con orbite grandi viene
+    // spinta più in basso del previsto, la coppia successiva eredita quello spostamento
+    // invece di "perdere" lo spazio che le spettava.
+    // Legami diretti (relazioni.json), SOLO per stringere lo spazio verticale tra due
+    // designer già adiacenti nell'ordine finale: nessuna transitività, nessun riordino.
+    // Testato: la chiusura transitiva su relazioni (come per scuole/collettivi) arriva
+    // a spostare 150+ designer su 165, un mega-gruppo che rompe la diagonale.
+    const legamiDiretti = new Set()
+    relazioni.forEach((r) => {
+      legamiDiretti.add(`${r.designer_a}|${r.designer_b}`)
+      legamiDiretti.add(`${r.designer_b}|${r.designer_a}`)
+    })
+
     let prevY = 0
     let prevRaggio = 0
     const posizioniCalcolate = ordinato.map((d, i) => {
@@ -1076,7 +1174,10 @@ function App() {
       } else {
         const prev = ordinato[i - 1]
         const stessoGruppo = gruppiCoprogetto[d.nome] && gruppiCoprogetto[d.nome] === gruppiCoprogetto[prev.nome]
-        const passoStandard = stessoGruppo ? STILE.passo_verticale_coprogetto : STILE.passo_verticale_base
+        const legameDiretto = !stessoGruppo && legamiDiretti.has(`${d.nome}|${prev.nome}`)
+        const passoStandard = stessoGruppo ? STILE.passo_verticale_coprogetto
+          : legameDiretto ? STILE.passo_verticale_legame
+          : STILE.passo_verticale_base
         const minGap = (prevRaggio + raggio) + STILE.min_distanza_y
         y = prevY - Math.max(passoStandard, minGap)
       }
@@ -1167,6 +1268,34 @@ function App() {
         imgSrc: `${import.meta.env.BASE_URL}immagini/${d.foto}`, dati: d,
       })
       animated[d.nome] = { r: STILE.zoom_designer_min, alpha: 1 }
+    })
+
+    // --- Ameba correnti: disegno derivato dall'ordine finale (già riavvicinato per
+    // corrente nella passata 2 sopra, vedi gruppiCorrenti/correntiMembri). Per ogni
+    // corrente, i membri che risultano ADIACENTI in ordinato formano un'ameba piena
+    // ("diagonale"); i membri isolati della stessa corrente (nessun altro membro finito
+    // vicino, es. per un vincolo più forte del co-progetto altrove) ottengono solo un
+    // alone colorato sul proprio pallino.
+    const correntiBlob = []
+    const correntiAloni = []
+    Object.entries(correntiMembri).forEach(([nomeCorrente, membri]) => {
+      const infoCorrente = correnti.find((c) => c.nome === nomeCorrente)
+      if (!infoCorrente) return
+      const membriSet = new Set(membri)
+      const visitati = new Set()
+      ordinato.forEach((d, i) => {
+        if (!membriSet.has(d.nome) || visitati.has(d.nome)) return
+        let start = i, end = i
+        while (start > 0 && membriSet.has(ordinato[start - 1].nome)) start--
+        while (end < ordinato.length - 1 && membriSet.has(ordinato[end + 1].nome)) end++
+        const cluster = ordinato.slice(start, end + 1).map((x) => x.nome)
+        cluster.forEach((n) => visitati.add(n))
+        if (cluster.length > 1) {
+          correntiBlob.push({ nomeCorrente, dati: infoCorrente, nodi: cluster })
+        } else {
+          correntiAloni.push({ nomeCorrente, dati: infoCorrente, nodo: cluster[0] })
+        }
+      })
     })
 
     relazioni.forEach((r) => {
@@ -1636,6 +1765,77 @@ function App() {
           ctx.fill()
         }
       }
+
+      // --- Ameba correnti (scuole + collettivi): sfondo, dietro a tutto il resto.
+      // Due trattamenti: macchia piena ("diagonale") per chi ha almeno un altro membro
+      // della stessa corrente vicino nell'ordine finale, semplice alone colorato per chi
+      // è isolato nella propria corrente (nessuna forma connettiva, solo il colore).
+      correntiHit = []
+      ctx.save()
+      ctx.globalCompositeOperation = "multiply"
+      correntiBlob.forEach((cb) => {
+        const punti = cb.nodi
+          .filter((n) => graph.hasNode(n))
+          .map((n) => {
+            const a = graph.getNodeAttributes(n)
+            const p = renderer.graphToViewport({ x: a.x, y: a.y })
+            const r = animated[n]?.r ?? STILE.zoom_designer_min
+            return { x: p.x, y: p.y, r }
+          })
+        if (punti.length === 0) return
+
+        const path = new Path2D()
+        if (punti.length === 1) {
+          path.arc(punti[0].x, punti[0].y, STILE.corrente_raggio_punto_singolo, 0, Math.PI * 2)
+        } else {
+          const cx = punti.reduce((s, p) => s + p.x, 0) / punti.length
+          const cy = punti.reduce((s, p) => s + p.y, 0) / punti.length
+          const ordinatiAngolo = punti
+            .map((p) => ({ ...p, angolo: Math.atan2(p.y - cy, p.x - cx) }))
+            .sort((a, b) => a.angolo - b.angolo)
+          const espansi = ordinatiAngolo.map((p) => {
+            const dx = p.x - cx, dy = p.y - cy
+            const dist = Math.sqrt(dx * dx + dy * dy)
+            const pad = p.r + STILE.corrente_raggio_punto_singolo
+            const scala = (dist + pad) / Math.max(dist, 0.01)
+            return { x: cx + dx * scala, y: cy + dy * scala }
+          })
+          const primo = espansi[0]
+          const ultimo = espansi[espansi.length - 1]
+          path.moveTo((ultimo.x + primo.x) / 2, (ultimo.y + primo.y) / 2)
+          for (let i = 0; i < espansi.length; i++) {
+            const curr = espansi[i]
+            const next = espansi[(i + 1) % espansi.length]
+            path.quadraticCurveTo(curr.x, curr.y, (curr.x + next.x) / 2, (curr.y + next.y) / 2)
+          }
+          path.closePath()
+        }
+
+        const inHover = correnteHoverAttivo === cb
+        ctx.globalAlpha = STILE.corrente_alpha * (inHover ? STILE.corrente_hover_boost : 1)
+        ctx.fillStyle = cb.dati.colore
+        ctx.fill(path)
+        correntiHit.push({ dati: cb, path })
+      })
+
+      correntiAloni.forEach((al) => {
+        if (!graph.hasNode(al.nodo)) return
+        const a = graph.getNodeAttributes(al.nodo)
+        const p = renderer.graphToViewport({ x: a.x, y: a.y })
+        const r = animated[al.nodo]?.r ?? STILE.zoom_designer_min
+        const raggioAlone = r + STILE.corrente_alone_margine
+
+        const path = new Path2D()
+        path.arc(p.x, p.y, raggioAlone, 0, Math.PI * 2)
+
+        const inHover = correnteHoverAttivo === al
+        ctx.globalAlpha = (inHover ? STILE.corrente_hover_boost : 1)
+        ctx.strokeStyle = al.dati.colore
+        ctx.lineWidth = STILE.corrente_alone_spessore
+        ctx.stroke(path)
+        correntiHit.push({ dati: al, path })
+      })
+      ctx.restore()
 
       if (vistaInterna === "timeline") {
         graph.forEachNode((node, attr) => {
@@ -2533,6 +2733,7 @@ function App() {
       aziendaAttivaRef.current = null; setAziendaAttiva(null); aziendaGlobaleRef.current = false
       graph.forEachEdge((edge, attr) => { if (attr.tipo === "relazione") graph.setEdgeAttribute(edge, "attivo", false) })
       setPopup(null); setTooltipRelazione(null)
+      correnteCliccata = null; correnteHoverAttivo = null; setTooltipCorrente(null)
       richiediDisegnoOverlay(18)
     }
 
@@ -2575,7 +2776,7 @@ function App() {
     function handleEscGlobale(e) {
       if (e.key !== "Escape") return
       const qualcosaSelezionato = designerCliccato || prodottoCliccato || nodoEvidenziatoRef.current
-        || legameEvidenziatoRef.current || aziendaAttivaRef.current || popupCanvas
+        || legameEvidenziatoRef.current || aziendaAttivaRef.current || popupCanvas || correnteCliccata
       if (!qualcosaSelezionato) return
       popupCanvas = null
       deselezionaTutto()
@@ -2661,6 +2862,24 @@ function App() {
           setTooltipRelazione(relazioneHover)
         } else {
           setTooltipRelazione(null)
+        }
+
+        // Ameba correnti: solo se non stiamo già interagendo con nodo/prodotto/designer
+        // sopra di esse (sono sfondo, non devono mai rubare hit) e mai su mobile (niente hover reale).
+        if (!isMobile && !designerCliccato && !prodottoCliccato && !nodoHoverAttivo && !prodottoHoverAttivo) {
+          const ctxHit = overlayCanvas.getContext("2d")
+          ctxHit.setTransform(dpr, 0, 0, dpr, 0, 0)
+          const trovata = correntiHit.find(({ path }) => ctxHit.isPointInPath(path, mx, my))
+          const nuovaHover = trovata ? trovata.dati : null
+          if (nuovaHover !== correnteHoverAttivo) {
+            correnteHoverAttivo = nuovaHover
+            richiediDisegnoOverlay(18)
+          }
+          setTooltipCorrente(nuovaHover ? { dati: nuovaHover.dati, x: e.clientX, y: e.clientY } : null)
+        } else if (correnteHoverAttivo) {
+          correnteHoverAttivo = null
+          setTooltipCorrente(null)
+          richiediDisegnoOverlay(18)
         }
       })
 
@@ -2838,6 +3057,34 @@ function App() {
             richiediDisegnoOverlay(18)
           }
         } else {
+          const ctxHit = overlayCanvas.getContext("2d")
+          ctxHit.setTransform(dpr, 0, 0, dpr, 0, 0)
+          const trovataCorrente = correntiHit.find(({ path }) => ctxHit.isPointInPath(path, mx, my))
+          if (trovataCorrente) {
+            const nomeCorrente = trovataCorrente.dati.nomeCorrente
+            if (correnteCliccata === nomeCorrente) {
+              correnteCliccata = null
+              setPannelloVisibile(false)
+              setTimeout(() => setPannelloDesigner(null), 350)
+            } else {
+              correnteCliccata = nomeCorrente
+              designerCliccato = null; prodottoCliccato = null
+              nodoEvidenziatoRef.current = null; setNodoEvidenziato(null)
+              legameEvidenziatoRef.current = null; setLegameEvidenziato(null)
+              aziendaAttivaRef.current = null; setAziendaAttiva(null); aziendaGlobaleRef.current = false
+              setDesignerAttivo(null)
+              graph.forEachEdge((edge, attr) => { if (attr.tipo === "relazione") graph.setEdgeAttribute(edge, "attivo", false) })
+              const esponenti = designers
+                .filter((d) => [...(d.scuole || []), ...(d.collettivi || [])].includes(nomeCorrente))
+                .map((d) => d.nome)
+              setPannelloDesigner({ ...trovataCorrente.dati.dati, esponenti, _tipo: "corrente" })
+              requestAnimationFrame(() => setPannelloVisibile(true))
+            }
+            correnteHoverAttivo = null; setTooltipCorrente(null)
+            richiediDisegnoOverlay(18)
+            return
+          }
+
           const avevaPannello = (designerCliccato !== null || prodottoCliccato !== null) && !primoClickFuoriDesigner
           if (isMobile && avevaPannello) {
             // State 2 → State 3: chiudi pannello, mantieni designer isolato con edges visibili
@@ -3525,7 +3772,72 @@ function App() {
         </div>
       )}
 
-      {pannelloDesigner && (() => {
+      {tooltipCorrente && (
+        <div style={{ position: "fixed", left: tooltipCorrente.x + 14, top: tooltipCorrente.y - 10, background: "white", borderRadius: 8, padding: "8px 12px", boxShadow: "0 4px 16px rgba(0,0,0,0.12)", fontFamily: "Roboto, sans-serif", fontSize: 12, zIndex: 200, pointerEvents: "none", maxWidth: 220 }}>
+          <div style={{ fontFamily: "'Roboto Serif', serif", fontWeight: 500, fontStyle: "italic", color: "#1a1a1a", marginBottom: 4, fontSize: 13 }}>
+            {tooltipCorrente.dati.nome}
+          </div>
+          <div style={{ fontWeight: 300, color: "#555", lineHeight: 1.4 }}>
+            {lingua === "en" ? tooltipCorrente.dati.descrizioneBreve_en : tooltipCorrente.dati.descrizioneBreve}
+          </div>
+        </div>
+      )}
+
+      {pannelloDesigner && pannelloDesigner._tipo === "corrente" && (() => {
+        const c = pannelloDesigner
+        const chiudi = () => { setPannelloVisibile(false); setTimeout(() => setPannelloDesigner(null), 350) }
+        const periodo = c.annoFine ? `${c.annoInizio}–${c.annoFine}` : `${c.annoInizio}–`
+        return (
+          <div style={{
+            position: "fixed", fontFamily: "Roboto, sans-serif", zIndex: 100,
+            background: (window.innerWidth < 768 && !pannelloVisibile) ? STILE.sfondo_colore : "#BA0B08",
+            display: "flex", flexDirection: "column", overflow: "hidden",
+            transition: window.innerWidth < 768
+              ? "height 0.35s cubic-bezier(0.4, 0, 0.2, 1)"
+              : "transform 0.35s cubic-bezier(0.4, 0, 0.2, 1)",
+            ...(window.innerWidth < 768
+              ? { left: 0, right: 0, bottom: 0, height: pannelloVisibile ? "40vh" : "0", borderRadius: "16px 16px 0 0", boxShadow: pannelloVisibile ? "0 -4px 32px rgba(0,0,0,0.3)" : "none" }
+              : { top: 0, right: 0, bottom: 0, width: 340 * uiScale, boxShadow: "-4px 0 32px rgba(0,0,0,0.3)", transform: pannelloVisibile ? "translateX(0)" : "translateX(100%)" })
+          }}>
+            <div style={{ flex: 1, overflowY: "auto", padding: window.innerWidth < 768 ? "16px 16px 24px" : "20px 28px 32px" }}>
+              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", paddingTop: window.innerWidth < 768 ? 0 : 12 }}>
+                <div>
+                  <div style={{ fontFamily: "'Roboto Serif', serif", fontWeight: 500, fontStyle: "italic", fontSize: window.innerWidth < 768 ? 17 : 20, color: "#ffffff", lineHeight: 1.2 }}>
+                    {c.nome}
+                  </div>
+                  <div style={{ fontFamily: "'Roboto Serif', serif", fontWeight: 400, fontStyle: "italic", fontSize: window.innerWidth < 768 ? 12 : 14, color: "rgba(255,255,255,0.65)", marginTop: 4 }}>
+                    {periodo}
+                  </div>
+                </div>
+                <button onClick={chiudi}
+                  style={{ background: "none", border: "none", cursor: "pointer", fontSize: 20, color: "rgba(255,255,255,0.6)", padding: "0 4px", lineHeight: 1 }}>
+                  &times;
+                </button>
+              </div>
+
+              <p style={{ fontSize: window.innerWidth < 768 ? 12 : 13, fontWeight: 300, color: "rgba(255,255,255,0.85)", lineHeight: 1.5, margin: "16px 0 0" }}>
+                {lingua === "en" ? c.descrizione_en : c.descrizione}
+              </p>
+
+              <div style={{ marginTop: 20 }}>
+                <div style={{ fontSize: 11, fontWeight: 600, color: "rgba(255,255,255,0.5)", textTransform: "uppercase", letterSpacing: 1, marginBottom: 8 }}>
+                  {t.esponenti}
+                </div>
+                <div style={{ display: "flex", flexDirection: "column", gap: 2 }}>
+                  {(c.esponenti || []).map((nome) => (
+                    <div key={nome}
+                      style={{ fontFamily: "'Roboto Serif', serif", fontStyle: "italic", fontSize: 13, color: "#ffffff", padding: "3px 0", opacity: 0.9 }}>
+                      {nome}
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        )
+      })()}
+
+      {pannelloDesigner && pannelloDesigner._tipo !== "corrente" && (() => {
         const scuro = pannelloDesigner._tipo === "designer"
         const designerProdotto = pannelloDesigner._tipo === "prodotto"
           ? getDesigners(pannelloDesigner).join(", ")
