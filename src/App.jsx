@@ -743,7 +743,7 @@ const TESTI = {
 // schermata iniziale senza aspettare tutto il catalogo, che con centinaia di
 // foto renderebbe l'avvio molto più lento del necessario. Il resto continua a
 // caricare in background verso onDone.
-function preloadImages(paths, concorrenza = 6, onDone, sogliaPronte, onSoglia) {
+function preloadImages(paths, concorrenza = 6, onDone, sogliaPronte, onSoglia, onImmagineSingola) {
   const cache = {}
   const coda = [...paths]
   const totale = paths.length
@@ -765,7 +765,10 @@ function preloadImages(paths, concorrenza = 6, onDone, sogliaPronte, onSoglia) {
       if (completate >= totale && onDone) onDone()
       avviaProssima()
     }
-    img.addEventListener("load", fine, { once: true })
+    // Senza questo, un'immagine arrivata in background (dopo che l'utente ha smesso
+    // di interagire) restava invisibile finché un pan/zoom successivo non richiedeva
+    // un nuovo frame: il canvas overlay si ridisegna solo su richiesta, mai in loop continuo.
+    img.addEventListener("load", () => { fine(); if (onImmagineSingola) onImmagineSingola() }, { once: true })
     img.addEventListener("error", fine, { once: true })
     img.src = src
     avviaProssima()
@@ -1664,7 +1667,7 @@ function App() {
       setImmaginiPronte(true)
     }
     const timeoutPronte = setTimeout(segnalaPronte, 1200)
-    imgCache = preloadImages(imgPaths, 6, undefined, 12, segnalaPronte)
+    imgCache = preloadImages(imgPaths, 6, undefined, 12, segnalaPronte, () => richiediDisegnoOverlay(2))
     Object.entries(imgCache).forEach(([src, img]) => {
       if (img.complete && img.naturalWidth > 0) campionaColore(src, img)
       else img.addEventListener("load", () => campionaColore(src, img), { once: true })
