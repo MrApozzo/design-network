@@ -86,12 +86,12 @@ const STILE = {
   // quindi qui il boost deve essere più marcato del solito per essere
   // percepibile, anche se il pallino non cresce altrettanto.
   boost_mobile_label_max: 2.2,
-  // Boost aggiuntivo solo mobile, concentrato nella fascia di zoom 30%-80%:
-  // sfuma a 0 ai bordi della fascia (nessun salto), picco al centro (~55%).
+  // Boost aggiuntivo solo mobile, concentrato nella fascia di zoom 15%-80%:
+  // sfuma a 0 ai bordi della fascia (nessun salto), picco al centro (~47%).
   // Non tocca desktop, non tocca la distanza pallino-prodotto/designer (quella
   // è un raggio fissato una sola volta in fase di layout, non ricalcolabile
   // solo per una fascia di zoom live senza rifare anche l'hit-test).
-  boost_medio_soglia_min: 0.3,
+  boost_medio_soglia_min: 0.15,
   boost_medio_soglia_max: 0.8,
   boost_medio_label_max: 2.4,
   zoom_label_designer_min: 3,
@@ -1739,8 +1739,8 @@ function App() {
       return Math.max(0.5, viewportMin / STILE.zoom_viewport_ref)
     }
 
-    // Boost solo mobile, concentrato nella fascia di zoom 30%-80%: 0 ai bordi,
-    // picco al centro (~55%), per non creare salti bruschi entrando/uscendo dalla fascia.
+    // Boost solo mobile, concentrato nella fascia di zoom 15%-80%: 0 ai bordi,
+    // picco al centro (~47%), per non creare salti bruschi entrando/uscendo dalla fascia.
     function boostMedioMobile(t) {
       if (!isMobile) return 0
       const min = STILE.boost_medio_soglia_min, max = STILE.boost_medio_soglia_max
