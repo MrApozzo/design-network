@@ -3712,7 +3712,7 @@ function App() {
                     background: correntiVisibili ? "#FF0707" : "#ececec", cursor: "pointer",
                     display: "flex", alignItems: "center", justifyContent: "center", padding: 0, transition: "background 0.2s",
                   }}>
-                  <svg width={11} height={11} viewBox="0 0 16 16" style={{ display: "block" }}>
+                  <svg width={11} height={11} viewBox="0 0 16 16" style={{ display: "block", marginLeft: -1, marginTop: -1 }}>
                     <circle cx="6" cy="6" r="5" fill="none" stroke={correntiVisibili ? "#ffffff" : "#555555"} strokeWidth="1.4" />
                     <circle cx="10" cy="10" r="5" fill="none" stroke={correntiVisibili ? "#ffffff" : "#555555"} strokeWidth="1.4" />
                   </svg>
@@ -3828,7 +3828,7 @@ function App() {
                 background: correntiVisibili ? "#FF0707" : "#ececec", cursor: "pointer",
                 display: "flex", alignItems: "center", justifyContent: "center", padding: 0, transition: "background 0.2s",
               }}>
-              <svg width={11 * uiScale} height={11 * uiScale} viewBox="0 0 16 16" style={{ display: "block" }}>
+              <svg width={11 * uiScale} height={11 * uiScale} viewBox="0 0 16 16" style={{ display: "block", marginLeft: -1 * uiScale, marginTop: -1 * uiScale }}>
                 <circle cx="6" cy="6" r="5" fill="none" stroke={correntiVisibili ? "#ffffff" : "#555555"} strokeWidth="1.4" />
                 <circle cx="10" cy="10" r="5" fill="none" stroke={correntiVisibili ? "#ffffff" : "#555555"} strokeWidth="1.4" />
               </svg>
