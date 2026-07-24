@@ -35,7 +35,6 @@ const STILE = {
   edge_prodotto_colore: "#cccccc",
   edge_relazione_colore: "#888888",
   sfondo_colore: "#e8e8e8",
-  sfondo_mappa_gradiente: "linear-gradient(180deg, #0a0f1e 0%, #1c2536 30%, #3d3c44 55%, #6e5a56 78%, #c99a72 100%)",
   label_sfondo_colore: "#f0f0f0",
   prodotto_multi_bordo: "#999999",
 
@@ -989,8 +988,8 @@ function App() {
     const isMobile = window.innerWidth < 768
     const container = document.createElement("div")
     container.style.cssText = isMobile
-      ? `position:fixed;top:0;right:0;bottom:0;left:0;z-index:1;cursor:none;background:${STILE.sfondo_mappa_gradiente};`
-      : `position:fixed;top:0;right:0;bottom:0;left:200px;z-index:1;cursor:none;background:${STILE.sfondo_mappa_gradiente};`
+      ? `position:fixed;top:0;right:0;bottom:0;left:0;z-index:1;cursor:none;background:${STILE.sfondo_colore};`
+      : `position:fixed;top:0;right:0;bottom:0;left:200px;z-index:1;cursor:none;background:${STILE.sfondo_colore};`
     document.body.appendChild(container)
 
     const graph = new Graph()
