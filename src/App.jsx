@@ -87,8 +87,8 @@ const STILE = {
   // percepibile, anche se il pallino non cresce altrettanto.
   boost_mobile_label_max: 2.2,
   zoom_label_designer_min: 3,
-  zoom_label_designer_max: 14,
-  zoom_label_prodotto_max: 10,
+  zoom_label_designer_max: 18,
+  zoom_label_prodotto_max: 14,
   zoom_label_soglia: window.innerWidth < 768 ? 0.65 : 0.4,
   zoom_griglia_min: window.innerWidth < 768 ? 0.9 : 1.5,
   zoom_griglia_max: window.innerWidth < 768 ? 3 : 4,
@@ -152,7 +152,7 @@ const STILE = {
   // totale. eta_riferimento è il pavimento (età sotto cui il raggio resta quello base,
   // niente prodotti "incollati" al pallino), eta_massima il soffitto (oltre cui non ci
   // si allontana ulteriormente, per non farsi distorcere da rari outlier anagrafici).
-  eta_raggio_base: 26,
+  eta_raggio_base: 32,
   eta_riferimento: 25,
   eta_massima: 90,
   eta_unita_per_anno: 1.55,
@@ -162,7 +162,7 @@ const STILE = {
   // orbite piene richiedono troppo pan). Non tocca raggioMaxPerDesigner, quindi
   // la spaziatura verticale fra un designer e l'altro resta invariata: cambia
   // solo la distanza pallino-prodotto/pallino-designer.
-  orbita_scala_mobile: 0.45,
+  orbita_scala_mobile: 0.55,
   // Distanza minima (in unità-grafo) fra due pallini prodotto dello stesso
   // designer: se dopo il posizionamento normale risultano più vicini di così,
   // vengono spinti via l'uno dall'altro finché non lo sono più.
