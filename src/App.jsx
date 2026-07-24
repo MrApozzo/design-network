@@ -743,17 +743,39 @@ const TESTI = {
 // schermata iniziale senza aspettare tutto il catalogo, che con centinaia di
 // foto renderebbe l'avvio molto più lento del necessario. Il resto continua a
 // caricare in background verso onDone.
-function preloadImages(paths, concorrenza = 6, onDone, sogliaPronte, onSoglia, onImmagineSingola) {
+// ottieniDistanza(src), se passata, viene interrogata ad ogni slot libero per
+// scegliere l'immagine non ancora avviata più vicina alla camera ATTUALE (non
+// quella di partenza): così, se l'utente si sposta prima che il lotto iniziale
+// finisca, il resto del caricamento segue dove sta guardando ora invece di
+// insistere sull'ordine calcolato all'apertura. Senza questo parametro si
+// mantiene il comportamento originale (ordine fisso di `paths`).
+function preloadImages(paths, concorrenza = 6, onDone, sogliaPronte, onSoglia, onImmagineSingola, ottieniDistanza) {
   const cache = {}
-  const coda = [...paths]
+  const rimanenti = new Set(paths)
   const totale = paths.length
   let completate = 0
   let sogliaRaggiunta = false
   paths.forEach((src) => { cache[src] = new Image() })
   let attive = 0
+  function prossimaSorgente() {
+    if (rimanenti.size === 0) return null
+    if (!ottieniDistanza) {
+      const src = rimanenti.values().next().value
+      rimanenti.delete(src)
+      return src
+    }
+    let scelta = null, distanzaMigliore = Infinity
+    for (const src of rimanenti) {
+      const d = ottieniDistanza(src)
+      if (d < distanzaMigliore) { distanzaMigliore = d; scelta = src }
+    }
+    rimanenti.delete(scelta)
+    return scelta
+  }
   function avviaProssima() {
-    if (coda.length === 0 || attive >= concorrenza) return
-    const src = coda.shift()
+    if (attive >= concorrenza) return
+    const src = prossimaSorgente()
+    if (src === null) return
     const img = cache[src]
     attive++
     const fine = () => {
@@ -1330,7 +1352,7 @@ function App() {
       graph.addNode(d.nome, {
         label: d.nome, size: STILE.designer_size, x, y,
         color: STILE.designer_colore, tipo: "designer",
-        imgSrc: `${import.meta.env.BASE_URL}immagini/${d.foto}`, dati: d,
+        imgSrc: `${import.meta.env.BASE_URL}immagini_thumb/${d.foto}`, dati: d,
       })
       animated[d.nome] = { r: STILE.zoom_designer_min, alpha: 1 }
     })
@@ -1437,7 +1459,7 @@ function App() {
           label: p.nome, size: STILE.prodotto_size * (p.top ? STILE.prodotto_scala_top : 1),
           x: orbitaX, y: orbitaY,
           color: STILE.prodotto_colore, tipo: "prodotto",
-          imgSrc: `${import.meta.env.BASE_URL}immagini/${p.foto}`, dati: p,
+          imgSrc: `${import.meta.env.BASE_URL}immagini_thumb/${p.foto}`, dati: p,
           orbitaX, orbitaY, timelineX, timelineY,
         })
         graph.addEdge(designer, prodottoId, {
@@ -1537,7 +1559,7 @@ function App() {
           label: p.nome, size: STILE.prodotto_size * (p.top ? STILE.prodotto_scala_top : 1),
           x: orbitaX, y: orbitaY,
           color: STILE.prodotto_colore, tipo: "prodotto", multi: true,
-          imgSrc: `${import.meta.env.BASE_URL}immagini/${p.foto}`, dati: p,
+          imgSrc: `${import.meta.env.BASE_URL}immagini_thumb/${p.foto}`, dati: p,
           orbitaX, orbitaY, timelineX, timelineY,
         })
         ds.forEach((d) => {
@@ -1629,14 +1651,29 @@ function App() {
     }
     const vistiSrc = new Set()
     const nodiConDistanza = []
+    const posizioneDiSrc = new Map()
     graph.forEachNode((node, attr) => {
       if (vistiSrc.has(attr.imgSrc)) return
       vistiSrc.add(attr.imgSrc)
+      posizioneDiSrc.set(attr.imgSrc, { x: attr.x, y: attr.y })
       const dx = attr.x - rifX, dy = attr.y - rifY
       nodiConDistanza.push({ src: attr.imgSrc, d2: dx * dx + dy * dy })
     })
     nodiConDistanza.sort((a, b) => a.d2 - b.d2)
     const imgPaths = nodiConDistanza.map((n) => n.src)
+
+    // Riletta ad ogni scelta (non solo all'apertura): fa sì che, se l'utente si
+    // sposta prima che il preload iniziale finisca, le immagini vicine a dove sta
+    // guardando ORA scavalchino quelle rimaste in coda dal punto di partenza.
+    function distanzaDaCameraAttuale(src) {
+      const p = posizioneDiSrc.get(src)
+      if (!p) return Infinity
+      const stato = renderer.getCamera().getState()
+      const cx = (X_MIN - MARGINE_X) + stato.x * ((X_MAX + MARGINE_X) - (X_MIN - MARGINE_X))
+      const cy = bboxYMin + stato.y * (bboxYMax - bboxYMin)
+      const dx = p.x - cx, dy = p.y - cy
+      return dx * dx + dy * dy
+    }
 
     const campionaColore = (src, img) => {
       try {
@@ -1667,7 +1704,7 @@ function App() {
       setImmaginiPronte(true)
     }
     const timeoutPronte = setTimeout(segnalaPronte, 1200)
-    imgCache = preloadImages(imgPaths, 6, undefined, 12, segnalaPronte, () => richiediDisegnoOverlay(2))
+    imgCache = preloadImages(imgPaths, 6, undefined, 12, segnalaPronte, () => richiediDisegnoOverlay(2), distanzaDaCameraAttuale)
     Object.entries(imgCache).forEach(([src, img]) => {
       if (img.complete && img.naturalWidth > 0) campionaColore(src, img)
       else img.addEventListener("load", () => campionaColore(src, img), { once: true })
