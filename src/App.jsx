@@ -86,13 +86,14 @@ const STILE = {
   // quindi qui il boost deve essere più marcato del solito per essere
   // percepibile, anche se il pallino non cresce altrettanto.
   boost_mobile_label_max: 2.2,
-  // Boost aggiuntivo solo mobile, concentrato nella fascia di zoom intermedia
-  // (30%-50%): a quel livello i pallini prodotto sono ancora troppo vicini/piccoli
-  // per percepire "la galassia" attorno al designer. Sfuma a 0 ai bordi della
-  // fascia (nessun salto), picco al centro (~40%). Non tocca desktop.
+  // Boost aggiuntivo solo mobile, concentrato nella fascia di zoom 30%-80%:
+  // sfuma a 0 ai bordi della fascia (nessun salto), picco al centro (~55%).
+  // Non tocca desktop, non tocca la distanza pallino-prodotto/designer (quella
+  // è un raggio fissato una sola volta in fase di layout, non ricalcolabile
+  // solo per una fascia di zoom live senza rifare anche l'hit-test).
   boost_medio_soglia_min: 0.3,
-  boost_medio_soglia_max: 0.5,
-  boost_medio_label_max: 1.6,
+  boost_medio_soglia_max: 0.8,
+  boost_medio_label_max: 2.4,
   zoom_label_designer_min: 3,
   zoom_label_designer_max: 18,
   zoom_label_prodotto_max: 14,
@@ -169,7 +170,7 @@ const STILE = {
   // orbite piene richiedono troppo pan). Non tocca raggioMaxPerDesigner, quindi
   // la spaziatura verticale fra un designer e l'altro resta invariata: cambia
   // solo la distanza pallino-prodotto/pallino-designer.
-  orbita_scala_mobile: 0.7,
+  orbita_scala_mobile: 0.55,
   // Distanza minima (in unità-grafo) fra due pallini prodotto dello stesso
   // designer: se dopo il posizionamento normale risultano più vicini di così,
   // vengono spinti via l'uno dall'altro finché non lo sono più.
@@ -1738,8 +1739,8 @@ function App() {
       return Math.max(0.5, viewportMin / STILE.zoom_viewport_ref)
     }
 
-    // Boost solo mobile, concentrato nella fascia di zoom 30%-50%: 0 ai bordi,
-    // picco al centro (~40%), per non creare salti bruschi entrando/uscendo dalla fascia.
+    // Boost solo mobile, concentrato nella fascia di zoom 30%-80%: 0 ai bordi,
+    // picco al centro (~55%), per non creare salti bruschi entrando/uscendo dalla fascia.
     function boostMedioMobile(t) {
       if (!isMobile) return 0
       const min = STILE.boost_medio_soglia_min, max = STILE.boost_medio_soglia_max
