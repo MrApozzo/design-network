@@ -93,7 +93,10 @@ const STILE = {
   boost_medio_label_max: 2.4,
   zoom_label_designer_min: 3,
   zoom_label_designer_max: 14,
-  zoom_label_prodotto_max: 10,
+  // Su mobile il valore al 75% resta comunque ancorato a label_min (tLabel
+  // parte da 0 lì): alzare questo valore rende più grande solo il 100%,
+  // mantenendo lineare la crescita fra i due estremi. Non tocca desktop.
+  zoom_label_prodotto_max: window.innerWidth < 768 ? 20 : 10,
   zoom_label_soglia: window.innerWidth < 768 ? 0.75 : 0.4,
   zoom_griglia_min: window.innerWidth < 768 ? 0.9 : 1.5,
   zoom_griglia_max: window.innerWidth < 768 ? 3 : 4,
