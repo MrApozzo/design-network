@@ -81,12 +81,9 @@ const STILE = {
   // nell'ultimo tratto di zoom (da boost_soglia a 1): non tocca il resto della curva.
   boost_mobile_max: 2.7,
   boost_soglia: 0.9,
-  // Stesso principio, ma per le etichette (nome prodotto + data): la
-  // dimensione di base resta quasi sempre sul minimo (label_min) su mobile,
-  // quindi qui il boost deve essere più marcato del solito per essere
-  // percepibile, anche se il pallino non cresce altrettanto.
-  boost_mobile_label_max: 2.2,
-  // Boost aggiuntivo solo mobile, concentrato nella fascia di zoom 15%-80%:
+  // Boost aggiuntivo solo mobile, concentrato nella fascia di zoom 15%-80%,
+  // usato solo per l'etichetta col nome del designer (non per quella dei
+  // prodotti, che dal 75% al 100% deve restare una crescita lineare pura):
   // sfuma a 0 ai bordi della fascia (nessun salto), picco al centro (~47%).
   // Non tocca desktop, non tocca la distanza pallino-prodotto/designer (quella
   // è un raggio fissato una sola volta in fase di layout, non ricalcolabile
@@ -97,7 +94,7 @@ const STILE = {
   zoom_label_designer_min: 3,
   zoom_label_designer_max: 14,
   zoom_label_prodotto_max: 10,
-  zoom_label_soglia: window.innerWidth < 768 ? 0.65 : 0.4,
+  zoom_label_soglia: window.innerWidth < 768 ? 0.75 : 0.4,
   zoom_griglia_min: window.innerWidth < 768 ? 0.9 : 1.5,
   zoom_griglia_max: window.innerWidth < 768 ? 3 : 4,
   zoom_viewport_ref: 800,
@@ -1838,11 +1835,11 @@ function App() {
       const labelDesignerSize = Math.max(STILE.label_min, lerp(STILE.zoom_label_designer_min, STILE.zoom_label_designer_max, Math.pow(t, 1.2)) * vs) * boostMedioLabel
       const tLabel = Math.max(0, (t - STILE.zoom_label_soglia) / (1 - STILE.zoom_label_soglia))
       const mostraLabelProdotti = t > STILE.zoom_label_soglia
-      let labelProdottoSize = mostraLabelProdotti ? Math.max(STILE.label_min, STILE.zoom_label_prodotto_max * tLabel * vs) * boostMedioLabel : 0
-      if (isMobile && mostraLabelProdotti && t > STILE.boost_soglia) {
-        const tBoostLabel = (t - STILE.boost_soglia) / (1 - STILE.boost_soglia)
-        labelProdottoSize *= lerp(1, STILE.boost_mobile_label_max, tBoostLabel)
-      }
+      // Niente boost qui (né quello "medio" né quello di fine corsa): su mobile,
+      // dal 75% al 100% la crescita resta lineare pura (tLabel già lo è di suo).
+      // Con i boost il tratto centrale (75-90%) risultava sproporzionato rispetto
+      // agli estremi, che invece andavano bene così com'erano.
+      const labelProdottoSize = mostraLabelProdotti ? Math.max(STILE.label_min, STILE.zoom_label_prodotto_max * tLabel * vs) : 0
       const nodoAttivo = designerCliccato || nodoHoverAttivo
       const collegati = nodiCollegatiAlHover(nodoAttivo)
       const hoverAttivo = nodoAttivo !== null
