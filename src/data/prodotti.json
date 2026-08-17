@@ -386,10 +386,7 @@
     "azienda": "Martinelli Luce",
     "azienda_attuale": "Martinelli Luce",
     "categoria": "lampada da tavolo e da terra",
-    "foto": "aulenti-pipistrello.jpg",
-    "foto_dettaglio": [
-      "aulenti-pipistrello2.jpg"
-    ]
+    "foto": "aulenti-pipistrello.jpg"
   },
   {
     "nome": "April",
@@ -883,10 +880,7 @@
     "azienda": "Tecno",
     "azienda_attuale": null,
     "categoria": "tavolino",
-    "foto": "borsani-t110.jpg",
-    "foto_dettaglio": [
-      "borsani-t1102.jpg"
-    ]
+    "foto": "borsani-t110.jpg"
   },
   {
     "nome": "L150",
@@ -1659,10 +1653,7 @@
     ],
     "azienda": "Flos",
     "categoria": "lampada",
-    "foto": "castiglioni-tubino.jpg",
-    "foto_dettaglio": [
-      "castiglioni-tubino2.jpg"
-    ]
+    "foto": "castiglioni-tubino.jpg"
   },
   {
     "nome": "Boalum",
@@ -2165,7 +2156,10 @@
       "Charles Eames",
       "Ray Eames"
     ],
-    "azienda": "Herman Miller",
+    "azienda": [
+      "Herman Miller",
+      "Vitra"
+    ],
     "categoria": "poltrona",
     "foto": "eames-loungechair.jpg"
   },
@@ -2176,7 +2170,10 @@
       "Charles Eames",
       "Ray Eames"
     ],
-    "azienda": "Herman Miller",
+    "azienda": [
+      "Herman Miller",
+      "Vitra"
+    ],
     "categoria": "sedia",
     "foto": "eames-dsw.jpg"
   },
@@ -2187,7 +2184,10 @@
       "Charles Eames",
       "Ray Eames"
     ],
-    "azienda": "Herman Miller",
+    "azienda": [
+      "Herman Miller",
+      "Vitra"
+    ],
     "categoria": "sedia",
     "foto": "eames-lcw.jpg"
   },
@@ -2220,7 +2220,10 @@
       "Charles Eames",
       "Ray Eames"
     ],
-    "azienda": "Herman Miller",
+    "azienda": [
+      "Herman Miller",
+      "Vitra"
+    ],
     "categoria": "sedia",
     "foto": "eames-daw.jpg"
   },
@@ -2231,7 +2234,10 @@
       "Charles Eames",
       "Ray Eames"
     ],
-    "azienda": "Herman Miller",
+    "azienda": [
+      "Herman Miller",
+      "Vitra"
+    ],
     "categoria": "sedia",
     "foto": "eames-wirechair.jpg"
   },
@@ -2537,10 +2543,7 @@
     "azienda": "Poltronova",
     "azienda_attuale": null,
     "categoria": "lampada da terra",
-    "foto": "aulenti-locus-solus-floor-lamp.jpg",
-    "foto_dettaglio": [
-      "aulenti-locus-solus-floor-lamp2.jpg"
-    ]
+    "foto": "aulenti-locus-solus-floor-lamp.jpg"
   },
   {
     "nome": "Tavolo con Ruote",
@@ -2662,7 +2665,10 @@
       "Charles Eames",
       "Ray Eames"
     ],
-    "azienda": "Herman Miller",
+    "azienda": [
+      "Herman Miller",
+      "Vitra"
+    ],
     "categoria": "poltrona",
     "foto": "eames-aluminumgroup.jpg"
   },
@@ -2838,10 +2844,7 @@
     "azienda": "Arteluce",
     "azienda_attuale": null,
     "categoria": "sistema di illuminazione",
-    "foto": "peressutti-2045.jpg",
-    "foto_dettaglio": [
-      "peressutti-20452.jpg"
-    ]
+    "foto": "peressutti-2045.jpg"
   },
   {
     "nome": "Arco",
@@ -2963,8 +2966,7 @@
     "categoria": "libreria modulare",
     "foto": "parisi-lerici.jpg",
     "foto_dettaglio": [
-      "parisi-lerici2.jpg",
-      "parisi-lerici3.jpg"
+      "parisi-lerici2.jpg"
     ]
   },
   {
@@ -2992,10 +2994,7 @@
     "azienda": "Arteluce",
     "azienda_attuale": null,
     "categoria": "lampada da parete",
-    "foto": "parisi-244.jpg",
-    "foto_dettaglio": [
-      "parisi-2442.jpg"
-    ]
+    "foto": "parisi-244.jpg"
   },
   {
     "nome": "Temide 1703",
@@ -3076,10 +3075,7 @@
     "azienda": "iGuzzini",
     "azienda_attuale": "iGuzzini",
     "categoria": "lampada da tavolo",
-    "foto": "bonetto-nitia.jpg",
-    "foto_dettaglio": [
-      "bonetto-nitia2.jpg"
-    ]
+    "foto": "bonetto-nitia.jpg"
   },
   {
     "nome": "M15",
@@ -3352,10 +3348,7 @@
     "azienda": "Zojirushi Corporation",
     "azienda_attuale": null,
     "categoria": "thermos",
-    "foto": "bellini-minideca.jpg",
-    "foto_dettaglio": [
-      "bellini-minideca2.jpg"
-    ]
+    "foto": "bellini-minideca.jpg"
   },
   {
     "nome": "Portatone PS 6100",
@@ -3430,10 +3423,7 @@
     "azienda": "Tecno",
     "azienda_attuale": null,
     "categoria": "poltrona",
-    "foto": "borsani-p71.jpg",
-    "foto_dettaglio": [
-      "borsani-p712.jpg"
-    ]
+    "foto": "borsani-p71.jpg"
   },
   {
     "nome": "P72",
@@ -3451,10 +3441,7 @@
     "azienda": "Tecno",
     "azienda_attuale": null,
     "categoria": "letto",
-    "foto": "borsani-l77.jpg",
-    "foto_dettaglio": [
-      "borsani-l772.jpg"
-    ]
+    "foto": "borsani-l77.jpg"
   },
   {
     "nome": "T95",
@@ -3463,10 +3450,7 @@
     "azienda": "Tecno",
     "azienda_attuale": null,
     "categoria": "scrivania",
-    "foto": "borsani-t95.jpg",
-    "foto_dettaglio": [
-      "borsani-t952.jpg"
-    ]
+    "foto": "borsani-t95.jpg"
   },
   {
     "nome": "S88",
@@ -3773,10 +3757,7 @@
     "azienda": "Brionvega",
     "azienda_attuale": null,
     "categoria": "televisore",
-    "foto": "bellini-monitor-15.jpg",
-    "foto_dettaglio": [
-      "bellini-monitor-152.jpg"
-    ]
+    "foto": "bellini-monitor-15.jpg"
   },
   {
     "nome": "Robot",
@@ -5004,10 +4985,7 @@
     "azienda": "Bracciodiferro",
     "azienda_attuale": null,
     "categoria": "lampada da terra",
-    "foto": "pesce-moloch.jpg",
-    "foto_dettaglio": [
-      "pesce-moloch2.jpg"
-    ]
+    "foto": "pesce-moloch.jpg"
   },
   {
     "nome": "Golgotha",
@@ -5471,10 +5449,7 @@
     "azienda": "Busnelli",
     "azienda_attuale": null,
     "categoria": "poltrona",
-    "foto": "lapietra-flabello.jpg",
-    "foto_dettaglio": [
-      "lapietra-flabello2.jpg"
-    ]
+    "foto": "lapietra-flabello.jpg"
   },
   {
     "nome": "Vasi per giardini, giardini per vasi",
@@ -6608,10 +6583,7 @@
     "azienda": "Magis",
     "azienda_attuale": "Magis",
     "categoria": "poltrona",
-    "foto": "mendini-magis-proust.jpg",
-    "foto_dettaglio": [
-      "mendini-magis-proust2.jpg"
-    ]
+    "foto": "mendini-magis-proust.jpg"
   },
   {
     "nome": "Unicorno",
@@ -6683,10 +6655,7 @@
     "azienda": "Porro",
     "azienda_attuale": "Porro",
     "categoria": "credenza",
-    "foto": "mendini-schermo.jpg",
-    "foto_dettaglio": [
-      "mendini-schermo2.jpg"
-    ]
+    "foto": "mendini-schermo.jpg"
   },
   {
     "nome": "Roy",
@@ -6965,11 +6934,7 @@
     "azienda": "Knoll",
     "azienda_attuale": null,
     "categoria": "sistema di sedute",
-    "foto": "boeri-gradual-system.jpg",
-    "foto_dettaglio": [
-      "boeri-gradual-system2.jpg",
-      "boeri-gradual-system3.jpg"
-    ]
+    "foto": "boeri-gradual-system.jpg"
   },
   {
     "nome": "Bacone",
@@ -6978,11 +6943,7 @@
     "azienda": "Arflex",
     "azienda_attuale": null,
     "categoria": "divano",
-    "foto": "boeri-bacone.jpg",
-    "foto_dettaglio": [
-      "boeri-bacone2.jpg",
-      "boeri-bacone3.jpg"
-    ]
+    "foto": "boeri-bacone.jpg"
   },
   {
     "nome": "Papero",
@@ -7060,11 +7021,7 @@
     "azienda": "Arflex",
     "azienda_attuale": null,
     "categoria": "sedia per bambini",
-    "foto": "boeri-botolino.jpg",
-    "foto_dettaglio": [
-      "boeri-botolino2.jpg",
-      "boeri-botolino3.jpg"
-    ]
+    "foto": "boeri-botolino.jpg"
   },
   {
     "nome": "Lucetta",
@@ -7082,10 +7039,7 @@
     "azienda": "Arflex",
     "azienda_attuale": null,
     "categoria": "divano",
-    "foto": "boeri-bengodi.jpg",
-    "foto_dettaglio": [
-      "boeri-bengodi2.jpg"
-    ]
+    "foto": "boeri-bengodi.jpg"
   },
   {
     "nome": "Abat-Jour",
@@ -7240,8 +7194,7 @@
     "categoria": "mobile contenitore",
     "foto": "boeri-griziotti-steps.jpg",
     "foto_dettaglio": [
-      "boeri-griziotti-steps2.jpg",
-      "boeri-griziotti-steps3.jpg"
+      "boeri-griziotti-steps2.jpg"
     ]
   },
   {
@@ -7267,11 +7220,7 @@
     "azienda": "Arflex",
     "azienda_attuale": null,
     "categoria": "sistema di divani",
-    "foto": "boeri-pacific.jpg",
-    "foto_dettaglio": [
-      "boeri-pacific2.jpg",
-      "boeri-pacific3.jpg"
-    ]
+    "foto": "boeri-pacific.jpg"
   },
   {
     "nome": "Shadows",
@@ -7334,11 +7283,7 @@
     "azienda": "Venini",
     "azienda_attuale": null,
     "categoria": "lampada a sospensione",
-    "foto": "boeri-lucia.jpg",
-    "foto_dettaglio": [
-      "boeri-lucia2.jpg",
-      "boeri-lucia3.jpg"
-    ]
+    "foto": "boeri-lucia.jpg"
   },
   {
     "nome": "Cini Boeri Lounge Chair",
@@ -7833,11 +7778,7 @@
     "azienda": "Danese Milano",
     "azienda_attuale": "Danese Milano",
     "categoria": "vassoio",
-    "foto": "mari-successo.jpg",
-    "foto_dettaglio": [
-      "mari-successo2.jpg",
-      "mari-successo3.jpg"
-    ]
+    "foto": "mari-successo.jpg"
   },
   {
     "nome": "Seggiolina Pop",
@@ -7877,10 +7818,7 @@
     "azienda": "Magis",
     "azienda_attuale": "Magis",
     "categoria": "sgabello impilabile",
-    "foto": "mari-mariolina-stool.jpg",
-    "foto_dettaglio": [
-      "mari-mariolina-stool2.jpg"
-    ]
+    "foto": "mari-mariolina-stool.jpg"
   },
   {
     "nome": "Mod. 4041",
@@ -7994,10 +7932,7 @@
     "azienda": "Fai International",
     "azienda_attuale": null,
     "categoria": "mobile per impianto audio",
-    "foto": "vigo-serie-top-mobile-sound-componibile.jpg",
-    "foto_dettaglio": [
-      "vigo-serie-top-mobile-sound-componibile2.jpg"
-    ]
+    "foto": "vigo-serie-top-mobile-sound-componibile.jpg"
   },
   {
     "nome": "Serie TOP - mobile TV / sound",
@@ -8015,7 +7950,10 @@
     "azienda": "Fai International",
     "azienda_attuale": null,
     "categoria": "tavolini",
-    "foto": "vigo-serie-top-tavolini-bassi.jpg"
+    "foto": "vigo-serie-top-tavolini-bassi.jpg",
+    "foto_dettaglio": [
+      "vigo-serie-top-tavolini-bassi2.jpg"
+    ]
   },
   {
     "nome": "Serie TOP - tavolo e sedia",
@@ -8434,10 +8372,7 @@
     "azienda": "Nuova Vilca",
     "azienda_attuale": null,
     "categoria": "centrotavola",
-    "foto": "vigo-centro-tavola.jpg",
-    "foto_dettaglio": [
-      "vigo-centro-tavola2.jpg"
-    ]
+    "foto": "vigo-centro-tavola.jpg"
   },
   {
     "nome": "Epoca",
@@ -8690,11 +8625,7 @@
     "azienda": "Glas Italia",
     "azienda_attuale": null,
     "categoria": "specchiera",
-    "foto": "vigo-draped.jpg",
-    "foto_dettaglio": [
-      "vigo-draped2.jpg",
-      "vigo-draped3.jpg"
-    ]
+    "foto": "vigo-draped.jpg"
   },
   {
     "nome": "Frammento",
@@ -8955,10 +8886,7 @@
     "azienda": "Galleria O",
     "azienda_attuale": null,
     "categoria": "lampada",
-    "foto": "vigo-new-iceberg.jpg",
-    "foto_dettaglio": [
-      "vigo-new-iceberg2.jpg"
-    ]
+    "foto": "vigo-new-iceberg.jpg"
   },
   {
     "nome": "Crazy Mirror",
@@ -8977,11 +8905,7 @@
     "azienda_attuale": "JCP Universe",
     "categoria": "lampada",
     "foto": "vigo-sun-ra.jpg",
-    "top": true,
-    "foto_dettaglio": [
-      "vigo-sun-ra2.jpg",
-      "vigo-sun-ra3.jpg"
-    ]
+    "top": true
   },
   {
     "nome": "Mod. 113B",
@@ -8990,11 +8914,7 @@
     "azienda": "Arteluce",
     "azienda_attuale": null,
     "categoria": "lampada da parete",
-    "foto": "sarfatti-mod-113b.jpg",
-    "foto_dettaglio": [
-      "sarfatti-mod-113b2.jpg",
-      "sarfatti-mod-113b3.jpg"
-    ]
+    "foto": "sarfatti-mod-113b.jpg"
   },
   {
     "nome": "Mod. 121",
@@ -9021,11 +8941,7 @@
     "azienda": "Arteluce",
     "azienda_attuale": null,
     "categoria": "lampada da terra",
-    "foto": "sarfatti-mod-1025.jpg",
-    "foto_dettaglio": [
-      "sarfatti-mod-10252.jpg",
-      "sarfatti-mod-10253.jpg"
-    ]
+    "foto": "sarfatti-mod-1025.jpg"
   },
   {
     "nome": "Mod. 2065",
@@ -9034,10 +8950,7 @@
     "azienda": "Arteluce",
     "azienda_attuale": "Astep",
     "categoria": "lampada a sospensione",
-    "foto": "sarfatti-mod-2065.jpg",
-    "foto_dettaglio": [
-      "sarfatti-mod-20652.jpg"
-    ]
+    "foto": "sarfatti-mod-2065.jpg"
   },
   {
     "nome": "Mod. 3001/14",
@@ -9128,10 +9041,7 @@
     "azienda": "Arteluce",
     "azienda_attuale": null,
     "categoria": "lampada da terra",
-    "foto": "sarfatti-mod-1050-2.jpg",
-    "foto_dettaglio": [
-      "sarfatti-mod-1050-22.jpg"
-    ]
+    "foto": "sarfatti-mod-1050-2.jpg"
   },
   {
     "nome": "Mod. 199",
@@ -9161,11 +9071,7 @@
     "azienda": "Arteluce",
     "azienda_attuale": "Astep",
     "categoria": "lampada da tavolo",
-    "foto": "sarfatti-mod-548.jpg",
-    "foto_dettaglio": [
-      "sarfatti-mod-5482.jpg",
-      "sarfatti-mod-5483.jpg"
-    ]
+    "foto": "sarfatti-mod-548.jpg"
   },
   {
     "nome": "Mod. 1061",
@@ -9201,11 +9107,7 @@
     "azienda": "Arteluce",
     "azienda_attuale": null,
     "categoria": "lampadario",
-    "foto": "sarfatti-mod-2058.jpg",
-    "foto_dettaglio": [
-      "sarfatti-mod-20582.jpg",
-      "sarfatti-mod-20583.jpg"
-    ]
+    "foto": "sarfatti-mod-2058.jpg"
   },
   {
     "nome": "Mod. 3030",
@@ -9416,10 +9318,7 @@
     "azienda": "Arteluce",
     "azienda_attuale": "Flos",
     "categoria": "lampadario",
-    "foto": "sarfatti-mod-2097-50.jpg",
-    "foto_dettaglio": [
-      "sarfatti-mod-2097-502.jpg"
-    ]
+    "foto": "sarfatti-mod-2097-50.jpg"
   },
   {
     "nome": "Mod. 230",
@@ -9560,10 +9459,7 @@
     "azienda": "Arteluce",
     "azienda_attuale": null,
     "categoria": "plafoniera",
-    "foto": "sarfatti-mod-3055.jpg",
-    "foto_dettaglio": [
-      "sarfatti-mod-30552.jpg"
-    ]
+    "foto": "sarfatti-mod-3055.jpg"
   },
   {
     "nome": "Mod. 586/S",
@@ -9632,10 +9528,7 @@
     "azienda": "Arteluce",
     "azienda_attuale": null,
     "categoria": "lampada da terra",
-    "foto": "sarfatti-mod-1051.jpg",
-    "foto_dettaglio": [
-      "sarfatti-mod-10512.jpg"
-    ]
+    "foto": "sarfatti-mod-1051.jpg"
   },
   {
     "nome": "Mod. 600P",
@@ -9698,10 +9591,7 @@
     "azienda": "Arteluce",
     "azienda_attuale": null,
     "categoria": "plafoniera",
-    "foto": "sarfatti-mod-2129.jpg",
-    "foto_dettaglio": [
-      "sarfatti-mod-21292.jpg"
-    ]
+    "foto": "sarfatti-mod-2129.jpg"
   },
   {
     "nome": "Mod. 2130",
@@ -9755,10 +9645,7 @@
     "azienda": "Arteluce",
     "azienda_attuale": null,
     "categoria": "lampada da tavolo",
-    "foto": "sarfatti-mod-607.jpg",
-    "foto_dettaglio": [
-      "sarfatti-mod-6072.jpg"
-    ]
+    "foto": "sarfatti-mod-607.jpg"
   },
   {
     "nome": "Mod. 608",
@@ -9845,8 +9732,7 @@
     "categoria": "sistema di sedute",
     "foto": "sottsass-saratoga.jpg",
     "foto_dettaglio": [
-      "sottsass-saratoga2.jpg",
-      "sottsass-saratoga3.jpg"
+      "sottsass-saratoga2.jpg"
     ]
   },
   {
@@ -9880,10 +9766,7 @@
     "azienda": "Poltronova",
     "azienda_attuale": null,
     "categoria": "lampada",
-    "foto": "sottsass-barbarella.jpg",
-    "foto_dettaglio": [
-      "sottsass-barbarella2.jpg"
-    ]
+    "foto": "sottsass-barbarella.jpg"
   },
   {
     "nome": "Crazy Horse",
@@ -9892,10 +9775,7 @@
     "azienda": "Poltronova",
     "azienda_attuale": "Poltronova",
     "categoria": "tavolo",
-    "foto": "sottsass-crazy-horse.jpg",
-    "foto_dettaglio": [
-      "sottsass-crazy-horse2.jpg"
-    ]
+    "foto": "sottsass-crazy-horse.jpg"
   },
   {
     "nome": "Nefertiti",
@@ -10427,10 +10307,7 @@
     "azienda": "Brondi / Enorme Corporation",
     "azienda_attuale": null,
     "categoria": "telefono",
-    "foto": "sottsass-enorme.jpg",
-    "foto_dettaglio": [
-      "sottsass-enorme2.jpg"
-    ]
+    "foto": "sottsass-enorme.jpg"
   },
   {
     "nome": "Bridge Chair",
@@ -10950,10 +10827,7 @@
     "azienda": "Memphis",
     "azienda_attuale": "Memphis",
     "categoria": "tavolo",
-    "foto": "delucchi-polar.jpg",
-    "foto_dettaglio": [
-      "delucchi-polar2.jpg"
-    ]
+    "foto": "delucchi-polar.jpg"
   },
   {
     "nome": "Riviera",
@@ -10995,10 +10869,7 @@
     "azienda": "Memphis",
     "azienda_attuale": "Memphis",
     "categoria": "divano",
-    "foto": "delucchi-lido.jpg",
-    "foto_dettaglio": [
-      "delucchi-lido2.jpg"
-    ]
+    "foto": "delucchi-lido.jpg"
   },
   {
     "nome": "Sebastopole",
@@ -11043,10 +10914,7 @@
     "azienda": "Memphis",
     "azienda_attuale": "Memphis",
     "categoria": "tavolino",
-    "foto": "delucchi-flamingo.jpg",
-    "foto_dettaglio": [
-      "delucchi-flamingo2.jpg"
-    ]
+    "foto": "delucchi-flamingo.jpg"
   },
   {
     "nome": "Horizon",
@@ -11082,10 +10950,7 @@
     "azienda": "Memphis",
     "azienda_attuale": "Memphis",
     "categoria": "specchio da tavolo",
-    "foto": "delucchi-dorian.jpg",
-    "foto_dettaglio": [
-      "delucchi-dorian2.jpg"
-    ]
+    "foto": "delucchi-dorian.jpg"
   },
   {
     "nome": "Ionian",
@@ -11094,10 +10959,7 @@
     "azienda": "Memphis",
     "azienda_attuale": "Memphis",
     "categoria": "specchio da tavolo",
-    "foto": "delucchi-ionian.jpg",
-    "foto_dettaglio": [
-      "delucchi-ionian2.jpg"
-    ]
+    "foto": "delucchi-ionian.jpg"
   },
   {
     "nome": "Tomato",
@@ -11106,10 +10968,7 @@
     "azienda": "Memphis",
     "azienda_attuale": "Memphis",
     "categoria": "piatto da portata",
-    "foto": "delucchi-tomato.jpg",
-    "foto_dettaglio": [
-      "delucchi-tomato2.jpg"
-    ]
+    "foto": "delucchi-tomato.jpg"
   },
   {
     "nome": "Tolomeo Lettura",
@@ -11577,10 +11436,7 @@
     "azienda": "Produzione Privata",
     "azienda_attuale": "Produzione Privata",
     "categoria": "lampada",
-    "foto": "delucchi-festa.jpg",
-    "foto_dettaglio": [
-      "delucchi-festa2.jpg"
-    ]
+    "foto": "delucchi-festa.jpg"
   },
   {
     "nome": "Festina",
@@ -11655,10 +11511,7 @@
     "azienda": "Alias",
     "azienda_attuale": "Alias",
     "categoria": "collezione outdoor",
-    "foto": "delucchi-dehors.jpg",
-    "foto_dettaglio": [
-      "delucchi-dehors2.jpg"
-    ]
+    "foto": "delucchi-dehors.jpg"
   },
   {
     "nome": "Noto",
@@ -11685,10 +11538,7 @@
     "azienda": "Alias",
     "azienda_attuale": "Alias",
     "categoria": "sedia per ufficio",
-    "foto": "delucchi-norma.jpg",
-    "foto_dettaglio": [
-      "delucchi-norma2.jpg"
-    ]
+    "foto": "delucchi-norma.jpg"
   },
   {
     "nome": "Trottola",
@@ -11823,10 +11673,7 @@
     "azienda": "Riva 1920",
     "azienda_attuale": "Riva 1920",
     "categoria": "panchina",
-    "foto": "delucchi-piazza-scala.jpg",
-    "foto_dettaglio": [
-      "delucchi-piazza-scala2.jpg"
-    ]
+    "foto": "delucchi-piazza-scala.jpg"
   },
   {
     "nome": "Tool",
@@ -11971,10 +11818,7 @@
     "azienda": "Alessi",
     "azienda_attuale": "Alessi",
     "categoria": "orologio da parete",
-    "foto": "delucchi-raggiante.jpg",
-    "foto_dettaglio": [
-      "delucchi-raggiante2.jpg"
-    ]
+    "foto": "delucchi-raggiante.jpg"
   },
   {
     "nome": "Plissé",
@@ -12492,10 +12336,7 @@
     "azienda": "Molteni&C",
     "azienda_attuale": null,
     "categoria": "armadio / cabina",
-    "foto": "rossi-cabina-dellelba.jpg",
-    "foto_dettaglio": [
-      "rossi-cabina-dellelba2.jpg"
-    ]
+    "foto": "rossi-cabina-dellelba.jpg"
   },
   {
     "nome": "Teatro",
@@ -12736,10 +12577,7 @@
     "azienda": "Alessi",
     "azienda_attuale": "Alessi",
     "categoria": "pentola / cocotte",
-    "foto": "rossi-la-cubica.jpg",
-    "foto_dettaglio": [
-      "rossi-la-cubica2.jpg"
-    ]
+    "foto": "rossi-la-cubica.jpg"
   },
   {
     "nome": "Consiglio",
@@ -12895,10 +12733,7 @@
     "azienda": "Artemide",
     "azienda_attuale": null,
     "categoria": "lampada da terra",
-    "foto": "rossi-prometeo.jpg",
-    "foto_dettaglio": [
-      "rossi-prometeo2.jpg"
-    ]
+    "foto": "rossi-prometeo.jpg"
   },
   {
     "nome": "La Conica Manico Lungo",
@@ -13153,10 +12988,7 @@
     "azienda": "Astep",
     "azienda_attuale": "Astep",
     "categoria": "lampada a sospensione",
-    "foto": "albini-model-2050.jpg",
-    "foto_dettaglio": [
-      "albini-model-20502.jpg"
-    ]
+    "foto": "albini-model-2050.jpg"
   },
   {
     "nome": "Agata",
@@ -13262,10 +13094,7 @@
     "azienda": "San Lorenzo",
     "azienda_attuale": null,
     "categoria": "ciotola in argento",
-    "foto": "albini-pannocchia.jpg",
-    "foto_dettaglio": [
-      "albini-pannocchia2.jpg"
-    ]
+    "foto": "albini-pannocchia.jpg"
   },
   {
     "nome": "Ambra",
@@ -13499,10 +13328,7 @@
     "azienda": "Azucena",
     "azienda_attuale": "Tato Italia",
     "categoria": "lampada da parete",
-    "foto": "gardella-galleria-2-bracci.jpg",
-    "foto_dettaglio": [
-      "gardella-galleria-2-bracci2.jpg"
-    ]
+    "foto": "gardella-galleria-2-bracci.jpg"
   },
   {
     "nome": "Galleria 3-bracci",
@@ -13520,10 +13346,7 @@
     "azienda": "Azucena",
     "azienda_attuale": "Tato Italia",
     "categoria": "lampada da parete",
-    "foto": "gardella-galleria-4-bracci.jpg",
-    "foto_dettaglio": [
-      "gardella-galleria-4-bracci2.jpg"
-    ]
+    "foto": "gardella-galleria-4-bracci.jpg"
   },
   {
     "nome": "Galleria 5-bracci",
@@ -13553,10 +13376,7 @@
     "azienda": "Azucena",
     "azienda_attuale": null,
     "categoria": "lampada da parete",
-    "foto": "gardella-lp12.jpg",
-    "foto_dettaglio": [
-      "gardella-lp122.jpg"
-    ]
+    "foto": "gardella-lp12.jpg"
   },
   {
     "nome": "Arenzano Tre Fiamme Tavolo",
@@ -13682,10 +13502,7 @@
     "azienda": "Flos",
     "azienda_attuale": "Flos",
     "categoria": "lampada da terra",
-    "foto": "scarpa-seki-han-floor.jpg",
-    "foto_dettaglio": [
-      "scarpa-seki-han-floor2.jpg"
-    ]
+    "foto": "scarpa-seki-han-floor.jpg"
   },
   {
     "nome": "Torcello",
@@ -13809,10 +13626,7 @@
     "azienda": "C&B Italia",
     "azienda_attuale": null,
     "categoria": "poltrona in poliuretano",
-    "foto": "scarpa-ciprea.jpg",
-    "foto_dettaglio": [
-      "scarpa-ciprea2.jpg"
-    ]
+    "foto": "scarpa-ciprea.jpg"
   },
   {
     "nome": "André Table",
@@ -14031,10 +13845,7 @@
     "azienda": "Maxalto",
     "azienda_attuale": "Tacchini",
     "categoria": "sedia / sistema in rattan",
-    "foto": "scarpa-basilan.jpg",
-    "foto_dettaglio": [
-      "scarpa-basilan2.jpg"
-    ]
+    "foto": "scarpa-basilan.jpg"
   },
   {
     "nome": "TL59 Metal Top",
@@ -14319,10 +14130,7 @@
     "azienda": "Zanotta",
     "categoria": "tavolo",
     "foto": "natalini-quaderna.jpg",
-    "top": true,
-    "foto_dettaglio": [
-      "natalini-quaderna2.jpg"
-    ]
+    "top": true
   },
   {
     "nome": "Gherpe",
@@ -14336,10 +14144,7 @@
     ],
     "azienda": "Poltronova",
     "categoria": "lampada",
-    "foto": "natalini-gherpe.jpg",
-    "foto_dettaglio": [
-      "natalini-gherpe2.jpg"
-    ]
+    "foto": "natalini-gherpe.jpg"
   },
   {
     "nome": "Pratone",

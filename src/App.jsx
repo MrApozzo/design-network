@@ -5,6 +5,7 @@ import designers from "./data/designers.json"
 import prodotti from "./data/prodotti.json"
 import relazioni from "./data/relazioni.json"
 import correnti from "./data/correnti.json"
+import aziendeData from "./data/aziende.json"
 import immaginiEsistentiArr from "./data/immagini_esistenti.json"
 
 const IMMAGINI_ESISTENTI = new Set(immaginiEsistentiArr)
@@ -37,6 +38,8 @@ const STILE = {
   sfondo_colore: "#e8e8e8",
   label_sfondo_colore: "#f0f0f0",
   prodotto_multi_bordo: "#999999",
+  studio_bordo_colore: "#F07820",
+  azienda_bordo_colore: "#000000",
 
   // --- Label (stile) ---
   label_min: 4,
@@ -392,6 +395,15 @@ function getDesigners(p) {
   return Array.isArray(p.designer) ? p.designer : [p.designer]
 }
 
+function getAziende(p) {
+  if (!p.azienda) return []
+  return Array.isArray(p.azienda) ? p.azienda : [p.azienda]
+}
+
+// Mappa nome azienda → dati azienda (da aziende.json)
+const AZIENDE_MAP = {}
+aziendeData.forEach((az) => { AZIENDE_MAP[az.nome] = az })
+
 function cercaEntita(query, limit = 8) {
   const q = query.toLowerCase()
   return [
@@ -637,6 +649,7 @@ const TESTI = {
     cerca: "Cerca...",
     benvenutoDomanda: "Qual è il designer che ha disegnato il mondo in cui vorresti vivere?",
     benvenutoConferma: "Entra",
+    aziendeToggle: "Aziende",
     designerToggle: "Designer",
     timelineToggle: "Linea del tempo",
     correntiToggleOn: "Correnti progettuali visibili",
@@ -690,6 +703,7 @@ const TESTI = {
     cerca: "Search...",
     benvenutoDomanda: "Which designer shaped the world you'd want to live in?",
     benvenutoConferma: "Enter",
+    aziendeToggle: "Companies",
     designerToggle: "Designer",
     timelineToggle: "Timeline",
     correntiToggleOn: "Design movements visible",
@@ -847,6 +861,9 @@ function App() {
   const [tooltipCorrente, setTooltipCorrente] = useState(null)
   const [designerAttivo, setDesignerAttivo] = useState(null)
   const [vistaCorrente, setVistaCorrente] = useState("designer")
+  const vistaCorrenteRef = useRef("designer")
+  const [timelineAttiva, setTimelineAttiva] = useState(false)
+  const timelineAttivaRef = useRef(false)
   const [animaTransizioneFn, setAnimaTransizioneFn] = useState(null)
   const [ridisegnaFn, setRidisegnaFn] = useState(null)
   const [primaVisita] = useState(() => {
@@ -1576,6 +1593,91 @@ function App() {
       }
     })
 
+    // ===== LAYOUT AZIENDE =====
+    // Prodotti per azienda (gestisce sia string che array)
+    const prodottiPerAzienda = {}
+    graph.forEachNode((node, attr) => {
+      if (attr.tipo !== "prodotto") return
+      getAziende(attr.dati).forEach((az) => {
+        if (!prodottiPerAzienda[az]) prodottiPerAzienda[az] = []
+        prodottiPerAzienda[az].push(node)
+      })
+    })
+
+    // Gruppi co-licenza: aziende che condividono la stessa licenza di un prodotto
+    const coLicenzaGruppi = {}
+    graph.forEachNode((node, attr) => {
+      if (attr.tipo !== "prodotto") return
+      const azs = getAziende(attr.dati)
+      if (azs.length < 2) return
+      const set = new Set()
+      azs.forEach((az) => { if (coLicenzaGruppi[az]) coLicenzaGruppi[az].forEach((x) => set.add(x)) })
+      azs.forEach((az) => set.add(az))
+      set.forEach((az) => { coLicenzaGruppi[az] = set })
+    })
+
+    // Posizioni aziende: X = anno fondazione, Y = stacking cronologico con co-licenza raggruppata
+    const aziendePosizioniMap = {}
+    const azOrdinate = [...aziendeData].sort((a, b) => a.fondata - b.fondata)
+    let azCurrentY = 0
+    const PASSO_AZ = STILE.passo_verticale_base
+    const azPositioned = new Set()
+    azOrdinate.forEach((az) => {
+      if (azPositioned.has(az.nome)) return
+      const nProd = prodottiPerAzienda[az.nome]?.length || 0
+      const raggio = calcolaRaggio(nProd)
+      aziendePosizioniMap[az.nome] = { x: annoToX(az.fondata), y: azCurrentY, dati: az, raggio }
+      azPositioned.add(az.nome)
+      const gruppo = coLicenzaGruppi[az.nome]
+      let stepAfter = PASSO_AZ
+      if (gruppo && gruppo.size > 1) {
+        const partners = [...gruppo].filter((n) => !azPositioned.has(n) && AZIENDE_MAP[n])
+        partners.forEach((partner) => {
+          const partnerAz = AZIENDE_MAP[partner]
+          const nProdP = prodottiPerAzienda[partner]?.length || 0
+          const raggioP = calcolaRaggio(nProdP)
+          azCurrentY -= PASSO_AZ * 0.5
+          aziendePosizioniMap[partner] = { x: annoToX(partnerAz.fondata), y: azCurrentY, dati: partnerAz, raggio: raggioP }
+          azPositioned.add(partner)
+        })
+        stepAfter = PASSO_AZ * 0.8
+      }
+      azCurrentY -= stepAfter
+    })
+
+    // Calcola posizioni orbita di ogni prodotto attorno alla sua azienda
+    const prodottiOrbitaAz = {}
+    const conteggioOrbitaAz = {}
+    graph.forEachNode((node, attr) => {
+      if (attr.tipo !== "prodotto") return
+      const p = attr.dati
+      const azs = getAziende(p).filter((az) => aziendePosizioniMap[az])
+      let azOrbitaX, azOrbitaY
+      if (azs.length === 0) {
+        // Nessuna azienda: fluttua sull'asse X all'anno di produzione
+        azOrbitaX = annoToX(p.anno || 1950)
+        azOrbitaY = 0
+      } else {
+        // Centro attorno a cui orbitare (mettipunto di tutte le aziende valide)
+        const centroX = azs.reduce((s, az) => s + aziendePosizioniMap[az].x, 0) / azs.length
+        const centroY = azs.reduce((s, az) => s + aziendePosizioniMap[az].y, 0) / azs.length
+        const nProdAz = Math.max(...azs.map((az) => prodottiPerAzienda[az]?.length || 1))
+        const raggio = calcolaRaggio(nProdAz) * (isMobile ? STILE.orbita_scala_mobile : 1)
+        const chiaveAz = azs[0]
+        if (!conteggioOrbitaAz[chiaveAz]) conteggioOrbitaAz[chiaveAz] = 0
+        const idx = conteggioOrbitaAz[chiaveAz]++
+        const nTot = prodottiPerAzienda[chiaveAz]?.length || 1
+        const arcoInizio = Math.PI * STILE.arco_inizio
+        const arcoFine = Math.PI * STILE.arco_fine
+        const angolo = arcoInizio + (idx / Math.max(1, nTot - 1)) * (arcoFine - arcoInizio) + (hashStr(p.nome) - 0.5) * 0.3
+        azOrbitaX = centroX + Math.cos(angolo) * raggio
+        azOrbitaY = centroY + Math.sin(angolo) * raggio
+      }
+      prodottiOrbitaAz[node] = { azOrbitaX, azOrbitaY }
+      graph.setNodeAttribute(node, "aziendaOrbitaX", azOrbitaX)
+      graph.setNodeAttribute(node, "aziendaOrbitaY", azOrbitaY)
+    })
+
     const renderer = new Sigma(graph, container, {
       renderEdgeLabels: false,
       enableCameraRotation: false,
@@ -1989,7 +2091,7 @@ function App() {
       ctx.restore()
       }
 
-      if (vistaInterna === "timeline") {
+      if (vistaInterna === "timeline" && modelloVista !== "aziende") {
         graph.forEachNode((node, attr) => {
           if (attr.tipo !== "designer") return
           const dati = attr.dati
@@ -2054,8 +2156,8 @@ function App() {
         // e ri-ordinare ogni frame causava un giravolta del contorno.
         const ordineStabile = nodiValidi.map((n) => {
           const a = graph.getNodeAttributes(n)
-          const tx = vistaInterna === "timeline" ? a.timelineX : a.orbitaX
-          const ty = vistaInterna === "timeline" ? a.timelineY : a.orbitaY
+          const tx = timelineVista ? a.timelineX : (modelloVista === "aziende" ? (a.aziendaOrbitaX ?? a.orbitaX) : a.orbitaX)
+          const ty = timelineVista ? a.timelineY : (modelloVista === "aziende" ? (a.aziendaOrbitaY ?? a.orbitaY) : a.orbitaY)
           return { n, tx, ty }
         })
         const tcx = ordineStabile.reduce((s, p) => s + p.tx, 0) / ordineStabile.length
@@ -2185,6 +2287,8 @@ function App() {
         }
 
         if (attr.tipo === "prodotto") {
+          // In vista aziende gli edge designer→prodotto non si disegnano (gestiamo noi gli edge azienda→prodotto)
+          if (modelloVista === "aziende") return
           let edgeColor = STILE.edge_prodotto_colore
           let edgeWidth = STILE.edge_prodotto_size
           let edgeAlpha = 1
@@ -2241,6 +2345,8 @@ function App() {
       const inPrimoPiano = prodottoCliccato || ultimoProdottoHover
       graph.forEachNode((node, attr) => {
         if (attr.tipo === "designer") {
+          // In vista aziende nascondi designer (a meno che non sia prodotto cliccato che li mostra)
+          if (modelloVista === "aziende") return
           nodiDesigner.push({ node, attr })
         } else {
           nodiProdotti.push({ node, attr })
@@ -2254,6 +2360,17 @@ function App() {
           nodiProdotti.push(item)
         }
       }
+
+      // Nodi aziende (visibili solo in vista aziende)
+      const nodiAziende = []
+      if (modelloVista === "aziende") {
+        Object.entries(aziendePosizioniMap).forEach(([nome, pos]) => {
+          const screen = renderer.graphToViewport({ x: pos.x, y: pos.y })
+          if (screen.x < -60 || screen.x > w + 60 || screen.y < -60 || screen.y > h + 60) return
+          nodiAziende.push({ nome, pos, screen })
+        })
+      }
+
       const nodiFiltrati = [...nodiProdotti, ...nodiDesigner]
 
       nodiFiltrati.forEach(({ node, attr }) => {
@@ -2349,11 +2466,109 @@ function App() {
           if (attr.dati.anno) {
             ctx.font = `300 ${labelProdottoSize - 1}px Roboto`
             ctx.fillStyle = STILE.label_prodotto_anno_colore
-            ctx.fillText(attr.dati.anno_label || attr.dati.anno, pos.x + r + STILE.label_offset, pos.y + labelProdottoSize / 3 + labelProdottoSize + 1)
+            const rigaAnno = attr.dati.anno_label || attr.dati.anno
+            ctx.fillText(rigaAnno, pos.x + r + STILE.label_offset, pos.y + labelProdottoSize / 3 + labelProdottoSize + 1)
+            // riga supplementare: in vista designer → azienda, in vista aziende → designer
+            if (labelProdottoSize > 5) {
+              ctx.font = `300 ${labelProdottoSize - 1}px Roboto`
+              ctx.fillStyle = STILE.label_prodotto_anno_colore
+              let rigaExtra = null
+              if (modelloVista === "aziende") {
+                const ds = getDesigners(attr.dati).filter(Boolean)
+                if (ds.length > 0) rigaExtra = ds.join(", ")
+              } else {
+                const azs = getAziende(attr.dati)
+                if (azs.length > 0) rigaExtra = azs.join(", ")
+              }
+              if (rigaExtra) ctx.fillText(rigaExtra, pos.x + r + STILE.label_offset, pos.y + labelProdottoSize / 3 + (labelProdottoSize + 1) * 2)
+            }
           }
         }
         ctx.globalAlpha = 1
       })
+
+      // Rendering nodi aziende (solo in vista aziende)
+      if (modelloVista === "aziende") {
+        nodiAziende.forEach(({ nome, pos: azPos, screen }) => {
+          const rAz = lerp(STILE.zoom_designer_min, STILE.zoom_designer_max, Math.pow(zoomT(), 1.2)) * vScale()
+          const imgSrcAz = `${import.meta.env.BASE_URL}immagini_thumb/${azPos.dati.logo}`
+          const imgAz = imgCache[imgSrcAz]
+          const haImgAz = imgAz && imgAz.complete && imgAz.naturalWidth > 0
+
+          ctx.globalAlpha = 1
+          if (!haImgAz) {
+            ctx.beginPath()
+            ctx.arc(screen.x, screen.y, rAz, 0, Math.PI * 2)
+            ctx.fillStyle = imgColori[imgSrcAz] || "#ffffff"
+            ctx.fill()
+          } else {
+            ctx.save()
+            ctx.beginPath()
+            ctx.arc(screen.x, screen.y, rAz, 0, Math.PI * 2)
+            ctx.clip()
+            const iw = imgAz.naturalWidth, ih = imgAz.naturalHeight
+            const scale = Math.max(rAz * 2 / iw, rAz * 2 / ih)
+            const sw = iw * scale, sh = ih * scale
+            ctx.drawImage(imgAz, screen.x - sw / 2, screen.y - sh / 2, sw, sh)
+            ctx.restore()
+          }
+          // Bordo: arancione per studi, nero per aziende
+          ctx.beginPath()
+          ctx.arc(screen.x, screen.y, rAz, 0, Math.PI * 2)
+          ctx.strokeStyle = azPos.dati.tipo === "studio" ? STILE.studio_bordo_colore : STILE.azienda_bordo_colore
+          ctx.lineWidth = azPos.dati.tipo === "studio" ? 1.5 : 0.8
+          ctx.stroke()
+
+          // Label azienda (stesso stile delle label designer)
+          const lx = screen.x + rAz + STILE.label_offset
+          const nomeAz = azPos.dati.nome
+          const subAz = azPos.dati.paese ? `${azPos.dati.fondata} — ${azPos.dati.paese}` : String(azPos.dati.fondata)
+          const altezzaBlocco = labelDesignerSize * 2 + 5
+          const lyStart = screen.y - altezzaBlocco / 2 + labelDesignerSize
+          const pad = 3
+          const bgColor = STILE.label_sfondo_colore || STILE.sfondo_colore
+          ctx.font = `700 ${labelDesignerSize}px Roboto`
+          const wNomeAz = ctx.measureText(nomeAz).width
+          ctx.font = `${STILE.label_date_peso} ${labelDesignerSize - 1}px Roboto`
+          const wSubAz = ctx.measureText(subAz).width
+          ctx.globalAlpha = 0.85
+          ctx.fillStyle = bgColor
+          ctx.fillRect(lx - pad, lyStart - labelDesignerSize, wNomeAz + pad * 2, labelDesignerSize + pad)
+          ctx.fillRect(lx - pad, lyStart + 1, wSubAz + pad * 2, (labelDesignerSize - 1) + pad)
+          ctx.globalAlpha = 1
+          ctx.textAlign = "left"
+          ctx.fillStyle = STILE.label_designer_colore
+          ctx.font = `700 ${labelDesignerSize}px Roboto`
+          ctx.fillText(nomeAz, lx, lyStart)
+          ctx.font = `${STILE.label_date_peso} ${labelDesignerSize - 1}px Roboto`
+          ctx.fillStyle = STILE.label_date_colore
+          ctx.fillText(subAz, lx, lyStart + labelDesignerSize + 5)
+        })
+
+        // Edges da aziende a prodotti (solo in vista aziende, non timeline)
+        if (!timelineVista) {
+          graph.forEachNode((node, attr) => {
+            if (attr.tipo !== "prodotto") return
+            const azs = getAziende(attr.dati).filter((az) => aziendePosizioniMap[az])
+            if (azs.length === 0) return
+            const prodPos = renderer.graphToViewport({ x: attr.x, y: attr.y })
+            azs.forEach((azNome) => {
+              const azPos2 = aziendePosizioniMap[azNome]
+              const azScreen = renderer.graphToViewport({ x: azPos2.x, y: azPos2.y })
+              const alphaEdge = animated[node]?.alpha ?? 1
+              ctx.globalAlpha = 0.3 * alphaEdge
+              ctx.beginPath()
+              ctx.moveTo(azScreen.x, azScreen.y)
+              const midX2 = (azScreen.x + prodPos.x) / 2
+              ctx.bezierCurveTo(midX2, azScreen.y, midX2, prodPos.y, prodPos.x, prodPos.y)
+              ctx.strokeStyle = STILE.edge_prodotto_colore
+              ctx.lineWidth = STILE.edge_prodotto_size
+              ctx.stroke()
+              ctx.globalAlpha = 1
+            })
+          })
+        }
+      }
 
       ctx.restore()
 
@@ -2660,7 +2875,12 @@ function App() {
     })
     richiediDisegnoOverlay(2)
 
-    let vistaInterna = "designer"
+    // modelloVista: "designer" | "aziende" — quale nodo centrale è attivo
+    // timelineVista: boolean — se i prodotti sono in posizione timeline
+    // vistaInterna: derivato per compatibilità con controlli canvas esistenti
+    let modelloVista = "designer"
+    let timelineVista = false
+    let vistaInterna = "designer" // "designer" | "aziende" | "timeline"
     let transizioneAttiva = false
     let amoebaAlphaAnimata = 1
 
@@ -2677,10 +2897,13 @@ function App() {
       return lista
     }
 
-    function animaTransizione(vista) {
-      if (transizioneAttiva || vista === vistaInterna) return
+    function animaTransizione(modello, tlOn) {
+      const nuovaVista = tlOn ? "timeline" : modello
+      if (transizioneAttiva || (modello === modelloVista && tlOn === timelineVista)) return
       transizioneAttiva = true
-      vistaInterna = vista
+      modelloVista = modello
+      timelineVista = tlOn
+      vistaInterna = nuovaVista
       annoBloccato = null
       const prodottiList = raccogliProdotti()
       const staggerMs = STILE.transizione_stagger
@@ -2690,8 +2913,15 @@ function App() {
         const attr = graph.getNodeAttributes(node)
         const daX = attr.x
         const daY = attr.y
-        const aX = vista === "timeline" ? attr.timelineX : attr.orbitaX
-        const aY = vista === "timeline" ? attr.timelineY : attr.orbitaY
+        let aX, aY
+        if (tlOn) {
+          aX = attr.timelineX; aY = attr.timelineY
+        } else if (modello === "aziende") {
+          aX = attr.aziendaOrbitaX ?? attr.timelineX
+          aY = attr.aziendaOrbitaY ?? attr.timelineY
+        } else {
+          aX = attr.orbitaX; aY = attr.orbitaY
+        }
         const ritardo = idx * staggerMs
         const inizio = performance.now() + ritardo
 
@@ -3381,10 +3611,18 @@ function App() {
     if (ridisegnaFn) ridisegnaFn()
   }
 
-  function cambiaVista(vista) {
-    if (vista === vistaCorrente) return
-    setVistaCorrente(vista)
-    if (animaTransizioneFn) animaTransizioneFn(vista)
+  function cambiaVista(modello) {
+    if (modello === vistaCorrente) return
+    setVistaCorrente(modello)
+    vistaCorrenteRef.current = modello
+    if (animaTransizioneFn) animaTransizioneFn(modello, timelineAttivaRef.current)
+  }
+
+  function toggleTimeline() {
+    const nuova = !timelineAttivaRef.current
+    setTimelineAttiva(nuova)
+    timelineAttivaRef.current = nuova
+    if (animaTransizioneFn) animaTransizioneFn(vistaCorrenteRef.current, nuova)
   }
 
   function chiudiMenu() {
@@ -3759,13 +3997,24 @@ function App() {
                 </button>
               </div>
               <div style={{ display: "flex", gap: 2, background: "#ffffff", borderRadius: 22, padding: 3, boxShadow: "0 2px 12px rgba(0,0,0,0.1)", height: 28, boxSizing: "border-box", alignItems: "center" }}>
+                <button onClick={() => cambiaVista("aziende")}
+                  style={{ height: "100%", boxSizing: "border-box", padding: "0 12px", border: "none", borderRadius: 18, cursor: "pointer", fontSize: 9, fontWeight: vistaCorrente === "aziende" ? 400 : 300, fontFamily: "'Roboto Mono', monospace", color: vistaCorrente === "aziende" ? "#ffffff" : "#555555", background: vistaCorrente === "aziende" ? "#FF0707" : "#ececec", transition: "all 0.2s", display: "flex", alignItems: "center" }}>
+                  {t.aziendeToggle}
+                </button>
                 <button onClick={() => cambiaVista("designer")}
                   style={{ height: "100%", boxSizing: "border-box", padding: "0 12px", border: "none", borderRadius: 18, cursor: "pointer", fontSize: 9, fontWeight: vistaCorrente === "designer" ? 400 : 300, fontFamily: "'Roboto Mono', monospace", color: vistaCorrente === "designer" ? "#ffffff" : "#555555", background: vistaCorrente === "designer" ? "#FF0707" : "#ececec", transition: "all 0.2s", display: "flex", alignItems: "center" }}>
                   {t.designerToggle}
                 </button>
-                <button onClick={() => cambiaVista("timeline")}
-                  style={{ height: "100%", boxSizing: "border-box", padding: "0 12px", border: "none", borderRadius: 18, cursor: "pointer", fontSize: 9, fontWeight: vistaCorrente === "timeline" ? 400 : 300, fontFamily: "'Roboto Mono', monospace", color: vistaCorrente === "timeline" ? "#ffffff" : "#555555", background: vistaCorrente === "timeline" ? "#FF0707" : "#ececec", transition: "all 0.2s", display: "flex", alignItems: "center" }}>
-                  {t.timelineToggle}
+              </div>
+              <div style={{ display: "flex", alignItems: "center", justifyContent: "center", background: "#ffffff", borderRadius: "50%", padding: 3, boxShadow: "0 2px 12px rgba(0,0,0,0.1)", width: 28, height: 28, boxSizing: "border-box", flexShrink: 0 }}>
+                <button onClick={toggleTimeline}
+                  title={t.timelineToggle}
+                  style={{ width: "100%", height: "100%", borderRadius: "50%", border: "none", margin: 0, background: timelineAttiva ? "#FF0707" : "#ececec", cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center", padding: 0, transition: "background 0.2s" }}>
+                  <svg width={11} height={11} viewBox="0 0 16 16" style={{ display: "block" }}>
+                    <line x1="2" y1="8" x2="14" y2="8" stroke={timelineAttiva ? "#ffffff" : "#555555"} strokeWidth="1.4" />
+                    <circle cx="5" cy="8" r="2" fill={timelineAttiva ? "#ffffff" : "#555555"} />
+                    <circle cx="11" cy="8" r="2" fill={timelineAttiva ? "#ffffff" : "#555555"} />
+                  </svg>
                 </button>
               </div>
               <div style={{ position: "relative", flex: 1, minWidth: 0 }}>
@@ -3851,6 +4100,35 @@ function App() {
           opacity: chromeVisibile ? 1 : 0, transition: "opacity 0.9s ease, transform 0.9s ease",
           zIndex: 20, display: "flex", flexDirection: "row", alignItems: "center", gap: 8 * uiScale,
         }}>
+          <div style={{ display: "flex", gap: 2, background: "#ffffff", borderRadius: 18 * uiScale, padding: 3, boxShadow: "0 2px 12px rgba(0,0,0,0.1)", height: 28 * uiScale, boxSizing: "border-box" }}>
+            <button onClick={() => cambiaVista("aziende")}
+              style={{ padding: `0 ${11 * uiScale}px`, border: "none", borderRadius: 13 * uiScale, cursor: "pointer", fontSize: 10 * uiScale, fontWeight: vistaCorrente === "aziende" ? 400 : 300, fontFamily: "'Roboto Mono', monospace", color: vistaCorrente === "aziende" ? "#ffffff" : "#555555", background: vistaCorrente === "aziende" ? "#FF0707" : "#ececec", transition: "all 0.2s", display: "flex", alignItems: "center" }}>
+              {t.aziendeToggle}
+            </button>
+            <button onClick={() => cambiaVista("designer")}
+              style={{ padding: `0 ${11 * uiScale}px`, border: "none", borderRadius: 13 * uiScale, cursor: "pointer", fontSize: 10 * uiScale, fontWeight: vistaCorrente === "designer" ? 400 : 300, fontFamily: "'Roboto Mono', monospace", color: vistaCorrente === "designer" ? "#ffffff" : "#555555", background: vistaCorrente === "designer" ? "#FF0707" : "#ececec", transition: "all 0.2s", display: "flex", alignItems: "center" }}>
+              {t.designerToggle}
+            </button>
+          </div>
+          <div style={{
+            display: "flex", alignItems: "center", justifyContent: "center", background: "#ffffff",
+            borderRadius: "50%", padding: 3, boxShadow: "0 2px 12px rgba(0,0,0,0.1)",
+            width: 28 * uiScale, height: 28 * uiScale, boxSizing: "border-box", flexShrink: 0,
+          }}>
+            <button onClick={toggleTimeline}
+              title={t.timelineToggle}
+              style={{
+                width: "100%", height: "100%", borderRadius: "50%", border: "none", margin: 0,
+                background: timelineAttiva ? "#FF0707" : "#ececec", cursor: "pointer",
+                display: "flex", alignItems: "center", justifyContent: "center", padding: 0, transition: "background 0.2s",
+              }}>
+              <svg width={11 * uiScale} height={11 * uiScale} viewBox="0 0 16 16" style={{ display: "block" }}>
+                <line x1="2" y1="8" x2="14" y2="8" stroke={timelineAttiva ? "#ffffff" : "#555555"} strokeWidth="1.4" />
+                <circle cx="5" cy="8" r="2" fill={timelineAttiva ? "#ffffff" : "#555555"} />
+                <circle cx="11" cy="8" r="2" fill={timelineAttiva ? "#ffffff" : "#555555"} />
+              </svg>
+            </button>
+          </div>
           <div style={{
             display: "flex", alignItems: "center", justifyContent: "center", background: "#ffffff",
             borderRadius: "50%", padding: 3, boxShadow: "0 2px 12px rgba(0,0,0,0.1)",
@@ -3872,16 +4150,6 @@ function App() {
                 <circle cx="6" cy="6" r="5" fill="none" stroke={correntiVisibili ? "#ffffff" : "#555555"} strokeWidth="1.4" />
                 <circle cx="10" cy="10" r="5" fill="none" stroke={correntiVisibili ? "#ffffff" : "#555555"} strokeWidth="1.4" />
               </svg>
-            </button>
-          </div>
-          <div style={{ display: "flex", gap: 2, background: "#ffffff", borderRadius: 18 * uiScale, padding: 3, boxShadow: "0 2px 12px rgba(0,0,0,0.1)", height: 28 * uiScale, boxSizing: "border-box" }}>
-            <button onClick={() => cambiaVista("designer")}
-              style={{ padding: `0 ${11 * uiScale}px`, border: "none", borderRadius: 13 * uiScale, cursor: "pointer", fontSize: 10 * uiScale, fontWeight: vistaCorrente === "designer" ? 400 : 300, fontFamily: "'Roboto Mono', monospace", color: vistaCorrente === "designer" ? "#ffffff" : "#555555", background: vistaCorrente === "designer" ? "#FF0707" : "#ececec", transition: "all 0.2s", display: "flex", alignItems: "center" }}>
-              {t.designerToggle}
-            </button>
-            <button onClick={() => cambiaVista("timeline")}
-              style={{ padding: `0 ${11 * uiScale}px`, border: "none", borderRadius: 13 * uiScale, cursor: "pointer", fontSize: 10 * uiScale, fontWeight: vistaCorrente === "timeline" ? 400 : 300, fontFamily: "'Roboto Mono', monospace", color: vistaCorrente === "timeline" ? "#ffffff" : "#555555", background: vistaCorrente === "timeline" ? "#FF0707" : "#ececec", transition: "all 0.2s", display: "flex", alignItems: "center" }}>
-              {t.timelineToggle}
             </button>
           </div>
           <div style={{ position: "relative" }}>

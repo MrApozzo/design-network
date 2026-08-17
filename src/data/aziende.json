@@ -1,32 +1,75 @@
 [
   {
-    "nome": "Flos",
-    "paese": "Italia",
-    "fondata": 1962,
-    "settore": "illuminazione"
-  },
-  {
-    "nome": "Artemide",
-    "paese": "Italia",
-    "fondata": 1960,
-    "settore": "illuminazione"
-  },
-  {
-    "nome": "Cassina",
-    "paese": "Italia",
-    "fondata": 1927,
+    "nome": "Thonet",
+    "paese": "Germania",
+    "fondata": 1819,
     "settore": "arredo"
   },
   {
-    "nome": "Zanotta",
+    "nome": "Sambonet",
     "paese": "Italia",
-    "fondata": 1954,
+    "fondata": 1856,
+    "settore": "oggetti da tavola"
+  },
+  {
+    "nome": "Morris & Co.",
+    "paese": "UK",
+    "fondata": 1861,
+    "settore": "arti applicate"
+  },
+  {
+    "nome": "Vittorio Bonacina",
+    "paese": "Italia",
+    "fondata": 1889,
+    "settore": "arredo vimini"
+  },
+  {
+    "nome": "Bonacina",
+    "paese": "Italia",
+    "fondata": 1889,
+    "settore": "arredo vimini"
+  },
+  {
+    "nome": "Artifort",
+    "paese": "Paesi Bassi",
+    "fondata": 1890,
     "settore": "arredo"
   },
   {
-    "nome": "Arflex",
+    "nome": "Apelli & Varesio",
     "paese": "Italia",
-    "fondata": 1947,
+    "fondata": 1899,
+    "settore": "arredo"
+  },
+  {
+    "nome": "Wiener Werkstätte",
+    "paese": "Austria",
+    "fondata": 1903,
+    "settore": "arti applicate",
+    "tipo": "studio"
+  },
+  {
+    "nome": "La Pavoni",
+    "paese": "Italia",
+    "fondata": 1905,
+    "settore": "macchine caffè"
+  },
+  {
+    "nome": "Herman Miller",
+    "paese": "USA",
+    "fondata": 1905,
+    "settore": "arredo"
+  },
+  {
+    "nome": "Hille",
+    "paese": "UK",
+    "fondata": 1906,
+    "settore": "arredo"
+  },
+  {
+    "nome": "Carl Hansen & Søn",
+    "paese": "Danimarca",
+    "fondata": 1908,
     "settore": "arredo"
   },
   {
@@ -36,10 +79,34 @@
     "settore": "elettronica, ufficio"
   },
   {
-    "nome": "Kartell",
+    "nome": "Olivari",
     "paese": "Italia",
-    "fondata": 1949,
-    "settore": "plastica, arredo"
+    "fondata": 1911,
+    "settore": "maniglie, accessori"
+  },
+  {
+    "nome": "Fredericia",
+    "paese": "Danimarca",
+    "fondata": 1911,
+    "settore": "arredo"
+  },
+  {
+    "nome": "Poltrona Frau",
+    "paese": "Italia",
+    "fondata": 1912,
+    "settore": "arredo"
+  },
+  {
+    "nome": "Necchi",
+    "paese": "Italia",
+    "fondata": 1919,
+    "settore": "macchine da cucire"
+  },
+  {
+    "nome": "Riva 1920",
+    "paese": "Italia",
+    "fondata": 1920,
+    "settore": "arredo legno"
   },
   {
     "nome": "Alessi",
@@ -48,22 +115,221 @@
     "settore": "oggetti da tavola"
   },
   {
-    "nome": "B&B Italia",
+    "nome": "Venini",
     "paese": "Italia",
-    "fondata": 1966,
+    "fondata": 1921,
+    "settore": "vetro"
+  },
+  {
+    "nome": "Braun",
+    "paese": "Germania",
+    "fondata": 1921,
+    "settore": "elettronica"
+  },
+  {
+    "nome": "Porro",
+    "paese": "Italia",
+    "fondata": 1925,
     "settore": "arredo"
   },
   {
-    "nome": "Memphis",
+    "nome": "Rometti",
     "paese": "Italia",
-    "fondata": 1981,
-    "settore": "design sperimentale"
+    "fondata": 1927,
+    "settore": "ceramica"
   },
   {
-    "nome": "Bieffeplast",
+    "nome": "Cassina",
     "paese": "Italia",
-    "fondata": 1960,
-    "settore": "accessori ufficio"
+    "fondata": 1927,
+    "settore": "arredo"
+  },
+  {
+    "nome": "BBPR",
+    "paese": "Italia",
+    "fondata": 1932,
+    "settore": "architettura e design",
+    "tipo": "studio"
+  },
+  {
+    "nome": "Fontana Arte",
+    "paese": "Italia",
+    "fondata": 1932,
+    "settore": "illuminazione, vetro"
+  },
+  {
+    "nome": "Molteni&C",
+    "paese": "Italia",
+    "fondata": 1934,
+    "settore": "arredo"
+  },
+  {
+    "nome": "Fratelli Boffi",
+    "paese": "Italia",
+    "fondata": 1934,
+    "settore": "arredo"
+  },
+  {
+    "nome": "Artek",
+    "paese": "Finlandia",
+    "fondata": 1935,
+    "settore": "arredo"
+  },
+  {
+    "nome": "Knoll",
+    "paese": "USA",
+    "fondata": 1938,
+    "settore": "arredo"
+  },
+  {
+    "nome": "Arteluce",
+    "paese": "Italia",
+    "fondata": 1939,
+    "settore": "illuminazione"
+  },
+  {
+    "nome": "Arredoluce",
+    "paese": "Italia",
+    "fondata": 1943,
+    "settore": "illuminazione"
+  },
+  {
+    "nome": "Brionvega",
+    "paese": "Italia",
+    "fondata": 1945,
+    "settore": "elettronica"
+  },
+  {
+    "nome": "O Luce",
+    "paese": "Italia",
+    "fondata": 1945,
+    "settore": "illuminazione"
+  },
+  {
+    "nome": "Vistosi",
+    "paese": "Italia",
+    "fondata": 1945,
+    "settore": "vetro"
+  },
+  {
+    "nome": "Stilnovo",
+    "paese": "Italia",
+    "fondata": 1946,
+    "settore": "illuminazione"
+  },
+  {
+    "nome": "Cappellini",
+    "paese": "Italia",
+    "fondata": 1946,
+    "settore": "arredo"
+  },
+  {
+    "nome": "ICF Industrie Carnovali",
+    "paese": "Italia",
+    "fondata": 1946,
+    "settore": "arredo ufficio"
+  },
+  {
+    "nome": "Bernini",
+    "paese": "Italia",
+    "fondata": 1946,
+    "settore": "arredo"
+  },
+  {
+    "nome": "Poggi",
+    "paese": "Italia",
+    "fondata": 1946,
+    "settore": "arredo"
+  },
+  {
+    "nome": "Fabbrica Poggi",
+    "paese": "Italia",
+    "fondata": 1946,
+    "settore": "arredo"
+  },
+  {
+    "nome": "Fornasetti",
+    "paese": "Italia",
+    "fondata": 1946,
+    "settore": "decorazione"
+  },
+  {
+    "nome": "Azucena",
+    "paese": "Italia",
+    "fondata": 1947,
+    "settore": "arredo"
+  },
+  {
+    "nome": "Arflex",
+    "paese": "Italia",
+    "fondata": 1947,
+    "settore": "arredo"
+  },
+  {
+    "nome": "Minotti",
+    "paese": "Italia",
+    "fondata": 1948,
+    "settore": "arredo"
+  },
+  {
+    "nome": "Kartell",
+    "paese": "Italia",
+    "fondata": 1949,
+    "settore": "plastica, arredo"
+  },
+  {
+    "nome": "Vitra",
+    "paese": "Svizzera",
+    "fondata": 1950,
+    "settore": "arredo"
+  },
+  {
+    "nome": "Bruno Longoni Atelier d'Arredamento",
+    "paese": "Italia",
+    "fondata": 1950,
+    "settore": "arredo"
+  },
+  {
+    "nome": "MIM Roma",
+    "paese": "Italia",
+    "fondata": 1950,
+    "settore": "arredo"
+  },
+  {
+    "nome": "Moroso",
+    "paese": "Italia",
+    "fondata": 1952,
+    "settore": "arredo"
+  },
+  {
+    "nome": "PP Møbler",
+    "paese": "Danimarca",
+    "fondata": 1953,
+    "settore": "arredo"
+  },
+  {
+    "nome": "Tecno",
+    "paese": "Italia",
+    "fondata": 1953,
+    "settore": "arredo ufficio"
+  },
+  {
+    "nome": "Zanotta",
+    "paese": "Italia",
+    "fondata": 1954,
+    "settore": "arredo"
+  },
+  {
+    "nome": "Stildomus",
+    "paese": "Italia",
+    "fondata": 1955,
+    "settore": "arredo"
+  },
+  {
+    "nome": "dePadova",
+    "paese": "Italia",
+    "fondata": 1956,
+    "settore": "arredo"
   },
   {
     "nome": "Danese",
@@ -72,9 +338,81 @@
     "settore": "oggetti design"
   },
   {
-    "nome": "O Luce",
+    "nome": "Danese Milano",
     "paese": "Italia",
-    "fondata": 1945,
+    "fondata": 1957,
+    "settore": "oggetti design"
+  },
+  {
+    "nome": "Poltronova",
+    "paese": "Italia",
+    "fondata": 1957,
+    "settore": "arredo sperimentale"
+  },
+  {
+    "nome": "Sormani",
+    "paese": "Italia",
+    "fondata": 1958,
+    "settore": "arredo"
+  },
+  {
+    "nome": "Flexform",
+    "paese": "Italia",
+    "fondata": 1959,
+    "settore": "arredo"
+  },
+  {
+    "nome": "Artemide",
+    "paese": "Italia",
+    "fondata": 1960,
+    "settore": "illuminazione"
+  },
+  {
+    "nome": "Gavina",
+    "paese": "Italia",
+    "fondata": 1960,
+    "settore": "arredo"
+  },
+  {
+    "nome": "Simon Gavina",
+    "paese": "Italia",
+    "fondata": 1960,
+    "settore": "arredo"
+  },
+  {
+    "nome": "Bieffeplast",
+    "paese": "Italia",
+    "fondata": 1960,
+    "settore": "accessori ufficio"
+  },
+  {
+    "nome": "Rexite",
+    "paese": "Italia",
+    "fondata": 1960,
+    "settore": "arredo ufficio"
+  },
+  {
+    "nome": "Voxson",
+    "paese": "Italia",
+    "fondata": 1960,
+    "settore": "elettronica"
+  },
+  {
+    "nome": "Interior Gabbianelli",
+    "paese": "Italia",
+    "fondata": 1871,
+    "settore": "ceramica"
+  },
+  {
+    "nome": "Ghidini 1961",
+    "paese": "Italia",
+    "fondata": 1961,
+    "settore": "accessori design"
+  },
+  {
+    "nome": "Flos",
+    "paese": "Italia",
+    "fondata": 1962,
     "settore": "illuminazione"
   },
   {
@@ -84,40 +422,59 @@
     "settore": "illuminazione"
   },
   {
-    "nome": "Arteluce",
+    "nome": "Fai International",
     "paese": "Italia",
-    "fondata": 1939,
+    "fondata": 1963,
     "settore": "illuminazione"
   },
   {
-    "nome": "Tecno",
+    "nome": "Sirrah",
     "paese": "Italia",
-    "fondata": 1953,
-    "settore": "arredo ufficio"
+    "fondata": 1963,
+    "settore": "illuminazione"
   },
   {
-    "nome": "Sambonet",
+    "nome": "Arnolfo di Cambio",
     "paese": "Italia",
-    "fondata": 1856,
-    "settore": "oggetti da tavola"
+    "fondata": 1963,
+    "settore": "cristalleria"
   },
   {
-    "nome": "Poggi",
+    "nome": "C&B Italia",
     "paese": "Italia",
-    "fondata": 1946,
+    "fondata": 1966,
     "settore": "arredo"
   },
   {
-    "nome": "Bonacina",
+    "nome": "B&B Italia",
     "paese": "Italia",
-    "fondata": 1889,
-    "settore": "arredo vimini"
+    "fondata": 1966,
+    "settore": "arredo"
   },
   {
-    "nome": "Gavina",
+    "nome": "Gufram",
     "paese": "Italia",
-    "fondata": 1960,
-    "settore": "arredo"
+    "fondata": 1966,
+    "settore": "arredo sperimentale"
+  },
+  {
+    "nome": "Archizoom",
+    "paese": "Italia",
+    "fondata": 1966,
+    "settore": "design radicale",
+    "tipo": "studio"
+  },
+  {
+    "nome": "Louis Poulsen",
+    "paese": "Danimarca",
+    "fondata": 1874,
+    "settore": "illuminazione"
+  },
+  {
+    "nome": "Rosenthal",
+    "paese": "Germania",
+    "fondata": 1879,
+    "settore": "porcellana"
   },
   {
     "nome": "Siemens",
@@ -126,15 +483,75 @@
     "settore": "elettronica"
   },
   {
-    "nome": "Flexform",
-    "paese": "Italia",
-    "fondata": 1959,
+    "nome": "Fritz Hansen",
+    "paese": "Danimarca",
+    "fondata": 1872,
     "settore": "arredo"
+  },
+  {
+    "nome": "Driade",
+    "paese": "Italia",
+    "fondata": 1968,
+    "settore": "arredo"
+  },
+  {
+    "nome": "Acerbis",
+    "paese": "Italia",
+    "fondata": 1968,
+    "settore": "arredo"
+  },
+  {
+    "nome": "Azzurra Ceramica",
+    "paese": "Italia",
+    "fondata": 1968,
+    "settore": "ceramica, sanitari"
+  },
+  {
+    "nome": "B-Line",
+    "paese": "Italia",
+    "fondata": 1968,
+    "settore": "arredo"
+  },
+  {
+    "nome": "UniFor",
+    "paese": "Italia",
+    "fondata": 1969,
+    "settore": "arredo ufficio"
+  },
+  {
+    "nome": "San Lorenzo",
+    "paese": "Italia",
+    "fondata": 1969,
+    "settore": "oreficeria"
+  },
+  {
+    "nome": "Glas Italia",
+    "paese": "Italia",
+    "fondata": 1970,
+    "settore": "vetro, arredo"
   },
   {
     "nome": "Skipper",
     "paese": "Italia",
     "fondata": 1970,
+    "settore": "arredo"
+  },
+  {
+    "nome": "Up&Up",
+    "paese": "Italia",
+    "fondata": 1970,
+    "settore": "arredo"
+  },
+  {
+    "nome": "Olivetti Synthesis",
+    "paese": "Italia",
+    "fondata": 1971,
+    "settore": "arredo ufficio"
+  },
+  {
+    "nome": "BD Barcelona",
+    "paese": "Spagna",
+    "fondata": 1972,
     "settore": "arredo"
   },
   {
@@ -144,33 +561,161 @@
     "settore": "vetro, arredo"
   },
   {
-    "nome": "Fornasetti",
-    "paese": "Italia",
-    "fondata": 1946,
-    "settore": "decorazione"
-  },
-  {
-    "nome": "Necchi",
-    "paese": "Italia",
-    "fondata": 1919,
-    "settore": "macchine da cucire"
-  },
-  {
-    "nome": "La Pavoni",
-    "paese": "Italia",
-    "fondata": 1905,
-    "settore": "macchine caffè"
-  },
-  {
     "nome": "Studio Alchimia",
     "paese": "Italia",
     "fondata": 1976,
-    "settore": "design sperimentale"
+    "settore": "design sperimentale",
+    "tipo": "studio"
+  },
+  {
+    "nome": "Magis",
+    "paese": "Italia",
+    "fondata": 1976,
+    "settore": "arredo"
+  },
+  {
+    "nome": "Flou",
+    "paese": "Italia",
+    "fondata": 1978,
+    "settore": "arredo notte"
+  },
+  {
+    "nome": "Alias",
+    "paese": "Italia",
+    "fondata": 1979,
+    "settore": "arredo"
+  },
+  {
+    "nome": "Morelato",
+    "paese": "Italia",
+    "fondata": 1979,
+    "settore": "arredo"
+  },
+  {
+    "nome": "Busnelli",
+    "paese": "Italia",
+    "fondata": 1979,
+    "settore": "arredo"
+  },
+  {
+    "nome": "Memphis",
+    "paese": "Italia",
+    "fondata": 1981,
+    "settore": "design sperimentale",
+    "tipo": "studio"
+  },
+  {
+    "nome": "Foscarini",
+    "paese": "Italia",
+    "fondata": 1981,
+    "settore": "illuminazione"
+  },
+  {
+    "nome": "Swatch",
+    "paese": "Svizzera",
+    "fondata": 1983,
+    "settore": "orologi"
+  },
+  {
+    "nome": "Edra",
+    "paese": "Italia",
+    "fondata": 1987,
+    "settore": "arredo"
+  },
+  {
+    "nome": "Meritalia",
+    "paese": "Italia",
+    "fondata": 1987,
+    "settore": "arredo"
+  },
+  {
+    "nome": "Anthologie Quartett",
+    "paese": "Germania",
+    "fondata": 1987,
+    "settore": "illuminazione"
+  },
+  {
+    "nome": "Isokon",
+    "paese": "UK",
+    "fondata": 1931,
+    "settore": "arredo"
+  },
+  {
+    "nome": "Sika-Design",
+    "paese": "Danimarca",
+    "fondata": 1942,
+    "settore": "arredo giardino"
+  },
+  {
+    "nome": "ClassiCon",
+    "paese": "Germania",
+    "fondata": 1990,
+    "settore": "arredo"
+  },
+  {
+    "nome": "Produzione Privata",
+    "paese": "Italia",
+    "fondata": 1990,
+    "settore": "arredo"
   },
   {
     "nome": "Robots",
     "paese": "Italia",
     "fondata": 1970,
     "settore": "arredo bambini"
+  },
+  {
+    "nome": "Maxalto",
+    "paese": "Italia",
+    "fondata": 2000,
+    "settore": "arredo"
+  },
+  {
+    "nome": "House of Finn Juhl",
+    "paese": "Danimarca",
+    "fondata": 2001,
+    "settore": "arredo"
+  },
+  {
+    "nome": "Moooi",
+    "paese": "Paesi Bassi",
+    "fondata": 2001,
+    "settore": "arredo"
+  },
+  {
+    "nome": "Tom Dixon",
+    "paese": "UK",
+    "fondata": 2002,
+    "settore": "arredo"
+  },
+  {
+    "nome": "Karakter",
+    "paese": "Danimarca",
+    "fondata": 2009,
+    "settore": "arredo"
+  },
+  {
+    "nome": "Exteta",
+    "paese": "Italia",
+    "fondata": 2011,
+    "settore": "arredo outdoor"
+  },
+  {
+    "nome": "Qeeboo",
+    "paese": "Italia",
+    "fondata": 2016,
+    "settore": "arredo"
+  },
+  {
+    "nome": "Knoll International",
+    "paese": "USA",
+    "fondata": 1938,
+    "settore": "arredo"
+  },
+  {
+    "nome": "Sica",
+    "paese": "Italia",
+    "fondata": 1955,
+    "settore": "arredo"
   }
 ]
