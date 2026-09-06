@@ -27,23 +27,13 @@ jobs:
         run: |
           python3 - <<'PY'
           from pathlib import Path
+          import re
 
           app = Path('src/App.jsx')
           text = app.read_text()
-          old = '''  const [primaVisita] = useState(() => {
-            // Ricompare anche se non è la primissima visita in assoluto, ma sono
-            // passati alcuni giorni dall'ultima (soglia media 3.5 giorni).
-            const SOGLIA_RIVISITA_MS = 3.5 * 24 * 60 * 60 * 1000
-            try {
-              const ultimaVisita = parseInt(localStorage.getItem("dn-ultima-visita"), 10)
-              const scaduta = !ultimaVisita || Date.now() - ultimaVisita > SOGLIA_RIVISITA_MS
-              localStorage.setItem("dn-ultima-visita", String(Date.now()))
-              return !localStorage.getItem("dn-camera") || scaduta
-            } catch { return true }
-          })
-          const [schermataIniziale, setSchermataIniziale] = useState(primaVisita)
-          '''
-          new = '''  const [mostraIntroAllAvvio] = useState(() => {
+
+          pattern = r'''  const \[primaVisita\] = useState\(\(\) => \{\n.*?  const \[schermataIniziale, setSchermataIniziale\] = useState\(primaVisita\)\n'''
+          replacement = '''  const [mostraIntroAllAvvio] = useState(() => {
             // L'intro dipende dal tipo di apertura, non dal tempo trascorso:
             // refresh/ricarica della pagina -> non mostrarla;
             // nuova navigazione (URL digitato, link, nuova tab) -> mostrarla.
@@ -55,10 +45,12 @@ jobs:
             return true
           })
           const [schermataIniziale, setSchermataIniziale] = useState(mostraIntroAllAvvio)
-          '''
-          if text.count(old) != 1:
-              raise SystemExit(f'Expected one intro block, found {text.count(old)}')
-          app.write_text(text.replace(old, new, 1))
+'''
+
+          text, count = re.subn(pattern, replacement, text, count=1, flags=re.S)
+          if count != 1:
+              raise SystemExit(f'Expected one intro startup block, found {count}')
+          app.write_text(text)
 
           handoff = Path('HANDOFF.md')
           h = handoff.read_text()
