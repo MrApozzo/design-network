@@ -649,6 +649,7 @@ const TESTI = {
     cerca: "Cerca...",
     benvenutoDomanda: "Qual è il designer che ha disegnato il mondo in cui vorresti vivere?",
     benvenutoConferma: "Entra",
+    benvenutoCercaLabel: "cerca",
     aziendeToggle: "Aziende",
     designerToggle: "Designer",
     timelineToggle: "Linea del tempo",
@@ -703,6 +704,7 @@ const TESTI = {
     cerca: "Search...",
     benvenutoDomanda: "Which designer shaped the world you'd want to live in?",
     benvenutoConferma: "Enter",
+    benvenutoCercaLabel: "search",
     aziendeToggle: "Companies",
     designerToggle: "Designer",
     timelineToggle: "Timeline",
@@ -3841,15 +3843,15 @@ function App() {
 
   const uiScale = 0.6 + (window.innerWidth / 1440) * 0.4
 
-  const queryBenvenuto = rispostaDesigner.trim()
-  const suggerimentiDefaultBenvenuto = ["Achille Castiglioni", "Ettore Sottsass"]
-    .filter((nome) => designers.some((d) => d.nome === nome))
-    .map((nome) => ({ tipo: "designer", nome }))
-  const suggerimentiBenvenuto = queryBenvenuto.length === 0
-    ? suggerimentiDefaultBenvenuto
-    : queryBenvenuto.length > 1
-      ? cercaEntita(queryBenvenuto).filter((r) => r.tipo === "designer")
-      : []
+  const queryBenvenuto = rispostaDesigner.trim().toLowerCase()
+  const designersBenvenuto = [...designers].sort((a, b) => {
+    const differenzaProdotti = (CONTEGGIO_PRODOTTI_PER_DESIGNER.get(b.nome) ?? 0)
+      - (CONTEGGIO_PRODOTTI_PER_DESIGNER.get(a.nome) ?? 0)
+    return differenzaProdotti || a.nome.localeCompare(b.nome)
+  })
+  const suggerimentiBenvenuto = designersBenvenuto
+    .filter((d) => !queryBenvenuto || d.nome.toLowerCase().includes(queryBenvenuto))
+    .map((d) => ({ tipo: "designer", nome: d.nome }))
 
   return (
     <>
@@ -3880,7 +3882,15 @@ function App() {
             pointerEvents: campoRivelato ? "auto" : "none",
           }}>
             <div style={{ position: "relative", width: "100%", maxWidth: 260 }}>
+              <label htmlFor="dn-benvenuto-cerca" style={{
+                position: "absolute", top: -6, left: 14, zIndex: 2, padding: "0 5px",
+                background: "white", fontSize: 9, lineHeight: "12px", color: "#777",
+                fontFamily: "Roboto, sans-serif", letterSpacing: "0.02em", pointerEvents: "none",
+              }}>
+                {t.benvenutoCercaLabel}
+              </label>
               <input
+                id="dn-benvenuto-cerca"
                 ref={inputSchermataInizialeRef}
                 type="text"
                 value={rispostaDesigner}
@@ -3893,7 +3903,7 @@ function App() {
                 }}
               />
               {suggerimentiBenvenuto.length > 0 && (
-                <ListaConScroll maxHeight={220}
+                <ListaConScroll maxHeight={112}
                   wrapperStyle={{ position: "absolute", top: "100%", left: 0, right: 0, marginTop: 6, zIndex: 10 }}
                   innerStyle={{ background: "white", borderRadius: 18, boxShadow: "0 4px 16px rgba(0,0,0,0.12)" }}>
                   {suggerimentiBenvenuto.map((d, i) => (

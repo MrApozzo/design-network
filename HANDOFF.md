@@ -291,3 +291,11 @@ corrente+nodo+indice, non `Math.random`) così il profilo resta irregolare
 - Rimossa la vecchia regola temporale dei 3,5 giorni e la dipendenza da `dn-camera`.
 - L'intro si apre su una nuova navigazione (URL digitato, link, nuova tab) e non si apre su refresh/reload della pagina.
 - Fallback compatibile con `performance.navigation` per browser meno recenti.
+
+
+## Lista completa designer nella domanda iniziale (2026-09-06)
+
+- A input vuoto, il dropdown iniziale mostra tutti i designer ordinati per numero di prodotti presenti nel database (decrescente; parità alfabetica).
+- Digitando, la stessa lista viene filtrata per nome mantenendo l’ordinamento per quantità di prodotti.
+- Altezza del dropdown ridotta a circa 3,5 righe (`maxHeight={112}`) e scrollbar custom `ListaConScroll`, così è evidente che la lista è scorrevole.
+- Aggiunta etichetta flottante `cerca`/`search` sul campo iniziale.
