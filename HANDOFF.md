@@ -305,3 +305,10 @@ corrente+nodo+indice, non `Math.random`) così il profilo resta irregolare
 
 - Su viewport mobile (<768 px), designer, prodotti e relative etichette ricevono un moltiplicatore uniforme `1.5` a tutti i livelli di zoom.
 - Il moltiplicatore è applicato a valle delle curve di zoom esistenti: non cambia soglie, orbite, distanze, layout o costanti protette.
+
+
+## Rimosso boost finale mobile 90-100% (2026-09-06)
+
+- Rimosso il boost mobile aggiuntivo nell’ultimo 10% dello zoom (`boost_soglia: 0.9` / `boost_mobile_max: 2.7`) per designer e prodotti.
+- Resta il moltiplicatore mobile uniforme `SCALA_MOBILE_NODI_LABEL = 1.5` a tutti i livelli di zoom.
+- Il boost medio 15%-80% usato solo per l’etichetta designer resta invariato.

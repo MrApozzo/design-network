@@ -82,10 +82,6 @@ const STILE = {
   designer_scala_secondario: 0.5,
   zoom_prodotto_min: 2,
   zoom_prodotto_max: 35,
-  // Boost aggiuntivo solo mobile, applicato a prodotti e designer solo
-  // nell'ultimo tratto di zoom (da boost_soglia a 1): non tocca il resto della curva.
-  boost_mobile_max: 2.7,
-  boost_soglia: 0.9,
   // Boost aggiuntivo solo mobile, concentrato nella fascia di zoom 15%-80%,
   // usato solo per l'etichetta col nome del designer (non per quella dei
   // prodotti, che dal 75% al 100% deve restare una crescita lineare pura):
@@ -1890,10 +1886,6 @@ function App() {
         const scalaSecondario = (CONTEGGIO_PRODOTTI_PER_DESIGNER.get(node) ?? 0) <= SOGLIA_DESIGNER_SECONDARIO
           ? STILE.designer_scala_secondario : 1
         let base = lerp(STILE.zoom_designer_min, STILE.zoom_designer_max, tCurved) * vs * scalaSecondario
-        if (isMobile && t > STILE.boost_soglia) {
-          const tBoost = (t - STILE.boost_soglia) / (1 - STILE.boost_soglia)
-          base *= lerp(1, STILE.boost_mobile_max, tBoost)
-        }
         if (isMobile) base *= SCALA_MOBILE_NODI_LABEL
         const legameRT = legameEvidenziatoRef.current
         if (legameRT && (node === legameRT.a || node === legameRT.b)) return base * STILE.hover_scala
@@ -1904,10 +1896,6 @@ function App() {
         const scalaTop = attr.dati?.top ? STILE.prodotto_scala_top : 1
         const scalaFoto = IMMAGINI_ESISTENTI.has(attr.dati?.foto) ? 1 : 0.5
         let base = lerp(STILE.zoom_prodotto_min, STILE.zoom_prodotto_max, tDelayed * tDelayed) * vs * scalaTop * scalaFoto
-        if (isMobile && t > STILE.boost_soglia) {
-          const tBoost = (t - STILE.boost_soglia) / (1 - STILE.boost_soglia)
-          base *= lerp(1, STILE.boost_mobile_max, tBoost)
-        }
         if (isMobile) base *= SCALA_MOBILE_NODI_LABEL
         if (node === prodottoCliccato) return base * 1.2
         if (prodottoCliccato) return base
