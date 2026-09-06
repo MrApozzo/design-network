@@ -19,6 +19,8 @@ for (const p of prodotti) {
   for (const d of ds) CONTEGGIO_PRODOTTI_PER_DESIGNER.set(d, (CONTEGGIO_PRODOTTI_PER_DESIGNER.get(d) ?? 0) + 1)
 }
 const SOGLIA_DESIGNER_SECONDARIO = 2
+// Scala uniforme aggiuntiva solo mobile: nodi e relative etichette +50% a ogni livello di zoom.
+const SCALA_MOBILE_NODI_LABEL = 1.5
 
 const STILE = {
   // --- Colori ---
@@ -1892,6 +1894,7 @@ function App() {
           const tBoost = (t - STILE.boost_soglia) / (1 - STILE.boost_soglia)
           base *= lerp(1, STILE.boost_mobile_max, tBoost)
         }
+        if (isMobile) base *= SCALA_MOBILE_NODI_LABEL
         const legameRT = legameEvidenziatoRef.current
         if (legameRT && (node === legameRT.a || node === legameRT.b)) return base * STILE.hover_scala
         return node === nodoAttivo ? base * STILE.hover_scala : base
@@ -1905,6 +1908,7 @@ function App() {
           const tBoost = (t - STILE.boost_soglia) / (1 - STILE.boost_soglia)
           base *= lerp(1, STILE.boost_mobile_max, tBoost)
         }
+        if (isMobile) base *= SCALA_MOBILE_NODI_LABEL
         if (node === prodottoCliccato) return base * 1.2
         if (prodottoCliccato) return base
         if (node === prodottoHoverAttivo) return base * STILE.hover_scala
@@ -1925,14 +1929,14 @@ function App() {
       const vs = vScale()
       const boostMedio = boostMedioMobile(t)
       const boostMedioLabel = 1 + boostMedio * (STILE.boost_medio_label_max - 1)
-      const labelDesignerSize = Math.max(STILE.label_min, lerp(STILE.zoom_label_designer_min, STILE.zoom_label_designer_max, Math.pow(t, 1.2)) * vs) * boostMedioLabel
+      const labelDesignerSize = Math.max(STILE.label_min, lerp(STILE.zoom_label_designer_min, STILE.zoom_label_designer_max, Math.pow(t, 1.2)) * vs) * boostMedioLabel * (isMobile ? SCALA_MOBILE_NODI_LABEL : 1)
       const tLabel = Math.max(0, (t - STILE.zoom_label_soglia) / (1 - STILE.zoom_label_soglia))
       const mostraLabelProdotti = t > STILE.zoom_label_soglia
       // Niente boost qui (né quello "medio" né quello di fine corsa): su mobile,
       // dal 75% al 100% la crescita resta lineare pura (tLabel già lo è di suo).
       // Con i boost il tratto centrale (75-90%) risultava sproporzionato rispetto
       // agli estremi, che invece andavano bene così com'erano.
-      const labelProdottoSize = mostraLabelProdotti ? Math.max(STILE.label_min, STILE.zoom_label_prodotto_max * tLabel * vs) : 0
+      const labelProdottoSize = mostraLabelProdotti ? Math.max(STILE.label_min, STILE.zoom_label_prodotto_max * tLabel * vs) * (isMobile ? SCALA_MOBILE_NODI_LABEL : 1) : 0
       const nodoAttivo = designerCliccato || nodoHoverAttivo
       const collegati = nodiCollegatiAlHover(nodoAttivo)
       const hoverAttivo = nodoAttivo !== null

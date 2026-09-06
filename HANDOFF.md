@@ -299,3 +299,9 @@ corrente+nodo+indice, non `Math.random`) così il profilo resta irregolare
 - Digitando, la stessa lista viene filtrata per nome mantenendo l’ordinamento per quantità di prodotti.
 - Altezza del dropdown ridotta a circa 3,5 righe (`maxHeight={112}`) e scrollbar custom `ListaConScroll`, così è evidente che la lista è scorrevole.
 - Aggiunta etichetta flottante `cerca`/`search` sul campo iniziale.
+
+
+## Scala mobile nodi ed etichette +50% (2026-09-06)
+
+- Su viewport mobile (<768 px), designer, prodotti e relative etichette ricevono un moltiplicatore uniforme `1.5` a tutti i livelli di zoom.
+- Il moltiplicatore è applicato a valle delle curve di zoom esistenti: non cambia soglie, orbite, distanze, layout o costanti protette.
