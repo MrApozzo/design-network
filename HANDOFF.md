@@ -277,3 +277,10 @@ corrente+nodo+indice, non `Math.random`) così il profilo resta irregolare
 - Nessun criterio ancora definito per estendere ulteriormente le correnti a
   designer/movimenti non italiani in modo sistematico — per ora si procede
   aggiungendone quando emerge un caso concreto (come Rietveld/van Doesburg).
+
+
+## Fix intro e suggerimenti iniziali (2026-09-06)
+
+- Corretto il bug per cui la schermata iniziale si chiudeva automaticamente appena il preload raggiungeva 12 immagini o il timeout di 1,2 s: il preload ora è indipendente dall'intro.
+- La schermata iniziale resta visibile fino a `confermaSchermataIniziale()`, quindi solo dopo un'azione esplicita dell'utente.
+- Quando compare il campo della domanda iniziale, a input vuoto vengono mostrati due suggerimenti cliccabili (`Achille Castiglioni`, `Ettore Sottsass`); dopo almeno 2 caratteri torna l'autocomplete normale del database.

@@ -752,11 +752,10 @@ const TESTI = {
   },
 }
 
-// onSoglia scatta dopo le prime `sogliaPronte` immagini (le più vicine al centro
-// iniziale, essendo `paths` già ordinato per distanza): serve a sbloccare la
-// schermata iniziale senza aspettare tutto il catalogo, che con centinaia di
-// foto renderebbe l'avvio molto più lento del necessario. Il resto continua a
-// caricare in background verso onDone.
+// `sogliaPronte`/`onSoglia` permettono opzionalmente di segnalare quando un
+// primo lotto di immagini è pronto. Il preload continua comunque in background;
+// questa soglia non controlla più la schermata iniziale, che resta visibile fino
+// a quando l'utente sceglie esplicitamente di entrare nella mappa.
 // ottieniDistanza(src), se passata, viene interrogata ad ogni slot libero per
 // scegliere l'immagine non ancora avviata più vicina alla camera ATTUALE (non
 // quella di partenza): così, se l'utente si sposta prima che il lotto iniziale
@@ -878,16 +877,11 @@ function App() {
     } catch { return true }
   })
   const [schermataIniziale, setSchermataIniziale] = useState(primaVisita)
-  const [immaginiPronte, setImmaginiPronte] = useState(false)
   const [rispostaDesigner, setRispostaDesigner] = useState("")
   const inputSchermataInizialeRef = useRef(null)
   const [numLetterePronte, setNumLetterePronte] = useState(0)
   const [cursoreVisibile, setCursoreVisibile] = useState(true)
   const [campoRivelato, setCampoRivelato] = useState(false)
-
-  useEffect(() => {
-    if (immaginiPronte) setSchermataIniziale(false)
-  }, [immaginiPronte])
 
   function confermaSchermataIniziale(nomeScelto) {
     const nome = (nomeScelto || rispostaDesigner).trim()
@@ -1795,18 +1789,10 @@ function App() {
         imgColori[src] = `rgb(${Math.round(r / conteggio)},${Math.round(g / conteggio)},${Math.round(b / conteggio)})`
       } catch {}
     }
-    // Anche il lotto prioritario può essere lento su reti scadenti: un timeout
-    // di sicurezza mostra comunque la mappa entro un tempo massimo, coi
-    // pallini non ancora caricati che restano sul colore di base finché la
-    // loro immagine arriva (il disegno li gestisce già così).
-    let immaginiGiaPronte = false
-    const segnalaPronte = () => {
-      if (immaginiGiaPronte) return
-      immaginiGiaPronte = true
-      setImmaginiPronte(true)
-    }
-    const timeoutPronte = setTimeout(segnalaPronte, 1200)
-    imgCache = preloadImages(imgPaths, 6, undefined, 12, segnalaPronte, () => richiediDisegnoOverlay(2), distanzaDaCameraAttuale)
+    // Il preload resta completamente indipendente dall'intro: le immagini vicine
+    // alla camera arrivano per prime e il resto continua in background, ma il
+    // completamento del primo lotto non può più far entrare automaticamente nella mappa.
+    imgCache = preloadImages(imgPaths, 6, undefined, undefined, undefined, () => richiediDisegnoOverlay(2), distanzaDaCameraAttuale)
     Object.entries(imgCache).forEach(([src, img]) => {
       if (img.complete && img.naturalWidth > 0) campionaColore(src, img)
       else img.addEventListener("load", () => campionaColore(src, img), { once: true })
@@ -3582,7 +3568,6 @@ function App() {
     return () => {
       window.removeEventListener("keydown", handleEscGlobale)
       resizeObserver.disconnect()
-      clearTimeout(timeoutPronte)
       if (overlayAnimationFrame !== null) cancelAnimationFrame(overlayAnimationFrame)
       if (cameraAnimId) cancelAnimationFrame(cameraAnimId)
       renderer.kill()
@@ -3856,9 +3841,15 @@ function App() {
 
   const uiScale = 0.6 + (window.innerWidth / 1440) * 0.4
 
-  const suggerimentiBenvenuto = rispostaDesigner.trim().length > 1
-    ? cercaEntita(rispostaDesigner).filter((r) => r.tipo === "designer")
-    : []
+  const queryBenvenuto = rispostaDesigner.trim()
+  const suggerimentiDefaultBenvenuto = ["Achille Castiglioni", "Ettore Sottsass"]
+    .filter((nome) => designers.some((d) => d.nome === nome))
+    .map((nome) => ({ tipo: "designer", nome }))
+  const suggerimentiBenvenuto = queryBenvenuto.length === 0
+    ? suggerimentiDefaultBenvenuto
+    : queryBenvenuto.length > 1
+      ? cercaEntita(queryBenvenuto).filter((r) => r.tipo === "designer")
+      : []
 
   return (
     <>
