@@ -284,3 +284,10 @@ corrente+nodo+indice, non `Math.random`) così il profilo resta irregolare
 - Corretto il bug per cui la schermata iniziale si chiudeva automaticamente appena il preload raggiungeva 12 immagini o il timeout di 1,2 s: il preload ora è indipendente dall'intro.
 - La schermata iniziale resta visibile fino a `confermaSchermataIniziale()`, quindi solo dopo un'azione esplicita dell'utente.
 - Quando compare il campo della domanda iniziale, a input vuoto vengono mostrati due suggerimenti cliccabili (`Achille Castiglioni`, `Ettore Sottsass`); dopo almeno 2 caratteri torna l'autocomplete normale del database.
+
+
+## Logica apertura intro basata sulla navigazione (2026-09-06)
+
+- Rimossa la vecchia regola temporale dei 3,5 giorni e la dipendenza da `dn-camera`.
+- L'intro si apre su una nuova navigazione (URL digitato, link, nuova tab) e non si apre su refresh/reload della pagina.
+- Fallback compatibile con `performance.navigation` per browser meno recenti.

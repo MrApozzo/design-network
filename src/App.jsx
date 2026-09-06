@@ -865,18 +865,18 @@ function App() {
   const timelineAttivaRef = useRef(false)
   const [animaTransizioneFn, setAnimaTransizioneFn] = useState(null)
   const [ridisegnaFn, setRidisegnaFn] = useState(null)
-  const [primaVisita] = useState(() => {
-    // Ricompare anche se non è la primissima visita in assoluto, ma sono
-    // passati alcuni giorni dall'ultima (soglia media 3.5 giorni).
-    const SOGLIA_RIVISITA_MS = 3.5 * 24 * 60 * 60 * 1000
+  const [mostraIntroAllAvvio] = useState(() => {
+    // L'intro dipende dal tipo di apertura, non dal tempo trascorso:
+    // refresh/ricarica della pagina -> non mostrarla;
+    // nuova navigazione (URL digitato, link, nuova tab) -> mostrarla.
     try {
-      const ultimaVisita = parseInt(localStorage.getItem("dn-ultima-visita"), 10)
-      const scaduta = !ultimaVisita || Date.now() - ultimaVisita > SOGLIA_RIVISITA_MS
-      localStorage.setItem("dn-ultima-visita", String(Date.now()))
-      return !localStorage.getItem("dn-camera") || scaduta
-    } catch { return true }
+      const navigazione = performance.getEntriesByType?.("navigation")?.[0]
+      if (navigazione?.type) return navigazione.type !== "reload"
+      if (performance.navigation) return performance.navigation.type !== 1
+    } catch {}
+    return true
   })
-  const [schermataIniziale, setSchermataIniziale] = useState(primaVisita)
+  const [schermataIniziale, setSchermataIniziale] = useState(mostraIntroAllAvvio)
   const [rispostaDesigner, setRispostaDesigner] = useState("")
   const inputSchermataInizialeRef = useRef(null)
   const [numLetterePronte, setNumLetterePronte] = useState(0)
