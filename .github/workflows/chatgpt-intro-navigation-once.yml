@@ -28,35 +28,33 @@ jobs:
           python3 - <<'PY'
           from pathlib import Path
           import re
-
           app = Path('src/App.jsx')
           text = app.read_text()
-
-          pattern = r'''  const \[primaVisita\] = useState\(\(\) => \{\n.*?  const \[schermataIniziale, setSchermataIniziale\] = useState\(primaVisita\)\n'''
-          replacement = '''  const [mostraIntroAllAvvio] = useState(() => {
-            // L'intro dipende dal tipo di apertura, non dal tempo trascorso:
-            // refresh/ricarica della pagina -> non mostrarla;
-            // nuova navigazione (URL digitato, link, nuova tab) -> mostrarla.
-            try {
-              const navigazione = performance.getEntriesByType?.("navigation")?.[0]
-              if (navigazione?.type) return navigazione.type !== "reload"
-              if (performance.navigation) return performance.navigation.type !== 1
-            } catch {}
-            return true
-          })
-          const [schermataIniziale, setSchermataIniziale] = useState(mostraIntroAllAvvio)
-'''
-
+          pattern = r'  const \[primaVisita\] = useState\(\(\) => \{\n.*?  const \[schermataIniziale, setSchermataIniziale\] = useState\(primaVisita\)\n'
+          lines = [
+              '  const [mostraIntroAllAvvio] = useState(() => {',
+              "    // L'intro dipende dal tipo di apertura, non dal tempo trascorso:",
+              '    // refresh/ricarica della pagina -> non mostrarla;',
+              '    // nuova navigazione (URL digitato, link, nuova tab) -> mostrarla.',
+              '    try {',
+              '      const navigazione = performance.getEntriesByType?.("navigation")?.[0]',
+              '      if (navigazione?.type) return navigazione.type !== "reload"',
+              '      if (performance.navigation) return performance.navigation.type !== 1',
+              '    } catch {}',
+              '    return true',
+              '  })',
+              '  const [schermataIniziale, setSchermataIniziale] = useState(mostraIntroAllAvvio)',
+          ]
+          replacement = '\n'.join(lines) + '\n'
           text, count = re.subn(pattern, replacement, text, count=1, flags=re.S)
           if count != 1:
               raise SystemExit(f'Expected one intro startup block, found {count}')
           app.write_text(text)
-
           handoff = Path('HANDOFF.md')
           h = handoff.read_text()
           marker = '## Logica apertura intro basata sulla navigazione (2026-09-06)'
           if marker not in h:
-              h += '''\n\n## Logica apertura intro basata sulla navigazione (2026-09-06)\n\n- Rimossa la vecchia regola temporale dei 3,5 giorni e la dipendenza da `dn-camera`.\n- L'intro si apre su una nuova navigazione (URL digitato, link, nuova tab) e non si apre su refresh/reload della pagina.\n- Fallback compatibile con `performance.navigation` per browser meno recenti.\n'''
+              h += "\n\n## Logica apertura intro basata sulla navigazione (2026-09-06)\n\n- Rimossa la vecchia regola temporale dei 3,5 giorni e la dipendenza da `dn-camera`.\n- L'intro si apre su una nuova navigazione (URL digitato, link, nuova tab) e non si apre su refresh/reload della pagina.\n- Fallback compatibile con `performance.navigation` per browser meno recenti.\n"
               handoff.write_text(h)
           PY
 
