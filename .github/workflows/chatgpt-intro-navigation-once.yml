@@ -2,9 +2,10 @@ name: Update intro navigation logic
 
 on:
   push:
-    branches: [main]
+    branches:
+      - main
     paths:
-      - '.github/workflows/chatgpt-intro-navigation-once.yml'
+      - .github/workflows/chatgpt-intro-navigation-once.yml
 
 permissions:
   contents: write
@@ -19,58 +20,53 @@ jobs:
 
       - uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: '20'
           cache: npm
 
       - name: Patch intro navigation logic
-        shell: python
         run: |
+          python3 - <<'PY'
           from pathlib import Path
 
           app = Path('src/App.jsx')
           text = app.read_text()
-
           old = '''  const [primaVisita] = useState(() => {
-    // Ricompare anche se non è la primissima visita in assoluto, ma sono
-    // passati alcuni giorni dall'ultima (soglia media 3.5 giorni).
-    const SOGLIA_RIVISITA_MS = 3.5 * 24 * 60 * 60 * 1000
-    try {
-      const ultimaVisita = parseInt(localStorage.getItem("dn-ultima-visita"), 10)
-      const scaduta = !ultimaVisita || Date.now() - ultimaVisita > SOGLIA_RIVISITA_MS
-      localStorage.setItem("dn-ultima-visita", String(Date.now()))
-      return !localStorage.getItem("dn-camera") || scaduta
-    } catch { return true }
-  })
-  const [schermataIniziale, setSchermataIniziale] = useState(primaVisita)
-'''
-
+            // Ricompare anche se non è la primissima visita in assoluto, ma sono
+            // passati alcuni giorni dall'ultima (soglia media 3.5 giorni).
+            const SOGLIA_RIVISITA_MS = 3.5 * 24 * 60 * 60 * 1000
+            try {
+              const ultimaVisita = parseInt(localStorage.getItem("dn-ultima-visita"), 10)
+              const scaduta = !ultimaVisita || Date.now() - ultimaVisita > SOGLIA_RIVISITA_MS
+              localStorage.setItem("dn-ultima-visita", String(Date.now()))
+              return !localStorage.getItem("dn-camera") || scaduta
+            } catch { return true }
+          })
+          const [schermataIniziale, setSchermataIniziale] = useState(primaVisita)
+          '''
           new = '''  const [mostraIntroAllAvvio] = useState(() => {
-    // L'intro dipende dal TIPO di apertura, non dal tempo trascorso:
-    // - refresh/ricarica della pagina -> non mostrarla;
-    // - nuova navigazione (URL digitato nella barra, link, nuova tab) -> mostrarla.
-    // PerformanceNavigationTiming è l'API moderna; performance.navigation resta
-    // come fallback per browser più vecchi (type === 1 significa reload).
-    try {
-      const navigazione = performance.getEntriesByType?.("navigation")?.[0]
-      if (navigazione?.type) return navigazione.type !== "reload"
-      if (performance.navigation) return performance.navigation.type !== 1
-    } catch {}
-    return true
-  })
-  const [schermataIniziale, setSchermataIniziale] = useState(mostraIntroAllAvvio)
-'''
-
-          count = text.count(old)
-          if count != 1:
-              raise SystemExit(f'Expected exactly one intro timing block, found {count}')
+            // L'intro dipende dal tipo di apertura, non dal tempo trascorso:
+            // refresh/ricarica della pagina -> non mostrarla;
+            // nuova navigazione (URL digitato, link, nuova tab) -> mostrarla.
+            try {
+              const navigazione = performance.getEntriesByType?.("navigation")?.[0]
+              if (navigazione?.type) return navigazione.type !== "reload"
+              if (performance.navigation) return performance.navigation.type !== 1
+            } catch {}
+            return true
+          })
+          const [schermataIniziale, setSchermataIniziale] = useState(mostraIntroAllAvvio)
+          '''
+          if text.count(old) != 1:
+              raise SystemExit(f'Expected one intro block, found {text.count(old)}')
           app.write_text(text.replace(old, new, 1))
 
           handoff = Path('HANDOFF.md')
           h = handoff.read_text()
           marker = '## Logica apertura intro basata sulla navigazione (2026-09-06)'
           if marker not in h:
-              h += f'''\n\n{marker}\n\n- Rimossa la vecchia regola temporale dei 3,5 giorni e la dipendenza da `dn-camera`.\n- L'intro ora si apre su una nuova navigazione (`navigate`: URL digitato, link, nuova tab) e non si apre su `reload`/refresh della pagina.\n- Fallback compatibile con la vecchia `performance.navigation` per browser meno recenti.\n'''
+              h += '''\n\n## Logica apertura intro basata sulla navigazione (2026-09-06)\n\n- Rimossa la vecchia regola temporale dei 3,5 giorni e la dipendenza da `dn-camera`.\n- L'intro si apre su una nuova navigazione (URL digitato, link, nuova tab) e non si apre su refresh/reload della pagina.\n- Fallback compatibile con `performance.navigation` per browser meno recenti.\n'''
               handoff.write_text(h)
+          PY
 
       - name: Install dependencies
         run: npm ci
@@ -78,16 +74,14 @@ jobs:
       - name: Build
         run: npm run build
 
-      - name: Verify only intro startup logic changed in App.jsx
-        shell: bash
+      - name: Guard layout and zoom code
         run: |
           if git diff -- src/App.jsx | grep -E '^[-+].*(zoom_|designer_size|prodotto_size|orbita_|raggioBase|separaPosizioniSovrapposte)'; then
             echo 'Protected layout/zoom code changed unexpectedly.'
             exit 1
           fi
 
-      - name: Commit patch and remove one-off workflow
-        shell: bash
+      - name: Commit and push
         run: |
           git config user.name 'ChatGPT'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
