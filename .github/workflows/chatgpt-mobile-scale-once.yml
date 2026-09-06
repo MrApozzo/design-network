@@ -1,0 +1,101 @@
+name: Increase mobile nodes and labels
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - .github/workflows/chatgpt-mobile-scale-once.yml
+
+permissions:
+  contents: write
+
+jobs:
+  patch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: npm
+
+      - name: Patch mobile scale
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+
+          app = Path('src/App.jsx')
+          text = app.read_text()
+
+          def replace_once(old, new, label):
+              global text
+              count = text.count(old)
+              if count != 1:
+                  raise SystemExit(f'{label}: expected 1 match, found {count}')
+              text = text.replace(old, new, 1)
+
+          replace_once(
+              'const SOGLIA_DESIGNER_SECONDARIO = 2\n',
+              'const SOGLIA_DESIGNER_SECONDARIO = 2\n// Scala uniforme aggiuntiva solo mobile: nodi e relative etichette +50% a ogni livello di zoom.\nconst SCALA_MOBILE_NODI_LABEL = 1.5\n',
+              'mobile scale constant'
+          )
+
+          replace_once(
+              '''        if (isMobile && t > STILE.boost_soglia) {\n          const tBoost = (t - STILE.boost_soglia) / (1 - STILE.boost_soglia)\n          base *= lerp(1, STILE.boost_mobile_max, tBoost)\n        }\n        const legameRT = legameEvidenziatoRef.current''',
+              '''        if (isMobile && t > STILE.boost_soglia) {\n          const tBoost = (t - STILE.boost_soglia) / (1 - STILE.boost_soglia)\n          base *= lerp(1, STILE.boost_mobile_max, tBoost)\n        }\n        if (isMobile) base *= SCALA_MOBILE_NODI_LABEL\n        const legameRT = legameEvidenziatoRef.current''',
+              'designer radius mobile scale'
+          )
+
+          replace_once(
+              '''        if (isMobile && t > STILE.boost_soglia) {\n          const tBoost = (t - STILE.boost_soglia) / (1 - STILE.boost_soglia)\n          base *= lerp(1, STILE.boost_mobile_max, tBoost)\n        }\n        if (node === prodottoCliccato) return base * 1.2''',
+              '''        if (isMobile && t > STILE.boost_soglia) {\n          const tBoost = (t - STILE.boost_soglia) / (1 - STILE.boost_soglia)\n          base *= lerp(1, STILE.boost_mobile_max, tBoost)\n        }\n        if (isMobile) base *= SCALA_MOBILE_NODI_LABEL\n        if (node === prodottoCliccato) return base * 1.2''',
+              'product radius mobile scale'
+          )
+
+          replace_once(
+              '      const labelDesignerSize = Math.max(STILE.label_min, lerp(STILE.zoom_label_designer_min, STILE.zoom_label_designer_max, Math.pow(t, 1.2)) * vs) * boostMedioLabel\n',
+              '      const labelDesignerSize = Math.max(STILE.label_min, lerp(STILE.zoom_label_designer_min, STILE.zoom_label_designer_max, Math.pow(t, 1.2)) * vs) * boostMedioLabel * (isMobile ? SCALA_MOBILE_NODI_LABEL : 1)\n',
+              'designer label mobile scale'
+          )
+
+          replace_once(
+              '      const labelProdottoSize = mostraLabelProdotti ? Math.max(STILE.label_min, STILE.zoom_label_prodotto_max * tLabel * vs) : 0\n',
+              '      const labelProdottoSize = mostraLabelProdotti ? Math.max(STILE.label_min, STILE.zoom_label_prodotto_max * tLabel * vs) * (isMobile ? SCALA_MOBILE_NODI_LABEL : 1) : 0\n',
+              'product label mobile scale'
+          )
+
+          app.write_text(text)
+
+          handoff = Path('HANDOFF.md')
+          h = handoff.read_text()
+          marker = '## Scala mobile nodi ed etichette +50% (2026-09-06)'
+          if marker not in h:
+              h += '\n\n' + marker + '\n\n- Su viewport mobile (<768 px), designer, prodotti e relative etichette ricevono un moltiplicatore uniforme `1.5` a tutti i livelli di zoom.\n- Il moltiplicatore è applicato a valle delle curve di zoom esistenti: non cambia soglie, orbite, distanze, layout o costanti protette.\n'
+              handoff.write_text(h)
+          PY
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build
+        run: npm run build
+
+      - name: Guard protected layout and zoom constants
+        run: |
+          BASE=$(git rev-parse HEAD^)
+          if git diff "$BASE" -- src/App.jsx | grep -E '^[-+].*(zoom_designer_min:|zoom_designer_max:|zoom_prodotto_min:|zoom_prodotto_max:|designer_size:|prodotto_size:|orbita_raggio_base:|orbita_soglia_prodotti:|orbita_spazio_per_prodotto:|orbita_scala_mobile:|eta_raggio_base:|eta_riferimento:|eta_massima:|eta_unita_per_anno:|designer_scala_secondario:|function separaPosizioniSovrapposte)'; then
+            echo 'Protected layout/zoom code changed unexpectedly.'
+            exit 1
+          fi
+
+      - name: Commit and push
+        run: |
+          rm .github/workflows/chatgpt-mobile-scale-once.yml
+          git config user.name "ChatGPT"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add src/App.jsx HANDOFF.md .github/workflows/chatgpt-mobile-scale-once.yml
+          git commit -m "Aumenta nodi ed etichette mobile del 50 percento"
+          git push origin main
