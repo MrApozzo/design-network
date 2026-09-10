@@ -3,719 +3,831 @@
     "nome": "Thonet",
     "paese": "Germania",
     "fondata": 1819,
-    "settore": "arredo"
+    "settore": "arredo",
+    "descrizione": "Azienda tedesca pioniera della sedia in legno curvato industrializzato, inventrice della celebre Sedia n. 14."
   },
   {
     "nome": "Sambonet",
     "paese": "Italia",
     "fondata": 1856,
-    "settore": "oggetti da tavola"
+    "settore": "oggetti da tavola",
+    "descrizione": "Storica manifattura piemontese di posateria e oggetti da tavola in acciaio inox."
   },
   {
     "nome": "Morris & Co.",
     "paese": "UK",
     "fondata": 1861,
-    "settore": "arti applicate"
+    "settore": "arti applicate",
+    "descrizione": "Fondata da William Morris, tra le esperienze fondanti del movimento Arts and Crafts nella decorazione e nei tessuti."
   },
   {
     "nome": "Vittorio Bonacina",
     "paese": "Italia",
     "fondata": 1889,
-    "settore": "arredo vimini"
+    "settore": "arredo vimini",
+    "descrizione": "Manifattura lombarda specializzata nella lavorazione artigianale del vimini e delle fibre naturali."
   },
   {
     "nome": "Bonacina",
     "paese": "Italia",
     "fondata": 1889,
-    "settore": "arredo vimini"
+    "settore": "arredo vimini",
+    "descrizione": "Ramo storico della tradizione Bonacina nella lavorazione del vimini per l'arredo."
   },
   {
     "nome": "Artifort",
     "paese": "Paesi Bassi",
     "fondata": 1890,
-    "settore": "arredo"
+    "settore": "arredo",
+    "descrizione": "Azienda olandese di arredo, nota per le collaborazioni con designer internazionali a partire dagli anni '50."
   },
   {
     "nome": "Apelli & Varesio",
     "paese": "Italia",
     "fondata": 1899,
-    "settore": "arredo"
+    "settore": "arredo",
+    "descrizione": "Falegnameria e manifattura torinese di arredo, poi confluita in altre realtà del settore."
   },
   {
     "nome": "Wiener Werkstätte",
     "paese": "Austria",
     "fondata": 1903,
     "settore": "arti applicate",
-    "tipo": "studio"
+    "tipo": "studio",
+    "descrizione": "Cooperativa di artisti e artigiani viennese, tra le esperienze fondanti del design moderno europeo."
   },
   {
     "nome": "La Pavoni",
     "paese": "Italia",
     "fondata": 1905,
-    "settore": "macchine caffè"
+    "settore": "macchine caffè",
+    "descrizione": "Storica azienda milanese inventrice della macchina per caffè espresso."
   },
   {
     "nome": "Herman Miller",
     "paese": "USA",
     "fondata": 1905,
-    "settore": "arredo"
+    "settore": "arredo",
+    "descrizione": "Azienda statunitense di arredo, tra le più influenti del XX secolo grazie a collaborazioni come quella con Charles e Ray Eames."
   },
   {
     "nome": "Hille",
     "paese": "UK",
     "fondata": 1906,
-    "settore": "arredo"
+    "settore": "arredo",
+    "descrizione": "Manifattura britannica di arredo, nota per aver prodotto i mobili di Robin Day."
   },
   {
     "nome": "Carl Hansen & Søn",
     "paese": "Danimarca",
     "fondata": 1908,
-    "settore": "arredo"
+    "settore": "arredo",
+    "descrizione": "Falegnameria danese, custode storica dell'eredità di Hans J. Wegner."
   },
   {
     "nome": "Olivetti",
     "paese": "Italia",
     "fondata": 1908,
-    "settore": "elettronica, ufficio"
+    "settore": "elettronica, ufficio",
+    "descrizione": "Storica azienda italiana di macchine per scrivere ed elettronica per ufficio, simbolo del design industriale italiano."
   },
   {
     "nome": "Olivari",
     "paese": "Italia",
     "fondata": 1911,
-    "settore": "maniglie, accessori"
+    "settore": "maniglie, accessori",
+    "descrizione": "Azienda piemontese specializzata in maniglie e accessori per porte, nota per collaborazioni con importanti designer e architetti."
   },
   {
     "nome": "Fredericia",
     "paese": "Danimarca",
     "fondata": 1911,
-    "settore": "arredo"
+    "settore": "arredo",
+    "descrizione": "Manifattura danese di arredo in legno, tra le protagoniste del design scandinavo."
   },
   {
     "nome": "Poltrona Frau",
     "paese": "Italia",
     "fondata": 1912,
-    "settore": "arredo"
+    "settore": "arredo",
+    "descrizione": "Storica azienda italiana di poltrone e divani in pelle, simbolo dell'artigianato del mobile imbottito."
   },
   {
     "nome": "Necchi",
     "paese": "Italia",
     "fondata": 1919,
-    "settore": "macchine da cucire"
+    "settore": "macchine da cucire",
+    "descrizione": "Storica azienda pavese di macchine per cucire, nota anche per il design dei suoi modelli."
   },
   {
     "nome": "Riva 1920",
     "paese": "Italia",
     "fondata": 1920,
-    "settore": "arredo legno"
+    "settore": "arredo legno",
+    "descrizione": "Azienda brianzola specializzata in mobili in legno massello, spesso di recupero."
   },
   {
     "nome": "Alessi",
     "paese": "Italia",
     "fondata": 1921,
-    "settore": "oggetti da tavola"
+    "settore": "oggetti da tavola",
+    "descrizione": "Azienda piemontese di oggetti per la casa e la tavola, celebre per le collaborazioni con i più importanti designer internazionali."
   },
   {
     "nome": "Venini",
     "paese": "Italia",
     "fondata": 1921,
-    "settore": "vetro"
+    "settore": "vetro",
+    "descrizione": "Storica vetreria muranese, tra le fondatrici del vetro d'arte veneziano del Novecento."
   },
   {
     "nome": "Braun",
     "paese": "Germania",
     "fondata": 1921,
-    "settore": "elettronica"
+    "settore": "elettronica",
+    "descrizione": "Azienda tedesca di elettronica di consumo, punto di riferimento del design funzionalista grazie a Dieter Rams."
   },
   {
     "nome": "Porro",
     "paese": "Italia",
     "fondata": 1925,
-    "settore": "arredo"
+    "settore": "arredo",
+    "descrizione": "Azienda brianzola di arredo, nota per mobili contenitori e sistemi componibili."
   },
   {
     "nome": "Rometti",
     "paese": "Italia",
     "fondata": 1927,
-    "settore": "ceramica"
+    "settore": "ceramica",
+    "descrizione": "Manifattura umbra di ceramica artistica e da tavola."
   },
   {
     "nome": "Cassina",
     "paese": "Italia",
     "fondata": 1927,
-    "settore": "arredo"
+    "settore": "arredo",
+    "descrizione": "Una delle più importanti aziende italiane di arredo, nota per la produzione dei classici dei maestri del design del Novecento."
   },
   {
     "nome": "BBPR",
     "paese": "Italia",
     "fondata": 1932,
     "settore": "architettura e design",
-    "tipo": "studio"
+    "tipo": "studio",
+    "descrizione": "Studio milanese di architettura (Banfi, Belgiojoso, Peressutti, Rogers), tra i protagonisti del Movimento Moderno italiano."
   },
   {
     "nome": "Fontana Arte",
     "paese": "Italia",
     "fondata": 1932,
-    "settore": "illuminazione, vetro"
+    "settore": "illuminazione, vetro",
+    "descrizione": "Azienda milanese specializzata in lavorazione del vetro e illuminazione, nata nell'orbita di Gio Ponti."
   },
   {
     "nome": "Molteni&C",
     "paese": "Italia",
     "fondata": 1934,
-    "settore": "arredo"
+    "settore": "arredo",
+    "descrizione": "Azienda brianzola di arredo di fascia alta, tra le più importanti realtà del design del mobile italiano."
   },
   {
     "nome": "Fratelli Boffi",
     "paese": "Italia",
     "fondata": 1934,
-    "settore": "arredo"
+    "settore": "arredo",
+    "descrizione": "Manifattura brianzola di arredo imbottito e complementi."
   },
   {
     "nome": "Artek",
     "paese": "Finlandia",
     "fondata": 1935,
-    "settore": "arredo"
+    "settore": "arredo",
+    "descrizione": "Azienda finlandese fondata da Alvar Aalto, Aino Aalto e altri, per produrre e diffondere il design scandinavo moderno."
   },
   {
     "nome": "Knoll",
     "paese": "USA",
     "fondata": 1938,
-    "settore": "arredo"
+    "settore": "arredo",
+    "descrizione": "Azienda statunitense di arredo, tra le più importanti nella diffusione del design moderno internazionale."
   },
   {
     "nome": "Arteluce",
     "paese": "Italia",
     "fondata": 1939,
-    "settore": "illuminazione"
+    "settore": "illuminazione",
+    "descrizione": "Azienda milanese di illuminazione fondata da Gino Sarfatti, tra le più innovative del Novecento."
   },
   {
     "nome": "Arredoluce",
     "paese": "Italia",
     "fondata": 1943,
-    "settore": "illuminazione"
+    "settore": "illuminazione",
+    "descrizione": "Storica azienda monzese di illuminazione, attiva nel design della lampada dagli anni '40."
   },
   {
     "nome": "Brionvega",
     "paese": "Italia",
     "fondata": 1945,
-    "settore": "elettronica"
+    "settore": "elettronica",
+    "descrizione": "Azienda italiana di elettronica di consumo, celebre per il design radicale delle sue radio e televisori."
   },
   {
     "nome": "O Luce",
     "paese": "Italia",
     "fondata": 1945,
-    "settore": "illuminazione"
+    "settore": "illuminazione",
+    "descrizione": "Azienda milanese di illuminazione, nota per la collaborazione con Joe Colombo e altri designer."
   },
   {
     "nome": "Vistosi",
     "paese": "Italia",
     "fondata": 1945,
-    "settore": "vetro"
+    "settore": "vetro",
+    "descrizione": "Vetreria muranese attiva nella produzione di lampade e oggetti in vetro soffiato."
   },
   {
     "nome": "Stilnovo",
     "paese": "Italia",
     "fondata": 1946,
-    "settore": "illuminazione"
+    "settore": "illuminazione",
+    "descrizione": "Azienda milanese di illuminazione, tra le protagoniste del design della lampada nel dopoguerra italiano."
   },
   {
     "nome": "Cappellini",
     "paese": "Italia",
     "fondata": 1946,
-    "settore": "arredo"
+    "settore": "arredo",
+    "descrizione": "Azienda brianzola di arredo, nota per aver lanciato numerosi designer emergenti a partire dagli anni '80."
   },
   {
     "nome": "ICF Industrie Carnovali",
     "paese": "Italia",
     "fondata": 1946,
-    "settore": "arredo ufficio"
+    "settore": "arredo ufficio",
+    "descrizione": "Azienda italiana specializzata in arredo per ufficio."
   },
   {
     "nome": "Bernini",
     "paese": "Italia",
     "fondata": 1946,
-    "settore": "arredo"
+    "settore": "arredo",
+    "descrizione": "Manifattura italiana di arredo attiva nel dopoguerra."
   },
   {
     "nome": "Poggi",
     "paese": "Italia",
     "fondata": 1946,
-    "settore": "arredo"
+    "settore": "arredo",
+    "descrizione": "Manifattura brianzola di arredo, nota per la collaborazione con Franco Albini."
   },
   {
     "nome": "Fabbrica Poggi",
     "paese": "Italia",
     "fondata": 1946,
-    "settore": "arredo"
+    "settore": "arredo",
+    "descrizione": "Ramo storico della manifattura Poggi attivo nella produzione di arredo."
   },
   {
     "nome": "Fornasetti",
     "paese": "Italia",
     "fondata": 1946,
-    "settore": "decorazione"
+    "settore": "decorazione",
+    "descrizione": "Atelier milanese fondato da Piero Fornasetti, noto per la decorazione surreale di oggetti e mobili."
   },
   {
     "nome": "Azucena",
     "paese": "Italia",
     "fondata": 1947,
-    "settore": "arredo"
+    "settore": "arredo",
+    "descrizione": "Azienda milanese di arredo e illuminazione fondata da Luigi Caccia Dominioni, Ignazio Gardella e Corrado Corradi Dell'Acqua."
   },
   {
     "nome": "Arflex",
     "paese": "Italia",
     "fondata": 1947,
-    "settore": "arredo"
+    "settore": "arredo",
+    "descrizione": "Azienda milanese di arredo imbottito, prima in Italia a produrre divani in schiuma di lattice."
   },
   {
     "nome": "Minotti",
     "paese": "Italia",
     "fondata": 1948,
-    "settore": "arredo"
+    "settore": "arredo",
+    "descrizione": "Azienda brianzola di arredo di fascia alta, oggi punto di riferimento del design contemporaneo."
   },
   {
     "nome": "Kartell",
     "paese": "Italia",
     "fondata": 1949,
-    "settore": "plastica, arredo"
+    "settore": "plastica, arredo",
+    "descrizione": "Azienda milanese pioniera dell'uso della plastica nel design del mobile e degli oggetti."
   },
   {
     "nome": "Vitra",
     "paese": "Svizzera",
     "fondata": 1950,
-    "settore": "arredo"
+    "settore": "arredo",
+    "descrizione": "Azienda svizzera di arredo, licenziataria storica di Eames e Herman Miller in Europa, oggi tra i principali editori di design al mondo."
   },
   {
     "nome": "Bruno Longoni Atelier d'Arredamento",
     "paese": "Italia",
     "fondata": 1950,
-    "settore": "arredo"
+    "settore": "arredo",
+    "descrizione": "Atelier brianzolo di arredo su misura."
   },
   {
     "nome": "MIM Roma",
     "paese": "Italia",
     "fondata": 1950,
-    "settore": "arredo"
+    "settore": "arredo",
+    "descrizione": "Manifattura romana di arredo attiva nel dopoguerra."
   },
   {
     "nome": "Moroso",
     "paese": "Italia",
     "fondata": 1952,
-    "settore": "arredo"
+    "settore": "arredo",
+    "descrizione": "Azienda friulana di arredo imbottito, nota per collaborazioni con designer internazionali."
   },
   {
     "nome": "PP Møbler",
     "paese": "Danimarca",
     "fondata": 1953,
-    "settore": "arredo"
+    "settore": "arredo",
+    "descrizione": "Falegnameria danese, nota per la produzione artigianale dei mobili di Hans J. Wegner."
   },
   {
     "nome": "Tecno",
     "paese": "Italia",
     "fondata": 1953,
-    "settore": "arredo ufficio"
+    "settore": "arredo ufficio",
+    "descrizione": "Azienda milanese fondata dai fratelli Borsani, pioniera del design per l'ufficio e dei sistemi componibili."
   },
   {
     "nome": "Zanotta",
     "paese": "Italia",
     "fondata": 1954,
-    "settore": "arredo"
+    "settore": "arredo",
+    "descrizione": "Azienda brianzola di arredo, nota sia per i classici del design sia per pezzi sperimentali come Sacco e Blow."
   },
   {
     "nome": "Stildomus",
     "paese": "Italia",
     "fondata": 1955,
-    "settore": "arredo"
+    "settore": "arredo",
+    "descrizione": "Manifattura italiana di arredo attiva nel dopoguerra."
   },
   {
     "nome": "dePadova",
     "paese": "Italia",
     "fondata": 1956,
-    "settore": "arredo"
-  },
-  {
-    "nome": "Danese",
-    "paese": "Italia",
-    "fondata": 1957,
-    "settore": "oggetti design"
+    "settore": "arredo",
+    "descrizione": "Azienda milanese di arredo, nota per aver introdotto in Italia il design nordamericano e scandinavo."
   },
   {
     "nome": "Danese Milano",
     "paese": "Italia",
     "fondata": 1957,
-    "settore": "oggetti design"
+    "settore": "oggetti design",
+    "descrizione": "Azienda milanese di oggetti e complementi, fondata da Bruno Danese e Jacqueline Vodoz, nota per il rigore progettuale dei suoi oggetti — tra cui la lampada Falkland di Bruno Munari."
   },
   {
     "nome": "Poltronova",
     "paese": "Italia",
     "fondata": 1957,
-    "settore": "arredo sperimentale"
+    "settore": "arredo sperimentale",
+    "descrizione": "Azienda toscana di arredo, editrice storica del design radicale e dell'anti-design italiano (Archizoom, Superstudio, Sottsass)."
   },
   {
     "nome": "Sormani",
     "paese": "Italia",
     "fondata": 1958,
-    "settore": "arredo"
+    "settore": "arredo",
+    "descrizione": "Azienda brianzola di arredo attiva tra gli anni '50 e '80."
   },
   {
     "nome": "Flexform",
     "paese": "Italia",
     "fondata": 1959,
-    "settore": "arredo"
+    "settore": "arredo",
+    "descrizione": "Azienda brianzola di arredo imbottito di fascia alta."
   },
   {
     "nome": "Artemide",
     "paese": "Italia",
     "fondata": 1960,
-    "settore": "illuminazione"
+    "settore": "illuminazione",
+    "descrizione": "Una delle principali aziende italiane di illuminazione, nota per l'innovazione tecnologica e il design."
   },
   {
     "nome": "Gavina",
     "paese": "Italia",
     "fondata": 1960,
-    "settore": "arredo"
+    "settore": "arredo",
+    "descrizione": "Azienda bolognese di arredo fondata da Dino Gavina, editrice storica dei classici del Bauhaus in Italia."
   },
   {
     "nome": "Simon Gavina",
     "paese": "Italia",
     "fondata": 1960,
-    "settore": "arredo"
+    "settore": "arredo",
+    "descrizione": "Evoluzione dell'azienda di Dino Gavina, nota per la produzione dei mobili di Carlo Scarpa."
   },
   {
     "nome": "Bieffeplast",
     "paese": "Italia",
     "fondata": 1960,
-    "settore": "accessori ufficio"
+    "settore": "accessori ufficio",
+    "descrizione": "Azienda padovana di arredo e accessori in plastica per l'ufficio."
   },
   {
     "nome": "Rexite",
     "paese": "Italia",
     "fondata": 1960,
-    "settore": "arredo ufficio"
+    "settore": "arredo ufficio",
+    "descrizione": "Azienda milanese specializzata in oggetti e accessori in plastica per l'ufficio e la casa."
   },
   {
     "nome": "Voxson",
     "paese": "Italia",
     "fondata": 1960,
-    "settore": "elettronica"
+    "settore": "elettronica",
+    "descrizione": "Azienda italiana di elettronica di consumo attiva tra gli anni '60 e '70."
   },
   {
     "nome": "Interior Gabbianelli",
     "paese": "Italia",
     "fondata": 1871,
-    "settore": "ceramica"
+    "settore": "ceramica",
+    "descrizione": "Manifattura di ceramica attiva a Milano dalla fine dell'Ottocento."
   },
   {
     "nome": "Ghidini 1961",
     "paese": "Italia",
     "fondata": 1961,
-    "settore": "accessori design"
+    "settore": "accessori design",
+    "descrizione": "Azienda bresciana specializzata in maniglie e accessori per l'arredo."
   },
   {
     "nome": "Flos",
     "paese": "Italia",
     "fondata": 1962,
-    "settore": "illuminazione"
+    "settore": "illuminazione",
+    "descrizione": "Una delle principali aziende italiane di illuminazione, nota per i classici del design della lampada."
   },
   {
     "nome": "Martinelli Luce",
     "paese": "Italia",
     "fondata": 1962,
-    "settore": "illuminazione"
+    "settore": "illuminazione",
+    "descrizione": "Azienda toscana di illuminazione, nota per la lampada Pipistrello disegnata da Gae Aulenti."
   },
   {
     "nome": "Fai International",
     "paese": "Italia",
     "fondata": 1963,
-    "settore": "illuminazione"
+    "settore": "illuminazione",
+    "descrizione": "Azienda italiana di illuminazione."
   },
   {
     "nome": "Sirrah",
     "paese": "Italia",
     "fondata": 1963,
-    "settore": "illuminazione"
+    "settore": "illuminazione",
+    "descrizione": "Azienda italiana di illuminazione attiva dagli anni '60."
   },
   {
     "nome": "Arnolfo di Cambio",
     "paese": "Italia",
     "fondata": 1963,
-    "settore": "cristalleria"
+    "settore": "cristalleria",
+    "descrizione": "Manifattura toscana di cristalleria artistica."
   },
   {
     "nome": "C&B Italia",
     "paese": "Italia",
     "fondata": 1966,
-    "settore": "arredo"
+    "settore": "arredo",
+    "descrizione": "Azienda brianzola di arredo fondata da Piero Ambrogio Busnelli, poi divenuta B&B Italia."
   },
   {
     "nome": "B&B Italia",
     "paese": "Italia",
     "fondata": 1966,
-    "settore": "arredo"
+    "settore": "arredo",
+    "descrizione": "Una delle principali aziende italiane di arredo imbottito, pioniera nell'uso del poliuretano espanso."
   },
   {
     "nome": "Gufram",
     "paese": "Italia",
     "fondata": 1966,
-    "settore": "arredo sperimentale"
+    "settore": "arredo sperimentale",
+    "descrizione": "Azienda piemontese di arredo in poliuretano espanso, tra le protagoniste del design radicale italiano (Cactus, Pratone)."
   },
   {
     "nome": "Archizoom",
     "paese": "Italia",
     "fondata": 1966,
     "settore": "design radicale",
-    "tipo": "studio"
+    "tipo": "studio",
+    "descrizione": "Collettivo di architettura e design fiorentino, tra i protagonisti del movimento radicale e dell'anti-design."
   },
   {
     "nome": "Louis Poulsen",
     "paese": "Danimarca",
     "fondata": 1874,
-    "settore": "illuminazione"
+    "settore": "illuminazione",
+    "descrizione": "Storica azienda danese di illuminazione, nota per le lampade di Poul Henningsen."
   },
   {
     "nome": "Rosenthal",
     "paese": "Germania",
     "fondata": 1879,
-    "settore": "porcellana"
+    "settore": "porcellana",
+    "descrizione": "Storica manifattura tedesca di porcellana, nota per le collaborazioni con designer e artisti internazionali."
   },
   {
     "nome": "Siemens",
     "paese": "Germania",
     "fondata": 1847,
-    "settore": "elettronica"
+    "settore": "elettronica",
+    "descrizione": "Uno dei più grandi gruppi industriali tedeschi, attivo nell'elettronica e negli elettrodomestici oltre che nell'ingegneria."
   },
   {
     "nome": "Fritz Hansen",
     "paese": "Danimarca",
     "fondata": 1872,
-    "settore": "arredo"
+    "settore": "arredo",
+    "descrizione": "Storica azienda danese di arredo, nota per la produzione dei mobili di Arne Jacobsen."
   },
   {
     "nome": "Driade",
     "paese": "Italia",
     "fondata": 1968,
-    "settore": "arredo"
+    "settore": "arredo",
+    "descrizione": "Azienda piacentina di arredo, nota per collaborazioni con designer del postmoderno e del design contemporaneo."
   },
   {
     "nome": "Acerbis",
     "paese": "Italia",
     "fondata": 1968,
-    "settore": "arredo"
+    "settore": "arredo",
+    "descrizione": "Azienda brianzola di arredo, nota per i mobili contenitori disegnati da Giotto Stoppino."
   },
   {
     "nome": "Azzurra Ceramica",
     "paese": "Italia",
     "fondata": 1968,
-    "settore": "ceramica, sanitari"
+    "settore": "ceramica, sanitari",
+    "descrizione": "Azienda umbra specializzata in ceramiche sanitarie di design."
   },
   {
     "nome": "B-Line",
     "paese": "Italia",
     "fondata": 1968,
-    "settore": "arredo"
+    "settore": "arredo",
+    "descrizione": "Azienda italiana di arredo attiva dal 1968."
   },
   {
     "nome": "UniFor",
     "paese": "Italia",
     "fondata": 1969,
-    "settore": "arredo ufficio"
+    "settore": "arredo ufficio",
+    "descrizione": "Azienda brianzola specializzata in sistemi e arredo per l'ufficio, parte del gruppo Molteni."
   },
   {
     "nome": "San Lorenzo",
     "paese": "Italia",
     "fondata": 1969,
-    "settore": "oreficeria"
+    "settore": "oreficeria",
+    "descrizione": "Azienda padovana di oreficeria e argenteria di design."
   },
   {
     "nome": "Glas Italia",
     "paese": "Italia",
     "fondata": 1970,
-    "settore": "vetro, arredo"
+    "settore": "vetro, arredo",
+    "descrizione": "Azienda lombarda specializzata nella lavorazione del vetro per l'arredo."
   },
   {
     "nome": "Skipper",
     "paese": "Italia",
     "fondata": 1970,
-    "settore": "arredo"
+    "settore": "arredo",
+    "descrizione": "Azienda italiana di arredo attiva dal 1970."
   },
   {
     "nome": "Up&Up",
     "paese": "Italia",
     "fondata": 1970,
-    "settore": "arredo"
+    "settore": "arredo",
+    "descrizione": "Azienda toscana di arredo in marmo e pietra."
   },
   {
     "nome": "Olivetti Synthesis",
     "paese": "Italia",
     "fondata": 1971,
-    "settore": "arredo ufficio"
+    "settore": "arredo ufficio",
+    "descrizione": "Ramo di Olivetti dedicato all'arredo e ai sistemi per l'ufficio."
   },
   {
     "nome": "BD Barcelona",
     "paese": "Spagna",
     "fondata": 1972,
-    "settore": "arredo"
+    "settore": "arredo",
+    "descrizione": "Azienda spagnola di arredo, nota per la riedizione di pezzi storici del design catalano e internazionale."
   },
   {
     "nome": "Fiam",
     "paese": "Italia",
     "fondata": 1973,
-    "settore": "vetro, arredo"
+    "settore": "vetro, arredo",
+    "descrizione": "Azienda marchigiana specializzata nella curvatura a caldo del vetro per l'arredo."
   },
   {
     "nome": "Studio Alchimia",
     "paese": "Italia",
     "fondata": 1976,
     "settore": "design sperimentale",
-    "tipo": "studio"
+    "tipo": "studio",
+    "descrizione": "Collettivo milanese di design radicale, tra i precursori del linguaggio poi sviluppato da Memphis."
   },
   {
     "nome": "Magis",
     "paese": "Italia",
     "fondata": 1976,
-    "settore": "arredo"
+    "settore": "arredo",
+    "descrizione": "Azienda trevigiana di arredo, nota per l'uso innovativo della plastica e la sperimentazione con giovani designer."
   },
   {
     "nome": "Flou",
     "paese": "Italia",
     "fondata": 1978,
-    "settore": "arredo notte"
+    "settore": "arredo notte",
+    "descrizione": "Azienda brianzola specializzata in letti e complementi per la zona notte."
   },
   {
     "nome": "Alias",
     "paese": "Italia",
     "fondata": 1979,
-    "settore": "arredo"
+    "settore": "arredo",
+    "descrizione": "Azienda italiana di arredo, nota per sedute leggere in materiali innovativi."
   },
   {
     "nome": "Morelato",
     "paese": "Italia",
     "fondata": 1979,
-    "settore": "arredo"
+    "settore": "arredo",
+    "descrizione": "Azienda veneta di arredo in legno."
   },
   {
     "nome": "Busnelli",
     "paese": "Italia",
     "fondata": 1979,
-    "settore": "arredo"
+    "settore": "arredo",
+    "descrizione": "Azienda brianzola di arredo imbottito."
   },
   {
     "nome": "Memphis",
     "paese": "Italia",
     "fondata": 1981,
     "settore": "design sperimentale",
-    "tipo": "studio"
+    "tipo": "studio",
+    "descrizione": "Collettivo di design fondato da Ettore Sottsass, tra i movimenti più influenti del postmodernismo internazionale."
   },
   {
     "nome": "Foscarini",
     "paese": "Italia",
     "fondata": 1981,
-    "settore": "illuminazione"
+    "settore": "illuminazione",
+    "descrizione": "Azienda veneziana di illuminazione, nota per l'uso del vetro di Murano in chiave contemporanea."
   },
   {
     "nome": "Swatch",
     "paese": "Svizzera",
     "fondata": 1983,
-    "settore": "orologi"
+    "settore": "orologi",
+    "descrizione": "Azienda svizzera di orologeria, nota per aver reinventato l'orologio come oggetto di design accessibile."
   },
   {
     "nome": "Edra",
     "paese": "Italia",
     "fondata": 1987,
-    "settore": "arredo"
+    "settore": "arredo",
+    "descrizione": "Azienda toscana di arredo contemporaneo, nota per pezzi scultorei e sperimentali."
   },
   {
     "nome": "Meritalia",
     "paese": "Italia",
     "fondata": 1987,
-    "settore": "arredo"
+    "settore": "arredo",
+    "descrizione": "Azienda italiana di arredo imbottito contemporaneo."
   },
   {
     "nome": "Anthologie Quartett",
     "paese": "Germania",
     "fondata": 1987,
-    "settore": "illuminazione"
+    "settore": "illuminazione",
+    "descrizione": "Azienda tedesca di illuminazione e oggetti, nota per un design ironico e concettuale."
   },
   {
     "nome": "Isokon",
     "paese": "UK",
     "fondata": 1931,
-    "settore": "arredo"
+    "settore": "arredo",
+    "descrizione": "Azienda britannica di arredo, nota per i mobili in compensato curvato di Marcel Breuer."
   },
   {
     "nome": "Sika-Design",
     "paese": "Danimarca",
     "fondata": 1942,
-    "settore": "arredo giardino"
+    "settore": "arredo giardino",
+    "descrizione": "Azienda danese specializzata in arredo da esterno in rattan e fibre naturali."
   },
   {
     "nome": "ClassiCon",
     "paese": "Germania",
     "fondata": 1990,
-    "settore": "arredo"
+    "settore": "arredo",
+    "descrizione": "Azienda tedesca specializzata nella riedizione di classici del design del Novecento, tra cui pezzi di Eileen Gray."
   },
   {
     "nome": "Produzione Privata",
     "paese": "Italia",
     "fondata": 1990,
-    "settore": "arredo"
+    "settore": "arredo",
+    "descrizione": "Etichetta fondata da Achille Castiglioni per produzioni in piccola serie."
   },
   {
     "nome": "Robots",
     "paese": "Italia",
     "fondata": 1970,
-    "settore": "arredo bambini"
+    "settore": "arredo bambini",
+    "descrizione": "Azienda italiana specializzata in arredo per bambini."
   },
   {
     "nome": "Maxalto",
     "paese": "Italia",
-    "fondata": 2000,
-    "settore": "arredo"
+    "fondata": 1975,
+    "settore": "arredo",
+    "descrizione": "Marchio di B&B Italia dedicato all'arredo classico contemporaneo di alta gamma, nato nel 1975 per la produzione di Antonio Citterio."
   },
   {
     "nome": "House of Finn Juhl",
     "paese": "Danimarca",
     "fondata": 2001,
-    "settore": "arredo"
+    "settore": "arredo",
+    "descrizione": "Azienda danese che riedita i mobili disegnati da Finn Juhl."
   },
   {
     "nome": "Moooi",
     "paese": "Paesi Bassi",
     "fondata": 2001,
-    "settore": "arredo"
+    "settore": "arredo",
+    "descrizione": "Azienda olandese fondata da Marcel Wanders, nota per un design eclettico e narrativo."
   },
   {
     "nome": "Tom Dixon",
     "paese": "UK",
     "fondata": 2002,
-    "settore": "arredo"
+    "settore": "arredo",
+    "descrizione": "Studio e azienda britannica fondata dal designer Tom Dixon, nota per illuminazione e arredo dal linguaggio industriale."
   },
   {
     "nome": "Karakter",
     "paese": "Danimarca",
     "fondata": 2009,
-    "settore": "arredo"
+    "settore": "arredo",
+    "descrizione": "Azienda danese che riedita pezzi storici del design scandinavo e internazionale."
   },
   {
     "nome": "Exteta",
     "paese": "Italia",
     "fondata": 2011,
-    "settore": "arredo outdoor"
+    "settore": "arredo outdoor",
+    "descrizione": "Azienda italiana specializzata in arredo outdoor di fascia alta."
   },
   {
     "nome": "Qeeboo",
     "paese": "Italia",
     "fondata": 2016,
-    "settore": "arredo"
+    "settore": "arredo",
+    "descrizione": "Azienda italiana di arredo e oggetti dal linguaggio pop e ironico."
   },
   {
     "nome": "Knoll International",
     "paese": "USA",
     "fondata": 1938,
-    "settore": "arredo"
+    "settore": "arredo",
+    "descrizione": "Filiale internazionale di Knoll, attiva nella diffusione del marchio in Europa."
   },
   {
     "nome": "Sica",
     "paese": "Italia",
     "fondata": 1955,
-    "settore": "arredo"
+    "settore": "arredo",
+    "descrizione": "Azienda italiana di arredo attiva dagli anni '50."
   }
 ]

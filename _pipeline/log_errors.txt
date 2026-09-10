@@ -1,0 +1,74 @@
+[2026-07-23 14:46:17] Terrazzo Flooring fallback estremo download: download fallito: non e' un'immagine valida (cannot identify image file <_io.BytesIO object at 0x000001B2702812B0>)
+[2026-07-23 14:46:21] Terrazzo Flooring fallback estremo download: download fallito: non e' un'immagine valida (cannot identify image file <_io.BytesIO object at 0x000001B2702574C0>)
+[2026-07-23 14:46:27] Terrazzo Flooring fallback estremo download: download fallito: non e' un'immagine valida (cannot identify image file <_io.BytesIO object at 0x000001B270386070>)
+[2026-07-23 14:46:49] T44 candidato flat: download fallito: HTTP 202
+[2026-07-23 14:46:49] T44 candidato flat: download fallito: HTTP 403
+[2026-07-23 14:46:50] T44 candidato flat: download fallito: HTTP 202
+[2026-07-23 14:46:50] T44 candidato flat: download fallito: HTTP 403
+[2026-07-23 14:46:51] T44 candidato flat: download fallito: HTTP 202
+[2026-07-23 14:47:46] T61/E candidato flat: download fallito: HTTP 404
+[2026-07-23 14:47:46] T61/E fallback estremo download: download fallito: HTTP 404
+[2026-07-23 14:49:28] Torre Velasca (modello): SearchApi fallita per query='"Torre Velasca (modello)" "Lodovico Belgiojoso" "architettura"': HTTPSConnectionPool(host='www.searchapi.io', port=443): Read timed out. (read timeout=10)
+[2026-07-23 14:49:57] Torre Velasca (modello) fallback estremo download: download fallito: non e' un'immagine valida (cannot identify image file <_io.BytesIO object at 0x000001B270256390>)
+[2026-07-23 14:49:59] Torre Velasca (modello) fallback estremo download: download fallito: non e' un'immagine valida (cannot identify image file <_io.BytesIO object at 0x000001B270257510>)
+[2026-07-23 14:50:00] Torre Velasca (modello) fallback estremo download: download fallito: non e' un'immagine valida (cannot identify image file <_io.BytesIO object at 0x000001B270256390>)
+[2026-07-23 14:50:03] Torre Velasca (modello) fallback estremo download: download fallito: non e' un'immagine valida (cannot identify image file <_io.BytesIO object at 0x000001B270257510>)
+[2026-07-23 14:50:04] Torre Velasca (modello) fallback estremo download: download fallito: non e' un'immagine valida (cannot identify image file <_io.BytesIO object at 0x000001B270256390>)
+[2026-07-23 14:51:10] Allestimento Castello Sforzesco fallback estremo download: download fallito: non e' un'immagine valida (cannot identify image file <_io.BytesIO object at 0x000001B2702819E0>)
+[2026-07-23 14:51:43] Allestimento Castello Sforzesco fallback estremo download: download fallito: non e' un'immagine valida (cannot identify image file <_io.BytesIO object at 0x000001B2702814E0>)
+[2026-07-23 14:52:09] Allestimento Castello Sforzesco fallback estremo download: download fallito: non e' un'immagine valida (cannot identify image file <_io.BytesIO object at 0x000001B2702819E0>)
+[2026-07-23 14:52:18] Allestimento Castello Sforzesco fallback estremo download: download fallito: non e' un'immagine valida (cannot identify image file <_io.BytesIO object at 0x000001B2702814E0>)
+[2026-07-23 14:52:20] Allestimento Castello Sforzesco fallback estremo download: download fallito: non e' un'immagine valida (cannot identify image file <_io.BytesIO object at 0x000001B2702819E0>)
+[2026-07-23 14:52:22] Allestimento Castello Sforzesco fallback estremo download: download fallito: non e' un'immagine valida (cannot identify image file <_io.BytesIO object at 0x000001B2702814E0>)
+[2026-07-23 14:52:23] Allestimento Castello Sforzesco fallback estremo download: download fallito: non e' un'immagine valida (cannot identify image file <_io.BytesIO object at 0x000001B2702814E0>)
+[2026-07-23 14:52:25] Allestimento Castello Sforzesco fallback estremo download: download fallito: non e' un'immagine valida (cannot identify image file <_io.BytesIO object at 0x000001B2702819E0>)
+[2026-07-23 14:52:55] No-Stop City candidato flat: download fallito: non e' un'immagine valida (cannot identify image file <_io.BytesIO object at 0x000001B2701A3F60>)
+[2026-07-23 14:52:58] No-Stop City candidato flat: download fallito: HTTPSConnectionPool(host='artificial-architecture.ai', port=443): Max retries exceeded with url: /wp-content/uploads/2020/12/08_Infinite_No-Stop-City-1870x1870.png (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: certificate has expired (_ssl.c:1082)')))
+[2026-07-23 14:53:02] No-Stop City fallback estremo download: download fallito: non e' un'immagine valida (cannot identify image file <_io.BytesIO object at 0x000001B2717A11C0>)
+[2026-07-23 14:53:06] No-Stop City fallback estremo download: download fallito: HTTPSConnectionPool(host='artificial-architecture.ai', port=443): Max retries exceeded with url: /wp-content/uploads/2020/12/08_Infinite_No-Stop-City-1870x1870.png (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: certificate has expired (_ssl.c:1082)')))
+[2026-07-23 14:53:33] Autoprogettazione candidato flat: download fallito: HTTP 403
+[2026-07-23 14:53:36] Autoprogettazione candidato flat: download fallito: HTTP 202
+[2026-07-23 14:53:38] Autoprogettazione candidato flat: download fallito: non e' un'immagine valida (cannot identify image file <_io.BytesIO object at 0x000001B270281300>)
+[2026-07-23 14:53:38] Autoprogettazione fallback estremo download: download fallito: HTTP 403
+[2026-07-23 14:53:40] Autoprogettazione fallback estremo download: download fallito: HTTP 202
+[2026-07-23 14:53:41] Autoprogettazione fallback estremo download: download fallito: HTTP 202
+[2026-07-23 14:53:43] Autoprogettazione fallback estremo download: download fallito: non e' un'immagine valida (cannot identify image file <_io.BytesIO object at 0x000001B270281B20>)
+[2026-07-23 14:54:10] Luminator candidato flat: download fallito: file vuoto o troppo piccolo
+[2026-07-23 14:54:13] Luminator candidato flat: download fallito: HTTP 202
+[2026-07-23 14:54:15] Luminator fallback estremo download: download fallito: file vuoto o troppo piccolo
+[2026-07-23 14:54:18] Luminator fallback estremo download: download fallito: HTTP 202
+[2026-07-23 14:54:44] Le Bambole Armchair candidato flat: download fallito: HTTP 403
+[2026-07-23 14:54:44] Le Bambole Armchair candidato flat: download fallito: HTTP 400
+[2026-07-23 14:54:44] Le Bambole Armchair candidato flat: download fallito: HTTP 403
+[2026-07-23 14:54:45] Le Bambole Armchair fallback estremo download: download fallito: HTTP 403
+[2026-07-23 14:54:45] Le Bambole Armchair fallback estremo download: download fallito: HTTP 400
+[2026-07-23 14:54:46] Le Bambole Armchair fallback estremo download: download fallito: HTTP 403
+[2026-07-23 14:54:49] Le Bambole Armchair fallback estremo download: download fallito: non e' un'immagine valida (cannot identify image file <_io.BytesIO object at 0x000001B26F33B0B0>)
+[2026-07-23 14:55:15] Quattro Gatti candidato flat: download fallito: non e' un'immagine valida (cannot identify image file <_io.BytesIO object at 0x000001B270281300>)
+[2026-07-23 14:55:16] Quattro Gatti candidato flat: download fallito: non e' un'immagine valida (cannot identify image file <_io.BytesIO object at 0x000001B27027EAC0>)
+[2026-07-23 14:55:20] Quattro Gatti candidato flat: download fallito: non e' un'immagine valida (cannot identify image file <_io.BytesIO object at 0x000001B26F33B0B0>)
+[2026-07-23 14:55:25] Quattro Gatti candidato flat: download fallito: non e' un'immagine valida (cannot identify image file <_io.BytesIO object at 0x000001B27027EAC0>)
+[2026-07-23 14:55:30] Quattro Gatti candidato flat: download fallito: non e' un'immagine valida (cannot identify image file <_io.BytesIO object at 0x000001B27027EAC0>)
+[2026-07-23 14:55:33] Quattro Gatti fallback estremo download: download fallito: non e' un'immagine valida (cannot identify image file <_io.BytesIO object at 0x000001B26F33B0B0>)
+[2026-07-23 14:55:34] Quattro Gatti fallback estremo download: download fallito: non e' un'immagine valida (cannot identify image file <_io.BytesIO object at 0x000001B2703934C0>)
+[2026-07-23 14:55:36] Quattro Gatti fallback estremo download: download fallito: non e' un'immagine valida (cannot identify image file <_io.BytesIO object at 0x000001B26F33B0B0>)
+[2026-07-23 14:55:37] Quattro Gatti fallback estremo download: download fallito: non e' un'immagine valida (cannot identify image file <_io.BytesIO object at 0x000001B2703934C0>)
+[2026-07-23 14:55:39] Quattro Gatti fallback estremo download: download fallito: non e' un'immagine valida (cannot identify image file <_io.BytesIO object at 0x000001B270281940>)
+[2026-07-23 14:55:42] Quattro Gatti fallback estremo download: download fallito: non e' un'immagine valida (cannot identify image file <_io.BytesIO object at 0x000001B270256390>)
+[2026-07-23 14:55:45] Quattro Gatti fallback estremo download: download fallito: non e' un'immagine valida (cannot identify image file <_io.BytesIO object at 0x000001B26F33B0B0>)
+[2026-07-23 14:55:47] Quattro Gatti fallback estremo download: download fallito: non e' un'immagine valida (cannot identify image file <_io.BytesIO object at 0x000001B27027EAC0>)
+[2026-07-23 14:55:52] Quattro Gatti fallback estremo download: download fallito: non e' un'immagine valida (cannot identify image file <_io.BytesIO object at 0x000001B26F33B0B0>)
+[2026-07-23 14:58:08] Monachella candidato flat: download fallito: HTTPSConnectionPool(host='images.capitoliumart.com', port=443): Max retries exceeded with url: /auction-images/365/198729.jpg (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1082)')))
+[2026-07-23 14:58:11] Monachella candidato flat: download fallito: HTTPSConnectionPool(host='images.capitoliumart.com', port=443): Max retries exceeded with url: /auction-images/251/130002.jpg (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1082)')))
+[2026-07-23 14:58:11] Monachella candidato flat: download fallito: HTTP 202
+[2026-07-23 14:58:11] Monachella candidato flat: download fallito: HTTP 202
+[2026-07-23 14:58:14] Monachella candidato flat: download fallito: HTTPSConnectionPool(host='images.capitoliumart.com', port=443): Max retries exceeded with url: /auction-images/365/198730.jpg (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1082)')))
+[2026-07-23 14:58:15] Monachella candidato flat: download fallito: HTTP 202
+[2026-07-23 14:58:18] Monachella candidato flat: download fallito: HTTPSConnectionPool(host='images.capitoliumart.com', port=443): Max retries exceeded with url: /auction-images/503/276368.jpg (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1082)')))
+[2026-07-23 14:58:50] Lariana fallback estremo download: download fallito: non e' un'immagine valida (cannot identify image file <_io.BytesIO object at 0x000001B2717EFE20>)
+[2026-07-23 14:58:52] Lariana fallback estremo download: download fallito: non e' un'immagine valida (cannot identify image file <_io.BytesIO object at 0x000001B2717EF880>)
+[2026-07-23 14:58:54] Lariana fallback estremo download: download fallito: non e' un'immagine valida (cannot identify image file <_io.BytesIO object at 0x000001B2717EFDD0>)
+[2026-07-23 14:58:55] Lariana fallback estremo download: download fallito: non e' un'immagine valida (cannot identify image file <_io.BytesIO object at 0x000001B2717EFDD0>)
+[2026-07-23 14:58:57] Lariana fallback estremo download: download fallito: non e' un'immagine valida (cannot identify image file <_io.BytesIO object at 0x000001B2717EFDD0>)
+[2026-07-23 14:58:59] Lariana fallback estremo download: download fallito: non e' un'immagine valida (cannot identify image file <_io.BytesIO object at 0x000001B2717EFDD0>)
+[2026-07-23 14:59:01] Lariana fallback estremo download: download fallito: non e' un'immagine valida (cannot identify image file <_io.BytesIO object at 0x000001B2717EFDD0>)

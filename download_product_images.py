@@ -141,11 +141,11 @@ PENALIZED_DOMAINS = [
 # stopword per lo slug quando 'foto' e' assente
 IMG_EXTS = {".jpg", ".jpeg", ".png", ".webp", ".gif", ".bmp", ".tif", ".tiff"}
 
-SCRIPT_VERSION = "2026-07-20-skip-not-found-memory"
+SCRIPT_VERSION = "2026-07-20-retry-scarti-exclude-images"
 DEBUG_CANDIDATES = False
 CANDIDATES_PER_PRODUCT = 2  # default: salva pochi candidati filtrati in review_images, non nel sito
 MAX_QUERY_ATTEMPTS_PER_PRODUCT = 3  # dopo 3 query senza esito utile, passa al prodotto successivo
-RETRY_SCARTI = False  # se False, un prodotto con file in _pipeline/scarti viene saltato del tutto
+RETRY_SCARTI = True  # default: i prodotti in scarti vengono ritentati, ma escludendo le immagini bocciate
 RETRY_NOT_FOUND = False  # se False, prodotti gia provati senza risultato vengono saltati
 
 # Qualita minima richiesta alla sorgente scaricata. Se la sorgente e' piu' piccola,
@@ -792,8 +792,9 @@ def product_already_handled(product, paths, review_names=None):
         return True
     if review_names and base_no_ext.lower() in review_names:
         return True
-    if not RETRY_SCARTI and scarti_contains_base(paths, base_no_ext):
-        return True
+    # NON saltare un prodotto solo perche' ha file in scarti:
+    # scarti significa "queste immagini sono bocciate", non "abbandona il prodotto".
+    # Le immagini bocciate vengono escluse piu' avanti tramite URL/hash.
     if not_found_contains_product(product, paths):
         return True
     return False
@@ -2286,10 +2287,8 @@ def process_product(product, api_key, paths, rejected, review_names):
         row["status"] = "already_exists"
         row["motivo"] = "gia' in review_images/review_candidates (in attesa di giudizio): saltato"
         return row, None
-    if not RETRY_SCARTI and scarti_contains_base(paths, base_no_ext):
-        row["status"] = "already_exists"
-        row["motivo"] = "gia' in _pipeline/scarti: saltato per non riproporre immagini gia' bocciate"
-        return row, None
+    # Non saltare i prodotti gia' presenti in _pipeline/scarti:
+    # cerchiamo nuove immagini, escludendo solo quelle gia' bocciate.
 
     # Controllo scarti GLOBALE: evita di riproporre la stessa immagine anche
     # se nel frattempo hai cambiato nome file, designer/foto nel JSON o prodotto simile.
@@ -2617,7 +2616,7 @@ def main():
     parser.add_argument("--promote-candidate", type=int, default=0,
                         help="vecchia funzione opzionale; per il nuovo flusso puoi ignorarla e rinominare manualmente i file in review_images.")
     parser.add_argument("--retry-scarti", action="store_true",
-                        help="forza un nuovo tentativo anche per prodotti che hanno gia' file in _pipeline/scarti")
+                        help="compatibilita: i prodotti in scarti vengono gia ritentati di default, escludendo le immagini bocciate")
     parser.add_argument("--retry-not-found", action="store_true",
                         help="forza un nuovo tentativo anche per prodotti gia segnati in _pipeline/not_found.json")
     parser.add_argument("--inspect-json", default="",
@@ -2689,6 +2688,7 @@ def main():
     if n_rejected:
         print(f"Memoria scarti: {n_rejected} URL/pagine bocciati su "
               f"{len(rejected)} gruppi verranno evitati globalmente.")
+        print("Nota: i prodotti presenti in _pipeline/scarti vengono ritentati; vengono escluse solo le immagini gia bocciate.")
     scarti_hash_count = len(load_scarti_hashes_for_base(paths))
     if scarti_hash_count:
         print(f"Memoria visiva scarti: {scarti_hash_count} immagini in _pipeline/scarti verranno bloccate globalmente.")
@@ -2712,10 +2712,10 @@ def main():
             subset.append(p_)
             if len(subset) >= int(args.limit):
                 break
-        print(f"Selezione prodotti: letti {scanned_total} record dal JSON, saltati {skipped_before_limit} gia' presenti in public/review/scarti/not_found, da processare ora {len(subset)}.")
+        print(f"Selezione prodotti: letti {scanned_total} record dal JSON, saltati {skipped_before_limit} gia' presenti in public/review/not_found, da processare ora {len(subset)}.")
         if not subset:
-            print("Nessun nuovo prodotto da processare: il JSON letto e' gia' coperto da public/immagini, review_images, scarti o not_found.")
-            print("Se vuoi riprovare anche prodotti finiti in scarti usa: --retry-scarti")
+            print("Nessun nuovo prodotto da processare: il JSON letto e' gia' coperto da public/immagini, review_images o not_found.")
+            print("Se vuoi riprovare anche prodotti finiti in not_found usa: --retry-not-found")
             return
 
     manifest_rows = []

@@ -330,6 +330,1212 @@
     "foto": "belgiojoso-elettra.jpg",
     "filename": "belgiojoso-elettra.jpg",
     "reason": "nessun candidato scaricabile dopo 1 tentativi e filtri scarti/download; controlla _pipeline/log_errors.txt",
-    "time": "2026-07-21 17:22:29"
+    "time": "2026-07-23 14:49:08"
+  },
+  "cacciadominioni-lariana": {
+    "nome": "Lariana",
+    "designer": "Luigi Caccia Dominioni",
+    "azienda": "Azucena",
+    "foto": "cacciadominioni-lariana.jpg",
+    "filename": "cacciadominioni-lariana.jpg",
+    "reason": "nessun candidato scaricabile dopo 3 tentativi e filtri scarti/download; controlla _pipeline/log_errors.txt",
+    "time": "2026-07-23 14:59:01"
+  },
+  "helg-bavero": {
+    "nome": "Bavero",
+    "designer": "Franca Helg",
+    "azienda": "Arflex",
+    "foto": "helg-bavero.jpg",
+    "filename": "helg-bavero.jpg",
+    "reason": "nessun candidato nuovo dalla ricerca dopo 3 tentativi (gli altri erano gia' in scarti o bocciati)",
+    "time": "2026-07-22 11:00:25"
+  },
+  "bbpr-emma": {
+    "nome": "Emma",
+    "designer": "Lodovico Belgiojoso, Enrico Peressutti, Ernesto Nathan Rogers",
+    "azienda": "Olivari",
+    "foto": "bbpr-emma.jpg",
+    "filename": "bbpr-emma.jpg",
+    "reason": "nessun candidato scaricabile dopo 3 tentativi e filtri scarti/download; controlla _pipeline/log_errors.txt",
+    "time": "2026-07-22 11:11:26"
+  },
+  "bonetto-tv-1202": {
+    "nome": "TV 1202",
+    "designer": "Rodolfo Bonetto",
+    "azienda": "Voxson",
+    "foto": "bonetto-tv-1202.jpg",
+    "filename": "bonetto-tv-1202.jpg",
+    "reason": "nessun candidato nuovo dalla ricerca dopo 3 tentativi (gli altri erano gia' in scarti o bocciati)",
+    "time": "2026-07-22 11:12:48"
+  },
+  "colombo-grinta": {
+    "nome": "Grinta",
+    "designer": "Joe Colombo",
+    "azienda": "Zanotta",
+    "foto": "colombo-grinta.jpg",
+    "filename": "colombo-grinta.jpg",
+    "reason": "nessun candidato nuovo dalla ricerca dopo 3 tentativi (gli altri erano gia' in scarti o bocciati)",
+    "time": "2026-07-22 11:21:36"
+  },
+  "lapietra-cristallo-di-colle-val-delsa": {
+    "nome": "Cristallo di Colle Val d'Elsa",
+    "designer": "Ugo La Pietra",
+    "azienda": "Vilca",
+    "foto": "lapietra-cristallo-di-colle-val-delsa.jpg",
+    "filename": "lapietra-cristallo-di-colle-val-delsa.jpg",
+    "reason": "nessun candidato scaricabile dopo 3 tentativi e filtri scarti/download; controlla _pipeline/log_errors.txt",
+    "time": "2026-07-22 11:29:50"
+  },
+  "lapietra-fiasca-friulana": {
+    "nome": "Fiasca friulana",
+    "designer": "Ugo La Pietra",
+    "azienda": "Ceramica Pezzetta",
+    "foto": "lapietra-fiasca-friulana.jpg",
+    "filename": "lapietra-fiasca-friulana.jpg",
+    "reason": "nessun candidato nuovo dalla ricerca dopo 3 tentativi (gli altri erano gia' in scarti o bocciati)",
+    "time": "2026-07-22 11:30:26"
+  },
+  "lapietra-souvenir-di-vietri": {
+    "nome": "Souvenir di Vietri sul Mare",
+    "designer": "Ugo La Pietra",
+    "azienda": "Francesco Raimondi",
+    "foto": "lapietra-souvenir-di-vietri.jpg",
+    "filename": "lapietra-souvenir-di-vietri.jpg",
+    "reason": "nessun candidato scaricabile dopo 1 tentativi e filtri scarti/download; controlla _pipeline/log_errors.txt",
+    "time": "2026-07-22 11:31:10"
+  },
+  "lapietra-legno-intarsiato-di-sorrento": {
+    "nome": "Legno intarsiato di Sorrento",
+    "designer": "Ugo La Pietra",
+    "azienda": "Alessandro Fiorentino Collection",
+    "foto": "lapietra-legno-intarsiato-di-sorrento.jpg",
+    "filename": "lapietra-legno-intarsiato-di-sorrento.jpg",
+    "reason": "nessun candidato nuovo dalla ricerca dopo 3 tentativi (gli altri erano gia' in scarti o bocciati)",
+    "time": "2026-07-22 11:31:19"
+  },
+  "lapietra-ceramica-di-grottaglie": {
+    "nome": "Ceramica di Grottaglie",
+    "designer": "Ugo La Pietra",
+    "azienda": "Giuseppe De Fazio",
+    "foto": "lapietra-ceramica-di-grottaglie.jpg",
+    "filename": "lapietra-ceramica-di-grottaglie.jpg",
+    "reason": "nessun candidato nuovo dalla ricerca dopo 3 tentativi (gli altri erano gia' in scarti o bocciati)",
+    "time": "2026-07-22 11:31:38"
+  },
+  "lapietra-ceramica-di-este": {
+    "nome": "Ceramica di Este",
+    "designer": "Ugo La Pietra",
+    "azienda": "Este Ceramiche e Porcellane",
+    "foto": "lapietra-ceramica-di-este.jpg",
+    "filename": "lapietra-ceramica-di-este.jpg",
+    "reason": "nessun candidato nuovo dalla ricerca dopo 3 tentativi (gli altri erano gia' in scarti o bocciati)",
+    "time": "2026-07-22 11:32:42"
+  },
+  "lapietra-ceramica-di-nove": {
+    "nome": "Ceramica di Nove",
+    "designer": "Ugo La Pietra",
+    "azienda": "Ceramiche 3B",
+    "foto": "lapietra-ceramica-di-nove.jpg",
+    "filename": "lapietra-ceramica-di-nove.jpg",
+    "reason": "nessun candidato nuovo dalla ricerca dopo 3 tentativi (gli altri erano gia' in scarti o bocciati)",
+    "time": "2026-07-22 11:34:09"
+  },
+  "lapietra-the-professions-architect": {
+    "nome": "The Professions: Architect",
+    "designer": "Ugo La Pietra",
+    "azienda": "Nicolò Morales",
+    "foto": "lapietra-the-professions-architect.jpg",
+    "filename": "lapietra-the-professions-architect.jpg",
+    "reason": "nessun candidato nuovo dalla ricerca dopo 3 tentativi (gli altri erano gia' in scarti o bocciati)",
+    "time": "2026-07-22 11:35:15"
+  },
+  "vigo-pannelli-per-controsoffittature": {
+    "nome": "Pannelli per controsoffittature",
+    "designer": "Nanda Vigo",
+    "azienda": "Galvar",
+    "foto": "vigo-pannelli-per-controsoffittature.jpg",
+    "filename": "vigo-pannelli-per-controsoffittature.jpg",
+    "reason": "nessun candidato nuovo dalla ricerca dopo 3 tentativi (gli altri erano gia' in scarti o bocciati)",
+    "time": "2026-07-22 13:16:39"
+  },
+  "vigo-on-ice": {
+    "nome": "On Ice",
+    "designer": "Nanda Vigo",
+    "azienda": "Glas Italia",
+    "foto": "vigo-on-ice.jpg",
+    "filename": "vigo-on-ice.jpg",
+    "reason": "nessun candidato nuovo dalla ricerca dopo 3 tentativi (gli altri erano gia' in scarti o bocciati)",
+    "time": "2026-07-22 13:18:21"
+  },
+  "vigo-serie-di-tappeti": {
+    "nome": "Serie di tappeti",
+    "designer": "Nanda Vigo",
+    "azienda": "Driade",
+    "foto": "vigo-serie-di-tappeti.jpg",
+    "filename": "vigo-serie-di-tappeti.jpg",
+    "reason": "nessun candidato nuovo dalla ricerca dopo 3 tentativi (gli altri erano gia' in scarti o bocciati)",
+    "time": "2026-07-22 13:20:05"
+  },
+  "vigo-mediterraneo": {
+    "nome": "Mediterraneo",
+    "designer": "Nanda Vigo",
+    "azienda": "Effepi Marmi",
+    "foto": "vigo-mediterraneo.jpg",
+    "filename": "vigo-mediterraneo.jpg",
+    "reason": "nessun candidato scaricabile dopo 3 tentativi e filtri scarti/download; controlla _pipeline/log_errors.txt",
+    "time": "2026-07-22 13:21:03"
+  },
+  "vigo-vasi-in-argento": {
+    "nome": "Vasi in argento",
+    "designer": "Nanda Vigo",
+    "azienda": "Pampaloni",
+    "foto": "vigo-vasi-in-argento.jpg",
+    "filename": "vigo-vasi-in-argento.jpg",
+    "reason": "nessun candidato scaricabile dopo 3 tentativi e filtri scarti/download; controlla _pipeline/log_errors.txt",
+    "time": "2026-07-22 13:24:52"
+  },
+  "vigo-black-iceberg": {
+    "nome": "Black Iceberg",
+    "designer": "Nanda Vigo",
+    "azienda": "Galleria O",
+    "foto": "vigo-black-iceberg.jpg",
+    "filename": "vigo-black-iceberg.jpg",
+    "reason": "nessun candidato nuovo dalla ricerca dopo 3 tentativi (gli altri erano gia' in scarti o bocciati)",
+    "time": "2026-07-22 13:27:48"
+  },
+  "sarfatti-mod-537": {
+    "nome": "Mod. 537",
+    "designer": "Gino Sarfatti",
+    "azienda": "Arteluce",
+    "foto": "sarfatti-mod-537.jpg",
+    "filename": "sarfatti-mod-537.jpg",
+    "reason": "nessun candidato scaricabile dopo 1 tentativi e filtri scarti/download; controlla _pipeline/log_errors.txt",
+    "time": "2026-07-22 13:31:30"
+  },
+  "sarfatti-mod-537-g": {
+    "nome": "Mod. 537/G",
+    "designer": "Gino Sarfatti",
+    "azienda": "Arteluce",
+    "foto": "sarfatti-mod-537-g.jpg",
+    "filename": "sarfatti-mod-537-g.jpg",
+    "reason": "nessun candidato scaricabile dopo 1 tentativi e filtri scarti/download; controlla _pipeline/log_errors.txt",
+    "time": "2026-07-22 13:32:07"
+  },
+  "sarfatti-mod-191": {
+    "nome": "Mod. 191",
+    "designer": "Gino Sarfatti",
+    "azienda": "Arteluce",
+    "foto": "sarfatti-mod-191.jpg",
+    "filename": "sarfatti-mod-191.jpg",
+    "reason": "nessun candidato scaricabile dopo 1 tentativi e filtri scarti/download; controlla _pipeline/log_errors.txt",
+    "time": "2026-07-22 13:33:42"
+  },
+  "sarfatti-mod-21": {
+    "nome": "Mod. 21",
+    "designer": "Gino Sarfatti",
+    "azienda": "Arteluce",
+    "foto": "sarfatti-mod-21.jpg",
+    "filename": "sarfatti-mod-21.jpg",
+    "reason": "nessun candidato nuovo dalla ricerca dopo 3 tentativi (gli altri erano gia' in scarti o bocciati)",
+    "time": "2026-07-22 13:36:08"
+  },
+  "sarfatti-mod-1090": {
+    "nome": "Mod. 1090",
+    "designer": "Gino Sarfatti",
+    "azienda": "Arteluce",
+    "foto": "sarfatti-mod-1090.jpg",
+    "filename": "sarfatti-mod-1090.jpg",
+    "reason": "nessun candidato nuovo dalla ricerca dopo 3 tentativi (gli altri erano gia' in scarti o bocciati)",
+    "time": "2026-07-22 13:57:49"
+  },
+  "sarfatti-mod-3061": {
+    "nome": "Mod. 3061",
+    "designer": "Gino Sarfatti",
+    "azienda": "Arteluce",
+    "foto": "sarfatti-mod-3061.jpg",
+    "filename": "sarfatti-mod-3061.jpg",
+    "reason": "nessun candidato scaricabile dopo 3 tentativi e filtri scarti/download; controlla _pipeline/log_errors.txt",
+    "time": "2026-07-22 13:58:54"
+  },
+  "delucchi-cd-6300": {
+    "nome": "CD 6300",
+    "designer": "Michele De Lucchi",
+    "azienda": "Olivetti",
+    "foto": "delucchi-cd-6300.jpg",
+    "filename": "delucchi-cd-6300.jpg",
+    "reason": "nessun candidato nuovo dalla ricerca dopo 3 tentativi (gli altri erano gia' in scarti o bocciati)",
+    "time": "2026-07-22 14:10:41"
+  },
+  "delucchi-ms-6050": {
+    "nome": "MS 6050",
+    "designer": "Michele De Lucchi",
+    "azienda": "Olivetti",
+    "foto": "delucchi-ms-6050.jpg",
+    "filename": "delucchi-ms-6050.jpg",
+    "reason": "nessun candidato nuovo dalla ricerca dopo 3 tentativi (gli altri erano gia' in scarti o bocciati)",
+    "time": "2026-07-22 14:11:38"
+  },
+  "delucchi-jp-170": {
+    "nome": "JP 170",
+    "designer": "Michele De Lucchi",
+    "azienda": "Olivetti",
+    "foto": "delucchi-jp-170.jpg",
+    "filename": "delucchi-jp-170.jpg",
+    "reason": "nessun candidato nuovo dalla ricerca dopo 3 tentativi (gli altri erano gia' in scarti o bocciati)",
+    "time": "2026-07-22 14:11:59"
+  },
+  "delucchi-gli-animali-con-il-collo-lungo": {
+    "nome": "Gli Animali con il Collo Lungo",
+    "designer": "Michele De Lucchi",
+    "azienda": "Produzione Privata",
+    "foto": "delucchi-gli-animali-con-il-collo-lungo.jpg",
+    "filename": "delucchi-gli-animali-con-il-collo-lungo.jpg",
+    "reason": "nessun candidato nuovo dalla ricerca dopo 3 tentativi (gli altri erano gia' in scarti o bocciati)",
+    "time": "2026-07-22 14:14:28"
+  },
+  "delucchi-orientalina": {
+    "nome": "Orientalina",
+    "designer": "Michele De Lucchi",
+    "azienda": "Produzione Privata",
+    "foto": "delucchi-orientalina.jpg",
+    "filename": "delucchi-orientalina.jpg",
+    "reason": "nessun candidato nuovo dalla ricerca dopo 3 tentativi (gli altri erano gia' in scarti o bocciati)",
+    "time": "2026-07-22 14:15:30"
+  },
+  "delucchi-bicchieri-da-collezione-2012": {
+    "nome": "Bicchieri da Collezione 2012",
+    "designer": "Michele De Lucchi",
+    "azienda": "Produzione Privata",
+    "foto": "delucchi-bicchieri-da-collezione-2012.jpg",
+    "filename": "delucchi-bicchieri-da-collezione-2012.jpg",
+    "reason": "nessun candidato nuovo dalla ricerca dopo 3 tentativi (gli altri erano gia' in scarti o bocciati)",
+    "time": "2026-07-22 14:18:27"
+  },
+  "delucchi-bicchieri-strip": {
+    "nome": "Bicchieri Strip",
+    "designer": "Michele De Lucchi",
+    "azienda": "Produzione Privata",
+    "foto": "delucchi-bicchieri-strip.jpg",
+    "filename": "delucchi-bicchieri-strip.jpg",
+    "reason": "nessun candidato nuovo dalla ricerca dopo 3 tentativi (gli altri erano gia' in scarti o bocciati)",
+    "time": "2026-07-22 14:18:41"
+  },
+  "delucchi-vasi-maioliche-deruta": {
+    "nome": "Vasi Maioliche Deruta",
+    "designer": "Michele De Lucchi",
+    "azienda": "Produzione Privata",
+    "foto": "delucchi-vasi-maioliche-deruta.jpg",
+    "filename": "delucchi-vasi-maioliche-deruta.jpg",
+    "reason": "nessun candidato nuovo dalla ricerca dopo 3 tentativi (gli altri erano gia' in scarti o bocciati)",
+    "time": "2026-07-22 14:18:59"
+  },
+  "delucchi-bicchieri-da-collezione-2013": {
+    "nome": "Bicchieri da Collezione 2013",
+    "designer": "Michele De Lucchi",
+    "azienda": "Produzione Privata",
+    "foto": "delucchi-bicchieri-da-collezione-2013.jpg",
+    "filename": "delucchi-bicchieri-da-collezione-2013.jpg",
+    "reason": "nessun candidato nuovo dalla ricerca dopo 3 tentativi (gli altri erano gia' in scarti o bocciati)",
+    "time": "2026-07-22 14:19:24"
+  },
+  "rossi-ar3": {
+    "nome": "AR3",
+    "designer": "Aldo Rossi",
+    "azienda": "Bruno Longoni Atelier d’Arredamento",
+    "foto": "rossi-ar3.jpg",
+    "filename": "rossi-ar3.jpg",
+    "reason": "nessun candidato scaricabile dopo 3 tentativi e filtri scarti/download; controlla _pipeline/log_errors.txt",
+    "time": "2026-07-22 14:22:58"
+  },
+  "rossi-ar5": {
+    "nome": "AR5",
+    "designer": "Aldo Rossi",
+    "azienda": "Bruno Longoni Atelier d’Arredamento",
+    "foto": "rossi-ar5.jpg",
+    "filename": "rossi-ar5.jpg",
+    "reason": "nessun candidato nuovo dalla ricerca dopo 3 tentativi (gli altri erano gia' in scarti o bocciati)",
+    "time": "2026-07-22 14:23:28"
+  },
+  "rossi-alfiere": {
+    "nome": "Alfiere",
+    "designer": "Aldo Rossi",
+    "azienda": "Bruno Longoni Atelier d’Arredamento",
+    "foto": "rossi-alfiere.jpg",
+    "filename": "rossi-alfiere.jpg",
+    "reason": "nessun candidato scaricabile dopo 3 tentativi e filtri scarti/download; controlla _pipeline/log_errors.txt",
+    "time": "2026-07-22 14:26:37"
+  },
+  "scarpa-accademia": {
+    "nome": "Accademia",
+    "designer": "Afra Scarpa, Tobia Scarpa",
+    "azienda": "Stildomus",
+    "foto": "scarpa-accademia.jpg",
+    "filename": "scarpa-accademia.jpg",
+    "reason": "nessun candidato scaricabile dopo 3 tentativi e filtri scarti/download; controlla _pipeline/log_errors.txt",
+    "time": "2026-07-22 16:08:53"
+  },
+  "scarpa-miss": {
+    "nome": "Miss",
+    "designer": "Afra Scarpa, Tobia Scarpa",
+    "azienda": "Molteni&C",
+    "foto": "scarpa-miss.jpg",
+    "filename": "scarpa-miss.jpg",
+    "reason": "nessun candidato scaricabile dopo 1 tentativi e filtri scarti/download; controlla _pipeline/log_errors.txt",
+    "time": "2026-07-22 16:09:18"
+  },
+  "scarpa-pierrot": {
+    "nome": "Pierrot",
+    "designer": "Afra Scarpa, Tobia Scarpa",
+    "azienda": "Flos",
+    "foto": "scarpa-pierrot.jpg",
+    "filename": "scarpa-pierrot.jpg",
+    "reason": "nessun candidato scaricabile dopo 1 tentativi e filtri scarti/download; controlla _pipeline/log_errors.txt",
+    "time": "2026-07-22 16:10:36"
+  },
+  "scarpa-nicolo": {
+    "nome": "Nicolò",
+    "designer": "Afra Scarpa, Tobia Scarpa",
+    "azienda": "Meritalia",
+    "foto": "scarpa-nicolo.jpg",
+    "filename": "scarpa-nicolo.jpg",
+    "reason": "nessun candidato scaricabile dopo 3 tentativi e filtri scarti/download; controlla _pipeline/log_errors.txt",
+    "time": "2026-07-22 16:12:30"
+  },
+  "scarpa-galeto": {
+    "nome": "Galeto",
+    "designer": "Afra Scarpa, Tobia Scarpa",
+    "azienda": "Fabbian",
+    "foto": "scarpa-galeto.jpg",
+    "filename": "scarpa-galeto.jpg",
+    "reason": "nessun candidato scaricabile dopo 3 tentativi e filtri scarti/download; controlla _pipeline/log_errors.txt",
+    "time": "2026-07-22 16:13:34"
+  },
+  "scarpa-scandola": {
+    "nome": "Scandola",
+    "designer": "Afra Scarpa, Tobia Scarpa",
+    "azienda": "Veas",
+    "foto": "scarpa-scandola.jpg",
+    "filename": "scarpa-scandola.jpg",
+    "reason": "nessun candidato scaricabile dopo 3 tentativi e filtri scarti/download; controlla _pipeline/log_errors.txt",
+    "time": "2026-07-22 16:14:02"
+  },
+  "borsani-t61-e": {
+    "nome": "T61/E",
+    "designer": "Osvaldo Borsani",
+    "azienda": "Tecno",
+    "foto": "borsani-t61-e.jpg",
+    "filename": "borsani-t61-e.jpg",
+    "reason": "nessun candidato scaricabile dopo 1 tentativi e filtri scarti/download; controlla _pipeline/log_errors.txt",
+    "time": "2026-07-23 14:47:46"
+  },
+  "borsani-l150": {
+    "nome": "L150",
+    "designer": "Osvaldo Borsani",
+    "azienda": "Tecno",
+    "foto": "borsani-l150.jpg",
+    "filename": "borsani-l150.jpg",
+    "reason": "nessun candidato scaricabile dopo 1 tentativi e filtri scarti/download; controlla _pipeline/log_errors.txt",
+    "time": "2026-07-23 14:48:10"
+  },
+  "belgiojoso-torrevelasca": {
+    "nome": "Torre Velasca (modello)",
+    "designer": "Lodovico Belgiojoso, Enrico Peressutti, Ernesto Nathan Rogers",
+    "azienda": "BBPR",
+    "foto": "belgiojoso-torrevelasca.jpg",
+    "filename": "belgiojoso-torrevelasca.jpg",
+    "reason": "nessun candidato scaricabile dopo 3 tentativi e filtri scarti/download; controlla _pipeline/log_errors.txt",
+    "time": "2026-07-23 14:50:07"
+  },
+  "belgiojoso-castellosforzesco": {
+    "nome": "Allestimento Castello Sforzesco",
+    "designer": "Lodovico Belgiojoso, Enrico Peressutti, Ernesto Nathan Rogers",
+    "azienda": "BBPR",
+    "foto": "belgiojoso-castellosforzesco.jpg",
+    "filename": "belgiojoso-castellosforzesco.jpg",
+    "reason": "nessun candidato scaricabile dopo 3 tentativi e filtri scarti/download; controlla _pipeline/log_errors.txt",
+    "time": "2026-07-23 14:52:26"
+  },
+  "branzi-nostopcity": {
+    "nome": "No-Stop City",
+    "designer": "Andrea Branzi, Gilberto Corretti, Paolo Deganello, Massimo Morozzi",
+    "azienda": "Archizoom",
+    "foto": "branzi-nostopcity.jpg",
+    "filename": "branzi-nostopcity.jpg",
+    "reason": "nessun candidato scaricabile dopo 1 tentativi e filtri scarti/download; controlla _pipeline/log_errors.txt",
+    "time": "2026-07-23 14:53:07"
+  },
+  "bonetto-quattrogatti": {
+    "nome": "Quattro Gatti",
+    "designer": "Rodolfo Bonetto",
+    "azienda": "B-Line",
+    "foto": "bonetto-quattrogatti.jpg",
+    "filename": "bonetto-quattrogatti.jpg",
+    "reason": "nessun candidato scaricabile dopo 1 tentativi e filtri scarti/download; controlla _pipeline/log_errors.txt",
+    "time": "2026-07-23 14:55:52"
+  },
+  "starck-lamarie": {
+    "nome": "La Marie",
+    "designer": "Philippe Starck",
+    "azienda": "Kartell",
+    "foto": "starck-lamarie.jpg",
+    "filename": "starck-lamarie.jpg",
+    "reason": "nessun candidato scaricabile dopo 1 tentativi e filtri scarti/download; controlla _pipeline/log_errors.txt",
+    "time": "2026-07-23 14:57:03"
+  },
+  "castiglioni-luminator": {
+    "nome": "Luminator",
+    "designer": "Achille Castiglioni, Pier Giacomo Castiglioni",
+    "azienda": "Flos",
+    "foto": "castiglioni-luminator.jpg",
+    "filename": "castiglioni-luminator.jpg",
+    "reason": "nessun candidato scaricabile dopo 1 tentativi e filtri scarti/download; controlla _pipeline/log_errors.txt",
+    "time": "2026-07-23 14:54:19"
+  },
+  "belgiojoso-monumentocaduti": {
+    "nome": "Monumento ai Caduti nei Campi di Concentramento",
+    "designer": "Gianluigi Banfi, Lodovico Belgiojoso, Enrico Peressutti, Ernesto Nathan Rogers",
+    "azienda": "BBPR",
+    "foto": "belgiojoso-monumentocaduti.jpg",
+    "filename": "belgiojoso-monumentocaduti.jpg",
+    "reason": "nessun candidato nuovo dalla ricerca dopo 3 tentativi (gli altri erano gia' in scarti o bocciati)",
+    "time": "2026-07-22 16:54:31"
+  },
+  "parisi-691": {
+    "nome": "691",
+    "designer": "Ico Parisi",
+    "azienda": "Cassina",
+    "foto": "parisi-691.jpg",
+    "filename": "parisi-691.jpg",
+    "reason": "nessun candidato scaricabile dopo 1 tentativi e filtri scarti/download; controlla _pipeline/log_errors.txt",
+    "time": "2026-07-22 16:55:54"
+  },
+  "bonetto-timer-152": {
+    "nome": "Timer 152",
+    "designer": "Rodolfo Bonetto",
+    "azienda": "Veglia Borletti",
+    "foto": "bonetto-timer-152.jpg",
+    "filename": "bonetto-timer-152.jpg",
+    "reason": "nessun candidato scaricabile dopo 3 tentativi e filtri scarti/download; controlla _pipeline/log_errors.txt",
+    "time": "2026-07-22 16:57:45"
+  },
+  "bonetto-linea-1": {
+    "nome": "Linea 1",
+    "designer": "Rodolfo Bonetto",
+    "azienda": "Autovox",
+    "foto": "bonetto-linea-1.jpg",
+    "filename": "bonetto-linea-1.jpg",
+    "reason": "nessun candidato scaricabile dopo 1 tentativi e filtri scarti/download; controlla _pipeline/log_errors.txt",
+    "time": "2026-07-22 16:59:12"
+  },
+  "bonetto-m15": {
+    "nome": "M15",
+    "designer": "Rodolfo Bonetto",
+    "azienda": "La Cimbali",
+    "foto": "bonetto-m15.jpg",
+    "filename": "bonetto-m15.jpg",
+    "reason": "nessun candidato scaricabile dopo 1 tentativi e filtri scarti/download; controlla _pipeline/log_errors.txt",
+    "time": "2026-07-22 17:00:06"
+  },
+  "bonetto-m20": {
+    "nome": "M20",
+    "designer": "Rodolfo Bonetto",
+    "azienda": "La Cimbali",
+    "foto": "bonetto-m20.jpg",
+    "filename": "bonetto-m20.jpg",
+    "reason": "nessun candidato scaricabile dopo 1 tentativi e filtri scarti/download; controlla _pipeline/log_errors.txt",
+    "time": "2026-07-22 17:00:39"
+  },
+  "bonetto-wiz": {
+    "nome": "Wiz",
+    "designer": "Rodolfo Bonetto",
+    "azienda": "Wizco",
+    "foto": "bonetto-wiz.jpg",
+    "filename": "bonetto-wiz.jpg",
+    "reason": "nessun candidato scaricabile dopo 1 tentativi e filtri scarti/download; controlla _pipeline/log_errors.txt",
+    "time": "2026-07-22 17:00:57"
+  },
+  "bonetto-auctor-400": {
+    "nome": "Auctor 400",
+    "designer": "Rodolfo Bonetto",
+    "azienda": "Olivetti OCN",
+    "foto": "bonetto-auctor-400.jpg",
+    "filename": "bonetto-auctor-400.jpg",
+    "reason": "nessun candidato scaricabile dopo 3 tentativi e filtri scarti/download; controlla _pipeline/log_errors.txt",
+    "time": "2026-07-22 17:01:33"
+  },
+  "bonetto-polo": {
+    "nome": "Polo",
+    "designer": "Rodolfo Bonetto",
+    "azienda": "Olivari",
+    "foto": "bonetto-polo.jpg",
+    "filename": "bonetto-polo.jpg",
+    "reason": "nessun candidato scaricabile dopo 1 tentativi e filtri scarti/download; controlla _pipeline/log_errors.txt",
+    "time": "2026-07-22 17:01:55"
+  },
+  "bellini-932-2": {
+    "nome": "932/2",
+    "designer": "Mario Bellini",
+    "azienda": "Cassina",
+    "foto": "bellini-932-2.jpg",
+    "filename": "bellini-932-2.jpg",
+    "reason": "nessun candidato scaricabile dopo 3 tentativi e filtri scarti/download; controlla _pipeline/log_errors.txt",
+    "time": "2026-07-22 17:20:19"
+  },
+  "bellini-et-111": {
+    "nome": "ET 111",
+    "designer": "Mario Bellini",
+    "azienda": "Olivetti",
+    "foto": "bellini-et-111.jpg",
+    "filename": "bellini-et-111.jpg",
+    "reason": "nessun candidato scaricabile dopo 3 tentativi e filtri scarti/download; controlla _pipeline/log_errors.txt",
+    "time": "2026-07-22 17:23:30"
+  },
+  "bellini-minideca": {
+    "nome": "Minideca",
+    "designer": "Mario Bellini, Dario Bellini",
+    "azienda": "Zojirushi Corporation",
+    "foto": "bellini-minideca.jpg",
+    "filename": "bellini-minideca.jpg",
+    "reason": "nessun candidato scaricabile dopo 3 tentativi e filtri scarti/download; controlla _pipeline/log_errors.txt",
+    "time": "2026-07-22 17:24:06"
+  },
+  "bellini-portatone-ps-6100": {
+    "nome": "Portatone PS 6100",
+    "designer": "Mario Bellini, Dario Bellini",
+    "azienda": "Nippon Gakki",
+    "foto": "bellini-portatone-ps-6100.jpg",
+    "filename": "bellini-portatone-ps-6100.jpg",
+    "reason": "nessun candidato scaricabile dopo 1 tentativi e filtri scarti/download; controlla _pipeline/log_errors.txt",
+    "time": "2026-07-22 17:24:46"
+  },
+  "parisi-812-uovo": {
+    "nome": "812 Uovo",
+    "designer": "Ico Parisi",
+    "azienda": "Ariberto Colombo",
+    "foto": "parisi-812-uovo.jpg",
+    "filename": "parisi-812-uovo.jpg",
+    "reason": "nessun candidato scaricabile dopo 3 tentativi e filtri scarti/download; controlla _pipeline/log_errors.txt",
+    "time": "2026-07-22 17:27:30"
+  },
+  "parisi-paraggi-m3": {
+    "nome": "Paraggi M3",
+    "designer": "Ico Parisi",
+    "azienda": "MIM Roma",
+    "foto": "parisi-paraggi-m3.jpg",
+    "filename": "parisi-paraggi-m3.jpg",
+    "reason": "nessun candidato scaricabile dopo 3 tentativi e filtri scarti/download; controlla _pipeline/log_errors.txt",
+    "time": "2026-07-22 17:28:26"
+  },
+  "bonetto-ts-207": {
+    "nome": "TS 207",
+    "designer": "Rodolfo Bonetto",
+    "azienda": "Brionvega",
+    "foto": "bonetto-ts-207.jpg",
+    "filename": "bonetto-ts-207.jpg",
+    "reason": "nessun candidato scaricabile dopo 1 tentativi e filtri scarti/download; controlla _pipeline/log_errors.txt",
+    "time": "2026-07-22 17:28:40"
+  },
+  "bonetto-linearsystem": {
+    "nome": "Linearsystem",
+    "designer": "Rodolfo Bonetto",
+    "azienda": "Bellato",
+    "foto": "bonetto-linearsystem.jpg",
+    "filename": "bonetto-linearsystem.jpg",
+    "reason": "nessun candidato scaricabile dopo 1 tentativi e filtri scarti/download; controlla _pipeline/log_errors.txt",
+    "time": "2026-07-22 17:29:01"
+  },
+  "bonetto-oyster-t1228": {
+    "nome": "Oyster T1228",
+    "designer": "Rodolfo Bonetto",
+    "azienda": "Voxson",
+    "foto": "bonetto-oyster-t1228.jpg",
+    "filename": "bonetto-oyster-t1228.jpg",
+    "reason": "nessun candidato scaricabile dopo 1 tentativi e filtri scarti/download; controlla _pipeline/log_errors.txt",
+    "time": "2026-07-22 17:29:16"
+  },
+  "bellini-logos-50-68": {
+    "nome": "Logos 50/68",
+    "designer": "Mario Bellini",
+    "azienda": "Olivetti",
+    "foto": "bellini-logos-50-68.jpg",
+    "filename": "bellini-logos-50-68.jpg",
+    "reason": "nessun candidato scaricabile dopo 1 tentativi e filtri scarti/download; controlla _pipeline/log_errors.txt",
+    "time": "2026-07-22 17:30:37"
+  },
+  "aulenti-aprilina": {
+    "nome": "Aprilina",
+    "designer": "Gae Aulenti",
+    "azienda": "Zanotta",
+    "foto": "aulenti-aprilina.jpg",
+    "filename": "aulenti-aprilina.jpg",
+    "reason": "nessun candidato scaricabile dopo 1 tentativi e filtri scarti/download; controlla _pipeline/log_errors.txt",
+    "time": "2026-07-22 17:31:39"
+  },
+  "aulenti-4794": {
+    "nome": "4794",
+    "designer": "Gae Aulenti",
+    "azienda": "Kartell",
+    "foto": "aulenti-4794.jpg",
+    "filename": "aulenti-4794.jpg",
+    "reason": "nessun candidato scaricabile dopo 1 tentativi e filtri scarti/download; controlla _pipeline/log_errors.txt",
+    "time": "2026-07-22 17:35:10"
+  },
+  "aulenti-aulenti-collection": {
+    "nome": "Aulenti Collection",
+    "designer": "Gae Aulenti",
+    "azienda": "Knoll",
+    "foto": "aulenti-aulenti-collection.jpg",
+    "filename": "aulenti-aulenti-collection.jpg",
+    "reason": "nessun candidato scaricabile dopo 1 tentativi e filtri scarti/download; controlla _pipeline/log_errors.txt",
+    "time": "2026-07-22 17:36:41"
+  },
+  "aulenti-la-torre": {
+    "nome": "La Torre",
+    "designer": "Gae Aulenti",
+    "azienda": "Martinelli Luce",
+    "foto": "aulenti-la-torre.jpg",
+    "filename": "aulenti-la-torre.jpg",
+    "reason": "nessun candidato scaricabile dopo 1 tentativi e filtri scarti/download; controlla _pipeline/log_errors.txt",
+    "time": "2026-07-22 17:37:58"
+  },
+  "aulenti-castiglioni-parolona": {
+    "nome": "Parolona",
+    "designer": "Gae Aulenti, Piero Castiglioni",
+    "azienda": "Fontana Arte",
+    "foto": "aulenti-castiglioni-parolona.jpg",
+    "filename": "aulenti-castiglioni-parolona.jpg",
+    "reason": "nessun candidato scaricabile dopo 1 tentativi e filtri scarti/download; controlla _pipeline/log_errors.txt",
+    "time": "2026-07-22 17:38:18"
+  },
+  "colombo-bolle": {
+    "nome": "Bolle",
+    "designer": "Joe Colombo",
+    "azienda": "Pallucco",
+    "foto": "colombo-bolle.jpg",
+    "filename": "colombo-bolle.jpg",
+    "reason": "nessun candidato scaricabile dopo 1 tentativi e filtri scarti/download; controlla _pipeline/log_errors.txt",
+    "time": "2026-07-22 17:42:00"
+  },
+  "colombo-the-globe": {
+    "nome": "The Globe",
+    "designer": "Joe Colombo",
+    "azienda": "O Luce",
+    "foto": "colombo-the-globe.jpg",
+    "filename": "colombo-the-globe.jpg",
+    "reason": "nessun candidato scaricabile dopo 1 tentativi e filtri scarti/download; controlla _pipeline/log_errors.txt",
+    "time": "2026-07-22 17:42:37"
+  },
+  "colombo-kilometre": {
+    "nome": "Kilometre",
+    "designer": "Joe Colombo",
+    "azienda": "Karakter",
+    "foto": "colombo-kilometre.jpg",
+    "filename": "colombo-kilometre.jpg",
+    "reason": "nessun candidato scaricabile dopo 1 tentativi e filtri scarti/download; controlla _pipeline/log_errors.txt",
+    "time": "2026-07-22 17:44:52"
+  },
+  "colombo-bazooka": {
+    "nome": "Bazooka",
+    "designer": "Joe Colombo",
+    "azienda": "Stilnovo",
+    "foto": "colombo-bazooka.jpg",
+    "filename": "colombo-bazooka.jpg",
+    "reason": "nessun candidato scaricabile dopo 1 tentativi e filtri scarti/download; controlla _pipeline/log_errors.txt",
+    "time": "2026-07-22 17:49:28"
+  },
+  "colombo-triangular-container-system": {
+    "nome": "Triangular Container System",
+    "designer": "Joe Colombo",
+    "azienda": "Elco",
+    "foto": "colombo-triangular-container-system.jpg",
+    "filename": "colombo-triangular-container-system.jpg",
+    "reason": "nessun candidato scaricabile dopo 3 tentativi e filtri scarti/download; controlla _pipeline/log_errors.txt",
+    "time": "2026-07-22 17:50:49"
+  },
+  "colombo-cabrio-bed": {
+    "nome": "Cabrio-Bed",
+    "designer": "Joe Colombo",
+    "azienda": "Sormani",
+    "foto": "colombo-cabrio-bed.jpg",
+    "filename": "colombo-cabrio-bed.jpg",
+    "reason": "nessun candidato scaricabile dopo 3 tentativi e filtri scarti/download; controlla _pipeline/log_errors.txt",
+    "time": "2026-07-22 17:53:36"
+  },
+  "pesce-sansone-i": {
+    "nome": "Sansone I",
+    "designer": "Gaetano Pesce",
+    "azienda": "Cassina",
+    "foto": "pesce-sansone-i.jpg",
+    "filename": "pesce-sansone-i.jpg",
+    "reason": "nessun candidato scaricabile dopo 1 tentativi e filtri scarti/download; controlla _pipeline/log_errors.txt",
+    "time": "2026-07-22 17:57:10"
+  },
+  "pesce-beaubourg": {
+    "nome": "Beaubourg",
+    "designer": "Gaetano Pesce",
+    "azienda": "Écart International",
+    "foto": "pesce-beaubourg.jpg",
+    "filename": "pesce-beaubourg.jpg",
+    "reason": "nessun candidato scaricabile dopo 1 tentativi e filtri scarti/download; controlla _pipeline/log_errors.txt",
+    "time": "2026-07-22 17:57:37"
+  },
+  "pesce-bottiglia-vittel": {
+    "nome": "Bottiglia Vittel",
+    "designer": "Gaetano Pesce",
+    "azienda": "Vittel",
+    "foto": "pesce-bottiglia-vittel.jpg",
+    "filename": "pesce-bottiglia-vittel.jpg",
+    "reason": "nessun candidato scaricabile dopo 3 tentativi e filtri scarti/download; controlla _pipeline/log_errors.txt",
+    "time": "2026-07-22 17:58:01"
+  },
+  "lapietra-autorevole": {
+    "nome": "Autorevole",
+    "designer": "Ugo La Pietra",
+    "azienda": "Busnelli",
+    "foto": "lapietra-autorevole.jpg",
+    "filename": "lapietra-autorevole.jpg",
+    "reason": "nessun candidato scaricabile dopo 3 tentativi e filtri scarti/download; controlla _pipeline/log_errors.txt",
+    "time": "2026-07-22 18:00:46"
+  },
+  "lapietra-vasi-per-giardini": {
+    "nome": "Vasi per giardini, giardini per vasi",
+    "designer": "Ugo La Pietra",
+    "azienda": "Cooperativa Ceramica Imola",
+    "foto": "lapietra-vasi-per-giardini.jpg",
+    "filename": "lapietra-vasi-per-giardini.jpg",
+    "reason": "nessun candidato scaricabile dopo 3 tentativi e filtri scarti/download; controlla _pipeline/log_errors.txt",
+    "time": "2026-07-22 18:01:35"
+  },
+  "lapietra-credenza-plisse": {
+    "nome": "Credenza Plissé",
+    "designer": "Ugo La Pietra",
+    "azienda": "Fratelli Boffi",
+    "foto": "lapietra-credenza-plisse.jpg",
+    "filename": "lapietra-credenza-plisse.jpg",
+    "reason": "nessun candidato nuovo dalla ricerca dopo 3 tentativi (gli altri erano gia' in scarti o bocciati)",
+    "time": "2026-07-22 18:01:49"
+  },
+  "lapietra-ceramica-di-faenza": {
+    "nome": "Ceramica di Faenza",
+    "designer": "Ugo La Pietra",
+    "azienda": "Bottega Gatti",
+    "foto": "lapietra-ceramica-di-faenza.jpg",
+    "filename": "lapietra-ceramica-di-faenza.jpg",
+    "reason": "nessun candidato scaricabile dopo 3 tentativi e filtri scarti/download; controlla _pipeline/log_errors.txt",
+    "time": "2026-07-22 18:03:34"
+  },
+  "lapietra-alabastro-di-volterra": {
+    "nome": "Alabastro di Volterra",
+    "designer": "Ugo La Pietra",
+    "azienda": "Cooperativa Artieri Alabastro",
+    "foto": "lapietra-alabastro-di-volterra.jpg",
+    "filename": "lapietra-alabastro-di-volterra.jpg",
+    "reason": "nessun candidato scaricabile dopo 3 tentativi e filtri scarti/download; controlla _pipeline/log_errors.txt",
+    "time": "2026-07-22 18:04:41"
+  },
+  "lapietra-tante-tazzine": {
+    "nome": "Tante tazzine per tanti modi di bere il caffè",
+    "designer": "Ugo La Pietra",
+    "azienda": "Biesse",
+    "foto": "lapietra-tante-tazzine.jpg",
+    "filename": "lapietra-tante-tazzine.jpg",
+    "reason": "nessun candidato nuovo dalla ricerca dopo 3 tentativi (gli altri erano gia' in scarti o bocciati)",
+    "time": "2026-07-22 18:05:35"
+  },
+  "lapietra-tazzine-neoeclettiche": {
+    "nome": "Tazzine neoeclettiche",
+    "designer": "Ugo La Pietra",
+    "azienda": "Eschenbach",
+    "foto": "lapietra-tazzine-neoeclettiche.jpg",
+    "filename": "lapietra-tazzine-neoeclettiche.jpg",
+    "reason": "nessun candidato nuovo dalla ricerca dopo 3 tentativi (gli altri erano gia' in scarti o bocciati)",
+    "time": "2026-07-22 18:06:35"
+  },
+  "lapietra-rame-smaltato": {
+    "nome": "Rame smaltato",
+    "designer": "Ugo La Pietra",
+    "azienda": "Rosanna Migliore",
+    "foto": "lapietra-rame-smaltato.jpg",
+    "filename": "lapietra-rame-smaltato.jpg",
+    "reason": "nessun candidato scaricabile dopo 1 tentativi e filtri scarti/download; controlla _pipeline/log_errors.txt",
+    "time": "2026-07-22 18:08:35"
+  },
+  "lapietra-mediterranean-ceramics": {
+    "nome": "Mediterranean Ceramics",
+    "designer": "Ugo La Pietra",
+    "azienda": "Ceramiche Pierluca",
+    "foto": "lapietra-mediterranean-ceramics.jpg",
+    "filename": "lapietra-mediterranean-ceramics.jpg",
+    "reason": "nessun candidato scaricabile dopo 3 tentativi e filtri scarti/download; controlla _pipeline/log_errors.txt",
+    "time": "2026-07-22 18:09:29"
+  },
+  "lapietra-animals": {
+    "nome": "Animals",
+    "designer": "Ugo La Pietra",
+    "azienda": "Biagioli",
+    "foto": "lapietra-animals.jpg",
+    "filename": "lapietra-animals.jpg",
+    "reason": "nessun candidato scaricabile dopo 3 tentativi e filtri scarti/download; controlla _pipeline/log_errors.txt",
+    "time": "2026-07-22 18:10:59"
+  },
+  "lapietra-itineraries": {
+    "nome": "Itineraries",
+    "designer": "Ugo La Pietra",
+    "azienda": "Laboratorio 3B",
+    "foto": "lapietra-itineraries.jpg",
+    "filename": "lapietra-itineraries.jpg",
+    "reason": "nessun candidato nuovo dalla ricerca dopo 3 tentativi (gli altri erano gia' in scarti o bocciati)",
+    "time": "2026-07-22 18:12:05"
+  },
+  "lapietra-filicudi-consolle": {
+    "nome": "Filicudi Consolle con specchio",
+    "designer": "Ugo La Pietra",
+    "azienda": "Barel",
+    "foto": "lapietra-filicudi-consolle.jpg",
+    "filename": "lapietra-filicudi-consolle.jpg",
+    "reason": "nessun candidato scaricabile dopo 3 tentativi e filtri scarti/download; controlla _pipeline/log_errors.txt",
+    "time": "2026-07-22 18:13:18"
+  },
+  "lapietra-filicudi-specchio": {
+    "nome": "Filicudi Specchio da terra",
+    "designer": "Ugo La Pietra",
+    "azienda": "Barel",
+    "foto": "lapietra-filicudi-specchio.jpg",
+    "filename": "lapietra-filicudi-specchio.jpg",
+    "reason": "nessun candidato nuovo dalla ricerca dopo 3 tentativi (gli altri erano gia' in scarti o bocciati)",
+    "time": "2026-07-22 18:13:27"
+  },
+  "lapietra-interrupted-furniture": {
+    "nome": "Interrupted Furniture",
+    "designer": "Ugo La Pietra",
+    "azienda": "Fratelli Boffi",
+    "foto": "lapietra-interrupted-furniture.jpg",
+    "filename": "lapietra-interrupted-furniture.jpg",
+    "reason": "nessun candidato scaricabile dopo 3 tentativi e filtri scarti/download; controlla _pipeline/log_errors.txt",
+    "time": "2026-07-22 18:14:14"
+  },
+  "lapietra-strange-animals": {
+    "nome": "Strange Animals",
+    "designer": "Ugo La Pietra",
+    "azienda": "R&Company",
+    "foto": "lapietra-strange-animals.jpg",
+    "filename": "lapietra-strange-animals.jpg",
+    "reason": "nessun candidato scaricabile dopo 3 tentativi e filtri scarti/download; controlla _pipeline/log_errors.txt",
+    "time": "2026-07-22 18:14:42"
+  },
+  "lapietra-natura-artificiale": {
+    "nome": "Natura artificiale",
+    "designer": "Ugo La Pietra",
+    "azienda": "Dieci26 Tapestry Editions",
+    "foto": "lapietra-natura-artificiale.jpg",
+    "filename": "lapietra-natura-artificiale.jpg",
+    "reason": "nessun candidato scaricabile dopo 1 tentativi e filtri scarti/download; controlla _pipeline/log_errors.txt",
+    "time": "2026-07-22 18:14:58"
+  },
+  "lapietra-lofferta": {
+    "nome": "L'Offerta",
+    "designer": "Ugo La Pietra",
+    "azienda": "Rometti",
+    "foto": "lapietra-lofferta.jpg",
+    "filename": "lapietra-lofferta.jpg",
+    "reason": "nessun candidato scaricabile dopo 1 tentativi e filtri scarti/download; controlla _pipeline/log_errors.txt",
+    "time": "2026-07-22 18:16:10"
+  },
+  "lapietra-capas": {
+    "nome": "Capas",
+    "designer": "Ugo La Pietra",
+    "azienda": "Natuzzi Italia",
+    "foto": "lapietra-capas.jpg",
+    "filename": "lapietra-capas.jpg",
+    "reason": "nessun candidato scaricabile dopo 3 tentativi e filtri scarti/download; controlla _pipeline/log_errors.txt",
+    "time": "2026-07-22 18:17:48"
+  },
+  "lapietra-totem-20": {
+    "nome": "Totem 20",
+    "designer": "Ugo La Pietra",
+    "azienda": "Rometti",
+    "foto": "lapietra-totem-20.jpg",
+    "filename": "lapietra-totem-20.jpg",
+    "reason": "nessun candidato scaricabile dopo 1 tentativi e filtri scarti/download; controlla _pipeline/log_errors.txt",
+    "time": "2026-07-22 18:18:05"
+  },
+  "mendini-mikiolone": {
+    "nome": "Mikiolone",
+    "designer": "Alessandro Mendini",
+    "azienda": "Zanotta",
+    "foto": "mendini-mikiolone.jpg",
+    "filename": "mendini-mikiolone.jpg",
+    "reason": "nessun candidato scaricabile dopo 1 tentativi e filtri scarti/download; controlla _pipeline/log_errors.txt",
+    "time": "2026-07-22 18:19:55"
+  },
+  "mendini-settecento-tavolino": {
+    "nome": "Settecento Tavolino",
+    "designer": "Alessandro Mendini",
+    "azienda": "Glas Italia",
+    "foto": "mendini-settecento-tavolino.jpg",
+    "filename": "mendini-settecento-tavolino.jpg",
+    "reason": "nessun candidato scaricabile dopo 3 tentativi e filtri scarti/download; controlla _pipeline/log_errors.txt",
+    "time": "2026-07-22 18:21:22"
+  },
+  "mendini-crystal-surprise": {
+    "nome": "Crystal Surprise",
+    "designer": "Alessandro Mendini",
+    "azienda": "Swatch",
+    "foto": "mendini-crystal-surprise.jpg",
+    "filename": "mendini-crystal-surprise.jpg",
+    "reason": "nessun candidato scaricabile dopo 1 tentativi e filtri scarti/download; controlla _pipeline/log_errors.txt",
+    "time": "2026-07-22 18:24:57"
+  },
+  "mendini-edge": {
+    "nome": "Edge",
+    "designer": "Alessandro Mendini",
+    "azienda": "Artemide",
+    "foto": "mendini-edge.jpg",
+    "filename": "mendini-edge.jpg",
+    "reason": "nessun candidato scaricabile dopo 1 tentativi e filtri scarti/download; controlla _pipeline/log_errors.txt",
+    "time": "2026-07-22 18:26:51"
+  },
+  "mendini-maggio": {
+    "nome": "Maggio",
+    "designer": "Alessandro Mendini",
+    "azienda": "Porro",
+    "foto": "mendini-maggio.jpg",
+    "filename": "mendini-maggio.jpg",
+    "reason": "nessun candidato scaricabile dopo 1 tentativi e filtri scarti/download; controlla _pipeline/log_errors.txt",
+    "time": "2026-07-22 18:29:41"
+  },
+  "mendini-spot-the-dot": {
+    "nome": "Spot the Dot",
+    "designer": "Alessandro Mendini",
+    "azienda": "Swatch",
+    "foto": "mendini-spot-the-dot.jpg",
+    "filename": "mendini-spot-the-dot.jpg",
+    "reason": "nessun candidato scaricabile dopo 1 tentativi e filtri scarti/download; controlla _pipeline/log_errors.txt",
+    "time": "2026-07-22 18:30:06"
+  },
+  "mendini-nativo-stileme": {
+    "nome": "Nativo Stileme",
+    "designer": "Alessandro Mendini",
+    "azienda": "Azzurra Ceramica",
+    "foto": "mendini-nativo-stileme.jpg",
+    "filename": "mendini-nativo-stileme.jpg",
+    "reason": "nessun candidato scaricabile dopo 3 tentativi e filtri scarti/download; controlla _pipeline/log_errors.txt",
+    "time": "2026-07-22 18:31:42"
+  },
+  "boeri-cubotto": {
+    "nome": "Cubotto",
+    "designer": "Cini Boeri",
+    "azienda": "Arflex",
+    "foto": "boeri-cubotto.jpg",
+    "filename": "boeri-cubotto.jpg",
+    "reason": "nessun candidato scaricabile dopo 1 tentativi e filtri scarti/download; controlla _pipeline/log_errors.txt",
+    "time": "2026-07-22 18:33:43"
+  },
+  "boeri-bibebo": {
+    "nome": "Bibebo",
+    "designer": "Cini Boeri",
+    "azienda": "Arnolfo di Cambio",
+    "foto": "boeri-bibebo.jpg",
+    "filename": "boeri-bibebo.jpg",
+    "reason": "nessun candidato scaricabile dopo 1 tentativi e filtri scarti/download; controlla _pipeline/log_errors.txt",
+    "time": "2026-07-22 18:34:34"
+  },
+  "boeri-mod-235": {
+    "nome": "Mod. 235",
+    "designer": "Cini Boeri",
+    "azienda": "Arteluce",
+    "foto": "boeri-mod-235.jpg",
+    "filename": "boeri-mod-235.jpg",
+    "reason": "nessun candidato scaricabile dopo 3 tentativi e filtri scarti/download; controlla _pipeline/log_errors.txt",
+    "time": "2026-07-22 18:35:10"
+  },
+  "boeri-shadows": {
+    "nome": "Shadows",
+    "designer": "Cini Boeri",
+    "azienda": "ICF",
+    "foto": "boeri-shadows.jpg",
+    "filename": "boeri-shadows.jpg",
+    "reason": "nessun candidato scaricabile dopo 3 tentativi e filtri scarti/download; controlla _pipeline/log_errors.txt",
+    "time": "2026-07-22 18:38:20"
+  },
+  "boeri-feltro": {
+    "nome": "Feltro",
+    "designer": "Cini Boeri",
+    "azienda": "Venini",
+    "foto": "boeri-feltro.jpg",
+    "filename": "boeri-feltro.jpg",
+    "reason": "nessun candidato scaricabile dopo 3 tentativi e filtri scarti/download; controlla _pipeline/log_errors.txt",
+    "time": "2026-07-22 18:40:16"
+  },
+  "boeri-ledletto": {
+    "nome": "Ledletto",
+    "designer": "Cini Boeri",
+    "azienda": "Arflex",
+    "foto": "boeri-ledletto.jpg",
+    "filename": "boeri-ledletto.jpg",
+    "reason": "nessun candidato scaricabile dopo 1 tentativi e filtri scarti/download; controlla _pipeline/log_errors.txt",
+    "time": "2026-07-22 18:41:37"
+  },
+  "mari-in-attesa": {
+    "nome": "In Attesa",
+    "designer": "Enzo Mari",
+    "azienda": "Danese Milano",
+    "foto": "mari-in-attesa.jpg",
+    "filename": "mari-in-attesa.jpg",
+    "reason": "nessun candidato scaricabile dopo 1 tentativi e filtri scarti/download; controlla _pipeline/log_errors.txt",
+    "time": "2026-07-22 18:43:21"
+  },
+  "mari-legato": {
+    "nome": "Legato",
+    "designer": "Enzo Mari",
+    "azienda": "Driade",
+    "foto": "mari-legato.jpg",
+    "filename": "mari-legato.jpg",
+    "reason": "nessun candidato scaricabile dopo 1 tentativi e filtri scarti/download; controlla _pipeline/log_errors.txt",
+    "time": "2026-07-22 18:45:15"
+  },
+  "vigo-serie-top-divano-bar-buffet": {
+    "nome": "Serie TOP - divano / bar / buffet",
+    "designer": "Nanda Vigo",
+    "azienda": "Fai International",
+    "foto": "vigo-serie-top-divano-bar-buffet.jpg",
+    "filename": "vigo-serie-top-divano-bar-buffet.jpg",
+    "reason": "nessun candidato scaricabile dopo 3 tentativi e filtri scarti/download; controlla _pipeline/log_errors.txt",
+    "time": "2026-07-22 18:47:03"
+  },
+  "vigo-serie-top-mobile-tv-sound": {
+    "nome": "Serie TOP - mobile TV / sound",
+    "designer": "Nanda Vigo",
+    "azienda": "Fai International",
+    "foto": "vigo-serie-top-mobile-tv-sound.jpg",
+    "filename": "vigo-serie-top-mobile-tv-sound.jpg",
+    "reason": "nessun candidato scaricabile dopo 3 tentativi e filtri scarti/download; controlla _pipeline/log_errors.txt",
+    "time": "2026-07-22 18:47:54"
+  },
+  "vigo-corner": {
+    "nome": "Corner",
+    "designer": "Nanda Vigo",
+    "azienda": "Driade",
+    "foto": "vigo-corner.jpg",
+    "filename": "vigo-corner.jpg",
+    "reason": "nessun candidato scaricabile dopo 1 tentativi e filtri scarti/download; controlla _pipeline/log_errors.txt",
+    "time": "2026-07-22 18:49:45"
+  },
+  "vigo-explorer": {
+    "nome": "Explorer",
+    "designer": "Nanda Vigo",
+    "azienda": "Arredoluce",
+    "foto": "vigo-explorer.jpg",
+    "filename": "vigo-explorer.jpg",
+    "reason": "nessun candidato scaricabile dopo 1 tentativi e filtri scarti/download; controlla _pipeline/log_errors.txt",
+    "time": "2026-07-22 18:50:16"
+  },
+  "vigo-nevada": {
+    "nome": "Nevada",
+    "designer": "Nanda Vigo",
+    "azienda": "Driade",
+    "foto": "vigo-nevada.jpg",
+    "filename": "vigo-nevada.jpg",
+    "reason": "nessun candidato scaricabile dopo 3 tentativi e filtri scarti/download; controlla _pipeline/log_errors.txt",
+    "time": "2026-07-22 18:51:36"
+  },
+  "vigo-video": {
+    "nome": "Video",
+    "designer": "Nanda Vigo",
+    "azienda": "Minilumen Design",
+    "foto": "vigo-video.jpg",
+    "filename": "vigo-video.jpg",
+    "reason": "nessun candidato nuovo dalla ricerca dopo 3 tentativi (gli altri erano gia' in scarti o bocciati)",
+    "time": "2026-07-22 18:51:47"
+  },
+  "vigo-easy": {
+    "nome": "Easy",
+    "designer": "Nanda Vigo",
+    "azienda": "Glas Italia",
+    "foto": "vigo-easy.jpg",
+    "filename": "vigo-easy.jpg",
+    "reason": "nessun candidato scaricabile dopo 3 tentativi e filtri scarti/download; controlla _pipeline/log_errors.txt",
+    "time": "2026-07-22 18:53:03"
+  },
+  "vigo-collezione-n-5": {
+    "nome": "Collezione n. 5",
+    "designer": "Nanda Vigo",
+    "azienda": "Artelano",
+    "foto": "vigo-collezione-n-5.jpg",
+    "filename": "vigo-collezione-n-5.jpg",
+    "reason": "nessun candidato scaricabile dopo 3 tentativi e filtri scarti/download; controlla _pipeline/log_errors.txt",
+    "time": "2026-07-22 18:53:28"
+  },
+  "vigo-classico": {
+    "nome": "Classico",
+    "designer": "Nanda Vigo",
+    "azienda": "Glas Italia",
+    "foto": "vigo-classico.jpg",
+    "filename": "vigo-classico.jpg",
+    "reason": "nessun candidato scaricabile dopo 3 tentativi e filtri scarti/download; controlla _pipeline/log_errors.txt",
+    "time": "2026-07-22 18:53:54"
+  },
+  "vigo-modern-art": {
+    "nome": "Modern Art",
+    "designer": "Nanda Vigo",
+    "azienda": "Glas Italia",
+    "foto": "vigo-modern-art.jpg",
+    "filename": "vigo-modern-art.jpg",
+    "reason": "nessun candidato scaricabile dopo 1 tentativi e filtri scarti/download; controlla _pipeline/log_errors.txt",
+    "time": "2026-07-22 18:54:57"
+  },
+  "vigo-splash": {
+    "nome": "Splash",
+    "designer": "Nanda Vigo",
+    "azienda": "Interior Gabbianelli",
+    "foto": "vigo-splash.jpg",
+    "filename": "vigo-splash.jpg",
+    "reason": "nessun candidato scaricabile dopo 3 tentativi e filtri scarti/download; controlla _pipeline/log_errors.txt",
+    "time": "2026-07-22 18:55:27"
+  },
+  "vigo-forty": {
+    "nome": "Forty",
+    "designer": "Nanda Vigo",
+    "azienda": "Glas Italia",
+    "foto": "vigo-forty.jpg",
+    "filename": "vigo-forty.jpg",
+    "reason": "nessun candidato scaricabile dopo 3 tentativi e filtri scarti/download; controlla _pipeline/log_errors.txt",
+    "time": "2026-07-22 18:55:57"
+  },
+  "sottsass-terrazzo": {
+    "nome": "Terrazzo Flooring",
+    "designer": "Ettore Sottsass",
+    "azienda": "Memphis",
+    "foto": "sottsass-terrazzo.jpg",
+    "filename": "sottsass-terrazzo.jpg",
+    "reason": "nessun candidato scaricabile dopo 3 tentativi e filtri scarti/download; controlla _pipeline/log_errors.txt",
+    "time": "2026-07-23 14:46:27"
+  },
+  "lucchi-tolomeo": {
+    "nome": "Tolomeo",
+    "designer": "Michele De Lucchi, Giancarlo Fassina",
+    "azienda": "Artemide",
+    "foto": "lucchi-tolomeo.jpg",
+    "filename": "lucchi-tolomeo.jpg",
+    "reason": "nessun candidato scaricabile dopo 1 tentativi e filtri scarti/download; controlla _pipeline/log_errors.txt",
+    "time": "2026-07-23 14:48:43"
+  },
+  "mari-autoprogettazione": {
+    "nome": "Autoprogettazione",
+    "designer": "Enzo Mari",
+    "azienda": "Simon International",
+    "foto": "mari-autoprogettazione.jpg",
+    "filename": "mari-autoprogettazione.jpg",
+    "reason": "nessun candidato scaricabile dopo 1 tentativi e filtri scarti/download; controlla _pipeline/log_errors.txt",
+    "time": "2026-07-23 14:53:44"
+  },
+  "bellini-le-bambole-armchair": {
+    "nome": "Le Bambole Armchair",
+    "designer": "Mario Bellini",
+    "azienda": "B&B Italia",
+    "foto": "bellini-le-bambole-armchair.jpg",
+    "filename": "bellini-le-bambole-armchair.jpg",
+    "reason": "nessun candidato scaricabile dopo 1 tentativi e filtri scarti/download; controlla _pipeline/log_errors.txt",
+    "time": "2026-07-23 14:54:49"
   }
 }

@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm run *)",
+      "Bash(node -e ' *)",
+      "Bash(awk 'NR==2823,NR==3000{print NR\": \"$0}' src/App.jsx)",
+      "Bash(git revert *)",
+      "Bash(node scripts/genera-thumbnail-immagini.mjs)",
+      "Bash(git check-ignore *)",
+      "Bash(xargs -I{} sh -c 'echo ==={}===; cat {}')"
+    ]
+  }
+}

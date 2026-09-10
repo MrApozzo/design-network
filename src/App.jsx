@@ -427,17 +427,36 @@ const SETTORE_CATEGORIA = {
 }
 function categoriaAzienda(az) { return SETTORE_CATEGORIA[az.settore] || "Altro" }
 
-// Ordine delle fasce di categoria nella vista aziende: dalla categoria con
-// l'azienda più antica (in cima) alla più recente, secondo la scelta cronologica.
+// Ordine delle fasce di categoria nella vista aziende: ordine curatoriale
+// scelto esplicitamente (non più cronologico), dall'alto in basso.
 const ORDINE_CATEGORIE_AZIENDE = [
-  "Arredo", "Elettronica e macchine", "Vetro, ceramica, tavola", "Design e ricerca",
+  "Elettronica e macchine", "Vetro, ceramica, tavola", "Arredo", "Design e ricerca",
   "Illuminazione", "Ufficio", "Oreficeria e accessori", "Altro",
 ]
+
+// All'interno di una fascia, tre tratti aggiuntivi spostano verticalmente
+// un'azienda rispetto al suo posto puramente cronologico, creando piccoli
+// sottogruppi visivamente riconoscibili invece di un'unica diagonale
+// indistinta. I tratti sono indipendenti e si sommano: un'azienda con più di
+// uno (o nessuno) finisce in una posizione unica.
+// - Avanguardie/radicali: aziende storicamente definite dal design radicale o
+//   anti-design (elenco manuale, sono poche e ben note).
+// - Miste: aziende con una quota consistente (≥20%, almeno 3 prodotti) di
+//   catalogo in un'altra categoria — qui rilevata guardando l'illuminazione,
+//   il caso reale principale nel dataset (es. Kartell, Azucena, Tom Dixon).
+// - Moderne: aziende di posizionamento contemporaneo/prestigioso, da
+//   distinguere dalle avanguardie/radicali anche quando condividono la
+//   stessa fascia di categoria (es. Danese Milano non è un collettivo
+//   radicale come Archizoom, pur stando entrambi in "Design e ricerca").
+const AZIENDA_AVANGUARDIA = new Set(["Poltronova", "Gufram"])
+const AZIENDA_MISTA = new Set(["Azucena", "Kartell", "Produzione Privata", "Tom Dixon"])
+const AZIENDA_MODERNA = new Set(["Danese Milano"])
 
 function cercaEntita(query, limit = 8) {
   const q = query.toLowerCase()
   return [
     ...designers.filter(d => d.nome.toLowerCase().includes(q)).map(d => ({ tipo: "designer", nome: d.nome })),
+    ...aziendeData.filter(a => a.nome.toLowerCase().includes(q)).map(a => ({ tipo: "azienda", nome: a.nome, sub: String(a.fondata) })),
     ...prodotti.filter(p => p.nome.toLowerCase().includes(q)).map(p => ({ tipo: "prodotto", nome: p.nome, sub: getDesigners(p).join(", ") })),
   ].slice(0, limit)
 }
@@ -698,6 +717,7 @@ const TESTI = {
     riconoscimenti: "Riconoscimenti",
     periodo: "Periodo",
     esponenti: "Esponenti",
+    prodottiAzienda: "Prodotti",
     footerRiga1: "Un secolo di design occidentale, 1880–1980",
     footerRiga2: "Tutti i diritti riservati",
     voci: { domanda: "Intro", manifesto: "Manifesto", contatti: "Contatti", credits: "Credits", contribuisci: "Contribuisci" },
@@ -753,6 +773,7 @@ const TESTI = {
     riconoscimenti: "Awards",
     periodo: "Period",
     esponenti: "Members",
+    prodottiAzienda: "Products",
     footerRiga1: "A century of Western design, 1880–1980",
     footerRiga2: "All rights reserved",
     voci: { domanda: "Intro", manifesto: "Manifesto", contatti: "Contact", credits: "Credits", contribuisci: "Contribute" },
@@ -1130,6 +1151,9 @@ function App() {
       cameraAnimId = requestAnimationFrame(step)
     }
     const animated = {}
+    // Stato "vita" delle linee vita delle aziende (analogo a animated[node].vita
+    // per i designer, ma le aziende non sono nodi del grafo): chiave = nome azienda.
+    const animatedAziende = {}
     const dpr = window.devicePixelRatio || 1
     let viewportMin = Math.min(window.innerWidth, window.innerHeight)
     let mouseX = -100, mouseY = -100
@@ -1324,7 +1348,14 @@ function App() {
           : legameDiretto ? STILE.passo_verticale_legame
           : STILE.passo_verticale_base
         const minGap = (prevRaggio + raggio) + STILE.min_distanza_y
-        y = prevY - Math.max(passoStandard, minGap)
+        // Coprogetto/legame/base sono già multipli puliti di un'unica unità di
+        // griglia (6/18/30 → unità 6): quando un'orbita grande costringe a più
+        // spazio di quanto il passo nominale preveda, arrotondiamo comunque al
+        // multiplo di griglia superiore, invece di usare il valore "grezzo"
+        // dell'orbita — così ogni passo automatico resta sulla stessa griglia,
+        // non solo quelli senza designer affollati.
+        const passoScelto = Math.max(passoStandard, minGap)
+        y = prevY - Math.ceil(passoScelto / STILE.passo_verticale_coprogetto) * STILE.passo_verticale_coprogetto
       }
       prevY = y
       prevRaggio = raggio
@@ -1665,42 +1696,78 @@ function App() {
     // "Arredo") viene "rotta" in bande distinte dalle altre tipologie di prodotto.
     const azOrdinate = [...aziendeData].sort((a, b) => a.fondata - b.fondata)
 
-    // Costruisce la mappa posizioni dato un passo-base tra aziende consecutive:
-    // usa un cursore che avanza in base al contenuto EFFETTIVO di ogni fascia
-    // (Arredo ha 71 aziende, Oreficeria solo 3: un offset fisso tra fasce le
-    // farebbe sovrapporre), così nessuna fascia invade quella successiva.
+    // Griglia unica: ogni azienda occupa uno slot intero, un multiplo esatto di
+    // passoAz — mai un valore "raffazzonato" da somme di scostamenti diversi
+    // (il vecchio zigzag + tratti + de-collisione poteva far coincidere due
+    // aziende sullo stesso valore per puro caso aritmetico, es. Cassina e
+    // Kartell). Il cursore avanza sempre in una sola direzione: non serve
+    // nessuna correzione a posteriori, la griglia è pulita per costruzione.
+    //
+    // "Gruppetti" (dentro Arredo: Avanguardie, Miste, Moderne; dentro una
+    // fascia numerosa: la corsa cronologica spezzata ogni tot aziende) sono
+    // semplicemente sotto-sequenze con un salto di GAP_GRUPPO_AZ passi di
+    // griglia PRIMA di iniziare — non più uno scostamento sommato al volo.
+    // Per allargare/restringere la spaziatura tra gruppetti, cambia solo
+    // GAP_GRUPPO_AZ (in passi di griglia): un numero, non più tre costanti
+    // diverse da tenere in equilibrio.
+    const GAP_GRUPPO_AZ = 3
+    const GAP_CATEGORIA_AZ = 15
+    const DIMENSIONE_GRUPPO_CRONOLOGICO = 6
+    const SOGLIA_SPEZZA_GRUPPO_CRONOLOGICO = 20
+
     function costruisciLayoutAziende(passoAz) {
       const mappa = {}
       const positioned = new Set()
-      const gapFascia = passoAz * 6
       let cursoreFasciaY = 0
+
       ORDINE_CATEGORIE_AZIENDE.forEach((categoria) => {
         const aziendeCategoria = azOrdinate.filter((az) => categoriaAzienda(az) === categoria)
         if (aziendeCategoria.length === 0) return
-        let azCurrentY = cursoreFasciaY
-        aziendeCategoria.forEach((az) => {
-          if (positioned.has(az.nome)) return
-          const nProd = prodottiPerAzienda[az.nome]?.length || 0
-          mappa[az.nome] = { x: annoToX(az.fondata), y: azCurrentY, dati: az, raggio: calcolaRaggio(nProd) }
-          positioned.add(az.nome)
-          const gruppo = coLicenzaGruppi[az.nome]
-          let stepAfter = passoAz
-          if (gruppo && gruppo.size > 1) {
-            // Solo i partner della stessa fascia/categoria vengono raggruppati
-            // più vicini: un partner in un'altra categoria resta nella propria fascia.
-            const partners = [...gruppo].filter((n) => !positioned.has(n) && AZIENDE_MAP[n] && categoriaAzienda(AZIENDE_MAP[n]) === categoria)
-            partners.forEach((partner) => {
-              const partnerAz = AZIENDE_MAP[partner]
-              const nProdP = prodottiPerAzienda[partner]?.length || 0
-              azCurrentY -= passoAz * 0.5
-              mappa[partner] = { x: annoToX(partnerAz.fondata), y: azCurrentY, dati: partnerAz, raggio: calcolaRaggio(nProdP) }
-              positioned.add(partner)
-            })
-            stepAfter = passoAz * 0.8
-          }
-          azCurrentY -= stepAfter
+
+        // Sotto-gruppi ORDINATI dentro la fascia: prima le aziende "normali"
+        // (in ordine cronologico, spezzate ogni DIMENSIONE_GRUPPO_CRONOLOGICO
+        // se la fascia è numerosa), poi Avanguardie, Miste, Moderne — ciascuno
+        // un blocchetto sequenziale proprio, staccato dal precedente.
+        const normali = aziendeCategoria.filter((az) => !AZIENDA_AVANGUARDIA.has(az.nome) && !AZIENDA_MISTA.has(az.nome) && !AZIENDA_MODERNA.has(az.nome))
+        const sottogruppi = [
+          { lista: normali, spezzaOgni: normali.length > SOGLIA_SPEZZA_GRUPPO_CRONOLOGICO ? DIMENSIONE_GRUPPO_CRONOLOGICO : 0 },
+          { lista: aziendeCategoria.filter((az) => AZIENDA_AVANGUARDIA.has(az.nome)), spezzaOgni: 0 },
+          { lista: aziendeCategoria.filter((az) => AZIENDA_MISTA.has(az.nome)), spezzaOgni: 0 },
+          { lista: aziendeCategoria.filter((az) => AZIENDA_MODERNA.has(az.nome)), spezzaOgni: 0 },
+        ].filter((sg) => sg.lista.length > 0)
+
+        let y = cursoreFasciaY
+        sottogruppi.forEach((sg, sgIdx) => {
+          if (sgIdx > 0) y -= passoAz * GAP_GRUPPO_AZ
+          sg.lista.forEach((az, idx) => {
+            if (positioned.has(az.nome)) return
+            if (sg.spezzaOgni > 0 && idx > 0 && idx % sg.spezzaOgni === 0) y -= passoAz * GAP_GRUPPO_AZ
+            const nProd = prodottiPerAzienda[az.nome]?.length || 0
+            mappa[az.nome] = { x: annoToX(az.fondata), y, dati: az, raggio: calcolaRaggio(nProd) }
+            positioned.add(az.nome)
+            y -= passoAz
+            // Co-licenza: i partner della stessa fascia si inseriscono subito
+            // dopo, un mezzo passo più vicini — restano sulla stessa griglia
+            // (un multiplo di passoAz/2), niente più margini "di sicurezza":
+            // essendo strettamente sequenziale non può mai coincidere con
+            // nient'altro.
+            const gruppo = coLicenzaGruppi[az.nome]
+            if (gruppo && gruppo.size > 1) {
+              const partners = [...gruppo].filter((n) => !positioned.has(n) && AZIENDE_MAP[n] && categoriaAzienda(AZIENDE_MAP[n]) === categoria)
+              // Distribuisce gli N partner nello slot tra l'anchor (y + passoAz)
+              // e la prossima azienda (y): con un solo partner cade esattamente a
+              // metà, con più partner si dividono lo slot senza mai coincidere.
+              const passoPartner = passoAz / (partners.length + 1)
+              partners.forEach((partner, i) => {
+                const yPartner = (y + passoAz) - passoPartner * (i + 1)
+                const partnerAz = AZIENDE_MAP[partner]
+                mappa[partner] = { x: annoToX(partnerAz.fondata), y: yPartner, dati: partnerAz, raggio: calcolaRaggio(prodottiPerAzienda[partner]?.length || 0) }
+                positioned.add(partner)
+              })
+            }
+          })
         })
-        cursoreFasciaY = azCurrentY - gapFascia
+        cursoreFasciaY = y - passoAz * GAP_CATEGORIA_AZ
       })
       return { mappa, estensioneY: -cursoreFasciaY }
     }
@@ -1712,21 +1779,66 @@ function App() {
     // dell'estensione X reale, così la diagonale ha sempre un'inclinazione
     // leggibile (né troppo orizzontale né troppo verticale) qualunque sia la
     // larghezza effettiva della timeline.
+    // Il fattore può solo ALLARGARE il passo base, mai restringerlo: in vista
+    // timeline ogni azienda deve restare su una riga propria e distinguibile
+    // (prodotti di aziende diverse non si capirebbe più a chi appartengono),
+    // quindi il passo minimo di STILE.passo_verticale_base (lo stesso usato,
+    // con buoni risultati, per le righe dei designer) è un pavimento, non un
+    // punto di partenza comprimibile. Se il contenuto naturale è già più alto
+    // della proporzione target va bene: la diagonale sarà più verticale del
+    // 75%, ma le righe restano leggibili — priorità più alta dell'inclinazione.
     const PROPORZIONE_Y_SU_X_AZIENDE = 0.75
     const provaAziende = costruisciLayoutAziende(STILE.passo_verticale_base)
     const estensioneXAziende = X_MAX - X_MIN
     const fattoreScalaAziende = provaAziende.estensioneY > 0
-      ? (estensioneXAziende * PROPORZIONE_Y_SU_X_AZIENDE) / provaAziende.estensioneY
+      ? Math.max(1, (estensioneXAziende * PROPORZIONE_Y_SU_X_AZIENDE) / provaAziende.estensioneY)
       : 1
     const { mappa: aziendePosizioniMap } = costruisciLayoutAziende(STILE.passo_verticale_base * fattoreScalaAziende)
 
+    // Stesso criterio delle orbite designer (raggioBaseProdotto/Multi): il
+    // raggio cresce con l'età dell'azienda al momento del prodotto (fondazione
+    // → prodotto), sull'età media se più aziende sono coinvolte (co-licenza).
+    function raggioBaseProdottoAzienda(anno, nomiAzienda) {
+      const annoNum = typeof anno === "number" ? anno : 1900
+      const etaMedia = nomiAzienda.reduce((s, nome) => {
+        const fondata = AZIENDE_MAP[nome]?.fondata ?? 1900
+        return s + (annoNum - fondata)
+      }, 0) / Math.max(1, nomiAzienda.length)
+      const etaEffettiva = Math.min(STILE.eta_massima, Math.max(STILE.eta_riferimento, etaMedia))
+      return STILE.eta_raggio_base + (etaEffettiva - STILE.eta_riferimento) * STILE.eta_unita_per_anno
+    }
+
+    // Settori per tipologia di prodotto (stesso calcolaSettoriDinamici/
+    // calcolaAngoliPerProdotto usati per l'orbita dei designer, qui applicati
+    // al catalogo di ciascuna azienda): l'angolo di un prodotto nell'orbita
+    // dipende dalla sua categoria, non solo dall'ordine di inserimento.
+    const settoriPerAzienda = {}
+    const angoliPerAzienda = {}
+    // Conteggio prodotti per anno di ciascuna azienda: nella timeline azienda,
+    // come in quella designer, i prodotti dello stesso anno si scostano
+    // verticalmente (STILE.timeline_scarto_stesso_anno) invece di sovrapporsi.
+    const conteggioPerAnnoAzienda = {}
+    Object.entries(prodottiPerAzienda).forEach(([azNome, nodi]) => {
+      const listaProdotti = nodi.map((n) => graph.getNodeAttribute(n, "dati"))
+      const settori = calcolaSettoriDinamici(listaProdotti)
+      settoriPerAzienda[azNome] = settori
+      angoliPerAzienda[azNome] = calcolaAngoliPerProdotto(settori)
+      const conteggio = {}
+      listaProdotti.forEach((p) => {
+        const a = p.anno || 1900
+        conteggio[a] = (conteggio[a] || 0) + 1
+      })
+      conteggioPerAnnoAzienda[azNome] = conteggio
+    })
+    const indiceCorrentePerAnnoAzienda = {}
+
     // Calcola posizioni orbita di ogni prodotto attorno alla sua azienda
     const prodottiOrbitaAz = {}
-    const conteggioOrbitaAz = {}
     graph.forEachNode((node, attr) => {
       if (attr.tipo !== "prodotto") return
       const p = attr.dati
       const azs = getAziende(p).filter((az) => aziendePosizioniMap[az])
+      const chiaveAz = azs.length > 0 ? azs[0] : null
       let azOrbitaX, azOrbitaY
       if (azs.length === 0) {
         // Nessuna azienda: fluttua sull'asse X all'anno di produzione
@@ -1736,21 +1848,34 @@ function App() {
         // Centro attorno a cui orbitare (mettipunto di tutte le aziende valide)
         const centroX = azs.reduce((s, az) => s + aziendePosizioniMap[az].x, 0) / azs.length
         const centroY = azs.reduce((s, az) => s + aziendePosizioniMap[az].y, 0) / azs.length
-        const nProdAz = Math.max(...azs.map((az) => prodottiPerAzienda[az]?.length || 1))
-        const raggio = calcolaRaggio(nProdAz) * (isMobile ? STILE.orbita_scala_mobile : 1)
-        const chiaveAz = azs[0]
-        if (!conteggioOrbitaAz[chiaveAz]) conteggioOrbitaAz[chiaveAz] = 0
-        const idx = conteggioOrbitaAz[chiaveAz]++
-        const nTot = prodottiPerAzienda[chiaveAz]?.length || 1
-        const arcoInizio = Math.PI * STILE.arco_inizio
-        const arcoFine = Math.PI * STILE.arco_fine
-        const angolo = arcoInizio + (idx / Math.max(1, nTot - 1)) * (arcoFine - arcoInizio) + (hashStr(p.nome) - 0.5) * 0.3
+        const raggio = raggioBaseProdottoAzienda(p.anno, azs) * (isMobile ? STILE.orbita_scala_mobile : 1)
+        const infoAngolo = angoliPerAzienda[chiaveAz]?.get(p)
+        const angolo = infoAngolo
+          ? infoAngolo.centro + (hashStr(p.nome) - 0.5) * infoAngolo.sliceAngolo * STILE.arco_perturbazione
+          : Math.PI * STILE.arco_inizio
         azOrbitaX = centroX + Math.cos(angolo) * raggio
         azOrbitaY = centroY + Math.sin(angolo) * raggio
       }
       prodottiOrbitaAz[node] = { azOrbitaX, azOrbitaY }
       graph.setNodeAttribute(node, "aziendaOrbitaX", azOrbitaX)
       graph.setNodeAttribute(node, "aziendaOrbitaY", azOrbitaY)
+      // Timeline propria della vista aziende: stessa X (anno) della timeline
+      // designer, ma Y = riga della propria azienda invece che del designer,
+      // così attivare la timeline mentre si è in vista aziende non fa
+      // "tornare" i prodotti sulle righe dei designer. Stessa logica designer
+      // per i prodotti dello stesso anno: si scostano invece di sovrapporsi.
+      let azTimelineY = 0
+      if (chiaveAz) {
+        const anno = p.anno || 1900
+        if (!indiceCorrentePerAnnoAzienda[chiaveAz]) indiceCorrentePerAnnoAzienda[chiaveAz] = {}
+        const idxAnno = indiceCorrentePerAnnoAzienda[chiaveAz][anno] || 0
+        indiceCorrentePerAnnoAzienda[chiaveAz][anno] = idxAnno + 1
+        const nStessoAnno = conteggioPerAnnoAzienda[chiaveAz]?.[anno] || 1
+        const offsetVerticale = nStessoAnno > 1 ? (idxAnno - (nStessoAnno - 1) / 2) * STILE.timeline_scarto_stesso_anno : 0
+        const centroYTimeline = azs.reduce((s, az) => s + aziendePosizioniMap[az].y, 0) / azs.length
+        azTimelineY = centroYTimeline - offsetVerticale
+      }
+      graph.setNodeAttribute(node, "aziendaTimelineY", azTimelineY)
     })
 
     // Se la vista ripristinata da localStorage non è quella di default
@@ -1762,7 +1887,8 @@ function App() {
         if (attr.tipo !== "prodotto") return
         let tx, ty
         if (timelineAttivaRef.current) {
-          tx = attr.timelineX; ty = attr.timelineY
+          tx = attr.timelineX
+          ty = vistaCorrenteRef.current === "aziende" ? (attr.aziendaTimelineY ?? attr.timelineY) : attr.timelineY
         } else if (vistaCorrenteRef.current === "aziende") {
           tx = attr.aziendaOrbitaX ?? attr.timelineX
           ty = attr.aziendaOrbitaY ?? attr.timelineY
@@ -1960,6 +2086,18 @@ function App() {
       const logMax = Math.log(MAX_CAMERA_RATIO)
       const logMin = Math.log(MIN_CAMERA_RATIO)
       return (logMax - Math.log(ratio)) / (logMax - logMin)
+    }
+
+    // Le linee vita (designer e aziende) hanno uno spessore minimo fisso (legato
+    // al raggio minimo del pallino) che non scende oltre un certo punto, mentre
+    // tra 0% e 44% di zoom la spaziatura verticale tra le righe continua a
+    // restringersi: sotto quella soglia righe vicine si toccano e le bande,
+    // semitrasparenti, si sommano in una macchia scura. Dal 44% in su resta lo
+    // spessore normale, sotto si affina progressivamente verso lo zoom minimo.
+    function fattoreSottigliezzaVita() {
+      const t = zoomT()
+      if (t >= 0.44) return 1
+      return lerp(0.08, 1, t / 0.44)
     }
 
     // Inversa di zoomT(): converte una percentuale di zoom (0-1) nel ratio di
@@ -2190,7 +2328,7 @@ function App() {
           const vitaEndX = nascitaX + (annoToX(morto) - nascitaX) * vitaT
           const posNascita = renderer.graphToViewport({ x: nascitaX, y: attr.y })
           const posMorte = renderer.graphToViewport({ x: vitaEndX, y: attr.y })
-          const r = (animated[node]?.r ?? STILE.zoom_designer_min) * 0.8
+          const r = (animated[node]?.r ?? STILE.zoom_designer_min) * 0.8 * fattoreSottigliezzaVita()
           ctx.globalAlpha = 0.06 * vitaT
           ctx.fillStyle = "#000000"
           ctx.beginPath()
@@ -2215,7 +2353,7 @@ function App() {
             const vitaEndX = nascitaX + (annoToX(morto) - nascitaX) * vitaT
             const posNascita = renderer.graphToViewport({ x: nascitaX, y: attr.y })
             const posMorte = renderer.graphToViewport({ x: vitaEndX, y: attr.y })
-            const r = (animated[node]?.r ?? STILE.zoom_designer_min) * 0.8
+            const r = (animated[node]?.r ?? STILE.zoom_designer_min) * 0.8 * fattoreSottigliezzaVita()
             ctx.globalAlpha = 0.06 * vitaT
             ctx.fillStyle = "#000000"
             ctx.beginPath()
@@ -2231,8 +2369,69 @@ function App() {
         })
       }
 
+      // Linea vita delle aziende: stesso principio della linea vita dei designer
+      // (fondazione → chiusura, o fino ad oggi se ancora attiva), ma per le
+      // aziende — utile soprattutto in timeline per capire in quale arco
+      // temporale di attività dell'azienda cadono i suoi prodotti. Le aziende
+      // non sono nodi del grafo, quindi lo stato "vita" vive in animatedAziende.
+      const rAzVita = lerp(STILE.zoom_designer_min, STILE.zoom_designer_max, Math.pow(zoomT(), 1.2)) * vScale() * 0.8 * fattoreSottigliezzaVita()
+      if (vistaInterna === "timeline" && modelloVista === "aziende") {
+        Object.entries(aziendePosizioniMap).forEach(([nome, pos]) => {
+          if (!animatedAziende[nome]) animatedAziende[nome] = { vita: 0 }
+          animatedAziende[nome].vita = lerp(animatedAziende[nome].vita, 1, STILE.lerp_velocita * 0.7)
+          const vitaT = animatedAziende[nome].vita
+          const chiusura = pos.dati.chiusura || 2025
+          const nascitaX = annoToX(pos.dati.fondata)
+          const vitaEndX = nascitaX + (annoToX(chiusura) - nascitaX) * vitaT
+          const posNascita = renderer.graphToViewport({ x: nascitaX, y: pos.y })
+          const posMorte = renderer.graphToViewport({ x: vitaEndX, y: pos.y })
+          ctx.globalAlpha = 0.06 * vitaT
+          ctx.fillStyle = "#000000"
+          ctx.beginPath()
+          ctx.moveTo(posNascita.x, posNascita.y - rAzVita)
+          ctx.lineTo(posMorte.x, posMorte.y - rAzVita)
+          ctx.arc(posMorte.x, posMorte.y, rAzVita, -Math.PI / 2, Math.PI / 2)
+          ctx.lineTo(posNascita.x, posNascita.y + rAzVita)
+          ctx.arc(posNascita.x, posNascita.y, rAzVita, Math.PI / 2, -Math.PI / 2)
+          ctx.closePath()
+          ctx.fill()
+          ctx.globalAlpha = 1
+        })
+      } else {
+        Object.entries(aziendePosizioniMap).forEach(([nome, pos]) => {
+          const st = animatedAziende[nome]
+          if (!st || st.vita <= 0.01) return
+          st.vita = lerp(st.vita, 0, STILE.lerp_velocita * 0.7)
+          const vitaT = st.vita
+          const chiusura = pos.dati.chiusura || 2025
+          const nascitaX = annoToX(pos.dati.fondata)
+          const vitaEndX = nascitaX + (annoToX(chiusura) - nascitaX) * vitaT
+          const posNascita = renderer.graphToViewport({ x: nascitaX, y: pos.y })
+          const posMorte = renderer.graphToViewport({ x: vitaEndX, y: pos.y })
+          ctx.globalAlpha = 0.06 * vitaT
+          ctx.fillStyle = "#000000"
+          ctx.beginPath()
+          ctx.moveTo(posNascita.x, posNascita.y - rAzVita)
+          ctx.lineTo(posMorte.x, posMorte.y - rAzVita)
+          ctx.arc(posMorte.x, posMorte.y, rAzVita, -Math.PI / 2, Math.PI / 2)
+          ctx.lineTo(posNascita.x, posNascita.y + rAzVita)
+          ctx.arc(posNascita.x, posNascita.y, rAzVita, Math.PI / 2, -Math.PI / 2)
+          ctx.closePath()
+          ctx.fill()
+          ctx.globalAlpha = 1
+        })
+      }
+
       amoebaAlphaAnimata = lerp(amoebaAlphaAnimata, transizioneAttiva ? 0 : 1, STILE.lerp_velocita)
+      designerAlphaAnimata = lerp(designerAlphaAnimata, modelloVista === "aziende" ? 0 : 1, STILE.lerp_velocita)
+      aziendaAlphaAnimata = lerp(aziendaAlphaAnimata, modelloVista === "aziende" ? 1 : 0, STILE.lerp_velocita)
       gruppiCollettivi.forEach(({ nome, nodi }) => {
+        // Il contorno raggruppa prodotti per collettivo creativo (es. i tre
+        // architetti di BBPR insieme), a prescindere da chi li produce: ha senso
+        // solo in vista designer. In vista aziende i suoi membri sono sparsi
+        // ciascuno sulla propria azienda (anche in fasce/categorie diverse), e il
+        // contorno finirebbe per disegnare lunghe linee tra cluster non collegati.
+        if (modelloVista === "aziende") return
         if (amoebaAlphaAnimata < 0.01) return
         const nodiValidi = nodi.filter((n) => graph.hasNode(n))
         if (nodiValidi.length < 2) return
@@ -2360,7 +2559,11 @@ function App() {
         const posT = renderer.graphToViewport({ x: graph.getNodeAttribute(target, "x"), y: graph.getNodeAttribute(target, "y") })
 
         if (attr.tipo === "relazione") {
-          if (attr.attivo) {
+          // I designer sono nascosti in vista aziende: un legame rimasto "attivo"
+          // da prima di cambiare vista non deve restare visibile, altrimenti la
+          // linea punta a coordinate di un designer mai aggiornate per questa
+          // vista (scala completamente diversa da quella delle fasce azienda).
+          if (attr.attivo && modelloVista !== "aziende") {
             ctx.globalAlpha = 1
             ctx.beginPath()
             ctx.moveTo(posS.x, posS.y)
@@ -2374,8 +2577,10 @@ function App() {
         }
 
         if (attr.tipo === "prodotto") {
-          // In vista aziende gli edge designer→prodotto non si disegnano (gestiamo noi gli edge azienda→prodotto)
-          if (modelloVista === "aziende") return
+          // Dissolvenza con i designer: gli edge designer→prodotto sfumano
+          // insieme ai designer stessi invece di scomparire di scatto
+          // (gli edge azienda→prodotto sono gestiti a parte, con la loro dissolvenza).
+          if (designerAlphaAnimata < 0.01) return
           let edgeColor = STILE.edge_prodotto_colore
           let edgeWidth = STILE.edge_prodotto_size
           let edgeAlpha = 1
@@ -2395,7 +2600,7 @@ function App() {
               edgeAlpha = 0.06
             }
           }
-          ctx.globalAlpha = edgeAlpha
+          ctx.globalAlpha = edgeAlpha * designerAlphaAnimata
           ctx.beginPath()
           ctx.moveTo(posS.x, posS.y)
           const midX = (posS.x + posT.x) / 2
@@ -2432,8 +2637,9 @@ function App() {
       const inPrimoPiano = prodottoCliccato || ultimoProdottoHover
       graph.forEachNode((node, attr) => {
         if (attr.tipo === "designer") {
-          // In vista aziende nascondi designer (a meno che non sia prodotto cliccato che li mostra)
-          if (modelloVista === "aziende") return
+          // Dissolvenza incrociata con le aziende: restano nel set da disegnare
+          // finché non sono completamente sfumati, invece di scomparire di scatto.
+          if (designerAlphaAnimata < 0.01) return
           nodiDesigner.push({ node, attr })
         } else {
           nodiProdotti.push({ node, attr })
@@ -2448,9 +2654,9 @@ function App() {
         }
       }
 
-      // Nodi aziende (visibili solo in vista aziende)
+      // Nodi aziende: dissolvenza incrociata con i designer, non un taglio netto.
       const nodiAziende = []
-      if (modelloVista === "aziende") {
+      if (aziendaAlphaAnimata >= 0.01) {
         Object.entries(aziendePosizioniMap).forEach(([nome, pos]) => {
           const screen = renderer.graphToViewport({ x: pos.x, y: pos.y })
           if (screen.x < -60 || screen.x > w + 60 || screen.y < -60 || screen.y > h + 60) return
@@ -2463,7 +2669,8 @@ function App() {
       nodiFiltrati.forEach(({ node, attr }) => {
         const pos = renderer.graphToViewport({ x: attr.x, y: attr.y })
         const r = animated[node]?.r ?? STILE.zoom_prodotto_min
-        const alpha = animated[node]?.alpha ?? 1
+        const alpha = (animated[node]?.alpha ?? 1) * (attr.tipo === "designer" ? designerAlphaAnimata : 1)
+        if (alpha < 0.01) return
 
         if (pos.x < -r || pos.x > w + r || pos.y < -r || pos.y > h + r) return
 
@@ -2574,15 +2781,15 @@ function App() {
         ctx.globalAlpha = 1
       })
 
-      // Rendering nodi aziende (solo in vista aziende)
-      if (modelloVista === "aziende") {
+      // Rendering nodi aziende: dissolvenza incrociata con i designer.
+      if (aziendaAlphaAnimata >= 0.01) {
         nodiAziende.forEach(({ nome, pos: azPos, screen }) => {
           const rAz = lerp(STILE.zoom_designer_min, STILE.zoom_designer_max, Math.pow(zoomT(), 1.2)) * vScale()
           const imgSrcAz = `${import.meta.env.BASE_URL}immagini_thumb/${azPos.dati.logo}`
           const imgAz = imgCache[imgSrcAz]
           const haImgAz = imgAz && imgAz.complete && imgAz.naturalWidth > 0
 
-          ctx.globalAlpha = 1
+          ctx.globalAlpha = aziendaAlphaAnimata
           if (!haImgAz) {
             ctx.beginPath()
             ctx.arc(screen.x, screen.y, rAz, 0, Math.PI * 2)
@@ -2618,11 +2825,11 @@ function App() {
           const wNomeAz = ctx.measureText(nomeAz).width
           ctx.font = `${STILE.label_date_peso} ${labelDesignerSize - 1}px Roboto`
           const wSubAz = ctx.measureText(subAz).width
-          ctx.globalAlpha = 0.85
+          ctx.globalAlpha = 0.85 * aziendaAlphaAnimata
           ctx.fillStyle = bgColor
           ctx.fillRect(lx - pad, lyStart - labelDesignerSize, wNomeAz + pad * 2, labelDesignerSize + pad)
           ctx.fillRect(lx - pad, lyStart + 1, wSubAz + pad * 2, (labelDesignerSize - 1) + pad)
-          ctx.globalAlpha = 1
+          ctx.globalAlpha = aziendaAlphaAnimata
           ctx.textAlign = "left"
           ctx.fillStyle = STILE.label_designer_colore
           ctx.font = `700 ${labelDesignerSize}px Roboto`
@@ -2632,7 +2839,7 @@ function App() {
           ctx.fillText(subAz, lx, lyStart + labelDesignerSize + 5)
         })
 
-        // Edges da aziende a prodotti (solo in vista aziende, non timeline)
+        // Edges da aziende a prodotti (dissolvenza con le aziende, non in timeline)
         if (!timelineVista) {
           graph.forEachNode((node, attr) => {
             if (attr.tipo !== "prodotto") return
@@ -2643,7 +2850,7 @@ function App() {
               const azPos2 = aziendePosizioniMap[azNome]
               const azScreen = renderer.graphToViewport({ x: azPos2.x, y: azPos2.y })
               const alphaEdge = animated[node]?.alpha ?? 1
-              ctx.globalAlpha = 0.3 * alphaEdge
+              ctx.globalAlpha = 0.3 * alphaEdge * aziendaAlphaAnimata
               ctx.beginPath()
               ctx.moveTo(azScreen.x, azScreen.y)
               const midX2 = (azScreen.x + prodPos.x) / 2
@@ -2973,6 +3180,11 @@ function App() {
     let vistaInterna = timelineVista ? "timeline" : modelloVista // "designer" | "aziende" | "timeline"
     let transizioneAttiva = false
     let amoebaAlphaAnimata = 1
+    // Dissolvenza incrociata designer/aziende: invece di comparire/scomparire
+    // di scatto al cambio vista, i designer e le aziende sfumano gradualmente
+    // (i prodotti restano animati via lerp delle coordinate come già avveniva).
+    let designerAlphaAnimata = modelloVista === "aziende" ? 0 : 1
+    let aziendaAlphaAnimata = modelloVista === "aziende" ? 1 : 0
 
     function raccogliProdotti() {
       const lista = []
@@ -3005,7 +3217,8 @@ function App() {
         const daY = attr.y
         let aX, aY
         if (tlOn) {
-          aX = attr.timelineX; aY = attr.timelineY
+          aX = attr.timelineX
+          aY = modello === "aziende" ? (attr.aziendaTimelineY ?? attr.timelineY) : attr.timelineY
         } else if (modello === "aziende") {
           aX = attr.aziendaOrbitaX ?? attr.timelineX
           aY = attr.aziendaOrbitaY ?? attr.timelineY
@@ -3035,16 +3248,25 @@ function App() {
     setRidisegnaFn(() => () => richiediDisegnoOverlay(18))
     setCentraFn(() => (cercaNome, tipo, opzioni) => {
       const apriPannello = !opzioni || opzioni.apriPannello !== false
-      const tPercent = opzioni && typeof opzioni.tPercent === "number" ? opzioni.tPercent : (tipo === "designer" ? 0.75 : 0.95)
+      const tPercent = opzioni && typeof opzioni.tPercent === "number" ? opzioni.tPercent : (tipo === "prodotto" ? 0.95 : 0.75)
       const onFine = opzioni && opzioni.onFine
+      // Le aziende non sono nodi del grafo: la loro posizione (fissa, non
+      // animata) viene da aziendePosizioniMap invece che da graph.forEachNode.
       let nodeId = null
-      graph.forEachNode((node, attr) => {
-        if (nodeId) return
-        if (tipo === "designer" && attr.tipo === "designer" && attr.dati.nome === cercaNome) nodeId = node
-        if (tipo === "prodotto" && attr.tipo === "prodotto" && attr.dati.nome === cercaNome) nodeId = node
-      })
-      if (!nodeId || !graph.hasNode(nodeId)) return
-      const attr = graph.getNodeAttributes(nodeId)
+      let attr = null
+      if (tipo === "azienda") {
+        const pos = aziendePosizioniMap[cercaNome]
+        if (!pos) return
+        attr = { x: pos.x, y: pos.y, dati: pos.dati }
+      } else {
+        graph.forEachNode((node, a) => {
+          if (nodeId) return
+          if (tipo === "designer" && a.tipo === "designer" && a.dati.nome === cercaNome) nodeId = node
+          if (tipo === "prodotto" && a.tipo === "prodotto" && a.dati.nome === cercaNome) nodeId = node
+        })
+        if (!nodeId || !graph.hasNode(nodeId)) return
+        attr = graph.getNodeAttributes(nodeId)
+      }
       const tRatio = ratioDaT(tPercent)
       const cRect = container.getBoundingClientRect()
       const sState = camera.getState()
@@ -3073,7 +3295,22 @@ function App() {
       renderer.refresh()
       clamping = false
       animaCamera({ ratio: tRatio, x: tX, y: tY }, 600, onFine)
-      if (apriPannello) {
+      if (apriPannello && tipo === "azienda") {
+        nodoEvidenziatoRef.current = null; setNodoEvidenziato(null)
+        prodottoHoverAttivo = null
+        nodoHoverAttivo = null
+        legameEvidenziatoRef.current = null; setLegameEvidenziato(null)
+        designerCliccato = null
+        prodottoCliccato = null
+        graph.forEachEdge((edge, eAttr) => { if (eAttr.tipo === "relazione") graph.setEdgeAttribute(edge, "attivo", false) })
+        // aziendaGlobaleRef true: isola TUTTI i prodotti dell'azienda (non solo
+        // quelli di un designer specifico, che è l'altra modalità del filtro).
+        aziendaGlobaleRef.current = true
+        aziendaAttivaRef.current = cercaNome
+        setAziendaAttiva(cercaNome)
+        setPannelloDesigner({ ...attr.dati, _tipo: "azienda" })
+        requestAnimationFrame(() => setPannelloVisibile(true))
+      } else if (apriPannello) {
         nodoEvidenziatoRef.current = nodeId
         setNodoEvidenziato(nodeId)
         prodottoHoverAttivo = null
@@ -3083,6 +3320,7 @@ function App() {
           prodottoCliccato = null
           designerCliccato = nodeId
           setDesignerAttivo(nodeId)
+          aziendaAttivaRef.current = null; aziendaGlobaleRef.current = false
           setPannelloDesigner({ ...attr.dati, _tipo: "designer" }); setAziendaAttiva(null)
           requestAnimationFrame(() => setPannelloVisibile(true))
           graph.forEachEdge((edge, eAttr) => { if (eAttr.tipo === "relazione") graph.setEdgeAttribute(edge, "attivo", false) })
@@ -3093,6 +3331,7 @@ function App() {
           graph.forEachEdge((edge, eAttr) => { if (eAttr.tipo === "relazione") graph.setEdgeAttribute(edge, "attivo", false) })
           prodottoCliccato = nodeId
           ultimoProdottoHover = nodeId
+          aziendaAttivaRef.current = null; aziendaGlobaleRef.current = false; setAziendaAttiva(null)
           setPannelloDesigner({ ...attr.dati, _tipo: "prodotto" })
           setGalleriaIndice(0); setGalleriaFullscreen(false)
           requestAnimationFrame(() => setPannelloVisibile(true))
@@ -3708,6 +3947,17 @@ function App() {
     if (animaTransizioneFn) animaTransizioneFn(modello, timelineAttivaRef.current)
   }
 
+  // Selezionare un risultato di ricerca porta sempre alla vista giusta per
+  // vederlo: un designer non è visibile in vista aziende (e viceversa), quindi
+  // invece di limitare cosa si può cercare in base alla vista corrente, si
+  // passa automaticamente alla vista del tipo scelto.
+  function selezionaRisultatoRicerca(r) {
+    setRicerca("")
+    if (r.tipo === "designer") cambiaVista("designer")
+    else if (r.tipo === "azienda") cambiaVista("aziende")
+    if (centraFn) centraFn(r.nome, r.tipo)
+  }
+
   function toggleTimeline() {
     const nuova = !timelineAttivaRef.current
     setTimelineAttiva(nuova)
@@ -3904,7 +4154,7 @@ function App() {
                       onClick={() => { setContribTag({ tipo: r.tipo, nome: r.nome }); setContribRicerca("") }}
                       style={{ display: "block", width: "100%", padding: "8px 12px", border: "none", background: "white", cursor: "pointer", textAlign: "left", fontFamily: "Roboto, sans-serif", fontSize: 12 }}>
                       {r.nome}{r.sub && <span style={{ color: "#999", marginLeft: 6, fontWeight: 300 }}>{r.sub}</span>}
-                      <span style={{ fontWeight: 300, color: "#ccc", marginLeft: 6, fontSize: 9, textTransform: "uppercase" }}>{lingua === "en" && r.tipo === "prodotto" ? "product" : r.tipo}</span>
+                      <span style={{ fontWeight: 300, color: "#ccc", marginLeft: 6, fontSize: 9, textTransform: "uppercase" }}>{lingua === "en" ? ({ prodotto: "product", azienda: "company", designer: "designer" }[r.tipo] || r.tipo) : r.tipo}</span>
                     </button>
                   ))}
                 </ListaConScroll>
@@ -4145,11 +4395,11 @@ function App() {
             wrapperStyle={{ position: "fixed", top: inputRect.bottom + 4, left: inputRect.left, width: inputRect.width, zIndex: 30 }}
             innerStyle={{ background: "white", borderRadius: 17, boxShadow: "0 4px 16px rgba(0,0,0,0.12)" }}>
             {risultati.map((r, i) => (
-              <button key={i} onClick={() => { setRicerca(""); if (centraFn) centraFn(r.nome, r.tipo) }}
+              <button key={i} onClick={() => selezionaRisultatoRicerca(r)}
                 style={{ display: "block", width: "100%", padding: "10px 14px", border: "none", background: "white", cursor: "pointer", textAlign: "left", fontFamily: "Roboto, sans-serif", fontSize: 11, borderBottom: "1px solid #f0f0f0" }}>
                 <span style={{ fontWeight: 500, color: "#1a1a1a" }}>{r.nome}</span>
                 {r.sub && <span style={{ fontWeight: 300, color: "#999", marginLeft: 6 }}>{r.sub}</span>}
-                <span style={{ fontWeight: 300, color: "#ccc", marginLeft: 6, fontSize: 9, textTransform: "uppercase" }}>{lingua === "en" && r.tipo === "prodotto" ? "product" : r.tipo}</span>
+                <span style={{ fontWeight: 300, color: "#ccc", marginLeft: 6, fontSize: 9, textTransform: "uppercase" }}>{lingua === "en" ? ({ prodotto: "product", azienda: "company", designer: "designer" }[r.tipo] || r.tipo) : r.tipo}</span>
               </button>
             ))}
           </ListaConScroll>
@@ -4272,11 +4522,11 @@ function App() {
                   wrapperStyle={{ position: "absolute", top: "100%", left: 0, right: 0, marginTop: 4 }}
                   innerStyle={{ background: "white", borderRadius: 15, boxShadow: "0 4px 16px rgba(0,0,0,0.12)" }}>
                   {risultati.map((r, i) => (
-                    <button key={i} onClick={() => { setRicerca(""); if (centraFn) centraFn(r.nome, r.tipo) }}
+                    <button key={i} onClick={() => selezionaRisultatoRicerca(r)}
                       style={{ display: "block", width: "100%", padding: "8px 14px", border: "none", background: "white", cursor: "pointer", textAlign: "left", fontFamily: "Roboto, sans-serif", fontSize: 11, borderBottom: "1px solid #f0f0f0" }}>
                       <span style={{ fontWeight: 500, color: "#1a1a1a" }}>{r.nome}</span>
                       {r.sub && <span style={{ fontWeight: 300, color: "#999", marginLeft: 6 }}>{r.sub}</span>}
-                      <span style={{ fontWeight: 300, color: "#ccc", marginLeft: 6, fontSize: 9, textTransform: "uppercase" }}>{lingua === "en" && r.tipo === "prodotto" ? "product" : r.tipo}</span>
+                      <span style={{ fontWeight: 300, color: "#ccc", marginLeft: 6, fontSize: 9, textTransform: "uppercase" }}>{lingua === "en" ? ({ prodotto: "product", azienda: "company", designer: "designer" }[r.tipo] || r.tipo) : r.tipo}</span>
                     </button>
                   ))}
                 </ListaConScroll>
@@ -4430,7 +4680,72 @@ function App() {
         )
       })()}
 
-      {pannelloDesigner && pannelloDesigner._tipo !== "corrente" && (() => {
+      {pannelloDesigner && pannelloDesigner._tipo === "azienda" && (() => {
+        const az = pannelloDesigner
+        const chiudi = () => {
+          setPannelloVisibile(false)
+          setTimeout(() => setPannelloDesigner(null), 350)
+          aziendaAttivaRef.current = null; aziendaGlobaleRef.current = false; setAziendaAttiva(null)
+          if (ridisegnaFn) ridisegnaFn()
+        }
+        const periodo = az.chiusura ? `${az.fondata}–${az.chiusura}` : `${az.fondata}–`
+        const prodottiAzienda = prodotti.filter(p => getAziende(p).includes(az.nome) || p.azienda_attuale === az.nome)
+        return (
+          <div style={{
+            position: "fixed", fontFamily: "Roboto, sans-serif", zIndex: 100,
+            background: (window.innerWidth < 768 && !pannelloVisibile) ? STILE.sfondo_colore : "#1a1a1a",
+            display: "flex", flexDirection: "column", overflow: "hidden",
+            transition: window.innerWidth < 768
+              ? "height 0.35s cubic-bezier(0.4, 0, 0.2, 1)"
+              : "transform 0.35s cubic-bezier(0.4, 0, 0.2, 1)",
+            ...(window.innerWidth < 768
+              ? { left: 0, right: 0, bottom: 0, height: pannelloVisibile ? "40vh" : "0", borderRadius: "16px 16px 0 0", boxShadow: pannelloVisibile ? "0 -4px 32px rgba(0,0,0,0.3)" : "none" }
+              : { top: 0, right: 0, bottom: 0, width: 340 * uiScale, boxShadow: "-4px 0 32px rgba(0,0,0,0.3)", transform: pannelloVisibile ? "translateX(0)" : "translateX(100%)" })
+          }}>
+            <div style={{ flex: 1, overflowY: "auto", padding: window.innerWidth < 768 ? "16px 16px 24px" : "20px 28px 32px" }}>
+              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", paddingTop: window.innerWidth < 768 ? 0 : 12 }}>
+                <div>
+                  <div style={{ fontFamily: "'Roboto Serif', serif", fontWeight: 500, fontStyle: "italic", fontSize: window.innerWidth < 768 ? 17 : 20, color: "#ffffff", lineHeight: 1.2 }}>
+                    {az.nome}
+                  </div>
+                  <div style={{ fontFamily: "'Roboto Serif', serif", fontWeight: 400, fontStyle: "italic", fontSize: window.innerWidth < 768 ? 12 : 14, color: "rgba(255,255,255,0.65)", marginTop: 4 }}>
+                    {periodo}{az.paese ? ` — ${az.paese}` : ""}
+                  </div>
+                </div>
+                <button onClick={chiudi}
+                  style={{ background: "none", border: "none", cursor: "pointer", fontSize: 20, color: "rgba(255,255,255,0.6)", padding: "0 4px", lineHeight: 1 }}>
+                  &times;
+                </button>
+              </div>
+
+              {(az.descrizione || az.descrizione_en) && (
+                <p style={{ fontSize: window.innerWidth < 768 ? 12 : 13, fontWeight: 300, color: "rgba(255,255,255,0.85)", lineHeight: 1.5, margin: "16px 0 0" }}>
+                  {lingua === "en" ? (az.descrizione_en || az.descrizione) : az.descrizione}
+                </p>
+              )}
+
+              {prodottiAzienda.length > 0 && (
+                <div style={{ marginTop: 20 }}>
+                  <div style={{ fontSize: 11, fontWeight: 600, color: "rgba(255,255,255,0.5)", textTransform: "uppercase", letterSpacing: 1, marginBottom: 8 }}>
+                    {t.prodottiAzienda}
+                  </div>
+                  <div style={{ display: "flex", flexDirection: "column", gap: 2 }}>
+                    {prodottiAzienda.map((p) => (
+                      <button key={p.nome} onClick={() => centraFn && centraFn(p.nome, "prodotto")}
+                        style={{ display: "block", width: "100%", textAlign: "left", background: "none", border: "none", cursor: "pointer", fontFamily: "'Roboto Serif', serif", fontStyle: "italic", fontSize: 13, color: "#ffffff", padding: "3px 0", opacity: 0.9 }}>
+                        {p.nome}
+                        {(p.anno_label || p.anno) ? <span style={{ fontFamily: "Roboto, sans-serif", fontStyle: "normal", fontSize: 10, color: "rgba(255,255,255,0.4)", marginLeft: 6 }}>{p.anno_label || p.anno}</span> : null}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </div>
+          </div>
+        )
+      })()}
+
+      {pannelloDesigner && pannelloDesigner._tipo !== "corrente" && pannelloDesigner._tipo !== "azienda" && (() => {
         const scuro = pannelloDesigner._tipo === "designer"
         const designerProdotto = pannelloDesigner._tipo === "prodotto"
           ? getDesigners(pannelloDesigner).join(", ")
@@ -4537,7 +4852,7 @@ function App() {
                         </div>
                       )}
                     </div>
-                    <button onClick={() => { setPannelloVisibile(false); setTimeout(() => setPannelloDesigner(null), 350); legameEvidenziatoRef.current = null; setLegameEvidenziato(null); if (ridisegnaFn) ridisegnaFn() }}
+                    <button onClick={() => { setPannelloVisibile(false); setTimeout(() => setPannelloDesigner(null), 350); legameEvidenziatoRef.current = null; setLegameEvidenziato(null); aziendaAttivaRef.current = null; aziendaGlobaleRef.current = false; setAziendaAttiva(null); if (ridisegnaFn) ridisegnaFn() }}
                       style={{ background: "none", border: "none", cursor: "pointer", fontSize: 20, color: scuro ? "#666" : "#aaa", padding: "0 4px", lineHeight: 1 }}>
                       &times;
                     </button>
