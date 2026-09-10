@@ -7,6 +7,7 @@ import relazioni from "./data/relazioni.json"
 import correnti from "./data/correnti.json"
 import aziendeData from "./data/aziende.json"
 import immaginiEsistentiArr from "./data/immagini_esistenti.json"
+import coloriImmaginiPrecalcolati from "./data/colori_immagini.json"
 
 const IMMAGINI_ESISTENTI = new Set(immaginiEsistentiArr)
 
@@ -401,6 +402,37 @@ function getAziende(p) {
 // Mappa nome azienda → dati azienda (da aziende.json)
 const AZIENDE_MAP = {}
 aziendeData.forEach((az) => { AZIENDE_MAP[az.nome] = az })
+
+// Tassonomia macro-categoria per settore: accorpa le varianti simili del campo
+// "settore" (33 valori grezzi in aziende.json, molti con una sola azienda) in
+// poche macro-categorie utilizzabili come criterio di raggruppamento visivo.
+const SETTORE_CATEGORIA = {
+  "arredo": "Arredo", "arredo vimini": "Arredo", "arredo legno": "Arredo",
+  "arredo sperimentale": "Arredo", "arredo notte": "Arredo", "arredo giardino": "Arredo",
+  "arredo bambini": "Arredo", "arredo outdoor": "Arredo", "plastica, arredo": "Arredo",
+  "vetro, arredo": "Arredo",
+  "illuminazione": "Illuminazione", "illuminazione, vetro": "Illuminazione",
+  "arredo ufficio": "Ufficio", "elettronica, ufficio": "Ufficio", "accessori ufficio": "Ufficio",
+  "oggetti da tavola": "Vetro, ceramica, tavola", "vetro": "Vetro, ceramica, tavola",
+  "ceramica": "Vetro, ceramica, tavola", "decorazione": "Vetro, ceramica, tavola",
+  "cristalleria": "Vetro, ceramica, tavola", "porcellana": "Vetro, ceramica, tavola",
+  "ceramica, sanitari": "Vetro, ceramica, tavola",
+  "elettronica": "Elettronica e macchine", "macchine caffè": "Elettronica e macchine",
+  "macchine da cucire": "Elettronica e macchine",
+  "arti applicate": "Design e ricerca", "architettura e design": "Design e ricerca",
+  "oggetti design": "Design e ricerca", "accessori design": "Design e ricerca",
+  "design radicale": "Design e ricerca", "design sperimentale": "Design e ricerca",
+  "maniglie, accessori": "Oreficeria e accessori", "oreficeria": "Oreficeria e accessori",
+  "orologi": "Oreficeria e accessori",
+}
+function categoriaAzienda(az) { return SETTORE_CATEGORIA[az.settore] || "Altro" }
+
+// Ordine delle fasce di categoria nella vista aziende: dalla categoria con
+// l'azienda più antica (in cima) alla più recente, secondo la scelta cronologica.
+const ORDINE_CATEGORIE_AZIENDE = [
+  "Arredo", "Elettronica e macchine", "Vetro, ceramica, tavola", "Design e ricerca",
+  "Illuminazione", "Ufficio", "Oreficeria e accessori", "Altro",
+]
 
 function cercaEntita(query, limit = 8) {
   const q = query.toLowerCase()
@@ -859,16 +891,10 @@ function App() {
   const [tooltipRelazione, setTooltipRelazione] = useState(null)
   const [tooltipCorrente, setTooltipCorrente] = useState(null)
   const [designerAttivo, setDesignerAttivo] = useState(null)
-  const [vistaCorrente, setVistaCorrente] = useState("designer")
-  const vistaCorrenteRef = useRef("designer")
-  const [timelineAttiva, setTimelineAttiva] = useState(false)
-  const timelineAttivaRef = useRef(false)
-  const [animaTransizioneFn, setAnimaTransizioneFn] = useState(null)
-  const [ridisegnaFn, setRidisegnaFn] = useState(null)
+  // L'intro dipende dal tipo di apertura, non dal tempo trascorso:
+  // refresh/ricarica della pagina -> non mostrarla;
+  // nuova navigazione (URL digitato, link, nuova tab) -> mostrarla.
   const [mostraIntroAllAvvio] = useState(() => {
-    // L'intro dipende dal tipo di apertura, non dal tempo trascorso:
-    // refresh/ricarica della pagina -> non mostrarla;
-    // nuova navigazione (URL digitato, link, nuova tab) -> mostrarla.
     try {
       const navigazione = performance.getEntriesByType?.("navigation")?.[0]
       if (navigazione?.type) return navigazione.type !== "reload"
@@ -876,6 +902,27 @@ function App() {
     } catch {}
     return true
   })
+  // Vista e timeline persistono in localStorage, ma solo per un refresh: una
+  // nuova navigazione (che mostra la domanda iniziale) parte SEMPRE dalla
+  // vista designer, mai da quella salvata in una sessione precedente.
+  const [vistaCorrente, setVistaCorrente] = useState(() => {
+    if (mostraIntroAllAvvio) {
+      try { localStorage.setItem("designNetwork:vista", "designer") } catch {}
+      return "designer"
+    }
+    try { return localStorage.getItem("designNetwork:vista") || "designer" } catch { return "designer" }
+  })
+  const vistaCorrenteRef = useRef(vistaCorrente)
+  const [timelineAttiva, setTimelineAttiva] = useState(() => {
+    if (mostraIntroAllAvvio) {
+      try { localStorage.setItem("designNetwork:timeline", "0") } catch {}
+      return false
+    }
+    try { return localStorage.getItem("designNetwork:timeline") === "1" } catch { return false }
+  })
+  const timelineAttivaRef = useRef(timelineAttiva)
+  const [animaTransizioneFn, setAnimaTransizioneFn] = useState(null)
+  const [ridisegnaFn, setRidisegnaFn] = useState(null)
   const [schermataIniziale, setSchermataIniziale] = useState(mostraIntroAllAvvio)
   const [rispostaDesigner, setRispostaDesigner] = useState("")
   const inputSchermataInizialeRef = useRef(null)
@@ -1610,34 +1657,68 @@ function App() {
       set.forEach((az) => { coLicenzaGruppi[az] = set })
     })
 
-    // Posizioni aziende: X = anno fondazione, Y = stacking cronologico con co-licenza raggruppata
-    const aziendePosizioniMap = {}
+    // Posizioni aziende: X = anno fondazione, Y = fascia di categoria prodotto
+    // (Arredo, Illuminazione, ecc.) + stacking cronologico con co-licenza
+    // raggruppata all'interno della fascia. Le fasce sono ordinate dalla
+    // categoria più antica (in cima) alla più recente e separate da uno
+    // scostamento marcato, così la diagonale temporale di base (dominata da
+    // "Arredo") viene "rotta" in bande distinte dalle altre tipologie di prodotto.
     const azOrdinate = [...aziendeData].sort((a, b) => a.fondata - b.fondata)
-    let azCurrentY = 0
-    const PASSO_AZ = STILE.passo_verticale_base
-    const azPositioned = new Set()
-    azOrdinate.forEach((az) => {
-      if (azPositioned.has(az.nome)) return
-      const nProd = prodottiPerAzienda[az.nome]?.length || 0
-      const raggio = calcolaRaggio(nProd)
-      aziendePosizioniMap[az.nome] = { x: annoToX(az.fondata), y: azCurrentY, dati: az, raggio }
-      azPositioned.add(az.nome)
-      const gruppo = coLicenzaGruppi[az.nome]
-      let stepAfter = PASSO_AZ
-      if (gruppo && gruppo.size > 1) {
-        const partners = [...gruppo].filter((n) => !azPositioned.has(n) && AZIENDE_MAP[n])
-        partners.forEach((partner) => {
-          const partnerAz = AZIENDE_MAP[partner]
-          const nProdP = prodottiPerAzienda[partner]?.length || 0
-          const raggioP = calcolaRaggio(nProdP)
-          azCurrentY -= PASSO_AZ * 0.5
-          aziendePosizioniMap[partner] = { x: annoToX(partnerAz.fondata), y: azCurrentY, dati: partnerAz, raggio: raggioP }
-          azPositioned.add(partner)
+
+    // Costruisce la mappa posizioni dato un passo-base tra aziende consecutive:
+    // usa un cursore che avanza in base al contenuto EFFETTIVO di ogni fascia
+    // (Arredo ha 71 aziende, Oreficeria solo 3: un offset fisso tra fasce le
+    // farebbe sovrapporre), così nessuna fascia invade quella successiva.
+    function costruisciLayoutAziende(passoAz) {
+      const mappa = {}
+      const positioned = new Set()
+      const gapFascia = passoAz * 6
+      let cursoreFasciaY = 0
+      ORDINE_CATEGORIE_AZIENDE.forEach((categoria) => {
+        const aziendeCategoria = azOrdinate.filter((az) => categoriaAzienda(az) === categoria)
+        if (aziendeCategoria.length === 0) return
+        let azCurrentY = cursoreFasciaY
+        aziendeCategoria.forEach((az) => {
+          if (positioned.has(az.nome)) return
+          const nProd = prodottiPerAzienda[az.nome]?.length || 0
+          mappa[az.nome] = { x: annoToX(az.fondata), y: azCurrentY, dati: az, raggio: calcolaRaggio(nProd) }
+          positioned.add(az.nome)
+          const gruppo = coLicenzaGruppi[az.nome]
+          let stepAfter = passoAz
+          if (gruppo && gruppo.size > 1) {
+            // Solo i partner della stessa fascia/categoria vengono raggruppati
+            // più vicini: un partner in un'altra categoria resta nella propria fascia.
+            const partners = [...gruppo].filter((n) => !positioned.has(n) && AZIENDE_MAP[n] && categoriaAzienda(AZIENDE_MAP[n]) === categoria)
+            partners.forEach((partner) => {
+              const partnerAz = AZIENDE_MAP[partner]
+              const nProdP = prodottiPerAzienda[partner]?.length || 0
+              azCurrentY -= passoAz * 0.5
+              mappa[partner] = { x: annoToX(partnerAz.fondata), y: azCurrentY, dati: partnerAz, raggio: calcolaRaggio(nProdP) }
+              positioned.add(partner)
+            })
+            stepAfter = passoAz * 0.8
+          }
+          azCurrentY -= stepAfter
         })
-        stepAfter = PASSO_AZ * 0.8
-      }
-      azCurrentY -= stepAfter
-    })
+        cursoreFasciaY = azCurrentY - gapFascia
+      })
+      return { mappa, estensioneY: -cursoreFasciaY }
+    }
+
+    // La dimensione dell'asse X (dopo l'eventuale allargamento fattoreScalaX
+    // dovuto alle orbite dei designer, poco sopra) varia a runtime: calcoliamo
+    // prima l'estensione "naturale" delle fasce con un passo di riferimento,
+    // poi la riscaliamo per farla corrispondere a una proporzione fissa
+    // dell'estensione X reale, così la diagonale ha sempre un'inclinazione
+    // leggibile (né troppo orizzontale né troppo verticale) qualunque sia la
+    // larghezza effettiva della timeline.
+    const PROPORZIONE_Y_SU_X_AZIENDE = 0.75
+    const provaAziende = costruisciLayoutAziende(STILE.passo_verticale_base)
+    const estensioneXAziende = X_MAX - X_MIN
+    const fattoreScalaAziende = provaAziende.estensioneY > 0
+      ? (estensioneXAziende * PROPORZIONE_Y_SU_X_AZIENDE) / provaAziende.estensioneY
+      : 1
+    const { mappa: aziendePosizioniMap } = costruisciLayoutAziende(STILE.passo_verticale_base * fattoreScalaAziende)
 
     // Calcola posizioni orbita di ogni prodotto attorno alla sua azienda
     const prodottiOrbitaAz = {}
@@ -1671,6 +1752,27 @@ function App() {
       graph.setNodeAttribute(node, "aziendaOrbitaX", azOrbitaX)
       graph.setNodeAttribute(node, "aziendaOrbitaY", azOrbitaY)
     })
+
+    // Se la vista ripristinata da localStorage non è quella di default
+    // (designer, non timeline), posiziona subito i prodotti nella destinazione
+    // finale di quella vista: evita sia il flash nella vista designer sia
+    // un'animazione di transizione al primo caricamento della pagina.
+    if (vistaCorrenteRef.current !== "designer" || timelineAttivaRef.current) {
+      graph.forEachNode((node, attr) => {
+        if (attr.tipo !== "prodotto") return
+        let tx, ty
+        if (timelineAttivaRef.current) {
+          tx = attr.timelineX; ty = attr.timelineY
+        } else if (vistaCorrenteRef.current === "aziende") {
+          tx = attr.aziendaOrbitaX ?? attr.timelineX
+          ty = attr.aziendaOrbitaY ?? attr.timelineY
+        } else {
+          tx = attr.orbitaX; ty = attr.orbitaY
+        }
+        graph.setNodeAttribute(node, "x", tx)
+        graph.setNodeAttribute(node, "y", ty)
+      })
+    }
 
     const renderer = new Sigma(graph, container, {
       renderEdgeLabels: false,
@@ -1794,6 +1896,11 @@ function App() {
     // completamento del primo lotto non può più far entrare automaticamente nella mappa.
     imgCache = preloadImages(imgPaths, 6, undefined, undefined, undefined, () => richiediDisegnoOverlay(2), distanzaDaCameraAttuale)
     Object.entries(imgCache).forEach(([src, img]) => {
+      // Il colore medio è precalcolato in pipeline (scripts/genera-colori-immagini.mjs):
+      // niente più canvas/getImageData per ~1250 immagini ad ogni caricamento della
+      // pagina, il colore non cambia mai una volta generata la thumbnail.
+      const precalcolato = coloriImmaginiPrecalcolati[src.split("/").pop()]
+      if (precalcolato) { imgColori[src] = precalcolato; return }
       if (img.complete && img.naturalWidth > 0) campionaColore(src, img)
       else img.addEventListener("load", () => campionaColore(src, img), { once: true })
     })
@@ -2858,9 +2965,12 @@ function App() {
     // modelloVista: "designer" | "aziende" — quale nodo centrale è attivo
     // timelineVista: boolean — se i prodotti sono in posizione timeline
     // vistaInterna: derivato per compatibilità con controlli canvas esistenti
-    let modelloVista = "designer"
-    let timelineVista = false
-    let vistaInterna = "designer" // "designer" | "aziende" | "timeline"
+    // Si parte dalla vista ripristinata da localStorage (persistita da
+    // cambiaVista/toggleTimeline), non sempre da "designer": un refresh della
+    // pagina deve restare nella vista in cui si era, aziende o timeline incluse.
+    let modelloVista = vistaCorrenteRef.current
+    let timelineVista = timelineAttivaRef.current
+    let vistaInterna = timelineVista ? "timeline" : modelloVista // "designer" | "aziende" | "timeline"
     let transizioneAttiva = false
     let amoebaAlphaAnimata = 1
 
@@ -3594,6 +3704,7 @@ function App() {
     if (modello === vistaCorrente) return
     setVistaCorrente(modello)
     vistaCorrenteRef.current = modello
+    try { localStorage.setItem("designNetwork:vista", modello) } catch {}
     if (animaTransizioneFn) animaTransizioneFn(modello, timelineAttivaRef.current)
   }
 
@@ -3601,6 +3712,7 @@ function App() {
     const nuova = !timelineAttivaRef.current
     setTimelineAttiva(nuova)
     timelineAttivaRef.current = nuova
+    try { localStorage.setItem("designNetwork:timeline", nuova ? "1" : "0") } catch {}
     if (animaTransizioneFn) animaTransizioneFn(vistaCorrenteRef.current, nuova)
   }
 
@@ -3613,6 +3725,10 @@ function App() {
   function riapriSchermataIniziale() {
     chiudiMenu()
     setRispostaDesigner("")
+    // La domanda iniziale deve sempre partire dalla vista designer, non da
+    // qualunque vista fosse attiva quando l'utente la riapre dal menu.
+    if (timelineAttivaRef.current) toggleTimeline()
+    cambiaVista("designer")
     setSchermataIniziale(true)
   }
 
