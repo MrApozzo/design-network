@@ -100,8 +100,8 @@ const STILE = {
   // mantenendo lineare la crescita fra i due estremi. Non tocca desktop.
   zoom_label_prodotto_max: window.innerWidth < 768 ? 20 : 10,
   zoom_label_soglia: window.innerWidth < 768 ? 0.75 : 0.4,
-  zoom_griglia_min: window.innerWidth < 768 ? 0.9 : 1.5,
-  zoom_griglia_max: window.innerWidth < 768 ? 3 : 4,
+  zoom_griglia_min: window.innerWidth < 768 ? 1 : 1.7,
+  zoom_griglia_max: window.innerWidth < 768 ? 3.8 : 4.7,
   zoom_viewport_ref: 800,
 
   // --- Transizione tra viste ---
@@ -147,9 +147,9 @@ const STILE = {
   // dei designer, un mega-gruppo che rompe la diagonale invece di ripararla) — quando però
   // due designer sono GIÀ adiacenti nell'ordine finale e condividono anche un legame
   // diretto, si stringe solo lo spazio verticale fra loro (passo_verticale_legame).
-  passo_verticale_base: 30,
-  passo_verticale_coprogetto: 6,
-  passo_verticale_legame: 18,
+  passo_verticale_base: 26,
+  passo_verticale_coprogetto: 5,
+  passo_verticale_legame: 16,
   min_distanza_y: 1.6,
   orbita_raggio_base: 3.5,
   orbita_soglia_prodotti: 5,
@@ -281,8 +281,13 @@ function calcolaAngoliPerProdotto(settori) {
   return angoli
 }
 
-const ANNO_MIN = 1830
-const ANNO_MAX = 2020
+// Allargato simmetricamente (stesso punto medio 1925 di prima, 1830-2020) per
+// fare spazio a sinistra all'azienda più antica (Thonet, 1819) e all'etichetta
+// "03 Aziende arredo" che le sta davanti — allargare solo a sinistra avrebbe
+// spostato il centro ottico dell'intera mappa, quindi si allarga anche a
+// destra della stessa quantità.
+const ANNO_MIN = 1790
+const ANNO_MAX = 2060
 // Base "nominale" della griglia X: viene allargata proporzionalmente a runtime
 // (vedi fattoreScalaX più sotto) quando le orbite dei prodotti fanno crescere
 // molto l'estensione verticale, per mantenere le proporzioni dell'area di lavoro.
@@ -308,6 +313,9 @@ let MIN_CAMERA_RATIO = MIN_CAMERA_RATIO_BASE
 // Unità-grafo (verticali) visibili al massimo zoom-in, a prescindere da quanto
 // è alto il contenuto complessivo.
 const MIN_CAMERA_RATIO_UNITA_VISIBILI = 40
+// Sotto questa altezza di finestra, la banda laterale con titolo/testo lascia
+// completamente il posto all'area di lavoro (niente spazio vuoto residuo).
+const SOGLIA_ALTEZZA_BANDA = 650
 
 function annoToX(anno) {
   return X_MIN + ((anno - ANNO_MIN) / (ANNO_MAX - ANNO_MIN)) * (X_MAX - X_MIN)
@@ -451,6 +459,27 @@ const ORDINE_CATEGORIE_AZIENDE = [
 const AZIENDA_AVANGUARDIA = new Set(["Poltronova", "Gufram"])
 const AZIENDA_MISTA = new Set(["Azucena", "Kartell", "Produzione Privata", "Tom Dixon"])
 const AZIENDA_MODERNA = new Set(["Danese Milano"])
+
+// Testo delle etichette di fascia in vista aziende — nomi provvisori, da
+// rivedere insieme (vedi discussione sul mockup delle etichette).
+const NOME_ETICHETTA_CATEGORIA = {
+  "Elettronica e macchine": "Aziende tecnologia",
+  "Vetro, ceramica, tavola": "Aziende vetro e ceramica",
+  "Arredo": "Aziende arredo",
+  "Design e ricerca": "Aziende design e ricerca",
+  "Illuminazione": "Aziende illuminazione",
+  "Ufficio": "Aziende ufficio",
+  "Oreficeria e accessori": "Aziende oreficeria",
+  "Altro": "Altre aziende",
+  "__senza_azienda__": "Prodotti senza azienda",
+}
+const NOME_ETICHETTA_SOTTOGRUPPO = {
+  storiche: "Aziende storiche",
+  moderne: "Aziende moderne",
+  avanguardia: "Aziende radicali",
+  mista: "Aziende miste",
+  moderna: "Aziende moderne",
+}
 
 function cercaEntita(query, limit = 8) {
   const q = query.toLowerCase()
@@ -906,6 +935,16 @@ function ListaConScroll({ children, maxHeight, wrapperStyle, innerStyle, classNa
 }
 
 function App() {
+  // window.innerWidth/innerHeight altrove nel componente sono già letti "a
+  // freddo" (nessuna reattività al resize, comportamento pre-esistente in
+  // tutto il file) — ma qui serve che la sidebar sparisca DAL VIVO mentre si
+  // ridimensiona la finestra, non solo al prossimo render casuale.
+  const [altezzaFinestra, setAltezzaFinestra] = useState(() => window.innerHeight)
+  useEffect(() => {
+    const aggiorna = () => setAltezzaFinestra(window.innerHeight)
+    window.addEventListener("resize", aggiorna)
+    return () => window.removeEventListener("resize", aggiorna)
+  }, [])
   const [popup, setPopup] = useState(null)
   const [pannelloDesigner, setPannelloDesigner] = useState(null)
   const [pannelloVisibile, setPannelloVisibile] = useState(false)
@@ -1097,11 +1136,25 @@ function App() {
     MIN_CAMERA_RATIO = MIN_CAMERA_RATIO_BASE
     MAX_CAMERA_RATIO = MAX_CAMERA_RATIO_BASE
 
-    const isMobile = window.innerWidth < 768
+    // isMobile e uiScaleInterno sono mutabili (non const): un ridimensionamento
+    // live della finestra li aggiorna (vedi resizeObserver più sotto) così che
+    // questa closure resti coerente con la dimensione attuale della finestra
+    // esattamente come lo sarebbe un mount fresco (refresh) a quella dimensione,
+    // invece di restare bloccata ai valori letti al primo montaggio.
+    let isMobile = window.innerWidth < 768
+    let uiScaleInterno = 0.6 + (window.innerWidth / 1440) * 0.4
     const container = document.createElement("div")
-    container.style.cssText = isMobile
-      ? `position:fixed;top:0;right:0;bottom:0;left:0;z-index:1;cursor:none;background:${STILE.sfondo_colore};`
-      : `position:fixed;top:0;right:0;bottom:0;left:200px;z-index:1;cursor:none;background:${STILE.sfondo_colore};`
+    // La banda laterale (desktop) riserva spazio solo quando è effettivamente
+    // visibile: sotto SOGLIA_ALTEZZA_BANDA scompare anche a livello React
+    // (vedi altezzaFinestra), e qui l'area di lavoro deve occupare per intero
+    // lo spazio lasciato libero, non restare spostata su un vuoto.
+    function impostaStileContainer() {
+      const bandaVisibile = !isMobile && window.innerHeight >= SOGLIA_ALTEZZA_BANDA
+      container.style.cssText = bandaVisibile
+        ? `position:fixed;top:0;right:0;bottom:0;left:200px;z-index:1;cursor:none;background:${STILE.sfondo_colore};`
+        : `position:fixed;top:0;right:0;bottom:0;left:0;z-index:1;cursor:none;background:${STILE.sfondo_colore};`
+    }
+    impostaStileContainer()
     document.body.appendChild(container)
 
     const graph = new Graph()
@@ -1704,44 +1757,121 @@ function App() {
     // nessuna correzione a posteriori, la griglia è pulita per costruzione.
     //
     // "Gruppetti" (dentro Arredo: Avanguardie, Miste, Moderne; dentro una
-    // fascia numerosa: la corsa cronologica spezzata ogni tot aziende) sono
-    // semplicemente sotto-sequenze con un salto di GAP_GRUPPO_AZ passi di
+    // fascia numerosa: la corsa cronologica spezzata storiche/moderne alla
+    // soglia anno) sono semplicemente sotto-sequenze con un salto di righe di
     // griglia PRIMA di iniziare — non più uno scostamento sommato al volo.
-    // Per allargare/restringere la spaziatura tra gruppetti, cambia solo
-    // GAP_GRUPPO_AZ (in passi di griglia): un numero, non più tre costanti
-    // diverse da tenere in equilibrio.
-    const GAP_GRUPPO_AZ = 3
-    const GAP_CATEGORIA_AZ = 15
+    // Le etichette vivono sulla STESSA griglia dei pallini (righe intere,
+    // multipli di passoAz), non più su uno scostamento in pixel calcolato a
+    // parte: così restano sempre proporzionate e mai sovrapposte ai pallini,
+    // a qualunque zoom, per costruzione — non serve nessun offset in pixel.
+    // Blocco di apertura di una NUOVA macro-categoria (macro-etichetta +
+    // sotto-etichetta del suo primo sotto-gruppo, impilate):
+    //   riga vuota, riga vuota, etichetta macro, riga vuota (fra macro e sotto), etichetta sotto, pallini...
+    // (niente buffer dopo la sotto-etichetta in questo caso: lo spazio andava
+    // a intersecare la riga della macro-etichetta sopra, che ne ha più
+    // bisogno essendo le due etichette adiacenti — vedi RIGHE_TRA_MACRO_SOTTO_AZ.)
+    // Blocco di un sotto-gruppo successivo (stessa macro-categoria: cambio
+    // tratto Avanguardie/Miste/Moderne, o soglia storiche→moderne dentro
+    // "normale"):
+    //   riga vuota, riga vuota, etichetta sotto, riga vuota (buffer), pallini...
+    // Valori "di prova": semplici da cambiare, un solo numero ciascuno.
+    const RIGHE_VUOTE_ETICHETTA_AZ = 2
+    const RIGHE_TRA_MACRO_SOTTO_AZ = 1
+    const RIGHE_BUFFER_ETICHETTA_AZ = 1
+    const GAP_CATEGORIA_AZ = RIGHE_VUOTE_ETICHETTA_AZ + 1 + RIGHE_TRA_MACRO_SOTTO_AZ + 1
+    const GAP_SOTTOGRUPPO_AZ = RIGHE_VUOTE_ETICHETTA_AZ + 1 + RIGHE_BUFFER_ETICHETTA_AZ
+    // Break puramente visivo dentro un blocco lungo (nessuna etichetta
+    // propria): resta un semplice respiro fra chunk cronologici, non un
+    // cambio di sotto-gruppo.
+    const GAP_CHUNK_CRONOLOGICO_AZ = 3
     const DIMENSIONE_GRUPPO_CRONOLOGICO = 6
     const SOGLIA_SPEZZA_GRUPPO_CRONOLOGICO = 20
+    // Riga dei prodotti senza nessuna azienda associata: sta sopra a tutte le
+    // fasce (Y positiva, mentre le fasce scendono da 0), staccata ancora più
+    // delle fasce fra loro — è un caso a parte, non solo un'altra categoria.
+    // L'etichetta sta ANCORA più su (RIGHE_ETICHETTA_SENZA_AZIENDA_AZ righe
+    // sopra i suoi stessi pallini, non sulla stessa riga): la distanza fra i
+    // pallini "senza azienda" e la categoria 01 sotto resta quella di sempre,
+    // solo l'etichetta guadagna spazio proprio verso l'alto.
+    const GAP_SENZA_AZIENDA_AZ = GAP_CATEGORIA_AZ * 2
+    const RIGHE_ETICHETTA_SENZA_AZIENDA_AZ = RIGHE_VUOTE_ETICHETTA_AZ + 1
+
+    // Anno soglia sotto cui un chunk cronologico "normale" si etichetta come
+    // storico, sopra come moderno (semplice cambio di testo sulla stessa
+    // sequenza — non è una fascia separata, vedi ANNO_SOGLIA_STORICO_MODERNO).
+    const ANNO_SOGLIA_STORICO_MODERNO = 1985
 
     function costruisciLayoutAziende(passoAz) {
       const mappa = {}
       const positioned = new Set()
       let cursoreFasciaY = 0
+      // Info per le etichette (vedi disegno più sotto): una per macro-categoria
+      // (numerata 01, 02...) e una per ogni sotto-gruppo/chunk (numerata 0X.1,
+      // 0X.2...), con la posizione (in unità di grafo) già letta da mappa.
+      const etichetteMacro = []
+      const etichetteSotto = []
+      let numeroCategoria = 0
 
       ORDINE_CATEGORIE_AZIENDE.forEach((categoria) => {
         const aziendeCategoria = azOrdinate.filter((az) => categoriaAzienda(az) === categoria)
         if (aziendeCategoria.length === 0) return
+        numeroCategoria++
+        let numeroSottogruppo = 0
 
-        // Sotto-gruppi ORDINATI dentro la fascia: prima le aziende "normali"
-        // (in ordine cronologico, spezzate ogni DIMENSIONE_GRUPPO_CRONOLOGICO
-        // se la fascia è numerosa), poi Avanguardie, Miste, Moderne — ciascuno
-        // un blocchetto sequenziale proprio, staccato dal precedente.
+        // Blocchi ORDINATI dentro la fascia: prima le aziende "normali" (in
+        // ordine cronologico — spezzato in storiche/moderne alla soglia
+        // anno, ciascuno un blocco a parte con la SUA riga etichetta, non
+        // solo un cambio di testo sulla stessa riga: la soglia può capitare a
+        // metà di una corsa cronologica lunga, lontano dall'inizio della
+        // fascia, quindi merita la stessa etichetta "staccata dai pallini"
+        // di qualunque altro sotto-gruppo), poi Avanguardie, Miste, Moderne —
+        // ciascuno un blocchetto sequenziale proprio.
         const normali = aziendeCategoria.filter((az) => !AZIENDA_AVANGUARDIA.has(az.nome) && !AZIENDA_MISTA.has(az.nome) && !AZIENDA_MODERNA.has(az.nome))
-        const sottogruppi = [
-          { lista: normali, spezzaOgni: normali.length > SOGLIA_SPEZZA_GRUPPO_CRONOLOGICO ? DIMENSIONE_GRUPPO_CRONOLOGICO : 0 },
-          { lista: aziendeCategoria.filter((az) => AZIENDA_AVANGUARDIA.has(az.nome)), spezzaOgni: 0 },
-          { lista: aziendeCategoria.filter((az) => AZIENDA_MISTA.has(az.nome)), spezzaOgni: 0 },
-          { lista: aziendeCategoria.filter((az) => AZIENDA_MODERNA.has(az.nome)), spezzaOgni: 0 },
-        ].filter((sg) => sg.lista.length > 0)
+        const normaliStoriche = normali.filter((az) => az.fondata < ANNO_SOGLIA_STORICO_MODERNO)
+        const normaliModerne = normali.filter((az) => az.fondata >= ANNO_SOGLIA_STORICO_MODERNO)
+        const faBlocco = (lista, tipoEtichetta, daNormale) => ({
+          lista, tipoEtichetta, daNormale,
+          spezzaOgni: lista.length > SOGLIA_SPEZZA_GRUPPO_CRONOLOGICO ? DIMENSIONE_GRUPPO_CRONOLOGICO : 0,
+        })
+        const blocchi = [
+          normaliStoriche.length > 0 && faBlocco(normaliStoriche, "storiche", true),
+          normaliModerne.length > 0 && faBlocco(normaliModerne, "moderne", true),
+          ...aziendeCategoria.filter((az) => AZIENDA_AVANGUARDIA.has(az.nome)).length > 0 ? [faBlocco(aziendeCategoria.filter((az) => AZIENDA_AVANGUARDIA.has(az.nome)), "avanguardia", false)] : [],
+          ...aziendeCategoria.filter((az) => AZIENDA_MISTA.has(az.nome)).length > 0 ? [faBlocco(aziendeCategoria.filter((az) => AZIENDA_MISTA.has(az.nome)), "mista", false)] : [],
+          ...aziendeCategoria.filter((az) => AZIENDA_MODERNA.has(az.nome)).length > 0 ? [faBlocco(aziendeCategoria.filter((az) => AZIENDA_MODERNA.has(az.nome)), "moderna", false)] : [],
+        ].filter(Boolean)
 
         let y = cursoreFasciaY
-        sottogruppi.forEach((sg, sgIdx) => {
-          if (sgIdx > 0) y -= passoAz * GAP_GRUPPO_AZ
-          sg.lista.forEach((az, idx) => {
+        let yEtichettaMacro = null
+        blocchi.forEach((blocco, blocIdx) => {
+          // Ogni blocco riserva le sue righe DI GRIGLIA (non pixel): righe
+          // vuote di margine, poi (solo per il primo blocco della categoria)
+          // la riga della macro-etichetta, poi sempre la riga della
+          // sotto-etichetta di questo blocco, poi una riga vuota di buffer
+          // prima del primo pallino — mai la stessa riga dei pallini, quindi
+          // sempre visivamente staccata a qualunque zoom (stessa griglia,
+          // stessa trasformazione schermo).
+          y -= passoAz * RIGHE_VUOTE_ETICHETTA_AZ
+          let ySottoEtichetta
+          if (blocIdx === 0) {
+            yEtichettaMacro = y
+            y -= passoAz
+            // Più spazio qui (fra macro e sotto) che fra la sotto-etichetta e
+            // il primo pallino: sono le due etichette, adiacenti, quelle che
+            // rischiavano di intersecarsi a zoom basso — i pallini hanno già
+            // il loro spazio naturale di riga.
+            y -= passoAz * RIGHE_TRA_MACRO_SOTTO_AZ
+            ySottoEtichetta = y
+            y -= passoAz
+          } else {
+            ySottoEtichetta = y
+            y -= passoAz
+            y -= passoAz * RIGHE_BUFFER_ETICHETTA_AZ
+          }
+
+          blocco.lista.forEach((az, idx) => {
             if (positioned.has(az.nome)) return
-            if (sg.spezzaOgni > 0 && idx > 0 && idx % sg.spezzaOgni === 0) y -= passoAz * GAP_GRUPPO_AZ
+            if (blocco.spezzaOgni > 0 && idx > 0 && idx % blocco.spezzaOgni === 0) y -= passoAz * GAP_CHUNK_CRONOLOGICO_AZ
             const nProd = prodottiPerAzienda[az.nome]?.length || 0
             mappa[az.nome] = { x: annoToX(az.fondata), y, dati: az, raggio: calcolaRaggio(nProd) }
             positioned.add(az.nome)
@@ -1766,10 +1896,33 @@ function App() {
               })
             }
           })
+
+          const validi = blocco.lista.filter((az) => mappa[az.nome])
+          if (validi.length > 0) {
+            numeroSottogruppo++
+            const xs = validi.map((az) => mappa[az.nome].x)
+            etichetteSotto.push({
+              categoria, numeroCategoria, numeroSottogruppo, tipo: blocco.tipoEtichetta,
+              xInizio: Math.min(...xs), xFine: Math.max(...xs), y: ySottoEtichetta,
+              daNormale: blocco.daNormale,
+            })
+          }
         })
-        cursoreFasciaY = y - passoAz * GAP_CATEGORIA_AZ
+
+        const posizioniCategoria = aziendeCategoria.filter((az) => mappa[az.nome]).map((az) => mappa[az.nome])
+        etichetteMacro.push({
+          categoria, numeroCategoria,
+          xInizio: Math.min(...posizioniCategoria.map((p) => p.x)),
+          xFine: Math.max(...posizioniCategoria.map((p) => p.x)),
+          y: yEtichettaMacro,
+        })
+
+        // Nessun'altra sottrazione qui: le righe vuote/etichetta/buffer della
+        // PROSSIMA categoria (blocIdx === 0 nel suo giro del forEach) sono
+        // già l'intero distacco fra categorie — non va raddoppiato.
+        cursoreFasciaY = y
       })
-      return { mappa, estensioneY: -cursoreFasciaY }
+      return { mappa, estensioneY: -cursoreFasciaY, etichetteMacro, etichetteSotto }
     }
 
     // La dimensione dell'asse X (dopo l'eventuale allargamento fattoreScalaX
@@ -1787,13 +1940,70 @@ function App() {
     // punto di partenza comprimibile. Se il contenuto naturale è già più alto
     // della proporzione target va bene: la diagonale sarà più verticale del
     // 75%, ma le righe restano leggibili — priorità più alta dell'inclinazione.
-    const PROPORZIONE_Y_SU_X_AZIENDE = 0.75
+    const PROPORZIONE_Y_SU_X_AZIENDE = 0.65
     const provaAziende = costruisciLayoutAziende(STILE.passo_verticale_base)
     const estensioneXAziende = X_MAX - X_MIN
     const fattoreScalaAziende = provaAziende.estensioneY > 0
       ? Math.max(1, (estensioneXAziende * PROPORZIONE_Y_SU_X_AZIENDE) / provaAziende.estensioneY)
       : 1
-    const { mappa: aziendePosizioniMap } = costruisciLayoutAziende(STILE.passo_verticale_base * fattoreScalaAziende)
+    const passoAzFinale = STILE.passo_verticale_base * fattoreScalaAziende
+    const { mappa: aziendePosizioniMap, etichetteMacro: etichetteMacroAz, etichetteSotto: etichetteSottoAzGrezze } = costruisciLayoutAziende(passoAzFinale)
+    // Un'etichetta "storiche"/"moderne" (dal gruppo normale) copre quasi
+    // sempre l'intera categoria quando è la SOLA delle due prodotte (cioè il
+    // gruppo normale non ha mai superato la soglia anno): a quel punto è
+    // ridondante con la riga della macro-categoria, doppia riga inutile —
+    // anche se la categoria ha ALTRE etichette (Avanguardie/Miste/Moderne a
+    // tratto), che invece stanno su una fascia separata e non sono mai
+    // ridondanti. Non basta contare le etichette totali per categoria: va
+    // guardato specificamente se il gruppo normale si è spezzato in due o no.
+    const normaleSpezzatoPerCategoria = {}
+    etichetteSottoAzGrezze.forEach((et) => {
+      if (!et.daNormale) return
+      normaleSpezzatoPerCategoria[et.categoria] = (normaleSpezzatoPerCategoria[et.categoria] || 0) + 1
+    })
+    const etichetteSottoAzFiltrate = etichetteSottoAzGrezze.filter((et) => !et.daNormale || normaleSpezzatoPerCategoria[et.categoria] > 1)
+    // Rinumera 1,2,3... senza buchi dopo il filtro (altrimenti si passerebbe
+    // da "04.1" direttamente a "04.3", con un salto senza senso visibile).
+    const contatoreRinumerazione = {}
+    const etichetteSottoAz = etichetteSottoAzFiltrate.map((et) => {
+      contatoreRinumerazione[et.categoria] = (contatoreRinumerazione[et.categoria] || 0) + 1
+      return { ...et, numeroSottogruppo: contatoreRinumerazione[et.categoria] }
+    })
+
+    // Etichetta macro "0" per i prodotti senza nessuna azienda associata: non
+    // fanno parte di costruisciLayoutAziende (non sono aziende), quindi si
+    // calcola qui con la stessa logica delle altre macro-categorie.
+    const prodottiSenzaAzienda = prodotti.filter((p) => getAziende(p).filter((az) => aziendePosizioniMap[az]).length === 0)
+    if (prodottiSenzaAzienda.length > 0) {
+      const xsSenzaAzienda = prodottiSenzaAzienda.map((p) => annoToX(p.anno || 1950))
+      etichetteMacroAz.unshift({
+        categoria: "__senza_azienda__", numeroCategoria: 0,
+        xInizio: Math.min(...xsSenzaAzienda), xFine: Math.max(...xsSenzaAzienda),
+        // I pallini stanno a GAP_SENZA_AZIENDA_AZ (invariato: la distanza
+        // dalla categoria 01 sotto resta la stessa di sempre). L'etichetta
+        // sta RIGHE_ETICHETTA_SENZA_AZIENDA_AZ righe più in alto, sulla
+        // stessa griglia: prima le due coincidevano esattamente, per questo
+        // il testo/riga finiva addosso ai pallini.
+        y: passoAzFinale * (GAP_SENZA_AZIENDA_AZ + RIGHE_ETICHETTA_SENZA_AZIENDA_AZ),
+      })
+    }
+
+    // Prodotti con ESATTAMENTE un designer e UNA azienda: per questi il
+    // collegamento designer→prodotto e quello azienda→prodotto sono la
+    // "stessa" relazione vista da due prospettive diverse, quindi al cambio
+    // vista disegnamo un arco UNICO il cui punto di ancoraggio scorre
+    // dall'uno all'altro (vedi disegnaTutto), invece di far svanire un arco
+    // e apparirne un altro altrove. Dove la corrispondenza non è 1 a 1 (più
+    // designer e/o più aziende — co-progetto/co-licenza) il numero di archi
+    // cambia comunque fra le due viste: lì resta la dissolvenza di sempre,
+    // un arco a scorrimento non avrebbe un singolo punto di arrivo sensato.
+    const aziendaUnicaPerProdotto = {}
+    graph.forEachNode((node, attr) => {
+      if (attr.tipo !== "prodotto") return
+      const nDesigner = graph.degree(node)
+      const azs = getAziende(attr.dati).filter((az) => aziendePosizioniMap[az])
+      if (nDesigner === 1 && azs.length === 1) aziendaUnicaPerProdotto[node] = azs[0]
+    })
 
     // Stesso criterio delle orbite designer (raggioBaseProdotto/Multi): il
     // raggio cresce con l'età dell'azienda al momento del prodotto (fondazione
@@ -1841,9 +2051,11 @@ function App() {
       const chiaveAz = azs.length > 0 ? azs[0] : null
       let azOrbitaX, azOrbitaY
       if (azs.length === 0) {
-        // Nessuna azienda: fluttua sull'asse X all'anno di produzione
+        // Nessuna azienda: fluttua sull'asse X all'anno di produzione, su una
+        // riga propria sopra a tutte le fasce (Y positiva, le fasce scendono
+        // da 0), staccata più delle fasce fra loro.
         azOrbitaX = annoToX(p.anno || 1950)
-        azOrbitaY = 0
+        azOrbitaY = passoAzFinale * GAP_SENZA_AZIENDA_AZ
       } else {
         // Centro attorno a cui orbitare (mettipunto di tutte le aziende valide)
         const centroX = azs.reduce((s, az) => s + aziendePosizioniMap[az].x, 0) / azs.length
@@ -1864,7 +2076,7 @@ function App() {
       // così attivare la timeline mentre si è in vista aziende non fa
       // "tornare" i prodotti sulle righe dei designer. Stessa logica designer
       // per i prodotti dello stesso anno: si scostano invece di sovrapporsi.
-      let azTimelineY = 0
+      let azTimelineY = passoAzFinale * GAP_SENZA_AZIENDA_AZ
       if (chiaveAz) {
         const anno = p.anno || 1900
         if (!indiceCorrentePerAnnoAzienda[chiaveAz]) indiceCorrentePerAnnoAzienda[chiaveAz] = {}
@@ -1927,31 +2139,69 @@ function App() {
     // Il layout può superare Y_MIN/Y_MAX a causa degli offset cumulativi.
     // Calcoliamo quindi un bounding box reale, evitando che alcuni nodi finiscano
     // fuori dal sistema di coordinate usato da Sigma.
-    let contenutoYMin = Infinity
-    let contenutoYMax = -Infinity
+    //
+    // Designer e aziende hanno estensioni verticali radicalmente diverse (poche
+    // decine di unità contro migliaia): un bounding box UNICO condiviso tra le
+    // due viste fa sì che, in vista designer, "adatta tutto" si adatti in
+    // realtà anche alle aziende — il contenuto vero diventa un'isola minuscola
+    // dentro uno spazio enorme e vuoto. Calcoliamo quindi due bounding box
+    // separati e applichiamo quello giusto ad ogni cambio vista.
+    let contenutoYMinDesigner = Infinity
+    let contenutoYMaxDesigner = -Infinity
     graph.forEachNode((node, attr) => {
-      contenutoYMin = Math.min(contenutoYMin, attr.y)
-      contenutoYMax = Math.max(contenutoYMax, attr.y)
+      contenutoYMinDesigner = Math.min(contenutoYMinDesigner, attr.y)
+      contenutoYMaxDesigner = Math.max(contenutoYMaxDesigner, attr.y)
     })
-    if (!Number.isFinite(contenutoYMin) || !Number.isFinite(contenutoYMax)) {
-      contenutoYMin = Y_MIN
-      contenutoYMax = Y_MAX
+    if (!Number.isFinite(contenutoYMinDesigner) || !Number.isFinite(contenutoYMaxDesigner)) {
+      contenutoYMinDesigner = Y_MIN
+      contenutoYMaxDesigner = Y_MAX
     }
 
-    const bboxYMin = Math.min(Y_MIN, contenutoYMin) - MARGINE_Y
-    const bboxYMax = Math.max(Y_MAX, contenutoYMax) + MARGINE_Y
-    renderer.setCustomBBox({
-      x: [X_MIN - MARGINE_X, X_MAX + MARGINE_X],
-      y: [bboxYMin, bboxYMax],
+    // Le aziende non sono nodi del grafo (vivono in aziendePosizioniMap): senza
+    // questo, il bounding box le ignora del tutto e alcune (in particolare la
+    // riga "senza azienda", che sta sopra a tutte le fasce) finiscono fuori
+    // dal sistema di coordinate di Sigma — invisibili anche se i dati ci sono.
+    let contenutoYMinAziende = contenutoYMinDesigner
+    let contenutoYMaxAziende = contenutoYMaxDesigner
+    Object.values(aziendePosizioniMap).forEach((pos) => {
+      contenutoYMinAziende = Math.min(contenutoYMinAziende, pos.y)
+      contenutoYMaxAziende = Math.max(contenutoYMaxAziende, pos.y)
     })
+    // + RIGHE_ETICHETTA_SENZA_AZIENDA_AZ: la sua etichetta sta sopra ai
+    // pallini stessi (vedi sopra), il bounding box deve includere anche lei.
+    contenutoYMaxAziende = Math.max(contenutoYMaxAziende, passoAzFinale * (GAP_SENZA_AZIENDA_AZ + RIGHE_ETICHETTA_SENZA_AZIENDA_AZ))
 
-    // minCameraRatio è relativo al bounding box: se il contenuto è cresciuto in
-    // altezza, ricalcoliamo la frazione così da mantenere costante lo zoom massimo
-    // assoluto (in unità-grafo), invece di lasciare che lo zoom massimo si "diluisca"
-    // proporzionalmente alla crescita del contenuto.
-    const bboxAltezza = bboxYMax - bboxYMin
-    MIN_CAMERA_RATIO = Math.min(MIN_CAMERA_RATIO_BASE, MIN_CAMERA_RATIO_UNITA_VISIBILI / bboxAltezza)
-    renderer.setSetting("minCameraRatio", MIN_CAMERA_RATIO)
+    let bboxYMin, bboxYMax
+    // fattoreCropCumulativo: prodotto di tutti i fattori di compensazione ratio
+    // applicati dal resizeObserver da quando la pagina è stata caricata (vedi
+    // più sotto). Serve a mantenere MIN/MAX_CAMERA_RATIO coerenti con lo stesso
+    // "crop" applicato al ratio della camera, così che zoomT() (e quindi la
+    // percentuale di zoom mostrata e tutte le dimensioni derivate) NON cambi
+    // mai a causa di un ridimensionamento della finestra, solo per un'azione
+    // di zoom reale dell'utente.
+    let fattoreCropCumulativo = 1
+    function impostaBBoxPerVista(vista) {
+      const cYMin = vista === "aziende" ? contenutoYMinAziende : contenutoYMinDesigner
+      const cYMax = vista === "aziende" ? contenutoYMaxAziende : contenutoYMaxDesigner
+      bboxYMin = Math.min(Y_MIN, cYMin) - MARGINE_Y
+      bboxYMax = Math.max(Y_MAX, cYMax) + MARGINE_Y
+      renderer.setCustomBBox({
+        x: [X_MIN - MARGINE_X, X_MAX + MARGINE_X],
+        y: [bboxYMin, bboxYMax],
+      })
+      // minCameraRatio è relativo al bounding box: se il contenuto è cresciuto in
+      // altezza, ricalcoliamo la frazione così da mantenere costante lo zoom massimo
+      // assoluto (in unità-grafo), invece di lasciare che lo zoom massimo si "diluisca"
+      // proporzionalmente alla crescita del contenuto.
+      const bboxAltezza = bboxYMax - bboxYMin
+      const minCameraRatioBaseAttuale = isMobile ? 0.02 : 0.05
+      MIN_CAMERA_RATIO = Math.min(minCameraRatioBaseAttuale, MIN_CAMERA_RATIO_UNITA_VISIBILI / bboxAltezza) * fattoreCropCumulativo
+      renderer.setSetting("minCameraRatio", MIN_CAMERA_RATIO)
+      const maxCameraRatioBaseAttuale = isMobile ? 0.6 : 1.2
+      MAX_CAMERA_RATIO = maxCameraRatioBaseAttuale * fattoreCropCumulativo
+      renderer.setSetting("maxCameraRatio", MAX_CAMERA_RATIO)
+    }
+    impostaBBoxPerVista(vistaCorrenteRef.current)
 
     // Precarichiamo le immagini SOLO ora che ogni nodo ha una posizione
     // definitiva, dando priorità a quelle vicine al punto in cui l'utente si
@@ -2100,6 +2350,24 @@ function App() {
       return lerp(0.08, 1, t / 0.44)
     }
 
+    // Le etichette di fascia (font, spessore riga, distacchi) sono disegnate
+    // con dimensioni fisse in pixel, mentre i pallini azienda cambiano
+    // dimensione con lo zoom secondo la curva di calcolaRTarget (rAz più
+    // sotto). Le due cose devono restare in proporzione a QUALUNQUE zoom, non
+    // solo a quello dove le costanti sono state tarate a occhio: questo
+    // fattore vale 1 esattamente all'8% di zoom (il punto di riferimento) e
+    // scala nella stessa proporzione in cui scala rAz altrove — così
+    // ingrandendo/rimpicciolendo lo zoom le etichette restano sempre nello
+    // stesso rapporto visivo con i pallini, invece di restare fisse e
+    // "scollarsi" dalle proprie righe quando lo spazio in pixel fra le righe
+    // si restringe (zoom basso) o si allarga (zoom alto).
+    const ZOOM_RIFERIMENTO_ETICHETTE_AZ = 0.08
+    const VALORE_RIF_ETICHETTE_AZ = lerp(STILE.zoom_designer_min, STILE.zoom_designer_max, Math.pow(ZOOM_RIFERIMENTO_ETICHETTE_AZ, 1.2))
+    function fattoreScalaEtichetteAz() {
+      const valoreAttuale = lerp(STILE.zoom_designer_min, STILE.zoom_designer_max, Math.pow(zoomT(), 1.2))
+      return valoreAttuale / VALORE_RIF_ETICHETTE_AZ
+    }
+
     // Inversa di zoomT(): converte una percentuale di zoom (0-1) nel ratio di
     // camera corrispondente, sempre coerente con i reali limiti min/max attuali.
     function ratioDaT(t) {
@@ -2174,60 +2442,86 @@ function App() {
       const collegati = nodiCollegatiAlHover(nodoAttivo)
       const hoverAttivo = nodoAttivo !== null
 
-      const tGriglia = Math.pow(Math.min(1, t), 10)
-      const grigliaRaggio = lerp(STILE.zoom_griglia_min, STILE.zoom_griglia_max, tGriglia)
-      const yGrafoMin = Math.min(Y_MIN, contenutoYMin) - MARGINE_Y
-      const yGrafoMax = Math.max(Y_MAX, contenutoYMax) + MARGINE_Y
-      const ogniN = t < 0.3 ? 2 : 1
-      const grigliaRaggioEffettivo = t < 0.3 ? grigliaRaggio * 0.7 : grigliaRaggio
+      // Prima restava quasi fermo al minimo per il 90% della corsa (esponente
+      // 10 sul t) e diventava impercettibile "già" verso il 7% di zoom:
+      // crescita lineare su tutto l'intervallo, sempre visibile.
+      const grigliaRaggio = lerp(STILE.zoom_griglia_min, STILE.zoom_griglia_max, Math.min(1, t))
 
       const padLati = isMobile ? 10 : 40
-      const padSinistra = isMobile ? padLati : Math.max(20, 240 * uiScale - 180)
+      const padSinistra = isMobile ? padLati : Math.max(20, 240 * uiScaleInterno - 180)
       const padBasso = isMobile ? 10 : 16
       const padSopra = isMobile
         ? (topBarRef.current ? topBarRef.current.getBoundingClientRect().height + 22 : 100)
-        : 110 * uiScale
+        : 110 * uiScaleInterno
+
+      // Griglia di sfondo: le colonne X seguono la stessa logica delle
+      // etichette anno (stesso passoAnno, stessi punti intermedi — cambia da
+      // sola con lo zoom). Le righe Y usano il passo NATIVO vero del
+      // contenuto (passoAzFinale in vista aziende — ogni riga è un suo
+      // multiplo esatto per costruzione; 1 in vista designer — l'unità del
+      // fine-snap anti-sovrapposizione) e continuano SEMPRE, anche negli
+      // spazi vuoti fra una categoria/designer e il successivo — quei vuoti
+      // sono "prenotati" per i pallini di contenuto, non per la griglia, che
+      // resta un ritmo continuo. Unica eccezione: se a questo zoom il passo
+      // nativo produrrebbe più di MAX_RIGHE_GRIGLIA righe visibili (in vista
+      // designer, zoomando molto indietro, l'unità 1 su un range enorme —
+      // il crash di prima), il passo si allarga quanto basta per restare
+      // sotto il limite: sicurezza, non un limite di design.
+      {
+        const a0g = renderer.graphToViewport({ x: annoToX(ANNO_MIN), y: 0 })
+        const a1g = renderer.graphToViewport({ x: annoToX(ANNO_MAX), y: 0 })
+        const pxPerAnnoG = Math.abs(a1g.x - a0g.x) / (ANNO_MAX - ANNO_MIN)
+        const passoMinPxG = isMobile ? 40 : 56
+        let passoAnnoG = 50
+        for (const p of [1, 2, 5, 10, 20, 50]) {
+          if (pxPerAnnoG * p >= passoMinPxG) { passoAnnoG = p; break }
+        }
+        const nIntermediG = t >= 0.75 ? 5 : 1
+        const annoInizioG = Math.ceil(ANNO_MIN / passoAnnoG) * passoAnnoG
+        const colonneX = []
+        for (let anno = annoInizioG - passoAnnoG; anno <= ANNO_MAX; anno += passoAnnoG) {
+          for (let k = 0; k <= nIntermediG; k++) {
+            const annoPunto = anno + (passoAnnoG * k) / (nIntermediG + 1)
+            const screenX = renderer.graphToViewport({ x: annoToX(annoPunto), y: 0 }).x
+            if (screenX >= -2 && screenX <= w + 2) colonneX.push(screenX)
+          }
+        }
+        const angoloTLg = renderer.viewportToGraph({ x: 0, y: 0 })
+        const angoloBRg = renderer.viewportToGraph({ x: w, y: h })
+        const visYMinG = Math.max(bboxYMin, Math.min(angoloTLg.y, angoloBRg.y) - 2)
+        const visYMaxG = Math.min(bboxYMax, Math.max(angoloTLg.y, angoloBRg.y) + 2)
+        const rangeVisibileY = Math.max(0, visYMaxG - visYMinG)
+        const passoNativoY = modelloVista === "aziende" ? passoAzFinale : 1
+        const MAX_RIGHE_GRIGLIA = 300
+        const righeStimate = passoNativoY > 0 ? rangeVisibileY / passoNativoY : 0
+        const fattoreDaConteggio = righeStimate > MAX_RIGHE_GRIGLIA ? Math.ceil(righeStimate / MAX_RIGHE_GRIGLIA) : 1
+        // A zoom molto basso il passo nativo, per quanto esatto, corrisponde
+        // a pochi pixel: righe che si toccano/ammassano, non più un limite
+        // di sicurezza (quello sopra) ma di leggibilità. Stesso principio,
+        // soglia diversa: se il passo nativo scende sotto MIN_SPAZIO_RIGHE_PX
+        // si allarga quanto basta per restarci sopra.
+        const ppuYGriglia = Math.abs(renderer.graphToViewport({ x: 0, y: 1 }).y - renderer.graphToViewport({ x: 0, y: 0 }).y)
+        const MIN_SPAZIO_RIGHE_PX = 40
+        const spazioNativoPx = ppuYGriglia * passoNativoY
+        const fattoreDaSpazio = spazioNativoPx > 0 ? Math.max(1, Math.ceil(MIN_SPAZIO_RIGHE_PX / spazioNativoPx)) : 1
+        const passoY = passoNativoY * Math.max(fattoreDaConteggio, fattoreDaSpazio)
+        const gyInizio = Math.ceil(visYMinG / passoY) * passoY
+        for (let gy = gyInizio; gy <= visYMaxG; gy += passoY) {
+          const screenY = renderer.graphToViewport({ x: 0, y: gy }).y
+          if (screenY < -2 || screenY > h + 2) continue
+          colonneX.forEach((screenX) => {
+            ctx.beginPath()
+            ctx.arc(screenX, screenY, grigliaRaggio, 0, Math.PI * 2)
+            ctx.fillStyle = STILE.griglia_pallino_colore
+            ctx.fill()
+          })
+        }
+      }
 
       ctx.save()
       ctx.beginPath()
       ctx.rect(padSinistra, padSopra, Math.max(0, w - padSinistra - padLati), Math.max(0, h - padSopra - padBasso))
       ctx.clip()
-
-      // Passo fisso in unità-grafo, uguale su X e Y: celle sempre quadrate,
-      // indipendenti da quanto si è allargato X_MIN/X_MAX per le orbite.
-      // Il ciclo è limitato alla sola area visibile a schermo (+ un margine di 2 unità),
-      // altrimenti con X_MIN/X_MAX molto allargati si attraversano decine di migliaia
-      // di punti fuori schermo a ogni frame.
-      const angoloTL = renderer.viewportToGraph({ x: 0, y: 0 })
-      const angoloBR = renderer.viewportToGraph({ x: w, y: h })
-      const visXMin = Math.min(angoloTL.x, angoloBR.x) - 2
-      const visXMax = Math.max(angoloTL.x, angoloBR.x) + 2
-      const visYMin = Math.min(angoloTL.y, angoloBR.y) - 2
-      const visYMax = Math.max(angoloTL.y, angoloBR.y) + 2
-      const xGrafoMin = Math.max(X_MIN - MARGINE_X, visXMin)
-      const xGrafoMax = Math.min(X_MAX + MARGINE_X, visXMax)
-      const yGrafoMinVis = Math.max(yGrafoMin, visYMin)
-      const yGrafoMaxVis = Math.min(yGrafoMax, visYMax)
-      // Se X_MIN/X_MAX si sono allargati per far spazio alle orbite, un'unità grafo
-      // corrisponde a una frazione di anno più piccola: allarghiamo il passo della
-      // griglia in proporzione, così la densità visiva resta quella di sempre.
-      const passoGriglia = Math.max(1, Math.round((X_MAX - X_MIN) / (X_MAX_BASE - X_MIN_BASE)))
-      const gxInizio = Math.ceil(xGrafoMin / passoGriglia) * passoGriglia
-      const gyInizio = Math.ceil(yGrafoMinVis / passoGriglia) * passoGriglia
-      for (let gx = gxInizio; gx <= xGrafoMax; gx += passoGriglia) {
-        const gxi = gx / passoGriglia
-        if (ogniN > 1 && gxi % ogniN !== 0) continue
-        for (let gy = gyInizio; gy <= yGrafoMaxVis; gy += passoGriglia) {
-          const gyi = gy / passoGriglia
-          if (ogniN > 1 && ((gyi + gxi) % 2 !== 0)) continue
-          const screen = renderer.graphToViewport({ x: gx, y: gy })
-          if (screen.x < -2 || screen.x > w + 2 || screen.y < -2 || screen.y > h + 2) continue
-          ctx.beginPath()
-          ctx.arc(screen.x, screen.y, grigliaRaggioEffettivo, 0, Math.PI * 2)
-          ctx.fillStyle = STILE.griglia_pallino_colore
-          ctx.fill()
-        }
-      }
 
       // --- Ameba correnti (scuole + collettivi): sfondo, dietro a tutto il resto.
       // Due trattamenti: macchia piena ("diagonale") per chi ha almeno un altro membro
@@ -2423,8 +2717,30 @@ function App() {
       }
 
       amoebaAlphaAnimata = lerp(amoebaAlphaAnimata, transizioneAttiva ? 0 : 1, STILE.lerp_velocita)
-      designerAlphaAnimata = lerp(designerAlphaAnimata, modelloVista === "aziende" ? 0 : 1, STILE.lerp_velocita)
-      aziendaAlphaAnimata = lerp(aziendaAlphaAnimata, modelloVista === "aziende" ? 1 : 0, STILE.lerp_velocita)
+      // Dissolvenza designer/aziende: durata fissa con ease-in-ease-out
+      // (vedi CROSSFADE_VISTA_DURATA_MS/crossfadeVistaInizio, avviata in
+      // animaTransizione), non più un lerp esponenziale continuo — quello
+      // si avvicina al bersaglio ma non finisce mai in un tempo definito.
+      {
+        const tCross = Math.min(1, Math.max(0, (performance.now() - crossfadeVistaInizio) / CROSSFADE_VISTA_DURATA_MS))
+        const easeCross = tCross < 0.5 ? 2 * tCross * tCross : 1 - Math.pow(-2 * tCross + 2, 2) / 2
+        const targetDesigner = modelloVista === "aziende" ? 0 : 1
+        const targetAzienda = modelloVista === "aziende" ? 1 : 0
+        designerAlphaAnimata = lerp(crossfadeVistaDaDesigner, targetDesigner, easeCross)
+        aziendaAlphaAnimata = lerp(crossfadeVistaDaAzienda, targetAzienda, easeCross)
+      }
+      // Stessa tecnica (durata fissa + ease-in-ease-out) della dissolvenza
+      // designer/aziende, con un breve ritardo fisso all'avvio (non più
+      // "ferma finché tutti i prodotti non hanno finito di muoversi": con
+      // molti prodotti e stagger quel blocco poteva durare diversi secondi,
+      // percepito come "durata infinita" prima ancora che la sfumatura
+      // iniziasse) — resta comunque visibilmente dietro ai pallini.
+      {
+        const tEtichette = Math.min(1, Math.max(0, (performance.now() - crossfadeEtichetteInizio) / CROSSFADE_ETICHETTE_DURATA_MS))
+        const easeEtichette = tEtichette < 0.5 ? 2 * tEtichette * tEtichette : 1 - Math.pow(-2 * tEtichette + 2, 2) / 2
+        const targetEtichette = modelloVista === "aziende" ? 1 : 0
+        etichetteAzAlphaAnimata = lerp(crossfadeEtichetteDa, targetEtichette, easeEtichette)
+      }
       gruppiCollettivi.forEach(({ nome, nodi }) => {
         // Il contorno raggruppa prodotti per collettivo creativo (es. i tre
         // architetti di BBPR insieme), a prescindere da chi li produce: ha senso
@@ -2579,8 +2895,15 @@ function App() {
         if (attr.tipo === "prodotto") {
           // Dissolvenza con i designer: gli edge designer→prodotto sfumano
           // insieme ai designer stessi invece di scomparire di scatto
-          // (gli edge azienda→prodotto sono gestiti a parte, con la loro dissolvenza).
-          if (designerAlphaAnimata < 0.01) return
+          // (gli edge azienda→prodotto sono gestiti a parte, con la loro
+          // dissolvenza) — TRANNE quando il prodotto ha un designer e
+          // un'azienda soli: in quel caso è lo STESSO arco (vedi
+          // aziendaUnicaPerProdotto) e il suo punto di partenza scorre
+          // dall'ancora designer a quella azienda, invece di sfumare mentre
+          // un secondo arco appare altrove.
+          const azUnica = !timelineVista ? aziendaUnicaPerProdotto[target] : null
+          const azUnicaPos = azUnica ? aziendePosizioniMap[azUnica] : null
+          if (designerAlphaAnimata < 0.01 && !azUnicaPos) return
           let edgeColor = STILE.edge_prodotto_colore
           let edgeWidth = STILE.edge_prodotto_size
           let edgeAlpha = 1
@@ -2600,11 +2923,21 @@ function App() {
               edgeAlpha = 0.06
             }
           }
-          ctx.globalAlpha = edgeAlpha * designerAlphaAnimata
+          let posSEffettivo = posS
+          let alphaVista = designerAlphaAnimata
+          if (azUnicaPos) {
+            const azSchermo = renderer.graphToViewport({ x: azUnicaPos.x, y: azUnicaPos.y })
+            posSEffettivo = {
+              x: lerp(posS.x, azSchermo.x, aziendaAlphaAnimata),
+              y: lerp(posS.y, azSchermo.y, aziendaAlphaAnimata),
+            }
+            alphaVista = Math.max(designerAlphaAnimata, aziendaAlphaAnimata)
+          }
+          ctx.globalAlpha = edgeAlpha * alphaVista
           ctx.beginPath()
-          ctx.moveTo(posS.x, posS.y)
-          const midX = (posS.x + posT.x) / 2
-          ctx.bezierCurveTo(midX, posS.y, midX, posT.y, posT.x, posT.y)
+          ctx.moveTo(posSEffettivo.x, posSEffettivo.y)
+          const midX = (posSEffettivo.x + posT.x) / 2
+          ctx.bezierCurveTo(midX, posSEffettivo.y, midX, posT.y, posT.x, posT.y)
           ctx.strokeStyle = edgeColor
           ctx.lineWidth = edgeWidth
           ctx.stroke()
@@ -2839,10 +3172,15 @@ function App() {
           ctx.fillText(subAz, lx, lyStart + labelDesignerSize + 5)
         })
 
-        // Edges da aziende a prodotti (dissolvenza con le aziende, non in timeline)
+        // Edges da aziende a prodotti (dissolvenza con le aziende, non in timeline).
+        // I prodotti con un designer e un'azienda soli sono già disegnati
+        // sopra come arco a scorrimento (aziendaUnicaPerProdotto): qui si
+        // gestiscono solo gli altri casi (nessun designer, o più designer/
+        // più aziende), dove non c'è un singolo punto di arrivo sensato.
         if (!timelineVista) {
           graph.forEachNode((node, attr) => {
             if (attr.tipo !== "prodotto") return
+            if (aziendaUnicaPerProdotto[node]) return
             const azs = getAziende(attr.dati).filter((az) => aziendePosizioniMap[az])
             if (azs.length === 0) return
             const prodPos = renderer.graphToViewport({ x: attr.x, y: attr.y })
@@ -2862,6 +3200,87 @@ function App() {
             })
           })
         }
+
+      }
+
+      // Etichette di fascia — macro-categoria (numero bold + testo regular,
+      // riga che copre l'INTERA larghezza della categoria) e sotto-gruppo
+      // (numero semibold + testo light, riga che copre solo il proprio
+      // sotto-gruppo — per definizione più stretta). Dissolvenza propria
+      // (etichetteAzAlphaAnimata): FUORI dal blocco aziendaAlphaAnimata,
+      // non più annidata — altrimenti quando i pallini azienda finiscono di
+      // sfumare (sotto 0.01) l'intero blocco etichette smette di essere
+      // disegnato di scatto, indipendentemente da quanto fosse avanti la
+      // propria dissolvenza (compariva/scompariva senza transizione).
+      if (etichetteAzAlphaAnimata >= 0.01) {
+        ctx.globalAlpha = etichetteAzAlphaAnimata
+        // Ogni distanza/dimensione fissa qui sotto è moltiplicata per lo
+        // stesso fattore che governa il raggio dei pallini azienda (rAz):
+        // così l'intero blocco etichetta resta nella stessa proporzione
+        // visiva rispetto ai pallini a qualunque zoom, non solo all'8% dove
+        // i numeri base sono stati tarati.
+        const f = fattoreScalaEtichetteAz()
+        const staccoTestoLinea = 4 * f
+        const staccoNumeroTesto = 4 * f
+
+        etichetteMacroAz.forEach((et) => {
+          if (et.y === null || et.y === undefined) return
+          const pInizio = renderer.graphToViewport({ x: et.xInizio, y: et.y })
+          const pFine = renderer.graphToViewport({ x: et.xFine, y: et.y })
+          const lx = pInizio.x
+          const ly = pInizio.y
+          const xRigaFine = Math.max(pFine.x, pInizio.x)
+          const numero = String(et.numeroCategoria).padStart(2, "0")
+          const testo = NOME_ETICHETTA_CATEGORIA[et.categoria] || et.categoria
+          // Il testo inizia esattamente dal margine sinistro della riga (lx)
+          // ed è posizionato subito SOPRA di essa (un leggero margine).
+          const lyTesto = ly - staccoTestoLinea
+          ctx.textAlign = "left"
+          ctx.fillStyle = "#000000"
+          ctx.font = `700 ${10 * f}px Roboto`
+          ctx.fillText(numero, lx, lyTesto)
+          const wNumero = ctx.measureText(numero).width
+          ctx.font = `400 ${10 * f}px Roboto`
+          ctx.fillText(testo, lx + wNumero + staccoNumeroTesto, lyTesto)
+          // La riga parte esattamente dal primo elemento della categoria
+          // (lx) e copre l'intera larghezza della categoria (xRigaFine).
+          ctx.beginPath()
+          ctx.moveTo(lx, ly)
+          ctx.lineTo(xRigaFine, ly)
+          ctx.strokeStyle = "#aaaaaa"
+          ctx.lineWidth = f
+          ctx.stroke()
+        })
+
+        etichetteSottoAz.forEach((et) => {
+          const pInizio = renderer.graphToViewport({ x: et.xInizio, y: et.y })
+          const pFine = renderer.graphToViewport({ x: et.xFine, y: et.y })
+          const ly = pInizio.y
+          const xRigaFine = Math.max(pFine.x, pInizio.x)
+          const numero = `${et.numeroCategoria}.${et.numeroSottogruppo}`
+          const testo = NOME_ETICHETTA_SOTTOGRUPPO[et.tipo] || et.tipo
+          // Stesso discorso della macro-etichetta ma all'opposto SOLO
+          // nell'allineamento orizzontale: destra invece di sinistra,
+          // alla fine della riga (xRigaFine). Verticalmente sta comunque
+          // SOPRA la riga, come la macro.
+          const lyTesto = ly - staccoTestoLinea
+          ctx.textAlign = "right"
+          ctx.fillStyle = "#000000"
+          ctx.font = `600 ${9 * f}px Roboto`
+          ctx.fillText(numero, xRigaFine, lyTesto)
+          const wNumero = ctx.measureText(numero).width
+          ctx.font = `300 ${9 * f}px Roboto`
+          ctx.fillText(testo, xRigaFine - wNumero - staccoNumeroTesto, lyTesto)
+          // La riga copre SOLO il proprio sotto-gruppo (xInizio → xFine),
+          // per definizione più stretta di quella di macro-categoria.
+          ctx.beginPath()
+          ctx.moveTo(pInizio.x, ly)
+          ctx.lineTo(xRigaFine, ly)
+          ctx.strokeStyle = "#cccccc"
+          ctx.lineWidth = f
+          ctx.stroke()
+        })
+        ctx.globalAlpha = 1
       }
 
       ctx.restore()
@@ -3056,9 +3475,8 @@ function App() {
     }
 
     // Clamp preciso in coordinate-grafo: il riquadro visibile non può uscire
-    // dall'area dove esistono i pallini di griglia. Ricalcolato dai dati reali
-    // a ogni chiamata, quindi resta corretto anche se la griglia cresce
-    // (più designer/prodotti => contenutoYMin/Max più ampi).
+    // dall'area dove esistono i pallini di griglia. Legge bboxYMin/bboxYMax,
+    // già quelli della vista corrente (designer o aziende).
     function clampCameraAllaGriglia(state) {
       const cRect = container.getBoundingClientRect()
       const w = cRect.width, h = cRect.height
@@ -3068,19 +3486,20 @@ function App() {
 
       const margineYExtra = 180
       const dataXMin = X_MIN - MARGINE_X, dataXMax = X_MAX + MARGINE_X
-      const dataYMin = Math.min(Y_MIN, contenutoYMin) - MARGINE_Y - margineYExtra
-      const dataYMax = Math.max(Y_MAX, contenutoYMax) + MARGINE_Y + margineYExtra
+      // bboxYMin/bboxYMax sono già quelli della vista corrente.
+      const dataYMin = bboxYMin - margineYExtra
+      const dataYMax = bboxYMax + margineYExtra
 
       const pTL = renderer.graphToViewport({ x: dataXMin, y: dataYMin })
       const pBR = renderer.graphToViewport({ x: dataXMax, y: dataYMax })
       const bxMin = Math.min(pTL.x, pBR.x), bxMax = Math.max(pTL.x, pBR.x)
       const byMin = Math.min(pTL.y, pBR.y), byMax = Math.max(pTL.y, pBR.y)
 
-      const margineSinistra = isMobile ? 10 : Math.max(20, 240 * uiScale - 180)
+      const margineSinistra = isMobile ? 10 : Math.max(20, 240 * uiScaleInterno - 180)
       const margineDestra = isMobile ? 10 : 40
       const margineAlto = isMobile
         ? (topBarRef.current ? topBarRef.current.getBoundingClientRect().height + 10 : 100)
-        : 170 * uiScale
+        : 170 * uiScaleInterno
       const margineBasso = 10
 
       let shiftX = 0, shiftY = 0
@@ -3122,7 +3541,7 @@ function App() {
         // Movimento manuale della mappa durante navigazione collegamenti: non tornare più alla posizione pre-click
         cameraPrimaDiClick = null
       }
-      if (!clamping && !prodottoCliccato && !touchGestureAttiva) {
+      if (!clamping && !prodottoCliccato && !touchGestureAttiva && !transizioneAttiva) {
         clampCameraAllaGriglia(state)
       }
 
@@ -3130,7 +3549,39 @@ function App() {
       richiediDisegnoOverlay(2)
     })
 
+    // Sigma scala SEMPRE la vista in base al lato più corto del contenitore
+    // (comportamento nativo della libreria, non modificabile via settings):
+    // cambiare le proporzioni della finestra risistema la scala su entrambi
+    // gli assi, non solo quello che si restringe/allarga. Compensando il
+    // ratio della camera in proporzione al cambio del lato più corto, la
+    // scala pixel-per-unità-di-grafo resta costante su entrambi gli assi —
+    // un vero "crop" invece di un ridimensionamento — in tutti i casi tranne
+    // cambi di proporzioni molto estremi (soglia interna di Sigma su
+    // graphRatio/viewportRatio che qui non compensiamo).
+    let dimensioneMinPrecedente = Math.min(container.clientWidth, container.clientHeight) || null
     const resizeObserver = new ResizeObserver(() => {
+      const dimensioneMinNuova = Math.min(container.clientWidth, container.clientHeight)
+      const fattoreStep = (dimensioneMinPrecedente && dimensioneMinNuova > 0)
+        ? dimensioneMinNuova / dimensioneMinPrecedente : 1
+      dimensioneMinPrecedente = dimensioneMinNuova
+      fattoreCropCumulativo *= fattoreStep
+
+      // isMobile/uiScaleInterno (e i margini che ne derivano) vanno riallineati
+      // PRIMA di toccare il ratio della camera: così, quando il setState qui
+      // sotto scatena "updated" → clampCameraAllaGriglia, quest'ultimo usa già
+      // i margini corretti per la nuova dimensione (esattamente come dopo un
+      // refresh), invece di restare per un frame sui margini della modalità
+      // precedente.
+      isMobile = window.innerWidth < 768
+      uiScaleInterno = 0.6 + (window.innerWidth / 1440) * 0.4
+      impostaStileContainer()
+      impostaBBoxPerVista(vistaCorrenteRef.current)
+
+      if (fattoreStep !== 1) {
+        const stato = camera.getState()
+        camera.setState({ ...stato, ratio: stato.ratio * fattoreStep })
+      }
+
       ridimensionaOverlay()
       richiediDisegnoOverlay(2)
     })
@@ -3154,7 +3605,7 @@ function App() {
 
     if (!cameraImpostata) {
       const bboxX = [X_MIN - MARGINE_X, X_MAX + MARGINE_X]
-      const bboxY = [Math.min(Y_MIN, contenutoYMin) - MARGINE_Y, Math.max(Y_MAX, contenutoYMax) + MARGINE_Y]
+      const bboxY = [bboxYMin, bboxYMax]
       if (graph.hasNode("Achille Castiglioni")) {
         const cAttr = graph.getNodeAttributes("Achille Castiglioni")
         const cx = (cAttr.x - bboxX[0]) / (bboxX[1] - bboxX[0])
@@ -3183,8 +3634,25 @@ function App() {
     // Dissolvenza incrociata designer/aziende: invece di comparire/scomparire
     // di scatto al cambio vista, i designer e le aziende sfumano gradualmente
     // (i prodotti restano animati via lerp delle coordinate come già avveniva).
+    // Durata fissa con ease-in-ease-out (non un lerp esponenziale continuo:
+    // quello si avvicina asintoticamente al bersaglio ma non "finisce" mai
+    // davvero in un tempo definito — da qui la sensazione di durare troppo).
     let designerAlphaAnimata = modelloVista === "aziende" ? 0 : 1
     let aziendaAlphaAnimata = modelloVista === "aziende" ? 1 : 0
+    const CROSSFADE_VISTA_DURATA_MS = 700
+    let crossfadeVistaInizio = 0
+    let crossfadeVistaDaDesigner = designerAlphaAnimata
+    let crossfadeVistaDaAzienda = aziendaAlphaAnimata
+    // Etichette di fascia: stesso obiettivo (0/1) delle aziende, stessa
+    // tecnica (durata fissa + ease), ma con un breve ritardo fisso
+    // all'avvio — restano visibilmente in ritardo sui pallini azienda,
+    // mai sincrone, senza dipendere dalla durata (variabile, potenzialmente
+    // lunga) del movimento dei prodotti.
+    let etichetteAzAlphaAnimata = modelloVista === "aziende" ? 1 : 0
+    const CROSSFADE_ETICHETTE_DURATA_MS = 500
+    const CROSSFADE_ETICHETTE_RITARDO_MS = 1850
+    let crossfadeEtichetteInizio = 0
+    let crossfadeEtichetteDa = etichetteAzAlphaAnimata
 
     function raccogliProdotti() {
       const lista = []
@@ -3203,6 +3671,22 @@ function App() {
       const nuovaVista = tlOn ? "timeline" : modello
       if (transizioneAttiva || (modello === modelloVista && tlOn === timelineVista)) return
       transizioneAttiva = true
+      const cambiaModello = modello !== modelloVista
+
+      // Dissolvenze + movimento prodotti: possono partire un po' prima che
+      // lo zoom out (sotto) sia del tutto finito, non serve aspettare la
+      // fine esatta. Il cambio di bbox/camera resta invece legato alla vera
+      // fine dello zoom out (vedi stepZoomOut): due cose diverse, quello
+      // deve restare un salto netto fra due stati noti, non può iniziare
+      // "a metà".
+      function avviaContenutoTransizione() {
+      if (cambiaModello) {
+        crossfadeVistaInizio = performance.now()
+        crossfadeVistaDaDesigner = designerAlphaAnimata
+        crossfadeVistaDaAzienda = aziendaAlphaAnimata
+        crossfadeEtichetteInizio = performance.now() + CROSSFADE_ETICHETTE_RITARDO_MS
+        crossfadeEtichetteDa = etichetteAzAlphaAnimata
+      }
       modelloVista = modello
       timelineVista = tlOn
       vistaInterna = nuovaVista
@@ -3242,6 +3726,64 @@ function App() {
         }
         requestAnimationFrame(step)
       })
+      }
+
+      if (cambiaModello) {
+        // Zoom out (0%) e ricentraggio a x=0.5/y=0.5 (centro del bbox
+        // ATTUALE) nella stessa animazione, verso un unico stato noto
+        // (tutto visibile e centrato). Non deve arrivare al 100% del
+        // percorso per "contare" come finito: oltre SOGLIA_FINE_ANTICIPATA
+        // il cambio di bbox/camera (un salto netto fra due stati noti, non
+        // può iniziare "a metà") e le dissolvenze/movimento prodotti
+        // partono comunque, invece di aspettare l'ultimo tratto.
+        const statoZoomOutIniziale = camera.getState()
+        const ratioZoomOutTarget = MAX_CAMERA_RATIO
+        const durataZoomOut = 950
+        // Due soglie separate: i contenuti (dissolvenze, movimento prodotti)
+        // possono partire presto, quando l'ease è ancora lontano dal 100%.
+        // Il salto di camera/bbox invece deve restare vicino alla fine,
+        // quando l'ease è già quasi arrivato a 1 — altrimenti il salto
+        // istantaneo si vede (la mappa "scatta").
+        const SOGLIA_CONTENUTO = 0.4
+        const SOGLIA_BBOX = 0.7
+        const inizioZoomOut = performance.now()
+        let contenutoAvviato = false
+        function stepZoomOut(now) {
+          const t = Math.min(1, Math.max(0, (now - inizioZoomOut) / durataZoomOut))
+          // Asimmetrica: entrata cubica, uscita quintica — molto più lenta
+          // nel tratto finale (coda più lunga e dolce verso il traguardo)
+          // rispetto a una semplice cubica simmetrica.
+          const ease = t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 5) / 2
+          clamping = true
+          camera.setState({
+            x: lerp(statoZoomOutIniziale.x, 0.5, ease),
+            y: lerp(statoZoomOutIniziale.y, 0.5, ease),
+            ratio: lerp(statoZoomOutIniziale.ratio, ratioZoomOutTarget, ease),
+            angle: 0,
+          })
+          clamping = false
+          richiediDisegnoOverlay(2)
+          if (!contenutoAvviato && t >= SOGLIA_CONTENUTO) {
+            contenutoAvviato = true
+            avviaContenutoTransizione()
+          }
+          if (t < SOGLIA_BBOX) {
+            requestAnimationFrame(stepZoomOut)
+          } else {
+            // Arriviamo qui poco prima che l'ease abbia raggiunto il 100%:
+            // il salto a x=0.5/y=0.5/ratio=MAX_CAMERA_RATIO (nuovo, dopo
+            // impostaBBoxPerVista) è comunque impercettibile, essendo
+            // ormai vicinissimo a dove l'animazione stava già arrivando.
+            clamping = true
+            impostaBBoxPerVista(modello)
+            camera.setState({ x: 0.5, y: 0.5, ratio: MAX_CAMERA_RATIO, angle: 0 })
+            clamping = false
+          }
+        }
+        requestAnimationFrame(stepZoomOut)
+      } else {
+        avviaContenutoTransizione()
+      }
     }
 
     setAnimaTransizioneFn(() => animaTransizione)
@@ -3270,8 +3812,8 @@ function App() {
       const tRatio = ratioDaT(tPercent)
       const cRect = container.getBoundingClientRect()
       const sState = camera.getState()
-      const pannelloW = isMobile ? 0 : 340 * uiScale
-      const pannelloSx = isMobile ? 0 : Math.max(20, 240 * uiScale - 180)
+      const pannelloW = isMobile ? 0 : 340 * uiScaleInterno
+      const pannelloSx = isMobile ? 0 : Math.max(20, 240 * uiScaleInterno - 180)
       const pannelloH = isMobile ? cRect.height * 0.4 : 0
       let topBarH = 0
       if (isMobile && topBarRef.current) topBarH = topBarRef.current.getBoundingClientRect().height
@@ -3365,8 +3907,8 @@ function App() {
       try {
         const cRect = container.getBoundingClientRect()
         if (cRect.width < 1 || cRect.height < 1) throw new Error("container non ancora misurabile")
-        const pannelloW = isMobile ? 0 : 340 * uiScale
-        const pannelloSx = isMobile ? 0 : Math.max(20, 240 * uiScale - 180)
+        const pannelloW = isMobile ? 0 : 340 * uiScaleInterno
+        const pannelloSx = isMobile ? 0 : Math.max(20, 240 * uiScaleInterno - 180)
         const pannelloH = isMobile ? cRect.height * 0.4 : 0
         let topBarH = 0
         if (isMobile && topBarRef.current) topBarH = topBarRef.current.getBoundingClientRect().height
@@ -3463,7 +4005,7 @@ function App() {
       let topBarH = 0
       if (isMobile && topBarRef.current) topBarH = topBarRef.current.getBoundingClientRect().height
       const centroX = cRect.width / 2
-      const centroY = (isMobile ? topBarH : 170 * uiScale) + 40
+      const centroY = (isMobile ? topBarH : 170 * uiScaleInterno) + 40
       clamping = true
       camera.setState({ x: sState.x, y: sState.y, ratio: tRatio, angle: sState.angle })
       renderer.refresh()
@@ -3696,8 +4238,8 @@ function App() {
                 const cRect = container.getBoundingClientRect()
                 const sState = camera.getState()
                 const tRatio = ratioDaT(0.75)
-                const pannelloW = isMobile ? 0 : 340 * uiScale
-                const pannelloSx = isMobile ? 0 : Math.max(20, 240 * uiScale - 180)
+                const pannelloW = isMobile ? 0 : 340 * uiScaleInterno
+                const pannelloSx = isMobile ? 0 : Math.max(20, 240 * uiScaleInterno - 180)
                 const pannelloH = isMobile ? cRect.height * 0.4 : 0
                 let topBarH = 0
                 if (isMobile && topBarRef.current) {
@@ -3750,8 +4292,8 @@ function App() {
               const cRect = container.getBoundingClientRect()
               const sState = camera.getState()
               const tRatio = ratioDaT(0.95)
-              const pannelloW = isMobile ? 0 : 340 * uiScale
-              const pannelloSx = isMobile ? 0 : Math.max(20, 240 * uiScale - 180)
+              const pannelloW = isMobile ? 0 : 340 * uiScaleInterno
+              const pannelloSx = isMobile ? 0 : Math.max(20, 240 * uiScaleInterno - 180)
               const pannelloH = isMobile ? cRect.height * 0.4 : 0
               let topBarH = 0
               if (isMobile && topBarRef.current) {
@@ -4425,7 +4967,7 @@ function App() {
         </div>
       )}
 
-      {window.innerWidth >= 768 && (
+      {window.innerWidth >= 768 && altezzaFinestra >= SOGLIA_ALTEZZA_BANDA && (
         <div style={{
           position: "fixed", top: 0, left: 0, bottom: 0, width: 240 * uiScale,
           padding: `${20 * uiScale}px ${16 * uiScale}px`, boxSizing: "border-box",
