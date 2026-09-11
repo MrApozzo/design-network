@@ -3450,6 +3450,12 @@ function App() {
 
     const camera = renderer.getCamera()
     let clamping = false
+    // Dichiarata qui (non più sotto) perché letta da camera.on("updated")
+    // qualche riga sotto: quell'handler può scattare già durante il setup
+    // iniziale (renderer.refresh()/camera.setState prima del primo render),
+    // quindi la variabile deve esistere PRIMA di essere referenziata, non
+    // dopo — altrimenti temporal dead zone e pagina bianca.
+    let transizioneAttiva = false
 
     // Pixel-per-unità dipendono solo da ratio + dimensioni contenitore, non da x/y:
     // durante un pan (x/y cambiano, ratio no) restano validi. Cache per evitare
@@ -3629,7 +3635,6 @@ function App() {
     let modelloVista = vistaCorrenteRef.current
     let timelineVista = timelineAttivaRef.current
     let vistaInterna = timelineVista ? "timeline" : modelloVista // "designer" | "aziende" | "timeline"
-    let transizioneAttiva = false
     let amoebaAlphaAnimata = 1
     // Dissolvenza incrociata designer/aziende: invece di comparire/scomparire
     // di scatto al cambio vista, i designer e le aziende sfumano gradualmente
