@@ -2180,7 +2180,15 @@ function App() {
     // mai a causa di un ridimensionamento della finestra, solo per un'azione
     // di zoom reale dell'utente.
     let fattoreCropCumulativo = 1
+    // Segue vista SOLO nel momento in cui il bbox viene davvero applicato
+    // (impostaBBoxPerVista qui sotto), non quando modelloVista cambia per
+    // la dissolvenza contenuti (che nel cambio vista parte prima, mentre
+    // camera/bbox sono ancora quelli vecchi): la griglia di sfondo usa
+    // questa invece di modelloVista così non "rifloware" di scatto in
+    // anticipo sulla vista ancora inquadrata con la vecchia scala.
+    let vistaGrigliaAttuale = vistaCorrenteRef.current
     function impostaBBoxPerVista(vista) {
+      vistaGrigliaAttuale = vista
       const cYMin = vista === "aziende" ? contenutoYMinAziende : contenutoYMinDesigner
       const cYMax = vista === "aziende" ? contenutoYMaxAziende : contenutoYMaxDesigner
       bboxYMin = Math.min(Y_MIN, cYMin) - MARGINE_Y
@@ -2491,7 +2499,7 @@ function App() {
         const visYMinG = Math.max(bboxYMin, Math.min(angoloTLg.y, angoloBRg.y) - 2)
         const visYMaxG = Math.min(bboxYMax, Math.max(angoloTLg.y, angoloBRg.y) + 2)
         const rangeVisibileY = Math.max(0, visYMaxG - visYMinG)
-        const passoNativoY = modelloVista === "aziende" ? passoAzFinale : 1
+        const passoNativoY = vistaGrigliaAttuale === "aziende" ? passoAzFinale : 1
         const MAX_RIGHE_GRIGLIA = 300
         const righeStimate = passoNativoY > 0 ? rangeVisibileY / passoNativoY : 0
         const fattoreDaConteggio = righeStimate > MAX_RIGHE_GRIGLIA ? Math.ceil(righeStimate / MAX_RIGHE_GRIGLIA) : 1
