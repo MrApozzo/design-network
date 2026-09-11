@@ -2501,7 +2501,7 @@ function App() {
         // soglia diversa: se il passo nativo scende sotto MIN_SPAZIO_RIGHE_PX
         // si allarga quanto basta per restarci sopra.
         const ppuYGriglia = Math.abs(renderer.graphToViewport({ x: 0, y: 1 }).y - renderer.graphToViewport({ x: 0, y: 0 }).y)
-        const MIN_SPAZIO_RIGHE_PX = 40
+        const MIN_SPAZIO_RIGHE_PX = 70
         const spazioNativoPx = ppuYGriglia * passoNativoY
         const fattoreDaSpazio = spazioNativoPx > 0 ? Math.max(1, Math.ceil(MIN_SPAZIO_RIGHE_PX / spazioNativoPx)) : 1
         const passoY = passoNativoY * Math.max(fattoreDaConteggio, fattoreDaSpazio)
@@ -3746,11 +3746,13 @@ function App() {
         const durataZoomOut = 950
         // Due soglie separate: i contenuti (dissolvenze, movimento prodotti)
         // possono partire presto, quando l'ease è ancora lontano dal 100%.
-        // Il salto di camera/bbox invece deve restare vicino alla fine,
-        // quando l'ease è già quasi arrivato a 1 — altrimenti il salto
-        // istantaneo si vede (la mappa "scatta").
-        const SOGLIA_CONTENUTO = 0.4
-        const SOGLIA_BBOX = 0.7
+        // Il salto di camera/bbox invece resta legato alla fine VERA (t=1,
+        // ease=1 esatto): a quel punto lerp(...,1) restituisce esattamente
+        // il valore target, quindi il cambio di bbox + lo setState esplicito
+        // che segue non spostano la camera di nemmeno un pixel (nessun
+        // residuo da scartare, quindi nessuno scatto).
+        const SOGLIA_CONTENUTO = 0.55
+        const SOGLIA_BBOX = 1
         const inizioZoomOut = performance.now()
         let contenutoAvviato = false
         function stepZoomOut(now) {
