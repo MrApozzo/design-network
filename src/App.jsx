@@ -274,7 +274,11 @@ const X_MAX_BASE = 170
 let X_MIN = X_MIN_BASE
 let X_MAX = X_MAX_BASE
 const MARGINE_X = 20
-const MARGINE_Y = 2
+// Era 2: sproporzionato rispetto a MARGINE_X (20) e a Y_MIN/Y_MAX (±20) — la
+// riga "prodotti senza azienda" (che sta esattamente al margine superiore
+// del bbox aziende) finiva praticamente senza respiro, a rischio di essere
+// tagliata dall'inquadratura. Portato alla stessa scala di MARGINE_X.
+const MARGINE_Y = 20
 const Y_MIN = -20
 const Y_MAX = 20
 const MAX_CAMERA_RATIO_BASE = window.innerWidth < 768 ? 0.6 : 1.2
@@ -2144,6 +2148,31 @@ function App() {
       const cYMax = vista === "aziende" ? contenutoYMaxAziende : contenutoYMaxDesigner
       bboxYMin = Math.min(Y_MIN, cYMin) - MARGINE_Y
       bboxYMax = Math.max(Y_MAX, cYMax) + MARGINE_Y
+      // Le due viste hanno contenuti di altezza naturale diversa: a parità di
+      // camera.ratio, un bbox con proporzioni (altezza/larghezza) diverse fa
+      // uscire un "correctionRatio" interno di Sigma diverso (dipende dal
+      // rapporto fra aspect-ratio del bbox e aspect-ratio del contenitore),
+      // quindi la stessa identica camera "sembra" zoomata/spostata/scalata
+      // diversamente appena il bbox cambia — è la causa dello scatto al
+      // cambio vista. Forziamo qui le due viste alla STESSA altezza minima
+      // (proporzionale alla larghezza X, che è condivisa) invece di lasciare
+      // che ciascuna usi la propria altezza "naturale": chi ha contenuto più
+      // corto riceve margine extra sopra/sotto (spazio vuoto, nessun contenuto
+      // spostato), chi ha contenuto più alto resta com'è. Così il bbox delle
+      // due viste ha sempre lo stesso aspect-ratio, e il correctionRatio con
+      // esso, a qualunque dimensione reale del contenitore.
+      {
+        const rectAttuale = container.getBoundingClientRect()
+        const aspectViewportAttuale = rectAttuale.height > 0 ? rectAttuale.width / rectAttuale.height : 1.8
+        const larghezzaBbox = (X_MAX + MARGINE_X) - (X_MIN - MARGINE_X)
+        const altezzaMinima = larghezzaBbox / aspectViewportAttuale
+        const altezzaReale = bboxYMax - bboxYMin
+        if (altezzaReale < altezzaMinima) {
+          const extra = (altezzaMinima - altezzaReale) / 2
+          bboxYMin -= extra
+          bboxYMax += extra
+        }
+      }
       renderer.setCustomBBox({
         x: [X_MIN - MARGINE_X, X_MAX + MARGINE_X],
         y: [bboxYMin, bboxYMax],
