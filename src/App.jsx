@@ -1324,8 +1324,15 @@ function App() {
     // passo "standard" fra designer non collegati (le correnti sono comunque
     // gruppi di affinità, non aziende, quindi non hanno un passo di riga proprio
     // come passoAz — riusiamo il più comune dei tre passi verticali).
-    const RIGHE_VUOTE_ETICHETTA_DESIGNER = 1
-    const RIGHE_BUFFER_ETICHETTA_DESIGNER = 1
+    // Il passo "standard" fra designer non collegati è lo stesso usato come
+    // riferimento qui sotto, ma fra designer del medesimo gruppo di
+    // co-progetto il passo reale è molto più stretto (passo_verticale_coprogetto,
+    // pensato per "impastarli" a bella posta) — se il confine di un nuovo
+    // gruppo di corrente capita proprio lì, 1-2 righe non bastano a superare
+    // il testo multi-riga (nome/cognome/date) del designer adiacente più
+    // vicino. Più margine qui, quindi, rispetto al criterio aziende letterale.
+    const RIGHE_VUOTE_ETICHETTA_DESIGNER = 3
+    const RIGHE_BUFFER_ETICHETTA_DESIGNER = 2
     // Solo i gruppi con almeno 2 membri (prima erano le "ameba piene"): un
     // designer isolato nella propria corrente non riceve più, come già prima,
     // nessun segno particolare sul canvas.
