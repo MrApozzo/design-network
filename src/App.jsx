@@ -1320,6 +1320,22 @@ function App() {
       legamiDiretti.add(`${r.designer_b}|${r.designer_a}`)
     })
 
+    // PROVA: griglia condivisa con le aziende. Ogni designer occupa comunque
+    // una riga propria e distinta (mai uno slot condiviso come la co-licenza
+    // delle aziende — per la vista timeline ogni designer deve restare
+    // distinguibile sulla propria riga). La "vicinanza" (co-progetto/legame/
+    // normale) si esprime come numero di UNITÀ DI GRIGLIA fra due righe
+    // consecutive, sulla stessa identica griglia di base delle aziende: 1
+    // riga azienda (passo_verticale_base) = 3 unità, quindi normale = 3
+    // unità (esattamente 1 riga azienda), legame = 2, co-progetto = 1 (il
+    // minimo possibile restando ciascuno sulla propria riga).
+    // Semplificazione di questa prima prova: l'unità è derivata dalla base
+    // NON scalata (passo_verticale_base), non dal passoAzFinale già scalato
+    // per aziende (fattoreScalaAziende) — coincidono quando quel fattore
+    // resta 1 (il caso comune, contenuto aziende già naturalmente alto), da
+    // rivedere se in pratica risultasse diverso da 1.
+    const UNITA_GRIGLIA_CONDIVISA = STILE.passo_verticale_base / 3
+
     // Etichette di corrente (scuola/collettivo) in vista designer: stessa logica
     // delle etichette di categoria in vista aziende (righe vuote di margine, riga
     // dell'etichetta, riga di buffer, poi il primo pallino) — vedi il blocco
@@ -1358,18 +1374,15 @@ function App() {
         const prev = ordinato[i - 1]
         const stessoGruppo = gruppiCoprogetto[d.nome] && gruppiCoprogetto[d.nome] === gruppiCoprogetto[prev.nome]
         const legameDiretto = !stessoGruppo && legamiDiretti.has(`${d.nome}|${prev.nome}`)
-        const passoStandard = stessoGruppo ? STILE.passo_verticale_coprogetto
-          : legameDiretto ? STILE.passo_verticale_legame
-          : STILE.passo_verticale_base
+        const distanzaUnitaNominale = stessoGruppo ? 1 : legameDiretto ? 2 : 3
         const minGap = (prevRaggio + raggio) + STILE.min_distanza_y
-        // Coprogetto/legame/base sono già multipli puliti di un'unica unità di
-        // griglia (6/18/30 → unità 6): quando un'orbita grande costringe a più
-        // spazio di quanto il passo nominale preveda, arrotondiamo comunque al
-        // multiplo di griglia superiore, invece di usare il valore "grezzo"
-        // dell'orbita — così ogni passo automatico resta sulla stessa griglia,
-        // non solo quelli senza designer affollati.
-        const passoScelto = Math.max(passoStandard, minGap)
-        y = prevY - Math.ceil(passoScelto / STILE.passo_verticale_coprogetto) * STILE.passo_verticale_coprogetto
+        // Come per le aziende: se un'orbita grande richiede più spazio di
+        // quanto il livello di vicinanza preveda, si arrotonda comunque per
+        // eccesso al multiplo di UNITA_GRIGLIA_CONDIVISA superiore — non si
+        // usa mai il valore "grezzo" dell'orbita, così ogni riga resta
+        // sempre sulla stessa griglia condivisa, senza eccezioni.
+        const distanzaUnita = Math.max(distanzaUnitaNominale, Math.ceil(minGap / UNITA_GRIGLIA_CONDIVISA))
+        y = prevY - distanzaUnita * UNITA_GRIGLIA_CONDIVISA
       }
 
       if (!manuale) {
@@ -1422,25 +1435,11 @@ function App() {
     // loro vero anno di nascita quando il contenuto cresce in altezza.
     const passoAllineamento = 1
 
-    // Asse Y: arrotonda alla griglia mantenendo il gap minimo tra orbite adiacenti.
-    {
-      let snapPrevY = 0
-      let snapPrevR = 0
-      posizioniCalcolate.forEach((pos, i) => {
-        if (pos.manuale) {
-          pos.y = Math.round(pos.y / passoAllineamento) * passoAllineamento
-          snapPrevY = pos.y; snapPrevR = pos.raggio; return
-        }
-        if (i === 0) { pos.y = 0; snapPrevY = 0; snapPrevR = pos.raggio; return }
-        const minGap = (snapPrevR + pos.raggio) + STILE.min_distanza_y
-        const yRounded = Math.round(pos.y / passoAllineamento) * passoAllineamento
-        pos.y = (snapPrevY - yRounded >= minGap)
-          ? yRounded
-          : Math.floor((snapPrevY - minGap) / passoAllineamento) * passoAllineamento
-        snapPrevY = pos.y
-        snapPrevR = pos.raggio
-      })
-    }
+    // (Non serve più un passaggio separato di snap sull'asse Y: ogni
+    // posizione è già un multiplo esatto di UNITA_GRIGLIA_CONDIVISA per
+    // costruzione, calcolata nel loop qui sopra — a differenza di prima,
+    // dove le posizioni erano su unità arbitrarie e andavano riportate sulla
+    // griglia in un secondo passaggio.)
 
     // Asse X: i designer nati lo stesso anno (o troppo vicini) vengono
     // raggruppati e distribuiti simmetricamente attorno alla loro posizione
@@ -2457,7 +2456,7 @@ function App() {
         const visYMinG = Math.max(bboxYMin, Math.min(angoloTLg.y, angoloBRg.y) - 2)
         const visYMaxG = Math.min(bboxYMax, Math.max(angoloTLg.y, angoloBRg.y) + 2)
         const rangeVisibileY = Math.max(0, visYMaxG - visYMinG)
-        const passoNativoY = vistaGrigliaAttuale === "aziende" ? passoAzFinale : 1
+        const passoNativoY = vistaGrigliaAttuale === "aziende" ? passoAzFinale : UNITA_GRIGLIA_CONDIVISA
         const MAX_RIGHE_GRIGLIA = 300
         const righeStimate = passoNativoY > 0 ? rangeVisibileY / passoNativoY : 0
         const fattoreDaConteggio = righeStimate > MAX_RIGHE_GRIGLIA ? Math.ceil(righeStimate / MAX_RIGHE_GRIGLIA) : 1
