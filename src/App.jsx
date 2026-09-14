@@ -4,7 +4,6 @@ import Sigma from "sigma"
 import designers from "./data/designers.json"
 import prodotti from "./data/prodotti.json"
 import relazioni from "./data/relazioni.json"
-import correnti from "./data/correnti.json"
 import aziendeData from "./data/aziende.json"
 import immaginiEsistentiArr from "./data/immagini_esistenti.json"
 import coloriImmaginiPrecalcolati from "./data/colori_immagini.json"
@@ -107,27 +106,6 @@ const STILE = {
   // --- Transizione tra viste ---
   transizione_stagger: 1,
   transizione_durata: 500,
-
-  // --- Ameba correnti (scuole + collettivi) — disegno; il posizionamento che le
-  // rende possibili è nella sezione "Layout verticale" più sotto ---
-  corrente_raggio_punto_singolo: 20,
-  // Margine oltre il raggio reale del pallino: frazione FISSA del raggio corrente del
-  // pallino (non un valore interpolato a parte sullo zoom) — così il "di più" attorno a
-  // ogni pallino resta sempre proporzionale a quanto è già grande lui stesso, invece di
-  // gonfiarsi in modo indipendente e imprevedibile a certi livelli di zoom (a zoom alto
-  // il margine finiva quasi quanto il raggio del pallino successivo, inglobando pallini
-  // vicini che non c'entravano).
-  corrente_margine_fattore: 0.75,
-  corrente_irregolarita: 0.4,
-  corrente_alpha: 0.045,
-  // L'alone (anello) usava globalAlpha=1 a riposo: moltiplicarlo per corrente_hover_boost
-  // in hover non cambiava nulla (il canvas blocca globalAlpha oltre 1), quindi l'hover
-  // sugli aloni isolati non produceva alcun effetto visibile. Ora ha un'opacità a riposo
-  // propria, più leggera, così l'hover ha davvero un salto percepibile.
-  corrente_alone_alpha: 0.22,
-  corrente_hover_boost: 3,
-  corrente_alone_spessore: 2.5,
-  corrente_alone_margine: 3,
 
   // --- Hover / interazione ---
   hover_scala: 2,
@@ -361,41 +339,6 @@ function hashStr(str) {
 
 function lerp(a, b, t) {
   return a + (b - a) * t
-}
-
-// Monotone chain: inviluppo convesso di un insieme di punti, in ordine antiorario.
-function convexHull(points) {
-  const pts = [...points].sort((a, b) => a.x - b.x || a.y - b.y)
-  if (pts.length < 3) return pts
-  const cross = (o, a, b) => (a.x - o.x) * (b.y - o.y) - (a.y - o.y) * (b.x - o.x)
-  const lower = []
-  for (const p of pts) {
-    while (lower.length >= 2 && cross(lower[lower.length - 2], lower[lower.length - 1], p) <= 0) lower.pop()
-    lower.push(p)
-  }
-  const upper = []
-  for (let i = pts.length - 1; i >= 0; i--) {
-    const p = pts[i]
-    while (upper.length >= 2 && cross(upper[upper.length - 2], upper[upper.length - 1], p) <= 0) upper.pop()
-    upper.push(p)
-  }
-  lower.pop()
-  upper.pop()
-  return lower.concat(upper)
-}
-
-// Ray-casting: test point-in-polygon in JS puro, sulle stesse coordinate schermo già
-// usate per disegnare — evita di dipendere da ctx.isPointInPath (che richiede la
-// stessa identica matrice di trasformazione attiva sia al disegno che al test).
-function puntoInPoligono(poligono, px, py) {
-  let dentro = false
-  for (let i = 0, j = poligono.length - 1; i < poligono.length; j = i++) {
-    const xi = poligono[i].x, yi = poligono[i].y
-    const xj = poligono[j].x, yj = poligono[j].y
-    const intersect = (yi > py) !== (yj > py) && px < ((xj - xi) * (py - yi)) / (yj - yi) + xi
-    if (intersect) dentro = !dentro
-  }
-  return dentro
 }
 
 function getDesigners(p) {
@@ -731,8 +674,6 @@ const TESTI = {
     aziendeToggle: "Aziende",
     designerToggle: "Designer",
     timelineToggle: "Linea del tempo",
-    correntiToggleOn: "Correnti progettuali visibili",
-    correntiToggleOff: "Correnti progettuali nascoste",
     hoverTooltip: "Hover sui collegamenti — clicca su area vuota per uscire",
     home: "Torna alla vista iniziale",
     sezione: "Sezione",
@@ -787,8 +728,6 @@ const TESTI = {
     aziendeToggle: "Companies",
     designerToggle: "Designer",
     timelineToggle: "Timeline",
-    correntiToggleOn: "Design movements visible",
-    correntiToggleOff: "Design movements hidden",
     hoverTooltip: "Hover over the connections — click an empty area to exit",
     home: "Back to initial view",
     sezione: "Section",
@@ -949,7 +888,6 @@ function App() {
   const [pannelloDesigner, setPannelloDesigner] = useState(null)
   const [pannelloVisibile, setPannelloVisibile] = useState(false)
   const [tooltipRelazione, setTooltipRelazione] = useState(null)
-  const [tooltipCorrente, setTooltipCorrente] = useState(null)
   const [designerAttivo, setDesignerAttivo] = useState(null)
   // L'intro dipende dal tipo di apertura, non dal tempo trascorso:
   // refresh/ricarica della pagina -> non mostrarla;
@@ -1116,8 +1054,6 @@ function App() {
   const nodoEvidenziatoRef = useRef(null)
   const [legameEvidenziato, setLegameEvidenziato] = useState(null)
   const legameEvidenziatoRef = useRef(null)
-  const [correntiVisibili, setCorrentiVisibili] = useState(false)
-  const correntiVisibiliRef = useRef(false)
   const [centraFn, setCentraFn] = useState(null)
   const [evidenziaLegameFn, setEvidenziaLegameFn] = useState(null)
   const [resetVistaFn, setResetVistaFn] = useState(null)
@@ -1174,9 +1110,6 @@ function App() {
     let cameraAnimId = null
     let touchGestureAttiva = false
     let touchWasMultiTouch = false
-    let correntiHit = []
-    let correnteHoverAttivo = null
-    let correnteCliccata = null
 
     function animaCamera(target, durata, callback) {
       if (cameraAnimId) cancelAnimationFrame(cameraAnimId)
@@ -1383,6 +1316,23 @@ function App() {
       legamiDiretti.add(`${r.designer_b}|${r.designer_a}`)
     })
 
+    // Etichette di corrente (scuola/collettivo) in vista designer: stessa logica
+    // delle etichette di categoria in vista aziende (righe vuote di margine, riga
+    // dell'etichetta, riga di buffer, poi il primo pallino) — vedi il blocco
+    // gemello RIGHE_VUOTE_ETICHETTA_AZ/RIGHE_BUFFER_ETICHETTA_AZ più sotto in
+    // costruisciLayoutAziende. Unità di riserva: passo_verticale_base, lo stesso
+    // passo "standard" fra designer non collegati (le correnti sono comunque
+    // gruppi di affinità, non aziende, quindi non hanno un passo di riga proprio
+    // come passoAz — riusiamo il più comune dei tre passi verticali).
+    const RIGHE_VUOTE_ETICHETTA_DESIGNER = 1
+    const RIGHE_BUFFER_ETICHETTA_DESIGNER = 1
+    // Solo i gruppi con almeno 2 membri (prima erano le "ameba piene"): un
+    // designer isolato nella propria corrente non riceve più, come già prima,
+    // nessun segno particolare sul canvas.
+    const gruppiEtichettati = new Set()
+    let numeroCorrenteDesigner = 0
+    const etichetteCorrentiDesigner = []
+
     let prevY = 0
     let prevRaggio = 0
     const posizioniCalcolate = ordinato.map((d, i) => {
@@ -1410,6 +1360,18 @@ function App() {
         const passoScelto = Math.max(passoStandard, minGap)
         y = prevY - Math.ceil(passoScelto / STILE.passo_verticale_coprogetto) * STILE.passo_verticale_coprogetto
       }
+
+      if (!manuale) {
+        const gruppoAttuale = gruppiCorrenti[d.nome]
+        if (gruppoAttuale && gruppoAttuale.size >= 2 && !gruppiEtichettati.has(gruppoAttuale)) {
+          gruppiEtichettati.add(gruppoAttuale)
+          numeroCorrenteDesigner++
+          y -= STILE.passo_verticale_base * RIGHE_VUOTE_ETICHETTA_DESIGNER
+          etichetteCorrentiDesigner.push({ gruppo: gruppoAttuale, numero: numeroCorrenteDesigner, y })
+          y -= STILE.passo_verticale_base * (1 + RIGHE_BUFFER_ETICHETTA_DESIGNER)
+        }
+      }
+
       prevY = y
       prevRaggio = raggio
       return { d, x: annoToX(d.nato), y, manuale, raggio }
@@ -1490,6 +1452,20 @@ function App() {
       byX.forEach((pos) => { pos.x = Math.round(pos.x / passoAllineamento) * passoAllineamento })
     }
 
+    // Completa le etichette di corrente (xInizio/xFine dal range x REALE dei
+    // membri, dopo l'aggiustamento asse X qui sopra; testo dai nomi corrente/
+    // scuola/collettivo che compongono il gruppo — più di uno se un designer
+    // fa da ponte fra correnti diverse, es. Sottsass fra Radical Design e Memphis).
+    etichetteCorrentiDesigner.forEach((et) => {
+      const membriRun = posizioniCalcolate.filter((p) => et.gruppo.has(p.d.nome))
+      et.xInizio = Math.min(...membriRun.map((p) => p.x))
+      et.xFine = Math.max(...membriRun.map((p) => p.x))
+      const nomiCorrenti = Object.entries(correntiMembri)
+        .filter(([, membri]) => membri.some((n) => et.gruppo.has(n)))
+        .map(([nome]) => nome)
+      et.testo = nomiCorrenti.join(" / ")
+    })
+
     posizioniCalcolate.forEach(({ d, x, y }) => {
       graph.addNode(d.nome, {
         label: d.nome, size: STILE.designer_size, x, y,
@@ -1497,55 +1473,6 @@ function App() {
         imgSrc: `${import.meta.env.BASE_URL}immagini_thumb/${d.foto}`, dati: d,
       })
       animated[d.nome] = { r: STILE.zoom_designer_min, alpha: 1 }
-    })
-
-    // Blocchi di co-progettazione nell'ordine finale (stessa partizione contigua usata
-    // nella passata 2 sopra). Serve a far ragionare l'ameba alla stessa granularità del
-    // posizionamento: un "passeggero" senza quel tag, finito lì solo perché indivisibile
-    // dal suo gruppo di co-progetto (es. Naoki Matsunaga accanto a Bonetto, o Joe Colombo
-    // trascinato dal co-progetto con Ambrogio Pozzi), non deve spezzare a metà un'ameba
-    // che altrimenti sarebbe contigua.
-    const blocchiOrdinatoFinale = []
-    {
-      let i = 0
-      while (i < ordinato.length) {
-        const gruppo = gruppiCoprogetto[ordinato[i].nome]
-        let j = i
-        if (gruppo && gruppo.size > 1) {
-          while (j + 1 < ordinato.length && gruppiCoprogetto[ordinato[j + 1].nome] === gruppo) j++
-        }
-        blocchiOrdinatoFinale.push(ordinato.slice(i, j + 1))
-        i = j + 1
-      }
-    }
-
-    // --- Ameba correnti: per ogni corrente, i BLOCCHI che contengono almeno un membro
-    // taggato e risultano ADIACENTI formano un'ameba piena ("diagonale"), che include
-    // anche gli eventuali passeggeri non taggati (fanno parte dello stesso agglomerato
-    // visivo, anche se non compaiono fra gli "esponenti" del pannello). Un solo membro
-    // taggato senza altri nelle vicinanze ottiene solo un alone colorato sul suo pallino.
-    const correntiBlob = []
-    const correntiAloni = []
-    Object.entries(correntiMembri).forEach(([nomeCorrente, membri]) => {
-      const infoCorrente = correnti.find((c) => c.nome === nomeCorrente)
-      if (!infoCorrente) return
-      const membriSet = new Set(membri)
-      const visitati = new Set()
-      blocchiOrdinatoFinale.forEach((blocco, i) => {
-        if (visitati.has(blocco) || !blocco.some((d) => membriSet.has(d.nome))) return
-        let start = i, end = i
-        while (start > 0 && blocchiOrdinatoFinale[start - 1].some((d) => membriSet.has(d.nome))) start--
-        while (end < blocchiOrdinatoFinale.length - 1 && blocchiOrdinatoFinale[end + 1].some((d) => membriSet.has(d.nome))) end++
-        const blocchiRun = blocchiOrdinatoFinale.slice(start, end + 1)
-        blocchiRun.forEach((b) => visitati.add(b))
-        const cluster = blocchiRun.flat().map((x) => x.nome)
-        const membriTaggati = cluster.filter((n) => membriSet.has(n))
-        if (membriTaggati.length > 1) {
-          correntiBlob.push({ nomeCorrente, dati: infoCorrente, nodi: cluster })
-        } else {
-          correntiAloni.push({ nomeCorrente, dati: infoCorrente, nodo: membriTaggati[0] })
-        }
-      })
     })
 
     relazioni.forEach((r) => {
@@ -2376,7 +2303,10 @@ function App() {
     // si restringe (zoom basso) o si allarga (zoom alto).
     const ZOOM_RIFERIMENTO_ETICHETTE_AZ = 0.08
     const VALORE_RIF_ETICHETTE_AZ = lerp(STILE.zoom_designer_min, STILE.zoom_designer_max, Math.pow(ZOOM_RIFERIMENTO_ETICHETTE_AZ, 1.2))
-    function fattoreScalaEtichetteAz() {
+    // Condivisa fra le etichette di categoria (vista aziende) e quelle di
+    // corrente (vista designer): stessa curva di scala dei pallini in
+    // entrambe le viste, così le due si comportano allo stesso modo con lo zoom.
+    function fattoreScalaEtichette() {
       const valoreAttuale = lerp(STILE.zoom_designer_min, STILE.zoom_designer_max, Math.pow(zoomT(), 1.2))
       return valoreAttuale / VALORE_RIF_ETICHETTE_AZ
     }
@@ -2536,91 +2466,46 @@ function App() {
       ctx.rect(padSinistra, padSopra, Math.max(0, w - padSinistra - padLati), Math.max(0, h - padSopra - padBasso))
       ctx.clip()
 
-      // --- Ameba correnti (scuole + collettivi): sfondo, dietro a tutto il resto.
-      // Due trattamenti: macchia piena ("diagonale") per chi ha almeno un altro membro
-      // della stessa corrente vicino nell'ordine finale, semplice alone colorato per chi
-      // è isolato nella propria corrente (nessuna forma connettiva, solo il colore).
-      // Svuotare correntiHit anche a interruttore spento basta a disattivare hover/click
-      // altrove (fanno già .find() su un array vuoto), senza dover duplicare il controllo.
-      correntiHit = []
-      if (correntiVisibiliRef.current) {
-      ctx.save()
-      ctx.globalCompositeOperation = "multiply"
-      correntiBlob.forEach((cb) => {
-        const punti = cb.nodi
-          .filter((n) => graph.hasNode(n))
-          .map((n) => {
-            const a = graph.getNodeAttributes(n)
-            const p = renderer.graphToViewport({ x: a.x, y: a.y })
-            const r = animated[n]?.r ?? STILE.zoom_designer_min
-            return { x: p.x, y: p.y, r, n }
-          })
-        if (punti.length === 0) return
-
-        const path = new Path2D()
-        let poligonoHit = null
-        let cerchioHit = null
-        if (punti.length === 1) {
-          path.arc(punti[0].x, punti[0].y, STILE.corrente_raggio_punto_singolo, 0, Math.PI * 2)
-          cerchioHit = { x: punti[0].x, y: punti[0].y, r: STILE.corrente_raggio_punto_singolo }
-        } else {
-          // Inviluppo convesso di campioni presi sul bordo reale di ogni pallino (anziché
-          // un poligono coi soli centri espansi dal centroide): abbraccia meglio le orbite
-          // vere e, avendo molti più vertici ravvicinati, la successiva lisciatura elimina
-          // le punte residue tipiche di cluster piccoli (2-3 designer) e dà un profilo
-          // arrotondato "a nuvola" invece che a lente. Il raggio di ogni campione è
-          // sbalzato in modo pseudo-casuale ma stabile (hashStr su corrente+nodo+indice,
-          // non Math.random) così il profilo resta irregolare senza tremolare da un
-          // frame all'altro.
-          const CAMPIONI_PER_PUNTO = 12
-          const campioni = []
-          punti.forEach((p) => {
-            const margineBase = p.r * STILE.corrente_margine_fattore
-            for (let k = 0; k < CAMPIONI_PER_PUNTO; k++) {
-              const ang = (k / CAMPIONI_PER_PUNTO) * Math.PI * 2
-              const jitter = hashStr(`${cb.nomeCorrente}|${p.n}|${k}`)
-              const raggio = p.r + margineBase * (1 + (jitter - 0.5) * STILE.corrente_irregolarita)
-              campioni.push({ x: p.x + Math.cos(ang) * raggio, y: p.y + Math.sin(ang) * raggio })
-            }
-          })
-          const hull = convexHull(campioni)
-          const primo = hull[0]
-          const ultimo = hull[hull.length - 1]
-          path.moveTo((ultimo.x + primo.x) / 2, (ultimo.y + primo.y) / 2)
-          for (let i = 0; i < hull.length; i++) {
-            const curr = hull[i]
-            const next = hull[(i + 1) % hull.length]
-            path.quadraticCurveTo(curr.x, curr.y, (curr.x + next.x) / 2, (curr.y + next.y) / 2)
-          }
-          path.closePath()
-          poligonoHit = hull
-        }
-
-        const inHover = correnteHoverAttivo === cb
-        ctx.globalAlpha = STILE.corrente_alpha * (inHover ? STILE.corrente_hover_boost : 1)
-        ctx.fillStyle = cb.dati.colore
-        ctx.fill(path)
-        correntiHit.push({ dati: cb, poligono: poligonoHit, cerchio: cerchioHit })
-      })
-
-      correntiAloni.forEach((al) => {
-        if (!graph.hasNode(al.nodo)) return
-        const a = graph.getNodeAttributes(al.nodo)
-        const p = renderer.graphToViewport({ x: a.x, y: a.y })
-        const r = animated[al.nodo]?.r ?? STILE.zoom_designer_min
-        const raggioAlone = r + STILE.corrente_alone_margine
-
-        const path = new Path2D()
-        path.arc(p.x, p.y, raggioAlone, 0, Math.PI * 2)
-
-        const inHover = correnteHoverAttivo === al
-        ctx.globalAlpha = STILE.corrente_alone_alpha * (inHover ? STILE.corrente_hover_boost : 1)
-        ctx.strokeStyle = al.dati.colore
-        ctx.lineWidth = STILE.corrente_alone_spessore
-        ctx.stroke(path)
-        correntiHit.push({ dati: al, cerchio: { x: p.x, y: p.y, r: raggioAlone } })
-      })
-      ctx.restore()
+      // Etichette di corrente (scuola/collettivo) in vista designer: STESSA
+      // logica delle etichette di macro-categoria in vista aziende (numero in
+      // grassetto + testo, allineati a sinistra, sopra una riga che copre
+      // l'intero gruppo) — stessi font, stessi pesi, stesse distanze, stesso
+      // fattore di scala (fattoreScalaEtichette, condiviso fra le due viste).
+      // Sostituisce le "ameba" colorate (rimosse: erano solo hover/click,
+      // recuperabili dalla storia git se servissero di nuovo).
+      // Alpha legato a designerAlphaAnimata (non a modelloVista) per lo stesso
+      // motivo della griglia/vistaGrigliaAttuale: al cambio vista i contenuti
+      // sfumano PRIMA che camera/bbox scattino, quindi legare la visibilità al
+      // solo modelloVista farebbe apparire le etichette di scatto a metà
+      // transizione invece di dissolversi insieme ai pallini designer.
+      if (designerAlphaAnimata >= 0.01) {
+        ctx.globalAlpha = designerAlphaAnimata
+        const f = fattoreScalaEtichette()
+        const staccoTestoLinea = 4 * f
+        const staccoNumeroTesto = 4 * f
+        etichetteCorrentiDesigner.forEach((et) => {
+          const pInizio = renderer.graphToViewport({ x: et.xInizio, y: et.y })
+          const pFine = renderer.graphToViewport({ x: et.xFine, y: et.y })
+          const lx = pInizio.x
+          const ly = pInizio.y
+          const xRigaFine = Math.max(pFine.x, pInizio.x)
+          const numero = String(et.numero).padStart(2, "0")
+          const lyTesto = ly - staccoTestoLinea
+          ctx.textAlign = "left"
+          ctx.fillStyle = "#000000"
+          ctx.font = `700 ${10 * f}px Roboto`
+          ctx.fillText(numero, lx, lyTesto)
+          const wNumero = ctx.measureText(numero).width
+          ctx.font = `400 ${10 * f}px Roboto`
+          ctx.fillText(et.testo, lx + wNumero + staccoNumeroTesto, lyTesto)
+          ctx.beginPath()
+          ctx.moveTo(lx, ly)
+          ctx.lineTo(xRigaFine, ly)
+          ctx.strokeStyle = "#aaaaaa"
+          ctx.lineWidth = f
+          ctx.stroke()
+        })
+        ctx.globalAlpha = 1
       }
 
       if (vistaInterna === "timeline" && modelloVista !== "aziende") {
@@ -3232,7 +3117,7 @@ function App() {
         // così l'intero blocco etichetta resta nella stessa proporzione
         // visiva rispetto ai pallini a qualunque zoom, non solo all'8% dove
         // i numeri base sono stati tarati.
-        const f = fattoreScalaEtichetteAz()
+        const f = fattoreScalaEtichette()
         const staccoTestoLinea = 4 * f
         const staccoNumeroTesto = 4 * f
 
@@ -4006,7 +3891,6 @@ function App() {
       aziendaAttivaRef.current = null; setAziendaAttiva(null); aziendaGlobaleRef.current = false
       graph.forEachEdge((edge, attr) => { if (attr.tipo === "relazione") graph.setEdgeAttribute(edge, "attivo", false) })
       setPopup(null); setTooltipRelazione(null)
-      correnteCliccata = null; correnteHoverAttivo = null; setTooltipCorrente(null)
       richiediDisegnoOverlay(18)
     }
 
@@ -4049,7 +3933,7 @@ function App() {
     function handleEscGlobale(e) {
       if (e.key !== "Escape") return
       const qualcosaSelezionato = designerCliccato || prodottoCliccato || nodoEvidenziatoRef.current
-        || legameEvidenziatoRef.current || aziendaAttivaRef.current || popupCanvas || correnteCliccata
+        || legameEvidenziatoRef.current || aziendaAttivaRef.current || popupCanvas
       if (!qualcosaSelezionato) return
       popupCanvas = null
       deselezionaTutto()
@@ -4060,7 +3944,7 @@ function App() {
     if (sigmaCanvas) {
       sigmaCanvas.addEventListener("mouseenter", () => { mouseNelCanvas = true })
       sigmaCanvas.addEventListener("mouseleave", () => {
-        // Senza questo reset, lo stato di hover (ameba, nodo, prodotto) restava "incollato"
+        // Senza questo reset, lo stato di hover (nodo, prodotto) restava "incollato"
         // all'ultimo elemento sotto al cursore anche dopo che il mouse usciva del tutto
         // dal canvas, perché nessun altro mousemove arrivava più ad aggiornarlo.
         mouseNelCanvas = false
@@ -4069,8 +3953,6 @@ function App() {
           nodoHoverAttivo = null
         }
         prodottoHoverAttivo = null
-        correnteHoverAttivo = null
-        setTooltipCorrente(null)
         setTooltipRelazione(null)
         richiediDisegnoOverlay(18)
       })
@@ -4151,25 +4033,6 @@ function App() {
           setTooltipRelazione(null)
         }
 
-        // Ameba correnti: solo se non stiamo già interagendo con nodo/prodotto/designer
-        // sopra di esse (sono sfondo, non devono mai rubare hit) e mai su mobile (niente hover reale).
-        if (!isMobile && !designerCliccato && !prodottoCliccato && !nodoHoverAttivo && !prodottoHoverAttivo) {
-          const trovata = correntiHit.find((h) => {
-            if (h.poligono) return puntoInPoligono(h.poligono, mx, my)
-            if (h.cerchio) { const dx = mx - h.cerchio.x, dy = my - h.cerchio.y; return dx * dx + dy * dy < h.cerchio.r * h.cerchio.r }
-            return false
-          })
-          const nuovaHover = trovata ? trovata.dati : null
-          if (nuovaHover !== correnteHoverAttivo) {
-            correnteHoverAttivo = nuovaHover
-            richiediDisegnoOverlay(18)
-          }
-          setTooltipCorrente(nuovaHover ? { dati: nuovaHover.dati, x: e.clientX, y: e.clientY } : null)
-        } else if (correnteHoverAttivo) {
-          correnteHoverAttivo = null
-          setTooltipCorrente(null)
-          richiediDisegnoOverlay(18)
-        }
       })
 
       sigmaCanvas.addEventListener("mouseup", (e) => {
@@ -4346,35 +4209,6 @@ function App() {
             richiediDisegnoOverlay(18)
           }
         } else {
-          const trovataCorrente = correntiHit.find((h) => {
-            if (h.poligono) return puntoInPoligono(h.poligono, mx, my)
-            if (h.cerchio) { const dx = mx - h.cerchio.x, dy = my - h.cerchio.y; return dx * dx + dy * dy < h.cerchio.r * h.cerchio.r }
-            return false
-          })
-          if (trovataCorrente) {
-            const nomeCorrente = trovataCorrente.dati.nomeCorrente
-            if (correnteCliccata === nomeCorrente) {
-              correnteCliccata = null
-              setPannelloVisibile(false)
-              setTimeout(() => setPannelloDesigner(null), 350)
-            } else {
-              correnteCliccata = nomeCorrente
-              designerCliccato = null; prodottoCliccato = null
-              nodoEvidenziatoRef.current = null; setNodoEvidenziato(null)
-              legameEvidenziatoRef.current = null; setLegameEvidenziato(null)
-              aziendaAttivaRef.current = null; setAziendaAttiva(null); aziendaGlobaleRef.current = false
-              setDesignerAttivo(null)
-              graph.forEachEdge((edge, attr) => { if (attr.tipo === "relazione") graph.setEdgeAttribute(edge, "attivo", false) })
-              const esponenti = designers
-                .filter((d) => [...(d.scuole || []), ...(d.collettivi || [])].includes(nomeCorrente))
-                .map((d) => d.nome)
-              setPannelloDesigner({ ...trovataCorrente.dati.dati, esponenti, _tipo: "corrente" })
-              requestAnimationFrame(() => setPannelloVisibile(true))
-            }
-            correnteHoverAttivo = null; setTooltipCorrente(null)
-            richiediDisegnoOverlay(18)
-            return
-          }
 
           const avevaPannello = (designerCliccato !== null || prodottoCliccato !== null) && !primoClickFuoriDesigner
           if (isMobile && avevaPannello) {
@@ -4894,29 +4728,6 @@ function App() {
             marginLeft: -6,
           }}>
             <div style={{ display: "flex", gap: 5, alignItems: "center" }}>
-              <div style={{
-                display: "flex", alignItems: "center", justifyContent: "center", background: "#ffffff",
-                borderRadius: "50%", padding: 3, boxShadow: "0 2px 12px rgba(0,0,0,0.1)",
-                width: 28, height: 28, boxSizing: "border-box", flexShrink: 0,
-              }}>
-                <button onClick={() => {
-                  const nuovo = !correntiVisibiliRef.current
-                  correntiVisibiliRef.current = nuovo
-                  setCorrentiVisibili(nuovo)
-                  if (ridisegnaFn) ridisegnaFn()
-                }}
-                  title={correntiVisibili ? t.correntiToggleOn : t.correntiToggleOff}
-                  style={{
-                    width: "100%", height: "100%", borderRadius: "50%", border: "none", margin: 0,
-                    background: correntiVisibili ? "#FF0707" : "#ececec", cursor: "pointer",
-                    display: "flex", alignItems: "center", justifyContent: "center", padding: 0, transition: "background 0.2s",
-                  }}>
-                  <svg width={11} height={11} viewBox="0 0 16 16" style={{ display: "block", marginLeft: -1, marginTop: -1 }}>
-                    <circle cx="6" cy="6" r="5" fill="none" stroke={correntiVisibili ? "#ffffff" : "#555555"} strokeWidth="1.4" />
-                    <circle cx="10" cy="10" r="5" fill="none" stroke={correntiVisibili ? "#ffffff" : "#555555"} strokeWidth="1.4" />
-                  </svg>
-                </button>
-              </div>
               <div style={{ display: "flex", gap: 2, background: "#ffffff", borderRadius: 22, padding: 3, boxShadow: "0 2px 12px rgba(0,0,0,0.1)", height: 28, boxSizing: "border-box", alignItems: "center" }}>
                 <button onClick={() => cambiaVista("aziende")}
                   style={{ height: "100%", boxSizing: "border-box", padding: "0 12px", border: "none", borderRadius: 18, cursor: "pointer", fontSize: 9, fontWeight: vistaCorrente === "aziende" ? 400 : 300, fontFamily: "'Roboto Mono', monospace", color: vistaCorrente === "aziende" ? "#ffffff" : "#555555", background: vistaCorrente === "aziende" ? "#FF0707" : "#ececec", transition: "all 0.2s", display: "flex", alignItems: "center" }}>
@@ -5050,29 +4861,6 @@ function App() {
               </svg>
             </button>
           </div>
-          <div style={{
-            display: "flex", alignItems: "center", justifyContent: "center", background: "#ffffff",
-            borderRadius: "50%", padding: 3, boxShadow: "0 2px 12px rgba(0,0,0,0.1)",
-            width: 28 * uiScale, height: 28 * uiScale, boxSizing: "border-box", flexShrink: 0,
-          }}>
-            <button onClick={() => {
-              const nuovo = !correntiVisibiliRef.current
-              correntiVisibiliRef.current = nuovo
-              setCorrentiVisibili(nuovo)
-              if (ridisegnaFn) ridisegnaFn()
-            }}
-              title={correntiVisibili ? t.correntiToggleOn : t.correntiToggleOff}
-              style={{
-                width: "100%", height: "100%", borderRadius: "50%", border: "none", margin: 0,
-                background: correntiVisibili ? "#FF0707" : "#ececec", cursor: "pointer",
-                display: "flex", alignItems: "center", justifyContent: "center", padding: 0, transition: "background 0.2s",
-              }}>
-              <svg width={11 * uiScale} height={11 * uiScale} viewBox="0 0 16 16" style={{ display: "block", marginLeft: -1 * uiScale, marginTop: -1 * uiScale }}>
-                <circle cx="6" cy="6" r="5" fill="none" stroke={correntiVisibili ? "#ffffff" : "#555555"} strokeWidth="1.4" />
-                <circle cx="10" cy="10" r="5" fill="none" stroke={correntiVisibili ? "#ffffff" : "#555555"} strokeWidth="1.4" />
-              </svg>
-            </button>
-          </div>
           <div style={{ position: "relative" }}>
             <input type="text" value={ricerca} onChange={(e) => setRicerca(e.target.value)} onBlur={() => setTimeout(() => setRicerca(""), 150)} placeholder={t.cerca}
               style={{ height: 28 * uiScale, boxSizing: "border-box", padding: `0 ${11 * uiScale}px`, border: "none", borderRadius: 14 * uiScale, fontSize: 10 * uiScale, fontWeight: 300, fontFamily: "'Roboto Mono', monospace", background: "white", boxShadow: "0 2px 12px rgba(0,0,0,0.1)", outline: "none", width: 140 * uiScale, color: "#1a1a1a" }} />
@@ -5177,71 +4965,6 @@ function App() {
         </div>
       )}
 
-      {tooltipCorrente && (
-        <div style={{ position: "fixed", left: tooltipCorrente.x + 14, top: tooltipCorrente.y - 10, background: "white", borderRadius: 8, padding: "8px 12px", boxShadow: "0 4px 16px rgba(0,0,0,0.12)", fontFamily: "Roboto, sans-serif", fontSize: 12, zIndex: 200, pointerEvents: "none", maxWidth: 220 }}>
-          <div style={{ fontFamily: "'Roboto Serif', serif", fontWeight: 500, fontStyle: "italic", color: "#1a1a1a", marginBottom: 4, fontSize: 13 }}>
-            {tooltipCorrente.dati.nome}
-          </div>
-          <div style={{ fontWeight: 300, color: "#555", lineHeight: 1.4 }}>
-            {lingua === "en" ? tooltipCorrente.dati.descrizioneBreve_en : tooltipCorrente.dati.descrizioneBreve}
-          </div>
-        </div>
-      )}
-
-      {pannelloDesigner && pannelloDesigner._tipo === "corrente" && (() => {
-        const c = pannelloDesigner
-        const chiudi = () => { setPannelloVisibile(false); setTimeout(() => setPannelloDesigner(null), 350) }
-        const periodo = c.annoFine ? `${c.annoInizio}–${c.annoFine}` : `${c.annoInizio}–`
-        return (
-          <div style={{
-            position: "fixed", fontFamily: "Roboto, sans-serif", zIndex: 100,
-            background: (window.innerWidth < 768 && !pannelloVisibile) ? STILE.sfondo_colore : "#BA0B08",
-            display: "flex", flexDirection: "column", overflow: "hidden",
-            transition: window.innerWidth < 768
-              ? "height 0.35s cubic-bezier(0.4, 0, 0.2, 1)"
-              : "transform 0.35s cubic-bezier(0.4, 0, 0.2, 1)",
-            ...(window.innerWidth < 768
-              ? { left: 0, right: 0, bottom: 0, height: pannelloVisibile ? "40vh" : "0", borderRadius: "16px 16px 0 0", boxShadow: pannelloVisibile ? "0 -4px 32px rgba(0,0,0,0.3)" : "none" }
-              : { top: 0, right: 0, bottom: 0, width: 340 * uiScale, boxShadow: "-4px 0 32px rgba(0,0,0,0.3)", transform: pannelloVisibile ? "translateX(0)" : "translateX(100%)" })
-          }}>
-            <div style={{ flex: 1, overflowY: "auto", padding: window.innerWidth < 768 ? "16px 16px 24px" : "20px 28px 32px" }}>
-              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", paddingTop: window.innerWidth < 768 ? 0 : 12 }}>
-                <div>
-                  <div style={{ fontFamily: "'Roboto Serif', serif", fontWeight: 500, fontStyle: "italic", fontSize: window.innerWidth < 768 ? 17 : 20, color: "#ffffff", lineHeight: 1.2 }}>
-                    {c.nome}
-                  </div>
-                  <div style={{ fontFamily: "'Roboto Serif', serif", fontWeight: 400, fontStyle: "italic", fontSize: window.innerWidth < 768 ? 12 : 14, color: "rgba(255,255,255,0.65)", marginTop: 4 }}>
-                    {periodo}
-                  </div>
-                </div>
-                <button onClick={chiudi}
-                  style={{ background: "none", border: "none", cursor: "pointer", fontSize: 20, color: "rgba(255,255,255,0.6)", padding: "0 4px", lineHeight: 1 }}>
-                  &times;
-                </button>
-              </div>
-
-              <p style={{ fontSize: window.innerWidth < 768 ? 12 : 13, fontWeight: 300, color: "rgba(255,255,255,0.85)", lineHeight: 1.5, margin: "16px 0 0" }}>
-                {lingua === "en" ? c.descrizione_en : c.descrizione}
-              </p>
-
-              <div style={{ marginTop: 20 }}>
-                <div style={{ fontSize: 11, fontWeight: 600, color: "rgba(255,255,255,0.5)", textTransform: "uppercase", letterSpacing: 1, marginBottom: 8 }}>
-                  {t.esponenti}
-                </div>
-                <div style={{ display: "flex", flexDirection: "column", gap: 2 }}>
-                  {(c.esponenti || []).map((nome) => (
-                    <div key={nome}
-                      style={{ fontFamily: "'Roboto Serif', serif", fontStyle: "italic", fontSize: 13, color: "#ffffff", padding: "3px 0", opacity: 0.9 }}>
-                      {nome}
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </div>
-        )
-      })()}
-
       {pannelloDesigner && pannelloDesigner._tipo === "azienda" && (() => {
         const az = pannelloDesigner
         const chiudi = () => {
@@ -5307,7 +5030,7 @@ function App() {
         )
       })()}
 
-      {pannelloDesigner && pannelloDesigner._tipo !== "corrente" && pannelloDesigner._tipo !== "azienda" && (() => {
+      {pannelloDesigner && pannelloDesigner._tipo !== "azienda" && (() => {
         const scuro = pannelloDesigner._tipo === "designer"
         const designerProdotto = pannelloDesigner._tipo === "prodotto"
           ? getDesigners(pannelloDesigner).join(", ")
