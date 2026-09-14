@@ -2140,6 +2140,21 @@ function App() {
     // pixel/unità-grafo sbagliato, letto proprio dal primo clamp dopo la
     // transizione. Va invalidata ogni volta che il bbox cambia davvero.
     let ppuCache = { key: null, ppuX: 0, ppuY: 0 }
+    // Stessa formula usata internamente da Sigma (normalization-*.esm.js,
+    // getCorrectionRatio) per capire quanto la vista deve "correggere" la
+    // scala quando il bbox non ha le stesse proporzioni del contenitore.
+    // Serve qui per RIPRODURLA e compensarla esplicitamente: a camera.ratio
+    // identico, Sigma applica scale = correctionRatio/ratio — se designer e
+    // aziende hanno bbox di proporzioni diverse, il correctionRatio interno
+    // esce diverso anche a ratio identico, ed è esattamente la causa dello
+    // scatto di scala/posizione al cambio vista (non risolvibile lavorando
+    // solo su x/y della camera, quello risolve solo la posizione).
+    function correctionRatioSigma(viewportW, viewportH, graphW, graphH) {
+      const viewportRatio = viewportH / viewportW
+      const graphRatio = graphH / graphW
+      if ((viewportRatio < 1 && graphRatio > 1) || (viewportRatio > 1 && graphRatio < 1)) return 1
+      return Math.min(Math.max(graphRatio, 1 / graphRatio), Math.max(1 / viewportRatio, viewportRatio))
+    }
     function impostaBBoxPerVista(vista) {
       vistaGrigliaAttuale = vista
       ppuCache = { key: null, ppuX: 0, ppuY: 0 }
@@ -2159,8 +2174,22 @@ function App() {
       const minCameraRatioBaseAttuale = isMobile ? 0.02 : 0.05
       MIN_CAMERA_RATIO = Math.min(minCameraRatioBaseAttuale, MIN_CAMERA_RATIO_UNITA_VISIBILI / bboxAltezza) * fattoreCropCumulativo
       renderer.setSetting("minCameraRatio", MIN_CAMERA_RATIO)
+      // MAX_CAMERA_RATIO moltiplicato per il correctionRatio DI QUESTA vista
+      // (bbox appena impostato sopra, dimensioni reali del contenitore ORA):
+      // così MAX_CAMERA_RATIO/correctionRatio — cioè la scala visiva vera a
+      // "zoom out totale" — resta la STESSA identica quantità in ogni vista,
+      // indipendentemente da come il bbox di quella vista si rapporta al
+      // contenitore. Prima MAX_CAMERA_RATIO era una costante piatta uguale
+      // in ogni vista, ma a correctionRatio diverso la scala EFFETTIVA
+      // risultava diversa comunque — da qui lo scatto ogni volta che si
+      // punta a "tutto visibile" (zoom minimo) in entrambe le viste.
+      const rectAttuale = container.getBoundingClientRect()
+      const larghezzaBboxAttuale = (X_MAX + MARGINE_X) - (X_MIN - MARGINE_X)
+      const correctionRatioAttuale = rectAttuale.width > 0 && rectAttuale.height > 0
+        ? correctionRatioSigma(rectAttuale.width, rectAttuale.height, larghezzaBboxAttuale, bboxAltezza)
+        : 1
       const maxCameraRatioBaseAttuale = isMobile ? 0.6 : 1.2
-      MAX_CAMERA_RATIO = maxCameraRatioBaseAttuale * fattoreCropCumulativo
+      MAX_CAMERA_RATIO = maxCameraRatioBaseAttuale * fattoreCropCumulativo * correctionRatioAttuale
       renderer.setSetting("maxCameraRatio", MAX_CAMERA_RATIO)
     }
     impostaBBoxPerVista(vistaCorrenteRef.current)
@@ -3707,12 +3736,18 @@ function App() {
             requestAnimationFrame(stepZoomOut)
           } else {
             // Arriviamo qui poco prima che l'ease abbia raggiunto il 100%:
-            // il salto a x=0.5/y=0.5/ratio=ratioZoomOutTarget (nuovo, dopo
-            // impostaBBoxPerVista) è comunque impercettibile, essendo
+            // il salto a x=0.5/y=0.5 è comunque impercettibile, essendo
             // ormai vicinissimo a dove l'animazione stava già arrivando.
+            // Il ratio finale invece va RICALCOLATO qui (non riusare
+            // ratioZoomOutTarget, calcolato PRIMA dello switch sul
+            // MAX/MIN_CAMERA_RATIO della vista VECCHIA): impostaBBoxPerVista
+            // appena chiamata ha già aggiornato MAX/MIN_CAMERA_RATIO con il
+            // correctionRatio della vista NUOVA — usare quelli è esattamente
+            // il punto della compensazione.
             clamping = true
             impostaBBoxPerVista(modello)
-            camera.setState({ x: 0.5, y: 0.5, ratio: ratioZoomOutTarget, angle: 0 })
+            const ratioZoomOutTargetNuovaVista = ratioDaT(ZOOM_TARGET_TRANSIZIONE)
+            camera.setState({ x: 0.5, y: 0.5, ratio: ratioZoomOutTargetNuovaVista, angle: 0 })
             clamping = false
           }
         }
