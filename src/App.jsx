@@ -1878,7 +1878,13 @@ function App() {
     // punto di partenza comprimibile. Se il contenuto naturale è già più alto
     // della proporzione target va bene: la diagonale sarà più verticale del
     // 75%, ma le righe restano leggibili — priorità più alta dell'inclinazione.
-    const PROPORZIONE_Y_SU_X_AZIENDE = 0.65
+    // Stesso aspect-ratio REALE del contenitore usato poco sopra per il
+    // designer (aspectViewport = larghezza/altezza), non più una costante
+    // fissa scollegata dallo schermo: quella differenza (0.65 fisso contro il
+    // vero aspect-ratio) faceva sì che le due viste, a camera.ratio identico,
+    // avessero un "correctionRatio" interno di Sigma diverso — causa dello
+    // scatto simultaneo di zoom/posizione/dimensione pallini al cambio vista.
+    const PROPORZIONE_Y_SU_X_AZIENDE = 1 / aspectViewport
     const provaAziende = costruisciLayoutAziende(STILE.passo_verticale_base)
     const estensioneXAziende = X_MAX - X_MIN
     const fattoreScalaAziende = provaAziende.estensioneY > 0
