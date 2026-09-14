@@ -1331,8 +1331,8 @@ function App() {
     // gruppo di corrente capita proprio lì, 1-2 righe non bastano a superare
     // il testo multi-riga (nome/cognome/date) del designer adiacente più
     // vicino. Più margine qui, quindi, rispetto al criterio aziende letterale.
-    const RIGHE_VUOTE_ETICHETTA_DESIGNER = 6
-    const RIGHE_BUFFER_ETICHETTA_DESIGNER = 4
+    const RIGHE_VUOTE_ETICHETTA_DESIGNER = 30
+    const RIGHE_BUFFER_ETICHETTA_DESIGNER = 20
     // Solo i gruppi con almeno 2 membri (prima erano le "ameba piene"): un
     // designer isolato nella propria corrente non riceve più, come già prima,
     // nessun segno particolare sul canvas.
@@ -1467,6 +1467,12 @@ function App() {
       const membriRun = posizioniCalcolate.filter((p) => et.gruppo.has(p.d.nome))
       et.xInizio = Math.min(...membriRun.map((p) => p.x))
       et.xFine = Math.max(...membriRun.map((p) => p.x))
+      // A differenza delle aziende (dove i membri di una categoria si
+      // succedono in orizzontale, per anno), qui i membri di una corrente si
+      // succedono in VERTICALE — la riga sotto il testo segue quindi l'altezza
+      // occupata dal gruppo (dal primo all'ultimo designer), non la larghezza.
+      et.yTop = Math.max(...membriRun.map((p) => p.y))
+      et.yBottom = Math.min(...membriRun.map((p) => p.y))
       const nomiCorrenti = Object.entries(correntiMembri)
         .filter(([, membri]) => membri.some((n) => et.gruppo.has(n)))
         .map(([nome]) => nome)
@@ -2492,10 +2498,8 @@ function App() {
         const staccoNumeroTesto = 4 * f
         etichetteCorrentiDesigner.forEach((et) => {
           const pInizio = renderer.graphToViewport({ x: et.xInizio, y: et.y })
-          const pFine = renderer.graphToViewport({ x: et.xFine, y: et.y })
           const lx = pInizio.x
           const ly = pInizio.y
-          const xRigaFine = Math.max(pFine.x, pInizio.x)
           const numero = String(et.numero).padStart(2, "0")
           const lyTesto = ly - staccoTestoLinea
           ctx.textAlign = "left"
@@ -2505,9 +2509,15 @@ function App() {
           const wNumero = ctx.measureText(numero).width
           ctx.font = `400 ${10 * f}px Roboto`
           ctx.fillText(et.testo, lx + wNumero + staccoNumeroTesto, lyTesto)
+          // A differenza di aziende (riga orizzontale, i membri di una
+          // categoria si succedono per anno): qui i membri si succedono in
+          // verticale, quindi la riga segue l'altezza occupata dal gruppo
+          // (dal primo all'ultimo designer), stessa X di partenza del testo.
+          const pAlto = renderer.graphToViewport({ x: et.xInizio, y: et.yTop })
+          const pBasso = renderer.graphToViewport({ x: et.xInizio, y: et.yBottom })
           ctx.beginPath()
-          ctx.moveTo(lx, ly)
-          ctx.lineTo(xRigaFine, ly)
+          ctx.moveTo(pAlto.x, pAlto.y)
+          ctx.lineTo(pBasso.x, pBasso.y)
           ctx.strokeStyle = "#aaaaaa"
           ctx.lineWidth = f
           ctx.stroke()
