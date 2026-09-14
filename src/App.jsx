@@ -857,7 +857,13 @@ function ListaConScroll({ children, maxHeight, wrapperStyle, innerStyle, classNa
     if (scrollHeight <= clientHeight + 1) { setThumb(null); return }
     const h = Math.max(24, (clientHeight / scrollHeight) * clientHeight)
     const top = (scrollTop / (scrollHeight - clientHeight)) * (clientHeight - h)
-    setThumb({ top, height: h })
+    // setThumb con un oggetto nuovo ad ogni chiamata, dentro un useEffect
+    // senza dependency array (sotto): ogni render richiama aggiorna(), che
+    // rimanda sempre un oggetto {top,height} diverso per riferimento anche
+    // a valori invariati, causando un render successivo all'infinito
+    // ("Maximum update depth exceeded"). Aggiorna solo se il valore è
+    // davvero cambiato.
+    setThumb((prev) => (prev && Math.abs(prev.top - top) < 0.5 && Math.abs(prev.height - h) < 0.5) ? prev : { top, height: h })
   }
 
   useEffect(() => { aggiorna() })
