@@ -2189,7 +2189,15 @@ function App() {
         ? correctionRatioSigma(rectAttuale.width, rectAttuale.height, larghezzaBboxAttuale, bboxAltezza)
         : 1
       const maxCameraRatioBaseAttuale = isMobile ? 0.6 : 1.2
-      MAX_CAMERA_RATIO = maxCameraRatioBaseAttuale * fattoreCropCumulativo * correctionRatioAttuale
+      // correctionRatioAttuale è sempre >= 1 (mai < 1): moltiplicarlo per
+      // intero rende "0%" sistematicamente più zoomato-fuori (mappa più
+      // piccola) di quanto fosse prima di questa compensazione. Il fattore
+      // qui sotto riporta la scala assoluta vicina a quella precedente,
+      // mantenendo intatta la parte che conta (la COERENZA fra le due
+      // viste, garantita dal moltiplicare comunque per correctionRatio) —
+      // valore di prova, da tarare.
+      const FATTORE_RIDUZIONE_ZOOM_MINIMO = 0.6
+      MAX_CAMERA_RATIO = maxCameraRatioBaseAttuale * fattoreCropCumulativo * correctionRatioAttuale * FATTORE_RIDUZIONE_ZOOM_MINIMO
       renderer.setSetting("maxCameraRatio", MAX_CAMERA_RATIO)
     }
     impostaBBoxPerVista(vistaCorrenteRef.current)
