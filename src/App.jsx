@@ -3667,15 +3667,11 @@ function App() {
         // può iniziare "a metà") e le dissolvenze/movimento prodotti
         // partono comunque, invece di aspettare l'ultimo tratto.
         const statoZoomOutIniziale = camera.getState()
-        // Non serve arrivare al 100% di zoom out (tutto il contenuto
-        // visibile): quello richiede che i bbox delle due viste combacino
-        // perfettamente, ed è proprio lì che nascono gli scatti residui. Ciò
-        // che conta davvero è che le due viste siano COERENTI fra loro nel
-        // punto in cui avviene il cambio — un livello di zoom intermedio,
-        // fisso in percentuale (quindi già adattato a schermo/mobile tramite
-        // MIN/MAX_CAMERA_RATIO), lascia anche apprezzare meglio la
-        // trasformazione dei pallini rispetto a uno zoom out totale.
-        const ZOOM_TARGET_TRANSIZIONE = 0.45
+        // Due costanti separate (mobile/desktop), volutamente slegate l'una
+        // dall'altra: nessun fattore comune, si tarano in modo indipendente.
+        const ZOOM_TARGET_TRANSIZIONE_MOBILE = 0
+        const ZOOM_TARGET_TRANSIZIONE_DESKTOP = 0
+        const ZOOM_TARGET_TRANSIZIONE = isMobile ? ZOOM_TARGET_TRANSIZIONE_MOBILE : ZOOM_TARGET_TRANSIZIONE_DESKTOP
         const ratioZoomOutTarget = ratioDaT(ZOOM_TARGET_TRANSIZIONE)
         const durataZoomOut = 950
         // Due soglie separate: i contenuti (dissolvenze, movimento prodotti)
