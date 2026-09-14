@@ -80,7 +80,7 @@ const STILE = {
   // Moltiplicatore applicato ai designer con al massimo SOGLIA_DESIGNER_SECONDARIO
   // prodotti a catalogo (vedi CONTEGGIO_PRODOTTI_PER_DESIGNER).
   designer_scala_secondario: 0.5,
-  zoom_prodotto_min: 2,
+  zoom_prodotto_min: 4,
   zoom_prodotto_max: 35,
   // Boost aggiuntivo solo mobile, concentrato nella fascia di zoom 15%-80%,
   // usato solo per l'etichetta col nome del designer (non per quella dei
