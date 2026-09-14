@@ -1331,8 +1331,8 @@ function App() {
     // gruppo di corrente capita proprio lì, 1-2 righe non bastano a superare
     // il testo multi-riga (nome/cognome/date) del designer adiacente più
     // vicino. Più margine qui, quindi, rispetto al criterio aziende letterale.
-    const RIGHE_VUOTE_ETICHETTA_DESIGNER = 3
-    const RIGHE_BUFFER_ETICHETTA_DESIGNER = 2
+    const RIGHE_VUOTE_ETICHETTA_DESIGNER = 6
+    const RIGHE_BUFFER_ETICHETTA_DESIGNER = 4
     // Solo i gruppi con almeno 2 membri (prima erano le "ameba piene"): un
     // designer isolato nella propria corrente non riceve più, come già prima,
     // nessun segno particolare sul canvas.
