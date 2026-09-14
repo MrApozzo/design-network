@@ -1766,10 +1766,7 @@ function App() {
     // a qualunque zoom, per costruzione — non serve nessun offset in pixel.
     // Blocco di apertura di una NUOVA macro-categoria (macro-etichetta +
     // sotto-etichetta del suo primo sotto-gruppo, impilate):
-    //   riga vuota, riga vuota, etichetta macro, riga vuota (fra macro e sotto), etichetta sotto, pallini...
-    // (niente buffer dopo la sotto-etichetta in questo caso: lo spazio andava
-    // a intersecare la riga della macro-etichetta sopra, che ne ha più
-    // bisogno essendo le due etichette adiacenti — vedi RIGHE_TRA_MACRO_SOTTO_AZ.)
+    //   riga vuota, riga vuota, etichetta macro, riga vuota (fra macro e sotto), etichetta sotto, riga vuota (buffer), pallini...
     // Blocco di un sotto-gruppo successivo (stessa macro-categoria: cambio
     // tratto Avanguardie/Miste/Moderne, o soglia storiche→moderne dentro
     // "normale"):
@@ -1778,7 +1775,7 @@ function App() {
     const RIGHE_VUOTE_ETICHETTA_AZ = 2
     const RIGHE_TRA_MACRO_SOTTO_AZ = 1
     const RIGHE_BUFFER_ETICHETTA_AZ = 1
-    const GAP_CATEGORIA_AZ = RIGHE_VUOTE_ETICHETTA_AZ + 1 + RIGHE_TRA_MACRO_SOTTO_AZ + 1
+    const GAP_CATEGORIA_AZ = RIGHE_VUOTE_ETICHETTA_AZ + 1 + RIGHE_TRA_MACRO_SOTTO_AZ + 1 + RIGHE_BUFFER_ETICHETTA_AZ
     const GAP_SOTTOGRUPPO_AZ = RIGHE_VUOTE_ETICHETTA_AZ + 1 + RIGHE_BUFFER_ETICHETTA_AZ
     // Break puramente visivo dentro un blocco lungo (nessuna etichetta
     // propria): resta un semplice respiro fra chunk cronologici, non un
@@ -1863,6 +1860,7 @@ function App() {
             y -= passoAz * RIGHE_TRA_MACRO_SOTTO_AZ
             ySottoEtichetta = y
             y -= passoAz
+            y -= passoAz * RIGHE_BUFFER_ETICHETTA_AZ
           } else {
             ySottoEtichetta = y
             y -= passoAz
@@ -2187,8 +2185,15 @@ function App() {
     // questa invece di modelloVista così non "rifloware" di scatto in
     // anticipo sulla vista ancora inquadrata con la vecchia scala.
     let vistaGrigliaAttuale = vistaCorrenteRef.current
+    // Cache di pixelPerUnita (sotto): la chiave non include il bbox, quindi
+    // se il bbox cambia (cambio vista) a parità di ratio/larghezza/altezza
+    // la cache resterebbe quella vecchia — un fattore di conversione
+    // pixel/unità-grafo sbagliato, letto proprio dal primo clamp dopo la
+    // transizione. Va invalidata ogni volta che il bbox cambia davvero.
+    let ppuCache = { key: null, ppuX: 0, ppuY: 0 }
     function impostaBBoxPerVista(vista) {
       vistaGrigliaAttuale = vista
+      ppuCache = { key: null, ppuX: 0, ppuY: 0 }
       const cYMin = vista === "aziende" ? contenutoYMinAziende : contenutoYMinDesigner
       const cYMax = vista === "aziende" ? contenutoYMaxAziende : contenutoYMaxDesigner
       bboxYMin = Math.min(Y_MIN, cYMin) - MARGINE_Y
@@ -3469,7 +3474,7 @@ function App() {
     // durante un pan (x/y cambiano, ratio no) restano validi. Cache per evitare
     // di rifare la sonda (più setState + refresh) a ogni evento "updated" durante
     // il drag, che causava lo scatto/rimbalzo mentre l'utente trascinava al bordo.
-    let ppuCache = { key: null, ppuX: 0, ppuY: 0 }
+    // (dichiarata più sopra, insieme a impostaBBoxPerVista che la invalida)
     function pixelPerUnita(state, w, h) {
       const key = `${state.ratio}|${w}|${h}`
       if (ppuCache.key === key) return ppuCache
