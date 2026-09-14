@@ -3692,7 +3692,16 @@ function App() {
         // può iniziare "a metà") e le dissolvenze/movimento prodotti
         // partono comunque, invece di aspettare l'ultimo tratto.
         const statoZoomOutIniziale = camera.getState()
-        const ratioZoomOutTarget = MAX_CAMERA_RATIO
+        // Non serve arrivare al 100% di zoom out (tutto il contenuto
+        // visibile): quello richiede che i bbox delle due viste combacino
+        // perfettamente, ed è proprio lì che nascono gli scatti residui. Ciò
+        // che conta davvero è che le due viste siano COERENTI fra loro nel
+        // punto in cui avviene il cambio — un livello di zoom intermedio,
+        // fisso in percentuale (quindi già adattato a schermo/mobile tramite
+        // MIN/MAX_CAMERA_RATIO), lascia anche apprezzare meglio la
+        // trasformazione dei pallini rispetto a uno zoom out totale.
+        const ZOOM_TARGET_TRANSIZIONE = 0.45
+        const ratioZoomOutTarget = ratioDaT(ZOOM_TARGET_TRANSIZIONE)
         const durataZoomOut = 950
         // Due soglie separate: i contenuti (dissolvenze, movimento prodotti)
         // possono partire presto, quando l'ease è ancora lontano dal 100%.
@@ -3728,12 +3737,12 @@ function App() {
             requestAnimationFrame(stepZoomOut)
           } else {
             // Arriviamo qui poco prima che l'ease abbia raggiunto il 100%:
-            // il salto a x=0.5/y=0.5/ratio=MAX_CAMERA_RATIO (nuovo, dopo
+            // il salto a x=0.5/y=0.5/ratio=ratioZoomOutTarget (nuovo, dopo
             // impostaBBoxPerVista) è comunque impercettibile, essendo
             // ormai vicinissimo a dove l'animazione stava già arrivando.
             clamping = true
             impostaBBoxPerVista(modello)
-            camera.setState({ x: 0.5, y: 0.5, ratio: MAX_CAMERA_RATIO, angle: 0 })
+            camera.setState({ x: 0.5, y: 0.5, ratio: ratioZoomOutTarget, angle: 0 })
             clamping = false
           }
         }
