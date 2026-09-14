@@ -1320,86 +1320,78 @@ function App() {
       legamiDiretti.add(`${r.designer_b}|${r.designer_a}`)
     })
 
-    // PROVA: griglia condivisa con le aziende. Ogni designer occupa comunque
-    // una riga propria e distinta (mai uno slot condiviso come la co-licenza
+    // Griglia condivisa con le aziende. Ogni designer occupa comunque una
+    // riga propria e distinta (mai uno slot condiviso come la co-licenza
     // delle aziende — per la vista timeline ogni designer deve restare
     // distinguibile sulla propria riga). La "vicinanza" (co-progetto/legame/
     // normale) si esprime come numero di UNITÀ DI GRIGLIA fra due righe
     // consecutive, sulla stessa identica griglia di base delle aziende: 1
-    // riga azienda (passo_verticale_base) = 3 unità, quindi normale = 3
-    // unità (esattamente 1 riga azienda), legame = 2, co-progetto = 1 (il
-    // minimo possibile restando ciascuno sulla propria riga).
-    // Semplificazione di questa prima prova: l'unità è derivata dalla base
-    // NON scalata (passo_verticale_base), non dal passoAzFinale già scalato
-    // per aziende (fattoreScalaAziende) — coincidono quando quel fattore
-    // resta 1 (il caso comune, contenuto aziende già naturalmente alto), da
-    // rivedere se in pratica risultasse diverso da 1.
-    const UNITA_GRIGLIA_CONDIVISA = STILE.passo_verticale_base / 3
-
-    // Etichette di corrente (scuola/collettivo) in vista designer: stessa logica
-    // delle etichette di categoria in vista aziende (righe vuote di margine, riga
-    // dell'etichetta, riga di buffer, poi il primo pallino) — vedi il blocco
-    // gemello RIGHE_VUOTE_ETICHETTA_AZ/RIGHE_BUFFER_ETICHETTA_AZ più sotto in
-    // costruisciLayoutAziende. Unità di riserva: passo_verticale_base, lo stesso
-    // passo "standard" fra designer non collegati (le correnti sono comunque
-    // gruppi di affinità, non aziende, quindi non hanno un passo di riga proprio
-    // come passoAz — riusiamo il più comune dei tre passi verticali).
-    // Il passo "standard" fra designer non collegati è lo stesso usato come
-    // riferimento qui sotto, ma fra designer del medesimo gruppo di
-    // co-progetto il passo reale è molto più stretto (passo_verticale_coprogetto,
-    // pensato per "impastarli" a bella posta) — se il confine di un nuovo
-    // gruppo di corrente capita proprio lì, 1-2 righe non bastano a superare
-    // il testo multi-riga (nome/cognome/date) del designer adiacente più
-    // vicino. Più margine qui, quindi, rispetto al criterio aziende letterale.
+    // riga azienda = 3 unità, quindi normale = 3 unità (esattamente 1 riga
+    // azienda), legame = 2, co-progetto = 1 (il minimo possibile restando
+    // ciascuno sulla propria riga).
+    // L'unità vera si conosce solo DOPO aver calcolato passoAzFinale (che a
+    // sua volta serve X_MIN/X_MAX finali, che dipendono dall'altezza DEL
+    // DESIGNER — dipendenza circolare). Per questo la funzione qui sotto si
+    // richiama due volte: una "di prova" con un'unità placeholder (serve solo
+    // a stimare quanto allargare l'asse X), una "definitiva" con l'unità
+    // vera derivata da passoAzFinale (vedi poco più sotto, dopo il calcolo
+    // aziende) — stesso identico schema già usato per costruisciLayoutAziende.
     const RIGHE_VUOTE_ETICHETTA_DESIGNER = 30
     const RIGHE_BUFFER_ETICHETTA_DESIGNER = 20
-    // Solo i gruppi con almeno 2 membri (prima erano le "ameba piene"): un
-    // designer isolato nella propria corrente non riceve più, come già prima,
-    // nessun segno particolare sul canvas.
-    const gruppiEtichettati = new Set()
-    let numeroCorrenteDesigner = 0
-    const etichetteCorrentiDesigner = []
 
-    let prevY = 0
-    let prevRaggio = 0
-    const posizioniCalcolate = ordinato.map((d, i) => {
-      const raggio = raggioMaxPerDesigner[d.nome] || STILE.eta_raggio_base
-      const manuale = d.y !== null && d.y !== undefined
-      let y
-      if (manuale) {
-        y = d.y
-      } else if (i === 0) {
-        y = 0
-      } else {
-        const prev = ordinato[i - 1]
-        const stessoGruppo = gruppiCoprogetto[d.nome] && gruppiCoprogetto[d.nome] === gruppiCoprogetto[prev.nome]
-        const legameDiretto = !stessoGruppo && legamiDiretti.has(`${d.nome}|${prev.nome}`)
-        const distanzaUnitaNominale = stessoGruppo ? 1 : legameDiretto ? 2 : 3
-        const minGap = (prevRaggio + raggio) + STILE.min_distanza_y
-        // Come per le aziende: se un'orbita grande richiede più spazio di
-        // quanto il livello di vicinanza preveda, si arrotonda comunque per
-        // eccesso al multiplo di UNITA_GRIGLIA_CONDIVISA superiore — non si
-        // usa mai il valore "grezzo" dell'orbita, così ogni riga resta
-        // sempre sulla stessa griglia condivisa, senza eccezioni.
-        const distanzaUnita = Math.max(distanzaUnitaNominale, Math.ceil(minGap / UNITA_GRIGLIA_CONDIVISA))
-        y = prevY - distanzaUnita * UNITA_GRIGLIA_CONDIVISA
-      }
-
-      if (!manuale) {
-        const gruppoAttuale = gruppiCorrenti[d.nome]
-        if (gruppoAttuale && gruppoAttuale.size >= 2 && !gruppiEtichettati.has(gruppoAttuale)) {
-          gruppiEtichettati.add(gruppoAttuale)
-          numeroCorrenteDesigner++
-          y -= STILE.passo_verticale_base * RIGHE_VUOTE_ETICHETTA_DESIGNER
-          etichetteCorrentiDesigner.push({ gruppo: gruppoAttuale, numero: numeroCorrenteDesigner, y })
-          y -= STILE.passo_verticale_base * (1 + RIGHE_BUFFER_ETICHETTA_DESIGNER)
+    function costruisciLayoutDesigner(unitaGriglia) {
+      // Solo i gruppi con almeno 2 membri (prima erano le "ameba piene"): un
+      // designer isolato nella propria corrente non riceve, come già prima,
+      // nessun segno particolare sul canvas.
+      const gruppiEtichettati = new Set()
+      let numeroCorrenteDesigner = 0
+      const etichette = []
+      let prevY = 0
+      let prevRaggio = 0
+      const posizioni = ordinato.map((d, i) => {
+        const raggio = raggioMaxPerDesigner[d.nome] || STILE.eta_raggio_base
+        const manuale = d.y !== null && d.y !== undefined
+        let y
+        if (manuale) {
+          y = d.y
+        } else if (i === 0) {
+          y = 0
+        } else {
+          const prev = ordinato[i - 1]
+          const stessoGruppo = gruppiCoprogetto[d.nome] && gruppiCoprogetto[d.nome] === gruppiCoprogetto[prev.nome]
+          const legameDiretto = !stessoGruppo && legamiDiretti.has(`${d.nome}|${prev.nome}`)
+          const distanzaUnitaNominale = stessoGruppo ? 1 : legameDiretto ? 2 : 3
+          const minGap = (prevRaggio + raggio) + STILE.min_distanza_y
+          // Come per le aziende: se un'orbita grande richiede più spazio di
+          // quanto il livello di vicinanza preveda, si arrotonda comunque per
+          // eccesso al multiplo di unitaGriglia superiore — non si usa mai il
+          // valore "grezzo" dell'orbita, così ogni riga resta sempre sulla
+          // stessa griglia condivisa, senza eccezioni.
+          const distanzaUnita = Math.max(distanzaUnitaNominale, Math.ceil(minGap / unitaGriglia))
+          y = prevY - distanzaUnita * unitaGriglia
         }
-      }
 
-      prevY = y
-      prevRaggio = raggio
-      return { d, x: annoToX(d.nato), y, manuale, raggio }
-    })
+        if (!manuale) {
+          const gruppoAttuale = gruppiCorrenti[d.nome]
+          if (gruppoAttuale && gruppoAttuale.size >= 2 && !gruppiEtichettati.has(gruppoAttuale)) {
+            gruppiEtichettati.add(gruppoAttuale)
+            numeroCorrenteDesigner++
+            y -= STILE.passo_verticale_base * RIGHE_VUOTE_ETICHETTA_DESIGNER
+            etichette.push({ gruppo: gruppoAttuale, numero: numeroCorrenteDesigner, y })
+            y -= STILE.passo_verticale_base * (1 + RIGHE_BUFFER_ETICHETTA_DESIGNER)
+          }
+        }
+
+        prevY = y
+        prevRaggio = raggio
+        return { d, x: annoToX(d.nato), y, manuale, raggio }
+      })
+      let yMin = Infinity, yMax = -Infinity
+      posizioni.forEach((p) => { yMin = Math.min(yMin, p.y - p.raggio); yMax = Math.max(yMax, p.y + p.raggio) })
+      return { posizioni, etichette, estensioneY: Number.isFinite(yMax) ? yMax - yMin : 0 }
+    }
+
+    const provaDesigner = costruisciLayoutDesigner(STILE.passo_verticale_base / 3)
 
     // Se le orbite hanno esteso molto l'area verticale, allarghiamo anche l'asse X
     // PRIMA di creare i nodi (designer e prodotti), così le orbite restano circolari
@@ -1410,7 +1402,7 @@ function App() {
     // margini vuoti. Da notare: questo NON influenza la dimensione dei pallini
     // (calcolaRaggio dipende solo dal numero di prodotti), solo la loro posizione X.
     let contenutoYMinStima = Infinity, contenutoYMaxStima = -Infinity
-    posizioniCalcolate.forEach((p) => {
+    provaDesigner.posizioni.forEach((p) => {
       contenutoYMinStima = Math.min(contenutoYMinStima, p.y - p.raggio)
       contenutoYMaxStima = Math.max(contenutoYMaxStima, p.y + p.raggio)
     })
@@ -1425,8 +1417,235 @@ function App() {
     if (fattoreScalaX > 1) {
       X_MIN = X_MIN_BASE * fattoreScalaX
       X_MAX = X_MAX_BASE * fattoreScalaX
-      posizioniCalcolate.forEach((p) => { p.x = annoToX(p.d.nato) })
     }
+    // ===== LAYOUT AZIENDE =====
+    // Spostato qui (prima serviva più avanti nel file): passoAzFinale deve
+    // essere noto PRIMA delle posizioni designer VERE, per calcolare
+    // l'unità di griglia condivisa — vedi costruisciLayoutDesigner sopra.
+    // A differenza di quando questo blocco stava più sotto, qui i nodi
+    // "prodotto" del grafo non esistono ancora: si legge direttamente
+    // l'array prodotti (stessa identica logica, un prodotto raw invece del
+    // suo nodo-grafo — cambia solo che un prodotto con più designer non
+    // viene più contato una volta per designer, ma una sola volta per
+    // azienda: la dimensione del pallino azienda dipende dal numero di
+    // prodotti reali in catalogo, non dal numero di nodi-grafo).
+    const prodottiPerAzienda = {}
+    prodotti.forEach((p) => {
+      getAziende(p).forEach((az) => {
+        if (!prodottiPerAzienda[az]) prodottiPerAzienda[az] = []
+        prodottiPerAzienda[az].push(p)
+      })
+    })
+
+    // Gruppi co-licenza: aziende che condividono la stessa licenza di un prodotto
+    const coLicenzaGruppi = {}
+    prodotti.forEach((p) => {
+      const azs = getAziende(p)
+      if (azs.length < 2) return
+      const set = new Set()
+      azs.forEach((az) => { if (coLicenzaGruppi[az]) coLicenzaGruppi[az].forEach((x) => set.add(x)) })
+      azs.forEach((az) => set.add(az))
+      set.forEach((az) => { coLicenzaGruppi[az] = set })
+    })
+
+    // Posizioni aziende: X = anno fondazione, Y = fascia di categoria prodotto
+    // (Arredo, Illuminazione, ecc.) + stacking cronologico con co-licenza
+    // raggruppata all'interno della fascia. Le fasce sono ordinate dalla
+    // categoria più antica (in cima) alla più recente e separate da uno
+    // scostamento marcato, così la diagonale temporale di base (dominata da
+    // "Arredo") viene "rotta" in bande distinte dalle altre tipologie di prodotto.
+    const azOrdinate = [...aziendeData].sort((a, b) => a.fondata - b.fondata)
+
+    // Griglia unica: ogni azienda occupa uno slot intero, un multiplo esatto di
+    // passoAz — mai un valore "raffazzonato" da somme di scostamenti diversi
+    // (il vecchio zigzag + tratti + de-collisione poteva far coincidere due
+    // aziende sullo stesso valore per puro caso aritmetico, es. Cassina e
+    // Kartell). Il cursore avanza sempre in una sola direzione: non serve
+    // nessuna correzione a posteriori, la griglia è pulita per costruzione.
+    //
+    // "Gruppetti" (dentro Arredo: Avanguardie, Miste, Moderne; dentro una
+    // fascia numerosa: la corsa cronologica spezzata storiche/moderne alla
+    // soglia anno) sono semplicemente sotto-sequenze con un salto di righe di
+    // griglia PRIMA di iniziare — non più uno scostamento sommato al volo.
+    // Le etichette vivono sulla STESSA griglia dei pallini (righe intere,
+    // multipli di passoAz), non più su uno scostamento in pixel calcolato a
+    // parte: così restano sempre proporzionate e mai sovrapposte ai pallini,
+    // a qualunque zoom, per costruzione — non serve nessun offset in pixel.
+    // Blocco di apertura di una NUOVA macro-categoria (macro-etichetta +
+    // sotto-etichetta del suo primo sotto-gruppo, impilate):
+    //   riga vuota, riga vuota, etichetta macro, riga vuota (fra macro e sotto), etichetta sotto, riga vuota (buffer), pallini...
+    // Blocco di un sotto-gruppo successivo (stessa macro-categoria: cambio
+    // tratto Avanguardie/Miste/Moderne, o soglia storiche→moderne dentro
+    // "normale"):
+    //   riga vuota, riga vuota, etichetta sotto, riga vuota (buffer), pallini...
+    // Valori "di prova": semplici da cambiare, un solo numero ciascuno.
+    const RIGHE_VUOTE_ETICHETTA_AZ = 2
+    const RIGHE_TRA_MACRO_SOTTO_AZ = 1
+    const RIGHE_BUFFER_ETICHETTA_AZ = 1
+    const GAP_CATEGORIA_AZ = RIGHE_VUOTE_ETICHETTA_AZ + 1 + RIGHE_TRA_MACRO_SOTTO_AZ + 1 + RIGHE_BUFFER_ETICHETTA_AZ
+    const GAP_SOTTOGRUPPO_AZ = RIGHE_VUOTE_ETICHETTA_AZ + 1 + RIGHE_BUFFER_ETICHETTA_AZ
+    // Break puramente visivo dentro un blocco lungo (nessuna etichetta
+    // propria): resta un semplice respiro fra chunk cronologici, non un
+    // cambio di sotto-gruppo.
+    const GAP_CHUNK_CRONOLOGICO_AZ = 3
+    const DIMENSIONE_GRUPPO_CRONOLOGICO = 6
+    const SOGLIA_SPEZZA_GRUPPO_CRONOLOGICO = 20
+    // Riga dei prodotti senza nessuna azienda associata: sta sopra a tutte le
+    // fasce (Y positiva, mentre le fasce scendono da 0), staccata ancora più
+    // delle fasce fra loro — è un caso a parte, non solo un'altra categoria.
+    // L'etichetta sta ANCORA più su (RIGHE_ETICHETTA_SENZA_AZIENDA_AZ righe
+    // sopra i suoi stessi pallini, non sulla stessa riga): la distanza fra i
+    // pallini "senza azienda" e la categoria 01 sotto resta quella di sempre,
+    // solo l'etichetta guadagna spazio proprio verso l'alto.
+    const GAP_SENZA_AZIENDA_AZ = GAP_CATEGORIA_AZ * 2
+    const RIGHE_ETICHETTA_SENZA_AZIENDA_AZ = RIGHE_VUOTE_ETICHETTA_AZ + 1
+
+    // Anno soglia sotto cui un chunk cronologico "normale" si etichetta come
+    // storico, sopra come moderno (semplice cambio di testo sulla stessa
+    // sequenza — non è una fascia separata, vedi ANNO_SOGLIA_STORICO_MODERNO).
+    const ANNO_SOGLIA_STORICO_MODERNO = 1985
+
+    function costruisciLayoutAziende(passoAz) {
+      const mappa = {}
+      const positioned = new Set()
+      let cursoreFasciaY = 0
+      // Info per le etichette (vedi disegno più sotto): una per macro-categoria
+      // (numerata 01, 02...) e una per ogni sotto-gruppo/chunk (numerata 0X.1,
+      // 0X.2...), con la posizione (in unità di grafo) già letta da mappa.
+      const etichetteMacro = []
+      const etichetteSotto = []
+      let numeroCategoria = 0
+
+      ORDINE_CATEGORIE_AZIENDE.forEach((categoria) => {
+        const aziendeCategoria = azOrdinate.filter((az) => categoriaAzienda(az) === categoria)
+        if (aziendeCategoria.length === 0) return
+        numeroCategoria++
+        let numeroSottogruppo = 0
+
+        // Blocchi ORDINATI dentro la fascia: prima le aziende "normali" (in
+        // ordine cronologico — spezzato in storiche/moderne alla soglia
+        // anno, ciascuno un blocco a parte con la SUA riga etichetta, non
+        // solo un cambio di testo sulla stessa riga: la soglia può capitare a
+        // metà di una corsa cronologica lunga, lontano dall'inizio della
+        // fascia, quindi merita la stessa etichetta "staccata dai pallini"
+        // di qualunque altro sotto-gruppo), poi Avanguardie, Miste, Moderne —
+        // ciascuno un blocchetto sequenziale proprio.
+        const normali = aziendeCategoria.filter((az) => !AZIENDA_AVANGUARDIA.has(az.nome) && !AZIENDA_MISTA.has(az.nome) && !AZIENDA_MODERNA.has(az.nome))
+        const normaliStoriche = normali.filter((az) => az.fondata < ANNO_SOGLIA_STORICO_MODERNO)
+        const normaliModerne = normali.filter((az) => az.fondata >= ANNO_SOGLIA_STORICO_MODERNO)
+        const faBlocco = (lista, tipoEtichetta, daNormale) => ({
+          lista, tipoEtichetta, daNormale,
+          spezzaOgni: lista.length > SOGLIA_SPEZZA_GRUPPO_CRONOLOGICO ? DIMENSIONE_GRUPPO_CRONOLOGICO : 0,
+        })
+        const blocchi = [
+          normaliStoriche.length > 0 && faBlocco(normaliStoriche, "storiche", true),
+          normaliModerne.length > 0 && faBlocco(normaliModerne, "moderne", true),
+          ...aziendeCategoria.filter((az) => AZIENDA_AVANGUARDIA.has(az.nome)).length > 0 ? [faBlocco(aziendeCategoria.filter((az) => AZIENDA_AVANGUARDIA.has(az.nome)), "avanguardia", false)] : [],
+          ...aziendeCategoria.filter((az) => AZIENDA_MISTA.has(az.nome)).length > 0 ? [faBlocco(aziendeCategoria.filter((az) => AZIENDA_MISTA.has(az.nome)), "mista", false)] : [],
+          ...aziendeCategoria.filter((az) => AZIENDA_MODERNA.has(az.nome)).length > 0 ? [faBlocco(aziendeCategoria.filter((az) => AZIENDA_MODERNA.has(az.nome)), "moderna", false)] : [],
+        ].filter(Boolean)
+
+        let y = cursoreFasciaY
+        let yEtichettaMacro = null
+        blocchi.forEach((blocco, blocIdx) => {
+          // Ogni blocco riserva le sue righe DI GRIGLIA (non pixel): righe
+          // vuote di margine, poi (solo per il primo blocco della categoria)
+          // la riga della macro-etichetta, poi sempre la riga della
+          // sotto-etichetta di questo blocco, poi una riga vuota di buffer
+          // prima del primo pallino — mai la stessa riga dei pallini, quindi
+          // sempre visivamente staccata a qualunque zoom (stessa griglia,
+          // stessa trasformazione schermo).
+          y -= passoAz * RIGHE_VUOTE_ETICHETTA_AZ
+          let ySottoEtichetta
+          if (blocIdx === 0) {
+            yEtichettaMacro = y
+            y -= passoAz
+            // Più spazio qui (fra macro e sotto) che fra la sotto-etichetta e
+            // il primo pallino: sono le due etichette, adiacenti, quelle che
+            // rischiavano di intersecarsi a zoom basso — i pallini hanno già
+            // il loro spazio naturale di riga.
+            y -= passoAz * RIGHE_TRA_MACRO_SOTTO_AZ
+            ySottoEtichetta = y
+            y -= passoAz
+            y -= passoAz * RIGHE_BUFFER_ETICHETTA_AZ
+          } else {
+            ySottoEtichetta = y
+            y -= passoAz
+            y -= passoAz * RIGHE_BUFFER_ETICHETTA_AZ
+          }
+
+          blocco.lista.forEach((az, idx) => {
+            if (positioned.has(az.nome)) return
+            if (blocco.spezzaOgni > 0 && idx > 0 && idx % blocco.spezzaOgni === 0) y -= passoAz * GAP_CHUNK_CRONOLOGICO_AZ
+            const nProd = prodottiPerAzienda[az.nome]?.length || 0
+            mappa[az.nome] = { x: annoToX(az.fondata), y, dati: az, raggio: calcolaRaggio(nProd) }
+            positioned.add(az.nome)
+            y -= passoAz
+            // Co-licenza: i partner della stessa fascia si inseriscono subito
+            // dopo, un mezzo passo più vicini — restano sulla stessa griglia
+            // (un multiplo di passoAz/2), niente più margini "di sicurezza":
+            // essendo strettamente sequenziale non può mai coincidere con
+            // nient'altro.
+            const gruppo = coLicenzaGruppi[az.nome]
+            if (gruppo && gruppo.size > 1) {
+              const partners = [...gruppo].filter((n) => !positioned.has(n) && AZIENDE_MAP[n] && categoriaAzienda(AZIENDE_MAP[n]) === categoria)
+              // Distribuisce gli N partner nello slot tra l'anchor (y + passoAz)
+              // e la prossima azienda (y): con un solo partner cade esattamente a
+              // metà, con più partner si dividono lo slot senza mai coincidere.
+              const passoPartner = passoAz / (partners.length + 1)
+              partners.forEach((partner, i) => {
+                const yPartner = (y + passoAz) - passoPartner * (i + 1)
+                const partnerAz = AZIENDE_MAP[partner]
+                mappa[partner] = { x: annoToX(partnerAz.fondata), y: yPartner, dati: partnerAz, raggio: calcolaRaggio(prodottiPerAzienda[partner]?.length || 0) }
+                positioned.add(partner)
+              })
+            }
+          })
+
+          const validi = blocco.lista.filter((az) => mappa[az.nome])
+          if (validi.length > 0) {
+            numeroSottogruppo++
+            const xs = validi.map((az) => mappa[az.nome].x)
+            etichetteSotto.push({
+              categoria, numeroCategoria, numeroSottogruppo, tipo: blocco.tipoEtichetta,
+              xInizio: Math.min(...xs), xFine: Math.max(...xs), y: ySottoEtichetta,
+              daNormale: blocco.daNormale,
+            })
+          }
+        })
+
+        const posizioniCategoria = aziendeCategoria.filter((az) => mappa[az.nome]).map((az) => mappa[az.nome])
+        etichetteMacro.push({
+          categoria, numeroCategoria,
+          xInizio: Math.min(...posizioniCategoria.map((p) => p.x)),
+          xFine: Math.max(...posizioniCategoria.map((p) => p.x)),
+          y: yEtichettaMacro,
+        })
+
+        // Nessun'altra sottrazione qui: le righe vuote/etichetta/buffer della
+        // PROSSIMA categoria (blocIdx === 0 nel suo giro del forEach) sono
+        // già l'intero distacco fra categorie — non va raddoppiato.
+        cursoreFasciaY = y
+      })
+      return { mappa, estensioneY: -cursoreFasciaY, etichetteMacro, etichetteSotto }
+    }
+
+    const PROPORZIONE_Y_SU_X_AZIENDE = 0.65
+    const provaAziende = costruisciLayoutAziende(STILE.passo_verticale_base)
+    const estensioneXAziende = X_MAX - X_MIN
+    const fattoreScalaAziende = provaAziende.estensioneY > 0
+      ? Math.max(1, (estensioneXAziende * PROPORZIONE_Y_SU_X_AZIENDE) / provaAziende.estensioneY)
+      : 1
+    const passoAzFinale = STILE.passo_verticale_base * fattoreScalaAziende
+
+    // Ora che passoAzFinale (il vero passo di riga aziende) è noto, l'unità di
+    // griglia condivisa può essere quella VERA (1 riga azienda = 3 unità),
+    // non più il placeholder usato per la sola stima dell'allargamento X: le
+    // due griglie di sfondo (aziende/designer) ora coincidono esattamente,
+    // non solo "quando fattoreScalaAziende resta 1" (nella pratica non resta
+    // affatto 1 — da qui gli scatti visibili nella griglia di sfondo).
+    const UNITA_GRIGLIA_CONDIVISA = passoAzFinale / 3
+    const { posizioni: posizioniCalcolate, etichette: etichetteCorrentiDesigner } = costruisciLayoutDesigner(UNITA_GRIGLIA_CONDIVISA)
 
     // Passo di allineamento per lo snap fine delle posizioni (indipendente dalla
     // scala di allargamento dell'asse X): se si usasse lo stesso passo, via via
@@ -1661,239 +1880,12 @@ function App() {
       }
     })
 
-    // ===== LAYOUT AZIENDE =====
-    // Prodotti per azienda (gestisce sia string che array)
-    const prodottiPerAzienda = {}
-    graph.forEachNode((node, attr) => {
-      if (attr.tipo !== "prodotto") return
-      getAziende(attr.dati).forEach((az) => {
-        if (!prodottiPerAzienda[az]) prodottiPerAzienda[az] = []
-        prodottiPerAzienda[az].push(node)
-      })
-    })
-
-    // Gruppi co-licenza: aziende che condividono la stessa licenza di un prodotto
-    const coLicenzaGruppi = {}
-    graph.forEachNode((node, attr) => {
-      if (attr.tipo !== "prodotto") return
-      const azs = getAziende(attr.dati)
-      if (azs.length < 2) return
-      const set = new Set()
-      azs.forEach((az) => { if (coLicenzaGruppi[az]) coLicenzaGruppi[az].forEach((x) => set.add(x)) })
-      azs.forEach((az) => set.add(az))
-      set.forEach((az) => { coLicenzaGruppi[az] = set })
-    })
-
-    // Posizioni aziende: X = anno fondazione, Y = fascia di categoria prodotto
-    // (Arredo, Illuminazione, ecc.) + stacking cronologico con co-licenza
-    // raggruppata all'interno della fascia. Le fasce sono ordinate dalla
-    // categoria più antica (in cima) alla più recente e separate da uno
-    // scostamento marcato, così la diagonale temporale di base (dominata da
-    // "Arredo") viene "rotta" in bande distinte dalle altre tipologie di prodotto.
-    const azOrdinate = [...aziendeData].sort((a, b) => a.fondata - b.fondata)
-
-    // Griglia unica: ogni azienda occupa uno slot intero, un multiplo esatto di
-    // passoAz — mai un valore "raffazzonato" da somme di scostamenti diversi
-    // (il vecchio zigzag + tratti + de-collisione poteva far coincidere due
-    // aziende sullo stesso valore per puro caso aritmetico, es. Cassina e
-    // Kartell). Il cursore avanza sempre in una sola direzione: non serve
-    // nessuna correzione a posteriori, la griglia è pulita per costruzione.
-    //
-    // "Gruppetti" (dentro Arredo: Avanguardie, Miste, Moderne; dentro una
-    // fascia numerosa: la corsa cronologica spezzata storiche/moderne alla
-    // soglia anno) sono semplicemente sotto-sequenze con un salto di righe di
-    // griglia PRIMA di iniziare — non più uno scostamento sommato al volo.
-    // Le etichette vivono sulla STESSA griglia dei pallini (righe intere,
-    // multipli di passoAz), non più su uno scostamento in pixel calcolato a
-    // parte: così restano sempre proporzionate e mai sovrapposte ai pallini,
-    // a qualunque zoom, per costruzione — non serve nessun offset in pixel.
-    // Blocco di apertura di una NUOVA macro-categoria (macro-etichetta +
-    // sotto-etichetta del suo primo sotto-gruppo, impilate):
-    //   riga vuota, riga vuota, etichetta macro, riga vuota (fra macro e sotto), etichetta sotto, riga vuota (buffer), pallini...
-    // Blocco di un sotto-gruppo successivo (stessa macro-categoria: cambio
-    // tratto Avanguardie/Miste/Moderne, o soglia storiche→moderne dentro
-    // "normale"):
-    //   riga vuota, riga vuota, etichetta sotto, riga vuota (buffer), pallini...
-    // Valori "di prova": semplici da cambiare, un solo numero ciascuno.
-    const RIGHE_VUOTE_ETICHETTA_AZ = 2
-    const RIGHE_TRA_MACRO_SOTTO_AZ = 1
-    const RIGHE_BUFFER_ETICHETTA_AZ = 1
-    const GAP_CATEGORIA_AZ = RIGHE_VUOTE_ETICHETTA_AZ + 1 + RIGHE_TRA_MACRO_SOTTO_AZ + 1 + RIGHE_BUFFER_ETICHETTA_AZ
-    const GAP_SOTTOGRUPPO_AZ = RIGHE_VUOTE_ETICHETTA_AZ + 1 + RIGHE_BUFFER_ETICHETTA_AZ
-    // Break puramente visivo dentro un blocco lungo (nessuna etichetta
-    // propria): resta un semplice respiro fra chunk cronologici, non un
-    // cambio di sotto-gruppo.
-    const GAP_CHUNK_CRONOLOGICO_AZ = 3
-    const DIMENSIONE_GRUPPO_CRONOLOGICO = 6
-    const SOGLIA_SPEZZA_GRUPPO_CRONOLOGICO = 20
-    // Riga dei prodotti senza nessuna azienda associata: sta sopra a tutte le
-    // fasce (Y positiva, mentre le fasce scendono da 0), staccata ancora più
-    // delle fasce fra loro — è un caso a parte, non solo un'altra categoria.
-    // L'etichetta sta ANCORA più su (RIGHE_ETICHETTA_SENZA_AZIENDA_AZ righe
-    // sopra i suoi stessi pallini, non sulla stessa riga): la distanza fra i
-    // pallini "senza azienda" e la categoria 01 sotto resta quella di sempre,
-    // solo l'etichetta guadagna spazio proprio verso l'alto.
-    const GAP_SENZA_AZIENDA_AZ = GAP_CATEGORIA_AZ * 2
-    const RIGHE_ETICHETTA_SENZA_AZIENDA_AZ = RIGHE_VUOTE_ETICHETTA_AZ + 1
-
-    // Anno soglia sotto cui un chunk cronologico "normale" si etichetta come
-    // storico, sopra come moderno (semplice cambio di testo sulla stessa
-    // sequenza — non è una fascia separata, vedi ANNO_SOGLIA_STORICO_MODERNO).
-    const ANNO_SOGLIA_STORICO_MODERNO = 1985
-
-    function costruisciLayoutAziende(passoAz) {
-      const mappa = {}
-      const positioned = new Set()
-      let cursoreFasciaY = 0
-      // Info per le etichette (vedi disegno più sotto): una per macro-categoria
-      // (numerata 01, 02...) e una per ogni sotto-gruppo/chunk (numerata 0X.1,
-      // 0X.2...), con la posizione (in unità di grafo) già letta da mappa.
-      const etichetteMacro = []
-      const etichetteSotto = []
-      let numeroCategoria = 0
-
-      ORDINE_CATEGORIE_AZIENDE.forEach((categoria) => {
-        const aziendeCategoria = azOrdinate.filter((az) => categoriaAzienda(az) === categoria)
-        if (aziendeCategoria.length === 0) return
-        numeroCategoria++
-        let numeroSottogruppo = 0
-
-        // Blocchi ORDINATI dentro la fascia: prima le aziende "normali" (in
-        // ordine cronologico — spezzato in storiche/moderne alla soglia
-        // anno, ciascuno un blocco a parte con la SUA riga etichetta, non
-        // solo un cambio di testo sulla stessa riga: la soglia può capitare a
-        // metà di una corsa cronologica lunga, lontano dall'inizio della
-        // fascia, quindi merita la stessa etichetta "staccata dai pallini"
-        // di qualunque altro sotto-gruppo), poi Avanguardie, Miste, Moderne —
-        // ciascuno un blocchetto sequenziale proprio.
-        const normali = aziendeCategoria.filter((az) => !AZIENDA_AVANGUARDIA.has(az.nome) && !AZIENDA_MISTA.has(az.nome) && !AZIENDA_MODERNA.has(az.nome))
-        const normaliStoriche = normali.filter((az) => az.fondata < ANNO_SOGLIA_STORICO_MODERNO)
-        const normaliModerne = normali.filter((az) => az.fondata >= ANNO_SOGLIA_STORICO_MODERNO)
-        const faBlocco = (lista, tipoEtichetta, daNormale) => ({
-          lista, tipoEtichetta, daNormale,
-          spezzaOgni: lista.length > SOGLIA_SPEZZA_GRUPPO_CRONOLOGICO ? DIMENSIONE_GRUPPO_CRONOLOGICO : 0,
-        })
-        const blocchi = [
-          normaliStoriche.length > 0 && faBlocco(normaliStoriche, "storiche", true),
-          normaliModerne.length > 0 && faBlocco(normaliModerne, "moderne", true),
-          ...aziendeCategoria.filter((az) => AZIENDA_AVANGUARDIA.has(az.nome)).length > 0 ? [faBlocco(aziendeCategoria.filter((az) => AZIENDA_AVANGUARDIA.has(az.nome)), "avanguardia", false)] : [],
-          ...aziendeCategoria.filter((az) => AZIENDA_MISTA.has(az.nome)).length > 0 ? [faBlocco(aziendeCategoria.filter((az) => AZIENDA_MISTA.has(az.nome)), "mista", false)] : [],
-          ...aziendeCategoria.filter((az) => AZIENDA_MODERNA.has(az.nome)).length > 0 ? [faBlocco(aziendeCategoria.filter((az) => AZIENDA_MODERNA.has(az.nome)), "moderna", false)] : [],
-        ].filter(Boolean)
-
-        let y = cursoreFasciaY
-        let yEtichettaMacro = null
-        blocchi.forEach((blocco, blocIdx) => {
-          // Ogni blocco riserva le sue righe DI GRIGLIA (non pixel): righe
-          // vuote di margine, poi (solo per il primo blocco della categoria)
-          // la riga della macro-etichetta, poi sempre la riga della
-          // sotto-etichetta di questo blocco, poi una riga vuota di buffer
-          // prima del primo pallino — mai la stessa riga dei pallini, quindi
-          // sempre visivamente staccata a qualunque zoom (stessa griglia,
-          // stessa trasformazione schermo).
-          y -= passoAz * RIGHE_VUOTE_ETICHETTA_AZ
-          let ySottoEtichetta
-          if (blocIdx === 0) {
-            yEtichettaMacro = y
-            y -= passoAz
-            // Più spazio qui (fra macro e sotto) che fra la sotto-etichetta e
-            // il primo pallino: sono le due etichette, adiacenti, quelle che
-            // rischiavano di intersecarsi a zoom basso — i pallini hanno già
-            // il loro spazio naturale di riga.
-            y -= passoAz * RIGHE_TRA_MACRO_SOTTO_AZ
-            ySottoEtichetta = y
-            y -= passoAz
-            y -= passoAz * RIGHE_BUFFER_ETICHETTA_AZ
-          } else {
-            ySottoEtichetta = y
-            y -= passoAz
-            y -= passoAz * RIGHE_BUFFER_ETICHETTA_AZ
-          }
-
-          blocco.lista.forEach((az, idx) => {
-            if (positioned.has(az.nome)) return
-            if (blocco.spezzaOgni > 0 && idx > 0 && idx % blocco.spezzaOgni === 0) y -= passoAz * GAP_CHUNK_CRONOLOGICO_AZ
-            const nProd = prodottiPerAzienda[az.nome]?.length || 0
-            mappa[az.nome] = { x: annoToX(az.fondata), y, dati: az, raggio: calcolaRaggio(nProd) }
-            positioned.add(az.nome)
-            y -= passoAz
-            // Co-licenza: i partner della stessa fascia si inseriscono subito
-            // dopo, un mezzo passo più vicini — restano sulla stessa griglia
-            // (un multiplo di passoAz/2), niente più margini "di sicurezza":
-            // essendo strettamente sequenziale non può mai coincidere con
-            // nient'altro.
-            const gruppo = coLicenzaGruppi[az.nome]
-            if (gruppo && gruppo.size > 1) {
-              const partners = [...gruppo].filter((n) => !positioned.has(n) && AZIENDE_MAP[n] && categoriaAzienda(AZIENDE_MAP[n]) === categoria)
-              // Distribuisce gli N partner nello slot tra l'anchor (y + passoAz)
-              // e la prossima azienda (y): con un solo partner cade esattamente a
-              // metà, con più partner si dividono lo slot senza mai coincidere.
-              const passoPartner = passoAz / (partners.length + 1)
-              partners.forEach((partner, i) => {
-                const yPartner = (y + passoAz) - passoPartner * (i + 1)
-                const partnerAz = AZIENDE_MAP[partner]
-                mappa[partner] = { x: annoToX(partnerAz.fondata), y: yPartner, dati: partnerAz, raggio: calcolaRaggio(prodottiPerAzienda[partner]?.length || 0) }
-                positioned.add(partner)
-              })
-            }
-          })
-
-          const validi = blocco.lista.filter((az) => mappa[az.nome])
-          if (validi.length > 0) {
-            numeroSottogruppo++
-            const xs = validi.map((az) => mappa[az.nome].x)
-            etichetteSotto.push({
-              categoria, numeroCategoria, numeroSottogruppo, tipo: blocco.tipoEtichetta,
-              xInizio: Math.min(...xs), xFine: Math.max(...xs), y: ySottoEtichetta,
-              daNormale: blocco.daNormale,
-            })
-          }
-        })
-
-        const posizioniCategoria = aziendeCategoria.filter((az) => mappa[az.nome]).map((az) => mappa[az.nome])
-        etichetteMacro.push({
-          categoria, numeroCategoria,
-          xInizio: Math.min(...posizioniCategoria.map((p) => p.x)),
-          xFine: Math.max(...posizioniCategoria.map((p) => p.x)),
-          y: yEtichettaMacro,
-        })
-
-        // Nessun'altra sottrazione qui: le righe vuote/etichetta/buffer della
-        // PROSSIMA categoria (blocIdx === 0 nel suo giro del forEach) sono
-        // già l'intero distacco fra categorie — non va raddoppiato.
-        cursoreFasciaY = y
-      })
-      return { mappa, estensioneY: -cursoreFasciaY, etichetteMacro, etichetteSotto }
-    }
-
-    // La dimensione dell'asse X (dopo l'eventuale allargamento fattoreScalaX
-    // dovuto alle orbite dei designer, poco sopra) varia a runtime: calcoliamo
-    // prima l'estensione "naturale" delle fasce con un passo di riferimento,
-    // poi la riscaliamo per farla corrispondere a una proporzione fissa
-    // dell'estensione X reale, così la diagonale ha sempre un'inclinazione
-    // leggibile (né troppo orizzontale né troppo verticale) qualunque sia la
-    // larghezza effettiva della timeline.
-    // Il fattore può solo ALLARGARE il passo base, mai restringerlo: in vista
-    // timeline ogni azienda deve restare su una riga propria e distinguibile
-    // (prodotti di aziende diverse non si capirebbe più a chi appartengono),
-    // quindi il passo minimo di STILE.passo_verticale_base (lo stesso usato,
-    // con buoni risultati, per le righe dei designer) è un pavimento, non un
-    // punto di partenza comprimibile. Se il contenuto naturale è già più alto
-    // della proporzione target va bene: la diagonale sarà più verticale del
-    // 75%, ma le righe restano leggibili — priorità più alta dell'inclinazione.
-    // (Era stato provato 1/aspectViewport per far combaciare l'aspect-ratio
-    // del bbox fra le due viste — ma su mobile, verticale, quel valore
-    // esplode (~2.2 contro lo 0.65 qui sotto) e spariglia le righe azienda.
-    // Non serve più: la transizione ora punta a uno zoom intermedio fisso,
-    // non più a inquadrare tutto il contenuto, quindi il valore torna a
-    // essere solo una scelta visiva sulla vista aziende stessa.)
-    const PROPORZIONE_Y_SU_X_AZIENDE = 0.65
-    const provaAziende = costruisciLayoutAziende(STILE.passo_verticale_base)
-    const estensioneXAziende = X_MAX - X_MIN
-    const fattoreScalaAziende = provaAziende.estensioneY > 0
-      ? Math.max(1, (estensioneXAziende * PROPORZIONE_Y_SU_X_AZIENDE) / provaAziende.estensioneY)
-      : 1
-    const passoAzFinale = STILE.passo_verticale_base * fattoreScalaAziende
+    // ===== LAYOUT AZIENDE (mappa reale) =====
+    // prodottiPerAzienda/coLicenzaGruppi/azOrdinate/costruisciLayoutAziende/
+    // passoAzFinale sono stati spostati più in alto (serve conoscere
+    // passoAzFinale PRIMA delle posizioni designer, per l'unità di griglia
+    // condivisa). Qui resta solo la chiamata "vera" che produce la mappa
+    // posizioni/etichette effettivamente usata per disegnare le aziende.
     const { mappa: aziendePosizioniMap, etichetteMacro: etichetteMacroAz, etichetteSotto: etichetteSottoAzGrezze } = costruisciLayoutAziende(passoAzFinale)
     // Un'etichetta "storiche"/"moderne" (dal gruppo normale) copre quasi
     // sempre l'intera categoria quando è la SOLA delle due prodotte (cioè il
@@ -1975,8 +1967,7 @@ function App() {
     // come in quella designer, i prodotti dello stesso anno si scostano
     // verticalmente (STILE.timeline_scarto_stesso_anno) invece di sovrapporsi.
     const conteggioPerAnnoAzienda = {}
-    Object.entries(prodottiPerAzienda).forEach(([azNome, nodi]) => {
-      const listaProdotti = nodi.map((n) => graph.getNodeAttribute(n, "dati"))
+    Object.entries(prodottiPerAzienda).forEach(([azNome, listaProdotti]) => {
       const settori = calcolaSettoriDinamici(listaProdotti)
       settoriPerAzienda[azNome] = settori
       angoliPerAzienda[azNome] = calcolaAngoliPerProdotto(settori)
