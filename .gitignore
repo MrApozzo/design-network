@@ -12,6 +12,9 @@ dist
 dist-ssr
 *.local
 
+# Screenshot generati dal driver di verifica visiva
+.claude/skills/run-design-network/screenshots/
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
