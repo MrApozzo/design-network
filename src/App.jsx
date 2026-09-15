@@ -122,7 +122,7 @@ const STILE = {
 
   // --- Transizione tra viste ---
   transizione_stagger: 1,
-  transizione_durata: 500,
+  transizione_durata: 850,
 
   // --- Hover / interazione ---
   hover_scala: 3,
@@ -972,7 +972,7 @@ function App() {
         attesaPosizionamentoRef.current = true
         centraFn(match.nome, "designer", {
           apriPannello: false,
-          tPercent: 0.6,
+          tPercent: 1,
           onFine: () => { attesaPosizionamentoRef.current = false; setChromeVisibile(true) },
         })
       }
@@ -1137,6 +1137,12 @@ function App() {
     // pagina deve restare nella vista in cui si era, aziende o timeline incluse.
     let modelloVista = vistaCorrenteRef.current
     let timelineVista = timelineAttivaRef.current
+    const DURATA_DISSOLVENZA_COLLEGAMENTI = 120
+    let dissolvenzaCollegamenti = { da: timelineVista ? 0 : 1, a: timelineVista ? 0 : 1, inizio: 0 }
+    function opacitaCollegamentiTimeline(now = performance.now()) {
+      const t = Math.max(0, Math.min(1, (now - dissolvenzaCollegamenti.inizio) / DURATA_DISSOLVENZA_COLLEGAMENTI))
+      return dissolvenzaCollegamenti.da + (dissolvenzaCollegamenti.a - dissolvenzaCollegamenti.da) * t * t * (3 - 2 * t)
+    }
     let vistaInterna = timelineVista ? "timeline" : modelloVista // "designer" | "aziende" | "timeline"
 
     const graph = new Graph()
@@ -2528,6 +2534,7 @@ function App() {
       const h = overlayCanvas.height / dpr
 
       const t = zoomT()
+      const alphaCollegamentiTimeline = opacitaCollegamentiTimeline()
       const ppuVisiva = Math.sqrt(pxPerUnit())
       const mb = mobileBoost()
       // I font crescono con la radice della scala reale, con limiti di
@@ -2912,7 +2919,7 @@ function App() {
           // aziendaUnicaPerProdotto) e il suo punto di partenza scorre
           // dall'ancora designer a quella azienda, invece di sfumare mentre
           // un secondo arco appare altrove.
-          const azUnica = !timelineVista ? aziendaUnicaPerProdotto[target] : null
+          const azUnica = aziendaUnicaPerProdotto[target]
           const azUnicaPos = azUnica ? aziendePosizioniMap[azUnica] : null
           if (designerAlphaAnimata < 0.01 && !azUnicaPos) return
           let edgeColor = STILE.edge_prodotto_colore
@@ -2944,7 +2951,7 @@ function App() {
             }
             alphaVista = Math.max(designerAlphaAnimata, aziendaAlphaAnimata)
           }
-          ctx.globalAlpha = edgeAlpha * alphaVista
+          ctx.globalAlpha = edgeAlpha * alphaVista * alphaCollegamentiTimeline
           ctx.beginPath()
           ctx.moveTo(posSEffettivo.x, posSEffettivo.y)
           const midX = (posSEffettivo.x + posT.x) / 2
@@ -3198,7 +3205,7 @@ function App() {
         // sopra come arco a scorrimento (aziendaUnicaPerProdotto): qui si
         // gestiscono solo gli altri casi (nessun designer, o più designer/
         // più aziende), dove non c'è un singolo punto di arrivo sensato.
-        if (!timelineVista) {
+        if (alphaCollegamentiTimeline > 0) {
           graph.forEachNode((node, attr) => {
             if (attr.tipo !== "prodotto") return
             if (aziendaUnicaPerProdotto[node]) return
@@ -3209,7 +3216,7 @@ function App() {
               const azPos2 = aziendePosizioniMap[azNome]
               const azScreen = renderer.graphToViewport({ x: azPos2.x, y: azPos2.y })
               const alphaEdge = animated[node]?.alpha ?? 1
-              ctx.globalAlpha = 0.3 * alphaEdge * aziendaAlphaAnimata
+              ctx.globalAlpha = 0.3 * alphaEdge * aziendaAlphaAnimata * alphaCollegamentiTimeline
               ctx.beginPath()
               ctx.moveTo(azScreen.x, azScreen.y)
               const midX2 = (azScreen.x + prodPos.x) / 2
@@ -3728,15 +3735,38 @@ function App() {
       if (saved) { camera.setState({ x: saved.x, y: saved.y, ratio: saved.ratio }); cameraImpostata = true }
     } catch {}
 
-    if (!cameraImpostata) {
-      const bboxX = [X_MIN - MARGINE_X, X_MAX + MARGINE_X]
-      const bboxY = [bboxYMin, bboxYMax]
-      if (graph.hasNode("Achille Castiglioni")) {
-        const cAttr = graph.getNodeAttributes("Achille Castiglioni")
-        const cx = (cAttr.x - bboxX[0]) / (bboxX[1] - bboxX[0])
-        const cy = (cAttr.y - bboxY[0]) / (bboxY[1] - bboxY[0])
-        camera.setState({ ratio: 0.25, x: cx + 0.05, y: cy })
-      }
+    if (!cameraImpostata && graph.hasNode("Achille Castiglioni")) {
+      // La vecchia formula normalizzava cx/cy dividendo per la sola larghezza/
+      // altezza del bbox, ma Sigma normalizza ENTRAMBI gli assi per il lato
+      // più lungo (vedi camera-fit.js) — con un bbox molto più largo che alto
+      // questo faceva atterrare Castiglioni ben sotto il centro reale dello
+      // schermo. Si usa invece la stessa tecnica a differenze finite di
+      // centraFn/setCentraFn (sopra), che è già calibrata correttamente.
+      const nodeId = "Achille Castiglioni"
+      const attrIniziale = graph.getNodeAttributes(nodeId)
+      const tRatioIniziale = 0.25
+      const cRect = container.getBoundingClientRect()
+      const sStateIniziale = camera.getState()
+      // Leggero spostamento a destra del centro schermo: lascia spazio al
+      // testo introduttivo, sempre visibile sulla sinistra.
+      const centroXIniziale = cRect.width / 2 + cRect.width * 0.08
+      const centroYIniziale = cRect.height / 2
+      clamping = true
+      camera.setState({ x: sStateIniziale.x, y: sStateIniziale.y, ratio: tRatioIniziale, angle: sStateIniziale.angle })
+      renderer.refresh()
+      const p0Iniziale = posizioneVisivaNodo(nodeId, attrIniziale)
+      camera.setState({ x: sStateIniziale.x + 0.01, y: sStateIniziale.y, ratio: tRatioIniziale, angle: sStateIniziale.angle })
+      renderer.refresh()
+      const pXIniziale = posizioneVisivaNodo(nodeId, attrIniziale)
+      camera.setState({ x: sStateIniziale.x, y: sStateIniziale.y + 0.01, ratio: tRatioIniziale, angle: sStateIniziale.angle })
+      renderer.refresh()
+      const pYIniziale = posizioneVisivaNodo(nodeId, attrIniziale)
+      const ppuXIniziale = (p0Iniziale.x - pXIniziale.x) / 0.01
+      const ppuYIniziale = (p0Iniziale.y - pYIniziale.y) / 0.01
+      const tXIniziale = sStateIniziale.x + (p0Iniziale.x - centroXIniziale) / ppuXIniziale
+      const tYIniziale = sStateIniziale.y + (p0Iniziale.y - centroYIniziale) / ppuYIniziale
+      camera.setState({ x: tXIniziale, y: tYIniziale, ratio: tRatioIniziale, angle: sStateIniziale.angle })
+      clamping = false
     }
     graph.forEachNode((node, attr) => {
       if (!animated[node]) return
@@ -3808,6 +3838,12 @@ function App() {
         vistaInterna = nuovaVista
         annoBloccato = null
         const prodottiList = raccogliProdotti()
+        const durataMovimento = prodottiList.length ? (prodottiList.length - 1) * STILE.transizione_stagger + STILE.transizione_durata : 0
+        dissolvenzaCollegamenti = {
+          da: opacitaCollegamentiTimeline(), a: tlOn ? 0 : 1,
+          inizio: performance.now() + (tlOn ? Math.max(0, durataMovimento - DURATA_DISSOLVENZA_COLLEGAMENTI) : 0),
+        }
+        richiediDisegnoOverlay(18)
         if (!prodottiList.length) {
           prodottiFiniti = true
           terminaSeCompleta()
@@ -3901,7 +3937,7 @@ function App() {
     setRidisegnaFn(() => () => richiediDisegnoOverlay(18))
     setCentraFn(() => (cercaNome, tipo, opzioni) => {
       const apriPannello = !opzioni || opzioni.apriPannello !== false
-      const tPercent = opzioni && typeof opzioni.tPercent === "number" ? opzioni.tPercent : (tipo === "prodotto" ? 0.95 : 0.75)
+      const tPercent = opzioni && typeof opzioni.tPercent === "number" ? opzioni.tPercent : (tipo === "prodotto" ? 0.95 : tipo === "designer" ? 1 : 0.75)
       const onFine = opzioni && opzioni.onFine
       // Le aziende non sono nodi del grafo: la loro posizione (fissa, non
       // animata) viene da aziendePosizioniMap invece che da graph.forEachNode.
@@ -4296,7 +4332,7 @@ function App() {
                 const pAttr = graph.getNodeAttributes(trovato.node)
                 const cRect = container.getBoundingClientRect()
                 const sState = camera.getState()
-                const tRatio = ratioDaT(0.75)
+                const tRatio = ratioDaT(1)
                 const pannelloW = isMobile ? 0 : 340 * uiScaleInterno
                 const pannelloSx = isMobile ? 0 : Math.max(20, 240 * uiScaleInterno - 180)
                 const pannelloH = isMobile ? cRect.height * 0.4 : 0
