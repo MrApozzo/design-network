@@ -9,6 +9,7 @@
     "prebuild": "node scripts/sync-foto-dettaglio.js && node scripts/ottimizza-immagini.mjs && node scripts/genera-thumbnail-immagini.mjs && node scripts/genera-colori-immagini.mjs && node scripts/genera-manifest-immagini.mjs",
     "build": "vite build",
     "lint": "eslint .",
+    "check:layout": "node scripts/verifica-layout-mobile.mjs && node scripts/verifica-transizione-camera.mjs",
     "preview": "vite preview",
     "postinstall": "patch-package"
   },

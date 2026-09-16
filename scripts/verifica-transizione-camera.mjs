@@ -57,7 +57,10 @@ for (const [width, height] of [[1440, 900], [390, 844]]) {
             vistaInterna: '', annoBloccato: null, designerAlphaAnimata: 1, aziendaAlphaAnimata: 0,
             crossfadeVistaInizio: 0, crossfadeVistaDaDesigner: 0, crossfadeVistaDaAzienda: 0,
             crossfadeEtichetteInizio: 0, crossfadeEtichetteDa: 0, etichetteAzAlphaAnimata: 0,
+            crossfadeEtichetteDaDesigner: 0, etichetteDesignerAlphaAnimata: 0,
             CROSSFADE_ETICHETTE_RITARDO_MS: 1850,
+            DURATA_DISSOLVENZA_COLLEGAMENTI: 500, dissolvenzaCollegamenti: null,
+            opacitaCollegamentiTimeline: () => 1,
             performance: { now: () => now }, requestAnimationFrame: cb => pending.push(cb),
             raccogliProdotti: () => empty ? [] : ['p'], richiediDisegnoOverlay() {},
             STILE: { transizione_stagger: 1, transizione_durata: 500, griglia_pallino_colore: '#d8d8d8' },
@@ -103,13 +106,22 @@ for (const [width, height] of [[1440, 900], [390, 844]]) {
           const fit = vm.runInContext('cameraCompleta()', sandbox)
           for (const key of ['x', 'y', 'ratio']) assert.ok(Math.abs(camera[key] - fit[key]) < 1e-10)
           assert.equal(camera.ratio, context.MAX_CAMERA_RATIO)
-          for (const x of bbox.x) for (const y of bbox.y) {
-            const point = context.renderer.graphToViewport({ x, y })
-            assert.ok(point.x >= 0 && point.x <= width && point.y >= 0 && point.y <= height, 'Whole map must fit')
+          if (width >= 768) {
+            for (const x of bbox.x) for (const y of bbox.y) {
+              const point = context.renderer.graphToViewport({ x, y })
+              assert.ok(point.x >= 0 && point.x <= width && point.y >= 0 && point.y <= height, 'Whole desktop map must fit')
+              const clipTop = 110 * (0.6 + width / 1440 * 0.4)
+              assert.ok(point.y >= clipTop + 15, 'Top row and label must clear timeline clipping')
+            }
+          } else {
+            const heightFit = vm.runInContext('calcolaCameraCompleta({ ...parametriInquadratura(), fitAxis: "height" })', sandbox)
+            const expectedRatio = Math.exp(Math.log(heightFit.ratio) * 0.97 + Math.log(context.MIN_CAMERA_RATIO) * 0.03)
+            assert.ok(Math.abs(camera.ratio - expectedRatio) < 1e-10, 'Mobile 0% must equal the previous dynamic 3%')
           }
           assert.equal(context.transizioneAttiva, false)
           assert.equal(context.modelloVista, target)
           if (!empty) {
+            assert.equal(product.pesoTaraturaOrbita, timeline ? 0 : 1, 'Orbit calibration must survive both view transitions')
             assert.equal(product.x, timeline ? product.timelineX : reverse ? product.orbitaX : product.aziendaOrbitaX)
             assert.equal(product.y, timeline ? reverse ? product.timelineY : product.aziendaTimelineY : reverse ? product.orbitaY : product.aziendaOrbitaY)
           }
@@ -119,7 +131,7 @@ for (const [width, height] of [[1440, 900], [390, 844]]) {
     }
   }
 }
-console.log(`${cases} casi OK: zoom out, anticipo contenuti, fit completo, griglia stabile dopo lo zoom; prodotti a destinazione. Desktop/mobile, entrambe le direzioni, orbite/timeline, tre zoom e catalogo vuoto.`)
+console.log(`${cases} casi OK: zoom out, anticipo contenuti, fit desktop/panoramica mobile, griglia stabile dopo lo zoom; prodotti a destinazione. Desktop/mobile, entrambe le direzioni, orbite/timeline, tre zoom e catalogo vuoto.`)
 
 // Verifica del fit con mappe larghe/alte/quadrate e finestre ruotate.
 for (const [width, height] of [[1440, 900], [390, 844], [844, 390]]) {

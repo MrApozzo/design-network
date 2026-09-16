@@ -8,6 +8,108 @@ riassunto più corto) man mano che il lavoro prosegue, così resta la fonte di
 verità aggiornata — non affidarti alla cronologia chat, che su un'altra macchina
 non esiste.
 
+## Nuova origine verticale comune (2026-09-16, prevale sui tentativi di centratura sotto)
+
+Valido desktop e mobile. La fascia 00 e i suoi prodotti salgono di due righe. La macro 01 Aziende viene portata due righe sotto 00 e tutte le successive fasce Aziende ricevono lo stesso shift. La categoria 01 Designer viene collocata esattamente sulla riga della 00 Aziende e l'intero blocco Designer (centri, prodotti orbita/timeline, ancore ed etichette) segue lo stesso shift. Rimossi gli allineamenti basati sulle mediane/inviluppi: la camera e la griglia restano comuni, ma la composizione ora nasce dalla stessa origine superiore esplicita.
+
+Le etichette Designer usano `1 - etichetteAzAlphaAnimata`: hanno quindi la stessa curva e lo stesso ritardo delle etichette Aziende, in direzione esattamente opposta. Il comportamento Aziende resta il riferimento.
+
+## Mobile: eliminazione area vuota Designer (2026-09-16)
+
+Lo spazio superiore non era una riserva esplicita: il bbox condiviso includeva la fascia Aziende "senza azienda", mentre l'inviluppo Designer era circa il 6.9% piu basso. Il target dei soli centri Aziende passa a 0.97/max 1.02: includendo prodotti e orbite, le due viste misurano ora praticamente la stessa altezza (target verificato 99.9%) e condividono la mediana. I Designer occupano quindi anche la zona superiore senza pan, offset di vista o movimento della griglia.
+
+## Mobile: centro reale condiviso e nuovo 0% (2026-09-16)
+
+Il reset fluido dopo pinch resta invariato. Dopo aver calcolato tutte le orbite, l'intera destinazione Aziende mobile (centri, prodotti orbita/timeline, ancore ed etichette, inclusa la fascia senza azienda) viene traslata di un numero intero di unita griglia per far coincidere la propria mediana visiva con quella reale Designer. Nessun offset camera per vista: il toggle resta immobile. Il nuovo 0% mobile equivale al precedente 3% sulla scala logaritmica, calcolato a partire dal fit verticale dinamico; desktop invariato.
+
+## Mobile: riequilibrio 0/75% e pinch (2026-09-16)
+
+- Aziende mobile ridotte dal 117.9% a circa 105% dell'altezza Designer e traslate di un numero intero di unita griglia per condividere la stessa mediana Y. La camera resta identica nel toggle; Designer riempie meglio la panoramica e Aziende risulta centrata.
+- Al 0% i centri Designer/Aziende usano `center 0.8`. L'etichetta Designer 05 diventa genericamente "Design Radicale / Postmodernismo", senza elencare gruppi/studi.
+- Attorno al 75% i pallini griglia ricevono un'attenuazione locale massima del 40%, nulla al 50% e 100%.
+- Il rilascio di un pinch entro il 4% dalla panoramica anima per 450 ms verso `cameraCompleta()`. La soglia precedente dello 0.5% era troppo stretta e spesso non scattava per l'arrotondamento del gesto.
+
+## Categorie blu e centraggio pinch (2026-09-16)
+
+Testi e linee di tutte le categorie, Designer e Aziende su desktop/mobile, usano `COLORE_CATEGORIE = #173b73`. Allo 0% mobile `categoryLabel` scende da 0.9 a 0.6. Il margine superiore del fit mobile aumenta di 25 px per proteggere la fascia "prodotti senza azienda" dal clipping della timeline. Alla fine di un pinch arrivato entro lo 0.5% dal limite panoramico, la camera anima per 280 ms verso lo stesso `cameraCompleta()` del toggle; fuori dal limite resta il clamp normale.
+
+## Mobile: diagonale Aziende piu verticale (2026-09-16)
+
+La funzione `proporzionaAziende` accetta ora target/max ratio. Desktop conserva 0.95/1; mobile mira al 115% dell'altezza Designer e non supera il 120%, scegliendo sempre passi interi della griglia condivisa. La diagonale Aziende risulta quindi piu verticale senza trasformazioni di camera o coordinate fuori griglia. Allo 0% mobile le linee delle categorie scendono a `categoryLine 0.45`, raccordandosi a 0.6 al 50%.
+
+## Mobile: tarature 0/50/100 (2026-09-16)
+
+- 100%: pallini griglia `gridDot 0.8` (-20% rispetto alla prova precedente).
+- 50%: font categorie `categoryLabel 0.48` (-40% dal precedente 0.8); righe categorie `categoryLine 0.6`.
+- 0%: collegamenti prodotto-centro piu scuri (#b8b8b8) e molto sottili (`edgeWidth 0.4`), nomi top `topLabel 0.9`, pallini griglia `gridDot 1.1`. Il passo verticale strutturale mobile passa da 0.85 a 1 della base e resta condiviso fra Designer/Aziende. Tutti i valori si raccordano con la curva cubica; desktop invariato.
+
+## Mobile: camera immobile e fit verticale dinamico (2026-09-16)
+
+Rimosso l'offset camera specifico Aziende: Designer/Aziende condividono di nuovo esattamente x, y e ratio durante il toggle. Lo 0% mobile non usa piu il precedente 15% fisso: `calcolaCameraCompleta` accetta `fitAxis: "height"` e inquadra dinamicamente tutta l'altezza del bbox condiviso, lasciando eventualmente proseguire la larghezza fuori schermo. Il calcolo avviene al rebuild/resize, non per frame. Per una forma piu verticale, la proporzione X del layout mobile passa da 1.8 a 1.35; resta identica fra le due viste e stabile fra viewport mobile. Desktop invariato.
+
+## Mobile: etichette e centraggio Aziende allo 0% (2026-09-16)
+
+Nomi dei centri Designer/Aziende allo 0% ridotti ancora da 0.85 a 0.78. La panoramica Aziende mobile usa un offset camera X +0.035, quindi il contenuto scorre visivamente verso sinistra durante il toggle. Ratio, griglia e coordinate restano condivisi; il target della transizione riceve esplicitamente il modello di destinazione per evitare cambi di target a meta animazione.
+
+## Mobile: font in panoramica (2026-09-16)
+
+Al punto 0% mobile: categoryLabel 0.9 (-10%) e designerLabel 0.85 (-15%). Raccordo cubico verso il punto 50% esistente; conservata la gerarchia top. Vale per le etichette di entrambe le viste; desktop e punti 50/100% invariati.
+
+## Mobile: panoramica ravvicinata (2026-09-16)
+
+Nuovo 0% mobile equivalente al precedente 15% sulla scala logaritmica fra fit completo e dettaglio. `cameraCompleta` usa sempre il fit originale come base (nessun accumulo ai resize) e conserva il centraggio nell'area libera dalla UI. Questa scelta richiesta sostituisce il vincolo mobile di mostrare sempre l'intera mappa al minimo: le estremita possono essere fuori campo. Desktop invariato. Raggio pallini griglia mobile da 0.85 a 0.75 della base (circa -12% rispetto alla prova precedente).
+
+## Mobile: griglia e gerarchia al 50% (2026-09-16)
+
+Griglia mobile tre volte piu densa verticalmente: passo nativo e soglia pixel divisi per tre, mantenendo origine comune e dissolvenza dei livelli. Nessuno spostamento dei centri. Al punto 50% designerLabel passa da 70% a 55% del valore desktop. L'enfasi mobile dei nomi e centri top si esaurisce al 75% invece del 50%: al 50% nomi top circa +32%, centri circa +41% rispetto ai normali. Orbite, desktop e taratura al 100% invariati.
+
+## Mobile: massimo 140% e nomi al 50% (2026-09-16)
+
+Il massimo camera passa da fattore 1.2 a 1.4 rispetto alla base originale (non cumulativo). Pallini griglia mobile ridotti del 15% a ogni zoom. Al punto 50% il font dei nomi Designer/Aziende passa al 70% del precedente: designerLabel = 2.9296875 * 0.7, con raccordi cubici verso 0% e 100%. Taratura desktop invariata.
+
+## Mobile: correzione zoom massimo (2026-09-16, prevale sulla nota sotto)
+
+Annullato l'ultimo aumento del raggio: orbit torna a 1.728. La richiesta riguarda invece la camera: il ratio minimo mobile viene diviso per 1.2, ottenendo un ingrandimento al 100% maggiore del 20%. Fit 0% e limite desktop invariati; scala percentuale logaritmica ricalcolata automaticamente sul nuovo intervallo. Centro 0.7225 e font nome 1.44 restano confermati.
+
+## Mobile: ulteriore aumento orbite al 100% (2026-09-16)
+
+Solo raggio orbite: ulteriore +20%, da 1.728 a 2.0736. Centro 0.7225 e font nome 1.44 invariati. Vale per Designer/Aziende mobile con raccordo dal 50%; desktop invariato.
+
+## Mobile: terza taratura al 100% (2026-09-16)
+
+Ripetuta sui valori precedenti la trasformazione richiesta: orbite x1.2, centro x0.85, font nome x1.2. Moltiplicatori risultanti: orbit 1.728, center 0.7225, designerLabel 1.44. Stesso ambito mobile Designer/Aziende e raccordo 50-100%; altri punti e desktop invariati.
+
+## Mobile: seconda taratura al 100% (2026-09-16)
+
+Al 100% mobile: orbit 1.44 (ulteriore +20% rispetto a 1.2), center 0.85, designerLabel 1.2. La taratura condivisa vale per centri e nomi Designer/Aziende. Restano invariati 0%, 50%, prodotti, etichette di categoria e desktop; raccordo cubico nel tratto 50-100%.
+
+## Mobile: orbite al 100% (2026-09-16)
+
+Prima correzione puntuale: raggio delle galassie mobile +20% al 100%, in entrambe le viste. `PUNTI_ZOOM_MOBILE` mantiene 0% e 50% identici e raccorda il nuovo estremo con la stessa interpolazione cubica. Font, pallini e taratura desktop invariati.
+
+## Taratura mobile condivisa (2026-09-16)
+
+La taratura desktop a 0/50/100% in `src/zoom-calibration.js` ora vale anche sul mobile, per Designer e Aziende: orbite, pallini, font ed etichette. Attivata anche l'enfasi panoramica dei principali; rimossi il boost font mobile 1.5 e il fattore categorie 0.6 per partire dalla stessa regola. Restano i margini UI responsive e il fit specifico dello schermo, senza deformare le coordinate del layout. Eventuali prossime correzioni mobile vanno valutate ai tre punti di zoom.
+Il distacco senza azienda passa da 12 a 7 passi aziendali (un GAP_CATEGORIA_AZ): la precedente riduzione 14 -> 12 era troppo poco percepibile. Prodotti, timeline e relativa etichetta condividono la stessa costante.
+
+## Ripristino bande Aziende (2026-09-16, prevale sulla prova sotto)
+
+Ripristinate le barre orizzontali di categorie e sottogruppi Aziende, con allineamenti e font precedenti; conservate taratura zoom e dissolvenze. Confermate tutte le scelte top/non top. Ridotto di due passi aziendali interi il distacco della riga "prodotti senza azienda" dalla categoria 01, spostando insieme prodotti e relativa etichetta. Il fit resta condiviso: la riduzione del limite superiore puo avvicinare verso l'alto anche la vista Designer, senza cambiarne le coordinate.
+
+## Etichette verticali e designer top (2026-09-16)
+
+- Categorie e sottogruppi Aziende usano lo stesso renderer verticale delle categorie Designer: font, pesi, distacchi, scala zoom/mobile e barra fino all'ultimo centro del gruppo. Anche "prodotti senza azienda" usa questa geometria. Dissolvenze e layout restano separati dalla resa delle etichette.
+- Top forzati aggiunti: Charles Eames, Ray Eames, Charlotte Perriand, Le Corbusier, Ludwig Mies van der Rohe, Marcel Breuer, Gerrit Rietveld, Philippe Starck. Esclusi aggiunti: Nanda Vigo, Joe Colombo, Ugo La Pietra, Gino Sarfatti, Ignazio Gardella. Conservate le scelte precedenti e il totale di 20 principali.
+
+## Fix vista Aziende (2026-09-16, prevale sulle note precedenti)
+
+Correzione successiva richiesta dall'utente: non uguagliare il rapporto Y/X, perche le aziende coprono piu anni in X e diventavano quindi piu alte dei designer. Il target ora e il 95% dell'altezza dei centri designer, scegliendo il passo intero di griglia piu vicino che non superi l'altezza designer. Con il dataset corrente il risultato e 99,3% (arrotondamento ai passi di griglia), circa -25% rispetto alla prova precedente. Le coordinate dei designer non cambiano; il loro cambiamento apparente precedente derivava dall'allargamento del bbox condiviso e dal conseguente zoom 0% piu lontano.
+
+- Taglio della riga "senza azienda": il fit desktop usava il bordo della top bar, che poteva essere piu alto del limite del canvas (`110 * uiScale`). Ora usa il maggiore dei due, piu 20 px: righe e titoli restano sotto la fascia della timeline.
+- Proporzioni Aziende: `proporzionaAziende` in `src/company-layout.js` ricostruisce il layout scegliendo un passo intero della griglia condivisa per avvicinare il rapporto Y/X a quello dei designer. Non riscalare Y a posteriori, non cambiare le orbite per ottenere questo risultato. Sul dataset corrente il rapporto aziende passa da 0,46 a 1,16 (designer 1,22, scarto <5%). Anche i partner co-licenza vengono allineati alla griglia; test su 118 centri senza coincidenze. La riga senza azienda e la relativa etichetta usano il nuovo passo aziendale. Layout Designer e scelte editoriali restano invariati.
+- Galassie in panoramica: al termine della transizione verso Aziende `pesoTaraturaOrbita` veniva azzerato, disattivando la correzione visiva. Ora entrambe le viste orbitali hanno peso 1, entrambe le timeline peso 0. Le curve manuali esistenti non sono state cambiate. Classifica e flag aziende principali riconoscono anche prodotti con piu aziende.
+- Verifiche: layout identico in 6 viewport; proporzioni e allineamento dei centri; 48 transizioni con controllo del peso orbitale finale e margine sopra la mappa, 9 fit; build riuscita. Nessuna verifica visiva diretta nel browser.
+
 ## Taratura interattiva zoom (2026-09-15, prevale sulle prove precedenti)
 
 - Barra zoom DOM: trascinamento, clic, rotellina e percentuale editabile; Home separato.
@@ -398,3 +500,17 @@ corrente+nodo+indice, non `Math.random`) così il profilo resta irregolare
 - Griglia X/Y, dimensioni dei pallini e area navigabile sono indipendenti dalla vista selezionata. Pan e zoom manuali e centraggio esplicito su un risultato di ricerca restano disponibili.
 - Il test `node scripts/verifica-transizione-camera.mjs` ora verifica il requisito corretto: 48 casi con il codice reale di transizione e disegno griglia, confrontando coordinate/raggio/opacita dei pallini in ogni frame. Qualunque scrittura a camera, bbox o limiti durante il toggle causa un errore. Controlla anche arrivo dei prodotti e catalogo vuoto, su desktop/mobile, nelle due direzioni, in orbita/timeline e a tre zoom.
 - Test e build superati. La verifica visiva resta affidata al browser dell'utente, non accessibile dagli strumenti della sessione. Nessun commit/push.
+
+## Tassonomia e vista Prodotti (2026-09-16)
+
+- La classificazione dei prodotti passa da `src/product-taxonomy.js`: ogni voce riceve una macro-categoria e, quando il dato originale aggiunge informazione utile, una sotto-categoria. Le tipologie già autonome (sedia, divano, poltrona ecc.) non duplicano la sotto-categoria.
+- La vista `Prodotti` dispone tutti i prodotti su una matrice quadrata, ordinati per categoria, sotto-categoria, designer e anno. I cambi di gruppo hanno etichette verticali; la linea del tempo viene nascosta.
+- La griglia grigia della vista Prodotti usa lo stesso passo X/Y dei nodi. Designer e Aziende conservano la loro griglia e la stessa camera condivisa.
+- Nella vista Aziende, `01` è quattro righe sotto `00`; su mobile macro e sotto-categoria hanno più respiro e il testo è più vicino alla linea orizzontale.
+- Le orbite Aziende vengono distanziate sulla griglia considerando il loro raggio massimo mobile; `npm run check:layout` verifica tutte le coppie e va eseguito prima di commit/push quando cambiano prodotti, aziende o scale.
+- La vista Prodotti conserva esattamente la larghezza della mappa condivisa: etichette e prodotti occupano celle successive da sinistra a destra, senza andare a capo al cambio categoria; solo il bordo destro apre una nuova riga. L'estensione aggiuntiva resta verticale e non entra nel bbox usato per proporzionare Designer/Aziende.
+- Al 98–100% di zoom i prodotti possono essere trascinati con mouse o singolo tocco. Lo spostamento resta valido nella sessione corrente e disabilita la taratura radiale automatica per quel prodotto.
+- La griglia Prodotti usa 50 colonne con un margine laterale del 6%. Categoria e sotto-categoria occupano al massimo una cella ciascuna; le sotto-categorie presenti su un solo prodotto non vengono etichettate, pur restando nella tassonomia e nell'ordinamento. La composizione allo 0% è la base geometrica fissa: zoomando, griglia e prodotti seguono normalmente la camera e i pallini crescono.
+- La vista Prodotti non disegna collegamenti Designer/Azienda né contorni dei collettivi. La scala dedicata porta i pallini da 5,2 px allo 0% a 12 px al 50% e 18 px al 100%; i nomi raggiungono 2,3 volte la scala iniziale già al 50%.
+- Il passaggio fra la scala dedicata Prodotti e quella Designer/Aziende segue il crossfade dei nodi, evitando cambi di raggio istantanei. Un punto di taratura al 30% anticipa la crescita di centri, prodotti e nomi; il fit desktop usa il 60% di margine orizzontale in più per assorbire le etichette maggiorate.
+- Nella vista Prodotti mobile la scala dei pallini segue i punti 3,6 px (0%), 10 px (30%), 16 px (60%) e 24 px (100%). I top hanno una riduzione aggiuntiva del 15% solo allo 0%, riassorbita entro il 30%. La dimensione delle etichette resta invariata fino al 30% e raggiunge la scala precedente al 60%.

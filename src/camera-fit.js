@@ -1,6 +1,6 @@
 // Sigma normalizes both axes by the longest side of the graph bounds.
 // Fit that same shared rectangle inside the viewport area left by the UI.
-export function calcolaCameraCompleta({ bounds, width, height, padding = 0, margins }) {
+export function calcolaCameraCompleta({ bounds, width, height, padding = 0, margins, fitAxis = "both" }) {
   const graphWidth = bounds.x[1] - bounds.x[0]
   const graphHeight = bounds.y[1] - bounds.y[0]
   const dimension = Math.max(graphWidth, graphHeight)
@@ -11,7 +11,9 @@ export function calcolaCameraCompleta({ bounds, width, height, padding = 0, marg
     : Math.min(Math.max(graphRatio, 1 / graphRatio), Math.max(viewportRatio, 1 / viewportRatio))
   const usableWidth = Math.max(1, width - margins.left - margins.right)
   const usableHeight = Math.max(1, height - margins.top - margins.bottom)
-  const pixelsPerUnit = Math.min(usableWidth / graphWidth, usableHeight / graphHeight)
+  const pixelsPerUnit = fitAxis === "height"
+    ? usableHeight / graphHeight
+    : Math.min(usableWidth / graphWidth, usableHeight / graphHeight)
   const normalizedScale = pixelsPerUnit * dimension
   return {
     x: 0.5 - (margins.left - margins.right) / (2 * normalizedScale),
