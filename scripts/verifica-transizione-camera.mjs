@@ -34,7 +34,7 @@ for (const [width, height] of [[1440, 900], [390, 844]]) {
             contenutoYMinDesigner: -1200, contenutoYMaxDesigner: 100,
             contenutoYMinAziende: -9000, contenutoYMaxAziende: 500,
             bboxYMin: 0, bboxYMax: 0, ppuCache: {}, fattoreCropCumulativo: 1,
-            MIN_CAMERA_RATIO_UNITA_VISIBILI: 10, MIN_CAMERA_RATIO: 0, MAX_CAMERA_RATIO: 0,
+            MIN_CAMERA_RATIO_UNITA_VISIBILI: 10, MIN_CAMERA_RATIO: 0, CAMERA_RATIO_100: 0, MAX_CAMERA_RATIO: 0,
             correctionRatioSigma: (w, h, gw, gh) => correction({ width: w, height: h }, { width: gw, height: gh }),
             container: { getBoundingClientRect: () => viewport },
             renderer: {
@@ -53,7 +53,7 @@ for (const [width, height] of [[1440, 900], [390, 844]]) {
             },
             camera: { getState: () => ({ ...camera }), setState: value => Object.assign(camera, value) },
             graph: { getNodeAttributes: () => product, setNodeAttribute: (_, key, value) => { product[key] = value } },
-            transizioneAttiva: false, modelloVista: reverse ? 'aziende' : 'designer', timelineVista: timeline,
+            transizioneAttiva: false, generazioneTransizione: 0, modelloVista: reverse ? 'aziende' : 'designer', timelineVista: timeline,
             vistaInterna: '', annoBloccato: null, designerAlphaAnimata: 1, aziendaAlphaAnimata: 0,
             crossfadeVistaInizio: 0, crossfadeVistaDaDesigner: 0, crossfadeVistaDaAzienda: 0,
             crossfadeEtichetteInizio: 0, crossfadeEtichetteDa: 0, etichetteAzAlphaAnimata: 0,
@@ -115,7 +115,7 @@ for (const [width, height] of [[1440, 900], [390, 844]]) {
             }
           } else {
             const heightFit = vm.runInContext('calcolaCameraCompleta({ ...parametriInquadratura(), fitAxis: "height" })', sandbox)
-            const expectedRatio = Math.exp(Math.log(heightFit.ratio) * 0.97 + Math.log(context.MIN_CAMERA_RATIO) * 0.03)
+            const expectedRatio = Math.exp(Math.log(heightFit.ratio) * 0.97 + Math.log(context.CAMERA_RATIO_100) * 0.03)
             assert.ok(Math.abs(camera.ratio - expectedRatio) < 1e-10, 'Mobile 0% must equal the previous dynamic 3%')
           }
           assert.equal(context.transizioneAttiva, false)

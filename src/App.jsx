@@ -8,6 +8,16 @@ import { proporzionaAziende } from "./company-layout.js"
 import { classificaProdotto, confrontaProdottiClassificati } from "./product-taxonomy.js"
 import designers from "./data/designers.json"
 import prodotti from "./data/prodotti.json"
+
+// Uno smartphone in landscape supera facilmente i 768px di larghezza. La
+// sola width lo riclassificava quindi come desktop, attivando pannello e
+// margini laterali che stringevano il canvas. Il lato corto insieme a un
+// input touch mantiene invece la stessa area di lavoro nelle due rotazioni.
+function viewportMobile() {
+  const inputTouch = !!window.matchMedia?.("(pointer: coarse)")?.matches
+    || (typeof navigator !== "undefined" && navigator.maxTouchPoints > 0)
+  return window.innerWidth < 768 || (inputTouch && window.innerWidth <= 1180 && window.innerHeight < 768)
+}
 import relazioni from "./data/relazioni.json"
 import aziendeData from "./data/aziende.json"
 import immaginiEsistentiArr from "./data/immagini_esistenti.json"
@@ -139,8 +149,8 @@ const STILE = {
   // dell'orbita prodotto, uguale in entrambe le viste: influenza la
   // spaziatura vera del layout (minGap fra le righe), non solo il disegno.
   orbita_scala_globale: 1.45,
-  zoom_griglia_min: window.innerWidth < 768 ? 1 : 1.7,
-  zoom_griglia_max: window.innerWidth < 768 ? 3.8 : 4.7,
+  zoom_griglia_min: viewportMobile() ? 1 : 1.7,
+  zoom_griglia_max: viewportMobile() ? 3.8 : 4.7,
 
   // --- Transizione tra viste ---
   transizione_stagger: 1,
@@ -322,7 +332,7 @@ const MARGINE_X = 20
 const MARGINE_Y = 20
 const Y_MIN = -20
 const Y_MAX = 20
-const MAX_CAMERA_RATIO_BASE = window.innerWidth < 768 ? 0.6 : 1.2
+const MAX_CAMERA_RATIO_BASE = viewportMobile() ? 0.6 : 1.2
 let MAX_CAMERA_RATIO = MAX_CAMERA_RATIO_BASE
 // minCameraRatio è una FRAZIONE del bounding box (ratio=1 → tutto il contenuto
 // visibile). Se il contenuto cresce in altezza (più designer, orbite più ampie),
@@ -331,8 +341,11 @@ let MAX_CAMERA_RATIO = MAX_CAMERA_RATIO_BASE
 // ricalcolata a runtime (vedi MIN_CAMERA_RATIO_UNITA_VISIBILI più sotto) in modo
 // da garantire sempre lo stesso zoom massimo assoluto, indipendente dalla scala
 // del contenuto.
-const MIN_CAMERA_RATIO_BASE = window.innerWidth < 768 ? 0.02 : 0.05
+const MIN_CAMERA_RATIO_BASE = viewportMobile() ? 0.02 : 0.05
 let MIN_CAMERA_RATIO = MIN_CAMERA_RATIO_BASE
+// Rapporto che identifica il 100% storico. Su mobile il limite fisico può
+// proseguire oltre senza cambiare atterraggi e tarature già approvati.
+let CAMERA_RATIO_100 = MIN_CAMERA_RATIO_BASE
 // Unità-grafo (verticali) visibili al massimo zoom-in, a prescindere da quanto
 // è alto il contenuto complessivo. Alzato da 40: con orbita_scala_globale la
 // distanza reale fra due designer molto prolifici e adiacenti (es. Mendini/
@@ -1140,7 +1153,7 @@ function App() {
     // questa closure resti coerente con la dimensione attuale della finestraca
     // esattamente come lo sarebbe un mount fresco (refresh) a quella dimensione,
     // invece di restare bloccata ai valori letti al primo montaggio.
-    let isMobile = window.innerWidth < 768
+    let isMobile = viewportMobile()
     let uiScaleInterno = 0.6 + (window.innerWidth / 1440) * 0.4
     const container = document.createElement("div")
     // La banda laterale (desktop) riserva spazio solo quando è effettivamente
@@ -1176,6 +1189,7 @@ function App() {
     // animated[] prima che vengano registrate le animazioni del cambio vista.
     let designerAlphaAnimata = modelloVista === "designer" ? 1 : 0
     let aziendaAlphaAnimata = modelloVista === "aziende" ? 1 : 0
+    let comparsaEtichetteNodiStrutturali = null
 
     const graph = new Graph()
     let cameraRatio = 1
@@ -1194,6 +1208,13 @@ function App() {
     let mouseDownPos = null
     let isDragging = false
     let prodottoInTrascinamento = null
+    // Candidato individuato al mousedown/touchstart per vicinanza al pallino,
+    // ma NON ancora un drag reale: promosso a prodottoInTrascinamento solo
+    // se il movimento supera la soglia (stessa usata per isDragging/
+    // touchIsDragging). Senza questa distinzione un semplice click/tocco
+    // veniva sempre trattato come drag completato (mouseup/touchend
+    // uscivano subito senza mai eseguire il click sul prodotto).
+    let prodottoCandidatoTrascinamento = null
     let cameraPrimaDiClick = null
     let cameraPrimaLegame = null
     let cameraAnimId = null
@@ -2362,8 +2383,8 @@ function App() {
     // stesso nodo prodotto, due criteri diversi (designer principale del
     // prodotto vs azienda principale del prodotto).
     function principaleAttuale(attr) {
-      if (modelloVista === "prodotti") return false
-      return modelloVista === "aziende" ? attr.principalePanoramicaAzienda : attr.principalePanoramicaDesigner
+      if (designerAlphaAnimata >= aziendaAlphaAnimata) return !!attr.principalePanoramicaDesigner
+      return !!attr.principalePanoramicaAzienda
     }
 
     const renderer = new Sigma(graph, container, {
@@ -2456,7 +2477,9 @@ function App() {
     let ppuCache = { key: null, ppuX: 0, ppuY: 0 }
     function parametriInquadratura() {
       const rect = container.getBoundingClientRect()
-      const mobile = rect.width < 768
+      // Usa la stessa classificazione della UI: in landscape uno smartphone
+      // può essere largo più di 768px, ma il fit deve restare quello mobile.
+      const mobile = isMobile
       const uiScale = 0.6 + (rect.width / 1440) * 0.4
       return {
         bounds: { x: [bboxXMin, bboxXMax], y: [bboxYMin, bboxYMax] },
@@ -2482,7 +2505,7 @@ function App() {
       if (!isMobile) return fit
       // Nuovo 0% = precedente 3%, mantenendo il centro del fit verticale
       // dinamico. Il valore continua quindi ad adattarsi al dataset.
-      const ratio = Math.exp(Math.log(fit.ratio) * 0.97 + Math.log(MIN_CAMERA_RATIO) * 0.03)
+      const ratio = Math.exp(Math.log(fit.ratio) * 0.97 + Math.log(CAMERA_RATIO_100) * 0.03)
       const scala = ratio / fit.ratio
       return { ...fit, ratio, x: 0.5 + (fit.x - 0.5) * scala, y: 0.5 + (fit.y - 0.5) * scala }
     }
@@ -2495,8 +2518,10 @@ function App() {
         y: [bboxYMin, bboxYMax],
       })
       // Limite di dettaglio condiviso fra Designer e Aziende.
-      // Mobile: il 100% ingrandisce del 40% in piu rispetto al limite precedente.
-      MIN_CAMERA_RATIO = calcolaRatioDettaglio(parametriInquadratura(), raggioMassimoOrbitaCondivisa) / (1.5 * (isMobile ? 1.4 : 1))
+      // Il rapporto storico resta il 100% e continua a guidare atterraggi e
+      // curve visive. Solo mobile aggiunge un tratto di camera fino al 120%.
+      CAMERA_RATIO_100 = calcolaRatioDettaglio(parametriInquadratura(), raggioMassimoOrbitaCondivisa) / (1.5 * (isMobile ? 1.4 : 1))
+      MIN_CAMERA_RATIO = isMobile ? CAMERA_RATIO_100 / 1.2 : CAMERA_RATIO_100
       renderer.setSetting("minCameraRatio", MIN_CAMERA_RATIO)
       // 0% desktop = fit completo; mobile = fit dinamico dell'altezza condivisa.
       MAX_CAMERA_RATIO = cameraCompleta().ratio
@@ -2629,14 +2654,14 @@ function App() {
     }
 
     function zoomT() {
-      // Riferito ai limiti reali di zoom (MIN/MAX_CAMERA_RATIO), non a una soglia fissa:
-      // così t=0 e t=1 corrispondono esattamente allo 0% e al 100% mostrati nella barra
-      // di zoom, e tutte le curve di scala (prodotti, designer, griglia) si distribuiscono
-      // sull'intero intervallo reale invece di comprimersi/estrapolare vicino a un estremo.
+      // 0→100 conserva esattamente la scala storica. Su mobile, il solo tratto
+      // CAMERA_RATIO_100→MIN_CAMERA_RATIO viene esposto come 100→120.
       const ratio = Math.max(MIN_CAMERA_RATIO, Math.min(MAX_CAMERA_RATIO, cameraRatio))
       const logMax = Math.log(MAX_CAMERA_RATIO)
-      const logMin = Math.log(MIN_CAMERA_RATIO)
-      return (logMax - Math.log(ratio)) / (logMax - logMin)
+      const log100 = Math.log(CAMERA_RATIO_100)
+      if (!isMobile || ratio >= CAMERA_RATIO_100) return (logMax - Math.log(ratio)) / (logMax - log100)
+      const avanzamentoExtra = (log100 - Math.log(ratio)) / (log100 - Math.log(MIN_CAMERA_RATIO))
+      return 1 + avanzamentoExtra * 0.2
     }
 
     // Le linee vita (designer e aziende) hanno uno spessore minimo fisso (legato
@@ -2668,16 +2693,18 @@ function App() {
     // corrente (vista designer): stessa curva di scala dei pallini in
     // entrambe le viste, così le due si comportano allo stesso modo con lo zoom.
     function fattoreScalaEtichette() {
-      const valoreAttuale = lerp(STILE.zoom_designer_min, STILE.zoom_designer_max, Math.pow(zoomT(), 1.2))
+      const valoreAttuale = lerp(STILE.zoom_designer_min, STILE.zoom_designer_max, Math.pow(Math.min(1, zoomT()), 1.2))
       return valoreAttuale / VALORE_RIF_ETICHETTE_AZ
     }
 
-    // Inversa di zoomT(): converte una percentuale di zoom (0-1) nel ratio di
-    // camera corrispondente, sempre coerente con i reali limiti min/max attuali.
+    // Inversa di zoomT(): 0→1 usa la scala storica; 1→1.2 è il tratto extra
+    // mobile di sola camera.
     function ratioDaT(t) {
       const logMax = Math.log(MAX_CAMERA_RATIO)
-      const logMin = Math.log(MIN_CAMERA_RATIO)
-      return Math.exp(logMax - t * (logMax - logMin))
+      const log100 = Math.log(CAMERA_RATIO_100)
+      if (!isMobile || t <= 1) return Math.exp(logMax - t * (logMax - log100))
+      const extra = Math.max(0, Math.min(1, (t - 1) / 0.2))
+      return Math.exp(log100 - extra * (log100 - Math.log(MIN_CAMERA_RATIO)))
     }
 
     // Scala reale comune a griglia e coordinate dei nodi. Le dimensioni
@@ -2697,16 +2724,88 @@ function App() {
     // così i prodotti "top" (più grandi) mostrano il nome prima degli altri,
     // invece di comparire tutti insieme allo stesso zoom.
     function enfasiPanoramica(principale, dimensione = "label") {
-      if (!principale || (modelloVista !== "designer" && modelloVista !== "aziende")) return 1
+      if (!principale) return 1
       // Su mobile nomi e centri top restano distinguibili al 50%, fino al 75%.
       const fineEnfasi = isMobile && dimensione !== "orbit" ? 0.75 : 0.5
       const t = Math.max(0, Math.min(1, zoomT() / fineEnfasi))
-      const massimo = { orbit: 4.5, center: 2.5875, label: 2.25 }[dimensione]
+      // Le etichette (non i centri) dei designer/aziende top su mobile erano
+      // enormi dal 5% al 40% (es. "Ettore Sottsass" al 30% arrivava a
+      // dominare mezzo schermo): massimo dedicato più basso solo per
+      // "label" su mobile, centri/orbite invariati su entrambe le piattaforme.
+      // Valore 1.117 tarato puntualmente al 30% (vedi designerLabel mobile in
+      // zoom-calibration.js, già -20% lì): con quella base, 1.117 qui porta
+      // il totale dei nomi top esattamente al -35% richiesto al 30% di zoom,
+      // mantenendo la stessa forma di raccordo (fineEnfasi) altrove.
+      const massimo = dimensione === "label" && isMobile ? 1.117 : { orbit: 4.5, center: 2.5875, label: 2.25 }[dimensione]
       return 1 + (massimo - 1) * (1 - t * t * (3 - 2 * t))
     }
 
+    // La rilevanza top appartiene a Designer e Aziende, non alla vista
+    // Prodotti. Durante un cambio vista i due contributi seguono le stesse
+    // alpha dei rispettivi centri: nessun booleano cambia più in un frame.
+    function enfasiPanoramicaAnimata(attr, dimensione = "label") {
+      const designer = enfasiPanoramica(!!attr.principalePanoramicaDesigner, dimensione)
+      const azienda = enfasiPanoramica(!!attr.principalePanoramicaAzienda, dimensione)
+      return 1
+        + designerAlphaAnimata * (designer - 1)
+        + aziendaAlphaAnimata * (azienda - 1)
+    }
+
+    // Correzioni puntuali al 20% di zoom, vista Designer: un "avvallamento"
+    // localizzato (picco esatto a t=0.2, rientra a 1x — nessuna correzione —
+    // entro t=0.1 e t=0.3, per non toccare gli altri punti già tarati lì
+    // vicino). Percentuale relativa al valore ATTUALE in quel punto, quindi
+    // identica su desktop e mobile per costruzione: non serve calcolare due
+    // valori assoluti diversi per piattaforma, a differenza degli altri
+    // interventi su designerLabel (curve già diverse fra le due).
+    function correzionePuntuale20(picco) {
+      const t = zoomT()
+      const distanza = Math.abs(t - 0.2)
+      const localeT = Math.max(0, Math.min(1, distanza / 0.1))
+      const ease = localeT * localeT * (3 - 2 * localeT)
+      return lerp(picco, 1, ease)
+    }
+
+    // Sul mobile il picco panoramico rendeva troppo grandi i centri top di
+    // Designer e Aziende attorno al 30%. La correzione è locale (si annulla
+    // al 20% e al 40%) e non cambia i pallini normali né la vista Prodotti.
+    function correzioneStrutturaleMobile30(picco) {
+      if (!isMobile) return 1
+      const distanza = Math.abs(zoomT() - 0.3)
+      const localeT = Math.max(0, Math.min(1, distanza / 0.1))
+      const ease = localeT * localeT * (3 - 2 * localeT)
+      return lerp(picco, 1, ease)
+    }
+
     function taraturaZoom() {
-      return fattoriTaraturaZoom(zoomT(), (modelloVista === "designer" || modelloVista === "aziende"), isMobile)
+      // attiva era un booleano legato a modelloVista, che cambia di scatto
+      // (sincrono, dentro avviaContenuti) mentre l'opacità delle etichette
+      // sfuma gradualmente — risultato: ogni fattore qui sotto (compresi
+      // designerLabel/categoryLabel) saltava istantaneamente al valore
+      // "neutro" nell'istante del cambio vista, ben visibile come uno scatto
+      // di dimensione sulle etichette ancora in dissolvenza. Sostituito con
+      // un fattore continuo (designerAlphaAnimata + aziendaAlphaAnimata,
+      // la STESSA curva che guida l'opacità), che porta la taratura da
+      // "attiva" a "neutra" in sincrono con la dissolvenza, non di scatto.
+      const fattorePresenza = Math.min(1, designerAlphaAnimata + aziendaAlphaAnimata)
+      if (fattorePresenza >= 0.999) return fattoriTaraturaZoom(zoomT(), true, isMobile)
+      if (fattorePresenza <= 0.001) return fattoriTaraturaZoom(zoomT(), false, isMobile)
+      const attivo = fattoriTaraturaZoom(zoomT(), true, isMobile)
+      const neutro = fattoriTaraturaZoom(zoomT(), false, isMobile)
+      return Object.fromEntries(Object.keys(attivo).map((k) => [k, lerp(neutro[k], attivo[k], fattorePresenza)]))
+    }
+
+    // Le etichette strutturali della vista uscente (nomi Designer/Aziende e
+    // relative categorie) devono soltanto dissolversi. Nel passaggio verso
+    // Prodotti conservano la taratura di partenza finché sono visibili;
+    // altrimenti il raccordo verso i fattori neutri le fa crescere mentre
+    // stanno sparendo. Le etichette Prodotti continuano a usare taraturaZoom.
+    function taraturaZoomEtichetteStrutturali() {
+      const presenzaStrutturale = designerAlphaAnimata + aziendaAlphaAnimata
+      if (modelloVista === "prodotti" && presenzaStrutturale > 0.001) {
+        return fattoriTaraturaZoom(zoomT(), true, isMobile)
+      }
+      return taraturaZoom()
     }
 
     // Raccordo 80?90%; ingrandimento pieno e costante tra 90 e 100%.
@@ -2723,7 +2822,9 @@ function App() {
     }
 
     function prodottoPxTipico() {
-      const t = zoomT()
+      // Oltre il 100% cresce solo la camera: simboli e tipografia conservano
+      // la taratura del 100%, facendo aumentare lo spazio utile fra prodotti.
+      const t = Math.min(1, zoomT())
       const normale = dimensioniGalassia(pxPerUnit()).product * fattoriTaraturaZoom(t, true, isMobile).product * scalaPalliniDettaglio()
       let dedicataProdotti
       if (isMobile) {
@@ -2736,10 +2837,19 @@ function App() {
         const locale = (t - a[0]) / (b[0] - a[0])
         const ease = locale * locale * (3 - 2 * locale)
         dedicataProdotti = lerp(a[1], b[1], ease)
+        // Solo nella griglia Prodotti mobile: dal 65% raccorda rapidamente
+        // i pallini a +70%. Il fattore agisce sul raggio, non sui font.
+        const tIngrandimento65 = Math.max(0, Math.min(1, (t - 0.65) / 0.05))
+        const easeIngrandimento65 = tIngrandimento65 * tIngrandimento65 * (3 - 2 * tIngrandimento65)
+        dedicataProdotti *= lerp(1, 1.7, easeIngrandimento65)
       } else {
-        // 0-20% invariato (5.2->7): crescita molto più marcata dal 20 al
-        // 100% di zoom (prima 7/15/26, ora 7/22/42).
-        const punti = [[0, 5.2], [0.2, 7], [0.5, 22], [1, 42]]
+        // 0-20% invariato (5.2->7). Al 60% +30% rispetto al valore che dava
+        // lì la curva precedente (24.08 -> 31.304); al 80% +200%, cioè
+        // triplicato (34.96 -> 104.88). Il 100% non è stato toccato (resta
+        // 42): dal punto aggiunto a 80% (104.88) al 100% (42) la curva scende
+        // — un vero calo, non un plateau. Se non era voluto va corretto anche
+        // il valore al 100%, non richiesto in questo giro.
+        const punti = [[0, 5.2], [0.2, 7], [0.5, 22], [0.6, 31.304], [0.8, 104.88], [1, 42]]
         const indice = punti.findIndex(([zoom]) => zoom >= t)
         const a = punti[Math.max(1, indice) - 1], b = punti[Math.max(1, indice)]
         const locale = (t - a[0]) / (b[0] - a[0])
@@ -2767,7 +2877,7 @@ function App() {
       // le direzioni), invece di azzerare sempre l'effetto in vista Aziende.
       const inAziende = vistaInterna === "aziende"
       const peso = attr.pesoTaraturaOrbita ?? (vistaInterna === "designer" || inAziende ? 1 : 0)
-      const extra = (fattoriTaraturaZoom(zoomT(), true, isMobile).orbit * enfasiPanoramica(principaleAttuale(attr), "orbit") - 1) * peso
+      const extra = (fattoriTaraturaZoom(zoomT(), true, isMobile).orbit * enfasiPanoramicaAnimata(attr, "orbit") - 1) * peso
       const ancoraX = inAziende ? attr.ancoraAziendaX : attr.ancoraDesignerX
       const ancoraY = inAziende ? attr.ancoraAziendaY : attr.ancoraDesignerY
       const orbitaX = inAziende ? attr.aziendaOrbitaX : attr.orbitaX
@@ -2790,7 +2900,17 @@ function App() {
       if (attr.tipo === "designer") {
         const scalaSecondario = (CONTEGGIO_PRODOTTI_PER_DESIGNER.get(node) ?? 0) <= SOGLIA_DESIGNER_SECONDARIO
           ? STILE.designer_scala_secondario : 1
-        const base = designerPxTipico() * scalaSecondario * enfasiPanoramica(principaleAttuale(attr), "center")
+        const principale = !!attr.principalePanoramicaDesigner
+        // Pallino dei designer top -30% al 20% di zoom, SOLO vista Designer:
+        // i normali non hanno enfasiPanoramica("center") (sempre 1x per
+        // loro), quindi questo fattore tocca solo i top per costruzione.
+        const correzioneTopDot20 = principale
+          ? lerp(1, correzionePuntuale20(0.7), designerAlphaAnimata)
+          : 1
+        const correzioneTopDot30 = principale
+          ? lerp(1, correzioneStrutturaleMobile30(0.7), designerAlphaAnimata)
+          : 1
+        const base = designerPxTipico() * scalaSecondario * enfasiPanoramicaAnimata(attr, "center") * correzioneTopDot20 * correzioneTopDot30
         const legameRT = legameEvidenziatoRef.current
         if (legameRT && (node === legameRT.a || node === legameRT.b)) return base * STILE.hover_scala
         return node === nodoAttivo ? base * STILE.hover_scala : base
@@ -2799,11 +2919,11 @@ function App() {
         const presenzaProdotti = Math.max(0, Math.min(1, 1 - designerAlphaAnimata - aziendaAlphaAnimata))
         const tTopMobile = Math.min(1, zoomT() / 0.3)
         const easeTopMobile = tTopMobile * tTopMobile * (3 - 2 * tTopMobile)
-        // In vista Prodotti mobile i top erano invariati (1x) dal 30% in poi;
-        // ora restano +10% (1.1x) per l'intero resto della corsa, mantenendo
-        // il tuffo iniziale a 0.85x allo 0% invariato.
+        // In vista Prodotti mobile i top erano +10% (1.1x) dal 30% in poi;
+        // al 100% ora -15% rispetto a quel valore (1.1 * 0.85 = 0.935),
+        // mantenendo il tuffo iniziale a 0.85x allo 0% invariato.
         const correzioneTopMobile = isMobile
-          ? lerp(1, lerp(0.85, 1.1, easeTopMobile), presenzaProdotti)
+          ? lerp(1, lerp(0.85, 0.935, easeTopMobile), presenzaProdotti)
           : 1
         const scalaTop = attr.dati?.top ? STILE.prodotto_scala_top * correzioneTopMobile : 1
         const scalaFoto = IMMAGINI_ESISTENTI.has(attr.dati?.foto) ? 1 : 0.5
@@ -2825,11 +2945,17 @@ function App() {
       const h = overlayCanvas.height / dpr
 
       const t = zoomT()
+      const alphaComparsaEtichetteNodi = (() => {
+        if (!comparsaEtichetteNodiStrutturali) return 1
+        const locale = Math.max(0, Math.min(1, (performance.now() - comparsaEtichetteNodiStrutturali.inizio) / comparsaEtichetteNodiStrutturali.durata))
+        return locale * locale * (3 - 2 * locale)
+      })()
       const alphaCollegamentiTimeline = opacitaCollegamentiTimeline()
       const ppuVisiva = Math.sqrt(pxPerUnit())
       // I font crescono con la radice della scala reale, con limiti di
       // leggibilita; non modificano mai le posizioni dei contenuti.
-      const labelDesignerSize = clamp(STILE.label_designer_grafo * ppuVisiva, STILE.label_px_min, STILE.label_px_max) * taraturaZoom().designerLabel
+      const taraturaEtichetteStrutturali = taraturaZoomEtichetteStrutturali()
+      const labelDesignerSize = clamp(STILE.label_designer_grafo * ppuVisiva, STILE.label_px_min, STILE.label_px_max) * taraturaEtichetteStrutturali.designerLabel
       const tLabelProdotti = Math.min(1, t / 0.5)
       const easeLabelProdotti = tLabelProdotti * tLabelProdotti * (3 - 2 * tLabelProdotti)
       const presenzaProdotti = Math.max(0, Math.min(1, 1 - designerAlphaAnimata - aziendaAlphaAnimata))
@@ -3090,13 +3216,137 @@ function App() {
         etichetteAzAlphaAnimata = lerp(crossfadeEtichetteDa, targetEtichetteAzienda, easeEtichette)
         etichetteDesignerAlphaAnimata = lerp(crossfadeEtichetteDaDesigner, targetEtichetteDesigner, easeEtichette)
       }
+
+      // Righe delle etichette di categoria: disegnate QUI, appena dopo la
+      // griglia di sfondo (già disegnata sopra) e prima di qualunque altro
+      // elemento (pallini, collegamenti, testo delle etichette) — l'unico
+      // modo per ottenere "sopra la griglia, sotto il resto della grafica"
+      // su un canvas 2D senza un vero z-index. Prima la riga usava
+      // destination-over disegnata insieme al testo, molto più tardi: finiva
+      // dietro a tutto quello disegnato fino a quel momento, griglia inclusa.
+      const tRigheCategoria = Math.max(0, Math.min(1, (zoomT() - 0.2) / 0.1))
+      const spessoreRigheCategoria = (1 - 0.5 * tRigheCategoria * tRigheCategoria * (3 - 2 * tRigheCategoria)) * taraturaZoom().categoryLine
+      // Solo le righe ORIZZONTALI della vista Aziende (non le barre verticali
+      // Designer/Prodotti, che condividono spessoreRigheCategoria ma restano
+      // invariate): erano troppo spesse ovunque, desktop e mobile.
+      const SPESSORE_RIGHE_AZIENDA_FATTORE = 0.5
+      // Solo vista Prodotti: riga molto più sottile a 0% e 20% di zoom
+      // (raccordo verso lo spessore normale entro il 40%).
+      const tSpessoreProdotti = Math.max(0, Math.min(1, (zoomT() - 0.2) / 0.2))
+      const easeSpessoreProdotti = tSpessoreProdotti * tSpessoreProdotti * (3 - 2 * tSpessoreProdotti)
+      const FATTORE_SPESSORE_RIGA_PRODOTTI = lerp(0.3, 1, easeSpessoreProdotti)
+      const geometriaEtichettaVerticale = (et, scalaEtichetta = 1, estensioneBarra = 1, vistaProdotti = false) => {
+        const f = fattoreScalaEtichette()
+        // Vista Prodotti: la riga coincide con la x del centro del pallino
+        // (nessun margine a sinistra). Il testo va a metà esatta fra la riga
+        // di griglia dell'etichetta e quella precedente — mezzo passo di
+        // griglia in unità-grafo (non un offset fisso in pixel), così resta
+        // sempre "a metà tra due pallini" a qualunque zoom o densità.
+        const margineSinistroCategoria = vistaProdotti ? 0 : 30 * f * scalaEtichetta
+        const pInizio = renderer.graphToViewport({ x: et.xInizio, y: et.y })
+        const lx = pInizio.x - margineSinistroCategoria
+        const ly = pInizio.y
+        const lyTesto = vistaProdotti
+          ? renderer.graphToViewport({ x: et.xInizio, y: et.y + PASSO_GRIGLIA_PRODOTTI / 2 }).y
+          : ly - 4 * f * scalaEtichetta
+        const taraturaCategoria = vistaProdotti ? taraturaZoom() : taraturaEtichetteStrutturali
+        const fontCategoria = 10 * f * taraturaCategoria.categoryLabel * scalaEtichetta
+        const numero = et.numero
+        ctx.font = `700 ${fontCategoria}px Roboto`
+        const metricheNumero = ctx.measureText(numero)
+        const altezzaLettere = Math.max(
+          metricheNumero.actualBoundingBoxAscent ?? 10 * f,
+          ctx.measureText(et.testo).actualBoundingBoxAscent ?? 10 * f,
+        )
+        const pBasso = renderer.graphToViewport({ x: et.xInizio, y: et.yBottom })
+        const yAltoRiga = lyTesto - altezzaLettere - 3 * f
+        // estensioneBarra accorcia solo l'estremità inferiore (verso il
+        // basso), avvicinandola a yAltoRiga invece che a pBasso.y: usato
+        // dalla vista Prodotti per una barra leggermente meno pronunciata,
+        // senza toccare le etichette Designer (estensioneBarra=1, invariate).
+        const yBassoRiga = lerp(yAltoRiga, pBasso.y, estensioneBarra)
+        const xRiga = vistaProdotti ? lx : lx - 4 * f
+        return { f, lx, lyTesto, fontCategoria, numero, metricheNumero, xRiga, yAltoRiga, yBassoRiga }
+      }
+      const disegnaSoloRigaVerticale = (et, scalaEtichetta = 1, estensioneBarra = 1, vistaProdotti = false) => {
+        const { f, xRiga, yAltoRiga, yBassoRiga } = geometriaEtichettaVerticale(et, scalaEtichetta, estensioneBarra, vistaProdotti)
+        ctx.beginPath()
+        ctx.moveTo(xRiga, yAltoRiga)
+        ctx.lineTo(xRiga, yBassoRiga)
+        ctx.strokeStyle = COLORE_CATEGORIE
+        ctx.lineWidth = f * spessoreRigheCategoria * (vistaProdotti ? FATTORE_SPESSORE_RIGA_PRODOTTI : 1)
+        ctx.stroke()
+      }
+      const disegnaEtichettaVerticale = (et, numero, scalaEtichetta = 1, estensioneBarra = 1, vistaProdotti = false) => {
+        const { f, lx, lyTesto, fontCategoria, metricheNumero } = geometriaEtichettaVerticale({ ...et, numero }, scalaEtichetta, estensioneBarra, vistaProdotti)
+        const wNumero = metricheNumero.width
+        const staccoNumeroTesto = 4 * f * scalaEtichetta
+        ctx.textAlign = "left"
+        ctx.fillStyle = COLORE_CATEGORIE
+        ctx.font = `700 ${fontCategoria}px Roboto`
+        ctx.fillText(numero, lx, lyTesto)
+        const primaParola = et.testo.match(/^\S+/)?.[0] ?? ""
+        const restoTesto = et.testo.slice(primaParola.length)
+        const xTesto = lx + wNumero + staccoNumeroTesto
+        ctx.font = `400 ${fontCategoria}px Roboto`
+        ctx.fillText(primaParola, xTesto, lyTesto)
+        const larghezzaPrimaParola = ctx.measureText(primaParola).width
+        ctx.font = `300 ${fontCategoria}px Roboto`
+        ctx.fillText(restoTesto, xTesto + larghezzaPrimaParola, lyTesto)
+      }
+      // Dissolvenza più rapida: 12-20% (8 punti, invece di 0-20%), completa
+      // comunque al 20%. Prima etichetteProdottiAlpha dipendeva solo dal
+      // cambio vista (0/1 fisso a qualunque zoom una volta completata la
+      // dissolvenza tra viste).
+      const tEtichetteCategorieProdotti = Math.max(0, Math.min(1, (zoomT() - 0.12) / 0.08))
+      const easeEtichetteCategorieProdotti = tEtichetteCategorieProdotti * tEtichetteCategorieProdotti * (3 - 2 * tEtichetteCategorieProdotti)
+      const etichetteProdottiAlpha = Math.max(0, 1 - etichetteAzAlphaAnimata - etichetteDesignerAlphaAnimata) * easeEtichetteCategorieProdotti
+      if (etichetteDesignerAlphaAnimata >= 0.01) {
+        etichetteCorrentiDesigner.forEach((et) => {
+          ctx.globalAlpha = etichetteDesignerAlphaAnimata * (categoriaAttiva && et !== categoriaAttiva ? 0.2 : 1)
+          disegnaSoloRigaVerticale({ ...et, numero: String(et.numero).padStart(2, "0") })
+        })
+      }
+      if (etichetteProdottiAlpha >= 0.01) {
+        etichetteCategorieProdotti.forEach(et => {
+          ctx.globalAlpha = etichetteProdottiAlpha * (et.livello === "sottocategoria" ? 0.72 : 1)
+          disegnaSoloRigaVerticale(et, et.livello === "sottocategoria" ? 0.38 : 0.48, 0.85, true)
+        })
+      }
+      if (etichetteAzAlphaAnimata >= 0.01) {
+        etichetteMacroAz.forEach((et) => {
+          if (et.y === null || et.y === undefined) return
+          ctx.globalAlpha = etichetteAzAlphaAnimata * (categoriaAttivaAz && et.categoria !== categoriaAttivaAz.categoria ? 0.2 : 1)
+          const pInizio = renderer.graphToViewport({ x: et.xInizio, y: et.y })
+          const pFine = renderer.graphToViewport({ x: et.xFine, y: et.y })
+          ctx.beginPath()
+          ctx.moveTo(pInizio.x, pInizio.y)
+          ctx.lineTo(Math.max(pFine.x, pInizio.x), pInizio.y)
+          ctx.strokeStyle = COLORE_CATEGORIE
+          ctx.lineWidth = fattoreScalaEtichette() * spessoreRigheCategoria * SPESSORE_RIGHE_AZIENDA_FATTORE
+          ctx.stroke()
+        })
+        etichetteSottoAz.forEach((et) => {
+          ctx.globalAlpha = etichetteAzAlphaAnimata * (categoriaAttivaAz && et.categoria !== categoriaAttivaAz.categoria ? 0.2 : 1)
+          const pInizio = renderer.graphToViewport({ x: et.xInizio, y: et.y })
+          const pFine = renderer.graphToViewport({ x: et.xFine, y: et.y })
+          ctx.beginPath()
+          ctx.moveTo(pInizio.x, pInizio.y)
+          ctx.lineTo(Math.max(pFine.x, pInizio.x), pInizio.y)
+          ctx.strokeStyle = COLORE_CATEGORIE
+          ctx.lineWidth = fattoreScalaEtichette() * spessoreRigheCategoria * SPESSORE_RIGHE_AZIENDA_FATTORE
+          ctx.stroke()
+        })
+      }
+      ctx.globalAlpha = 1
+
       gruppiCollettivi.forEach(({ nome, nodi }) => {
         // Il contorno raggruppa prodotti per collettivo creativo (es. i tre
         // architetti di BBPR insieme), a prescindere da chi li produce: ha senso
         // solo in vista designer. In vista aziende i suoi membri sono sparsi
         // ciascuno sulla propria azienda (anche in fasce/categorie diverse), e il
         // contorno finirebbe per disegnare lunghe linee tra cluster non collegati.
-        if (modelloVista !== "designer") return
+        if (designerAlphaAnimata < 0.01) return
         if (amoebaAlphaAnimata < 0.01) return
         const nodiValidi = nodi.filter((n) => graph.hasNode(n))
         if (nodiValidi.length < 2) return
@@ -3134,7 +3384,7 @@ function App() {
           return { x: cx + dx * scala, y: cy + dy * scala }
         })
 
-        ctx.globalAlpha = 0.4 * amoebaAlphaAnimata
+        ctx.globalAlpha = 0.4 * amoebaAlphaAnimata * designerAlphaAnimata
         ctx.beginPath()
         const primo = espansi[0]
         const ultimo = espansi[espansi.length - 1]
@@ -3222,7 +3472,6 @@ function App() {
       })
 
       graph.forEachEdge((edge, attr, source, target) => {
-        if (modelloVista === "prodotti") return
         const posS = renderer.graphToViewport({ x: graph.getNodeAttribute(source, "x"), y: graph.getNodeAttribute(source, "y") })
         const posT = posizioneVisivaNodo(target, graph.getNodeAttributes(target))
 
@@ -3231,8 +3480,8 @@ function App() {
           // da prima di cambiare vista non deve restare visibile, altrimenti la
           // linea punta a coordinate di un designer mai aggiornate per questa
           // vista (scala completamente diversa da quella delle fasce azienda).
-          if (attr.attivo && modelloVista !== "aziende") {
-            ctx.globalAlpha = 1
+          if (attr.attivo && designerAlphaAnimata >= 0.01) {
+            ctx.globalAlpha = designerAlphaAnimata
             ctx.beginPath()
             ctx.moveTo(posS.x, posS.y)
             ctx.lineTo(posT.x, posT.y)
@@ -3288,7 +3537,7 @@ function App() {
             }
             alphaVista = Math.max(designerAlphaAnimata, aziendaAlphaAnimata)
           }
-          ctx.globalAlpha = edgeAlpha * alphaVista * alphaCollegamentiTimeline
+          ctx.globalAlpha = edgeAlpha * alphaVista * alphaComparsaEtichetteNodi * alphaCollegamentiTimeline
           ctx.beginPath()
           ctx.moveTo(posSEffettivo.x, posSEffettivo.y)
           const midX = (posSEffettivo.x + posT.x) / 2
@@ -3361,7 +3610,7 @@ function App() {
       nodiFiltrati.forEach(({ node, attr }) => {
         const pos = posizioneVisivaNodo(node, attr)
         const r = animated[node]?.r ?? STILE.zoom_prodotto_min
-        const alpha = (animated[node]?.alpha ?? 1) * (attr.tipo === "designer" ? designerAlphaAnimata : 1)
+        const alpha = (animated[node]?.alpha ?? 1) * (attr.tipo === "designer" ? designerAlphaAnimata * alphaComparsaEtichetteNodi : 1)
         if (alpha < 0.01) return
 
         if (pos.x < -r || pos.x > w + r || pos.y < -r || pos.y > h + r) return
@@ -3406,8 +3655,17 @@ function App() {
         }
 
         if (attr.tipo === "designer") {
-          const principale = principaleAttuale(attr)
-          const dimensioneEtichettaDesigner = labelDesignerSize * enfasiPanoramica(principale) * (principale ? taraturaZoom().topLabel : 1)
+          const principale = !!attr.principalePanoramicaDesigner
+          // -15% al 20% di zoom, SOLO vista Designer (non Aziende, che
+          // condivide labelDesignerSize/questa stessa formula più sotto):
+          // un fattore unico sulla base comune vale sia per i normali che
+          // per i top, essendo moltiplicato prima degli altri fattori.
+          const correzioneDesigner20 = correzionePuntuale20(0.85)
+          const correzioneTopLabel30 = principale
+            ? lerp(1, correzioneStrutturaleMobile30(0.85), designerAlphaAnimata)
+            : 1
+          const dimensioneEtichettaDesigner = labelDesignerSize * correzioneDesigner20 * enfasiPanoramica(principale) * (principale ? taraturaEtichetteStrutturali.topLabel : 1) * correzioneTopLabel30
+          const alphaEtichettaDesigner = alpha
           const cognome = attr.dati.cognome || attr.label.split(" ").pop()
           const nome = attr.label.slice(0, attr.label.length - cognome.length).trim()
           const lx = pos.x + r + STILE.label_offset
@@ -3426,12 +3684,12 @@ function App() {
           const wDate = ctx.measureText(date).width
 
           let ly = lyStart
-          ctx.globalAlpha = 0.85 * alpha
+          ctx.globalAlpha = 0.85 * alphaEtichettaDesigner
           ctx.fillStyle = bgColor
           ctx.fillRect(lx - pad, ly - dimensioneEtichettaDesigner, wNome + pad * 2, dimensioneEtichettaDesigner + pad)
           ctx.fillRect(lx - pad, ly + 1, wCognome + pad * 2, dimensioneEtichettaDesigner + pad)
           ctx.fillRect(lx - pad, ly + dimensioneEtichettaDesigner + 6, wDate + pad * 2, (dimensioneEtichettaDesigner - 1) + pad)
-          ctx.globalAlpha = alpha
+          ctx.globalAlpha = alphaEtichettaDesigner
 
           ctx.textAlign = "left"
           ctx.fillStyle = STILE.label_designer_colore
@@ -3446,7 +3704,25 @@ function App() {
           ctx.fillText(date, lx, ly)
         }
 
-        const opacitaLabelProdotto = attr.dati?.top ? 1 : taraturaZoom().productLabelAlpha
+        // Mobile, viste Designer/Aziende: le etichette (top e normali) non
+        // devono comparire affatto sotto l'85% di zoom, poi dissolvenza fino
+        // al 100%. Vista Prodotti (presenzaProdotti verso 1) e desktop
+        // restano col comportamento di sempre, invariati.
+        const tVisibilitaProdotti = Math.max(0, Math.min(1, (zoomT() - 0.85) / 0.15))
+        const easeVisibilitaProdotti = tVisibilitaProdotti * tVisibilitaProdotti * (3 - 2 * tVisibilitaProdotti)
+        const gateDesignerAziendeMobile = isMobile ? easeVisibilitaProdotti : 1
+        const opacitaLabelProdottoBase = attr.dati?.top ? 1 : taraturaZoom().productLabelAlpha
+        const opacitaVistaProdotto = lerp(opacitaLabelProdottoBase * gateDesignerAziendeMobile, opacitaLabelProdottoBase, presenzaProdotti)
+        // Le etichette prodotto hanno scale finali diverse nella griglia
+        // Prodotti e nelle mappe Designer/Aziende. Durante quel passaggio
+        // sfumano brevemente a metà corsa: la variazione tipografica avviene
+        // quando sono invisibili, evitando il testo che si gonfia sullo
+        // schermo. Agli estremi tornano alla normale opacità della vista.
+        const distanzaDalCentroCrossfade = Math.abs(presenzaProdotti * 2 - 1)
+        const visibilitaCambioScala = transizioneAttiva
+          ? distanzaDalCentroCrossfade * distanzaDalCentroCrossfade * (3 - 2 * distanzaDalCentroCrossfade)
+          : 1
+        const opacitaLabelProdotto = opacitaVistaProdotto * visibilitaCambioScala
         if (attr.tipo === "prodotto" && r >= STILE.label_prodotto_soglia_raggio_px && opacitaLabelProdotto > 0) {
           // Solo i minori (non top, con pallino dimezzato) hanno etichette ridotte.
           // Top e normali mantengono la dimensione tipografica di base.
@@ -3485,12 +3761,16 @@ function App() {
       // Rendering nodi aziende: dissolvenza incrociata con i designer.
       if (aziendaAlphaAnimata >= 0.01) {
         nodiAziende.forEach(({ nome, pos: azPos, screen, principale }) => {
-          const rAz = designerPxTipico() * enfasiPanoramica(principale, "center")
+          const correzioneTopAziendaDot30 = principale
+            ? lerp(1, correzioneStrutturaleMobile30(0.7), aziendaAlphaAnimata)
+            : 1
+          const rAz = designerPxTipico() * enfasiPanoramica(principale, "center") * correzioneTopAziendaDot30
           const imgSrcAz = `${import.meta.env.BASE_URL}immagini_thumb/${azPos.dati.logo}`
           const imgAz = imgCache[imgSrcAz]
           const haImgAz = imgAz && imgAz.complete && imgAz.naturalWidth > 0
           // Isolamento categoria su hover/click: stesso 1/0.2 della vista designer.
-          const alphaAz = aziendaAlphaAnimata * (categoriaAttivaAz && !nomiAziendeCategoriaAttivaAz.has(nome) ? 0.2 : 1)
+          const alphaAz = aziendaAlphaAnimata * alphaComparsaEtichetteNodi * (categoriaAttivaAz && !nomiAziendeCategoriaAttivaAz.has(nome) ? 0.2 : 1)
+          const alphaEtichettaAz = alphaAz
 
           ctx.globalAlpha = alphaAz
           if (!haImgAz) {
@@ -3517,7 +3797,10 @@ function App() {
           ctx.stroke()
 
           // Label azienda (stesso stile delle label designer, stessa enfasi sui principali)
-          const dimensioneEtichettaAz = labelDesignerSize * enfasiPanoramica(principale) * (principale ? taraturaZoom().topLabel : 1)
+          const correzioneTopAziendaLabel30 = principale
+            ? lerp(1, correzioneStrutturaleMobile30(0.85), aziendaAlphaAnimata)
+            : 1
+          const dimensioneEtichettaAz = labelDesignerSize * enfasiPanoramica(principale) * (principale ? taraturaEtichetteStrutturali.topLabel : 1) * correzioneTopAziendaLabel30
           const lx = screen.x + rAz + STILE.label_offset
           const nomeAz = azPos.dati.nome
           const subAz = azPos.dati.paese ? `${azPos.dati.fondata} — ${azPos.dati.paese}` : String(azPos.dati.fondata)
@@ -3529,11 +3812,11 @@ function App() {
           const wNomeAz = ctx.measureText(nomeAz).width
           ctx.font = `${STILE.label_date_peso} ${dimensioneEtichettaAz - 1}px Roboto`
           const wSubAz = ctx.measureText(subAz).width
-          ctx.globalAlpha = 0.85 * alphaAz
+          ctx.globalAlpha = 0.85 * alphaEtichettaAz
           ctx.fillStyle = bgColor
           ctx.fillRect(lx - pad, lyStart - dimensioneEtichettaAz, wNomeAz + pad * 2, dimensioneEtichettaAz + pad)
           ctx.fillRect(lx - pad, lyStart + 1, wSubAz + pad * 2, (dimensioneEtichettaAz - 1) + pad)
-          ctx.globalAlpha = alphaAz
+          ctx.globalAlpha = alphaEtichettaAz
           ctx.textAlign = "left"
           ctx.fillStyle = STILE.label_designer_colore
           ctx.font = `700 ${dimensioneEtichettaAz}px Roboto`
@@ -3559,7 +3842,7 @@ function App() {
               const azPos2 = aziendePosizioniMap[azNome]
               const azScreen = renderer.graphToViewport({ x: azPos2.x, y: azPos2.y })
               const alphaEdge = animated[node]?.alpha ?? 1
-              ctx.globalAlpha = 0.3 * alphaEdge * aziendaAlphaAnimata * alphaCollegamentiTimeline
+              ctx.globalAlpha = 0.3 * alphaEdge * aziendaAlphaAnimata * alphaComparsaEtichetteNodi * alphaCollegamentiTimeline
               ctx.beginPath()
               ctx.moveTo(azScreen.x, azScreen.y)
               const midX2 = (azScreen.x + prodPos.x) / 2
@@ -3577,62 +3860,6 @@ function App() {
 
       }
 
-      // Righe dietro a tutti gli elementi; testo sul livello superiore.
-      const tRigheCategoria = Math.max(0, Math.min(1, (zoomT() - 0.2) / 0.1))
-      const spessoreRigheCategoria = (1 - 0.5 * tRigheCategoria * tRigheCategoria * (3 - 2 * tRigheCategoria)) * taraturaZoom().categoryLine
-      // Solo le righe ORIZZONTALI della vista Aziende (non le barre verticali
-      // Designer/Prodotti, che condividono spessoreRigheCategoria ma restano
-      // invariate): erano troppo spesse ovunque, desktop e mobile.
-      const SPESSORE_RIGHE_AZIENDA_FATTORE = 0.5
-      // Etichette verticali delle categorie Designer.
-      const disegnaEtichettaVerticale = (et, numero, scalaEtichetta = 1, estensioneBarra = 1) => {
-        const f = fattoreScalaEtichette()
-        const staccoTestoLinea = 4 * f * scalaEtichetta
-        const staccoNumeroTesto = 4 * f * scalaEtichetta
-        const margineSinistroCategoria = 30 * f * scalaEtichetta
-        const pInizio = renderer.graphToViewport({ x: et.xInizio, y: et.y })
-        const lx = pInizio.x - margineSinistroCategoria
-        const ly = pInizio.y
-        const lyTesto = ly - staccoTestoLinea
-        ctx.textAlign = "left"
-        ctx.fillStyle = COLORE_CATEGORIE
-        ctx.font = `700 ${10 * f * taraturaZoom().categoryLabel * scalaEtichetta}px Roboto`
-        ctx.fillText(numero, lx, lyTesto)
-        const metricheNumero = ctx.measureText(numero)
-        const wNumero = metricheNumero.width
-        const fontCategoria = 10 * f * taraturaZoom().categoryLabel * scalaEtichetta
-        const primaParola = et.testo.match(/^\S+/)?.[0] ?? ""
-        const restoTesto = et.testo.slice(primaParola.length)
-        const xTesto = lx + wNumero + staccoNumeroTesto
-        ctx.font = `400 ${fontCategoria}px Roboto`
-        ctx.fillText(primaParola, xTesto, lyTesto)
-        const larghezzaPrimaParola = ctx.measureText(primaParola).width
-        ctx.font = `300 ${fontCategoria}px Roboto`
-        ctx.fillText(restoTesto, xTesto + larghezzaPrimaParola, lyTesto)
-        const altezzaLettere = Math.max(
-          metricheNumero.actualBoundingBoxAscent ?? 10 * f,
-          ctx.measureText(et.testo).actualBoundingBoxAscent ?? 10 * f,
-        )
-        // La riga supera di 3 * f la sommità di numero e lettere.
-        // La riga resta 4 * f a sinistra del numero, senza spostare il testo.
-        const pBasso = renderer.graphToViewport({ x: et.xInizio, y: et.yBottom })
-        const yAltoRiga = lyTesto - altezzaLettere - 3 * f
-        // estensioneBarra accorcia solo l'estremità inferiore (verso il
-        // basso), avvicinandola a yAltoRiga invece che a pBasso.y: usato
-        // dalla vista Prodotti per una barra leggermente meno pronunciata,
-        // senza toccare le etichette Designer (estensioneBarra=1, invariate).
-        const yBassoRiga = lerp(yAltoRiga, pBasso.y, estensioneBarra)
-        const xRiga = lx - 4 * f
-        ctx.beginPath()
-        ctx.moveTo(xRiga, yAltoRiga)
-        ctx.lineTo(xRiga, yBassoRiga)
-        ctx.strokeStyle = COLORE_CATEGORIE
-        ctx.lineWidth = f * spessoreRigheCategoria
-        ctx.save()
-        ctx.globalCompositeOperation = "destination-over"
-        ctx.stroke()
-        ctx.restore()
-      }
       const etichetteDesignerAlpha = etichetteDesignerAlphaAnimata
       if (etichetteDesignerAlpha >= 0.01) {
         etichetteCorrentiDesigner.forEach((et) => {
@@ -3677,22 +3904,14 @@ function App() {
           const lyTesto = ly - staccoTestoLinea
           ctx.textAlign = "left"
           ctx.fillStyle = COLORE_CATEGORIE
-          ctx.font = `700 ${10 * f * taraturaZoom().categoryLabel}px Roboto`
+          ctx.font = `700 ${10 * f * taraturaEtichetteStrutturali.categoryLabel}px Roboto`
           ctx.fillText(numero, lx, lyTesto)
           const wNumero = ctx.measureText(numero).width
-          ctx.font = `400 ${10 * f * taraturaZoom().categoryLabel}px Roboto`
+          ctx.font = `400 ${10 * f * taraturaEtichetteStrutturali.categoryLabel}px Roboto`
           ctx.fillText(testo, lx + wNumero + staccoNumeroTesto, lyTesto)
-          // La riga parte esattamente dal primo elemento della categoria
-          // (lx) e copre l'intera larghezza della categoria (xRigaFine).
-          ctx.beginPath()
-          ctx.moveTo(lx, ly)
-          ctx.lineTo(xRigaFine, ly)
-          ctx.strokeStyle = COLORE_CATEGORIE
-          ctx.lineWidth = f * spessoreRigheCategoria * SPESSORE_RIGHE_AZIENDA_FATTORE
-          ctx.save()
-          ctx.globalCompositeOperation = "destination-over"
-          ctx.stroke()
-          ctx.restore()
+          // La riga (lx→xRigaFine, larghezza intera categoria) è disegnata
+          // PRESTO, nel pass dedicato subito dopo la griglia di sfondo — qui
+          // resta solo il testo, sempre sopra a pallini e collegamenti.
         })
 
         etichetteSottoAz.forEach((et) => {
@@ -3710,31 +3929,21 @@ function App() {
           const lyTesto = ly - staccoTestoLinea
           ctx.textAlign = "right"
           ctx.fillStyle = COLORE_CATEGORIE
-          ctx.font = `600 ${9 * f * taraturaZoom().categoryLabel}px Roboto`
+          ctx.font = `600 ${9 * f * taraturaEtichetteStrutturali.categoryLabel}px Roboto`
           ctx.fillText(numero, xRigaFine, lyTesto)
           const wNumero = ctx.measureText(numero).width
-          ctx.font = `300 ${9 * f * taraturaZoom().categoryLabel}px Roboto`
+          ctx.font = `300 ${9 * f * taraturaEtichetteStrutturali.categoryLabel}px Roboto`
           ctx.fillText(testo, xRigaFine - wNumero - staccoNumeroTesto, lyTesto)
-          // La riga copre SOLO il proprio sotto-gruppo (xInizio → xFine),
-          // per definizione più stretta di quella di macro-categoria.
-          ctx.beginPath()
-          ctx.moveTo(pInizio.x, ly)
-          ctx.lineTo(xRigaFine, ly)
-          ctx.strokeStyle = COLORE_CATEGORIE
-          ctx.lineWidth = f * spessoreRigheCategoria * SPESSORE_RIGHE_AZIENDA_FATTORE
-          ctx.save()
-          ctx.globalCompositeOperation = "destination-over"
-          ctx.stroke()
-          ctx.restore()
+          // La riga (pInizio.x→xRigaFine, solo il sotto-gruppo) è disegnata
+          // PRESTO insieme alle altre — vedi il pass dedicato più sopra.
         })
         ctx.globalAlpha = 1
       }
 
-      const etichetteProdottiAlpha = Math.max(0, 1 - etichetteAzAlphaAnimata - etichetteDesignerAlphaAnimata)
-      if (modelloVista === "prodotti" && etichetteProdottiAlpha >= 0.01) {
+      if (etichetteProdottiAlpha >= 0.01) {
         etichetteCategorieProdotti.forEach(et => {
           ctx.globalAlpha = etichetteProdottiAlpha * (et.livello === "sottocategoria" ? 0.72 : 1)
-          disegnaEtichettaVerticale(et, et.numero, et.livello === "sottocategoria" ? 0.38 : 0.48, 0.85)
+          disegnaEtichettaVerticale(et, et.numero, et.livello === "sottocategoria" ? 0.38 : 0.48, 0.85, true)
         })
         ctx.globalAlpha = 1
       }
@@ -3856,7 +4065,7 @@ function App() {
     zoomControlli.style.cssText = "position:absolute;right:10px;bottom:5px;z-index:10;display:flex;align-items:center;gap:5px;cursor:default;background:rgba(232,232,232,.9);border-radius:4px;padding:3px;"
     const zoomNumero = document.createElement("input")
     zoomNumero.type = "number"
-    zoomNumero.min = "0"; zoomNumero.max = "100"; zoomNumero.step = "1"
+    zoomNumero.min = "0"; zoomNumero.max = isMobile ? "120" : "100"; zoomNumero.step = "1"
     zoomNumero.setAttribute("aria-label", "Percentuale di zoom")
     zoomNumero.style.cssText = "width:44px;border:0;background:transparent;color:#555;font:600 11px Roboto,sans-serif;text-align:right;cursor:text;"
     const zoomSimbolo = document.createElement("span")
@@ -3864,7 +4073,7 @@ function App() {
     zoomSimbolo.style.cssText = "font:600 11px Roboto,sans-serif;color:#555"
     const zoomSlider = document.createElement("input")
     zoomSlider.type = "range"
-    zoomSlider.min = "0"; zoomSlider.max = "100"; zoomSlider.step = "0.1"
+    zoomSlider.min = "0"; zoomSlider.max = isMobile ? "120" : "100"; zoomSlider.step = "0.1"
     zoomSlider.setAttribute("aria-label", "Zoom")
     zoomSlider.style.cssText = "width:120px;accent-color:#555;cursor:pointer;margin:0;"
     zoomControlli.append(zoomNumero, zoomSimbolo, zoomSlider)
@@ -3873,7 +4082,8 @@ function App() {
       if (!Number.isFinite(valore)) return
       if (cameraAnimId) { cancelAnimationFrame(cameraAnimId); cameraAnimId = null }
       if (interrompiZoomVista) interrompiZoomVista()
-      camera.setState({ ratio: ratioDaT(Math.max(0, Math.min(100, valore)) / 100) })
+      const massimoZoom = isMobile ? 120 : 100
+      camera.setState({ ratio: ratioDaT(Math.max(0, Math.min(massimoZoom, valore)) / 100) })
       richiediDisegnoOverlay(18)
     }
     zoomSlider.addEventListener("input", () => applicaZoom(Number(zoomSlider.value)))
@@ -3930,6 +4140,10 @@ function App() {
     // quindi la variabile deve esistere PRIMA di essere referenziata, non
     // dopo — altrimenti temporal dead zone e pagina bianca.
     let transizioneAttiva = false
+    // Ogni cambio vista riceve un token. Un click successivo invalida subito
+    // i frame della destinazione precedente e riparte dallo stato visivo
+    // corrente, così tab evidenziata e grafica restano sempre sincronizzate.
+    let generazioneTransizione = 0
 
     // Pixel-per-unità dipendono solo da ratio + dimensioni contenitore, non da x/y:
     // durante un pan (x/y cambiano, ratio no) restano validi. Cache per evitare
@@ -4064,7 +4278,7 @@ function App() {
       // i margini corretti per la nuova dimensione (esattamente come dopo un
       // refresh), invece di restare per un frame sui margini della modalità
       // precedente.
-      isMobile = window.innerWidth < 768
+      isMobile = viewportMobile()
       uiScaleInterno = 0.6 + (window.innerWidth / 1440) * 0.4
       impostaStileContainer()
       impostaBBoxCondiviso()
@@ -4184,24 +4398,61 @@ function App() {
     }
 
     function animaTransizione(modello, tlOn) {
+      const generazione = ++generazioneTransizione
+      if (transizioneAttiva) {
+        if (cameraAnimId) cancelAnimationFrame(cameraAnimId)
+        cameraAnimId = null
+        interrompiZoomVista = null
+        transizioneAttiva = false
+      }
+      if (modello === modelloVista && tlOn === timelineVista) {
+        animaCamera(cameraCompleta(), 450)
+        return
+      }
       const nuovaVista = tlOn ? "timeline" : modello
-      if (transizioneAttiva || (modello === modelloVista && tlOn === timelineVista)) return
       transizioneAttiva = true
       const cambiaModello = modello !== modelloVista
 
       let cameraFinita = !cambiaModello
       let prodottiFiniti = false
       const terminaSeCompleta = () => {
-        if (cameraFinita && prodottiFiniti) transizioneAttiva = false
+        if (generazione !== generazioneTransizione) return
+        if (cameraFinita && prodottiFiniti) {
+          transizioneAttiva = false
+        }
       }
       function avviaContenuti() {
+        if (generazione !== generazioneTransizione) return
+        const partivaDaProdotti = modelloVista === "prodotti" && modello !== "prodotti"
         if (cambiaModello) {
-          crossfadeVistaInizio = performance.now()
+          const adesso = performance.now()
+          crossfadeVistaInizio = adesso
           crossfadeVistaDaDesigner = designerAlphaAnimata
           crossfadeVistaDaAzienda = aziendaAlphaAnimata
-          crossfadeEtichetteInizio = performance.now() + CROSSFADE_ETICHETTE_RITARDO_MS
-          crossfadeEtichetteDa = etichetteAzAlphaAnimata
-          crossfadeEtichetteDaDesigner = etichetteDesignerAlphaAnimata
+          // Prodotti -> Designer/Aziende: prima partono i pallini, poi i nomi
+          // dei nodi centrali; le categorie vengono avviate ancora dopo.
+          comparsaEtichetteNodiStrutturali = partivaDaProdotti
+            ? { inizio: adesso + 1200, durata: 450 }
+            : null
+          // Solo se il ritardo etichette PRECEDENTE è già scaduto: se si
+          // interrompe un cambio vista mentre la sua dissolvenza etichette è
+          // ancora nel ritardo iniziale (non ha ancora iniziato a muoversi),
+          // NON si riparte da capo — altrimenti si "congela" il valore
+          // vecchio (es. ancora 1 da Aziende) e si riapplica un ritardo
+          // fresco sopra, tenendo un'etichetta della vista sbagliata piena
+          // per quasi il doppio del tempo. Il target si aggiorna comunque
+          // ogni frame sulla vista corrente: lasciare intatto il ritardo/
+          // valore di partenza originale fa convergere la dissolvenza già
+          // in corso verso la vista giusta, senza scatti né doppio ritardo.
+          if (partivaDaProdotti) {
+            crossfadeEtichetteInizio = adesso + 1800
+            crossfadeEtichetteDa = etichetteAzAlphaAnimata
+            crossfadeEtichetteDaDesigner = etichetteDesignerAlphaAnimata
+          } else if (adesso >= crossfadeEtichetteInizio) {
+            crossfadeEtichetteInizio = adesso + CROSSFADE_ETICHETTE_RITARDO_MS
+            crossfadeEtichetteDa = etichetteAzAlphaAnimata
+            crossfadeEtichetteDaDesigner = etichetteDesignerAlphaAnimata
+          }
         }
         const pesoOrbitaPrecedente = vistaInterna === "designer" || vistaInterna === "aziende" ? 1 : 0
         modelloVista = modello
@@ -4223,7 +4474,7 @@ function App() {
         const staggerMs = STILE.transizione_stagger
         const durata = STILE.transizione_durata
 
-        prodottiList.forEach((node, idx) => {
+        const movimentiProdotti = prodottiList.map((node, idx) => {
           const attr = graph.getNodeAttributes(node)
           const daPeso = attr.pesoTaraturaOrbita ?? pesoOrbitaPrecedente
           const aPeso = nuovaVista === "designer" || nuovaVista === "aziende" ? 1 : 0
@@ -4242,25 +4493,28 @@ function App() {
           } else {
             aX = attr.orbitaX; aY = attr.orbitaY
           }
-          const ritardo = idx * staggerMs
-          const inizio = performance.now() + ritardo
-
-          function step(now) {
-            const t = Math.min(1, Math.max(0, (now - inizio) / durata))
+          return { node, daPeso, aPeso, daX, daY, aX, aY, ritardo: idx * staggerMs }
+        })
+        const inizioMovimento = performance.now()
+        function stepProdotti(now) {
+          if (generazione !== generazioneTransizione) return
+          let tuttiFiniti = true
+          movimentiProdotti.forEach(({ node, daPeso, aPeso, daX, daY, aX, aY, ritardo }) => {
+            const t = Math.min(1, Math.max(0, (now - inizioMovimento - ritardo) / durata))
             const ease = t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2
             graph.setNodeAttribute(node, "pesoTaraturaOrbita", lerp(daPeso, aPeso, ease))
             graph.setNodeAttribute(node, "x", lerp(daX, aX, ease))
             graph.setNodeAttribute(node, "y", lerp(daY, aY, ease))
-            richiediDisegnoOverlay(2)
-            if (t < 1) {
-              requestAnimationFrame(step)
-            } else if (idx === prodottiList.length - 1) {
-              prodottiFiniti = true
-              terminaSeCompleta()
-            }
+            if (t < 1) tuttiFiniti = false
+          })
+          richiediDisegnoOverlay(2)
+          if (!tuttiFiniti) requestAnimationFrame(stepProdotti)
+          else {
+            prodottiFiniti = true
+            terminaSeCompleta()
           }
-          requestAnimationFrame(step)
-        })
+        }
+        requestAnimationFrame(stepProdotti)
       }
       if (!cambiaModello) { avviaContenuti(); return }
 
@@ -4275,11 +4529,13 @@ function App() {
       // Ricerca/Home possono avviare un centraggio esplicito durante lo zoom:
       // completiamo il cambio dei contenuti senza lasciare il toggle bloccato.
       interrompiZoomVista = () => {
+        if (generazione !== generazioneTransizione) return
         cameraFinita = true
         if (!contenutiAvviati) { contenutiAvviati = true; avviaContenuti() }
         terminaSeCompleta()
       }
       function stepPanoramica(now) {
+        if (generazione !== generazioneTransizione) return
         const t = Math.min(1, Math.max(0, (now - inizio) / DURATA_ZOOM_OUT))
         const ease = t * t * t * (t * (t * 6 - 15) + 10)
         const target = cameraCompleta()
@@ -4333,13 +4589,21 @@ function App() {
       const tRatio = ratioDaT(tPercent)
       const cRect = container.getBoundingClientRect()
       const sState = camera.getState()
-      const pannelloW = isMobile ? 0 : 340 * uiScaleInterno
-      const pannelloSx = isMobile ? 0 : Math.max(20, 240 * uiScaleInterno - 180)
-      const pannelloH = isMobile ? cRect.height * 0.4 : 0
+      // L'atterraggio dall'intro non apre alcun pannello: in quel caso il
+      // designer deve cadere nel centro geometrico esatto della finestra.
+      // Lo spazio laterale/inferiore viene riservato soltanto alle aperture
+      // che mostrano davvero il pannello di dettaglio.
+      const pannelloW = apriPannello && !isMobile ? 340 * uiScaleInterno : 0
+      const pannelloSx = apriPannello && !isMobile ? Math.max(20, 240 * uiScaleInterno - 180) : 0
+      const pannelloH = apriPannello && isMobile ? cRect.height * 0.4 : 0
       let topBarH = 0
-      if (isMobile && topBarRef.current) topBarH = topBarRef.current.getBoundingClientRect().height
-      const centroX = pannelloSx + (cRect.width - pannelloSx - pannelloW) / 2 - pannelloW * 0.25
-      const centroY = topBarH + (cRect.height - topBarH - pannelloH) / 2
+      if (apriPannello && isMobile && topBarRef.current) topBarH = topBarRef.current.getBoundingClientRect().height
+      const centroX = apriPannello
+        ? pannelloSx + (cRect.width - pannelloSx - pannelloW) / 2 - pannelloW * 0.25
+        : cRect.width / 2
+      const centroY = apriPannello
+        ? topBarH + (cRect.height - topBarH - pannelloH) / 2
+        : cRect.height / 2
       clamping = true
       camera.setState({ x: sState.x, y: sState.y, ratio: tRatio, angle: sState.angle })
       renderer.refresh()
@@ -4540,6 +4804,7 @@ function App() {
           nodoHoverAttivo = null
         }
         prodottoHoverAttivo = null
+        prodottoCandidatoTrascinamento = null
         if (prodottoInTrascinamento) {
           prodottoInTrascinamento = null
           camera.enable()
@@ -4553,20 +4818,30 @@ function App() {
       sigmaCanvas.addEventListener("mousedown", (e) => {
         mouseDownPos = { x: e.clientX, y: e.clientY }
         isDragging = false
-        if (zoomT() >= 0.98) {
+        prodottoCandidatoTrascinamento = null
+        if (zoomT() >= 0.95) {
           const rect = sigmaCanvas.getBoundingClientRect()
           const mx = e.clientX - rect.left, my = e.clientY - rect.top
           graph.forEachNode((node, attr) => {
             if (attr.tipo !== "prodotto") return
             const pos = posizioneVisivaNodo(node, attr)
             const r = Math.max(6, animated[node]?.r ?? STILE.zoom_prodotto_min)
-            if (Math.hypot(mx - pos.x, my - pos.y) <= r) prodottoInTrascinamento = node
+            if (Math.hypot(mx - pos.x, my - pos.y) <= r) prodottoCandidatoTrascinamento = node
           })
-          if (prodottoInTrascinamento) camera.disable()
+          // Non ancora un drag: si promuove il candidato solo se il mouse si
+          // sposta oltre la soglia (vedi mousemove) — così un click semplice
+          // sul pallino non viene mai "rubato" dal drag.
         }
       })
 
       sigmaCanvas.addEventListener("mousemove", (e) => {
+        if (prodottoCandidatoTrascinamento && !prodottoInTrascinamento) {
+          const dx = Math.abs(e.clientX - mouseDownPos.x), dy = Math.abs(e.clientY - mouseDownPos.y)
+          if (dx > 4 || dy > 4) {
+            prodottoInTrascinamento = prodottoCandidatoTrascinamento
+            camera.disable()
+          }
+        }
         if (prodottoInTrascinamento) {
           const rect = sigmaCanvas.getBoundingClientRect()
           const punto = renderer.viewportToGraph({ x: e.clientX - rect.left, y: e.clientY - rect.top })
@@ -4673,7 +4948,9 @@ function App() {
       })
 
       sigmaCanvas.addEventListener("mouseup", (e) => {
-        if (prodottoInTrascinamento) {
+        const eraDragReale = prodottoInTrascinamento !== null
+        prodottoCandidatoTrascinamento = null
+        if (eraDragReale) {
           prodottoInTrascinamento = null
           camera.enable()
           mouseDownPos = null
@@ -4941,22 +5218,31 @@ function App() {
           const t = e.touches[0]
           touchStartPos = { x: t.clientX, y: t.clientY }
           touchIsDragging = false
-          if (zoomT() >= 0.98) {
+          prodottoCandidatoTrascinamento = null
+          if (zoomT() >= 0.95) {
             const rect = sigmaCanvas.getBoundingClientRect()
             const mx = t.clientX - rect.left, my = t.clientY - rect.top
             graph.forEachNode((node, attr) => {
               if (attr.tipo !== "prodotto") return
               const pos = posizioneVisivaNodo(node, attr)
               const r = Math.max(12, animated[node]?.r ?? STILE.zoom_prodotto_min)
-              if (Math.hypot(mx - pos.x, my - pos.y) <= r) prodottoInTrascinamento = node
+              if (Math.hypot(mx - pos.x, my - pos.y) <= r) prodottoCandidatoTrascinamento = node
             })
-            if (prodottoInTrascinamento) camera.disable()
+            // Come per il mouse: promosso a drag reale solo oltre la soglia
+            // di movimento (vedi touchmove), non subito al touchstart.
           }
         } else {
           touchWasMultiTouch = true
         }
       }, { passive: true })
       sigmaCanvas.addEventListener("touchmove", (e) => {
+        if (prodottoCandidatoTrascinamento && !prodottoInTrascinamento && e.touches[0]) {
+          const dx = Math.abs(e.touches[0].clientX - touchStartPos.x), dy = Math.abs(e.touches[0].clientY - touchStartPos.y)
+          if (dx > 8 || dy > 8) {
+            prodottoInTrascinamento = prodottoCandidatoTrascinamento
+            camera.disable()
+          }
+        }
         if (prodottoInTrascinamento && e.touches[0]) {
           e.preventDefault()
           const rect = sigmaCanvas.getBoundingClientRect()
@@ -4991,6 +5277,7 @@ function App() {
         }
       }
       sigmaCanvas.addEventListener("touchend", (e) => {
+        prodottoCandidatoTrascinamento = null
         if (prodottoInTrascinamento) {
           prodottoInTrascinamento = null
           camera.enable()
@@ -5011,6 +5298,7 @@ function App() {
         }))
       })
       sigmaCanvas.addEventListener("touchcancel", (e) => {
+        prodottoCandidatoTrascinamento = null
         if (prodottoInTrascinamento) { prodottoInTrascinamento = null; camera.enable() }
         fineGestoTouch(e)
         touchStartPos = null; touchIsDragging = false
@@ -5030,7 +5318,7 @@ function App() {
   }, [])
 
   useEffect(() => {
-    if (window.innerWidth >= 768) return
+    if (!viewportMobile()) return
     if (!pannelloVisibile) {
       const bg = STILE.sfondo_colore
       document.documentElement.style.backgroundColor = bg
@@ -5049,7 +5337,9 @@ function App() {
   }
 
   function cambiaVista(modello) {
-    if (modello === vistaCorrente) return
+    // Il ref viene aggiornato nello stesso tick del click; lo state React può
+    // invece appartenere ancora al render precedente durante click rapidi.
+    if (modello === vistaCorrenteRef.current) return
     const timelineDestinazione = modello === "prodotti" ? false : timelineAttivaRef.current
     if (modello === "prodotti" && timelineAttivaRef.current) {
       setTimelineAttiva(false)
@@ -5337,11 +5627,11 @@ function App() {
           position: "fixed", inset: 0, zIndex: 1000,
           background: STILE.sfondo_colore, fontFamily: "Roboto, sans-serif",
           display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center",
-          padding: window.innerWidth < 768 ? "24px 36px" : 24, boxSizing: "border-box", textAlign: "center",
+          padding: viewportMobile() ? "24px 36px" : 24, boxSizing: "border-box", textAlign: "center",
         }}>
           <div style={{
             fontFamily: "'Roboto Serif', serif", fontWeight: 500, fontStyle: "italic",
-            fontSize: window.innerWidth < 768 ? 15 : 17, color: "#1a1a1a", marginBottom: 20, maxWidth: 360, lineHeight: 1.5,
+            fontSize: viewportMobile() ? 15 : 17, color: "#1a1a1a", marginBottom: 20, maxWidth: 360, lineHeight: 1.5,
             minHeight: "1.3em",
           }}>
             {t.benvenutoDomanda.slice(0, numLetterePronte)}
@@ -5404,7 +5694,7 @@ function App() {
           </div>
         </div>
       )}
-      {window.innerWidth < 768 && (
+      {viewportMobile() && (
         <div ref={topBarRef} style={{
           position: "fixed", top: 0, left: 0, right: 0, zIndex: 20, padding: "14px 16px",
           background: STILE.sfondo_colore, boxSizing: "border-box", overflowX: "hidden",
@@ -5481,7 +5771,7 @@ function App() {
         </div>
       )}
 
-      {window.innerWidth < 768 && ricerca.length > 1 && (() => {
+      {viewportMobile() && ricerca.length > 1 && (() => {
         const risultati = cercaEntita(ricerca)
         if (risultati.length === 0) return null
         const inputRect = inputRicercaMobileRef.current ? inputRicercaMobileRef.current.getBoundingClientRect() : null
@@ -5502,12 +5792,12 @@ function App() {
         )
       })()}
 
-      {window.innerWidth < 768 && menuApertoMobile && (
+      {viewportMobile() && menuApertoMobile && (
         <div onClick={chiudiMenu}
           style={{ position: "fixed", inset: 0, background: "rgba(0,0,0,0.25)", zIndex: 25 }} />
       )}
 
-      {window.innerWidth < 768 && (
+      {viewportMobile() && (
         <div style={{
           position: "fixed", top: 0, right: 0, bottom: 0, width: "78%", maxWidth: 320,
           background: "#ffffff", zIndex: 26, boxShadow: "-4px 0 24px rgba(0,0,0,0.15)",
@@ -5521,7 +5811,7 @@ function App() {
         </div>
       )}
 
-      {window.innerWidth >= 768 && altezzaFinestra >= SOGLIA_ALTEZZA_BANDA && (
+      {!viewportMobile() && altezzaFinestra >= SOGLIA_ALTEZZA_BANDA && (
         <div style={{
           position: "fixed", top: 0, left: 0, bottom: 0, width: 240 * uiScale,
           padding: `${20 * uiScale}px ${16 * uiScale}px`, boxSizing: "border-box",
@@ -5548,7 +5838,7 @@ function App() {
         </div>
       )}
 
-      {window.innerWidth >= 768 && (
+      {!viewportMobile() && (
         <div ref={topBarRef} style={{
           position: "fixed", top: 36 * uiScale, left: "50%",
           transform: `translateX(-50%) translateY(${chromeVisibile ? 0 : -10}px)`,
@@ -5613,7 +5903,7 @@ function App() {
         </div>
       )}
 
-      {window.innerWidth >= 768 && (
+      {!viewportMobile() && (
         <div style={{
           position: "fixed", top: 32 * uiScale, left: 24 * uiScale, zIndex: 210,
           opacity: chromeVisibile ? 1 : 0,
@@ -5637,12 +5927,12 @@ function App() {
         </div>
       )}
 
-      {window.innerWidth >= 768 && menuApertoDesktop && (
+      {!viewportMobile() && menuApertoDesktop && (
         <div onClick={chiudiMenu}
           style={{ position: "fixed", inset: 0, background: "rgba(0,0,0,0.15)", zIndex: 149 }} />
       )}
 
-      {window.innerWidth >= 768 && (
+      {!viewportMobile() && (
         <div style={{
           position: "fixed", top: 0, left: 0, bottom: 0, width: 340 * uiScale,
           background: "#ffffff", zIndex: 150, boxShadow: "4px 0 32px rgba(0,0,0,0.12)",
@@ -5705,22 +5995,22 @@ function App() {
         return (
           <div style={{
             position: "fixed", fontFamily: "Roboto, sans-serif", zIndex: 100,
-            background: (window.innerWidth < 768 && !pannelloVisibile) ? STILE.sfondo_colore : "#1a1a1a",
+            background: (viewportMobile() && !pannelloVisibile) ? STILE.sfondo_colore : "#1a1a1a",
             display: "flex", flexDirection: "column", overflow: "hidden",
-            transition: window.innerWidth < 768
+            transition: viewportMobile()
               ? "height 0.35s cubic-bezier(0.4, 0, 0.2, 1)"
               : "transform 0.35s cubic-bezier(0.4, 0, 0.2, 1)",
-            ...(window.innerWidth < 768
+            ...(viewportMobile()
               ? { left: 0, right: 0, bottom: 0, height: pannelloVisibile ? "40vh" : "0", borderRadius: "16px 16px 0 0", boxShadow: pannelloVisibile ? "0 -4px 32px rgba(0,0,0,0.3)" : "none" }
               : { top: 0, right: 0, bottom: 0, width: 340 * uiScale, boxShadow: "-4px 0 32px rgba(0,0,0,0.3)", transform: pannelloVisibile ? "translateX(0)" : "translateX(100%)" })
           }}>
-            <div style={{ flex: 1, overflowY: "auto", padding: window.innerWidth < 768 ? "16px 16px 24px" : "20px 28px 32px" }}>
-              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", paddingTop: window.innerWidth < 768 ? 0 : 12 }}>
+            <div style={{ flex: 1, overflowY: "auto", padding: viewportMobile() ? "16px 16px 24px" : "20px 28px 32px" }}>
+              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", paddingTop: viewportMobile() ? 0 : 12 }}>
                 <div>
-                  <div style={{ fontFamily: "'Roboto Serif', serif", fontWeight: 500, fontStyle: "italic", fontSize: window.innerWidth < 768 ? 17 : 20, color: "#ffffff", lineHeight: 1.2 }}>
+                  <div style={{ fontFamily: "'Roboto Serif', serif", fontWeight: 500, fontStyle: "italic", fontSize: viewportMobile() ? 17 : 20, color: "#ffffff", lineHeight: 1.2 }}>
                     {az.nome}
                   </div>
-                  <div style={{ fontFamily: "'Roboto Serif', serif", fontWeight: 400, fontStyle: "italic", fontSize: window.innerWidth < 768 ? 12 : 14, color: "rgba(255,255,255,0.65)", marginTop: 4 }}>
+                  <div style={{ fontFamily: "'Roboto Serif', serif", fontWeight: 400, fontStyle: "italic", fontSize: viewportMobile() ? 12 : 14, color: "rgba(255,255,255,0.65)", marginTop: 4 }}>
                     {periodo}{az.paese ? ` — ${az.paese}` : ""}
                   </div>
                 </div>
@@ -5731,7 +6021,7 @@ function App() {
               </div>
 
               {(az.descrizione || az.descrizione_en) && (
-                <p style={{ fontSize: window.innerWidth < 768 ? 12 : 13, fontWeight: 300, color: "rgba(255,255,255,0.85)", lineHeight: 1.5, margin: "16px 0 0" }}>
+                <p style={{ fontSize: viewportMobile() ? 12 : 13, fontWeight: 300, color: "rgba(255,255,255,0.85)", lineHeight: 1.5, margin: "16px 0 0" }}>
                   {lingua === "en" ? (az.descrizione_en || az.descrizione) : az.descrizione}
                 </p>
               )}
@@ -5765,12 +6055,12 @@ function App() {
         return (
         <div style={{
           position: "fixed", fontFamily: "Roboto, sans-serif", zIndex: 100,
-          background: (window.innerWidth < 768 && !pannelloVisibile) ? STILE.sfondo_colore : (scuro ? "#1a1a1a" : "#ffffff"),
+          background: (viewportMobile() && !pannelloVisibile) ? STILE.sfondo_colore : (scuro ? "#1a1a1a" : "#ffffff"),
           display: "flex", flexDirection: "column", overflow: "hidden",
-          transition: window.innerWidth < 768
+          transition: viewportMobile()
             ? "height 0.35s cubic-bezier(0.4, 0, 0.2, 1)"
             : "transform 0.35s cubic-bezier(0.4, 0, 0.2, 1)",
-          ...(window.innerWidth < 768
+          ...(viewportMobile()
             ? {
               left: 0, right: 0, bottom: 0,
               height: pannelloVisibile ? "40vh" : "0",
@@ -5783,8 +6073,8 @@ function App() {
               transform: pannelloVisibile ? "translateX(0)" : "translateX(100%)",
             })
         }}>
-          <div style={{ flex: 1, overflowY: "auto", padding: window.innerWidth < 768 ? "16px 16px 24px" : "20px 28px 32px" }}>
-            {window.innerWidth < 768 ? (
+          <div style={{ flex: 1, overflowY: "auto", padding: viewportMobile() ? "16px 16px 24px" : "20px 28px 32px" }}>
+            {viewportMobile() ? (
               <div style={{ display: "flex", gap: 14, marginBottom: 16 }}>
                 {(() => {
                   const galleria = [pannelloDesigner.foto, ...(pannelloDesigner.foto_dettaglio || [])]
@@ -5905,10 +6195,10 @@ function App() {
             {pannelloDesigner._tipo === "designer" && pannelloDesigner.bio && (() => {
               const bioTesto = lingua === "en" ? (pannelloDesigner.bio_en || pannelloDesigner.bio) : pannelloDesigner.bio
               return (
-              <div style={{ marginBottom: 0, ...(window.innerWidth < 768 ? { marginLeft: 104 } : {}) }}>
+              <div style={{ marginBottom: 0, ...(viewportMobile() ? { marginLeft: 104 } : {}) }}>
                 <div style={{ fontSize: 9, fontWeight: 600, color: "#266DD3", textTransform: "uppercase", letterSpacing: 1.5, marginBottom: 8 }}>{t.biografia}</div>
                 <div style={{
-                  fontSize: window.innerWidth < 768 ? 11 : 13, fontWeight: 300, color: scuro ? "#999" : "#666", lineHeight: 1.6,
+                  fontSize: viewportMobile() ? 11 : 13, fontWeight: 300, color: scuro ? "#999" : "#666", lineHeight: 1.6,
                 }}>
                   {bioTesto.split(/\n\n+/).map((par, i) => (
                     <p key={i} style={{ margin: i === 0 ? 0 : "10px 0 0" }}>{par}</p>
@@ -5925,7 +6215,7 @@ function App() {
               }).flatMap(p => [p.azienda, p.azienda_attuale]).filter(Boolean))]
               if (aziende.length === 0) return null
               return (
-                <div style={window.innerWidth < 768 ? { marginLeft: 104 } : {}}>
+                <div style={viewportMobile() ? { marginLeft: 104 } : {}}>
                   <hr style={{ border: "none", borderTop: `1px solid ${scuro ? "#333" : "#eee"}`, margin: "20px 0" }} />
                   <div style={{ fontSize: 9, fontWeight: 600, color: "#266DD3", textTransform: "uppercase", letterSpacing: 1.5, marginBottom: 10 }}>{t.aziende}</div>
                   <div style={{ display: "flex", flexWrap: "wrap", gap: 6 }}>
@@ -5952,7 +6242,7 @@ function App() {
               const legami = relazioni.filter((r) => r.designer_a === pannelloDesigner.nome || r.designer_b === pannelloDesigner.nome)
               if (legami.length === 0) return null
               return (
-                <div style={window.innerWidth < 768 ? { marginLeft: 104 } : {}}>
+                <div style={viewportMobile() ? { marginLeft: 104 } : {}}>
                   <hr style={{ border: "none", borderTop: `1px solid ${scuro ? "#333" : "#eee"}`, margin: "32px 0 20px" }} />
                   <div style={{ fontSize: 9, fontWeight: 600, color: "#266DD3", textTransform: "uppercase", letterSpacing: 1.5, marginBottom: 10 }}>{t.legami}</div>
                   <div style={{ display: "flex", flexDirection: "column", gap: 14 }}>
@@ -5993,8 +6283,8 @@ function App() {
             })()}
 
             {pannelloDesigner._tipo === "prodotto" && (
-              <div style={window.innerWidth < 768 ? { marginLeft: 104 } : {}}>
-                {pannelloDesigner.descrizione && !(window.innerWidth < 768) && (
+              <div style={viewportMobile() ? { marginLeft: 104 } : {}}>
+                {pannelloDesigner.descrizione && !(viewportMobile()) && (
                   <div style={{ marginBottom: 16 }}>
                     <div style={{ fontSize: 9, fontWeight: 600, color: "#aaa", textTransform: "uppercase", letterSpacing: 1.5, marginBottom: 8 }}>{t.descrizioneLabel}</div>
                     <p style={{ fontSize: 13, fontWeight: 300, color: "#666", lineHeight: 1.6, margin: 0 }}>
@@ -6107,7 +6397,7 @@ function App() {
         )
       })()}
 
-      {popup && window.innerWidth >= 768 && (
+      {popup && !viewportMobile() && (
         <div style={{
           position: "fixed", top: 0, right: 0, bottom: 0, width: 340 * uiScale,
           background: "#1a1a1a", boxShadow: "-4px 0 32px rgba(0,0,0,0.3)",
