@@ -25,6 +25,40 @@ import coloriImmaginiPrecalcolati from "./data/colori_immagini.json"
 
 const IMMAGINI_ESISTENTI = new Set(immaginiEsistentiArr)
 
+function seoSlugBase(value) {
+  const slug = String(value).normalize("NFD").replace(/[\u0300-\u036f]/g, "")
+    .toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "") || "voce"
+  return /^(con|prn|aux|nul|com[1-9]|lpt[1-9])(?:\.|$)/i.test(slug) ? `voce-${slug}` : slug
+}
+
+function seoSlugs(items) {
+  const usati = new Map()
+  return items.map((item) => {
+    const base = seoSlugBase(item.nome)
+    const numero = (usati.get(base) || 0) + 1
+    usati.set(base, numero)
+    return numero === 1 ? base : `${base}-${numero}`
+  })
+}
+
+const SEO_ENTITA = {
+  designer: { items: designers, slugs: seoSlugs(designers) },
+  prodotto: { items: prodotti, slugs: seoSlugs(prodotti) },
+  azienda: { items: aziendeData, slugs: seoSlugs(aziendeData) },
+}
+
+function indiceEntitaSeo(tipo, dati) {
+  const gruppo = SEO_ENTITA[tipo]
+  if (!gruppo) return -1
+  return gruppo.items.findIndex((item) => item.nome === dati.nome
+    && (tipo !== "prodotto" || item.foto === dati.foto))
+}
+
+function percorsoEntitaSeo(tipo, dati) {
+  const indice = indiceEntitaSeo(tipo, dati)
+  return indice >= 0 ? `/${tipo}/${SEO_ENTITA[tipo].slugs[indice]}/` : "/esplora/"
+}
+
 // Designer con pochi prodotti a catalogo (spesso una singola collaborazione con
 // una figura più nota): il loro pallino viene rimpicciolito leggermente, vedi
 // STILE.designer_scala_secondario e SOGLIA_DESIGNER_SECONDARIO.
@@ -1131,6 +1165,7 @@ function App() {
   const [legameEvidenziato, setLegameEvidenziato] = useState(null)
   const legameEvidenziatoRef = useRef(null)
   const [centraFn, setCentraFn] = useState(null)
+  const hashInizialeGestitoRef = useRef(false)
   const [evidenziaLegameFn, setEvidenziaLegameFn] = useState(null)
   const [resetVistaFn, setResetVistaFn] = useState(null)
 
@@ -5352,6 +5387,29 @@ function App() {
     if (animaTransizioneFn) animaTransizioneFn(modello, timelineDestinazione)
   }
 
+  // Le pagine HTML del catalogo rimandano alla posizione corrispondente
+  // nella mappa tramite hash stabili, senza introdurre un router né cambiare
+  // il funzionamento della SPA per le visite normali.
+  useEffect(() => {
+    if (!centraFn || hashInizialeGestitoRef.current) return
+    const match = window.location.hash.match(/^#(designer|prodotto|azienda)-(.+)$/)
+    if (!match) return
+    const [, tipo, slug] = match
+    const gruppo = SEO_ENTITA[tipo]
+    const indice = gruppo?.slugs.indexOf(decodeURIComponent(slug)) ?? -1
+    if (indice < 0) return
+    hashInizialeGestitoRef.current = true
+    const entita = gruppo.items[indice]
+    setSchermataIniziale(false)
+    const cambioVistaNecessario = (tipo === "designer" && vistaCorrenteRef.current !== "designer")
+      || (tipo === "azienda" && vistaCorrenteRef.current !== "aziende")
+    if (tipo === "designer") cambiaVista("designer")
+    if (tipo === "azienda") cambiaVista("aziende")
+    const ritardo = cambioVistaNecessario ? 1000 : 80
+    const id = setTimeout(() => centraFn(entita.nome, tipo), ritardo)
+    return () => clearTimeout(id)
+  }, [centraFn])
+
   // Selezionare un risultato di ricerca porta sempre alla vista giusta per
   // vederlo: un designer non è visibile in vista aziende (e viceversa), quindi
   // invece di limitare cosa si può cercare in base alla vista corrente, si
@@ -6026,6 +6084,10 @@ function App() {
                 </p>
               )}
 
+              <a href={percorsoEntitaSeo("azienda", az)} style={{ display: "inline-block", marginTop: 14, fontSize: 11, color: "rgba(255,255,255,0.72)", textUnderlineOffset: 3 }}>
+                {lingua === "en" ? "Read the text entry" : "Leggi la scheda testuale"} ↗
+              </a>
+
               {prodottiAzienda.length > 0 && (
                 <div style={{ marginTop: 20 }}>
                   <div style={{ fontSize: 11, fontWeight: 600, color: "rgba(255,255,255,0.5)", textTransform: "uppercase", letterSpacing: 1, marginBottom: 8 }}>
@@ -6191,6 +6253,10 @@ function App() {
                 })()}
               </div>
             )}
+
+            <a href={percorsoEntitaSeo(pannelloDesigner._tipo, pannelloDesigner)} style={{ display: "inline-block", marginBottom: 18, fontSize: 11, color: scuro ? "#aaa" : "#666", textUnderlineOffset: 3 }}>
+              {lingua === "en" ? "Read the text entry" : "Leggi la scheda testuale"} ↗
+            </a>
 
             {pannelloDesigner._tipo === "designer" && pannelloDesigner.bio && (() => {
               const bioTesto = lingua === "en" ? (pannelloDesigner.bio_en || pannelloDesigner.bio) : pannelloDesigner.bio
