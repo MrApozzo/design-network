@@ -829,5 +829,19 @@
     "fondata": 1955,
     "settore": "arredo",
     "descrizione": "Azienda italiana di arredo attiva dagli anni '50."
+  },
+  {
+    "nome": "Luceplan",
+    "paese": "Italia",
+    "fondata": 1978,
+    "settore": "illuminazione",
+    "descrizione": "Azienda milanese di illuminazione fondata da Riccardo Sarfatti, Paolo Rizzatto e Sandra Severi, eredi dell'esperienza Arteluce di Gino Sarfatti."
+  },
+  {
+    "nome": "Baleri Italia",
+    "paese": "Italia",
+    "fondata": 1984,
+    "settore": "arredo",
+    "descrizione": "Azienda bergamasca di arredo fondata da Enrico Baleri e Marilisa Decimo, nota per le collaborazioni con Starck, Hollein, Mendini e Dalisi."
   }
 ]

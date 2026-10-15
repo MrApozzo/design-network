@@ -493,7 +493,7 @@
       "Cini Boeri",
       "Tomu Katayanagi"
     ],
-    "azienda": "Fiam Italia",
+    "azienda": "Fiam",
     "azienda_attuale": "Fiam Italia",
     "categoria": "poltrona",
     "foto": "boeri-katayanagi-ghost.jpg",
@@ -16615,5 +16615,40 @@
     "azienda": "O Luce",
     "categoria": "lampada da terra",
     "foto": "magistretti-pascal.jpg"
+  },
+  {
+    "nome": "Menhir",
+    "anno": 1983,
+    "designer": [
+      "Giotto Stoppino",
+      "Lodovico Acerbis"
+    ],
+    "azienda": "Acerbis",
+    "categoria": "tavolino",
+    "foto": "stoppino-acerbis-menhir.jpg"
+  },
+  {
+    "nome": "Richard III",
+    "anno": 1985,
+    "designer": "Philippe Starck",
+    "azienda": "Baleri Italia",
+    "categoria": "poltrona",
+    "foto": "starck-richardiii.jpg"
+  },
+  {
+    "nome": "Costanza",
+    "anno": 1986,
+    "designer": "Paolo Rizzatto",
+    "azienda": "Luceplan",
+    "categoria": "lampada",
+    "foto": "rizzatto-costanza.jpg"
+  },
+  {
+    "nome": "Tappeto Volante",
+    "anno": 1989,
+    "designer": "Enzo Mari",
+    "azienda": "Flou",
+    "categoria": "letto",
+    "foto": "mari-tappetovolante.jpg"
   }
 ]

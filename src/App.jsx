@@ -853,7 +853,7 @@ const TESTI = {
     paragrafo1: "Questa mappa rappresenta un secolo di design occidentale — i suoi protagonisti, le loro opere e i legami invisibili che li uniscono. Ogni nodo è un designer o un oggetto; ogni connessione, una relazione di collaborazione, influenza o formazione.",
     paragrafo2: "La posizione orizzontale segue una cronologia rigorosa, dal 1880 al 1980. Esplorando la mappa si scoprono le grandi concentrazioni del movimento moderno, le filiazioni tra maestri e allievi, e le convergenze tra discipline e nazionalità.",
     cerca: "Cerca...",
-    benvenutoDomanda: "Qual è il designer che ha disegnato il mondo in cui vorresti vivere?",
+    benvenutoDomanda: "Quale designer ha disegnato il mondo in cui vorresti vivere?",
     benvenutoConferma: "Entra",
     benvenutoCercaLabel: "cerca",
     aziendeToggle: "Aziende",
@@ -5277,36 +5277,12 @@ function App() {
           }
         } else {
 
-          const avevaPannello = (designerCliccato !== null || prodottoCliccato !== null) && !primoClickFuoriDesigner
-          if (isMobile && avevaPannello) {
-            // State 2 → State 3: chiudi pannello, mantieni designer isolato con edges visibili
-            const nodoDaEvidenziare = prodottoCliccato || designerCliccato
-            primoClickFuoriDesigner = true
-            setPannelloVisibile(false)
-            setDesignerAttivo(null)
-            legameEvidenziatoRef.current = null; setLegameEvidenziato(null)
-            if (nodoDaEvidenziare) {
-              nodoEvidenziatoRef.current = nodoDaEvidenziare
-              setNodoEvidenziato(nodoDaEvidenziare)
-              ultimoProdottoHover = prodottoCliccato || ultimoProdottoHover
-            }
-            prodottoCliccato = null
-            richiediDisegnoOverlay(18)
-            return
-          }
-          if (isMobile && primoClickFuoriDesigner) {
-            // State 3 → State 1: deseleziona tutto
-            primoClickFuoriDesigner = false
-            designerCliccato = null
-            nodoEvidenziatoRef.current = null; setNodoEvidenziato(null)
-            legameEvidenziatoRef.current = null; setLegameEvidenziato(null)
-            aziendaAttivaRef.current = null; setAziendaAttiva(null); aziendaGlobaleRef.current = false
-            annoBloccato = null
-            setPannelloDesigner(null)
-            graph.forEachEdge((edge, attr) => { if (attr.tipo === "relazione") graph.setEdgeAttribute(edge, "attivo", false) })
-            setPopup(null)
+          if (isMobile && (designerCliccato !== null || prodottoCliccato !== null || primoClickFuoriDesigner)) {
+            // Un solo click fuori deseleziona subito designer e prodotto
+            // (niente più stato intermedio "pannello chiuso ma nodo isolato").
+            ultimoProdottoHover = null
             if (cameraPrimaDiClick) { animaCamera(cameraPrimaDiClick, 500); cameraPrimaDiClick = null }
-            richiediDisegnoOverlay(18)
+            deselezionaTutto()
             return
           }
           if (isMobile && nodoEvidenziatoRef.current) {

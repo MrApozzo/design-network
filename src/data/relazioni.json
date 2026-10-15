@@ -342,5 +342,21 @@
     "categoria": "personale",
     "descrizione": "Fratelli: Joe progettista industriale, Gianni artista cinetico fondatore del Gruppo T. Hanno condiviso studi adiacenti a Milano",
     "descrizione_en": "Brothers: Joe was an industrial designer, Gianni a kinetic artist and founder of Gruppo T. They shared adjacent studios in Milan"
+  },
+  {
+    "designer_a": "Giotto Stoppino",
+    "designer_b": "Lodovico Acerbis",
+    "tipo": "collaborazione",
+    "categoria": "professionale",
+    "descrizione": "Dal 1977 hanno firmato insieme per circa quindici anni i mobili Acerbis, tra cui il tavolino Menhir",
+    "descrizione_en": "From 1977 they co-designed Acerbis furniture for about fifteen years, including the Menhir coffee table"
+  },
+  {
+    "designer_a": "Gino Sarfatti",
+    "designer_b": "Paolo Rizzatto",
+    "tipo": "successione",
+    "categoria": "professionale",
+    "descrizione": "Rizzatto fonda Luceplan nel 1978 raccogliendo l'eredità dell'esperienza Arteluce di Gino Sarfatti",
+    "descrizione_en": "Rizzatto founded Luceplan in 1978, carrying forward the legacy of Gino Sarfatti's Arteluce"
   }
 ]
