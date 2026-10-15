@@ -1,0 +1,510 @@
+{
+  "date": "2026-10-15",
+  "products": 15,
+  "images": 17,
+  "policy": "Foto esistenti su bianco, identità verificata, vista frontale o tre quarti coerente; nessuno scontorno o generazione. Solo ritaglio rettangolare, ridimensionamento e margini bianchi.",
+  "images_approved": [
+    {
+      "name": "Tolomeo",
+      "raw": "tolomeo-smow.jpg",
+      "file": "lucchi-tolomeo.jpg",
+      "page": "https://www.smow.com/artemide/tolomeo-tavolo.html",
+      "source": "smow",
+      "note": "Versione classica in alluminio, con base circolare; vista laterale coerente con il braccio articolato.",
+      "source_size": [
+        960,
+        900
+      ],
+      "image_url": "https://www.smow.com/pics/at-002-000/artemide-tolomeo-tavolo-aluminium-001_zoom.jpg",
+      "source_sha256": "dc230835bb0f51edd6709ac8a4c157ea06b3eaee1487cc6a471d2b8d51793cff",
+      "final_sha256": "f2a35d5342af252f10c179fa87321ee95e40cf31fcc5bb6dee54db70de52a3ab",
+      "final_size": [
+        1100,
+        1100
+      ],
+      "source_crop": [
+        133,
+        45,
+        749,
+        859
+      ],
+      "scale": 1.01978,
+      "circle_clipped_pixels": 0,
+      "status": "approved_visual",
+      "original_file": "originali/lucchi-tolomeo.jpg"
+    },
+    {
+      "name": "Elettra",
+      "raw": "elettra-0.jpg",
+      "file": "belgiojoso-elettra.jpg",
+      "page": "https://www.arflex.it/us/it/elettra",
+      "source": "Arflex",
+      "note": "Sedia senza braccioli, singolo esemplare su bianco; non confusa con la poltrona Elettra.",
+      "source_size": [
+        1600,
+        900
+      ],
+      "image_url": "https://www.arflex.it/media/01_global-content/00-catalogue/03-chairs-stools/elettra-sedia/arflex-elettra-chair-08.jpg",
+      "source_sha256": "24d262b33236ed594a70008d79cb92525f94c725d5f3781fd6becd2713b7be95",
+      "final_sha256": "c6f563432a4263cdfc54c5050d011bb8d6951672a3dfe47143465a5fe0d89b14",
+      "final_size": [
+        1100,
+        1100
+      ],
+      "source_crop": [
+        625,
+        241,
+        1070,
+        771
+      ],
+      "scale": 1.5323,
+      "circle_clipped_pixels": 0,
+      "status": "approved_visual",
+      "original_file": "originali/belgiojoso-elettra.jpg"
+    },
+    {
+      "name": "Autoprogettazione",
+      "raw": "autoprogettazione.jpg",
+      "file": "mari-autoprogettazione.jpg",
+      "page": "https://www.gallerialuisadellepiane.it/project/1123xf-by-enzo-mari/",
+      "source": "Galleria Luisa Delle Piane",
+      "note": "Tavolo 1123XF, collezione Autoprogettazione, edizione Simon: la pagina identifica autore, collezione ed edizione.",
+      "source_size": [
+        2000,
+        1352
+      ],
+      "image_url": "https://www.gallerialuisadellepiane.it/wp-content/uploads/2016/05/mariTavolo2WEB.jpg",
+      "source_sha256": "5397215b9c4de03cb245a5d67df04da1fa94265f712f0970decb1f484d53a827",
+      "final_sha256": "38538001bcbc4f65701a8c73fb51c11f98848aba197112cea218cfa3deeb338a",
+      "final_size": [
+        1100,
+        1100
+      ],
+      "source_crop": [
+        25,
+        49,
+        1992,
+        1309
+      ],
+      "scale": 0.43818,
+      "circle_clipped_pixels": 0,
+      "status": "approved_visual",
+      "original_file": "originali/mari-autoprogettazione.jpg"
+    },
+    {
+      "name": "Luminator",
+      "raw": "luminator.jpg",
+      "file": "castiglioni-luminator.jpg",
+      "page": "https://flos.com/en/us/luminator/M-luminator.html",
+      "source": "Flos",
+      "note": "Packshot ufficiale, antracite, lampada completa con treppiede.",
+      "source_size": [
+        1500,
+        1500
+      ],
+      "image_url": "https://flos.com/dw/image/v2/BFXX_PRD/on/demandware.static/-/Sites-FLOS-master/default/dwafe0a672/images/packshot/DECORATIVE/DECORATIVE_FLOOR_LUMINATOR/FU377233/Flos-Pim-Image-Luminaire-Floor-Luminator-Anthracite.jpg?sw=1500&bgcolor=FFFFFF",
+      "source_sha256": "c6a2423bb2e27d5167fa256b3b458114b1c9220fa3d50781ee0c82c1df8b1f83",
+      "final_sha256": "20949ce87f9f0e53d27353e9706d8f0e563a122cf96cbdf4a177fbab42df7778",
+      "final_size": [
+        1100,
+        1100
+      ],
+      "source_crop": [
+        578,
+        444,
+        926,
+        1450
+      ],
+      "scale": 0.95922,
+      "circle_clipped_pixels": 0,
+      "status": "approved_visual",
+      "original_file": "originali/castiglioni-luminator.jpg"
+    },
+    {
+      "name": "Le Bambole Armchair",
+      "raw": "bambola-5.jpg",
+      "file": "bellini-le-bambole-armchair.jpg",
+      "page": "https://www.bebitalia.com/it-it/it-le-bambole-poltrone.html",
+      "source": "B&B Italia",
+      "note": "Bambola, poltrona singola della collezione Le Bambole, rosso, vista a tre quarti; riedizione attuale ufficiale.",
+      "source_size": [
+        2549,
+        1500
+      ],
+      "image_url": "https://www.bebitalia.com/media/catalog/product/S/l/Slider_5_235336_bebitalia_armchair_Le-Bambole-22_07.jpg",
+      "source_sha256": "8850e3b2ae04d0d61676c55542ba29e905b03cadac10f8177134476cc11b33a5",
+      "final_sha256": "487f33d255ec9d2c09f7ad168ca65b66e979b003324d4e3100cd3a243e6b71fc",
+      "final_size": [
+        1100,
+        1100
+      ],
+      "source_crop": [
+        810,
+        643,
+        1734,
+        1318
+      ],
+      "scale": 0.92408,
+      "circle_clipped_pixels": 0,
+      "status": "approved_visual",
+      "original_file": "originali/bellini-le-bambole-armchair.jpg"
+    },
+    {
+      "name": "Miss Sissi",
+      "raw": "misssissi.jpg",
+      "file": "starck-misssissi.jpg",
+      "page": "https://www.elsidistribuzione.it/flos/117590-flos-lampada-da-tavolo-miss-sissi-e14-60w-820lm-blu-sku-f6250014.html",
+      "source": "Elsi Distribuzione",
+      "note": "Versione blu, codice Flos F6250014; vista frontale.",
+      "source_size": [
+        1100,
+        1422
+      ],
+      "image_url": "https://www.elsidistribuzione.it/84084-thickbox_default/flos-lampada-da-tavolo-miss-sissi-e14-60w-820lm-blu-sku-f6250014.jpg",
+      "source_sha256": "df16839c33a0fe72de6c88d98369de676699b8a5175e0d43054e9e7df1e0abe3",
+      "final_sha256": "2539bbfa0d8086483c05dd6f79fe1ccfebb412b8d563dc4d2b13632cf9cd9af4",
+      "final_size": [
+        1100,
+        1100
+      ],
+      "source_crop": [
+        372,
+        362,
+        743,
+        1086
+      ],
+      "scale": 1.35159,
+      "circle_clipped_pixels": 0,
+      "status": "approved_visual",
+      "original_file": "originali/starck-misssissi.png"
+    },
+    {
+      "name": "La Marie",
+      "raw": "lamarie-angle.jpg",
+      "file": "starck-lamarie.jpg",
+      "page": "https://www.kartell.com/it/it/ktit/shop/product/la-marie-2-sedie/kar04850b4",
+      "source": "Kartell",
+      "note": "Versione cristallo, singola sedia vista a tre quarti; più leggibile della sola vista frontale.",
+      "source_size": [
+        1571,
+        2000
+      ],
+      "image_url": "https://d3trhmpc56lg1h.cloudfront.net/IMG/KARTELL/PRODUCTS/HD/KAR04850B4_1.jpg",
+      "source_sha256": "d2954b6de5fb348fcae3b4a7d25b848f59c072828b2adc4d94e13197dbc744e9",
+      "final_sha256": "379b8dbb6198f9a5eb7b831c53290315c9384e45e01582ad09e706a9f16102f0",
+      "final_size": [
+        1100,
+        1100
+      ],
+      "source_crop": [
+        352,
+        445,
+        1251,
+        1955
+      ],
+      "scale": 0.59232,
+      "circle_clipped_pixels": 0,
+      "status": "approved_visual",
+      "original_file": "originali/starck-lamarie.jpg"
+    },
+    {
+      "name": "DSW",
+      "raw": "dsw.jpg",
+      "file": "eames-dsw.jpg",
+      "page": "https://www.smow.com/charles-ray-eames/eames-plastic-side-chair-re-dsw.html",
+      "source": "smow",
+      "note": "Produzione Vitra, scocca non imbottita e base in legno con tiranti neri; corretta DSW, non Lounge Chair.",
+      "source_size": [
+        1250,
+        1600
+      ],
+      "image_url": "https://www.smow.com/pics/w3840/bd6c3a40/vt-035-000/vitra-eames-dsw-23-ohne-polsterung-ohne-polsterung-43cm-wy.jpg",
+      "source_sha256": "c6623f76f5e6b931bb6579c015ef4007b97215ee357c9570044cc397d5a81b44",
+      "final_sha256": "b0f212fc4cad77231e5a71ffaac18738a4b315608f973c7915beecb2f989c1f9",
+      "final_size": [
+        1100,
+        1100
+      ],
+      "source_crop": [
+        58,
+        11,
+        1176,
+        1595
+      ],
+      "scale": 0.55387,
+      "circle_clipped_pixels": 0,
+      "status": "approved_visual",
+      "original_file": "originali/eames-dsw.jpg"
+    },
+    {
+      "name": "Monachella",
+      "raw": "monachella.jpg",
+      "file": "cacciadominioni-monachella.jpg",
+      "page": "https://shop.mohd.it/it/monachella-lampada-da-terra.html",
+      "source": "Mohd",
+      "note": "Azucena, lampada completa su bianco, paralume conico nero.",
+      "source_size": [
+        1200,
+        900
+      ],
+      "image_url": "https://cdn.mohd.it/cache/image/width=1200,format=webp/media/catalog/product/m/o/monachella-floor-lamp-azucena.jpg",
+      "source_sha256": "8803dc9d127c0055325728e5b68b9aef08674cde72f9203f0567ab9bbb10c127",
+      "final_sha256": "c8473177b70153299c11bd703e3507d9820158c25bf97f67f1e1bfd19a777b6a",
+      "final_size": [
+        1100,
+        1100
+      ],
+      "source_crop": [
+        515,
+        20,
+        722,
+        890
+      ],
+      "scale": 1.14251,
+      "circle_clipped_pixels": 0,
+      "status": "approved_visual",
+      "original_file": "originali/cacciadominioni-monachella.jpg"
+    },
+    {
+      "name": "Olimpino",
+      "raw": "olimpino-clean.jpg",
+      "file": "parisi-olimpino.jpg",
+      "page": "https://www.bredaquaranta.it/it/catalogue/tavolo-cassina-olimpino-4999.htm",
+      "source": "Bredaquaranta",
+      "note": "Riedizione Cassina 815 del progetto di Ico Parisi: piano in vetro e caratteristici montanti a Y. Il produttore storico nel catalogo non è stato modificato.",
+      "source_size": [
+        600,
+        349
+      ],
+      "image_url": "https://www.bredaquaranta.it/public/prodotti/4999-cassina-815-olimpino-1-870.webp",
+      "source_sha256": "79d6cd4d55d3767e48121188ad98b4c33bb9df4618325b7baadcd7c6cf3019f6",
+      "final_sha256": "309e357b8d742237105eb7ad26f6bacce2505fb1d5ee7aa74fed736b0e1392f9",
+      "final_size": [
+        1100,
+        1100
+      ],
+      "source_crop": [
+        38,
+        101,
+        562,
+        274
+      ],
+      "scale": 1.85151,
+      "circle_clipped_pixels": 0,
+      "status": "approved_visual",
+      "original_file": "originali/parisi-olimpino.webp"
+    },
+    {
+      "name": "Nitia",
+      "raw": "nitia-original.jpg",
+      "file": "bonetto-nitia.jpg",
+      "page": "https://www.diffusioneshop.com/it/iguzzini-nitia-lampada-da-tavolo-led",
+      "source": "Diffusione Luce",
+      "note": "Versione nera della riedizione iGuzzini; foto su bianco preferita al packshot ufficiale su grigio chiaro.",
+      "source_size": [
+        1000,
+        1000
+      ],
+      "image_url": "https://www.diffusioneshop.com/142247/iguzzini-nitia-led-table-lamp.jpg",
+      "source_sha256": "4f9d7d08df1be43b8cea28810f2111eae5b86058e8e48414b512689e825d3207",
+      "final_sha256": "8d60a6b3a848547287b80143186667fe108e3f249ca7b7e1270e03a642ee6f0e",
+      "final_size": [
+        1100,
+        1100
+      ],
+      "source_crop": [
+        304,
+        223,
+        696,
+        778
+      ],
+      "scale": 1.56004,
+      "circle_clipped_pixels": 0,
+      "status": "approved_visual",
+      "original_file": "originali/bonetto-nitia.jpg"
+    },
+    {
+      "name": "Polo",
+      "raw": "polo.jpg",
+      "file": "bonetto-polo.jpg",
+      "page": "https://www.olivari.it/en/door-handles/polo/",
+      "source": "Olivari",
+      "note": "Maniglia Polo di Rodolfo Bonetto, finitura cromo, foto ufficiale completa di rosetta.",
+      "source_size": [
+        580,
+        335
+      ],
+      "image_url": "https://www.olivari.it/wp-content/uploads/2017/03/polo_CR.jpg",
+      "source_sha256": "a0bdb96e4e406b07d97db88bd959adbdb234c9f9a179fc839b92f3d3c1a14086",
+      "final_sha256": "30877d815e9a67495d6ed63143909e91566e9e7f0249aa89c2eeddcc672a38f8",
+      "final_size": [
+        1100,
+        1100
+      ],
+      "source_crop": [
+        0,
+        54,
+        580,
+        280
+      ],
+      "scale": 1.6603,
+      "circle_clipped_pixels": 0,
+      "status": "approved_visual",
+      "original_file": "originali/bonetto-polo.jpg"
+    },
+    {
+      "name": "Vol Au Vent",
+      "raw": "volauvent-angle.jpg",
+      "file": "bellini-vol-au-vent.jpg",
+      "page": "https://www.bebitalia.com/it-it/it-vol-au-vent-sedie.html",
+      "source": "B&B Italia",
+      "note": "Sedia rossa senza braccioli: ritaglio rettangolare dalla fotografia ufficiale di due sedie. Oggetto e sfondo conservati, nessuno scontorno.",
+      "crop": [
+        1300,
+        600,
+        1780,
+        1350
+      ],
+      "source_size": [
+        2549,
+        1500
+      ],
+      "image_url": "https://www.bebitalia.com/media/catalog/product/S/l/Slider_1_422_bebitalia_chair_Vol-Au-Vent_01.jpg",
+      "source_sha256": "d4aa3c4fcc2ff43a0db01996b17a2a198c25d645ca9408b05803eff71fdb54b1",
+      "final_sha256": "852f39b2ffb78149e9ced10cfcf982358c49dc4d1f2bf10a26fbb6461ef54710",
+      "final_size": [
+        1100,
+        1100
+      ],
+      "source_crop": [
+        4,
+        40,
+        436,
+        696
+      ],
+      "scale": 1.29704,
+      "circle_clipped_pixels": 0,
+      "status": "approved_visual",
+      "original_file": "originali/bellini-vol-au-vent.jpg"
+    },
+    {
+      "name": "Cab 412",
+      "raw": "cab412.jpg",
+      "file": "bellini-cab-412.jpg",
+      "page": "https://shop.mohd.it/it/412-cab-sedia.html",
+      "source": "Mohd",
+      "note": "Sedia Cab 412 senza braccioli, cuoio naturale, vista a tre quarti.",
+      "source_size": [
+        1200,
+        900
+      ],
+      "image_url": "https://cdn.mohd.it/cache/image/width=1200,format=webp/media/catalog/product/4/1/412-cab-chair-25-cassina.jpg",
+      "source_sha256": "4d952ff6fbbcd63e99f18b83c3eb1dcabfc0c542cc22edd58e6b2ed2acefd37c",
+      "final_sha256": "d2b8bfec56976131100b9eb670500742fb6e054950ca8396e64a6546f2bf7eec",
+      "final_size": [
+        1100,
+        1100
+      ],
+      "source_crop": [
+        268,
+        31,
+        992,
+        881
+      ],
+      "scale": 0.98758,
+      "circle_clipped_pixels": 0,
+      "status": "approved_visual",
+      "original_file": "originali/bellini-cab-412.webp"
+    },
+    {
+      "name": "Pileino",
+      "raw": "pileino-alt.jpg",
+      "file": "aulenti-pileino.jpg",
+      "page": "https://www.1stdibs.com/it/arredi/illuminazione/lampade-da-tavolo/lampada-da-tavolo-pileino-di-gae-aulenti-per-artemide-anni-70/id-f_39412232/",
+      "source": "1stDibs",
+      "note": "Artemide, Gae Aulenti: versione bianca spenta, vista a tre quarti. Fotografia vintage già pubblicata su bianco dal rivenditore; lieve patina della base conservata.",
+      "source_size": [
+        2080,
+        2080
+      ],
+      "image_url": "https://a.1stdibscdn.com/pileino-table-lamp-by-gae-aulenti-for-artemide-1970s-for-sale/f_48532/f_394122321713965179087/f_39412232_1713965179681_bg_processed.jpg",
+      "source_sha256": "4fb8ce436fab3c26f8c15e7f36ca2b9326e4cd92d0e95bbade1c6e324a2d8dfa",
+      "final_sha256": "125b9303ffa9aa366a169ff6e0779e61dc4f3e456572a8f739af606c37b36651",
+      "final_size": [
+        1100,
+        1100
+      ],
+      "source_crop": [
+        343,
+        2,
+        1735,
+        2077
+      ],
+      "scale": 0.43821,
+      "circle_clipped_pixels": 0,
+      "status": "approved_visual",
+      "original_file": "originali/aulenti-pileino.jpg"
+    },
+    {
+      "name": "Le Bambole Armchair — frontale",
+      "raw": "bambola-4.jpg",
+      "file": "bellini-le-bambole-armchair2.jpg",
+      "page": "https://www.bebitalia.com/it-it/it-le-bambole-poltrone.html",
+      "source": "B&B Italia",
+      "secondary": true,
+      "note": "Stessa finitura rossa della principale, vista frontale per lo slideshow.",
+      "source_size": [
+        2549,
+        1500
+      ],
+      "image_url": "https://www.bebitalia.com/media/catalog/product/S/l/Slider_4_235336_bebitalia_armchair_Le-Bambole-22_02.jpg",
+      "source_sha256": "a1c6dd1d6a92c68eaf78e7b2a2283014fd4d31f66dc56f82e7c66b68bbbedbfd",
+      "final_sha256": "f097b7c2cd1419a826336e740db3771a0ebdc964e1673aaa8df9b164bfd7a187",
+      "final_size": [
+        1100,
+        1100
+      ],
+      "source_crop": [
+        810,
+        650,
+        1741,
+        1302
+      ],
+      "scale": 0.96197,
+      "circle_clipped_pixels": 0,
+      "status": "approved_visual",
+      "original_file": "originali/bellini-le-bambole-armchair2.jpg"
+    },
+    {
+      "name": "La Marie — frontale",
+      "raw": "lamarie-full.jpg",
+      "file": "starck-lamarie2.jpg",
+      "page": "https://www.kartell.com/it/it/ktit/shop/product/la-marie-2-sedie/kar04850b4",
+      "source": "Kartell",
+      "secondary": true,
+      "note": "Vista frontale ufficiale per lo slideshow.",
+      "source_size": [
+        1571,
+        2000
+      ],
+      "image_url": "https://d3trhmpc56lg1h.cloudfront.net/IMG/KARTELL/PRODUCTS/HD/KAR04850B4.jpg",
+      "source_sha256": "1e5fc2e994b7a1e99840c1541d7c1272fcd72df9fa852f0b2cfb73bcf1a4e4f4",
+      "final_sha256": "2dc84a6ec68d640dfe46d074ddf0245a8c0102dc3d837baee94fe09a9eb44198",
+      "final_size": [
+        1100,
+        1100
+      ],
+      "source_crop": [
+        496,
+        585,
+        1077,
+        1942
+      ],
+      "scale": 0.69229,
+      "circle_clipped_pixels": 0,
+      "status": "approved_visual",
+      "original_file": "originali/starck-lamarie2.jpg"
+    }
+  ],
+  "originals_storage": "Originali e audit completo conservati nella copia locale del progetto, non distribuiti con il sito."
+}

@@ -514,3 +514,33 @@ corrente+nodo+indice, non `Math.random`) così il profilo resta irregolare
 - La vista Prodotti non disegna collegamenti Designer/Azienda né contorni dei collettivi. La scala dedicata porta i pallini da 5,2 px allo 0% a 12 px al 50% e 18 px al 100%; i nomi raggiungono 2,3 volte la scala iniziale già al 50%.
 - Il passaggio fra la scala dedicata Prodotti e quella Designer/Aziende segue il crossfade dei nodi, evitando cambi di raggio istantanei. Un punto di taratura al 30% anticipa la crescita di centri, prodotti e nomi; il fit desktop usa il 60% di margine orizzontale in più per assorbire le etichette maggiorate.
 - Nella vista Prodotti mobile la scala dei pallini segue i punti 3,6 px (0%), 10 px (30%), 16 px (60%) e 24 px (100%). I top hanno una riduzione aggiuntiva del 15% solo allo 0%, riassorbita entro il 30%. La dimensione delle etichette resta invariata fino al 30% e raggiunge la scala precedente al 60%.
+
+
+## Ricerca immagini prodotti: regole concordate e primo lotto (2026-10-15)
+
+- Priorita: completare le foto mancanti; in seguito aggiungere prodotti gradualmente; solo dopo rivedere le foto esistenti meno curate.
+- Cercare fotografie gia esistenti con sfondo bianco obbligatorio (ombra naturale ammessa), prodotto completo e vista frontale o tre quarti coerente con l'oggetto. Preferire la versione piu famosa e riconoscibile e la qualita visiva delle migliori immagini gia presenti. Non generare immagini, non scontornare e non sostituire sfondi.
+- Sono ammessi ritagli rettangolari, ridimensionamento e margini bianchi. Controllare sempre anche l'anteprima nel cerchio: piedi, basi, paralumi e altri elementi non devono essere tagliati. Conservare la fotografia originale e la pagina sorgente.
+- Fonti di qualsiasi tipo ammesse; i produttori sono il primo riferimento per verificare l'identita. Non fidarsi del solo nome del file o del risultato di ricerca: vecchi candidati contenevano abbinamenti errati (es. Lounge Chair per DSW). Le voci dubbie restano sospese, senza inserire immagini sostitutive sbagliate.
+- Inserimento autonomo dei casi chiari; raccogliere i dubbi per revisione. Nessuna pubblicazione/commit/push richiesti per questo lotto.
+- Primo lotto: 15 immagini principali mancanti, piu due viste frontali aggiuntive per Le Bambole e La Marie, secondo la convenzione `nomefile2.jpg`. Nessuna immagine preesistente sostituita. File principali in `public/immagini`; miniatures, colori e manifest aggiornati dai normali script del progetto.
+- Provenienza, dimensioni originali, impronte dei file e note di selezione in `_pipeline/lotti/2026-10-15-pilot/manifest.json`; casi da rivedere in `differiti.json`. I Credits ora includono le fonti effettivamente utilizzate e una sezione produttori/cataloghi ufficiali, in italiano e inglese, con collegamenti cliccabili.
+- Alcune schede storiche presentano discrepanze da esaminare separatamente: Quattro Gatti attribuito a Rodolfo Bonetto/B-Line (possibile confusione con 4/4); date di Elettra, Luminator e Monachella non coincidenti con i cataloghi ufficiali attuali. Nessuna correzione dei dati storici in questo intervento.
+
+
+## Passaggio rapido su tutte le foto mancanti (2026-10-15)
+
+- Regola aggiornata dall'utente: passare tutte le schede mancanti, prendere le foto corrette subito reperibili e lasciare perdere i casi difficili, senza prolungare la ricerca sui prodotti minori. Questa preferenza non autorizza a usare foto incerte o di modelli diversi.
+- Esaminate 759 schede: 184 immagini principali selezionate e inserite; 575 rimandate per corrispondenza, sfondo, vista, disponibilita o qualita non subito sufficienti. I dodici casi gia cercati nel pilot sono rimasti documentati senza ricerche ripetute.
+- Anche questo lotto usa foto esistenti su bianco e margini adatti al cerchio: nessuno scontorno, ricostruzione dello sfondo o generazione. Le immagini preesistenti non vengono sostituite. Nessuna modifica ai dati storici, al layout, alle orbite o allo zoom.
+- Audit completo in `_pipeline/lotti/2026-10-15-completamento/`: manifest delle selezionate, originali, fonti CSV, schede rimandate con motivazioni e ricerca registrata per ogni scheda. Tutte le fonti utilizzate sono riportate nei Credits del sito.
+- In caso di nuovi lotti partire dalle foto ancora assenti senza ripetere automaticamente questo passaggio: le immagini difficili restano facoltative, come richiesto dall'utente.
+
+
+## Verticali e pubblicazione autorizzata (2026-10-15)
+
+- Ulteriore prescrizione dell'utente: preferire verticali dritte e una prospettiva naturale, senza convergenze marcate o inquadrature grandangolari, soprattutto per prodotti facilmente reperibili. Scegliere fotografie gia adatte: non deformare gli oggetti o correggere artificialmente la prospettiva.
+- Stool 60: sostituita la prima selezione con la foto frontale ufficiale Artek, finitura classica in betulla. Fonte, originale e manifest aggiornati; selezione precedente conservata nelle revisioni del lotto.
+- L'utente ha autorizzato esplicitamente la pubblicazione online delle immagini e delle fonti. Questa autorizzazione supera le precedenti note che indicavano il lotto come solo locale. Conservare le altre modifiche locali e pubblicare il solo intervento immagini con le dipendenze strettamente necessarie.
+
+- Per la pubblicazione viene aggiunta la sola scheda Pascal, necessaria alla foto selezionata e assente dal catalogo gia online. Le altre modifiche preesistenti a interfaccia, metadati, designer e aziende restano locali. Originali e audit completo restano nella cartella locale; il repository conserva i manifest e i CSV di provenienza del lotto.

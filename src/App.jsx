@@ -555,6 +555,9 @@ const SEZIONI_CREDITS = [
       "Vitra Design Museum",
       "MoMA — The Museum of Modern Art, New York",
       "Cooper Hewitt, Smithsonian Design Museum",
+      { nome: "Fundación DIDAC", url: "https://didac.gal/" },
+      { nome: "Hans Gugelot", url: "https://hansgugelot.com/" },
+      { nome: "Les Arts Décoratifs, Paris", url: "https://madparis.fr/" },
     ],
   },
   {
@@ -570,8 +573,60 @@ const SEZIONI_CREDITS = [
       "Farsetti Arte",
       "Meeting Art",
       "Nilufar Gallery, Milano",
-      "1stDibs",
-      "Pamono",
+      { nome: "1stDibs", url: "https://www.1stdibs.com/" },
+      { nome: "Pamono", url: "https://www.pamono.eu/" },
+      { nome: "Bredaquaranta", url: "https://www.bredaquaranta.it/" },
+      { nome: "Diffusione Luce", url: "https://www.diffusioneshop.com/" },
+      { nome: "Elsi Distribuzione", url: "https://www.elsidistribuzione.it/" },
+      { nome: "Galleria Luisa Delle Piane, Milano", url: "https://www.gallerialuisadellepiane.it/" },
+      { nome: "Mohd", url: "https://shop.mohd.it/" },
+      { nome: "smow", url: "https://www.smow.com/" },
+      { nome: "AmbienteDirect", url: "https://www.ambientedirect.com/" },
+      { nome: "Artemest", url: "https://artemest.com/" },
+      { nome: "Bidsquare", url: "https://www.bidsquare.com/" },
+      { nome: "Bij den Dom", url: "https://www.bijdendom.nl/" },
+      { nome: "Bukowskis", url: "https://www.bukowskis.com/" },
+      { nome: "Capitolium Art", url: "https://www.capitoliumart.com/" },
+      { nome: "Carter's", url: "https://www.carters.com.au/" },
+      { nome: "Catawiki", url: "https://www.catawiki.com/" },
+      { nome: "Chairish", url: "https://www.chairish.com/" },
+      { nome: "CIAT Design", url: "https://www.ciatdesign.com/" },
+      { nome: "Cimmermann", url: "https://cimmermann.uk/" },
+      { nome: "Danish Design Store", url: "https://www.danishdesignstore.com/" },
+      { nome: "De Projectinrichter", url: "https://www.deprojectinrichter.com/" },
+      { nome: "Deesup", url: "https://www.deesup.com/" },
+      { nome: "Design Italy", url: "https://designitaly.com/" },
+      { nome: "Designperte", url: "https://www.designperte.it/" },
+      { nome: "Finarte", url: "https://www.finarte.it/" },
+      { nome: "Finnish Design Shop", url: "https://www.finnishdesignshop.com/" },
+      { nome: "FRHD", url: "https://www.frhd.it/" },
+      { nome: "Galerie 44", url: "https://www.galerie44.com/" },
+      { nome: "Gibson's Auctions", url: "https://www.gibsonsauctions.com.au/" },
+      { nome: "Haus London", url: "https://hauslondon.com/" },
+      { nome: "Hive Modern", url: "https://hivemodern.com/" },
+      { nome: "Invaluable", url: "https://www.invaluable.com/" },
+      { nome: "Italian Luxury Interiors", url: "https://italianluxuryinteriors.com/" },
+      { nome: "Jane Richards Interiors", url: "https://janerichardsinteriors.com/" },
+      { nome: "La Boutique Danoise", url: "https://www.laboutiquedanoise.com/" },
+      { nome: "Le Shoppe Modern", url: "https://leshoppemodern.com/" },
+      { nome: "Made In Design", url: "https://www.madeindesign.com/" },
+      { nome: "Matisse", url: "https://matisse.co.nz/" },
+      { nome: "Miliashop", url: "https://www.miliashop.com/" },
+      { nome: "Monsterior", url: "https://monsterior.com/" },
+      { nome: "Nest", url: "https://www.nest.co.uk/" },
+      { nome: "Palette & Parlor", url: "https://www.paletteandparlor.com/" },
+      { nome: "Rarify", url: "https://rarify.co/" },
+      { nome: "Selency", url: "https://www.selency.fr/" },
+      { nome: "Selling Antiques", url: "https://www.sellingantiques.co.uk/" },
+      { nome: "SUITE NY", url: "https://suiteny.com/" },
+      { nome: "Tajan", url: "https://www.tajan.com/" },
+      { nome: "Tintenmarkt", url: "https://www.tintenmarkt.de/" },
+      { nome: "Totimo Design", url: "https://totimodesign.com/" },
+      { nome: "TRUSS", url: "https://truss.jp/" },
+      { nome: "twentytwentyone", url: "https://www.twentytwentyone.com/" },
+      { nome: "Vertigo Home", url: "https://www.vertigohome.us/" },
+      { nome: "Vinterior", url: "https://www.vinterior.co/" },
+      { nome: "Wyeth", url: "https://wyeth.nyc/" },
     ],
   },
   {
@@ -579,8 +634,36 @@ const SEZIONI_CREDITS = [
     nomi: [
       "Design Index",
       "Design Addict",
-      "Domus — archivio storico",
+      { nome: "Domus — archivio storico", url: "https://www.domusweb.it/" },
       "MoMA Collection Online",
+      { nome: "Archiproducts", url: "https://www.archiproducts.com/" },
+      { nome: "Architonic", url: "https://www.architonic.com/" },
+      { nome: "idealo", url: "https://www.idealo.fr/" },
+      { nome: "If It's Hip, It's Here", url: "https://ifitshipitshere.blogspot.com/" },
+      { nome: "Islington Tribune", url: "https://www.islingtontribune.co.uk/" },
+      { nome: "Lot-Art", url: "https://www.lot-art.com/" },
+      { nome: "MutualArt", url: "https://www.mutualart.com/" },
+      { nome: "WikiArt", url: "https://www.wikiart.org/" },
+    ],
+  },
+  {
+    titolo: "Produttori e cataloghi ufficiali",
+    nomi: [
+      { nome: "Arflex", url: "https://www.arflex.it/" },
+      { nome: "Artek", url: "https://www.artek.fi/" },
+      { nome: "Artemide", url: "https://www.artemide.com/" },
+      { nome: "B&B Italia", url: "https://www.bebitalia.com/" },
+      { nome: "Cassina", url: "https://www.cassina.com/" },
+      { nome: "Flos", url: "https://flos.com/" },
+      { nome: "iGuzzini", url: "https://www.iguzzini.com/" },
+      { nome: "Kartell", url: "https://www.kartell.com/" },
+      { nome: "Olivari", url: "https://www.olivari.it/" },
+      { nome: "Alessi", url: "https://alessi.com/" },
+      { nome: "Cappellini", url: "https://www.cappellini.com/" },
+      { nome: "Fratelli Boffi", url: "https://www.fratelliboffi.it/" },
+      { nome: "Herman Miller", url: "https://www.hermanmiller.com/" },
+      { nome: "Knoll", url: "https://www.knoll-int.com/" },
+      { nome: "Venini", url: "https://www.venini.com/" },
     ],
   },
 ]
@@ -804,8 +887,8 @@ const TESTI = {
     invioInCorso: "Invio in corso...",
     contribOk: "Grazie, la tua segnalazione è stata inviata.",
     contribErrore: "Si è verificato un errore. Riprova più tardi.",
-    creditsIntro: "Le immagini e i dati storici presenti in questa mappa provengono da un'ampia rete di fondazioni, archivi, case d'asta e piattaforme specializzate nel design del XX secolo. Di seguito l'elenco delle fonti principali.",
-    creditsTitoli: ["Fondazioni e archivi", "Case d'asta e rivenditori", "Siti e database specializzati"],
+    creditsIntro: "Le immagini e i dati storici presenti in questa mappa provengono da un'ampia rete di produttori, fondazioni, archivi, case d'asta e piattaforme specializzate nel design del XX secolo. Di seguito l'elenco delle fonti principali.",
+    creditsTitoli: ["Fondazioni e archivi", "Case d'asta e rivenditori", "Siti e database specializzati", "Produttori e cataloghi ufficiali"],
     creditsChiusura: "Elenco in aggiornamento; eventuali omissioni o correzioni possono essere segnalate tramite la pagina Contribuisci.",
     manifestoParagrafi: [
       "Il francese non è una scelta puramente estetica, ma un atto di posizionamento culturale. Per secoli è stata la lingua degli intellettuali, degli enciclopedisti e di quanti hanno riconosciuto nella conoscenza un patrimonio da ordinare, condividere e rendere accessibile. È nel solco di questa tradizione che nasce il progetto.",
@@ -859,8 +942,8 @@ const TESTI = {
     invioInCorso: "Submitting...",
     contribOk: "Thank you, your submission has been sent.",
     contribErrore: "An error occurred. Please try again later.",
-    creditsIntro: "The images and historical data featured on this map come from a broad network of foundations, archives, auction houses, and platforms specialized in 20th-century design. Below is a list of the main sources.",
-    creditsTitoli: ["Foundations and Archives", "Auction Houses and Dealers", "Specialized Sites and Databases"],
+    creditsIntro: "The images and historical data featured on this map come from a broad network of manufacturers, foundations, archives, auction houses, and platforms specialized in 20th-century design. Below is a list of the main sources.",
+    creditsTitoli: ["Foundations and Archives", "Auction Houses and Dealers", "Specialized Sites and Databases", "Manufacturers and Official Catalogues"],
     creditsChiusura: "This list is a work in progress; any omissions or corrections can be reported via the Contribute page.",
     manifestoParagrafi: [
       "French is not a purely aesthetic choice, but an act of cultural positioning. For centuries it was the language of intellectuals, of the encyclopedists, and of all those who recognized knowledge as a heritage to be ordered, shared, and made accessible. It is in the wake of this tradition that this project is born.",
@@ -5569,9 +5652,13 @@ function App() {
             <div style={{ fontFamily: "'Roboto Serif', serif", fontWeight: 500, fontStyle: "italic", fontSize: 14, color: "#1a1a1a", marginBottom: 10 }}>
               {t.creditsTitoli[i]}
             </div>
-            {sez.nomi.map((nome, j) => (
+            {sez.nomi.map((fonte, j) => (
               <div key={j} style={{ fontFamily: "Roboto, sans-serif", fontWeight: 300, fontSize: 12, color: "#777", lineHeight: 1.9 }}>
-                {nome}
+                {typeof fonte === "string" ? fonte : (
+                  <a href={fonte.url} target="_blank" rel="noopener noreferrer" style={{ color: "inherit", textDecoration: "underline", textUnderlineOffset: 2 }}>
+                    {fonte.nome}
+                  </a>
+                )}
               </div>
             ))}
           </div>

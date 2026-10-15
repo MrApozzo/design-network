@@ -1744,7 +1744,10 @@
     "azienda": "B&B Italia",
     "azienda_attuale": "B&B Italia",
     "categoria": "poltrona",
-    "foto": "bellini-le-bambole-armchair.jpg"
+    "foto": "bellini-le-bambole-armchair.jpg",
+    "foto_dettaglio": [
+      "bellini-le-bambole-armchair2.jpg"
+    ]
   },
   {
     "nome": "Le Bambole Sofa",
@@ -2060,7 +2063,10 @@
     "designer": "Philippe Starck",
     "azienda": "Kartell",
     "categoria": "sedia",
-    "foto": "starck-lamarie.jpg"
+    "foto": "starck-lamarie.jpg",
+    "foto_dettaglio": [
+      "starck-lamarie2.jpg"
+    ]
   },
   {
     "nome": "Romeo Moon",
@@ -16601,5 +16607,13 @@
     "azienda": "Café de l'Aubette",
     "categoria": "allestimento",
     "foto": "vandoesburg-aubette.jpg"
+  },
+  {
+    "nome": "Pascal",
+    "anno": 1985,
+    "designer": "Vico Magistretti",
+    "azienda": "O Luce",
+    "categoria": "lampada da terra",
+    "foto": "magistretti-pascal.jpg"
   }
 ]
