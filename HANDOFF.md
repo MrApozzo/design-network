@@ -580,3 +580,9 @@ corrente+nodo+indice, non `Math.random`) così il profilo resta irregolare
 - Foto Royal System F09 sospesa per validazione: composizione su bianco con piccolo vaso decorativo. MT49, Bulb, Lightlight, Lockheed Lounge, T1000 e Mole lasciati senza foto dopo il passaggio rapido. Non riproporre F01–F08, già approvate e pubblicate.
 - Verificato empiricamente il layout sui dati reali prima di modificare App. Il gruppo storico maggiore resta di 37 membri; Scandinavo passa da 6 a 17. Nessuna categoria vecchia riassegnata. L'etichetta Design Radicale/Postmodernismo è riconosciuta dai nomi anziché dal numero progressivo del gruppo.
 - Le schede statiche omettono le immagini non presenti, evitando immagini rotte per i prodotti ancora senza foto. Costanti protette di zoom, raggi e orbite invariate. Prima della pubblicazione eseguire build e check:layout sulla copia esatta da pubblicare; preservare modifiche locali estranee.
+
+
+## Royal System senza oggetti decorativi (16 ottobre 2026)
+
+- L'utente ha scartato la proposta F09 con vaso («Preferisco una foto senza vaso»). Dopo un unico ulteriore passaggio rapido è stata trovata una composizione vuota, vista frontale su bianco, da Galerie Møbler. Inserita autonomamente secondo i criteri già approvati; nessuna modifica allo sfondo e nessun oggetto rimosso.
+- Fonte nei Credits, originali e provenienza in `_pipeline/lotti/2026-10-16-royal-system-senza-oggetti/`. Il lotto catalogo conta ora 44 foto di prodotti e 37 ritratti (81 immagini). Restano sei nuove schede senza foto; nessuna proposta di questo lotto è ancora da validare.

@@ -647,6 +647,7 @@ const SEZIONI_CREDITS = [
       { nome: "Dieter Horn", url: "https://www.dieter-horn.de/" },
       { nome: "LiveAuctioneers", url: "https://www.liveauctioneers.com/" },
       { nome: "ichliebedesign", url: "https://www.ichliebedesign.de/" },
+      { nome: "Galerie Møbler", url: "https://www.galerie-mobler.com/" },
     ],
   },
   {

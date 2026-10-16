@@ -1,0 +1,45 @@
+{
+  "date": "2026-10-16",
+  "images": 1,
+  "images_approved": [
+    {
+      "id": "R01",
+      "name": "Royal System",
+      "file": "cadovius-royalsystem.jpg",
+      "kind": "prodotto",
+      "designer": "Poul Cadovius",
+      "company": "Royal System",
+      "category": "libreria modulare",
+      "source": "Galerie Møbler",
+      "page": "https://www.galerie-mobler.com/fr/design-scandinave/bibliotheque-modulable-royal-system-edition-neuve-combinaison-2_8796.html",
+      "image_url": "https://www.galerie-mobler.com/100125-large_default/bibliotheque-modulable-royal-system-edition-neuve-combinaison-2.jpg",
+      "raw": "royal-clean-1.bin",
+      "raw_folder": "raw",
+      "source_sha256": "1c3fdfcc794b41fc59eac1766d6daa41b5edd48d7a0344e29f42893caacef2a2",
+      "original_file": "originali/cadovius-royalsystem.webp",
+      "status": "Composizione vuota su bianco; sostituisce F09 scartata",
+      "source_format": "WEBP",
+      "source_size": [
+        720,
+        540
+      ],
+      "manual_rectangular_crop": null,
+      "whitespace_crop": [
+        46,
+        42,
+        699,
+        451
+      ],
+      "scale": 1.218232,
+      "circle_clipped_pixels": 0,
+      "final_sha256": "88303c8a3e843f3a0b97b0d71a454309637ebe871054a14904d4a379f8c99831",
+      "final_size": [
+        1000,
+        1000
+      ],
+      "final_bytes": 61248,
+      "jpeg_quality": 90
+    }
+  ],
+  "policy": "Royal System senza oggetti decorativi, vista frontale e sfondo bianco. F09 con vaso scartata dall’utente. Solo crop rettangolare, margini e resize, nessuna modifica allo sfondo."
+}
