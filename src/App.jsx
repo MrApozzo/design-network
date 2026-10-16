@@ -627,6 +627,14 @@ const SEZIONI_CREDITS = [
       { nome: "Vertigo Home", url: "https://www.vertigohome.us/" },
       { nome: "Vinterior", url: "https://www.vinterior.co/" },
       { nome: "Wyeth", url: "https://wyeth.nyc/" },
+      { nome: "Casa Di Luce", url: "https://www.casadiluce.ca/" },
+      { nome: "Einrichten Design", url: "https://www.einrichten-design.fr/" },
+      { nome: "Gabriel Ross", url: "https://grshop.com/" },
+      { nome: "Lampeshop", url: "https://www.lampeshop.dk/" },
+      { nome: "Nordikka Collective", url: "https://nordikkacollective.com/" },
+      { nome: "Nordstrom", url: "https://shop.nordstrom.com/" },
+      { nome: "Rum21", url: "https://www.rum21.dk/" },
+      { nome: "Santiccioli", url: "https://www.santiccioli.com/" },
     ],
   },
   {
@@ -644,6 +652,7 @@ const SEZIONI_CREDITS = [
       { nome: "Lot-Art", url: "https://www.lot-art.com/" },
       { nome: "MutualArt", url: "https://www.mutualart.com/" },
       { nome: "WikiArt", url: "https://www.wikiart.org/" },
+      { nome: "Future Forms", url: "https://www.future-forms.com/" },
     ],
   },
   {

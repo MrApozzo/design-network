@@ -1,0 +1,629 @@
+{
+  "date": "2026-10-16",
+  "searched_products": 32,
+  "initial_missing": 575,
+  "products_completed": 17,
+  "images": 17,
+  "pending_review": 6,
+  "deferred_without_review": 9,
+  "policy": "Passaggio mirato sui classici ancora senza foto; priorità a sfondo bianco, soggetto completo, verticali dritte, prospettiva naturale e variante riconoscibile. Nessuno scontorno o generazione.",
+  "images_approved": [
+    {
+      "id": 0,
+      "name": "Tulip Chair",
+      "file": "saarinen-tulipchair.jpg",
+      "designer": "Eero Saarinen",
+      "company": "Knoll",
+      "category": "sedia",
+      "source": "Santiccioli",
+      "page": "https://www.santiccioli.com/en/products/knoll/tulip-swivel-chair",
+      "image_url": "https://assets.santiccioli.com/products/knoll/knoll_saarinen_tulip_swivel_chair_tonus_black_eerosaarinen_1-1457004268.jpg",
+      "raw": "00-0.bin",
+      "source_sha256": "8cb5b30f323586942ce2a44db68c96e7b4665324902d9bb746e7a4b017d6aa67",
+      "original_file": "originali/saarinen-tulipchair.jpg",
+      "note": "Tulip senza braccioli, scocca bianca e cuscino nero, vista a tre quarti.",
+      "source_format": "JPEG",
+      "source_size": [
+        1024,
+        768
+      ],
+      "manual_rectangular_crop": null,
+      "whitespace_crop": [
+        260,
+        81,
+        742,
+        719
+      ],
+      "scale": 1.352445,
+      "circle_clipped_pixels": 0,
+      "final_sha256": "16e890ef32ba177cc53da6c4bc9120ca0b6f98d496377fc1ecd9b3aeacc0f523",
+      "final_size": [
+        1100,
+        1100
+      ],
+      "final_bytes": 34546,
+      "jpeg_quality": 90
+    },
+    {
+      "id": 1,
+      "name": "Tulip Table",
+      "file": "saarinen-tuliptable.jpg",
+      "designer": "Eero Saarinen",
+      "company": "Knoll",
+      "category": "tavolo",
+      "source": "1stDibs",
+      "page": "https://www.1stdibs.com/furniture/tables/dining-room-tables/round-white-pedestal-tulip-table-eero-saarinen-knoll/id-f_28414792/",
+      "image_url": "https://a.1stdibscdn.com/round-white-pedestal-tulip-table-by-eero-saarinen-for-knoll-for-sale/f_65092/f_284147921651252277952/f_28414792_1651252279326_bg_processed.jpg?width=768",
+      "raw": "01-0.bin",
+      "source_sha256": "a70be3635c1db90b710c837cf9c2f1ae37d1c2c8db4cef15a2f6ecc7ff82c46a",
+      "original_file": "originali/saarinen-tuliptable.jpg",
+      "note": "Tavolo Tulip rotondo bianco, completo nella base e nel piano.",
+      "source_format": "JPEG",
+      "source_size": [
+        768,
+        768
+      ],
+      "manual_rectangular_crop": null,
+      "whitespace_crop": [
+        1,
+        117,
+        767,
+        650
+      ],
+      "scale": 1.184191,
+      "circle_clipped_pixels": 0,
+      "final_sha256": "c0608193e42d3fcfeed4f0a6fe6b30d2be1a7ac6f775f9e97168b69002943e6c",
+      "final_size": [
+        1100,
+        1100
+      ],
+      "final_bytes": 29823,
+      "jpeg_quality": 90
+    },
+    {
+      "id": 2,
+      "name": "PK22",
+      "file": "kjaerholm-pk22.jpg",
+      "designer": "Poul Kjærholm",
+      "company": "Fritz Hansen",
+      "category": "poltrona",
+      "source": "CIAT Design",
+      "page": "https://www.ciatdesign.com/it/pk22-poltroncina.html",
+      "image_url": "https://www.ciatdesign.com/media/catalog/product/cache/2a4e598d3870683c86c7e73978a3de33/_/f/_f_r_fritz_hansen_-_pk22_pelle_2_.png",
+      "raw": "02-0.bin",
+      "source_sha256": "03af966268fad96ea9c56a8774dbf0fc6bdc62392a5fd4b4a2104fc1186cd2d0",
+      "original_file": "originali/kjaerholm-pk22.png",
+      "note": "PK22 completa, rivestimento in pelle marrone e struttura in acciaio.",
+      "source_format": "PNG",
+      "source_size": [
+        666,
+        610
+      ],
+      "manual_rectangular_crop": null,
+      "whitespace_crop": [
+        54,
+        21,
+        654,
+        598
+      ],
+      "scale": 1.254497,
+      "circle_clipped_pixels": 0,
+      "final_sha256": "8216945cfe1b5e2cecdd2bf79400bedf5777b3e8df4382c50933cbeed0b58e6a",
+      "final_size": [
+        1100,
+        1100
+      ],
+      "final_bytes": 64314,
+      "jpeg_quality": 90
+    },
+    {
+      "id": 3,
+      "name": "Zig Zag Chair",
+      "file": "rietveld-zigzagchair.jpg",
+      "designer": "Gerrit Rietveld",
+      "company": "Cassina",
+      "category": "sedia",
+      "source": "1stDibs",
+      "page": "https://www.1stdibs.com/furniture/seating/chairs/gerrit-thomas-rietveld-zig-zag-chair-cassina/id-f_34353532/",
+      "image_url": "https://a.1stdibscdn.com/gerrit-thomas-rietveld-zig-zag-chair-by-cassina-for-sale/f_14272/f_343535321684487638512/f_34353532_1684487638877_bg_processed.jpg?auto=webp&disable=upscale&quality=60&width=1400",
+      "raw": "03-0.bin",
+      "source_sha256": "bef66924f29e9ba1216c273ce72c4525b571143c56f3312ea8b4e5fa5509541e",
+      "original_file": "originali/rietveld-zigzagchair.webp",
+      "note": "Zig Zag Cassina completa, legno naturale e vista a tre quarti.",
+      "source_format": "WEBP",
+      "source_size": [
+        1400,
+        1400
+      ],
+      "manual_rectangular_crop": null,
+      "whitespace_crop": [
+        204,
+        0,
+        1193,
+        1399
+      ],
+      "scale": 0.59866,
+      "circle_clipped_pixels": 0,
+      "final_sha256": "ebdde34ae0b723aecbb4d06e8558edf43aea13a6d727b66ed6d12721f7265c5f",
+      "final_size": [
+        1100,
+        1100
+      ],
+      "final_bytes": 65701,
+      "jpeg_quality": 90
+    },
+    {
+      "id": 6,
+      "name": "Akari",
+      "file": "noguchi-akari.jpg",
+      "designer": "Isamu Noguchi",
+      "company": "Ozeki & Co.",
+      "category": "lampada",
+      "source": "Rum21",
+      "page": "https://www.rum21.dk/akari-1a-noguchi-bordlampe",
+      "image_url": "https://api-prod.royaldesign.se/api/products/image/15/vitra-akari-1a-noguchi-bordlampe-10",
+      "raw": "extra-06-0.bin",
+      "source_sha256": "40ff1ff57ac10cb74f9d764dc76814d0d573d7f96ae3aa9f4d60cf771001f38e",
+      "original_file": "originali/noguchi-akari.jpg",
+      "note": "Akari 1A, variante riconoscibile della famiglia, senza confezione o altri oggetti.",
+      "source_format": "JPEG",
+      "source_size": [
+        1500,
+        1500
+      ],
+      "manual_rectangular_crop": null,
+      "whitespace_crop": [
+        270,
+        0,
+        1230,
+        1500
+      ],
+      "scale": 0.630667,
+      "circle_clipped_pixels": 0,
+      "final_sha256": "b5e9f048d761a6a99c6a43a5e3cd02bd1f80e7b57e0d7693707da85d7b1d286a",
+      "final_size": [
+        1100,
+        1100
+      ],
+      "final_bytes": 99217,
+      "jpeg_quality": 90
+    },
+    {
+      "id": 7,
+      "name": "Valet Chair",
+      "file": "wegner-valetchair.jpg",
+      "designer": "Hans Wegner",
+      "company": "PP Møbler",
+      "category": "sedia",
+      "source": "Nordikka Collective",
+      "page": "https://nordikkacollective.com/products/pp250-the-valet-chair",
+      "image_url": "https://nordikkacollective.com/cdn/shop/files/nordikka-collective-pp250-the-valet-chair-pack-shot-1.png?crop=center&height=1280&v=1780053236&width=1280",
+      "raw": "extra-07-0.bin",
+      "source_sha256": "576c4e63e933e10133930458943c8738174af15af379573c117934a868989556",
+      "original_file": "originali/wegner-valetchair.webp",
+      "note": "PP250 Valet Chair completa, vista frontale con verticali dritte.",
+      "source_format": "WEBP",
+      "source_size": [
+        1280,
+        1280
+      ],
+      "manual_rectangular_crop": null,
+      "whitespace_crop": [
+        337,
+        120,
+        942,
+        1238
+      ],
+      "scale": 0.804738,
+      "circle_clipped_pixels": 0,
+      "final_sha256": "70c0a957c78777a3f5bfb8353e617e405608da0527bee7b63962aa64222113bb",
+      "final_size": [
+        1100,
+        1100
+      ],
+      "final_bytes": 53453,
+      "jpeg_quality": 90
+    },
+    {
+      "id": 8,
+      "name": "CH07 Shell Chair",
+      "file": "wegner-ch07.jpg",
+      "designer": "Hans Wegner",
+      "company": "Carl Hansen & Søn",
+      "category": "poltrona",
+      "source": "Mohd",
+      "page": "https://shop.mohd.it/en/ch07-shell-chair.html",
+      "image_url": "https://cdn.mohd.it/cache/image/width%3D1200%2Cformat%3Dwebp/media/catalog/product/c/h/ch07armchair4carlhansen.jpg",
+      "raw": "08-0.bin",
+      "source_sha256": "480a86d6ba03e966eba5c4921452688e733885e22310f0f159ca8d7cdbb18843",
+      "original_file": "originali/wegner-ch07.webp",
+      "note": "CH07 completa, vista frontale della scocca e delle tre gambe.",
+      "source_format": "WEBP",
+      "source_size": [
+        1200,
+        900
+      ],
+      "manual_rectangular_crop": null,
+      "whitespace_crop": [
+        128,
+        39,
+        1095,
+        879
+      ],
+      "scale": 0.844397,
+      "circle_clipped_pixels": 0,
+      "final_sha256": "12a9958fe93ef71378c5182a138fe73c4effc4985ff5753706a1e6e576271eea",
+      "final_size": [
+        1100,
+        1100
+      ],
+      "final_bytes": 77137,
+      "jpeg_quality": 90
+    },
+    {
+      "id": 10,
+      "name": "ET66",
+      "file": "rams-et66.jpg",
+      "designer": "Dieter Rams",
+      "company": "Braun",
+      "category": "calcolatrice",
+      "source": "Nordstrom",
+      "page": "https://shop.nordstrom.com/s/braun-et66-handheld-calculator/4305297",
+      "image_url": "https://n.nordstrommedia.com/id/sr3/e2e020b3-ca10-4154-a21f-d5652520fca7.jpeg?crop=pad&format=jpeg&h=1196&pad_color=FFF&w=780",
+      "raw": "10-0.bin",
+      "source_sha256": "e6d553410637da5100d06f5371915fff140b512022f7cd0be4e04be4821f6bb5",
+      "original_file": "originali/rams-et66.webp",
+      "note": "ET66 Braun completa, vista frontale e tasti leggibili.",
+      "source_format": "WEBP",
+      "source_size": [
+        780,
+        1196
+      ],
+      "manual_rectangular_crop": null,
+      "whitespace_crop": [
+        0,
+        4,
+        737,
+        1196
+      ],
+      "scale": 0.724323,
+      "circle_clipped_pixels": 0,
+      "final_sha256": "d4fdf348821d9501cbe841c9974177c92051909200710a463888ca8cb18dfcb4",
+      "final_size": [
+        1100,
+        1100
+      ],
+      "final_bytes": 114330,
+      "jpeg_quality": 90
+    },
+    {
+      "id": 11,
+      "name": "Minikitchen",
+      "file": "colombo-minikitchen.jpg",
+      "designer": "Joe Colombo",
+      "company": "Boffi",
+      "category": "cucina compatta mobile",
+      "source": "Mohd",
+      "page": "https://shop.mohd.it/it/minikitchen.html",
+      "image_url": "https://cdn.mohd.it/cdn-cgi/image/width%3D1200%2Cformat%3Dauto/media/catalog/product/m/i/minikitchen-boffi.jpg",
+      "raw": "11-0.bin",
+      "source_sha256": "6eba2afe78a5ff12f0891cdffac6f5b3b5b2355bdceabdb54d836daf0b3eadc8",
+      "original_file": "originali/colombo-minikitchen.avif",
+      "note": "Minikitchen Boffi aperta per rendere leggibile la funzione; elemento completo su bianco.",
+      "source_format": "AVIF",
+      "source_size": [
+        1200,
+        1100
+      ],
+      "manual_rectangular_crop": null,
+      "whitespace_crop": [
+        86,
+        210,
+        1106,
+        919
+      ],
+      "scale": 0.824262,
+      "circle_clipped_pixels": 0,
+      "final_sha256": "4542e30f25a46000f81b0199ffdeba0e5e72a2d7085b9c89f8b79eac1f9ac01a",
+      "final_size": [
+        1100,
+        1100
+      ],
+      "final_bytes": 62587,
+      "jpeg_quality": 90
+    },
+    {
+      "id": 14,
+      "name": "Costanza",
+      "file": "rizzatto-costanza.jpg",
+      "designer": "Paolo Rizzatto",
+      "company": "Luceplan",
+      "category": "lampada",
+      "source": "Einrichten Design",
+      "page": "https://www.einrichten-design.fr/fr_fr/d13-costanza-lampe-de-table-reglable-en-hauteur-avec-variateur-sensoriel-luceplan-offre-speciale.html",
+      "image_url": "https://www.einrichten-design.fr/media/8f/75/b9/1654175690/Costanza_tavolo_still_BIANCO_ALU.jpg",
+      "raw": "14-1.bin",
+      "source_sha256": "8f7c0aaf2feb3639c91c2d125b750a1e36ee2594fb4466fc7284c70b17d4cd20",
+      "original_file": "originali/rizzatto-costanza.jpg",
+      "note": "Costanza da tavolo, stelo diritto, paralume e base completi.",
+      "source_format": "JPEG",
+      "source_size": [
+        3744,
+        5000
+      ],
+      "manual_rectangular_crop": null,
+      "whitespace_crop": [
+        938,
+        795,
+        3744,
+        4271
+      ],
+      "scale": 0.235855,
+      "circle_clipped_pixels": 0,
+      "final_sha256": "bfecda69f4dded33fc1d0f8e02853eb1144df337b3c9cf5ed67f225c057263aa",
+      "final_size": [
+        1100,
+        1100
+      ],
+      "final_bytes": 24752,
+      "jpeg_quality": 90
+    },
+    {
+      "id": 15,
+      "name": "Lumiere",
+      "file": "dordoni-lumiere.jpg",
+      "designer": "Rodolfo Dordoni",
+      "company": "Foscarini",
+      "category": "lampada",
+      "source": "Casa Di Luce",
+      "page": "https://www.casadiluce.ca/products/lumiere-table-lamp",
+      "image_url": "https://www.casadiluce.ca/cdn/shop/files/Lumiere_Table_Lamp_By_Foscarini_Small_Aluminum_Warm_White_1600x.jpg?v=1729865451",
+      "raw": "15-1.bin",
+      "source_sha256": "d02ee0031900c7a5334b2aa6972a5c22c259744e1214352c6fa1f7de731123a5",
+      "original_file": "originali/dordoni-lumiere.webp",
+      "note": "Lumiere nella variante classica con base a treppiede; esclusa la successiva XXL/XXS.",
+      "source_format": "WEBP",
+      "source_size": [
+        1600,
+        1600
+      ],
+      "manual_rectangular_crop": null,
+      "whitespace_crop": [
+        530,
+        450,
+        1600,
+        1397
+      ],
+      "scale": 0.759322,
+      "circle_clipped_pixels": 0,
+      "final_sha256": "d4f7c5a5accbf815ac1331b83098edeb83b27479864905ef152a4541c0075ff2",
+      "final_size": [
+        1100,
+        1100
+      ],
+      "final_bytes": 38573,
+      "jpeg_quality": 90
+    },
+    {
+      "id": 17,
+      "name": "T3",
+      "file": "rams-t3.jpg",
+      "designer": "Dieter Rams",
+      "company": "Braun",
+      "category": "radio",
+      "source": "Future Forms",
+      "page": "https://www.future-forms.com/portfolio-item/braun-t-3/",
+      "image_url": "https://i0.wp.com/www.future-forms.com/wp-content/uploads/1957/09/Braun_T3_radio.jpg?fit=800%2C800&ssl=1",
+      "raw": "17-0.bin",
+      "source_sha256": "dc655c99b1ce86369e39da5fc993bdd1853bb6cc0e59068eb4257874a42fc681",
+      "original_file": "originali/rams-t3.webp",
+      "note": "Radio Braun T3 completa, vista frontale.",
+      "source_format": "WEBP",
+      "source_size": [
+        800,
+        800
+      ],
+      "manual_rectangular_crop": null,
+      "whitespace_crop": [
+        239,
+        133,
+        559,
+        670
+      ],
+      "scale": 1.671491,
+      "circle_clipped_pixels": 0,
+      "final_sha256": "53fd27dae905576693bd3450be50c78cafbee58cbdb0443462bd49d495589619",
+      "final_size": [
+        1100,
+        1100
+      ],
+      "final_bytes": 75579,
+      "jpeg_quality": 90
+    },
+    {
+      "id": 18,
+      "name": "Marshmallow Sofa",
+      "file": "nelson-marshmallowsofa.jpg",
+      "designer": "George Nelson",
+      "company": "Herman Miller",
+      "category": "divano",
+      "source": "Gabriel Ross",
+      "page": "https://grshop.com/herman-miller-nelson-marshmallow-sofa.html",
+      "image_url": "https://grshop.com/media/catalog/product/h/e/herman-nelson-marshmallow-sofa-1.jpg?bg-color=255%2C255%2C255&canvas=1000%3A800&fit=bounds&height=800&optimize=medium&width=1000",
+      "raw": "extra-18-0.bin",
+      "source_sha256": "527376b41db79fe29a29b3fb49865bc39f160f056562cecc9138acf19859ceb9",
+      "original_file": "originali/nelson-marshmallowsofa.webp",
+      "note": "Marshmallow Sofa nero, versione riconoscibile, elementi completi.",
+      "source_format": "WEBP",
+      "source_size": [
+        1000,
+        800
+      ],
+      "manual_rectangular_crop": null,
+      "whitespace_crop": [
+        60,
+        112,
+        940,
+        775
+      ],
+      "scale": 1.128878,
+      "circle_clipped_pixels": 0,
+      "final_sha256": "7dfd392598d5977ce5d7ef335facb95a91f4ee676dbd55acd728c5bc6ea6695d",
+      "final_size": [
+        1100,
+        1100
+      ],
+      "final_bytes": 84897,
+      "jpeg_quality": 90
+    },
+    {
+      "id": 22,
+      "name": "LC7",
+      "file": "lecorbusier-lc7.jpg",
+      "designer": [
+        "Le Corbusier",
+        "Pierre Jeanneret",
+        "Charlotte Perriand"
+      ],
+      "company": "Cassina",
+      "category": "sedia",
+      "source": "smow",
+      "page": "https://www.smow.fr/le-corbusier/7-fauteuil-tournant-chrome-cuir-scozia-noir-graphite.html",
+      "image_url": "https://www.smow.fr/pics/w3840/6f806d64/ca-008-000/cassina-lc7-drehstuhl-verchromt-leder-scozia-grafitschwarz.jpg",
+      "raw": "22-0.bin",
+      "source_sha256": "938cdda75d6919bdb2ef8f9d44678b4cd27ad92ab3ba4b32b5b23790af357c22",
+      "original_file": "originali/lecorbusier-lc7.jpg",
+      "note": "LC7 Cassina completa, pelle nera e struttura cromata, vista frontale.",
+      "source_format": "JPEG",
+      "source_size": [
+        1400,
+        1400
+      ],
+      "manual_rectangular_crop": null,
+      "whitespace_crop": [
+        147,
+        51,
+        1241,
+        1352
+      ],
+      "scale": 0.613453,
+      "circle_clipped_pixels": 0,
+      "final_sha256": "4dd9d50a6d15f8241a63595bf68a8f50418aedd5ae38d5b8fb477cae8bb27bde",
+      "final_size": [
+        1100,
+        1100
+      ],
+      "final_bytes": 61838,
+      "jpeg_quality": 90
+    },
+    {
+      "id": 23,
+      "name": "Savoy Vase",
+      "file": "aalto-savoyvase.jpg",
+      "designer": "Alvar Aalto",
+      "company": "Iittala",
+      "category": "vaso",
+      "source": "Hive Modern",
+      "page": "https://hivemodern.com/pages/product109/alvar-aalto-savoy-vase-iittala",
+      "image_url": "https://hivemodern.com/public_resources/full/alvar-aalto-savoy-vase-iittala-ca66167e39.jpg",
+      "raw": "23-1.bin",
+      "source_sha256": "92347856911692dbdd8e9bbc4ce74d63f194fa29d956057f0fd8bbf335aa39ed",
+      "original_file": "originali/aalto-savoyvase.jpg",
+      "note": "Vaso Savoy in vetro trasparente, completo e con profilo leggibile.",
+      "source_format": "JPEG",
+      "source_size": [
+        2100,
+        1288
+      ],
+      "manual_rectangular_crop": null,
+      "whitespace_crop": [
+        366,
+        6,
+        1635,
+        1288
+      ],
+      "scale": 0.633539,
+      "circle_clipped_pixels": 0,
+      "final_sha256": "0af364b720478df5f39998c34e71957c1b2b7c5d6df916629f96a31f799c2225",
+      "final_size": [
+        1100,
+        1100
+      ],
+      "final_bytes": 89961,
+      "jpeg_quality": 90
+    },
+    {
+      "id": 24,
+      "name": "PK24",
+      "file": "kjaerholm-pk24.jpg",
+      "designer": "Poul Kjærholm",
+      "company": "Fritz Hansen",
+      "category": "chaise longue",
+      "source": "1stDibs",
+      "page": "https://www.1stdibs.com/furniture/seating/lounge-chairs/poul-kjaerholm-pk24-lounge-chair-fritz-hansen-aura-leather/id-f_38987132/",
+      "image_url": "https://a.1stdibscdn.com/poul-kjaerholm-pk24-lounge-chair-for-fritz-hansen-in-aura-leather-for-sale-picture-16/f_14472/f_389871321711271058371/pk24_natural_master.jpeg",
+      "raw": "24-0.bin",
+      "source_sha256": "614d2abf47a3041e214b242cb3d15718606b6a61e66ac2a00510ddd1e1c787f6",
+      "original_file": "originali/kjaerholm-pk24.jpg",
+      "note": "PK24 completa nella struttura, cuscino e poggiatesta; vista coerente con la chaise longue.",
+      "source_format": "JPEG",
+      "source_size": [
+        4096,
+        4096
+      ],
+      "manual_rectangular_crop": null,
+      "whitespace_crop": [
+        17,
+        1046,
+        4064,
+        3488
+      ],
+      "scale": 0.217795,
+      "circle_clipped_pixels": 0,
+      "final_sha256": "94d2eb4937d05f9bd929918bc477bcf85701bfe78c85713ad65b87db18129b7f",
+      "final_size": [
+        1100,
+        1100
+      ],
+      "final_bytes": 50083,
+      "jpeg_quality": 90
+    },
+    {
+      "id": 27,
+      "name": "PH 4½-3½",
+      "file": "henningsen-ph4535.jpg",
+      "designer": "Poul Henningsen",
+      "company": "Louis Poulsen",
+      "category": "lampada da tavolo",
+      "source": "Lampeshop",
+      "page": "https://www.lampeshop.dk/produkter/499-louis-poulsen/4395-ph-4frac12-3frac12-bordlampe---louis-poulsen/",
+      "image_url": "https://www.lampeshop.dk/upload_dir/shop/_thumbs/90411-5-2-01-PH-45-35-Glas-Table-t.w1000.h1000.png",
+      "raw": "27-0.bin",
+      "source_sha256": "48a744ab581b7add9ba2483a4a2e4a37fe51fbc5778ac7458778170ecbd432fc",
+      "original_file": "originali/henningsen-ph4535.webp",
+      "note": "PH 4½-3½ nella versione da tavolo, completa; esclusa la versione da terra con quote.",
+      "source_format": "WEBP",
+      "source_size": [
+        1000,
+        1000
+      ],
+      "manual_rectangular_crop": null,
+      "whitespace_crop": [
+        237,
+        249,
+        760,
+        909
+      ],
+      "scale": 1.396574,
+      "circle_clipped_pixels": 0,
+      "final_sha256": "d07651c22a1dc1eca0e7ec844c31951bb809e6ed112e34a28f267bc12df45a70",
+      "final_size": [
+        1100,
+        1100
+      ],
+      "final_bytes": 37475,
+      "jpeg_quality": 90
+    }
+  ],
+  "originals_storage": "Originali e sei proposte non pubblicate conservati nella copia locale del progetto."
+}

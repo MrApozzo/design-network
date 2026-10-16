@@ -544,3 +544,11 @@ corrente+nodo+indice, non `Math.random`) così il profilo resta irregolare
 - L'utente ha autorizzato esplicitamente la pubblicazione online delle immagini e delle fonti. Questa autorizzazione supera le precedenti note che indicavano il lotto come solo locale. Conservare le altre modifiche locali e pubblicare il solo intervento immagini con le dipendenze strettamente necessarie.
 
 - Per la pubblicazione viene aggiunta la sola scheda Pascal, necessaria alla foto selezionata e assente dal catalogo gia online. Le altre modifiche preesistenti a interfaccia, metadati, designer e aziende restano locali. Originali e audit completo restano nella cartella locale; il repository conserva i manifest e i CSV di provenienza del lotto.
+
+
+## Nuove foto e proposta di ampliamento (2026-10-16)
+
+- Secondo passaggio mirato su 32 classici ancora senza immagine: 17 casi chiari selezionati, 6 messi in validazione esplicita (F01–F06), 9 lasciati senza inserimento. Le sei proposte riguardano Antony, Him & Her, Groundpiece, Fjord, Pack e Panthella; nessuna di queste sei foto deve essere inserita finche l'utente non la valida.
+- Rispettati sfondo bianco, oggetto completo, verticali e prospettiva naturale, con controllo finale nel cerchio. Fonti aggiornate; nessuna sostituzione delle foto gia presenti. Lotto e originali in `_pipeline/lotti/2026-10-16-classici/`.
+- Preparata per l'utente una lista di 17 nuovi designer, 4 autori gia citati ma senza scheda (Pierre Jeanneret, Lilly Reich, Max Bill, Guido Venturini) e 35 prodotti mancanti. Si tratta di una proposta editoriale, non di nuove schede gia inserite. Controllati gli omonimi Cobra (Grossman/Stoppino) e Lightlight (Meda/Vigo).
+- Per i prossimi inserimenti partire dai prodotti e designer approvati dall'utente, completando dati, coautori, fonti e fotografie. Evitare di trasformare la sola lista proposta in aggiunte automatiche al catalogo.
