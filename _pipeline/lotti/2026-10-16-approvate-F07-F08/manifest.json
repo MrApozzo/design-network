@@ -1,0 +1,92 @@
+{
+  "date": "2026-10-16",
+  "initial_missing": 545,
+  "products_completed": 2,
+  "images": 2,
+  "user_approved": 2,
+  "pending_review": 0,
+  "images_approved": [
+    {
+      "id": "F07",
+      "name": "675 Chair",
+      "file": "day-675chair.jpg",
+      "designer": "Robin Day",
+      "company": "Hille",
+      "source": "Cimmermann",
+      "page": "https://cimmermann.uk/products/case-675-chair",
+      "image_url": "https://cimmermann.uk/cdn/shop/products/case-675-robin-day-chair-oak-black_1_1200x.jpg?v=1695919214",
+      "raw": "extra-512-0.bin",
+      "source_sha256": "8797835627011b291408b7f6977cd9a978c19abaf8eb0ccc6fd6dd29f51a1b44",
+      "question": "La 675 è fotografata quasi di profilo. È completa e le verticali sono naturali, ma la seduta è più leggibile in tre quarti. Accetti questa vista oppure la lasciamo in attesa di una foto migliore?",
+      "status": "Approvata esplicitamente",
+      "source_format": "WEBP",
+      "source_size": [
+        750,
+        750
+      ],
+      "manual_rectangular_crop": null,
+      "whitespace_crop": [
+        171,
+        83,
+        561,
+        673
+      ],
+      "scale": 1.473899,
+      "circle_clipped_pixels": 0,
+      "final_sha256": "3adfc878f34cf0dc8460b8afcbbbda60a56e3ee75e348485daa4f51f6e312cb7",
+      "final_size": [
+        1100,
+        1100
+      ],
+      "final_bytes": 50912,
+      "jpeg_quality": 90,
+      "note": "Vista e variante approvate dall’utente: La 675 è fotografata quasi di profilo. È completa e le verticali sono naturali, ma la seduta è più leggibile in tre quarti. Accetti questa vista oppure la lasciamo in attesa di una foto migliore?",
+      "approval": "valido tutto",
+      "approval_date": "2026-10-16",
+      "category": "poltrona",
+      "original_file": "originali/day-675chair.webp"
+    },
+    {
+      "id": "F08",
+      "name": "Supernatural",
+      "file": "lovegrove-supernatural.jpg",
+      "designer": "Ross Lovegrove",
+      "company": "Moroso",
+      "source": "Mohd",
+      "page": "https://shop.mohd.it/it/supernatural-sedia.html",
+      "image_url": "https://cdn.mohd.it/cache/image/width%3D1200%2Cformat%3Dwebp/media/catalog/product/m/o/moroso-supernatural-chair-1-1.jpg",
+      "raw": "manual-499.bin",
+      "source_sha256": "c1ba329080b62315a0b1e37592a29388febedf309627ecbe22b20252d54331f7",
+      "question": "Questa è la Supernatural senza braccioli con schienale pieno. Preferisci questa versione oppure quella con i fori, più caratteristica?",
+      "status": "Approvata esplicitamente",
+      "source_format": "JPEG",
+      "source_size": [
+        1200,
+        900
+      ],
+      "manual_rectangular_crop": null,
+      "whitespace_crop": [
+        383,
+        91,
+        823,
+        840
+      ],
+      "scale": 1.199673,
+      "circle_clipped_pixels": 0,
+      "final_sha256": "a8c8b307abd9186e6c5e0f0cdad65ce129178b46b472b384d1277c2d7cb0cdd3",
+      "final_size": [
+        1100,
+        1100
+      ],
+      "final_bytes": 56171,
+      "jpeg_quality": 90,
+      "note": "Vista e variante approvate dall’utente: Questa è la Supernatural senza braccioli con schienale pieno. Preferisci questa versione oppure quella con i fori, più caratteristica?",
+      "approval": "valido tutto",
+      "approval_date": "2026-10-16",
+      "category": "sedia",
+      "original_file": "originali/lovegrove-supernatural.jpg"
+    }
+  ],
+  "policy": "Inserite le esatte foto F07–F08 approvate dall’utente con «valido tutto». Nessuna elaborazione ulteriore rispetto alle anteprime approvate.",
+  "originals_storage": "Originali conservati nella copia locale del progetto. F07–F08 approvate esplicitamente in chat il 16 ottobre 2026."
+}

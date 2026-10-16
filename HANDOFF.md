@@ -561,3 +561,10 @@ corrente+nodo+indice, non `Math.random`) così il profilo resta irregolare
 - Tredici fotografie aggiunte, nessuna esistente sostituita. Fonti, originali e approvazioni in `_pipeline/lotti/2026-10-16-approvate-nuovo-lotto/`. Regole su bianco, margini, verticali e assenza di scontorno confermate.
 - Elenco proposto ampliato da 17 a 33 nuovi designer e da 35 a 50 prodotti; restano quattro autori gia citati senza scheda. I progetti condivisi String e PaperClip hanno una sola proposta prodotto con due schede autore. Nessun inserimento di schede del catalogo in questo lotto.
 - Emersa una nota da risolvere quando si aggiorna il catalogo: Carbon Chair e accreditata da Moooi a Bertjan Pot in collaborazione con Marcel Wanders; la scheda locale cita solo Wanders. Pot entra nell'elenco proposto. Il lotto fotografico non modifica attribuzioni storiche.
+
+
+## Foto F07–F08 approvate (2026-10-16)
+
+- L'utente ha scritto «valido tutto» sul secondo foglio: approvate e inserite 675 Chair nella vista quasi laterale e Supernatural senza braccioli con schienale pieno, esattamente come mostrate in F07–F08. Questa approvazione supera la sospensione precedente.
+- Due foto aggiunte senza alterare quelle esistenti, fonte Cimmermann aggiunta ai Credits ove assente; originali e consenso in `_pipeline/lotti/2026-10-16-approvate-F07-F08/`.
+- L'utente ha chiesto l'elenco dei designer aggiunti: chiarito che i sedici nomi D18–D33 sono stati aggiunti alla proposta editoriale, non ancora al catalogo pubblico. Le schede restano da costruire.
