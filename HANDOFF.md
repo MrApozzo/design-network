@@ -552,3 +552,12 @@ corrente+nodo+indice, non `Math.random`) così il profilo resta irregolare
 - Rispettati sfondo bianco, oggetto completo, verticali e prospettiva naturale, con controllo finale nel cerchio. Fonti aggiornate; nessuna sostituzione delle foto gia presenti. Lotto e originali in `_pipeline/lotti/2026-10-16-classici/`.
 - Preparata per l'utente una lista di 17 nuovi designer, 4 autori gia citati ma senza scheda (Pierre Jeanneret, Lilly Reich, Max Bill, Guido Venturini) e 35 prodotti mancanti. Si tratta di una proposta editoriale, non di nuove schede gia inserite. Controllati gli omonimi Cobra (Grossman/Stoppino) e Lightlight (Meda/Vigo).
 - Per i prossimi inserimenti partire dai prodotti e designer approvati dall'utente, completando dati, coautori, fonti e fotografie. Evitare di trasformare la sola lista proposta in aggiunte automatiche al catalogo.
+
+
+## Approvazioni foto e ulteriore lotto (2026-10-16)
+
+- L'utente ha scritto «approvo tutto» sul foglio F01–F06: approvate e inserite Antony, Him & Her, Groundpiece, Fjord, Pack e Panthella nelle varianti esatte mostrate. Questa approvazione supera la sospensione indicata nella nota precedente.
+- Ulteriore ricerca rapida su 17 schede: sette casi chiari inseriti (Extrasoft, Vegetal, MT3, Carbon Chair, Chaos, Basel, Hunting Chair); otto senza inserimento; 675 Chair e Supernatural restano nel nuovo foglio F07–F08 per scelta di vista/variante. Nessuna delle due foto in attesa viene inserita.
+- Tredici fotografie aggiunte, nessuna esistente sostituita. Fonti, originali e approvazioni in `_pipeline/lotti/2026-10-16-approvate-nuovo-lotto/`. Regole su bianco, margini, verticali e assenza di scontorno confermate.
+- Elenco proposto ampliato da 17 a 33 nuovi designer e da 35 a 50 prodotti; restano quattro autori gia citati senza scheda. I progetti condivisi String e PaperClip hanno una sola proposta prodotto con due schede autore. Nessun inserimento di schede del catalogo in questo lotto.
+- Emersa una nota da risolvere quando si aggiorna il catalogo: Carbon Chair e accreditata da Moooi a Bertjan Pot in collaborazione con Marcel Wanders; la scheda locale cita solo Wanders. Pot entra nell'elenco proposto. Il lotto fotografico non modifica attribuzioni storiche.

@@ -635,6 +635,9 @@ const SEZIONI_CREDITS = [
       { nome: "Nordstrom", url: "https://shop.nordstrom.com/" },
       { nome: "Rum21", url: "https://www.rum21.dk/" },
       { nome: "Santiccioli", url: "https://www.santiccioli.com/" },
+      { nome: "Dieter Horn", url: "https://www.dieter-horn.de/" },
+      { nome: "LiveAuctioneers", url: "https://www.liveauctioneers.com/" },
+      { nome: "ichliebedesign", url: "https://www.ichliebedesign.de/" },
     ],
   },
   {
@@ -673,6 +676,9 @@ const SEZIONI_CREDITS = [
       { nome: "Herman Miller", url: "https://www.hermanmiller.com/" },
       { nome: "Knoll", url: "https://www.knoll-int.com/" },
       { nome: "Venini", url: "https://www.venini.com/" },
+      { nome: "Flexform", url: "https://www.flexform.it/" },
+      { nome: "Moooi", url: "https://www.moooi.com/" },
+      { nome: "Vitra", url: "https://www.vitra.com/" },
     ],
   },
 ]

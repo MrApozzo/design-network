@@ -1,0 +1,530 @@
+{
+  "date": "2026-10-16",
+  "batch": "approvate-e-nuovo-lotto",
+  "initial_missing": 558,
+  "searched_products": 17,
+  "additional_search_queries": 4,
+  "products_completed": 13,
+  "images": 13,
+  "user_approved": 6,
+  "clear_new": 7,
+  "pending_review": 2,
+  "deferred_without_review": 8,
+  "images_approved": [
+    {
+      "id": "F01",
+      "product_id": 19,
+      "name": "Antony Chair",
+      "file": "prouve-antonychair.jpg",
+      "designer": "Jean Prouvé",
+      "company": "Vitra",
+      "question": "La foto ufficiale mostra tre viste. Qui è selezionata quella di profilo: rende bene la struttura, ma è più laterale del criterio abituale. La accetti?",
+      "page": "https://www.vitra.com/en-un/archive/antony-chair",
+      "image_url": "https://static.vitra.com/media/asset/9510455/storage/v_fullbleed_1440x/87243751.jpg",
+      "raw": "approved-F01.bin",
+      "source_sha256": "e2750739172df61298864a5686a5d8beb88845a1066dfd08100d53d8c80fa262",
+      "status": "Approvata esplicitamente",
+      "source_format": "JPEG",
+      "source_size": [
+        1440,
+        576
+      ],
+      "manual_rectangular_crop": [
+        0,
+        0,
+        480,
+        576
+      ],
+      "whitespace_crop": [
+        47,
+        13,
+        461,
+        554
+      ],
+      "scale": 1.539499,
+      "circle_clipped_pixels": 0,
+      "final_sha256": "05f46c96513b780516cabfead23b260b2ea180b6445d269bceaf678e62966601",
+      "final_size": [
+        1100,
+        1100
+      ],
+      "final_bytes": 54921,
+      "jpeg_quality": 90,
+      "source": "Vitra",
+      "note": "Eccezione approvata dall’utente: La foto ufficiale mostra tre viste. Qui è selezionata quella di profilo: rende bene la struttura, ma è più laterale del criterio abituale. La accetti?",
+      "approval": "approvo tutto",
+      "approval_date": "2026-10-16",
+      "category": "sedia",
+      "original_file": "originali/prouve-antonychair.jpg"
+    },
+    {
+      "id": "F02",
+      "product_id": 21,
+      "name": "Him & Her",
+      "file": "novembre-himeher.jpg",
+      "designer": "Fabio Novembre",
+      "company": "Casamania",
+      "question": "Il disegno caratterizzante è sul retro. Usiamo questa vista posteriore dei due modelli insieme?",
+      "page": "https://www.dieter-horn.de/en/casamania/him-her-chair",
+      "image_url": "https://static.dieter-horn.de/images/produkte/casamania/casamania-him-her-stuhl-gROzfWW1WYd3wF70.jpg",
+      "raw": "approved-F02.bin",
+      "source_sha256": "3bdc5273cdb93c2090bb660cf496b29f5616dd5ccbbd6462164328ccd71cf287",
+      "status": "Approvata esplicitamente",
+      "source_format": "JPEG",
+      "source_size": [
+        1787,
+        1787
+      ],
+      "manual_rectangular_crop": null,
+      "whitespace_crop": [
+        0,
+        92,
+        1787,
+        1638
+      ],
+      "scale": 0.420085,
+      "circle_clipped_pixels": 0,
+      "final_sha256": "7c10e8835f653a24aa8d4e6423944f45ea369da945896e25a7dad638f376b90f",
+      "final_size": [
+        1100,
+        1100
+      ],
+      "final_bytes": 54204,
+      "jpeg_quality": 90,
+      "source": "Dieter Horn",
+      "note": "Eccezione approvata dall’utente: Il disegno caratterizzante è sul retro. Usiamo questa vista posteriore dei due modelli insieme?",
+      "approval": "approvo tutto",
+      "approval_date": "2026-10-16",
+      "category": "sedia",
+      "original_file": "originali/novembre-himeher.jpg"
+    },
+    {
+      "id": "F03",
+      "product_id": 29,
+      "name": "Groundpiece",
+      "file": "citterio-groundpiece.jpg",
+      "designer": "Antonio Citterio",
+      "company": "Flexform",
+      "question": "Foto ufficiale con divano, contenitori e accessori coordinati. Accetti la composizione completa o preferisci il divano isolato?",
+      "page": "https://www.flexform.it/en/communications/all-articles/news/15-years-of-the-groundpiece-sofa",
+      "image_url": "https://www.flexform.it/_next/image?q=75&url=https%3A%2F%2Fbe.flexform.it%2Fsites%2Fdefault%2Ffiles%2Fstyles%2Ffixed_width_large%2Fpublic%2Fimages%2Fphoto_album%2Fgroundpiece_2_0.jpg.webp%3Fitok%3DsBf5B1p6&w=3840",
+      "raw": "approved-F03.bin",
+      "source_sha256": "4f81ecc12a3307c85fc948b01dbbc8badffe2aacaf7a811f8bae4b0029171d27",
+      "status": "Approvata esplicitamente",
+      "source_format": "WEBP",
+      "source_size": [
+        1024,
+        694
+      ],
+      "manual_rectangular_crop": null,
+      "whitespace_crop": [
+        34,
+        251,
+        995,
+        605
+      ],
+      "scale": 1.032072,
+      "circle_clipped_pixels": 0,
+      "final_sha256": "bab31483201784e1279385386fdbffc951eba5bb20fd662c68aff6692e473be7",
+      "final_size": [
+        1100,
+        1100
+      ],
+      "final_bytes": 73102,
+      "jpeg_quality": 90,
+      "source": "Flexform",
+      "note": "Eccezione approvata dall’utente: Foto ufficiale con divano, contenitori e accessori coordinati. Accetti la composizione completa o preferisci il divano isolato?",
+      "approval": "approvo tutto",
+      "approval_date": "2026-10-16",
+      "category": "divano",
+      "original_file": "originali/citterio-groundpiece.webp"
+    },
+    {
+      "id": "F04",
+      "product_id": 30,
+      "name": "Fjord",
+      "file": "urquiola-fjord.jpg",
+      "designer": "Patricia Urquiola",
+      "company": "Moroso",
+      "question": "Questa è una poltroncina compatta della famiglia Fjord. Per la scheda generica preferisci questa o la poltrona alta più avvolgente?",
+      "page": "https://www.1stdibs.com/furniture/seating/armchairs/moroso-fjord-small-armchair-patricia-urquiola/id-f_41121422/",
+      "image_url": "https://a.1stdibscdn.com/moroso-fjord-medium-armchair-by-patricia-urquiola-for-sale/f_16392/f_411216021724079205036/f_41121602_1724079205582_bg_processed.jpg?auto=webp&disable=upscale&quality=60&width=640",
+      "raw": "approved-F04.bin",
+      "source_sha256": "53096810401f6c19f247f0f9796a0cd68446663ffa6adcf86e982056a0cc7ca4",
+      "status": "Approvata esplicitamente",
+      "source_format": "WEBP",
+      "source_size": [
+        640,
+        640
+      ],
+      "manual_rectangular_crop": null,
+      "whitespace_crop": [
+        0,
+        40,
+        640,
+        600
+      ],
+      "scale": 1.276468,
+      "circle_clipped_pixels": 0,
+      "final_sha256": "70b791b4c57e112e58d4d5ad90454989e2356658006d104858b8d15773d1f33e",
+      "final_size": [
+        1100,
+        1100
+      ],
+      "final_bytes": 102719,
+      "jpeg_quality": 90,
+      "source": "1stDibs",
+      "note": "Eccezione approvata dall’utente: Questa è una poltroncina compatta della famiglia Fjord. Per la scheda generica preferisci questa o la poltrona alta più avvolgente? La pagina di scoperta cita Small, il file effettivo Medium; per la scheda generica si usa la poltroncina della famiglia, senza attribuire il sottotipo Small.",
+      "approval": "approvo tutto",
+      "approval_date": "2026-10-16",
+      "category": "poltrona",
+      "original_file": "originali/urquiola-fjord.webp"
+    },
+    {
+      "id": "F05",
+      "product_id": 31,
+      "name": "Pack",
+      "file": "binfare-pack.jpg",
+      "designer": "Francesco Binfaré",
+      "company": "Edra",
+      "question": "Foto corretta del divano con orso-schienale, tutto molto chiaro su bianco. La leggibilità ti sembra sufficiente?",
+      "page": "https://www.dieter-horn.ch/de/edra/pack-sofa",
+      "image_url": "https://static.dieter-horn.de/images/produkte/edra/edra-pack-sofa-AN5VuP8KbwpepUxY.jpg",
+      "raw": "approved-F05.bin",
+      "source_sha256": "28745ea49b990b5c6d39caa31787b0f1ada2810eb1c5a43a10bcad7516f4feb2",
+      "status": "Approvata esplicitamente",
+      "source_format": "JPEG",
+      "source_size": [
+        1150,
+        1150
+      ],
+      "manual_rectangular_crop": null,
+      "whitespace_crop": [
+        0,
+        405,
+        1150,
+        781
+      ],
+      "scale": 0.839105,
+      "circle_clipped_pixels": 0,
+      "final_sha256": "5d854238d293e7abf807c8be37ac6e0e77d64d87840e27a4c55853d1c9810ae1",
+      "final_size": [
+        1100,
+        1100
+      ],
+      "final_bytes": 60174,
+      "jpeg_quality": 90,
+      "source": "Dieter Horn",
+      "note": "Eccezione approvata dall’utente: Foto corretta del divano con orso-schienale, tutto molto chiaro su bianco. La leggibilità ti sembra sufficiente?",
+      "approval": "approvo tutto",
+      "approval_date": "2026-10-16",
+      "category": "divano",
+      "original_file": "originali/binfare-pack.jpg"
+    },
+    {
+      "id": "F06",
+      "product_id": 4,
+      "name": "Panthella",
+      "file": "panton-panthella.jpg",
+      "designer": "Verner Panton",
+      "company": "Louis Poulsen",
+      "question": "La foto è della Panthella 320 da tavolo. Va bene per la scheda generica, oppure vuoi soltanto la dimensione originale 400?",
+      "page": "https://www.ichliebedesign.de/technik/designer-leuchten-lampen/tischlampen/panthella-320-tischleuchte/a116158",
+      "image_url": "https://www.ichliebedesign.de/media/8c/b4/d0/1754570058/panthella-320-table-lamp-opal-white.jpg?ts=1754570058",
+      "raw": "approved-F06.bin",
+      "source_sha256": "3dc8669a3eae1651038a352ae7a864f29716bfa9a7375cba38f8b1dce0ee7b23",
+      "status": "Approvata esplicitamente",
+      "source_format": "JPEG",
+      "source_size": [
+        2000,
+        2000
+      ],
+      "manual_rectangular_crop": null,
+      "whitespace_crop": [
+        577,
+        566,
+        1898,
+        1741
+      ],
+      "scale": 0.584989,
+      "circle_clipped_pixels": 0,
+      "final_sha256": "b5921760a434b2c17fea447010a5e579b34edf02d82d128e66d1c5c572b23472",
+      "final_size": [
+        1100,
+        1100
+      ],
+      "final_bytes": 22809,
+      "jpeg_quality": 90,
+      "source": "ichliebedesign",
+      "note": "Eccezione approvata dall’utente: La foto è della Panthella 320 da tavolo. Va bene per la scheda generica, oppure vuoi soltanto la dimensione originale 400?",
+      "approval": "approvo tutto",
+      "approval_date": "2026-10-16",
+      "category": "lampada",
+      "original_file": "originali/panton-panthella.jpg"
+    },
+    {
+      "id": "N464",
+      "name": "Extrasoft",
+      "file": "lissoni-extrasoft.jpg",
+      "designer": "Piero Lissoni",
+      "company": "Living Divani",
+      "category": "divano",
+      "source": "Mohd",
+      "page": "https://shop.mohd.it/it/extrasoft-collezione-di-divani.html",
+      "image_url": "https://cdn.mohd.it/cdn-cgi/image/width%3D1200%2Cformat%3Dauto/media/catalog/product/e/x/extrasoft-divano-modulare-1-lissoni-living-divani.jpg",
+      "raw": "464-0.bin",
+      "source_sha256": "e52635a66ed1e95aea03c21e15116a0a3f0f73361f5e782dd1b36b745c741656",
+      "note": "Composizione modulare Extrasoft su bianco, intera e senza oggetti ambientali.",
+      "status": "Selezione chiara",
+      "source_format": "AVIF",
+      "source_size": [
+        1200,
+        675
+      ],
+      "manual_rectangular_crop": null,
+      "whitespace_crop": [
+        46,
+        92,
+        1158,
+        591
+      ],
+      "scale": 0.872278,
+      "circle_clipped_pixels": 0,
+      "final_sha256": "816bea8ccec2a2addc626e07c560678fee9139cf8974f5e8cda6efb6898b86f8",
+      "final_size": [
+        1100,
+        1100
+      ],
+      "final_bytes": 52611,
+      "jpeg_quality": 90,
+      "original_file": "originali/lissoni-extrasoft.avif"
+    },
+    {
+      "id": "N482",
+      "name": "Vegetal Chair",
+      "file": "bouroullec-vegetalchair.jpg",
+      "designer": [
+        "Ronan Bouroullec",
+        "Erwan Bouroullec"
+      ],
+      "company": "Vitra",
+      "category": "sedia",
+      "source": "1stDibs",
+      "page": "https://www.1stdibs.com/furniture/seating/chairs/vitra-vegetal-chair-cream-ronan-erwan-bouroullec/id-f_13222251/",
+      "image_url": "https://a.1stdibscdn.com/archivesE/upload/1121189/f_132222511547105094654/13222251_master.jpg",
+      "raw": "482-0.bin",
+      "source_sha256": "b46b44f8f0450e16330c109def3fdbe1c5254a3759074c5bc3aa412acd84be38",
+      "note": "Vegetal chiara, vista a tre quarti e struttura completa.",
+      "status": "Selezione chiara",
+      "source_format": "JPEG",
+      "source_size": [
+        3000,
+        3000
+      ],
+      "manual_rectangular_crop": null,
+      "whitespace_crop": [
+        291,
+        0,
+        2709,
+        3000
+      ],
+      "scale": 0.272708,
+      "circle_clipped_pixels": 0,
+      "final_sha256": "1d136cd1925db64b1058ef8f5590f9f92409ac27be00d10a0d350f986c0ea631",
+      "final_size": [
+        1100,
+        1100
+      ],
+      "final_bytes": 54793,
+      "jpeg_quality": 90,
+      "original_file": "originali/bouroullec-vegetalchair.jpg"
+    },
+    {
+      "id": "N491",
+      "name": "MT3 Rocking Chair",
+      "file": "arad-mt3.jpg",
+      "designer": "Ron Arad",
+      "company": "Driade",
+      "category": "sedia a dondolo",
+      "source": "LiveAuctioneers",
+      "page": "https://www.liveauctioneers.com/item/163151536_ron-arad-1951-poltrona-a-dondolo-mt3-per-driade-ron-arad-1951-mt3-rocking-chair-for-driade",
+      "image_url": "https://p1.liveauctioneers.com/5687/305405/163151536_1_x.jpg?quality=70&version=1697037766",
+      "raw": "491-0.bin",
+      "source_sha256": "51faf31aa19054c53eec7dbd10c44df52ef3e625f66544c2c4dc99414214cbaf",
+      "note": "MT3 bianca con interno arancio, vista coerente che mostra la struttura cava e il dondolo.",
+      "status": "Selezione chiara",
+      "source_format": "WEBP",
+      "source_size": [
+        1080,
+        1080
+      ],
+      "manual_rectangular_crop": null,
+      "whitespace_crop": [
+        157,
+        233,
+        938,
+        868
+      ],
+      "scale": 1.243178,
+      "circle_clipped_pixels": 0,
+      "final_sha256": "5211bc039e4f352e7938dfb58bb1deef3c5a0be1949514a10c5e762cbb4a1c03",
+      "final_size": [
+        1100,
+        1100
+      ],
+      "final_bytes": 77493,
+      "jpeg_quality": 90,
+      "original_file": "originali/arad-mt3.webp"
+    },
+    {
+      "id": "N494",
+      "name": "Carbon Chair",
+      "file": "wanders-carbonchair.jpg",
+      "designer": "Marcel Wanders",
+      "company": "Moooi",
+      "category": "sedia",
+      "source": "Moooi",
+      "page": "https://www.moooi.com/us/product/carbon-chair/",
+      "image_url": "https://cdn.moooi.com/tmp/image-thumbnails/Collection/Carbon/Carbon%20Chair/image-thumb__18339__width_1200/Carbon-Chair-transparent-background.png",
+      "raw": "494-1.bin",
+      "source_sha256": "483b8e0537b47303900f78f82aa745a6990df0f6e49312f6c558129c5cef2cc3",
+      "note": "Carbon Chair nera, vista frontale ufficiale. Moooi cita anche Bertjan Pot: nota per completare il catalogo.",
+      "status": "Selezione chiara",
+      "source_format": "PNG",
+      "source_size": [
+        1200,
+        1800
+      ],
+      "manual_rectangular_crop": null,
+      "whitespace_crop": [
+        82,
+        85,
+        1124,
+        1729
+      ],
+      "scale": 0.525938,
+      "circle_clipped_pixels": 0,
+      "final_sha256": "34a5ecfa5645d0389a4fd4c298367e32599397f117182fff3a664282d685e231",
+      "final_size": [
+        1100,
+        1100
+      ],
+      "final_bytes": 143504,
+      "jpeg_quality": 90,
+      "original_file": "originali/wanders-carbonchair.png"
+    },
+    {
+      "id": "N496",
+      "name": "Chaos",
+      "file": "grcic-chaos.jpg",
+      "designer": "Konstantin Grcic",
+      "company": "ClassiCon",
+      "category": "poltrona",
+      "source": "Mohd",
+      "page": "https://shop.mohd.it/en/chaos-chair.html",
+      "image_url": "https://cdn.mohd.it/cache/image/width%3D800%2Cformat%3Dwebp/media/catalog/product/c/h/chaos-sedia.jpg",
+      "raw": "496-0.bin",
+      "source_sha256": "459ee699a43bcc91fc0255fd3b91715fd35daffb237f6505c0fb3ea56a2b228a",
+      "note": "Chaos arancio, vista a tre quarti che rende leggibile la scocca e il telaio.",
+      "status": "Selezione chiara",
+      "source_format": "WEBP",
+      "source_size": [
+        800,
+        600
+      ],
+      "manual_rectangular_crop": null,
+      "whitespace_crop": [
+        103,
+        13,
+        706,
+        588
+      ],
+      "scale": 1.285805,
+      "circle_clipped_pixels": 0,
+      "final_sha256": "aa558d8607e44287f859b75f19e3fb17d7f6a1c38dcc9890223dcafd1fb08a88",
+      "final_size": [
+        1100,
+        1100
+      ],
+      "final_bytes": 61807,
+      "jpeg_quality": 90,
+      "original_file": "originali/grcic-chaos.webp"
+    },
+    {
+      "id": "N497",
+      "name": "Basel Chair",
+      "file": "morrison-baselchair.jpg",
+      "designer": "Jasper Morrison",
+      "company": "Vitra",
+      "category": "sedia",
+      "source": "1stDibs",
+      "page": "https://www.1stdibs.com/furniture/seating/chairs/vitra-basel-chair-cream-natural-beech-base-jasper-morrison/id-f_13065702/",
+      "image_url": "https://a.1stdibscdn.com/vitra-basel-chair-in-cream-with-natural-beech-base-by-jasper-morrison-for-sale/1121189/f_130657021545223736398/13065702_master.jpg",
+      "raw": "497-0.bin",
+      "source_sha256": "7b834ca81eb5cb8bf49a287873ad693b68132a554f9e0cfe9cdb111fc8632076",
+      "note": "Basel bianca con struttura in faggio, vista a tre quarti naturale.",
+      "status": "Selezione chiara",
+      "source_format": "JPEG",
+      "source_size": [
+        3000,
+        3000
+      ],
+      "manual_rectangular_crop": null,
+      "whitespace_crop": [
+        601,
+        0,
+        2397,
+        3000
+      ],
+      "scale": 0.29928,
+      "circle_clipped_pixels": 0,
+      "final_sha256": "ce807320a4d28dba950a693d31cba75f0d678a02826d21a4b43dc88ec2d371bc",
+      "final_size": [
+        1100,
+        1100
+      ],
+      "final_bytes": 54311,
+      "jpeg_quality": 90,
+      "original_file": "originali/morrison-baselchair.jpg"
+    },
+    {
+      "id": "N513",
+      "name": "Hunting Chair",
+      "file": "mogensen-huntingchair.jpg",
+      "designer": "Børge Mogensen",
+      "company": "Fredericia",
+      "category": "poltrona",
+      "source": "1stDibs",
+      "page": "https://www.1stdibs.com/furniture/seating/lounge-chairs/hunting-chair-soap-oak-natural-leather-brge-mogensen-fredericia/id-f_35017612/",
+      "image_url": "https://a.1stdibscdn.com/hunting-chair-in-soap-oak-natural-leather-by-brge-mogensen-for-fredericia-for-sale-picture-4/f_51432/f_350176121688064231693/bm_2229_v1_leather90_l_master.jpg",
+      "raw": "513-0.bin",
+      "source_sha256": "62f2e64d111e146d8663c8452f467aafb31147172687d9501cdb1e50dc6c823f",
+      "note": "Hunting Chair in rovere e pelle naturale, vista frontale completa.",
+      "status": "Selezione chiara",
+      "source_format": "JPEG",
+      "source_size": [
+        4000,
+        5000
+      ],
+      "manual_rectangular_crop": null,
+      "whitespace_crop": [
+        418,
+        1203,
+        3785,
+        4620
+      ],
+      "scale": 0.216747,
+      "circle_clipped_pixels": 0,
+      "final_sha256": "5ee50ee2a41bf368a3e40910831d4d73e58f629c5ef35b62a59e7470f378f3ca",
+      "final_size": [
+        1100,
+        1100
+      ],
+      "final_bytes": 101282,
+      "jpeg_quality": 90,
+      "original_file": "originali/mogensen-huntingchair.jpg"
+    }
+  ],
+  "policy": "Foto esistenti su bianco; margini, crop rettangolare e resize. Nessuna generazione, scontorno o alterazione prospettica. Approvazione esplicita F01–F06 ricevuta il 16 ottobre 2026.",
+  "originals_storage": "Originali e due proposte in attesa conservati nella copia locale del progetto; F01–F06 approvate esplicitamente in chat."
+}
