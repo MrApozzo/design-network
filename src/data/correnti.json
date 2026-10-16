@@ -338,5 +338,95 @@
     "descrizioneBreve_en": "The Bouroullec brothers duo, among the most influential voices in contemporary French design.",
     "descrizione": "Il duo formato dai fratelli Ronan ed Erwan Bouroullec, tra le voci più influenti del design francese contemporaneo, noto per un linguaggio poetico e naturale che unisce forme organiche e rigore industriale per marchi come Vitra, Kartell e Magis.",
     "descrizione_en": "The duo formed by brothers Ronan and Erwan Bouroullec, among the most influential voices in contemporary French design, known for a poetic, natural language that combines organic forms with industrial rigor for brands such as Vitra, Kartell and Magis."
+  },
+  {
+    "nome": "Design Americano",
+    "annoInizio": null,
+    "annoFine": null,
+    "colore": "#c5d8eb",
+    "descrizioneBreve": "Progettisti e cultura del design in Stati Uniti.",
+    "descrizioneBreve_en": "Designers and design culture in United States.",
+    "descrizione": "Raggruppamento geografico dedicato ai designer originari di Stati Uniti o che vi hanno sviluppato una parte centrale della propria attività. Riunisce percorsi di epoche e orientamenti diversi, mantenendo nelle singole biografie i riferimenti alle correnti storiche. Nel catalogo comprende Harry Bertoia, Greta Magnusson Grossman, Warren Platner, Jens Risom, George Nakashima, Eva Zeisel.",
+    "descrizione_en": "A geographic grouping of designers from United States or whose careers developed substantially there. It brings together different periods and approaches; individual biographies retain references to historical movements. Catalogue members include Harry Bertoia, Greta Magnusson Grossman, Warren Platner, Jens Risom, George Nakashima, Eva Zeisel."
+  },
+  {
+    "nome": "Design Tedesco",
+    "annoInizio": null,
+    "annoFine": null,
+    "colore": "#d6d7b8",
+    "descrizioneBreve": "Progettisti e cultura del design in Germania.",
+    "descrizioneBreve_en": "Designers and design culture in Germany.",
+    "descrizione": "Raggruppamento geografico dedicato ai designer originari di Germania o che vi hanno sviluppato una parte centrale della propria attività. Riunisce percorsi di epoche e orientamenti diversi, mantenendo nelle singole biografie i riferimenti alle correnti storiche. Nel catalogo comprende Marianne Brandt, Wilhelm Wagenfeld, Ingo Maurer, Lilly Reich.",
+    "descrizione_en": "A geographic grouping of designers from Germany or whose careers developed substantially there. It brings together different periods and approaches; individual biographies retain references to historical movements. Catalogue members include Marianne Brandt, Wilhelm Wagenfeld, Ingo Maurer, Lilly Reich."
+  },
+  {
+    "nome": "Design Giapponese",
+    "annoInizio": null,
+    "annoFine": null,
+    "colore": "#edd4cf",
+    "descrizioneBreve": "Progettisti e cultura del design in Giappone.",
+    "descrizioneBreve_en": "Designers and design culture in Japan.",
+    "descrizione": "Raggruppamento geografico dedicato ai designer originari di Giappone o che vi hanno sviluppato una parte centrale della propria attività. Riunisce percorsi di epoche e orientamenti diversi, mantenendo nelle singole biografie i riferimenti alle correnti storiche. Nel catalogo comprende Sori Yanagi, Naoto Fukasawa.",
+    "descrizione_en": "A geographic grouping of designers from Japan or whose careers developed substantially there. It brings together different periods and approaches; individual biographies retain references to historical movements. Catalogue members include Sori Yanagi, Naoto Fukasawa."
+  },
+  {
+    "nome": "Design Spagnolo",
+    "annoInizio": null,
+    "annoFine": null,
+    "colore": "#e9d6b6",
+    "descrizioneBreve": "Progettisti e cultura del design in Spagna.",
+    "descrizioneBreve_en": "Designers and design culture in Spain.",
+    "descrizione": "Raggruppamento geografico dedicato ai designer originari di Spagna o che vi hanno sviluppato una parte centrale della propria attività. Riunisce percorsi di epoche e orientamenti diversi, mantenendo nelle singole biografie i riferimenti alle correnti storiche. Nel catalogo comprende Miguel Milá.",
+    "descrizione_en": "A geographic grouping of designers from Spain or whose careers developed substantially there. It brings together different periods and approaches; individual biographies retain references to historical movements. Catalogue members include Miguel Milá."
+  },
+  {
+    "nome": "Design Brasiliano",
+    "annoInizio": null,
+    "annoFine": null,
+    "colore": "#c9dfc5",
+    "descrizioneBreve": "Progettisti e cultura del design in Brasile.",
+    "descrizioneBreve_en": "Designers and design culture in Brazil.",
+    "descrizione": "Raggruppamento geografico dedicato ai designer originari di Brasile o che vi hanno sviluppato una parte centrale della propria attività. Riunisce percorsi di epoche e orientamenti diversi, mantenendo nelle singole biografie i riferimenti alle correnti storiche. Nel catalogo comprende Lina Bo Bardi, Sergio Rodrigues.",
+    "descrizione_en": "A geographic grouping of designers from Brazil or whose careers developed substantially there. It brings together different periods and approaches; individual biographies retain references to historical movements. Catalogue members include Lina Bo Bardi, Sergio Rodrigues."
+  },
+  {
+    "nome": "Design Australiano",
+    "annoInizio": null,
+    "annoFine": null,
+    "colore": "#dfcfe7",
+    "descrizioneBreve": "Progettisti e cultura del design in Australia.",
+    "descrizioneBreve_en": "Designers and design culture in Australia.",
+    "descrizione": "Raggruppamento geografico dedicato ai designer originari di Australia o che vi hanno sviluppato una parte centrale della propria attività. Riunisce percorsi di epoche e orientamenti diversi, mantenendo nelle singole biografie i riferimenti alle correnti storiche. Nel catalogo comprende Marc Newson.",
+    "descrizione_en": "A geographic grouping of designers from Australia or whose careers developed substantially there. It brings together different periods and approaches; individual biographies retain references to historical movements. Catalogue members include Marc Newson."
+  },
+  {
+    "nome": "Design Austriaco",
+    "annoInizio": null,
+    "annoFine": null,
+    "colore": "#dcc8c8",
+    "descrizioneBreve": "Progettisti e cultura del design in Austria.",
+    "descrizioneBreve_en": "Designers and design culture in Austria.",
+    "descrizione": "Raggruppamento geografico dedicato ai designer originari di Austria o che vi hanno sviluppato una parte centrale della propria attività. Riunisce percorsi di epoche e orientamenti diversi, mantenendo nelle singole biografie i riferimenti alle correnti storiche. Nel catalogo comprende Margarete Schütte-Lihotzky.",
+    "descrizione_en": "A geographic grouping of designers from Austria or whose careers developed substantially there. It brings together different periods and approaches; individual biographies retain references to historical movements. Catalogue members include Margarete Schütte-Lihotzky."
+  },
+  {
+    "nome": "Design Olandese",
+    "annoInizio": null,
+    "annoFine": null,
+    "colore": "#efddbd",
+    "descrizioneBreve": "Progettisti e cultura del design in Paesi Bassi.",
+    "descrizioneBreve_en": "Designers and design culture in the Netherlands.",
+    "descrizione": "Raggruppamento geografico dedicato ai designer originari di Paesi Bassi o che vi hanno sviluppato una parte centrale della propria attività. Riunisce percorsi di epoche e orientamenti diversi, mantenendo nelle singole biografie i riferimenti alle correnti storiche. Nel catalogo comprende Bertjan Pot.",
+    "descrizione_en": "A geographic grouping of designers from the Netherlands or whose careers developed substantially there. It brings together different periods and approaches; individual biographies retain references to historical movements. Catalogue members include Bertjan Pot."
+  },
+  {
+    "nome": "Design Svizzero",
+    "annoInizio": null,
+    "annoFine": null,
+    "colore": "#cbd8d1",
+    "descrizioneBreve": "Progettisti e cultura del design in Svizzera.",
+    "descrizioneBreve_en": "Designers and design culture in Switzerland.",
+    "descrizione": "Raggruppamento geografico dedicato ai designer originari di Svizzera o che vi hanno sviluppato una parte centrale della propria attività. Riunisce percorsi di epoche e orientamenti diversi, mantenendo nelle singole biografie i riferimenti alle correnti storiche. Nel catalogo comprende Pierre Jeanneret, Max Bill.",
+    "descrizione_en": "A geographic grouping of designers from Switzerland or whose careers developed substantially there. It brings together different periods and approaches; individual biographies retain references to historical movements. Catalogue members include Pierre Jeanneret, Max Bill."
   }
 ]

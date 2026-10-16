@@ -568,3 +568,15 @@ corrente+nodo+indice, non `Math.random`) così il profilo resta irregolare
 - L'utente ha scritto «valido tutto» sul secondo foglio: approvate e inserite 675 Chair nella vista quasi laterale e Supernatural senza braccioli con schienale pieno, esattamente come mostrate in F07–F08. Questa approvazione supera la sospensione precedente.
 - Due foto aggiunte senza alterare quelle esistenti, fonte Cimmermann aggiunta ai Credits ove assente; originali e consenso in `_pipeline/lotti/2026-10-16-approvate-F07-F08/`.
 - L'utente ha chiesto l'elenco dei designer aggiunti: chiarito che i sedici nomi D18–D33 sono stati aggiunti alla proposta editoriale, non ancora al catalogo pubblico. Le schede restano da costruire.
+
+
+## Ampliamento del catalogo approvato (16 ottobre 2026)
+
+- L'utente ha approvato l'intero elenco e chiesto «aggiungi tutto, schede ecc». La pubblicazione online è già autorizzata nella stessa conversazione.
+- Aggiunti 33 nuovi designer e 4 autori prima citati senza scheda: 205 profili complessivi. Aggiunti 50 prodotti (1765 totali) e 22 aziende necessarie ai collegamenti (142 totali), con testi italiani/inglesi e fonti puntuali nei dati.
+- Criterio geografico applicato SOLO alle 37 nuove schede, come richiesto esplicitamente; i campi scuole/collettivi dei 168 designer esistenti restano invariati. Categorie italiane, scandinava e francese riusate; nove nuove aree geografiche aggiunte. Le aree non sono presentate come movimenti storici unitari.
+- Coautori su una sola scheda prodotto: String e PaperClip condivisi; Carbon Chair preesistente completata con Bertjan Pot accanto a Marcel Wanders. Aggiunte 15 relazioni documentate senza includere modifiche locali estranee alle relazioni.
+- 43 foto di prodotti e 37 ritratti, originali e provenienza in `_pipeline/lotti/2026-10-16-ampliamento-catalogo/`. Nessuna immagine precedente sostituita; nessuno scontorno, generazione o correzione prospettica.
+- Foto Royal System F09 sospesa per validazione: composizione su bianco con piccolo vaso decorativo. MT49, Bulb, Lightlight, Lockheed Lounge, T1000 e Mole lasciati senza foto dopo il passaggio rapido. Non riproporre F01–F08, già approvate e pubblicate.
+- Verificato empiricamente il layout sui dati reali prima di modificare App. Il gruppo storico maggiore resta di 37 membri; Scandinavo passa da 6 a 17. Nessuna categoria vecchia riassegnata. L'etichetta Design Radicale/Postmodernismo è riconosciuta dai nomi anziché dal numero progressivo del gruppo.
+- Le schede statiche omettono le immagini non presenti, evitando immagini rotte per i prodotti ancora senza foto. Costanti protette di zoom, raggi e orbite invariate. Prima della pubblicazione eseguire build e check:layout sulla copia esatta da pubblicare; preservare modifiche locali estranee.

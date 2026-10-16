@@ -33,7 +33,7 @@ const slugBase = (value) => {
 const asList = (value) => Array.isArray(value) ? value : value ? [value] : []
 const yearRange = (start, end) => [start, end].filter(Boolean).join('–')
 const url = (path) => `${ORIGIN}${path}`
-const imageUrl = (file) => file ? url(`/immagini/${encodeURIComponent(file)}`) : url('/og-design-network.png')
+const imageUrl = (file) => file && availableImages.has(file) ? url(`/immagini/${encodeURIComponent(file)}`) : url('/og-design-network.png')
 
 function assignSlugs(items) {
   const used = new Map()
@@ -45,6 +45,7 @@ function assignSlugs(items) {
   })
 }
 
+const availableImages = new Set(await load('immagini_esistenti'))
 const designerSlugs = assignSlugs(designers)
 const prodottoSlugs = assignSlugs(prodotti)
 const aziendaSlugs = assignSlugs(aziende)
@@ -91,7 +92,7 @@ function layout({ title, description, canonical, type, image, body, schema }) {
 
 const cards = (items) => items.length ? `<ul class="grid">${items.map(({ href, title, note }) => `<li><a href="${esc(href)}">${esc(title)}${note ? `<small>${esc(note)}</small>` : ''}</a></li>`).join('')}</ul>` : ''
 const paragraph = (text) => clean(text) ? `<div class="content"><p>${esc(text)}</p></div>` : ''
-const hero = (foto, alt) => foto ? `<img class="hero" src="/immagini/${esc(encodeURIComponent(foto))}" alt="${esc(alt)}" loading="eager">` : ''
+const hero = (foto, alt) => foto && availableImages.has(foto) ? `<img class="hero" src="/immagini/${esc(encodeURIComponent(foto))}" alt="${esc(alt)}" loading="eager">` : ''
 
 const pages = []
 function addPage(path, html) { pages.push({ path, html }) }
@@ -105,7 +106,7 @@ designers.forEach((item, index) => {
   const life = yearRange(item.nato, item.morto)
   const description = item.bio || `${item.nome}, designer${life ? ` (${life})` : ''}: opere e relazioni nella storia del design.`
   const body = `<h1>${esc(item.nome)}</h1><p><a class="pill" href="${mapLink('designer', designerSlugs[index])}">Vedi ${esc(item.nome)} nella mappa</a></p>${hero(item.foto, item.nome)}<div class="facts">${life ? `<span class="pill">${esc(life)}</span>` : ''}</div>${paragraph(item.bio)}${movements.length ? `<h2>Correnti e gruppi</h2>${cards(movements)}` : ''}${relatedProducts.length ? `<h2>Opere e prodotti</h2>${cards(relatedProducts)}` : ''}`
-  addPage(path, layout({ title: item.nome, description, canonical: url(path), type: 'Designer', image: imageUrl(item.foto), body, schema: { '@context': 'https://schema.org', '@type': 'Person', name: item.nome, birthDate: item.nato ? String(item.nato) : undefined, deathDate: item.morto ? String(item.morto) : undefined, description: clean(item.bio), image: item.foto ? imageUrl(item.foto) : undefined, url: url(path) } }))
+  addPage(path, layout({ title: item.nome, description, canonical: url(path), type: 'Designer', image: imageUrl(item.foto), body, schema: { '@context': 'https://schema.org', '@type': 'Person', name: item.nome, birthDate: item.nato ? String(item.nato) : undefined, deathDate: item.morto ? String(item.morto) : undefined, description: clean(item.bio), image: availableImages.has(item.foto) ? imageUrl(item.foto) : undefined, url: url(path) } }))
 })
 
 prodotti.forEach((item, index) => {
@@ -116,7 +117,7 @@ prodotti.forEach((item, index) => {
   const facts = [item.anno_label || item.anno, item.categoria, item.azienda].filter(Boolean)
   const description = item.descrizione || `${item.nome}${item.anno ? ` (${item.anno})` : ''}, ${item.categoria || 'oggetto di design'}${creators.length ? ` di ${creators.join(', ')}` : ''}${item.azienda ? ` per ${item.azienda}` : ''}.`
   const body = `<h1>${esc(item.nome)}</h1><p><a class="pill" href="${mapLink('prodotto', prodottoSlugs[index])}">Vedi ${esc(item.nome)} nella mappa</a></p>${hero(item.foto, item.nome)}<div class="facts">${facts.map((fact) => `<span class="pill">${esc(fact)}</span>`).join('')}</div>${paragraph(description)}${creatorCards.length ? `<h2>Designer</h2>${cards(creatorCards)}` : ''}${companyCards.length ? `<h2>Azienda</h2>${cards(companyCards)}` : ''}`
-  addPage(path, layout({ title: item.nome, description, canonical: url(path), type: 'Oggetto di design', image: imageUrl(item.foto), body, schema: { '@context': 'https://schema.org', '@type': ['Product', 'CreativeWork'], name: item.nome, dateCreated: item.anno ? String(item.anno) : undefined, category: item.categoria, genre: item.categoria, creator: creators.map((name) => ({ '@type': 'Person', name })), manufacturer: item.azienda ? { '@type': 'Organization', name: item.azienda } : undefined, image: item.foto ? imageUrl(item.foto) : undefined, description: clean(description), url: url(path) } }))
+  addPage(path, layout({ title: item.nome, description, canonical: url(path), type: 'Oggetto di design', image: imageUrl(item.foto), body, schema: { '@context': 'https://schema.org', '@type': ['Product', 'CreativeWork'], name: item.nome, dateCreated: item.anno ? String(item.anno) : undefined, category: item.categoria, genre: item.categoria, creator: creators.map((name) => ({ '@type': 'Person', name })), manufacturer: item.azienda ? { '@type': 'Organization', name: item.azienda } : undefined, image: availableImages.has(item.foto) ? imageUrl(item.foto) : undefined, description: clean(description), url: url(path) } }))
 })
 
 aziende.forEach((item, index) => {

@@ -2178,5 +2178,793 @@
     "y": null,
     "scuole": [],
     "collettivi": []
+  },
+  {
+    "nome": "Harry Bertoia",
+    "nato": 1915,
+    "morto": 1978,
+    "bio": "Artista e designer nato in Friuli, Harry Bertoia sviluppa negli Stati Uniti un lavoro che attraversa gioiello, scultura e arredo. La formazione a Cranbrook e la collaborazione con Knoll portano alle sedute in rete metallica presentate nel 1952.\n\nNella Diamond Chair la struttura diventa superficie e volume aperto. La ricerca sul metallo prosegue nelle sculture sonore Sonambient, mostrando la continuità fra sperimentazione artistica e progetto d’uso.",
+    "bio_en": "Born in Friuli, Harry Bertoia developed a practice in the United States spanning jewellery, sculpture and furniture. His Cranbrook training and collaboration with Knoll led to the wire seating collection introduced in 1952.\n\nIn the Diamond Chair, structure becomes both surface and an open volume. His exploration of metal continued in the Sonambient sounding sculptures, linking artistic experimentation with the design of everyday objects.",
+    "foto": "harrybertoia.jpg",
+    "y": null,
+    "scuole": [
+      "Design Americano"
+    ],
+    "collettivi": [],
+    "paese": "Italia / Stati Uniti",
+    "fonti": [
+      {
+        "titolo": "Biografia e opere",
+        "url": "https://harrybertoia.org/biography/"
+      }
+    ]
+  },
+  {
+    "nome": "Eero Aarnio",
+    "nato": 1932,
+    "morto": null,
+    "bio": "Designer finlandese, Eero Aarnio si forma a Helsinki e apre il proprio studio nel 1962. Sperimenta con plastica, colori intensi e forme avvolgenti, ampliando il linguaggio dell’arredo domestico negli anni Sessanta.\n\nBall Chair e Bubble Chair trasformano la seduta in un piccolo spazio individuale. Pur associate all’immaginario Space Age, nascono dalla ricerca di comfort, libertà formale e nuove possibilità produttive.",
+    "bio_en": "Finnish designer Eero Aarnio trained in Helsinki and established his own studio in 1962. His experiments with plastics, vivid colours and enveloping forms expanded the vocabulary of domestic furniture in the 1960s.\n\nThe Ball Chair and Bubble Chair turn seating into a small individual space. Often associated with Space Age imagery, they reflect an investigation of comfort, formal freedom and new manufacturing possibilities.",
+    "foto": "eeroaarnio.jpg",
+    "y": null,
+    "scuole": [
+      "Design Scandinavo"
+    ],
+    "collettivi": [],
+    "paese": "Finlandia",
+    "fonti": [
+      {
+        "titolo": "Biografia e opere",
+        "url": "https://eeroaarnio.com/introduction/"
+      }
+    ]
+  },
+  {
+    "nome": "Greta Magnusson Grossman",
+    "nato": 1906,
+    "morto": 1999,
+    "bio": "Formatasi in Svezia come progettista di mobili e interni, Greta Magnusson Grossman prosegue la propria attività in California. Il suo lavoro mette in relazione funzionalismo scandinavo e cultura domestica del modernismo americano.\n\nLe lampade Gräshoppa e Cobra combinano strutture sottili, diffusori orientabili e una presenza scultorea misurata. Architettura, arredo e illuminazione sono parti di una ricerca coerente sulle proporzioni e sull’abitare.",
+    "bio_en": "Trained in Sweden as a furniture and interior designer, Greta Magnusson Grossman continued her career in California. Her work connects Scandinavian functionalism with the domestic culture of American modernism.\n\nThe Gräshoppa and Cobra lamps combine slender structures, adjustable shades and restrained sculptural forms. Architecture, furniture and lighting form a coherent investigation of proportion and everyday living.",
+    "foto": "gretamagnussongrossman.jpg",
+    "y": null,
+    "scuole": [
+      "Design Americano"
+    ],
+    "collettivi": [],
+    "paese": "Svezia / Stati Uniti",
+    "fonti": [
+      {
+        "titolo": "Biografia e opere",
+        "url": "https://www.skbl.se/en/article/GretaMagnussonGrossman"
+      },
+      {
+        "titolo": "Dati biografici",
+        "url": "https://www.moma.org/artists/3691-greta-magnusson-grossman"
+      }
+    ]
+  },
+  {
+    "nome": "Michel Ducaroy",
+    "nato": 1925,
+    "morto": 2009,
+    "bio": "Michel Ducaroy si forma a Lione in una famiglia di progettisti e produttori di mobili. La lunga collaborazione con Roset gli permette di sperimentare schiume, imbottiture e nuovi processi per la produzione di sedute.\n\nCon Togo, presentata nel 1973, riduce la poltrona a una struttura interamente in schiuma rivestita e trapuntata. Il progetto interpreta una domesticità informale, vicina al pavimento e libera dai consueti telai rigidi.",
+    "bio_en": "Michel Ducaroy trained in Lyon within a family of furniture designers and makers. His long collaboration with Roset enabled experiments with foams, upholstery and new seating production processes.\n\nWith Togo, introduced in 1973, he reduced the armchair to an all-foam structure with a quilted cover. The design expresses an informal domestic setting, close to the floor and freed from conventional rigid frames.",
+    "foto": "michelducaroy.jpg",
+    "y": null,
+    "scuole": [
+      "Design Francese Contemporaneo"
+    ],
+    "collettivi": [],
+    "paese": "Francia",
+    "fonti": [
+      {
+        "titolo": "Biografia e opere",
+        "url": "https://www.ligne-roset.com/us/designers/michel-ducaroy"
+      }
+    ]
+  },
+  {
+    "nome": "Tommaso Cimini",
+    "nato": 1930,
+    "morto": 1997,
+    "bio": "Progettista e imprenditore italiano, Tommaso Cimini concentra il proprio lavoro sull’illuminazione tecnica. La Daphine, sviluppata a metà degli anni Settanta, riunisce un trasformatore visibile, due bracci articolati e un piccolo diffusore orientabile.\n\nNel 1980 fonda Lumina a Sedriano. La riduzione dei componenti e l’attenzione alla costruzione diventano il principio di una produzione in cui la forma rende leggibile il funzionamento della lampada.",
+    "bio_en": "Italian designer and entrepreneur Tommaso Cimini focused on technical lighting. Developed in the mid-1970s, Daphine combines a visible transformer, two articulated arms and a small adjustable shade.\n\nIn 1980 he founded Lumina in Sedriano. Reducing components and carefully considering construction became the basis of a production approach in which a lamp’s form makes its operation understandable.",
+    "foto": "tommasocimini.jpg",
+    "y": null,
+    "scuole": [
+      "Design italiano del boom economico"
+    ],
+    "collettivi": [],
+    "paese": "Italia",
+    "fonti": [
+      {
+        "titolo": "Biografia e opere",
+        "url": "https://www.lumina.it/about-us/"
+      },
+      {
+        "titolo": "Dati biografici",
+        "url": "https://www.finnishdesignshop.com/en-us/designer/tommaso-cimini"
+      }
+    ]
+  },
+  {
+    "nome": "Marianne Brandt",
+    "nato": 1893,
+    "morto": 1983,
+    "bio": "Marianne Brandt entra al Bauhaus nel 1924 e lavora nel laboratorio dei metalli, che dirige temporaneamente dal 1928. Unisce ricerca artistica, fotografia e progetto di oggetti domestici.\n\nL’infusore MT 49 esprime il dialogo fra geometria elementare e lavorazione del metallo. La successiva attività nel settore dell’illuminazione e nell’industria mostra un percorso più ampio della sola produzione di pezzi simbolo del Bauhaus.",
+    "bio_en": "Marianne Brandt joined the Bauhaus in 1924 and worked in its metal workshop, serving as acting head from 1928. Her practice combined artistic research, photography and the design of domestic objects.\n\nThe MT 49 tea infuser brings together elementary geometry and metalworking. Her later work in lighting and industry reveals a career extending beyond the celebrated objects associated with the Bauhaus.",
+    "foto": "mariannebrandt.jpg",
+    "y": null,
+    "scuole": [
+      "Design Tedesco"
+    ],
+    "collettivi": [],
+    "paese": "Germania",
+    "fonti": [
+      {
+        "titolo": "Biografia e opere",
+        "url": "https://mariannebrandt-gesellschaft.de/kurzbiografie/"
+      },
+      {
+        "titolo": "Dati biografici",
+        "url": "https://mariannebrandt-gesellschaft.de/kurzbiografie/"
+      }
+    ]
+  },
+  {
+    "nome": "Wilhelm Wagenfeld",
+    "nato": 1900,
+    "morto": 1990,
+    "bio": "Wilhelm Wagenfeld si forma come disegnatore e argentiere prima di entrare al Bauhaus di Weimar. La lampada del 1924 diventa uno dei primi risultati della sua ricerca sul rapporto fra forma, materiali e uso quotidiano.\n\nLa carriera prosegue nel progetto per l’industria, soprattutto nel vetro e negli oggetti domestici. Al centro del suo lavoro rimane la qualità accessibile degli strumenti della vita comune.",
+    "bio_en": "Wilhelm Wagenfeld trained as a draughtsman and silversmith before joining the Weimar Bauhaus. His 1924 lamp became an early expression of his exploration of form, materials and everyday use.\n\nHe continued to design for industry, particularly glassware and household objects. Accessible quality in the ordinary tools of daily life remained central to his work.",
+    "foto": "wilhelmwagenfeld.jpg",
+    "y": null,
+    "scuole": [
+      "Design Tedesco"
+    ],
+    "collettivi": [],
+    "paese": "Germania",
+    "fonti": [
+      {
+        "titolo": "Biografia e opere",
+        "url": "https://wilhelm-wagenfeld-stiftung.de/wilhelm_wagenfeld/das_werk/"
+      },
+      {
+        "titolo": "Dati biografici",
+        "url": "https://www.deutsche-biographie.de/sfz115920.html"
+      }
+    ]
+  },
+  {
+    "nome": "Aino Aalto",
+    "nato": 1894,
+    "morto": 1949,
+    "bio": "Architetta e designer finlandese, Aino Aalto collabora con Alvar Aalto mantenendo un’attività autonoma nel progetto di interni, mobili e oggetti. È tra le figure fondatrici di Artek, di cui cura la direzione artistica e successivamente la gestione.\n\nI bicchieri Bölgeblick e i vasi Riihitie esprimono una ricerca attenta alla vita domestica, alla semplicità costruttiva e alla qualità anche dei dettagli più piccoli.",
+    "bio_en": "Finnish architect and designer Aino Aalto collaborated with Alvar Aalto while pursuing independent work in interiors, furniture and objects. A founding figure at Artek, she served as its artistic director and later managing director.\n\nThe Bölgeblick glassware and Riihitie plant pots reflect her attention to domestic life, straightforward construction and the quality of even the smallest details.",
+    "foto": "ainoaalto.jpg",
+    "y": null,
+    "scuole": [
+      "Design Scandinavo"
+    ],
+    "collettivi": [],
+    "paese": "Finlandia",
+    "fonti": [
+      {
+        "titolo": "Biografia e opere",
+        "url": "https://www.alvaraalto.fi/en/news/aino-aalto-born-125-years-ago/"
+      }
+    ]
+  },
+  {
+    "nome": "Ingo Maurer",
+    "nato": 1932,
+    "morto": 2019,
+    "bio": "Ingo Maurer avvia a Monaco negli anni Sessanta una ricerca sull’illuminazione che intreccia invenzione tecnica, gesto artistico e ironia. La lampadina diventa un soggetto da reinterpretare, dalla grande Bulb alla Lucellino con le ali.\n\nLavora con un gruppo di collaboratori e sviluppa anche installazioni e progetti per spazi pubblici. La luce viene trattata come materiale capace di trasformare l’esperienza di un ambiente.",
+    "bio_en": "Working in Munich from the 1960s, Ingo Maurer brought technical invention, artistic gestures and humour to lighting design. The light bulb became a subject for reinterpretation, from the oversized Bulb to the winged Lucellino.\n\nWith a team of collaborators, he also developed installations and public-space projects. Light became a material capable of changing how a place is experienced.",
+    "foto": "ingomaurer.jpg",
+    "y": null,
+    "scuole": [
+      "Design Tedesco"
+    ],
+    "collettivi": [],
+    "paese": "Germania",
+    "fonti": [
+      {
+        "titolo": "Biografia e opere",
+        "url": "https://www.ingo-maurer.com/en/info/press/"
+      }
+    ]
+  },
+  {
+    "nome": "Sori Yanagi",
+    "nato": 1915,
+    "morto": 2011,
+    "bio": "Sori Yanagi unisce la cultura artigianale giapponese alle possibilità della produzione industriale. Dopo gli studi a Tokyo e il lavoro nello studio di Charlotte Perriand, sviluppa mobili, utensili e oggetti per la vita quotidiana.\n\nNel Butterfly Stool due gusci di compensato curvato formano una struttura simmetrica e leggera. Il suo metodo attribuisce al modello e alla verifica concreta dell’uso un ruolo centrale.",
+    "bio_en": "Sori Yanagi connected Japanese craft traditions with industrial production. After studying in Tokyo and working in Charlotte Perriand’s office, he developed furniture, utensils and objects for everyday life.\n\nIn the Butterfly Stool, two moulded plywood shells create a light, symmetrical structure. His approach gave physical models and the practical experience of use a central role.",
+    "foto": "soriyanagi.jpg",
+    "y": null,
+    "scuole": [
+      "Design Giapponese"
+    ],
+    "collettivi": [],
+    "paese": "Giappone",
+    "fonti": [
+      {
+        "titolo": "Biografia e opere",
+        "url": "https://www.vitra.com/en-un/product/designer/sori-yanagi"
+      }
+    ]
+  },
+  {
+    "nome": "Miguel Milá",
+    "nato": 1931,
+    "morto": 2024,
+    "bio": "Miguel Milá è tra i protagonisti del design spagnolo del dopoguerra. Parte dall’esperienza negli interni e dalla produzione artigianale, trasformando materiali e componenti semplici in oggetti durevoli.\n\nLe lampade Cesta e TMM mostrano un modo di progettare in cui struttura, diffusore e manutenzione restano comprensibili. La collaborazione con Santa & Cole porta questa ricerca a nuove generazioni di utenti.",
+    "bio_en": "Miguel Milá was a central figure in postwar Spanish design. Starting from interiors and craft production, he transformed simple materials and components into durable everyday objects.\n\nThe Cesta and TMM lamps show an approach in which structure, shade and maintenance remain understandable. His collaboration with Santa & Cole brought this work to new generations of users.",
+    "foto": "miguelmila.jpg",
+    "y": null,
+    "scuole": [
+      "Design Spagnolo"
+    ],
+    "collettivi": [],
+    "paese": "Spagna",
+    "fonti": [
+      {
+        "titolo": "Biografia e opere",
+        "url": "https://miguelmila.com/about/"
+      },
+      {
+        "titolo": "Dati biografici",
+        "url": "https://old.santacole.com/es/biografias/miguel-mila/"
+      }
+    ]
+  },
+  {
+    "nome": "Warren Platner",
+    "nato": 1919,
+    "morto": 2006,
+    "bio": "Architetto americano, Warren Platner lavora con figure come Eero Saarinen prima di aprire il proprio studio. Affianca al progetto di interni una ricerca sul mobile inteso come struttura continua e volume scultoreo.\n\nLa collezione Knoll del 1966 impiega numerosi tondini metallici saldati. La ripetizione di elementi sottili costruisce basi e schienali, unendo precisione industriale e una presenza decorativa misurata.",
+    "bio_en": "American architect Warren Platner worked with figures including Eero Saarinen before establishing his own practice. Alongside interiors, he explored furniture as a continuous structure and sculptural volume.\n\nHis 1966 Knoll collection uses numerous welded steel rods. Repeated slender elements form bases and backs, bringing together industrial precision and a restrained decorative presence.",
+    "foto": "warrenplatner.jpg",
+    "y": null,
+    "scuole": [
+      "Design Americano"
+    ],
+    "collettivi": [],
+    "paese": "Stati Uniti",
+    "fonti": [
+      {
+        "titolo": "Biografia e opere",
+        "url": "https://www.knoll.com/designer/Warren-Platner"
+      }
+    ]
+  },
+  {
+    "nome": "Nanna Ditzel",
+    "nato": 1923,
+    "morto": 2005,
+    "bio": "Nanna Ditzel attraversa arredo, tessile e gioiello, sperimentando nuovi modi di sedersi e abitare lo spazio. La sua attività danese affianca competenza artigianale, colore e ricerca sulle forme.\n\nDopo la prima collaborazione con Jørgen Ditzel prosegue autonomamente un percorso che arriva alla Trinidad Chair per Fredericia. Il traforo di sedile e schienale rende il compensato un elemento insieme strutturale e grafico.",
+    "bio_en": "Nanna Ditzel worked across furniture, textiles and jewellery, experimenting with new ways of sitting and inhabiting space. Her Danish practice brought together craft knowledge, colour and formal investigation.\n\nFollowing her early partnership with Jørgen Ditzel, she continued independently, eventually creating the Trinidad Chair for Fredericia. Its perforated plywood seat and back combine structural and graphic qualities.",
+    "foto": "nannaditzel.jpg",
+    "y": null,
+    "scuole": [
+      "Design Scandinavo"
+    ],
+    "collettivi": [],
+    "paese": "Danimarca",
+    "fonti": [
+      {
+        "titolo": "Biografia e opere",
+        "url": "https://www.fredericia.com/nanna-ditzel-100-years"
+      }
+    ]
+  },
+  {
+    "nome": "Lina Bo Bardi",
+    "nato": 1914,
+    "morto": 1992,
+    "bio": "Nata e formatasi in Italia, Lina Bo Bardi si trasferisce in Brasile nel 1946. Architettura, allestimento e arredo diventano strumenti di una ricerca legata alla cultura popolare e all’uso collettivo degli spazi.\n\nLa Bowl Chair accompagna un lavoro che comprende la Casa de Vidro e grandi luoghi culturali brasiliani. Il progetto cerca un rapporto diretto tra materiali, gesti quotidiani e libertà di abitare.",
+    "bio_en": "Born and trained in Italy, Lina Bo Bardi moved to Brazil in 1946. Architecture, exhibitions and furniture became tools for a practice connected with popular culture and the collective use of space.\n\nThe Bowl Chair sits alongside work including the Glass House and major Brazilian cultural venues. Her designs seek direct relationships between materials, everyday gestures and freedom in inhabiting a place.",
+    "foto": "linabobardi.jpg",
+    "y": null,
+    "scuole": [
+      "Design Brasiliano"
+    ],
+    "collettivi": [],
+    "paese": "Italia / Brasile",
+    "fonti": [
+      {
+        "titolo": "Biografia e opere",
+        "url": "https://institutobardi.org.br/en/grupo_the-founders/04_lina-bo-bardi_en/"
+      }
+    ]
+  },
+  {
+    "nome": "Alberto Meda",
+    "nato": 1945,
+    "morto": null,
+    "bio": "Alberto Meda si forma in ingegneria meccanica al Politecnico di Milano e lavora allo sviluppo tecnico di prodotti industriali prima dell’attività indipendente. La conoscenza dei materiali diventa una risorsa per ridurre peso e complessità degli oggetti.\n\nLightlight sperimenta i compositi nel mobile; Berenice, progettata con Paolo Rizzatto, applica la stessa attenzione alla precisione e al movimento nell’illuminazione.",
+    "bio_en": "Alberto Meda trained in mechanical engineering at Milan Polytechnic and worked in industrial product development before becoming an independent designer. His knowledge of materials became a means of reducing weight and complexity.\n\nLightlight explores composites in furniture; Berenice, designed with Paolo Rizzatto, applies a similar attention to precision and movement to lighting.",
+    "foto": "albertomeda.jpg",
+    "y": null,
+    "scuole": [
+      "Nuova Scuola Italiana"
+    ],
+    "collettivi": [],
+    "paese": "Italia",
+    "fonti": [
+      {
+        "titolo": "Biografia e opere",
+        "url": "https://www.albertomeda.com/en/biografia"
+      }
+    ]
+  },
+  {
+    "nome": "Marc Newson",
+    "nato": 1963,
+    "morto": null,
+    "bio": "Marc Newson nasce a Sydney e sviluppa una carriera internazionale fra Tokyo, Parigi e Londra. La sua attività attraversa arredo, trasporti e oggetti, con una particolare attenzione alla continuità delle superfici e alle tecniche produttive.\n\nLockheed Lounge ed Embryo Chair mostrano due approcci distinti: costruzione manuale in alluminio rivettato e struttura imbottita rivestita. Il lavoro mantiene un forte interesse per il rapporto tra forma e materiale.",
+    "bio_en": "Born in Sydney, Marc Newson developed an international career across Tokyo, Paris and London. His work spans furniture, transport and objects, with particular attention to continuous surfaces and manufacturing techniques.\n\nThe Lockheed Lounge and Embryo Chair represent distinct approaches: hand-worked riveted aluminium and an upholstered internal frame. Both reveal his interest in the relationship between form and material.",
+    "foto": "marcnewson.jpg",
+    "y": null,
+    "scuole": [
+      "Design Australiano"
+    ],
+    "collettivi": [],
+    "paese": "Australia / Regno Unito",
+    "fonti": [
+      {
+        "titolo": "Biografia e opere",
+        "url": "https://marc-newson.com/marc-newson/"
+      }
+    ]
+  },
+  {
+    "nome": "Naoto Fukasawa",
+    "nato": 1956,
+    "morto": null,
+    "bio": "Naoto Fukasawa si forma alla Tama Art University e lavora nel settore elettronico prima di entrare in ID Two, poi IDEO. Nel 2003 fonda il proprio studio in Giappone.\n\nProgetta oggetti e arredi in cui uso e percezione guidano la forma. Grande Papilio per B&B Italia traduce questa attenzione in una poltrona avvolgente, con uno schienale che definisce uno spazio raccolto per la persona.",
+    "bio_en": "Naoto Fukasawa trained at Tama Art University and worked in electronics before joining ID Two, later IDEO. He established his own Japanese studio in 2003.\n\nHis objects and furniture allow use and perception to guide form. Grande Papilio for B&B Italia expresses this attention through an enveloping armchair whose back creates a sheltered personal space.",
+    "foto": "naotofukasawa.jpg",
+    "y": null,
+    "scuole": [
+      "Design Giapponese"
+    ],
+    "collettivi": [],
+    "paese": "Giappone",
+    "fonti": [
+      {
+        "titolo": "Biografia e opere",
+        "url": "https://naotofukasawa.com/about/"
+      }
+    ]
+  },
+  {
+    "nome": "Ilmari Tapiovaara",
+    "nato": 1914,
+    "morto": 1999,
+    "bio": "Ilmari Tapiovaara è un protagonista del mobile finlandese del dopoguerra. La sua attività unisce progetto di interni, insegnamento e ricerca su arredi destinati tanto agli spazi collettivi quanto alla casa.\n\nDomus nasce per un complesso studentesco a Helsinki; Mademoiselle riprende la tradizione della sedia a listelli. Nei due progetti la semplicità deriva da un’attenta verifica di comfort, costruzione e produzione.",
+    "bio_en": "Ilmari Tapiovaara was a leading figure in postwar Finnish furniture. His work combined interiors, teaching and the design of furnishings for both collective spaces and private homes.\n\nDomus originated in a Helsinki student-housing project; Mademoiselle reinterprets the traditional spindle-back chair. In both designs, simplicity results from careful consideration of comfort, construction and production.",
+    "foto": "ilmaritapiovaara.jpg",
+    "y": null,
+    "scuole": [
+      "Design Scandinavo"
+    ],
+    "collettivi": [],
+    "paese": "Finlandia",
+    "fonti": [
+      {
+        "titolo": "Biografia e opere",
+        "url": "https://www.artek.fi/en/company/designers/ilmari-tapiovaara"
+      }
+    ]
+  },
+  {
+    "nome": "Kaare Klint",
+    "nato": 1888,
+    "morto": 1954,
+    "bio": "Architetto e docente danese, Kaare Klint contribuisce alla formazione del modernismo scandinavo attraverso lo studio delle proporzioni, del corpo e delle tipologie storiche dell’arredo.\n\nLa Safari Chair trasforma una seduta pieghevole da viaggio in un progetto domestico misurato e smontabile. Il suo metodo cerca l’evoluzione delle forme esistenti attraverso precisione costruttiva, conoscenza dei materiali e attenzione alle necessità dell’utente.",
+    "bio_en": "Danish architect and teacher Kaare Klint helped shape Scandinavian modernism through the study of proportion, the human body and historic furniture types.\n\nThe Safari Chair transforms a folding travel seat into a carefully proportioned, demountable domestic object. His approach developed existing forms through precise construction, material knowledge and attention to users’ needs.",
+    "foto": "kaareklint.jpg",
+    "y": null,
+    "scuole": [
+      "Design Scandinavo"
+    ],
+    "collettivi": [],
+    "paese": "Danimarca",
+    "fonti": [
+      {
+        "titolo": "Biografia e opere",
+        "url": "https://www.carlhansen.com/en/collection/chairs/lounge-chairs/kk47000"
+      }
+    ]
+  },
+  {
+    "nome": "Jens Risom",
+    "nato": 1916,
+    "morto": 2016,
+    "bio": "Nato a Copenaghen, Jens Risom porta negli Stati Uniti una formazione legata alla tradizione artigianale scandinava. Nei primi anni Quaranta collabora con Hans Knoll alla costruzione di un nuovo catalogo di arredi moderni.\n\nLe sue sedute combinano telai in legno e cinghie tessili con un linguaggio sobrio. Nel 1946 apre Jens Risom Design, sviluppando una produzione rivolta alla casa e agli ambienti di lavoro.",
+    "bio_en": "Born in Copenhagen, Jens Risom brought a Scandinavian craft background to the United States. In the early 1940s he worked with Hans Knoll on a new catalogue of modern furniture.\n\nHis seating combines wooden frames and woven straps in a restrained formal language. In 1946 he established Jens Risom Design, developing furniture for both homes and workplaces.",
+    "foto": "jensrisom.jpg",
+    "y": null,
+    "scuole": [
+      "Design Americano"
+    ],
+    "collettivi": [],
+    "paese": "Danimarca / Stati Uniti",
+    "fonti": [
+      {
+        "titolo": "Biografia e opere",
+        "url": "https://www.jensrisom.org/bio_1.html"
+      }
+    ]
+  },
+  {
+    "nome": "Sergio Rodrigues",
+    "nato": 1927,
+    "morto": 2014,
+    "bio": "Architetto e designer di Rio de Janeiro, Sergio Rodrigues contribuisce a definire un mobile moderno legato alla cultura brasiliana. Nel 1955 fonda Oca, affiancando alla ricerca di una nuova forma domestica l’attenzione al comfort e ai materiali locali.\n\nLa Mole combina una struttura in legno massiccio con cinghie e grandi cuscini. La postura informale diventa parte essenziale del suo carattere.",
+    "bio_en": "Architect and designer Sergio Rodrigues, from Rio de Janeiro, helped define modern furniture rooted in Brazilian culture. In 1955 he founded Oca, bringing attention to comfort and local materials into his search for new domestic forms.\n\nThe Mole combines a solid-wood structure with straps and generous cushions. Its informal posture is an essential part of the design’s character.",
+    "foto": "sergiorodrigues.jpg",
+    "y": null,
+    "scuole": [
+      "Design Brasiliano"
+    ],
+    "collettivi": [],
+    "paese": "Brasile",
+    "fonti": [
+      {
+        "titolo": "Biografia e opere",
+        "url": "https://sergiorodriguesatelier.com.br/biografia/"
+      }
+    ]
+  },
+  {
+    "nome": "Poul M. Volther",
+    "nato": 1923,
+    "morto": 2001,
+    "bio": "Poul M. Volther si forma come ebanista e designer in Danimarca. Lavora nello studio di progettazione di FDB, dove approfondisce un’idea di arredo funzionale, ben costruito e destinato alla vita quotidiana.\n\nCon Corona, del 1964, sperimenta una seduta articolata in elementi imbottiti separati. La struttura metallica sostiene una sequenza di forme ellittiche che distingue il progetto senza rinunciare alla comodità.",
+    "bio_en": "Poul M. Volther trained as a cabinetmaker and designer in Denmark. At FDB’s design office he developed an approach to functional, well-made furniture for everyday use.\n\nWith Corona, designed in 1964, he explored seating made from separate upholstered elements. A metal structure supports a sequence of elliptical forms, giving the chair a distinctive character while maintaining comfort.",
+    "foto": "poulmvolther.jpg",
+    "y": null,
+    "scuole": [
+      "Design Scandinavo"
+    ],
+    "collettivi": [],
+    "paese": "Danimarca",
+    "fonti": [
+      {
+        "titolo": "Biografia e opere",
+        "url": "https://www.fredericia.com/poul-m-volther"
+      }
+    ]
+  },
+  {
+    "nome": "Poul Cadovius",
+    "nato": 1911,
+    "morto": 2011,
+    "bio": "Poul Cadovius lavora fra design, invenzione e produzione in Danimarca. La ricerca sui sistemi componibili nasce dall’idea di liberare il pavimento e usare le pareti come superficie attiva dell’arredo.\n\nRoyal System, progettato nel 1948, combina montanti, mensole e contenitori in configurazioni modificabili. La successiva riedizione di dk3 mantiene leggibile il principio modulare alla base del progetto.",
+    "bio_en": "Poul Cadovius worked across design, invention and production in Denmark. His exploration of modular systems grew from the idea of freeing the floor and using walls as an active furnishing surface.\n\nRoyal System, designed in 1948, combines rails, shelves and cabinets in changeable arrangements. The later dk3 reissue preserves the modular principle underlying the design.",
+    "foto": "poulcadovius.jpg",
+    "y": null,
+    "scuole": [
+      "Design Scandinavo"
+    ],
+    "collettivi": [],
+    "paese": "Danimarca",
+    "fonti": [
+      {
+        "titolo": "Biografia e opere",
+        "url": "https://dk3.dk/poul-cadovius"
+      }
+    ]
+  },
+  {
+    "nome": "George Nakashima",
+    "nato": 1905,
+    "morto": 1990,
+    "bio": "Architetto e artigiano americano di origine giapponese, George Nakashima costruisce a New Hope un laboratorio dedicato al mobile in legno. Il suo percorso internazionale precede una ricerca concentrata sul carattere specifico di ogni tavola e sulle possibilità del lavoro manuale.\n\nLa Conoid Chair applica questa sensibilità a una struttura a sbalzo con due gambe. Tradizione giapponese e cultura americana del mobile si incontrano senza annullare le proprietà del materiale.",
+    "bio_en": "American architect and craftsman of Japanese heritage George Nakashima established a furniture workshop in New Hope. His international experience preceded a practice focused on the individual character of each board and the possibilities of handwork.\n\nThe Conoid Chair applies this approach to a cantilevered structure with two legs. Japanese traditions and American furniture culture meet while preserving the character of the material.",
+    "foto": "georgenakashima.jpg",
+    "y": null,
+    "scuole": [
+      "Design Americano"
+    ],
+    "collettivi": [],
+    "paese": "Stati Uniti",
+    "fonti": [
+      {
+        "titolo": "Biografia e opere",
+        "url": "https://www.aaa.si.edu/collections/george-nakashima-papers-10793/biographical-note"
+      }
+    ]
+  },
+  {
+    "nome": "Grete Jalk",
+    "nato": 1920,
+    "morto": 2006,
+    "bio": "Grete Jalk si forma nell’ebanisteria e nel progetto di mobili in Danimarca. La sua ricerca affianca l’attenzione alle necessità domestiche alla sperimentazione sulle tecniche di curvatura e laminazione del legno.\n\nLa GJ Chair del 1963 è costruita con due elementi di compensato ripiegato. La complessità della realizzazione si traduce in una forma visivamente essenziale, lontana dalla semplice applicazione decorativa di un materiale.",
+    "bio_en": "Grete Jalk trained in cabinetmaking and furniture design in Denmark. Her work combines attention to domestic needs with experiments in wood bending and lamination.\n\nThe 1963 GJ Chair is made from two folded plywood elements. Complex manufacturing produces a visually concise form, exploring the structural possibilities of a material rather than simply applying it decoratively.",
+    "foto": "gretejalk.jpg",
+    "y": null,
+    "scuole": [
+      "Design Scandinavo"
+    ],
+    "collettivi": [],
+    "paese": "Danimarca",
+    "fonti": [
+      {
+        "titolo": "Biografia e opere",
+        "url": "https://www.moma.org/collection/works/4721"
+      },
+      {
+        "titolo": "Dati biografici",
+        "url": "https://lex.dk/Grete_Jalk"
+      }
+    ]
+  },
+  {
+    "nome": "Eva Zeisel",
+    "nato": 1906,
+    "morto": 2011,
+    "bio": "Nata a Budapest, Eva Zeisel si forma nella ceramica e lavora in diversi paesi europei prima di stabilirsi negli Stati Uniti nel 1938. A New York insegna il progetto ceramico per l’industria al Pratt Institute.\n\nLe sue collezioni da tavola cercano rapporti fra gli oggetti attraverso profili morbidi e forme accostabili. Town & Country mostra una visione della produzione seriale capace di conservare familiarità e carattere.",
+    "bio_en": "Born in Budapest, Eva Zeisel trained in ceramics and worked in several European countries before settling in the United States in 1938. In New York she taught ceramic design for industry at Pratt Institute.\n\nHer tableware collections establish relationships between objects through soft profiles and complementary forms. Town & Country expresses an approach to serial production that retains familiarity and individual character.",
+    "foto": "evazeisel.jpg",
+    "y": null,
+    "scuole": [
+      "Design Americano"
+    ],
+    "collettivi": [],
+    "paese": "Ungheria / Stati Uniti",
+    "fonti": [
+      {
+        "titolo": "Biografia e opere",
+        "url": "https://www.evazeisel.com/bio"
+      }
+    ]
+  },
+  {
+    "nome": "Margarete Schütte-Lihotzky",
+    "nato": 1897,
+    "morto": 2000,
+    "bio": "Architetta viennese, Margarete Schütte-Lihotzky dedica una parte importante della propria attività all’abitazione sociale e agli edifici per l’infanzia. Nel programma Neues Frankfurt sviluppa la cucina di Francoforte, progettata nel 1926–1927.\n\nLa disposizione coordinata di piani, contenitori e attrezzature interpreta la cucina come un sistema di lavoro. Il suo contributo collega progetto dello spazio e organizzazione delle attività quotidiane.",
+    "bio_en": "Viennese architect Margarete Schütte-Lihotzky devoted an important part of her career to social housing and buildings for children. Within the Neues Frankfurt programme, she developed the Frankfurt Kitchen in 1926–1927.\n\nIts coordinated arrangement of worktops, storage and equipment treats the kitchen as a working system. Her contribution connects spatial design with the organisation of everyday activities.",
+    "foto": "margareteschuttelihotzky.jpg",
+    "y": null,
+    "scuole": [
+      "Design Austriaco"
+    ],
+    "collettivi": [],
+    "paese": "Austria",
+    "fonti": [
+      {
+        "titolo": "Biografia e opere",
+        "url": "https://museumderdinge.de/ueber-uns/deutscher-werkbund/akteurinnen-des-deutschen-werkbunds/margarete-schuette-lihotzky/"
+      }
+    ]
+  },
+  {
+    "nome": "Nisse Strinning",
+    "nato": 1917,
+    "morto": 2006,
+    "bio": "Nils, detto Nisse, Strinning si forma in architettura a Stoccolma. Con Kajsa Strinning progetta nel 1949 il sistema String per un concorso dedicato a una libreria semplice da montare e trasportare.\n\nFianchi in filo metallico e ripiani in legno permettono composizioni leggere e modificabili. Il progetto nasce dalla collaborazione con Kajsa e unisce precisione costruttiva, economia dei materiali e libertà di organizzazione dello spazio.",
+    "bio_en": "Nils, known as Nisse, Strinning studied architecture in Stockholm. With Kajsa Strinning he designed the String system in 1949 for a competition seeking an easily assembled and transported bookshelf.\n\nWire side panels and wooden shelves allow light, changeable arrangements. Developed with Kajsa, the design combines precise construction, economical use of materials and freedom to organise domestic space.",
+    "foto": "nissestrinning.jpg",
+    "y": null,
+    "scuole": [
+      "Design Scandinavo"
+    ],
+    "collettivi": [],
+    "paese": "Svezia",
+    "fonti": [
+      {
+        "titolo": "Biografia e opere",
+        "url": "https://www.kalmarkonstmuseum.se/designarkivet/designers/nisse-strinning/"
+      }
+    ]
+  },
+  {
+    "nome": "Kajsa Strinning",
+    "nato": 1922,
+    "morto": 2017,
+    "bio": "Kajsa Strinning studia architettura al KTH di Stoccolma, dove incontra Nisse Strinning. Il sistema String, firmato insieme nel 1949, riunisce fianchi metallici e ripiani componibili in una struttura domestica leggera.\n\nLa sua attività comprende anche disegno e pittura. Il riconoscimento del suo contributo al progetto d’arredo permette di leggere String come il risultato di una collaborazione, evitando di attribuirlo a un solo autore.",
+    "bio_en": "Kajsa Strinning studied architecture at Stockholm’s KTH, where she met Nisse Strinning. Their jointly designed 1949 String system combines metal side panels and modular shelves in a light domestic structure.\n\nHer practice also included drawing and painting. Recognising her contribution to furniture design allows String to be understood as a collaboration rather than the work of a single author.",
+    "foto": "kajsastrinning.jpg",
+    "y": null,
+    "scuole": [
+      "Design Scandinavo"
+    ],
+    "collettivi": [],
+    "paese": "Svezia",
+    "fonti": [
+      {
+        "titolo": "Biografia e opere",
+        "url": "https://www.mobeldesignmuseum.se/designer/kajsa-strinning"
+      },
+      {
+        "titolo": "Dati biografici",
+        "url": "https://www.mobeldesignmuseum.se/designer/kajsa-strinning"
+      }
+    ]
+  },
+  {
+    "nome": "Lella Vignelli",
+    "nato": 1934,
+    "morto": 2016,
+    "bio": "Lella Vignelli, nata Elena Valle, lavora fra architettura, interni e prodotto in un lungo sodalizio con Massimo Vignelli. L’attività dello studio si sviluppa fra Italia e Stati Uniti, attraversando arredo e comunicazione visiva.\n\nCon Massimo progetta per Knoll il tavolo PaperClip, caratterizzato dalle curve continue della base metallica. Nel lavoro dello studio, la definizione dei materiali e dei dettagli lega gli oggetti alla progettazione degli spazi interni.",
+    "bio_en": "Lella Vignelli, born Elena Valle, worked across architecture, interiors and products in a long partnership with Massimo Vignelli. Their practice developed between Italy and the United States, spanning furniture and visual communication.\n\nWith Massimo she designed Knoll’s PaperClip table, whose metal base follows continuous curves. Within their practice, the development of materials and details connects objects with the design of interiors.",
+    "foto": "lellavignelli.jpg",
+    "y": null,
+    "scuole": [
+      "Design italiano del boom economico"
+    ],
+    "collettivi": [],
+    "paese": "Italia / Stati Uniti",
+    "fonti": [
+      {
+        "titolo": "Biografia e opere",
+        "url": "https://www.knoll.com/designer/Lella-and-Massimo-Vignelli"
+      },
+      {
+        "titolo": "Dati biografici",
+        "url": "https://www.moma.org/artists/7442-lella-vignelli"
+      }
+    ]
+  },
+  {
+    "nome": "Massimo Vignelli",
+    "nato": 1931,
+    "morto": 2014,
+    "bio": "Massimo Vignelli sviluppa un’attività che attraversa grafica, identità aziendale, arredo e interni. Con Lella Vignelli costruisce uno studio internazionale nel quale griglia, proporzioni e chiarezza formale diventano strumenti applicabili a scale differenti.\n\nIl lavoro per Knoll comprende comunicazione visiva e mobili come PaperClip. Il progetto di prodotto è parte di una pratica più ampia, in costante dialogo con il contributo di Lella.",
+    "bio_en": "Massimo Vignelli worked across graphics, corporate identity, furniture and interiors. With Lella Vignelli he built an international practice in which grids, proportion and formal clarity became tools applicable at different scales.\n\nTheir work for Knoll encompasses visual communication and furniture such as PaperClip. Product design forms part of a broader practice developed in continual dialogue with Lella’s contribution.",
+    "foto": "massimovignelli.jpg",
+    "y": null,
+    "scuole": [
+      "Design italiano del boom economico"
+    ],
+    "collettivi": [],
+    "paese": "Italia / Stati Uniti",
+    "fonti": [
+      {
+        "titolo": "Biografia e opere",
+        "url": "https://www.rit.edu/vignellicenter/vignelli-legacy-0"
+      },
+      {
+        "titolo": "Dati biografici",
+        "url": "https://www.moma.org/artists/6155-massimo-vignelli"
+      }
+    ]
+  },
+  {
+    "nome": "Bruno Mathsson",
+    "nato": 1907,
+    "morto": 1988,
+    "bio": "Bruno Mathsson cresce nella tradizione ebanistica svedese e studia il rapporto fra postura e forma della seduta. Legno laminato e cinghie intrecciate diventano elementi di una ricerca orientata al sostegno del corpo.\n\nEva e Pernilla mostrano un linguaggio leggero, fondato sulla continuità delle linee e sulla costruzione. L’attività comprende anche tavoli e architettura, mantenendo l’attenzione alla relazione tra corpo e spazio.",
+    "bio_en": "Bruno Mathsson grew up within Swedish cabinetmaking traditions and studied the relationship between posture and seating form. Laminated wood and woven straps became elements in an investigation of bodily support.\n\nEva and Pernilla show a light vocabulary based on continuous lines and construction. His work also includes tables and architecture, maintaining attention to the relationship between body and space.",
+    "foto": "brunomathsson.jpg",
+    "y": null,
+    "scuole": [
+      "Design Scandinavo"
+    ],
+    "collettivi": [],
+    "paese": "Svezia",
+    "fonti": [
+      {
+        "titolo": "Biografia e opere",
+        "url": "https://www.mobeldesignmuseum.se/designer/bruno-mathsson"
+      }
+    ]
+  },
+  {
+    "nome": "Bertjan Pot",
+    "nato": 1975,
+    "morto": null,
+    "bio": "Bertjan Pot si forma alla Design Academy Eindhoven e apre il proprio studio a Rotterdam. La ricerca parte spesso da esperimenti con fibre, tessuti e tecniche di lavorazione, dai quali emergono forme e strutture.\n\nRandom Light nasce dall’avvolgimento di un filo attorno a un volume gonfiabile. Carbon Chair, realizzata con Marcel Wanders, applica invece l’intreccio delle fibre a una seduta portante.",
+    "bio_en": "Bertjan Pot trained at Design Academy Eindhoven and established his studio in Rotterdam. His work often starts with experiments in fibres, textiles and making techniques, allowing forms and structures to emerge.\n\nRandom Light originates in wrapping yarn around an inflatable volume. Carbon Chair, created with Marcel Wanders, applies interlaced fibres to a load-bearing seat.",
+    "foto": "bertjanpot.jpg",
+    "y": null,
+    "scuole": [
+      "Design Olandese"
+    ],
+    "collettivi": [],
+    "paese": "Paesi Bassi",
+    "fonti": [
+      {
+        "titolo": "Biografia e opere",
+        "url": "https://www.hay.com/shared/designers/bertjan-pot"
+      },
+      {
+        "titolo": "Dati biografici",
+        "url": "https://www.moma.org/artists/33070-bertjan-pot"
+      }
+    ]
+  },
+  {
+    "nome": "Pierre Jeanneret",
+    "nato": 1896,
+    "morto": 1967,
+    "bio": "Architetto svizzero, Pierre Jeanneret lavora a Parigi con il cugino Le Corbusier e, dal 1927, con Charlotte Perriand. La collaborazione comprende architettura e arredi nei quali struttura e funzione partecipano a una visione moderna dell’abitare.\n\nProsegue poi una lunga attività a Chandigarh, in India, partecipando alla costruzione della nuova città e progettando arredi per i suoi edifici. La ricerca unisce strutture leggibili, materiali locali e attenzione alle condizioni d’uso.",
+    "bio_en": "Swiss architect Pierre Jeanneret worked in Paris with his cousin Le Corbusier and, from 1927, Charlotte Perriand. Their collaboration encompassed architecture and furniture in which structure and function formed part of a modern vision of living.\n\nHe later worked extensively in Chandigarh, India, contributing to the new city and designing furniture for its buildings. His work combines legible structures, local materials and attention to the conditions of use.",
+    "foto": "pierrejeanneret.jpg",
+    "y": null,
+    "scuole": [
+      "Design Svizzero"
+    ],
+    "collettivi": [],
+    "paese": "Svizzera",
+    "fonti": [
+      {
+        "titolo": "Biografia e opere",
+        "url": "https://www.design-museum.de/en/about-design/biographies-of-designers/detailseiten/pierre-jeanneret.html"
+      },
+      {
+        "titolo": "Dati biografici",
+        "url": "https://www.centrepompidou.fr/fr/ressources/personne/c8Bbzq"
+      }
+    ]
+  },
+  {
+    "nome": "Lilly Reich",
+    "nato": 1885,
+    "morto": 1947,
+    "bio": "Lilly Reich lavora nel progetto di interni, allestimenti, tessuti e arredi. Attiva nel Deutscher Werkbund, sviluppa una lunga collaborazione con Ludwig Mies van der Rohe e dirige un laboratorio al Bauhaus negli ultimi anni della scuola.\n\nIl suo percorso mette in relazione materiali, spazio espositivo e cultura dell’abitare. Negli allestimenti sviluppati con Mies, tessuti, superfici e arredi diventano parti coordinate di una composizione spaziale.",
+    "bio_en": "Lilly Reich worked in interiors, exhibitions, textiles and furniture. Active in the Deutscher Werkbund, she developed a long collaboration with Ludwig Mies van der Rohe and led a Bauhaus workshop during the school’s final years.\n\nHer work connects materials, exhibition space and domestic culture. In exhibitions developed with Mies, textiles, surfaces and furniture become coordinated elements of a spatial composition.",
+    "foto": "lillyreich.jpg",
+    "y": null,
+    "scuole": [
+      "Design Tedesco"
+    ],
+    "collettivi": [],
+    "paese": "Germania",
+    "fonti": [
+      {
+        "titolo": "Biografia e opere",
+        "url": "https://www.deutsche-biographie.de/118837818.html"
+      }
+    ]
+  },
+  {
+    "nome": "Max Bill",
+    "nato": 1908,
+    "morto": 1994,
+    "bio": "Max Bill si forma al Bauhaus e lavora fra arte, grafica, architettura e design. La ricerca geometrica dell’Arte Concreta accompagna un’idea di progetto capace di connettere ordine visivo e uso quotidiano.\n\nÈ tra i fondatori della Hochschule für Gestaltung di Ulm, di cui progetta la sede e assume la prima direzione. L’Ulmer Hocker, sviluppato con Hans Gugelot e Paul Hildinger, applica questa ricerca a un arredo essenziale e versatile.",
+    "bio_en": "Max Bill trained at the Bauhaus and worked across art, graphics, architecture and design. His geometric exploration of Concrete Art accompanied an approach connecting visual order with everyday use.\n\nA founder of the Ulm School of Design, he designed its campus and became its first director. The Ulmer Hocker, developed with Hans Gugelot and Paul Hildinger, applies this approach to a simple, versatile piece of furniture.",
+    "foto": "maxbill.jpg",
+    "y": null,
+    "scuole": [
+      "Design Svizzero"
+    ],
+    "collettivi": [],
+    "paese": "Svizzera",
+    "fonti": [
+      {
+        "titolo": "Biografia e opere",
+        "url": "https://www.praemiumimperiale.org/en/laureate/bill/"
+      }
+    ]
+  },
+  {
+    "nome": "Guido Venturini",
+    "nato": 1957,
+    "morto": null,
+    "bio": "Architetto e designer nato ad Alfonsine, Guido Venturini sviluppa un linguaggio vicino all’immaginazione figurativa e alla cultura popolare. Con Stefano Giovannoni fonda King-Kong e partecipa alla stagione del Bolidismo.\n\nIl rapporto con Alessi porta questa ricerca negli oggetti domestici, dove la funzione convive con forme evocative e personaggi. La collezione Family Follows Fiction esprime l’interesse per un paesaggio quotidiano animato da figure e richiami narrativi.",
+    "bio_en": "Architect and designer Guido Venturini, born in Alfonsine, developed a vocabulary connected with figurative imagination and popular culture. With Stefano Giovannoni he founded King-Kong and participated in Bolidism.\n\nHis relationship with Alessi brought this exploration to domestic objects, combining function with evocative forms and characters. Family Follows Fiction expresses an interest in everyday surroundings animated by figures and narrative associations.",
+    "foto": "guidoventurini.jpg",
+    "y": null,
+    "scuole": [
+      "Nuova Scuola Italiana"
+    ],
+    "collettivi": [],
+    "paese": "Italia",
+    "fonti": [
+      {
+        "titolo": "Biografia e opere",
+        "url": "https://us.alessi.com/collections/guido-venturini"
+      },
+      {
+        "titolo": "Dati biografici",
+        "url": "https://www.centrepompidou.fr/en/ressources/personne/o6zcml3"
+      }
+    ]
   }
 ]

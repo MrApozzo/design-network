@@ -15576,10 +15576,19 @@
   {
     "nome": "Carbon Chair",
     "anno": 2004,
-    "designer": "Marcel Wanders",
+    "designer": [
+      "Marcel Wanders",
+      "Bertjan Pot"
+    ],
     "azienda": "Moooi",
     "categoria": "sedia",
-    "foto": "wanders-carbonchair.jpg"
+    "foto": "wanders-carbonchair.jpg",
+    "fonti": [
+      {
+        "titolo": "Coautori del progetto",
+        "url": "https://www.moooi.com/en/product/carbon-chair"
+      }
+    ]
   },
   {
     "nome": "Delft Blue Vase",
@@ -16650,5 +16659,835 @@
     "azienda": "Flou",
     "categoria": "letto",
     "foto": "mari-tappetovolante.jpg"
+  },
+  {
+    "nome": "Diamond Chair",
+    "anno": 1952,
+    "designer": "Harry Bertoia",
+    "azienda": "Knoll",
+    "categoria": "poltrona",
+    "foto": "bertoia-diamondchair.jpg",
+    "descrizione": "Poltrona in rete di tondini metallici progettata da Harry Bertoia per Knoll. La struttura aperta costruisce un guscio avvolgente e lascia passare la luce, mettendo in relazione seduta e scultura.",
+    "descrizione_en": "A wire-grid armchair designed by Harry Bertoia for Knoll. Its open structure forms an enveloping shell that allows light through, connecting furniture with sculpture.",
+    "fonti": [
+      {
+        "titolo": "Progetto e produzione",
+        "url": "https://www.knoll.com/product/bertoia-diamond-chair/"
+      }
+    ]
+  },
+  {
+    "nome": "Bertoia Side Chair",
+    "anno": 1952,
+    "designer": "Harry Bertoia",
+    "azienda": "Knoll",
+    "categoria": "sedia",
+    "foto": "bertoia-sidechair.jpg",
+    "descrizione": "La sedia senza braccioli della collezione in filo metallico di Bertoia per Knoll. La rete sagomata riunisce sedile e schienale, sostenuti da una base sottile.",
+    "descrizione_en": "The armless side chair from Bertoia’s wire furniture collection for Knoll. A shaped grid combines seat and back, supported by a slender base.",
+    "fonti": [
+      {
+        "titolo": "Progetto e produzione",
+        "url": "https://www.moma.org/collection/works/3648"
+      }
+    ]
+  },
+  {
+    "nome": "Ball Chair",
+    "anno": 1963,
+    "designer": "Eero Aarnio",
+    "azienda": "Asko",
+    "categoria": "poltrona",
+    "foto": "aarnio-ballchair.jpg",
+    "descrizione": "Seduta a sfera con guscio esterno e interno imbottito. Disegnata nel 1963 e presentata da Asko nel 1966, crea un piccolo spazio raccolto all’interno dell’ambiente domestico.",
+    "descrizione_en": "A spherical seat with an outer shell and upholstered interior. Designed in 1963 and introduced by Asko in 1966, it creates a sheltered individual space within the home.",
+    "fonti": [
+      {
+        "titolo": "Progetto e produzione",
+        "url": "https://www.aarniooriginals.com/pages/ball-chair"
+      }
+    ],
+    "azienda_attuale": "Eero Aarnio Originals"
+  },
+  {
+    "nome": "Bubble Chair",
+    "anno": 1968,
+    "designer": "Eero Aarnio",
+    "azienda": "Asko",
+    "categoria": "poltrona sospesa",
+    "foto": "aarnio-bubblechair.jpg",
+    "descrizione": "Poltrona sospesa in acrilico trasparente, sviluppata da Aarnio dopo la Ball Chair. Il guscio lascia entrare la luce e mantiene la percezione dello spazio circostante.",
+    "descrizione_en": "A suspended transparent acrylic chair, developed by Aarnio after the Ball Chair. Its shell admits light while maintaining a view of the surrounding space.",
+    "fonti": [
+      {
+        "titolo": "Progetto e produzione",
+        "url": "https://www.aarniooriginals.com/pages/bubble-chair"
+      }
+    ],
+    "azienda_attuale": "Eero Aarnio Originals"
+  },
+  {
+    "nome": "Gräshoppa Floor Lamp",
+    "anno": 1947,
+    "designer": "Greta Magnusson Grossman",
+    "azienda": "GUBI",
+    "categoria": "lampada da terra",
+    "foto": "grossman-grashoppa.jpg",
+    "descrizione": "Lampada da terra con treppiede inclinato e diffusore conico orientabile. Il profilo sottile e la posizione del braccio caratterizzano uno dei progetti più noti di Grossman.",
+    "descrizione_en": "A floor lamp with an inclined tripod and adjustable conical shade. Its slender profile and angled support distinguish one of Grossman’s best-known designs.",
+    "fonti": [
+      {
+        "titolo": "Progetto e produzione",
+        "url": "https://gubi.com/en/gb/products/graeshoppa-floor-lamp?itemNumber=10012186"
+      }
+    ]
+  },
+  {
+    "nome": "Cobra Table Lamp",
+    "anno": 1948,
+    "designer": "Greta Magnusson Grossman",
+    "azienda": "GUBI",
+    "categoria": "lampada da tavolo",
+    "foto": "grossman-cobra.jpg",
+    "descrizione": "Lampada da tavolo con diffusore ovale e braccio flessibile. Il nome richiama il profilo di un cobra; il diffusore può essere orientato per modificare la direzione della luce.",
+    "descrizione_en": "A table lamp with an oval shade and flexible arm. Its name refers to a cobra’s profile; the shade can be positioned to change the direction of light.",
+    "fonti": [
+      {
+        "titolo": "Progetto e produzione",
+        "url": "https://www.moma.org/collection/works/4207"
+      }
+    ],
+    "anno_label": "ca. 1948"
+  },
+  {
+    "nome": "Togo",
+    "anno": 1973,
+    "designer": "Michel Ducaroy",
+    "azienda": "Ligne Roset",
+    "categoria": "sistema di sedute modulari",
+    "foto": "ducaroy-togo.jpg",
+    "descrizione": "Sistema di sedute interamente in schiuma, con rivestimento trapuntato. Ducaroy elimina il consueto telaio rigido e propone elementi bassi e informali, utilizzabili singolarmente o in composizione.",
+    "descrizione_en": "An all-foam seating system with quilted upholstery. Ducaroy removes the conventional rigid frame, creating low, informal elements usable individually or in arrangements.",
+    "fonti": [
+      {
+        "titolo": "Progetto e produzione",
+        "url": "https://www.ligne-roset.com/us/designers/michel-ducaroy"
+      }
+    ]
+  },
+  {
+    "nome": "Daphine",
+    "anno": 1975,
+    "designer": "Tommaso Cimini",
+    "azienda": "Lumina",
+    "categoria": "lampada da tavolo",
+    "foto": "cimini-daphine.jpg",
+    "descrizione": "Lampada articolata di Tommaso Cimini con trasformatore a vista, braccio in due segmenti e piccolo diffusore orientabile. Le fonti Lumina collocano il primo sviluppo fra 1975 e 1976.",
+    "descrizione_en": "Tommaso Cimini’s articulated lamp combines a visible transformer, a two-part arm and a small adjustable shade. Lumina’s sources place its initial development between 1975 and 1976.",
+    "fonti": [
+      {
+        "titolo": "Progetto e produzione",
+        "url": "https://www.lumina.it/products/daphine-table-lamp/"
+      }
+    ],
+    "anno_label": "1975–1976"
+  },
+  {
+    "nome": "Infusore MT 49",
+    "anno": 1924,
+    "designer": "Marianne Brandt",
+    "azienda": "Tecnolumen",
+    "categoria": "teiera / infusore",
+    "foto": "brandt-mt49.jpg",
+    "descrizione": "Piccolo infusore progettato nel laboratorio dei metalli del Bauhaus. La composizione di corpo emisferico, coperchio circolare e manico scuro sintetizza forme geometriche e uso domestico; il progetto è successivamente riedito.",
+    "descrizione_en": "A small tea infuser designed in the Bauhaus metal workshop. Its hemispherical body, circular lid and dark handle combine geometric forms with domestic use; the design was later reissued.",
+    "fonti": [
+      {
+        "titolo": "Progetto e produzione",
+        "url": "https://www.metmuseum.org/art/collection/search/491299"
+      }
+    ]
+  },
+  {
+    "nome": "WA 24",
+    "anno": 1924,
+    "designer": "Wilhelm Wagenfeld",
+    "azienda": "Tecnolumen",
+    "categoria": "lampada da tavolo",
+    "foto": "wagenfeld-wa24.jpg",
+    "descrizione": "Versione con base metallica della lampada Bauhaus di Wagenfeld. Il diffusore in vetro opalino e l’asta cilindrica rendono leggibile la costruzione; la produzione Tecnolumen riprende il progetto storico.",
+    "descrizione_en": "The metal-base version of Wagenfeld’s Bauhaus lamp. An opal-glass shade and cylindrical stem make its construction clear; Tecnolumen production revisits the historic design.",
+    "fonti": [
+      {
+        "titolo": "Progetto e produzione",
+        "url": "https://bauhaus-shop.de/en/products/tecnolumen-tischleuchte-wagenfeld"
+      }
+    ]
+  },
+  {
+    "nome": "Bölgeblick / Aino Aalto",
+    "anno": 1932,
+    "designer": "Aino Aalto",
+    "azienda": "Iittala",
+    "categoria": "servizio di bicchieri",
+    "foto": "ainoa-aalto-bolgeblick.jpg",
+    "descrizione": "Bicchieri impilabili riconoscibili per gli anelli concentrici della superficie. Presentata come Bölgeblick al concorso Karhula del 1932, la serie viene prodotta nello stesso anno ed è oggi nota con il nome di Aino Aalto.",
+    "descrizione_en": "Stackable glasses distinguished by concentric surface rings. Entered as Bölgeblick in the 1932 Karhula competition, the series entered production that year and is now known by Aino Aalto’s name.",
+    "fonti": [
+      {
+        "titolo": "Progetto e produzione",
+        "url": "https://www.iittala.com/en-gb/collections/all-collections/aino-aalto"
+      }
+    ]
+  },
+  {
+    "nome": "Riihitie Plant Pot A",
+    "anno": 1937,
+    "designer": "Aino Aalto",
+    "azienda": "Artek",
+    "categoria": "vaso",
+    "foto": "ainoa-riihitiea.jpg",
+    "descrizione": "Vaso in ceramica dal contorno organico, ideato per la casa degli Aalto a Helsinki. Esposto nel 1937, viene successivamente reinterpretato da Artek in diverse misure per l’uso negli interni.",
+    "descrizione_en": "An organically shaped ceramic plant pot created for the Aaltos’ Helsinki home. Exhibited in 1937, it was later reinterpreted by Artek in several sizes for indoor use.",
+    "fonti": [
+      {
+        "titolo": "Progetto e produzione",
+        "url": "https://www.artek.fi/en/products/riihitie-plant-pot-a"
+      }
+    ]
+  },
+  {
+    "nome": "Bulb",
+    "anno": 1966,
+    "designer": "Ingo Maurer",
+    "azienda": "Ingo Maurer",
+    "categoria": "lampada da tavolo",
+    "foto": "maurer-bulb.jpg",
+    "descrizione": "La prima lampada di Ingo Maurer trasforma la lampadina in un oggetto di scala maggiore. Il bulbo trasparente e la base metallica rendono il componente tecnico un’immagine domestica riconoscibile.",
+    "descrizione_en": "Ingo Maurer’s first lamp transforms the light bulb into an enlarged object. Its transparent bulb and metal base turn a technical component into a recognisable domestic image.",
+    "fonti": [
+      {
+        "titolo": "Progetto e produzione",
+        "url": "https://www.ingo-maurer.com/de/produkte/bulb/"
+      }
+    ]
+  },
+  {
+    "nome": "Lucellino",
+    "anno": 1992,
+    "designer": "Ingo Maurer",
+    "azienda": "Ingo Maurer",
+    "categoria": "lampada da tavolo",
+    "foto": "maurer-lucellino.jpg",
+    "descrizione": "Lampada della famiglia Lucellino, caratterizzata da una lampadina con piccole ali. L’immagine leggera e ironica lascia visibile il punto luminoso e il sottile supporto.",
+    "descrizione_en": "A lamp from the Lucellino family, distinguished by a light bulb with small wings. Its light, playful appearance leaves the light source and slender support visible.",
+    "fonti": [
+      {
+        "titolo": "Progetto e produzione",
+        "url": "https://www.ingo-maurer.com/en/products/lucellino-table/"
+      }
+    ]
+  },
+  {
+    "nome": "Butterfly Stool",
+    "anno": 1956,
+    "designer": "Sori Yanagi",
+    "azienda": "Tendo Mokko",
+    "categoria": "sgabello",
+    "foto": "yanagi-butterflystool.jpg",
+    "descrizione": "Due gusci simmetrici in compensato curvato formano lo sgabello di Sori Yanagi. La giunzione centrale e il tirante metallico collegano i due elementi in una struttura compatta e aperta.",
+    "descrizione_en": "Two symmetrical moulded-plywood shells form Sori Yanagi’s stool. A central joint and metal tie connect the elements in a compact, open structure.",
+    "fonti": [
+      {
+        "titolo": "Progetto e produzione",
+        "url": "https://www.vitra.com/en-us/product/details/36951"
+      }
+    ],
+    "azienda_attuale": "Vitra"
+  },
+  {
+    "nome": "Cesta",
+    "anno": 1962,
+    "designer": "Miguel Milá",
+    "azienda": "Santa & Cole",
+    "categoria": "lampada da tavolo",
+    "foto": "mila-cesta.jpg",
+    "descrizione": "Una struttura in legno curvato protegge il globo in vetro opalino e forma una maniglia. Cesta interpreta la lanterna come lampada da appoggio trasportabile.",
+    "descrizione_en": "A bentwood structure protects an opal-glass globe and forms a handle. Cesta reinterprets the lantern as a portable table lamp.",
+    "fonti": [
+      {
+        "titolo": "Progetto e produzione",
+        "url": "https://www.santacole.com/en/lighting/table-lamps/cesta-cesta01/"
+      }
+    ]
+  },
+  {
+    "nome": "TMM",
+    "anno": 1961,
+    "designer": "Miguel Milá",
+    "azienda": "Santa & Cole",
+    "categoria": "lampada da terra",
+    "foto": "mila-tmm.jpg",
+    "descrizione": "Lampada da terra con base a croce e stelo ligneo. Il paralume scorre lungo l’asta ed è fermato da un anello elastico; la riedizione Santa & Cole segue il progetto originario.",
+    "descrizione_en": "A floor lamp with a cross-shaped base and wooden stem. The shade slides along the shaft and is held by an elastic ring; Santa & Cole’s reissue follows the original design.",
+    "fonti": [
+      {
+        "titolo": "Progetto e produzione",
+        "url": "https://www.santacole.com/es/tmm-414/"
+      }
+    ]
+  },
+  {
+    "nome": "Platner Lounge Chair",
+    "anno": 1966,
+    "designer": "Warren Platner",
+    "azienda": "Knoll",
+    "categoria": "poltrona",
+    "foto": "platner-loungechair.jpg",
+    "descrizione": "Poltrona della collezione di Warren Platner per Knoll. Tondini metallici saldati disegnano una struttura continua fra base e schienale, completata dall’imbottitura.",
+    "descrizione_en": "An armchair from Warren Platner’s collection for Knoll. Welded steel rods form a continuous structure between base and back, completed by upholstery.",
+    "fonti": [
+      {
+        "titolo": "Progetto e produzione",
+        "url": "https://www.knoll.com/design-plan/product/platner-lounge-chair"
+      }
+    ]
+  },
+  {
+    "nome": "Trinidad Chair",
+    "anno": 1993,
+    "designer": "Nanna Ditzel",
+    "azienda": "Fredericia",
+    "categoria": "sedia",
+    "foto": "ditzel-trinidad.jpg",
+    "descrizione": "Sedile e schienale in compensato traforato traducono in arredo il ricordo dei fregi lignei osservati da Ditzel a Trinidad. Le aperture alleggeriscono visivamente la struttura e lasciano passare la luce.",
+    "descrizione_en": "A perforated plywood seat and back translate Ditzel’s memories of wooden fretwork in Trinidad into furniture. The openings visually lighten the structure and allow light through.",
+    "fonti": [
+      {
+        "titolo": "Progetto e produzione",
+        "url": "https://www.fredericia.com/product/trinidad-3398-339822600000450016"
+      }
+    ]
+  },
+  {
+    "nome": "Bardi’s Bowl Chair",
+    "anno": 1951,
+    "designer": "Lina Bo Bardi",
+    "azienda": "Arper",
+    "categoria": "poltrona",
+    "foto": "bobardi-bowlchair.jpg",
+    "descrizione": "Una seduta a semisfera poggia su un anello metallico sostenuto da quattro gambe. Ideata da Lina Bo Bardi nel 1951, viene riedita da Arper nel 2012.",
+    "descrizione_en": "A hemispherical seat rests on a metal ring supported by four legs. Designed by Lina Bo Bardi in 1951, it was reissued by Arper in 2012.",
+    "fonti": [
+      {
+        "titolo": "Progetto e produzione",
+        "url": "https://www.arper.com/us_EN/bardis-bowl-chair"
+      }
+    ]
+  },
+  {
+    "nome": "Lightlight",
+    "anno": 1987,
+    "designer": "Alberto Meda",
+    "azienda": "Alias",
+    "categoria": "sedia",
+    "foto": "meda-lightlight.jpg",
+    "descrizione": "Sedia che sperimenta materiali compositi di origine aerospaziale. Alberto Meda riduce le sezioni e il peso della struttura, utilizzando la forma per verificare le possibilità del materiale.",
+    "descrizione_en": "A chair exploring composites associated with aerospace applications. Alberto Meda reduces structural sections and weight, using form to investigate the material’s possibilities.",
+    "fonti": [
+      {
+        "titolo": "Progetto e produzione",
+        "url": "https://www.albertomeda.com/en/prodotti/lightlight"
+      }
+    ]
+  },
+  {
+    "nome": "Berenice",
+    "anno": 1985,
+    "designer": [
+      "Alberto Meda",
+      "Paolo Rizzatto"
+    ],
+    "azienda": "Luceplan",
+    "categoria": "lampada da tavolo",
+    "foto": "medarizzatto-berenice.jpg",
+    "descrizione": "Lampada articolata progettata da Alberto Meda e Paolo Rizzatto. La struttura snella permette di orientare con precisione la luce, rendendo i movimenti parte del carattere del progetto.",
+    "descrizione_en": "An articulated lamp designed by Alberto Meda and Paolo Rizzatto. Its slender structure allows precise light positioning, making movement part of the design’s character.",
+    "fonti": [
+      {
+        "titolo": "Progetto e produzione",
+        "url": "https://www.luceplan.com/it/stories/berenice-40-anni/"
+      }
+    ]
+  },
+  {
+    "nome": "Lockheed Lounge",
+    "anno": 1988,
+    "designer": "Marc Newson",
+    "azienda": null,
+    "categoria": "chaise longue",
+    "foto": "newson-lockheedlounge.jpg",
+    "descrizione": "Chaise longue in edizione limitata, rivestita da pannelli di alluminio sagomati e rivettati a mano. Questa versione del 1988 sviluppa la precedente LC1 del 1986.",
+    "descrizione_en": "A limited-edition chaise longue covered with individually shaped and hand-riveted aluminium panels. This 1988 version develops the earlier LC1 of 1986.",
+    "fonti": [
+      {
+        "titolo": "Progetto e produzione",
+        "url": "https://marc-newson.com/lockheed-lounge/"
+      }
+    ],
+    "edizione": "Marc Newson Edition"
+  },
+  {
+    "nome": "Embryo Chair",
+    "anno": 1988,
+    "designer": "Marc Newson",
+    "azienda": "Idée",
+    "categoria": "poltrona",
+    "foto": "newson-embryochair.jpg",
+    "descrizione": "Seduta imbottita con telaio interno e rivestimento continuo. Disegnata per Idée, utilizza inizialmente il neoprene; la produzione Cappellini impiega un tessuto bielastico.",
+    "descrizione_en": "An upholstered seat with an internal frame and continuous cover. Designed for Idée, it initially used neoprene; Cappellini production uses a two-way stretch fabric.",
+    "fonti": [
+      {
+        "titolo": "Progetto e produzione",
+        "url": "https://marc-newson.com/embryo-chair/"
+      }
+    ],
+    "azienda_attuale": "Cappellini"
+  },
+  {
+    "nome": "Grande Papilio",
+    "anno": 2009,
+    "designer": "Naoto Fukasawa",
+    "azienda": "B&B Italia",
+    "categoria": "poltrona",
+    "foto": "fukasawa-grandepapilio.jpg",
+    "descrizione": "Poltrona girevole di Naoto Fukasawa con schienale ampio e avvolgente. Il volume si sviluppa da una base compatta verso una parte superiore che protegge e sostiene la persona.",
+    "descrizione_en": "Naoto Fukasawa’s swivel armchair has a broad, enveloping back. Its volume grows from a compact base into an upper section that shelters and supports the sitter.",
+    "fonti": [
+      {
+        "titolo": "Progetto e produzione",
+        "url": "https://bebitalia.co.jp/product/grande-papilio-armchair/"
+      }
+    ]
+  },
+  {
+    "nome": "Radiofonografo rr126",
+    "anno": 1965,
+    "designer": [
+      "Achille Castiglioni",
+      "Pier Giacomo Castiglioni"
+    ],
+    "azienda": "Brionvega",
+    "categoria": "radiofonografo",
+    "foto": "castiglioni-rr126.jpg",
+    "descrizione": "Radio e giradischi progettati dai fratelli Castiglioni con due diffusori riposizionabili. La composizione può cambiare disposizione e proporzioni; la scheda riguarda il modello storico rr126.",
+    "descrizione_en": "A radio and record player designed by the Castiglioni brothers with two repositionable speakers. Its arrangement and proportions can change; this entry concerns the historic rr126 model.",
+    "fonti": [
+      {
+        "titolo": "Progetto e produzione",
+        "url": "https://www.brionvega.com/en/stories/looking-to-the-future/"
+      }
+    ]
+  },
+  {
+    "nome": "265",
+    "anno": 1973,
+    "designer": "Paolo Rizzatto",
+    "azienda": "Flos",
+    "categoria": "lampada da parete",
+    "foto": "rizzatto-265.jpg",
+    "descrizione": "Lampada a parete con lungo braccio orientabile, riflettore mobile e contrappeso conico. Paolo Rizzatto rende la regolazione della luce parte di un meccanismo visibile e intuitivo.",
+    "descrizione_en": "A wall lamp with a long adjustable arm, movable reflector and conical counterweight. Paolo Rizzatto makes light positioning part of a visible, intuitive mechanism.",
+    "fonti": [
+      {
+        "titolo": "Progetto e produzione",
+        "url": "https://professional.flos.com/en/global/product/265-a0300009/"
+      }
+    ]
+  },
+  {
+    "nome": "Utrecht",
+    "anno": 1935,
+    "designer": "Gerrit Rietveld",
+    "azienda": "Cassina",
+    "categoria": "poltrona",
+    "foto": "rietveld-utrechtchair.jpg",
+    "descrizione": "Poltrona imbottita progettata da Rietveld per Metz & Co. nel 1935. Braccioli e schienale formano volumi geometrici distinti; la riedizione Cassina conserva il carattere costruttivo del disegno.",
+    "descrizione_en": "An upholstered armchair designed by Rietveld for Metz & Co. in 1935. Arms and back form distinct geometric volumes; Cassina’s reissue preserves the construction-led character of the design.",
+    "fonti": [
+      {
+        "titolo": "Progetto e produzione",
+        "url": "https://www.cassina.com/ww/en/products/utrecht-sofa.html"
+      }
+    ]
+  },
+  {
+    "nome": "D.154.2",
+    "anno": 1953,
+    "designer": "Gio Ponti",
+    "azienda": "Molteni&C",
+    "categoria": "poltrona",
+    "foto": "ponti-d1542.jpg",
+    "descrizione": "Poltrona sviluppata per Villa Planchart a Caracas nel periodo 1953–1957. La scocca avvolgente e i cuscini distinti caratterizzano il progetto, riedito da Molteni&C nel 2015.",
+    "descrizione_en": "An armchair developed for Villa Planchart in Caracas during 1953–1957. Its enveloping shell and separate cushions distinguish the design, reissued by Molteni&C in 2015.",
+    "fonti": [
+      {
+        "titolo": "Progetto e produzione",
+        "url": "https://www.molteni.it/en/download/document/119baff6-f5b2-11e5-9dc5-005056945306"
+      }
+    ],
+    "anno_label": "1953–1957"
+  },
+  {
+    "nome": "Potence",
+    "anno": 1950,
+    "designer": "Jean Prouvé",
+    "azienda": "Vitra",
+    "categoria": "lampada da parete",
+    "foto": "prouve-potence.jpg",
+    "descrizione": "Lampada a parete orientabile ideata per la Maison Tropique. La lunga asta e il sostegno inclinato riducono la costruzione a pochi elementi, lasciando la sorgente luminosa esposta.",
+    "descrizione_en": "A pivoting wall lamp conceived for the Maison Tropique. Its long arm and inclined support reduce construction to a few elements, leaving the light source exposed.",
+    "fonti": [
+      {
+        "titolo": "Progetto e produzione",
+        "url": "https://www.vitra.com/en-un/product/details/potence/1000"
+      }
+    ]
+  },
+  {
+    "nome": "Nelson Platform Bench",
+    "anno": 1946,
+    "designer": "George Nelson",
+    "azienda": "Herman Miller",
+    "categoria": "panca",
+    "foto": "nelson-platformbench.jpg",
+    "descrizione": "Panca a doghe in legno utilizzabile anche come superficie di appoggio. Progettata nel 1946, entra nelle prime collezioni Nelson per Herman Miller.",
+    "descrizione_en": "A slatted wooden bench that also functions as a low surface. Designed in 1946, it joined Nelson’s early collections for Herman Miller.",
+    "fonti": [
+      {
+        "titolo": "Progetto e produzione",
+        "url": "https://www.sfmoma.org/artwork/98.596/"
+      }
+    ]
+  },
+  {
+    "nome": "Tea Trolley 900",
+    "anno": 1937,
+    "designer": "Alvar Aalto",
+    "azienda": "Artek",
+    "categoria": "carrello da servizio",
+    "foto": "aalto-teatrolley900.jpg",
+    "descrizione": "Carrello di Alvar Aalto con piano in piastrelle, cestino e grandi ruote. Presentato all’Esposizione di Parigi del 1937, combina legno curvato e materiali diversi in un oggetto per il servizio domestico.",
+    "descrizione_en": "Alvar Aalto’s trolley combines a tiled top, basket and large wheels. Presented at the 1937 Paris World Exhibition, it brings bentwood and contrasting materials into a domestic serving object.",
+    "fonti": [
+      {
+        "titolo": "Progetto e produzione",
+        "url": "https://www.artek.fi/en/products/tea-trolley-900"
+      }
+    ]
+  },
+  {
+    "nome": "T 1000",
+    "anno": 1963,
+    "designer": "Dieter Rams",
+    "azienda": "Braun",
+    "categoria": "radio multibanda",
+    "foto": "rams-t1000.jpg",
+    "descrizione": "Ricevitore portatile multibanda progettato da Dieter Rams per Braun. La disposizione ordinata di scala, comandi e altoparlante rende leggibili le numerose funzioni dell’apparecchio.",
+    "descrizione_en": "A portable multiband receiver designed by Dieter Rams for Braun. An ordered arrangement of tuning scale, controls and loudspeaker makes its many functions readable.",
+    "fonti": [
+      {
+        "titolo": "Progetto e produzione",
+        "url": "https://www.braun-audio.com/it-IT/worldfirsts"
+      }
+    ]
+  },
+  {
+    "nome": "Tabouret Berger",
+    "anno": 1953,
+    "designer": "Charlotte Perriand",
+    "azienda": "Cassina",
+    "categoria": "sgabello",
+    "foto": "perriand-tabouretberger.jpg",
+    "descrizione": "Sgabello basso in legno massiccio con sedile tornito e tre gambe. Il progetto di Charlotte Perriand riprende una tipologia essenziale, valorizzando materiale e lavorazione artigianale.",
+    "descrizione_en": "A low solid-wood stool with a turned seat and three legs. Charlotte Perriand’s design revisits an elementary type, emphasising its material and craftsmanship.",
+    "fonti": [
+      {
+        "titolo": "Progetto e produzione",
+        "url": "https://www.cassina.com/ww/en/products/tabouret-berger.html"
+      }
+    ]
+  },
+  {
+    "nome": "VP Globe",
+    "anno": 1969,
+    "designer": "Verner Panton",
+    "azienda": "Louis Poulsen",
+    "categoria": "lampada a sospensione",
+    "foto": "panton-vpglobe.jpg",
+    "descrizione": "Una sfera trasparente contiene riflettori metallici sospesi che distribuiscono la luce. La scheda riguarda il progetto originale del 1969–1970, con riflettori anche colorati, oggi prodotto da Verpan.",
+    "descrizione_en": "A transparent sphere contains suspended metal reflectors that distribute light. This entry concerns the original 1969–1970 design, including coloured reflectors, now produced by Verpan.",
+    "fonti": [
+      {
+        "titolo": "Progetto e produzione",
+        "url": "https://www.verner-panton.com/en/collection/vp-globe/"
+      }
+    ],
+    "azienda_attuale": "Verpan",
+    "anno_label": "1969–1970"
+  },
+  {
+    "nome": "Domus Chair",
+    "anno": 1946,
+    "designer": "Ilmari Tapiovaara",
+    "azienda": "Artek",
+    "categoria": "sedia",
+    "foto": "tapiovaara-domus.jpg",
+    "descrizione": "Sedia progettata per il complesso studentesco Domus Academica di Helsinki. Il compensato sagomato e i braccioli corti rispondono alla necessità di una seduta versatile per lo studio e la vita quotidiana.",
+    "descrizione_en": "A chair designed for Helsinki’s Domus Academica student housing. Shaped plywood and short arms provide versatile seating for study and everyday life.",
+    "fonti": [
+      {
+        "titolo": "Progetto e produzione",
+        "url": "https://www.artek.fi/en/collections/domus-collection"
+      }
+    ]
+  },
+  {
+    "nome": "Mademoiselle Lounge Chair",
+    "anno": 1956,
+    "designer": "Ilmari Tapiovaara",
+    "azienda": "Artek",
+    "categoria": "poltrona",
+    "foto": "tapiovaara-mademoiselle.jpg",
+    "descrizione": "Poltrona in betulla con alto schienale a listelli. Tapiovaara rilegge una costruzione tradizionale attraverso le proporzioni basse e il profilo arrotondato del sedile.",
+    "descrizione_en": "A birch lounge chair with a tall spindle back. Tapiovaara revisits traditional construction through its low proportions and rounded seat profile.",
+    "fonti": [
+      {
+        "titolo": "Progetto e produzione",
+        "url": "https://www.artek.fi/en/products/mademoiselle-lounge-chair"
+      }
+    ]
+  },
+  {
+    "nome": "Safari Chair KK47000",
+    "anno": 1933,
+    "designer": "Kaare Klint",
+    "azienda": "Carl Hansen & Søn",
+    "categoria": "poltrona",
+    "foto": "klint-safarichair.jpg",
+    "descrizione": "Seduta smontabile che rielabora la tipologia della sedia da campo. Il telaio ligneo e gli elementi flessibili di seduta, schienale e braccioli costruiscono un equilibrio fra essenzialità e comfort.",
+    "descrizione_en": "A demountable seat reworking the field-chair type. Its wooden frame and flexible seat, back and arm elements balance simplicity with comfort.",
+    "fonti": [
+      {
+        "titolo": "Progetto e produzione",
+        "url": "https://www.carlhansen.com/en/collection/chairs/lounge-chairs/kk47000"
+      }
+    ]
+  },
+  {
+    "nome": "Risom Lounge Chair",
+    "anno": 1943,
+    "designer": "Jens Risom",
+    "azienda": "Knoll",
+    "categoria": "poltrona",
+    "foto": "risom-loungechair.jpg",
+    "descrizione": "Poltrona di Jens Risom con telaio in legno e cinghie intrecciate. La costruzione ridotta e i materiali semplici fanno parte della ricerca che accompagna le prime collezioni Knoll.",
+    "descrizione_en": "Jens Risom’s lounge chair combines a wooden frame with woven straps. Reduced construction and straightforward materials reflect the approach behind Knoll’s early furniture collections.",
+    "fonti": [
+      {
+        "titolo": "Progetto e produzione",
+        "url": "https://www.knoll.com/design-plan/product/risom-lounge-chair"
+      }
+    ]
+  },
+  {
+    "nome": "Mole Armchair",
+    "anno": 1957,
+    "designer": "Sergio Rodrigues",
+    "azienda": "Oca",
+    "categoria": "poltrona",
+    "foto": "rodrigues-mole.jpg",
+    "descrizione": "Poltrona con struttura in legno massiccio, cinghie e grandi cuscini. Il progetto nasce nel 1957; la versione premiata a Cantù nel 1961 viene oggi riproposta da LinBrasil.",
+    "descrizione_en": "An armchair with a solid-wood frame, straps and generous cushions. The design originated in 1957; the version awarded at Cantù in 1961 is now reissued by LinBrasil.",
+    "fonti": [
+      {
+        "titolo": "Progetto e produzione",
+        "url": "https://www.metmuseum.org/art/collection/search/772912"
+      }
+    ],
+    "azienda_attuale": "LinBrasil",
+    "anno_label": "1957 / 1961"
+  },
+  {
+    "nome": "Corona Chair",
+    "anno": 1964,
+    "designer": "Poul M. Volther",
+    "azienda": "Fredericia",
+    "categoria": "poltrona",
+    "foto": "volther-corona.jpg",
+    "descrizione": "Poltrona di Poul M. Volther con quattro elementi imbottiti ellittici sostenuti da una struttura metallica. La separazione delle parti alleggerisce il profilo della seduta.",
+    "descrizione_en": "Poul M. Volther’s armchair has four elliptical upholstered elements supported by a metal frame. Separating the elements lightens the chair’s profile.",
+    "fonti": [
+      {
+        "titolo": "Progetto e produzione",
+        "url": "https://www.fredericia.com/product/corona-chair-5000"
+      }
+    ]
+  },
+  {
+    "nome": "Royal System",
+    "anno": 1948,
+    "designer": "Poul Cadovius",
+    "azienda": "Royal System",
+    "categoria": "libreria modulare",
+    "foto": "cadovius-royalsystem.jpg",
+    "descrizione": "Sistema a parete di Poul Cadovius che combina montanti, mensole e contenitori. Il progetto libera il pavimento e consente configurazioni variabili; dk3 lo ripropone dal 2010.",
+    "descrizione_en": "Poul Cadovius’s wall-mounted system combines rails, shelves and cabinets. It frees floor space and allows variable arrangements; dk3 has reissued it since 2010.",
+    "fonti": [
+      {
+        "titolo": "Progetto e produzione",
+        "url": "https://dk3.dk/royal_system_collection"
+      }
+    ],
+    "azienda_attuale": "dk3"
+  },
+  {
+    "nome": "Conoid Chair",
+    "anno": 1960,
+    "designer": "George Nakashima",
+    "azienda": "George Nakashima Woodworkers",
+    "categoria": "sedia",
+    "foto": "nakashima-conoidchair.jpg",
+    "descrizione": "Sedia in legno con sedile a sbalzo sostenuto da due gambe. Il disegno collega la struttura essenziale al carattere del legno e alla lavorazione del laboratorio Nakashima.",
+    "descrizione_en": "A wooden chair with a cantilevered seat supported by two legs. Its design connects an economical structure with the character of the wood and Nakashima’s workshop practice.",
+    "fonti": [
+      {
+        "titolo": "Progetto e produzione",
+        "url": "https://nakashimawoodworkers.com/furniture/conoid-chair/"
+      }
+    ],
+    "anno_label": "ca. 1960"
+  },
+  {
+    "nome": "GJ Chair",
+    "anno": 1963,
+    "designer": "Grete Jalk",
+    "azienda": "Lange Production",
+    "categoria": "poltrona",
+    "foto": "jalk-gjchair.jpg",
+    "descrizione": "Due elementi di compensato ripiegato formano una poltrona dalle curve continue. Il progetto di Grete Jalk viene realizzato con Poul Jeppesen e successivamente riedito da Lange Production.",
+    "descrizione_en": "Two folded plywood elements form an armchair with continuous curves. Grete Jalk developed it with Poul Jeppesen; it was later reissued by Lange Production.",
+    "fonti": [
+      {
+        "titolo": "Progetto e produzione",
+        "url": "https://www.moma.org/collection/works/4721"
+      }
+    ],
+    "produttore_originale": "Poul Jeppesen"
+  },
+  {
+    "nome": "Town & Country",
+    "anno": 1946,
+    "designer": "Eva Zeisel",
+    "azienda": "Red Wing Pottery",
+    "categoria": "servizio da tavola",
+    "foto": "zeisel-towncountry.jpg",
+    "descrizione": "Servizio da tavola in ceramica di Eva Zeisel, disegnato a metà degli anni Quaranta e prodotto dal 1947. Le forme morbide stabiliscono relazioni visive fra i diversi elementi della serie.",
+    "descrizione_en": "Eva Zeisel’s ceramic tableware service was designed in the mid-1940s and produced from 1947. Soft forms establish visual relationships between the series’ different elements.",
+    "fonti": [
+      {
+        "titolo": "Progetto e produzione",
+        "url": "https://collections.lacma.org/object/140040"
+      }
+    ],
+    "anno_label": "ca. 1945–1946"
+  },
+  {
+    "nome": "Frankfurt Kitchen",
+    "anno": 1926,
+    "designer": "Margarete Schütte-Lihotzky",
+    "azienda": null,
+    "categoria": "sistema abitativo",
+    "foto": "schuttelihotzky-frankfurtkitchen.jpg",
+    "descrizione": "Cucina coordinata sviluppata nel programma Neues Frankfurt. Contenitori, piani e attrezzature sono disposti come un sistema di lavoro compatto, pensato per le nuove abitazioni sociali.",
+    "descrizione_en": "A coordinated kitchen developed within the Neues Frankfurt programme. Storage, worktops and equipment form a compact working system for new social housing.",
+    "fonti": [
+      {
+        "titolo": "Progetto e produzione",
+        "url": "https://www.moma.org/collection/works/126451"
+      }
+    ],
+    "anno_label": "1926–1927"
+  },
+  {
+    "nome": "String System",
+    "anno": 1949,
+    "designer": [
+      "Nisse Strinning",
+      "Kajsa Strinning"
+    ],
+    "azienda": "String Furniture",
+    "categoria": "libreria modulare",
+    "foto": "strinning-stringsystem.jpg",
+    "descrizione": "Sistema di scaffali progettato insieme da Nisse e Kajsa Strinning. Fianchi in filo metallico e ripiani componibili permettono configurazioni leggere, montabili e modificabili nel tempo.",
+    "descrizione_en": "A shelving system jointly designed by Nisse and Kajsa Strinning. Wire side panels and modular shelves enable light arrangements that can be assembled and changed over time.",
+    "fonti": [
+      {
+        "titolo": "Progetto e produzione",
+        "url": "https://www.stringfurniture.com/en/our-world"
+      }
+    ]
+  },
+  {
+    "nome": "PaperClip Table",
+    "anno": 1994,
+    "designer": [
+      "Lella Vignelli",
+      "Massimo Vignelli"
+    ],
+    "azienda": "Knoll",
+    "categoria": "tavolo",
+    "foto": "vignelli-paperclip.jpg",
+    "descrizione": "Tavolo di Lella e Massimo Vignelli con base in tondino metallico piegato. Il percorso continuo degli elementi della base sostiene piani di forme differenti.",
+    "descrizione_en": "Lella and Massimo Vignelli’s table uses a bent metal-rod base. The continuous path of its base elements supports tops in different shapes.",
+    "fonti": [
+      {
+        "titolo": "Progetto e produzione",
+        "url": "https://www.knoll.com/document/1356247956532/KnollStudioVolOne.6.18.11x17.pdf"
+      }
+    ]
+  },
+  {
+    "nome": "Eva (Mi 472)",
+    "anno": 1941,
+    "designer": "Bruno Mathsson",
+    "azienda": "Bruno Mathsson International",
+    "categoria": "poltrona",
+    "foto": "mathsson-eva.jpg",
+    "descrizione": "Versione con braccioli della seduta Eva, evoluzione del lavoro avviato da Mathsson nel 1933. Il legno curvato e il sedile intrecciato seguono una ricerca sul sostegno del corpo.",
+    "descrizione_en": "The armchair version of Eva develops Mathsson’s work begun in 1933. Bentwood and a woven seat reflect his exploration of bodily support.",
+    "fonti": [
+      {
+        "titolo": "Progetto e produzione",
+        "url": "https://mathsson.se/eng/butik/alla-mobler/eva/kladd-med-farskinn/"
+      }
+    ]
+  },
+  {
+    "nome": "Random Light",
+    "anno": 1999,
+    "designer": "Bertjan Pot",
+    "azienda": "Moooi",
+    "categoria": "lampada a sospensione",
+    "foto": "pot-randomlight.jpg",
+    "descrizione": "Una fibra impregnata di resina viene avvolta attorno a un volume gonfiabile, poi rimosso. La struttura risultante forma il diffusore; il progetto del 1999 entra nella collezione Moooi nel 2002.",
+    "descrizione_en": "Resin-impregnated fibre is wrapped around an inflatable volume, which is then removed. The resulting structure forms the shade; the 1999 design entered Moooi’s collection in 2002.",
+    "fonti": [
+      {
+        "titolo": "Progetto e produzione",
+        "url": "https://www.bertjanpot.nl/work/random-light/"
+      }
+    ],
+    "anno_label": "1999 / 2002"
   }
 ]

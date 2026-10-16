@@ -843,5 +843,317 @@
     "fondata": 1984,
     "settore": "arredo",
     "descrizione": "Azienda bergamasca di arredo fondata da Enrico Baleri e Marilisa Decimo, nota per le collaborazioni con Starck, Hollein, Mendini e Dalisi."
+  },
+  {
+    "nome": "Asko",
+    "paese": "Finlandia",
+    "fondata": 1918,
+    "settore": "arredo",
+    "descrizione": "Azienda finlandese di mobili fondata da Aukusti Asko-Avonius. Collabora con protagonisti del design finlandese e produce le prime sedute di Eero Aarnio.",
+    "descrizione_en": "Finnish furniture company founded by Aukusti Asko-Avonius. It worked with leading Finnish designers and produced Eero Aarnio’s early seating.",
+    "fonti": [
+      {
+        "titolo": "Storia e attività",
+        "url": "https://global.asko.com/professional/history"
+      }
+    ]
+  },
+  {
+    "nome": "Eero Aarnio Originals",
+    "paese": "Finlandia",
+    "fondata": 2016,
+    "settore": "arredo",
+    "descrizione": "Marchio finlandese nato nel 2016 in collaborazione con Eero Aarnio per produrre e distribuire i suoi classici, fra cui Ball Chair e Bubble Chair.",
+    "descrizione_en": "Finnish brand established in 2016 in collaboration with Eero Aarnio to produce and distribute his classics, including the Ball Chair and Bubble Chair.",
+    "fonti": [
+      {
+        "titolo": "Storia e attività",
+        "url": "https://www.aarniooriginals.com/pages/about-us"
+      }
+    ]
+  },
+  {
+    "nome": "GUBI",
+    "paese": "Danimarca",
+    "fondata": 1967,
+    "settore": "arredo",
+    "descrizione": "Marchio danese di arredo e illuminazione, fondato nel 1967. Affianca riedizioni storiche, come le lampade di Greta Magnusson Grossman, a progetti contemporanei.",
+    "descrizione_en": "Danish furniture and lighting brand founded in 1967. It combines historic reissues, including Greta Magnusson Grossman’s lamps, with contemporary designs.",
+    "fonti": [
+      {
+        "titolo": "Storia e attività",
+        "url": "https://media.umbraco.io/gubi-3-0/iq2i0yd2/final-report-2022.pdf"
+      }
+    ]
+  },
+  {
+    "nome": "Ligne Roset",
+    "paese": "Francia",
+    "fondata": 1860,
+    "settore": "arredo",
+    "descrizione": "La storia produttiva della famiglia Roset inizia nel 1860; il marchio Ligne Roset viene formalizzato nel 1973. È legato alla sperimentazione sugli imbottiti di Michel Ducaroy, autore di Togo.",
+    "descrizione_en": "The Roset family’s manufacturing history began in 1860; the Ligne Roset brand was formally established in 1973. It is associated with Michel Ducaroy’s experiments in upholstered furniture, including Togo.",
+    "fonti": [
+      {
+        "titolo": "Storia e attività",
+        "url": "https://www.ligne-roset.com/fr/histoire"
+      }
+    ]
+  },
+  {
+    "nome": "Lumina",
+    "paese": "Italia",
+    "fondata": 1980,
+    "settore": "illuminazione",
+    "descrizione": "Azienda di illuminazione fondata da Tommaso Cimini a Sedriano nel 1980. La Daphine esprime una ricerca sulla riduzione dei componenti e sulla leggibilità della costruzione.",
+    "descrizione_en": "Lighting company founded by Tommaso Cimini in Sedriano in 1980. Daphine expresses an investigation of reduced components and understandable construction.",
+    "fonti": [
+      {
+        "titolo": "Storia e attività",
+        "url": "https://www.lumina.it/about-us/"
+      }
+    ]
+  },
+  {
+    "nome": "Tecnolumen",
+    "paese": "Germania",
+    "fondata": 1980,
+    "settore": "illuminazione",
+    "descrizione": "Fondata a Brema da Walter Schnepel, Tecnolumen produce riedizioni autorizzate di progetti del Bauhaus. La lampada di Wilhelm Wagenfeld è all’origine del suo catalogo.",
+    "descrizione_en": "Founded in Bremen by Walter Schnepel, Tecnolumen produces authorised reissues of Bauhaus designs. Wilhelm Wagenfeld’s lamp was the starting point of its collection.",
+    "fonti": [
+      {
+        "titolo": "Storia e attività",
+        "url": "https://tecnolumen.de/wp-content/uploads/2023/07/tecnolumen-katalog-2023-web.pdf"
+      }
+    ]
+  },
+  {
+    "nome": "Iittala",
+    "paese": "Finlandia",
+    "fondata": 1881,
+    "settore": "oggetti da tavola",
+    "descrizione": "Nata come vetreria nel 1881, Iittala è un riferimento del progetto finlandese per la tavola e la casa. Il catalogo comprende i bicchieri di Aino Aalto.",
+    "descrizione_en": "Established as a glassworks in 1881, Iittala is a reference point for Finnish tableware and home design. Its collection includes Aino Aalto’s glassware.",
+    "fonti": [
+      {
+        "titolo": "Storia e attività",
+        "url": "https://www.iittala.com/en-gb/universe/manifesto/new-era"
+      }
+    ]
+  },
+  {
+    "nome": "Ingo Maurer",
+    "paese": "Germania",
+    "fondata": 1966,
+    "settore": "illuminazione",
+    "descrizione": "Laboratorio e azienda di Monaco sviluppati attorno al lavoro di Ingo Maurer. Dalle prime lampade degli anni Sessanta, la produzione unisce sperimentazione tecnica, oggetti e installazioni luminose.",
+    "descrizione_en": "Munich workshop and company developed around Ingo Maurer’s practice. Since his early lamps of the 1960s, its output has combined technical experimentation, objects and lighting installations.",
+    "fonti": [
+      {
+        "titolo": "Storia e attività",
+        "url": "https://www.ingo-maurer.com/en/info/press/"
+      }
+    ]
+  },
+  {
+    "nome": "Tendo Mokko",
+    "paese": "Giappone",
+    "fondata": 1940,
+    "settore": "arredo",
+    "descrizione": "Produttore giapponese fondato a Tendo nel 1940. La lavorazione del compensato curvato diventa il centro di un catalogo che comprende il Butterfly Stool di Sori Yanagi.",
+    "descrizione_en": "Japanese manufacturer founded in Tendo in 1940. Moulded plywood became central to a collection that includes Sori Yanagi’s Butterfly Stool.",
+    "fonti": [
+      {
+        "titolo": "Storia e attività",
+        "url": "https://www.tendo-mokko.co.jp/en/"
+      }
+    ]
+  },
+  {
+    "nome": "Santa & Cole",
+    "paese": "Spagna",
+    "fondata": 1985,
+    "settore": "illuminazione",
+    "descrizione": "Editore di design nato a Barcellona nel 1985. Pubblica progetti di illuminazione e arredo, riportando in produzione classici di Miguel Milá come Cesta e TMM.",
+    "descrizione_en": "Design publisher founded in Barcelona in 1985. It produces lighting and furniture and has reissued Miguel Milá classics including Cesta and TMM.",
+    "fonti": [
+      {
+        "titolo": "Storia e attività",
+        "url": "https://usa.santacole.com/en/about-us/foundations/"
+      }
+    ]
+  },
+  {
+    "nome": "Arper",
+    "paese": "Italia",
+    "fondata": 1989,
+    "settore": "arredo",
+    "descrizione": "Azienda di arredo fondata a Monastier di Treviso nel 1989. Fra i suoi progetti di recupero storico figura la riedizione della Bowl Chair di Lina Bo Bardi.",
+    "descrizione_en": "Furniture company founded in Monastier di Treviso in 1989. Its historical projects include the reissue of Lina Bo Bardi’s Bowl Chair.",
+    "fonti": [
+      {
+        "titolo": "Storia e attività",
+        "url": "https://www.arper.com/en_GB/who-we-are"
+      }
+    ]
+  },
+  {
+    "nome": "Idée",
+    "paese": "Giappone",
+    "fondata": 1982,
+    "settore": "arredo",
+    "descrizione": "Marchio giapponese di interni avviato nel 1982, con origini in un’attività di importazione del 1975. Collabora con progettisti internazionali, fra cui Marc Newson per Embryo Chair.",
+    "descrizione_en": "Japanese interiors brand launched in 1982, with roots in an importing business begun in 1975. It works with international designers, including Marc Newson on the Embryo Chair.",
+    "fonti": [
+      {
+        "titolo": "Storia e attività",
+        "url": "https://www.idee.co.jp/about/"
+      }
+    ]
+  },
+  {
+    "nome": "Oca",
+    "paese": "Brasile",
+    "fondata": 1955,
+    "settore": "arredo",
+    "descrizione": "Fondata da Sergio Rodrigues nel 1955, Oca contribuisce alla costruzione di un mobile moderno brasiliano. La Mole ne rappresenta la ricerca su legno, comfort e modi informali di abitare.",
+    "descrizione_en": "Founded by Sergio Rodrigues in 1955, Oca helped develop modern Brazilian furniture. Mole expresses its exploration of wood, comfort and informal living.",
+    "fonti": [
+      {
+        "titolo": "Storia e attività",
+        "url": "https://sergiorodriguesatelier.com.br/biografia/"
+      }
+    ]
+  },
+  {
+    "nome": "LinBrasil",
+    "paese": "Brasile",
+    "fondata": 1999,
+    "settore": "arredo",
+    "descrizione": "Impresa creata da Gisèle Schwartsburd dopo l’incontro con il lavoro di Sergio Rodrigues nel 1999. È dedicata all’edizione e alla produzione dei mobili del designer brasiliano.",
+    "descrizione_en": "Company created by Gisèle Schwartsburd after encountering Sergio Rodrigues’s work in 1999. It is devoted to publishing and producing the Brazilian designer’s furniture.",
+    "fonti": [
+      {
+        "titolo": "Storia e attività",
+        "url": "https://linbrasil.com.br/novidades/como-e-editado-e-produzido-o-mobiliario-de-sergio-rodrigues/"
+      }
+    ]
+  },
+  {
+    "nome": "Royal System",
+    "paese": "Danimarca",
+    "fondata": 1945,
+    "settore": "arredo",
+    "descrizione": "Azienda danese fondata da Poul Cadovius nel 1945. Il sistema di scaffali omonimo del 1948 sviluppa l’idea di un arredo modulare sospeso alle pareti.",
+    "descrizione_en": "Danish company founded by Poul Cadovius in 1945. Its namesake shelving system of 1948 develops the idea of modular furniture mounted on walls.",
+    "fonti": [
+      {
+        "titolo": "Storia e attività",
+        "url": "https://dk3.dk/poul-cadovius"
+      }
+    ]
+  },
+  {
+    "nome": "dk3",
+    "paese": "Danimarca",
+    "fondata": 2009,
+    "settore": "arredo",
+    "descrizione": "Marchio danese fondato da Jacob e Ann Plejdrup nel 2009. Unisce arredi contemporanei e riedizioni storiche, fra cui Royal System di Poul Cadovius.",
+    "descrizione_en": "Danish brand founded by Jacob and Ann Plejdrup in 2009. It combines contemporary furniture with historic reissues, including Poul Cadovius’s Royal System.",
+    "fonti": [
+      {
+        "titolo": "Storia e attività",
+        "url": "https://dk3.dk/jacob-plejdrup"
+      }
+    ]
+  },
+  {
+    "nome": "George Nakashima Woodworkers",
+    "paese": "Stati Uniti",
+    "fondata": 1945,
+    "settore": "arredo",
+    "descrizione": "Laboratorio sviluppato da George Nakashima a New Hope dal 1945. Produce mobili in legno secondo un rapporto diretto fra progetto, selezione delle tavole e lavorazione artigianale.",
+    "descrizione_en": "Workshop developed by George Nakashima in New Hope from 1945. It makes wooden furniture through a direct relationship between design, board selection and craftsmanship.",
+    "fonti": [
+      {
+        "titolo": "Storia e attività",
+        "url": "https://nakashimawoodworkers.com/philosophy/history-team/"
+      }
+    ]
+  },
+  {
+    "nome": "Lange Production",
+    "paese": "Danimarca",
+    "fondata": 2006,
+    "settore": "arredo",
+    "descrizione": "Marchio danese fondato nel 2006. Ripropone progetti storici con attenzione ai materiali e alla costruzione, fra cui la GJ Chair di Grete Jalk.",
+    "descrizione_en": "Danish brand founded in 2006. It reissues historical designs with attention to materials and construction, including Grete Jalk’s GJ Chair.",
+    "fonti": [
+      {
+        "titolo": "Storia e attività",
+        "url": "https://www.linkedin.com/company/lange-production"
+      }
+    ]
+  },
+  {
+    "nome": "Red Wing Pottery",
+    "paese": "Stati Uniti",
+    "fondata": 1877,
+    "settore": "oggetti da tavola",
+    "descrizione": "La tradizione produttiva di Red Wing inizia nel 1877 e attraversa diverse denominazioni aziendali. Nella produzione del dopoguerra si distingue il servizio Town & Country di Eva Zeisel.",
+    "descrizione_en": "Red Wing’s manufacturing tradition began in 1877 and passed through several company names. Its postwar production includes Eva Zeisel’s Town & Country tableware.",
+    "fonti": [
+      {
+        "titolo": "Storia e attività",
+        "url": "https://www.redwingstoneware.com/our-history/our-history/"
+      }
+    ]
+  },
+  {
+    "nome": "String Furniture",
+    "paese": "Svezia",
+    "fondata": 2004,
+    "settore": "arredo",
+    "descrizione": "Azienda svedese fondata nel 2004 per proseguire il progetto di Nisse e Kajsa Strinning. Il sistema String del 1949 rimane il nucleo della collezione.",
+    "descrizione_en": "Swedish company founded in 2004 to continue Nisse and Kajsa Strinning’s work. The 1949 String system remains the core of its collection.",
+    "fonti": [
+      {
+        "titolo": "Storia e attività",
+        "url": "https://www.stringfurniture.com/en/our-world"
+      }
+    ]
+  },
+  {
+    "nome": "Bruno Mathsson International",
+    "paese": "Svezia",
+    "fondata": 1964,
+    "settore": "arredo",
+    "descrizione": "Il marchio Bruno Mathsson International, organizzato negli anni Sessanta, produce e tutela il lavoro del designer svedese. La sede di Värnamo conserva il legame con il laboratorio familiare e con il suo archivio.",
+    "descrizione_en": "The Bruno Mathsson International brand, organised in the 1960s, produces and preserves the Swedish designer’s work. Its Värnamo headquarters maintains links with the family workshop and archive.",
+    "fonti": [
+      {
+        "titolo": "Storia e attività",
+        "url": "https://mathsson.se/eng/bruno-mathsson/om-foretaget/"
+      },
+      {
+        "titolo": "Cronologia del marchio",
+        "url": "https://designinscandinavia.com/blogs/uutiset/bruno-mathsson"
+      }
+    ]
+  },
+  {
+    "nome": "Verpan",
+    "paese": "Danimarca",
+    "fondata": 2003,
+    "settore": "arredo e illuminazione",
+    "descrizione": "Marchio danese dedicato alla produzione e riedizione dei progetti di Verner Panton, fra cui lampade e arredi degli anni Sessanta e Settanta.",
+    "descrizione_en": "Danish brand producing and reissuing Verner Panton’s designs, including lighting and furniture from the 1960s and 1970s.",
+    "fonti": [
+      {
+        "titolo": "Catalogo del produttore: fondata nel 2003",
+        "url": "https://download.architonic.com/pdf1/3100720/verpan-430-chair-26-tables-issuu.pdf"
+      }
+    ]
   }
 ]

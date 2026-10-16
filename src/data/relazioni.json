@@ -358,5 +358,215 @@
     "categoria": "professionale",
     "descrizione": "Rizzatto fonda Luceplan nel 1978 raccogliendo l'eredità dell'esperienza Arteluce di Gino Sarfatti",
     "descrizione_en": "Rizzatto founded Luceplan in 1978, carrying forward the legacy of Gino Sarfatti's Arteluce"
+  },
+  {
+    "designer_a": "Aino Aalto",
+    "designer_b": "Alvar Aalto",
+    "tipo": "collaborazione",
+    "categoria": "professionale",
+    "descrizione": "Collaborano nello studio di architettura e nella fondazione di Artek, sviluppando insieme interni e arredi.",
+    "descrizione_en": "They worked together in their architectural practice and co-founded Artek, developing interiors and furniture.",
+    "fonti": [
+      {
+        "titolo": "Fonte della relazione",
+        "url": "https://www.alvaraalto.fi/en/aino-aalto/"
+      }
+    ]
+  },
+  {
+    "designer_a": "Nisse Strinning",
+    "designer_b": "Kajsa Strinning",
+    "tipo": "collaborazione",
+    "categoria": "professionale",
+    "descrizione": "Progettano insieme nel 1949 il sistema modulare di librerie String.",
+    "descrizione_en": "They jointly designed the String modular shelving system in 1949.",
+    "fonti": [
+      {
+        "titolo": "Fonte della relazione",
+        "url": "https://www.stringfurniture.com/sv-se/our-world/our-designers/designers-nisse-and-kajsa-strinning"
+      }
+    ]
+  },
+  {
+    "designer_a": "Lella Vignelli",
+    "designer_b": "Massimo Vignelli",
+    "tipo": "collaborazione",
+    "categoria": "professionale",
+    "descrizione": "Condividono lo studio e numerosi progetti di interni e prodotto, fra cui il tavolo PaperClip per Knoll.",
+    "descrizione_en": "They shared a practice and many interior and product designs, including Knoll’s PaperClip table.",
+    "fonti": [
+      {
+        "titolo": "Fonte della relazione",
+        "url": "https://www.knoll.com/designer/Lella-Vignelli"
+      }
+    ]
+  },
+  {
+    "designer_a": "Alberto Meda",
+    "designer_b": "Paolo Rizzatto",
+    "tipo": "collaborazione",
+    "categoria": "professionale",
+    "descrizione": "Progettano insieme la lampada da tavolo Berenice per Luceplan nel 1985.",
+    "descrizione_en": "They jointly designed Luceplan’s Berenice table lamp in 1985.",
+    "fonti": [
+      {
+        "titolo": "Fonte della relazione",
+        "url": "https://www.luceplan.com/products/berenice"
+      }
+    ]
+  },
+  {
+    "designer_a": "Bertjan Pot",
+    "designer_b": "Marcel Wanders",
+    "tipo": "collaborazione",
+    "categoria": "professionale",
+    "descrizione": "Firmano insieme la Carbon Chair per Moooi, basata su una struttura aperta in fibra di carbonio.",
+    "descrizione_en": "They co-designed Moooi’s Carbon Chair, based on an open carbon-fibre structure.",
+    "fonti": [
+      {
+        "titolo": "Fonte della relazione",
+        "url": "https://www.moooi.com/en/product/carbon-chair"
+      }
+    ]
+  },
+  {
+    "designer_a": "Sori Yanagi",
+    "designer_b": "Charlotte Perriand",
+    "tipo": "collaborazione",
+    "categoria": "professionale",
+    "descrizione": "Durante il soggiorno di Perriand in Giappone, Yanagi lavora come suo assistente.",
+    "descrizione_en": "During Perriand’s stay in Japan, Yanagi worked as her assistant.",
+    "fonti": [
+      {
+        "titolo": "Fonte della relazione",
+        "url": "https://www.vitra.com/en-us/designer/details/sori-yanagi"
+      }
+    ]
+  },
+  {
+    "designer_a": "Harry Bertoia",
+    "designer_b": "Florence Knoll",
+    "tipo": "collaborazione",
+    "categoria": "professionale",
+    "descrizione": "La collaborazione con Knoll porta alla collezione di sedute in filo metallico del 1952.",
+    "descrizione_en": "Their collaboration at Knoll led to the wire seating collection introduced in 1952.",
+    "fonti": [
+      {
+        "titolo": "Fonte della relazione",
+        "url": "https://harrybertoia.org/biography/"
+      }
+    ]
+  },
+  {
+    "designer_a": "Warren Platner",
+    "designer_b": "Eero Saarinen",
+    "tipo": "collaborazione",
+    "categoria": "professionale",
+    "descrizione": "Platner lavora nello studio di Saarinen prima di aprire la propria attività.",
+    "descrizione_en": "Platner worked in Saarinen’s office before establishing his own practice.",
+    "fonti": [
+      {
+        "titolo": "Fonte della relazione",
+        "url": "https://www.knoll.com/designer/Warren-Platner"
+      }
+    ]
+  },
+  {
+    "designer_a": "Ilmari Tapiovaara",
+    "designer_b": "Le Corbusier",
+    "tipo": "collaborazione",
+    "categoria": "professionale",
+    "descrizione": "Tapiovaara lavora nello studio parigino di Le Corbusier durante la propria formazione.",
+    "descrizione_en": "Tapiovaara worked in Le Corbusier’s Paris office during his early career.",
+    "fonti": [
+      {
+        "titolo": "Fonte della relazione",
+        "url": "https://www.knoll.com/designer/Ilmari-Tapiovaara"
+      }
+    ]
+  },
+  {
+    "designer_a": "Poul M. Volther",
+    "designer_b": "Børge Mogensen",
+    "tipo": "collaborazione",
+    "categoria": "professionale",
+    "descrizione": "Volther lavora con Mogensen nell’ufficio di progettazione FDB, del quale assume poi la direzione.",
+    "descrizione_en": "Volther worked with Mogensen at the FDB design office and later became its head.",
+    "fonti": [
+      {
+        "titolo": "Fonte della relazione",
+        "url": "https://www.fredericia.com/designers/poul-m-volther"
+      }
+    ]
+  },
+  {
+    "designer_a": "Pierre Jeanneret",
+    "designer_b": "Le Corbusier",
+    "tipo": "collaborazione",
+    "categoria": "professionale",
+    "descrizione": "Collaborano nello studio di architettura a Parigi e nei progetti di arredo firmati anche con Charlotte Perriand.",
+    "descrizione_en": "They worked together in their Paris architectural practice and on furniture co-designed with Charlotte Perriand.",
+    "fonti": [
+      {
+        "titolo": "Fonte della relazione",
+        "url": "https://www.fondationlecorbusier.fr/"
+      }
+    ]
+  },
+  {
+    "designer_a": "Pierre Jeanneret",
+    "designer_b": "Charlotte Perriand",
+    "tipo": "collaborazione",
+    "categoria": "professionale",
+    "descrizione": "Collaborano con Le Corbusier agli arredi moderni presentati alla fine degli anni Venti.",
+    "descrizione_en": "They worked with Le Corbusier on modern furniture introduced in the late 1920s.",
+    "fonti": [
+      {
+        "titolo": "Fonte della relazione",
+        "url": "https://www.cassina.com/"
+      }
+    ]
+  },
+  {
+    "designer_a": "Lilly Reich",
+    "designer_b": "Ludwig Mies van der Rohe",
+    "tipo": "collaborazione",
+    "categoria": "professionale",
+    "descrizione": "Collaborano a progetti di interni, allestimenti e arredo nella seconda metà degli anni Venti e nei primi anni Trenta.",
+    "descrizione_en": "They collaborated on interiors, exhibitions and furniture in the late 1920s and early 1930s.",
+    "fonti": [
+      {
+        "titolo": "Fonte della relazione",
+        "url": "https://www.bauhauskooperation.com/knowledge/the-bauhaus/people/masters-and-teachers/lilly-reich/"
+      }
+    ]
+  },
+  {
+    "designer_a": "Max Bill",
+    "designer_b": "Hans Gugelot",
+    "tipo": "collaborazione",
+    "categoria": "professionale",
+    "descrizione": "Collaborano alla Hochschule für Gestaltung di Ulm e al progetto dell’Ulmer Hocker, sviluppato anche con Paul Hildinger.",
+    "descrizione_en": "They worked together at the Ulm School of Design and on the Ulmer Hocker, also developed with Paul Hildinger.",
+    "fonti": [
+      {
+        "titolo": "Fonte della relazione",
+        "url": "https://www.hfg-archiv.museumulm.de/"
+      }
+    ]
+  },
+  {
+    "designer_a": "Guido Venturini",
+    "designer_b": "Stefano Giovannoni",
+    "tipo": "collaborazione",
+    "categoria": "professionale",
+    "descrizione": "Fondano King-Kong e sviluppano una ricerca comune fra architettura, design e immaginazione figurativa.",
+    "descrizione_en": "They founded King-Kong and developed a shared exploration of architecture, design and figurative imagination.",
+    "fonti": [
+      {
+        "titolo": "Fonte della relazione",
+        "url": "https://alessi.com/pages/guido-venturini"
+      }
+    ]
   }
 ]
