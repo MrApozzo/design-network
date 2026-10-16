@@ -2369,6 +2369,12 @@ function App() {
       avanzaCellaProdotti()
     })
     const Y_MIN_GRIGLIA_PRODOTTI = -rigaProdotti * PASSO_GRIGLIA_PRODOTTI
+    // Il fit comprende anche le celle di bordo, senza cambiare la geometria
+    // o il bbox comune usato da Designer e Aziende.
+    const limitiGrigliaProdotti = {
+      x: [xInizioGrigliaProdotti - PASSO_GRIGLIA_PRODOTTI / 2, xInizioGrigliaProdotti + (COLONNE_GRIGLIA_PRODOTTI - 0.5) * PASSO_GRIGLIA_PRODOTTI],
+      y: [Y_MIN_GRIGLIA_PRODOTTI - PASSO_GRIGLIA_PRODOTTI / 2, PASSO_GRIGLIA_PRODOTTI / 2],
+    }
 
     // ===== LAYOUT AZIENDE (mappa reale) =====
     // prodottiPerAzienda/coLicenzaGruppi/azOrdinate/costruisciLayoutAziende/
@@ -2659,8 +2665,9 @@ function App() {
     let contenutoYMinDesigner = Infinity
     let contenutoYMaxDesigner = -Infinity
     graph.forEachNode((node, attr) => {
-      contenutoYMinDesigner = Math.min(contenutoYMinDesigner, attr.y)
-      contenutoYMaxDesigner = Math.max(contenutoYMaxDesigner, attr.y)
+      const yDesigner = attr.tipo === "prodotto" ? attr.orbitaY : attr.y
+      contenutoYMinDesigner = Math.min(contenutoYMinDesigner, yDesigner)
+      contenutoYMaxDesigner = Math.max(contenutoYMaxDesigner, yDesigner)
     })
     if (!Number.isFinite(contenutoYMinDesigner) || !Number.isFinite(contenutoYMaxDesigner)) {
       contenutoYMinDesigner = Y_MIN
@@ -2689,7 +2696,7 @@ function App() {
       if (Number.isFinite(y)) { limitiMappa.yMin = Math.min(limitiMappa.yMin, y); limitiMappa.yMax = Math.max(limitiMappa.yMax, y) }
     }
     graph.forEachNode((_, attr) => {
-      includiPuntoMappa(attr.x, attr.y)
+      if (attr.tipo !== "prodotto") includiPuntoMappa(attr.x, attr.y)
       includiPuntoMappa(attr.orbitaX, attr.orbitaY)
       includiPuntoMappa(attr.timelineX, attr.timelineY)
       includiPuntoMappa(attr.aziendaOrbitaX, attr.aziendaOrbitaY)
@@ -2704,6 +2711,7 @@ function App() {
     const bboxXMin = limitiMappa.xMin - margineXFit
     const bboxXMax = limitiMappa.xMax + margineXFit
     let bboxYMin, bboxYMax
+    let ratioPanoramicaProdotti = 0
     // Compensazione del resize per il limite di massimo ingrandimento.
     // Lo zoom minimo invece viene ricalcolato come fit geometrico completo.
     let fattoreCropCumulativo = 1
@@ -2734,8 +2742,14 @@ function App() {
         },
       }
     }
-    function cameraCompleta() {
+    function cameraCompleta(modello = modelloVista) {
       const parametri = parametriInquadratura()
+      if (modello === "prodotti") {
+        return calcolaCameraCompleta({
+          ...parametri, contentBounds: limitiGrigliaProdotti,
+          fitAxis: isMobile ? "height" : "both",
+        })
+      }
       // Mobile: lo 0% dipende dall'altezza reale del grafo condiviso. Nuovi
       // Designer/Aziende aggiornano automaticamente il fit al rebuild; la
       // larghezza puo proseguire fuori schermo senza creare vuoto verticale.
@@ -2746,6 +2760,9 @@ function App() {
       const ratio = Math.exp(Math.log(fit.ratio) * 0.97 + Math.log(CAMERA_RATIO_100) * 0.03)
       const scala = ratio / fit.ratio
       return { ...fit, ratio, x: 0.5 + (fit.x - 0.5) * scala, y: 0.5 + (fit.y - 0.5) * scala }
+    }
+    function ratioPanoramicaAttuale() {
+      return modelloVista === "prodotti" ? ratioPanoramicaProdotti : MAX_CAMERA_RATIO
     }
     function impostaBBoxCondiviso() {
       ppuCache = { key: null, ppuX: 0, ppuY: 0 }
@@ -2762,8 +2779,11 @@ function App() {
       MIN_CAMERA_RATIO = isMobile ? CAMERA_RATIO_100 / 1.2 : CAMERA_RATIO_100
       renderer.setSetting("minCameraRatio", MIN_CAMERA_RATIO)
       // 0% desktop = fit completo; mobile = fit dinamico dell'altezza condivisa.
-      MAX_CAMERA_RATIO = cameraCompleta().ratio
-      renderer.setSetting("maxCameraRatio", MAX_CAMERA_RATIO)
+      MAX_CAMERA_RATIO = cameraCompleta("designer").ratio
+      ratioPanoramicaProdotti = cameraCompleta("prodotti").ratio
+      // L'inviluppo consente la transizione fra le panoramiche; il clamp
+      // e la percentuale zoom usano poi il fit della vista effettiva.
+      renderer.setSetting("maxCameraRatio", Math.max(MAX_CAMERA_RATIO, ratioPanoramicaProdotti))
     }
     impostaBBoxCondiviso()
 
@@ -2894,8 +2914,9 @@ function App() {
     function zoomT() {
       // 0→100 conserva esattamente la scala storica. Su mobile, il solo tratto
       // CAMERA_RATIO_100→MIN_CAMERA_RATIO viene esposto come 100→120.
-      const ratio = Math.max(MIN_CAMERA_RATIO, Math.min(MAX_CAMERA_RATIO, cameraRatio))
-      const logMax = Math.log(MAX_CAMERA_RATIO)
+      const ratioMax = ratioPanoramicaAttuale()
+      const ratio = Math.max(MIN_CAMERA_RATIO, Math.min(ratioMax, cameraRatio))
+      const logMax = Math.log(ratioMax)
       const log100 = Math.log(CAMERA_RATIO_100)
       if (!isMobile || ratio >= CAMERA_RATIO_100) return (logMax - Math.log(ratio)) / (logMax - log100)
       const avanzamentoExtra = (log100 - Math.log(ratio)) / (log100 - Math.log(MIN_CAMERA_RATIO))
@@ -2938,7 +2959,7 @@ function App() {
     // Inversa di zoomT(): 0→1 usa la scala storica; 1→1.2 è il tratto extra
     // mobile di sola camera.
     function ratioDaT(t) {
-      const logMax = Math.log(MAX_CAMERA_RATIO)
+      const logMax = Math.log(ratioPanoramicaAttuale())
       const log100 = Math.log(CAMERA_RATIO_100)
       if (!isMobile || t <= 1) return Math.exp(logMax - t * (logMax - log100))
       const extra = Math.max(0, Math.min(1, (t - 1) / 0.2))
@@ -4414,9 +4435,9 @@ function App() {
       const w = cRect.width, h = cRect.height
       if (w === 0 || h === 0) return
 
-      if (state.ratio >= MAX_CAMERA_RATIO * (1 - 1e-9)) {
+      if (state.ratio >= ratioPanoramicaAttuale() * (1 - 1e-9)) {
         const target = cameraCompleta()
-        if (Math.abs(state.x - target.x) + Math.abs(state.y - target.y) > 1e-9) {
+        if (Math.abs(state.x - target.x) + Math.abs(state.y - target.y) + Math.abs(state.ratio - target.ratio) > 1e-9) {
           clamping = true
           camera.setState(target)
           clamping = false
@@ -4487,7 +4508,7 @@ function App() {
         clampCameraAllaGriglia(state)
       }
 
-      try { localStorage.setItem("dn-camera", JSON.stringify({ x: state.x, y: state.y, ratio: state.ratio })) } catch {}
+      try { localStorage.setItem("dn-camera", JSON.stringify({ x: state.x, y: state.y, ratio: state.ratio, productFitVersion: 1 })) } catch {}
       richiediDisegnoOverlay(2)
     })
 
@@ -4503,7 +4524,7 @@ function App() {
     let dimensioneMinPrecedente = Math.min(container.clientWidth, container.clientHeight) || null
     const resizeObserver = new ResizeObserver(() => {
       const statoPrimaResize = camera.getState()
-      const eraPanoramica = statoPrimaResize.ratio >= MAX_CAMERA_RATIO * (1 - 1e-9)
+      const eraPanoramica = statoPrimaResize.ratio >= ratioPanoramicaAttuale() * (1 - 1e-9)
       const dimensioneMinNuova = Math.min(container.clientWidth, container.clientHeight)
       const fattoreStep = (dimensioneMinPrecedente && dimensioneMinNuova > 0)
         ? dimensioneMinNuova / dimensioneMinPrecedente : 1
@@ -4545,7 +4566,14 @@ function App() {
     let cameraImpostata = false
     try {
       const saved = JSON.parse(localStorage.getItem("dn-camera"))
-      if (saved) { camera.setState({ x: saved.x, y: saved.y, ratio: saved.ratio }); cameraImpostata = true }
+      if (saved) {
+        // La vecchia panoramica Prodotti salvata poteva escludere le ultime
+        // righe. Migra solo quella vista, una volta; gli altri stati restano.
+        const target = modelloVista === "prodotti" && saved.productFitVersion !== 1
+          ? cameraCompleta() : { x: saved.x, y: saved.y, ratio: saved.ratio }
+        camera.setState(target)
+        cameraImpostata = true
+      }
     } catch {}
 
     if (!cameraImpostata && graph.hasNode("Achille Castiglioni")) {
@@ -4776,7 +4804,7 @@ function App() {
         if (generazione !== generazioneTransizione) return
         const t = Math.min(1, Math.max(0, (now - inizio) / DURATA_ZOOM_OUT))
         const ease = t * t * t * (t * (t * 6 - 15) + 10)
-        const target = cameraCompleta()
+        const target = cameraCompleta(modello)
         clamping = true
         camera.setState({
           x: lerp(partenza.x, target.x, ease),
@@ -4947,7 +4975,7 @@ function App() {
         const ratioServeX = dxGraph > 0 ? (MARGINE_FIT * dxGraph * Math.abs(ppuXRif) * sState.ratio) / areaW : 0
         const ratioServeY = dyGraph > 0 ? (MARGINE_FIT * dyGraph * Math.abs(ppuYRif) * sState.ratio) / areaH : 0
         let ratioCalcolato = Math.max(ratioServeX, ratioServeY, MIN_CAMERA_RATIO)
-        ratioCalcolato = Math.min(ratioCalcolato, MAX_CAMERA_RATIO)
+        ratioCalcolato = Math.min(ratioCalcolato, ratioPanoramicaAttuale())
 
         const midX = (attrA.x + attrB.x) / 2
         const midY = (attrA.y + attrB.y) / 2

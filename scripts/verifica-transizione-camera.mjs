@@ -18,12 +18,12 @@ const gridEnd = source.indexOf('\n\n      ctx.save()', gridStart)
 assert.ok(bboxStart > 0 && bboxEnd > bboxStart && transitionEnd > transitionStart && gridEnd > gridStart)
 let cases = 0
 for (const [width, height] of [[1440, 900], [390, 844]]) {
-  for (const reverse of [false, true]) {
+  for (const [from, target] of [['designer', 'aziende'], ['aziende', 'designer'], ['designer', 'prodotti'], ['prodotti', 'designer'], ['aziende', 'prodotti'], ['prodotti', 'aziende']]) {
     for (const timeline of [false, true]) {
       for (const ratio of [0.03, 0.6, 1.2]) {
         for (const empty of [false, true]) {
           const camera = { x: 0.32, y: 0.71, ratio, angle: 0 }
-          const product = { x: 10, y: -100, orbitaX: 10, orbitaY: -100, aziendaOrbitaX: 70, aziendaOrbitaY: -300, timelineX: 50, timelineY: -100, aziendaTimelineY: -300 }
+          const product = { x: 10, y: -100, orbitaX: 10, orbitaY: -100, aziendaOrbitaX: 70, aziendaOrbitaY: -300, timelineX: 50, timelineY: -100, aziendaTimelineY: -300, prodottiX: 20, prodottiY: -11000 }
           let pending = [], bbox, locked = false, dots = [], alphaStack = [], now = 1
           const viewport = { width, height }
           const context = {
@@ -33,7 +33,8 @@ for (const [width, height] of [[1440, 900], [390, 844]]) {
             X_MIN: -1000, X_MAX: 1000, MARGINE_X: 0, Y_MIN: 0, Y_MAX: 0, MARGINE_Y: 10,
             contenutoYMinDesigner: -1200, contenutoYMaxDesigner: 100,
             contenutoYMinAziende: -9000, contenutoYMaxAziende: 500,
-            bboxYMin: 0, bboxYMax: 0, ppuCache: {}, fattoreCropCumulativo: 1,
+            bboxYMin: 0, bboxYMax: 0, ppuCache: {}, fattoreCropCumulativo: 1, ratioPanoramicaProdotti: 0,
+            limitiGrigliaProdotti: { x: [-900, 900], y: [-11000, 100] },
             MIN_CAMERA_RATIO_UNITA_VISIBILI: 10, MIN_CAMERA_RATIO: 0, CAMERA_RATIO_100: 0, MAX_CAMERA_RATIO: 0,
             correctionRatioSigma: (w, h, gw, gh) => correction({ width: w, height: h }, { width: gw, height: gh }),
             container: { getBoundingClientRect: () => viewport },
@@ -53,7 +54,7 @@ for (const [width, height] of [[1440, 900], [390, 844]]) {
             },
             camera: { getState: () => ({ ...camera }), setState: value => Object.assign(camera, value) },
             graph: { getNodeAttributes: () => product, setNodeAttribute: (_, key, value) => { product[key] = value } },
-            transizioneAttiva: false, generazioneTransizione: 0, modelloVista: reverse ? 'aziende' : 'designer', timelineVista: timeline,
+            transizioneAttiva: false, generazioneTransizione: 0, modelloVista: from, timelineVista: timeline,
             vistaInterna: '', annoBloccato: null, designerAlphaAnimata: 1, aziendaAlphaAnimata: 0,
             crossfadeVistaInizio: 0, crossfadeVistaDaDesigner: 0, crossfadeVistaDaAzienda: 0,
             crossfadeEtichetteInizio: 0, crossfadeEtichetteDa: 0, etichetteAzAlphaAnimata: 0,
@@ -84,7 +85,6 @@ for (const [width, height] of [[1440, 900], [390, 844]]) {
           let finalGrid, finalCamera
           const initialPosition = [product.x, product.y]
           const initialBBox = JSON.stringify(bbox)
-          const target = reverse ? 'designer' : 'aziende'
           vm.runInContext(source.slice(transitionStart, transitionEnd), sandbox)
           vm.runInContext(`animaTransizione("${target}", ${timeline})`, sandbox)
           for (now = 1; now <= 1601; now += 20) {
@@ -105,9 +105,10 @@ for (const [width, height] of [[1440, 900], [390, 844]]) {
           }
           const fit = vm.runInContext('cameraCompleta()', sandbox)
           for (const key of ['x', 'y', 'ratio']) assert.ok(Math.abs(camera[key] - fit[key]) < 1e-10)
-          assert.equal(camera.ratio, context.MAX_CAMERA_RATIO)
+          assert.equal(camera.ratio, target === 'prodotti' ? context.ratioPanoramicaProdotti : context.MAX_CAMERA_RATIO)
           if (width >= 768) {
-            for (const x of bbox.x) for (const y of bbox.y) {
+            const fitBounds = target === 'prodotti' ? context.limitiGrigliaProdotti : bbox
+            for (const x of fitBounds.x) for (const y of fitBounds.y) {
               const point = context.renderer.graphToViewport({ x, y })
               assert.ok(point.x >= 0 && point.x <= width && point.y >= 0 && point.y <= height, 'Whole desktop map must fit')
               const clipTop = 110 * (0.6 + width / 1440 * 0.4)
@@ -115,15 +116,17 @@ for (const [width, height] of [[1440, 900], [390, 844]]) {
             }
           } else {
             const heightFit = vm.runInContext('calcolaCameraCompleta({ ...parametriInquadratura(), fitAxis: "height" })', sandbox)
-            const expectedRatio = Math.exp(Math.log(heightFit.ratio) * 0.97 + Math.log(context.CAMERA_RATIO_100) * 0.03)
+            const expectedRatio = target === 'prodotti'
+              ? context.ratioPanoramicaProdotti
+              : Math.exp(Math.log(heightFit.ratio) * 0.97 + Math.log(context.CAMERA_RATIO_100) * 0.03)
             assert.ok(Math.abs(camera.ratio - expectedRatio) < 1e-10, 'Mobile 0% must equal the previous dynamic 3%')
           }
           assert.equal(context.transizioneAttiva, false)
           assert.equal(context.modelloVista, target)
           if (!empty) {
-            assert.equal(product.pesoTaraturaOrbita, timeline ? 0 : 1, 'Orbit calibration must survive both view transitions')
-            assert.equal(product.x, timeline ? product.timelineX : reverse ? product.orbitaX : product.aziendaOrbitaX)
-            assert.equal(product.y, timeline ? reverse ? product.timelineY : product.aziendaTimelineY : reverse ? product.orbitaY : product.aziendaOrbitaY)
+            assert.equal(product.pesoTaraturaOrbita, target === 'prodotti' || timeline ? 0 : 1, 'Orbit calibration must survive both view transitions')
+            assert.equal(product.x, target === 'prodotti' ? product.prodottiX : timeline ? product.timelineX : target === 'designer' ? product.orbitaX : product.aziendaOrbitaX)
+            assert.equal(product.y, target === 'prodotti' ? product.prodottiY : timeline ? target === 'designer' ? product.timelineY : product.aziendaTimelineY : target === 'designer' ? product.orbitaY : product.aziendaOrbitaY)
           }
           cases++
         }
@@ -131,7 +134,7 @@ for (const [width, height] of [[1440, 900], [390, 844]]) {
     }
   }
 }
-console.log(`${cases} casi OK: zoom out, anticipo contenuti, fit desktop/panoramica mobile, griglia stabile dopo lo zoom; prodotti a destinazione. Desktop/mobile, entrambe le direzioni, orbite/timeline, tre zoom e catalogo vuoto.`)
+console.log(`${cases} casi OK: zoom out, anticipo contenuti, fit desktop/panoramica mobile, griglia stabile dopo lo zoom; prodotti a destinazione. Desktop/mobile, sei direzioni fra Designer/Aziende/Prodotti, orbite/timeline, tre zoom e catalogo vuoto.`)
 
 // Verifica del fit con mappe larghe/alte/quadrate e finestre ruotate.
 for (const [width, height] of [[1440, 900], [390, 844], [844, 390]]) {
@@ -154,3 +157,5 @@ for (const [width, height] of [[1440, 900], [390, 844], [844, 390]]) {
   }
 }
 console.log('9 fit OK: contenuto completo entro i margini UI, senza riduzione arbitraria.')
+
+await import("./verifica-inquadratura-prodotti.mjs")

@@ -1,6 +1,6 @@
 // Sigma normalizes both axes by the longest side of the graph bounds.
 // Fit that same shared rectangle inside the viewport area left by the UI.
-export function calcolaCameraCompleta({ bounds, width, height, padding = 0, margins, fitAxis = "both" }) {
+export function calcolaCameraCompleta({ bounds, width, height, padding = 0, margins, fitAxis = "both", contentBounds = bounds }) {
   const graphWidth = bounds.x[1] - bounds.x[0]
   const graphHeight = bounds.y[1] - bounds.y[0]
   const dimension = Math.max(graphWidth, graphHeight)
@@ -11,13 +11,19 @@ export function calcolaCameraCompleta({ bounds, width, height, padding = 0, marg
     : Math.min(Math.max(graphRatio, 1 / graphRatio), Math.max(viewportRatio, 1 / viewportRatio))
   const usableWidth = Math.max(1, width - margins.left - margins.right)
   const usableHeight = Math.max(1, height - margins.top - margins.bottom)
+  const contentWidth = contentBounds.x[1] - contentBounds.x[0]
+  const contentHeight = contentBounds.y[1] - contentBounds.y[0]
   const pixelsPerUnit = fitAxis === "height"
-    ? usableHeight / graphHeight
-    : Math.min(usableWidth / graphWidth, usableHeight / graphHeight)
+    ? usableHeight / contentHeight
+    : Math.min(usableWidth / contentWidth, usableHeight / contentHeight)
   const normalizedScale = pixelsPerUnit * dimension
+  // Content can lie outside Sigma's shared bounds. Keep its normalization
+  // and correction ratio, and centre only the requested view's contents.
+  const offsetX = contentBounds === bounds ? 0 : ((contentBounds.x[0] + contentBounds.x[1]) / 2 - (bounds.x[0] + bounds.x[1]) / 2) / dimension
+  const offsetY = contentBounds === bounds ? 0 : ((contentBounds.y[0] + contentBounds.y[1]) / 2 - (bounds.y[0] + bounds.y[1]) / 2) / dimension
   return {
-    x: 0.5 - (margins.left - margins.right) / (2 * normalizedScale),
-    y: 0.5 + (margins.top - margins.bottom) / (2 * normalizedScale),
+    x: 0.5 + offsetX - (margins.left - margins.right) / (2 * normalizedScale),
+    y: 0.5 + offsetY + (margins.top - margins.bottom) / (2 * normalizedScale),
     ratio: Math.max(1, Math.min(width, height) - 2 * padding) * correction / normalizedScale,
     angle: 0,
   }

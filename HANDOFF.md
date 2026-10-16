@@ -586,3 +586,12 @@ corrente+nodo+indice, non `Math.random`) così il profilo resta irregolare
 
 - L'utente ha scartato la proposta F09 con vaso («Preferisco una foto senza vaso»). Dopo un unico ulteriore passaggio rapido è stata trovata una composizione vuota, vista frontale su bianco, da Galerie Møbler. Inserita autonomamente secondo i criteri già approvati; nessuna modifica allo sfondo e nessun oggetto rimosso.
 - Fonte nei Credits, originali e provenienza in `_pipeline/lotti/2026-10-16-royal-system-senza-oggetti/`. Il lotto catalogo conta ora 44 foto di prodotti e 37 ritratti (81 immagini). Restano sei nuove schede senza foto; nessuna proposta di questo lotto è ancora da validare.
+
+
+## Vista Prodotti: file inferiori fuori campo (16 ottobre 2026)
+
+- Segnalazione dell'utente: dopo l'ampliamento, le ultime file della vista Prodotti restavano fuori dalla panoramica; Designer sembrava corretto. Riprodotto sui dati reali: 39 file, fondo griglia a -74974 contro limite condiviso a -69000 su desktop; a 1440x900 65 centri prodotto in due file sotto lo schermo.
+- La vista Prodotti ora calcola il proprio fit sui limiti reali delle celle (con margine di mezza cella), mantenendo il bbox Sigma e le coordinate condivise di Designer/Aziende. `calcolaCameraCompleta` accetta `contentBounds`, distinto dal rettangolo di normalizzazione. Sul mobile si conserva il fit in altezza e la navigazione orizzontale.
+- 0%, Home, limite di pan, resize e transizioni usano il fit della vista di destinazione. L'inviluppo dei ratio ammessi evita il clamp prematuro durante le transizioni, senza cambiare il 100% storico. La vecchia panoramica Prodotti salvata viene migrata una volta (`productFitVersion: 1`); gli zoom successivi e quelli Designer/Aziende si conservano.
+- Il bbox strutturale è ricavato dalle destinazioni effettive, senza essere contaminato dalle coordinate correnti dei prodotti se la pagina viene riaperta nella vista Prodotti. I confronti prima/dopo confermano esattamente la stessa panoramica Designer in sei viewport; nessuna modifica a geometria, dataset, foto o costanti protette.
+- Controlli: `npm run check:layout` comprende ora 144 transizioni nelle sei direzioni tra le tre viste, 9 fit sintetici e 18 prove sui 1765 prodotti reali, comprese riapertura nelle tre viste, bordi, zoom 0/100%, clamp, migrazione e resize. Il vecchio codice fallisce il controllo dei prodotti fuori campo. Build locale e snapshot esatto da pubblicare richiesti prima del push. Nessuna verifica visiva diretta tramite browser automation.
