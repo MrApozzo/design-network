@@ -37,7 +37,7 @@ for(const [width,height,mobile]of[[1440,900,false],[1366,768,false],[1920,1080,f
   const key=`${width}x${height}`
   if(restored==='designer')references.set(key,signature)
   else assert.equal(signature,references.get(key),'La vista salvata non deve cambiare il bbox o la geometria Designer/Aziende')
-  vm.runInContext(between('    function zoomT()','    // Le linee vita'),sandbox)
+  vm.runInContext(between('    let zoomTCache','    // Le linee vita'),sandbox)
   vm.runInContext(between('    function ratioDaT(t)','    // Scala reale comune'),sandbox)
   const productHome=vm.runInContext('ratioDaT(0)',sandbox)
   assert.ok(Math.abs(productHome-result.fit.ratio)<1e-12,'0% Prodotti deve coincidere col fit completo')

@@ -2861,7 +2861,19 @@ function App() {
     // Il preload resta completamente indipendente dall'intro: le immagini vicine
     // alla camera arrivano per prime e il resto continua in background, ma il
     // completamento del primo lotto non può più far entrare automaticamente nella mappa.
-    imgCache = preloadImages(imgPaths, 6, undefined, undefined, undefined, () => richiediDisegnoOverlay(2), distanzaDaCameraAttuale)
+    // Le immagini del preload arrivano a decine al secondo: invece di un
+    // ridisegno completo per ognuna, se ne fa al massimo uno ogni 150 ms.
+    // Le animazioni non ne risentono: il loop dell'overlay prosegue da solo
+    // finché non sono assestate (vedi lerpOverlay).
+    let ridisegnoImmaginiProgrammato = null
+    const ridisegnaPerImmagine = () => {
+      if (ridisegnoImmaginiProgrammato !== null) return
+      ridisegnoImmaginiProgrammato = setTimeout(() => {
+        ridisegnoImmaginiProgrammato = null
+        richiediDisegnoOverlay(2)
+      }, 150)
+    }
+    imgCache = preloadImages(imgPaths, 6, undefined, undefined, undefined, ridisegnaPerImmagine, distanzaDaCameraAttuale)
     Object.entries(imgCache).forEach(([src, img]) => {
       // Il colore medio è precalcolato in pipeline (scripts/genera-colori-immagini.mjs):
       // niente più canvas/getImageData per ~1250 immagini ad ogni caricamento della
@@ -3216,6 +3228,19 @@ function App() {
       return prodottoPxTipico()
     }
 
+    // Le animazioni dell'overlay (raggi, opacità, linee vita, alone del
+    // cursore) avanzano di una frazione a ogni frame disegnato. lerpOverlay
+    // segnala se qualcuna non è ancora arrivata a destinazione, così il loop
+    // di disegno continua da solo finché tutto non è fermo, invece di
+    // dipendere da ridisegni esterni (prima, di fatto, il flusso continuo
+    // di immagini caricate in background).
+    let overlayDaAssestare = false
+    function lerpOverlay(a, b, k) {
+      const v = lerp(a, b, k)
+      if (Math.abs(b - v) > 0.002) overlayDaAssestare = true
+      return v
+    }
+
     function disegnaTutto() {
       const ctx = overlayCanvas.getContext("2d")
       ctx.setTransform(1, 0, 0, 1, 0, 0)
@@ -3369,7 +3394,7 @@ function App() {
           const dati = attr.dati
           const morto = dati.morto || 2025
           if (!animated[node]) animated[node] = { r: STILE.zoom_designer_min, alpha: 1 }
-          animated[node].vita = lerp(animated[node].vita ?? 0, 1, STILE.lerp_velocita * 0.7)
+          animated[node].vita = lerpOverlay(animated[node].vita ?? 0, 1, STILE.lerp_velocita * 0.7)
           const vitaT = animated[node].vita
           const nascitaX = annoToX(dati.nato)
           const vitaEndX = nascitaX + (annoToX(morto) - nascitaX) * vitaT
@@ -3392,7 +3417,7 @@ function App() {
         graph.forEachNode((node, attr) => {
           if (attr.tipo !== "designer" || !animated[node]) return
           if (animated[node].vita > 0.01) {
-            animated[node].vita = lerp(animated[node].vita, 0, STILE.lerp_velocita * 0.7)
+            animated[node].vita = lerpOverlay(animated[node].vita, 0, STILE.lerp_velocita * 0.7)
             const dati = attr.dati
             const morto = dati.morto || 2025
             const vitaT = animated[node].vita
@@ -3425,7 +3450,7 @@ function App() {
       if (vistaInterna === "timeline" && modelloVista === "aziende") {
         Object.entries(aziendePosizioniMap).forEach(([nome, pos]) => {
           if (!animatedAziende[nome]) animatedAziende[nome] = { vita: 0 }
-          animatedAziende[nome].vita = lerp(animatedAziende[nome].vita, 1, STILE.lerp_velocita * 0.7)
+          animatedAziende[nome].vita = lerpOverlay(animatedAziende[nome].vita, 1, STILE.lerp_velocita * 0.7)
           const vitaT = animatedAziende[nome].vita
           const chiusura = pos.dati.chiusura || 2025
           const nascitaX = annoToX(pos.dati.fondata)
@@ -3448,7 +3473,7 @@ function App() {
         Object.entries(aziendePosizioniMap).forEach(([nome, pos]) => {
           const st = animatedAziende[nome]
           if (!st || st.vita <= 0.01) return
-          st.vita = lerp(st.vita, 0, STILE.lerp_velocita * 0.7)
+          st.vita = lerpOverlay(st.vita, 0, STILE.lerp_velocita * 0.7)
           const vitaT = st.vita
           const chiusura = pos.dati.chiusura || 2025
           const nascitaX = annoToX(pos.dati.fondata)
@@ -3469,7 +3494,7 @@ function App() {
         })
       }
 
-      amoebaAlphaAnimata = lerp(amoebaAlphaAnimata, transizioneAttiva ? 0 : 1, STILE.lerp_velocita)
+      amoebaAlphaAnimata = lerpOverlay(amoebaAlphaAnimata, transizioneAttiva ? 0 : 1, STILE.lerp_velocita)
       // Dissolvenza designer/aziende: durata fissa con ease-in-ease-out
       // (vedi CROSSFADE_VISTA_DURATA_MS/crossfadeVistaInizio, avviata in
       // animaTransizione), non più un lerp esponenziale continuo — quello
@@ -3747,8 +3772,8 @@ function App() {
         }
         if (categoriaAttiva) alphaTarget = nodiCategoriaAttiva.has(node) ? 1 : 0.2
         if (categoriaAttivaAz) alphaTarget = nomiAziendeCategoriaAttivaAz.has(attr.dati?.azienda) ? 1 : 0.2
-        animated[node].r = lerp(animated[node].r, rTarget, STILE.lerp_velocita)
-        animated[node].alpha = lerp(animated[node].alpha, alphaTarget, STILE.lerp_velocita)
+        animated[node].r = lerpOverlay(animated[node].r, rTarget, STILE.lerp_velocita)
+        animated[node].alpha = lerpOverlay(animated[node].alpha, alphaTarget, STILE.lerp_velocita)
       })
 
       // Valori uguali per tutti gli archi del frame: calcolati una volta sola.
@@ -4281,8 +4306,8 @@ function App() {
           ctx.fill()
           ctx.globalAlpha = 1
         } else {
-          mouseTrailX = lerp(mouseTrailX, mouseX, STILE.cursore_alone_velocita)
-          mouseTrailY = lerp(mouseTrailY, mouseY, STILE.cursore_alone_velocita)
+          mouseTrailX = lerpOverlay(mouseTrailX, mouseX, STILE.cursore_alone_velocita)
+          mouseTrailY = lerpOverlay(mouseTrailY, mouseY, STILE.cursore_alone_velocita)
           ctx.beginPath()
           ctx.arc(mouseTrailX, mouseTrailY, STILE.cursore_alone_raggio, 0, Math.PI * 2)
           ctx.strokeStyle = STILE.cursore_alone_colore
@@ -4411,8 +4436,10 @@ function App() {
 
       const tick = () => {
         overlayAnimationFrame = null
+        overlayDaAssestare = false
         disegnaTutto()
         overlayFramesResidui -= 1
+        if (overlayDaAssestare && overlayFramesResidui < 1) overlayFramesResidui = 1
 
         if (overlayFramesResidui > 0) {
           overlayAnimationFrame = requestAnimationFrame(tick)
@@ -5587,6 +5614,7 @@ function App() {
       resizeObserver.disconnect()
       if (overlayAnimationFrame !== null) cancelAnimationFrame(overlayAnimationFrame)
       if (cameraAnimId) cancelAnimationFrame(cameraAnimId)
+      if (ridisegnoImmaginiProgrammato !== null) clearTimeout(ridisegnoImmaginiProgrammato)
       renderer.kill()
       if (container.parentNode) container.parentNode.removeChild(container)
       document.body.style.overflow = ""
