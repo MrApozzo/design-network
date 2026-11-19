@@ -29,7 +29,7 @@ import { ListaConScroll } from "./ListaConScroll.jsx"
 import { useAccount } from "./account/useAccount.js"
 import { PannelloAccount, BottonePreferito } from "./account/PannelloAccount.jsx"
 import { TESTI_ACCOUNT, messaggioErrore } from "./account/testi-account.js"
-import { chiaveElemento } from "./account/supabase.js"
+import { chiaveElemento, nomeCompleto } from "./account/supabase.js"
 
 const IMMAGINI_ESISTENTI = new Set(immaginiEsistentiArr)
 
@@ -5121,6 +5121,27 @@ function App() {
     )
   }
 
+  // Pulsante account in alto a destra nella barra laterale: stesso fondo della
+  // barra, bordo sottile e arrotondato. Da connessi mostra nome e punti.
+  function renderBottoneAccount() {
+    if (!account.configurato || menuVista === "account") return null
+    const connesso = !!account.utente
+    return (
+      <button type="button" onClick={() => setMenuVista("account")}
+        style={{
+          display: "inline-flex", alignItems: "center", gap: 6, maxWidth: 170,
+          background: "#ffffff", border: "1px solid #1a1a1a", borderRadius: 20,
+          padding: "5px 14px", cursor: "pointer",
+          fontFamily: "'Roboto Mono', monospace", fontSize: 11, fontWeight: 400, color: "#1a1a1a",
+        }}>
+        <span style={{ overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
+          {connesso ? (account.profilo?.nome || nomeCompleto(account.profilo) || ta.voceConnesso) : ta.voce}
+        </span>
+        {connesso && <span style={{ color: "#FF0707", fontSize: 10, flexShrink: 0 }}>{account.profilo?.punti ?? 0} pt</span>}
+      </button>
+    )
+  }
+
   function renderMenuFooter() {
     return (
       <div style={{ marginTop: "auto", paddingTop: 24 }}>
@@ -5145,17 +5166,6 @@ function App() {
             {t.voci.domanda}
           </div>
         </div>
-        {account.configurato && (
-          <div onClick={() => setMenuVista("account")}
-            style={{ borderBottom: "1px solid #eee", padding: "16px 0", cursor: "pointer", display: "flex", justifyContent: "space-between", alignItems: "baseline" }}>
-            <div style={{ fontFamily: "'Roboto Mono', monospace", fontWeight: 400, fontSize: 13, color: "#777" }}>
-              {account.utente ? (account.profilo?.nome || ta.voceConnesso) : ta.voce}
-            </div>
-            {account.utente && (
-              <span style={{ fontFamily: "'Roboto Mono', monospace", fontSize: 10, color: "#FF0707" }}>{account.profilo?.punti ?? 0} pt</span>
-            )}
-          </div>
-        )}
         {["manifesto", "contatti", "credits", "contribuisci"].map((id) => (
           <div key={id} onClick={() => setMenuVista(id)}
             style={{ borderBottom: "1px solid #eee", padding: "16px 0", cursor: "pointer" }}>
@@ -5529,6 +5539,9 @@ function App() {
           transition: "transform 0.35s ease", padding: "24px 22px", boxSizing: "border-box",
           display: "flex", flexDirection: "column", gap: 2, overflowY: "auto",
         }}>
+          {account.configurato && menuVista !== "account" && (
+            <div style={{ display: "flex", justifyContent: "flex-end", marginBottom: 14 }}>{renderBottoneAccount()}</div>
+          )}
           {menuVista === "lista" && renderMenuHeader()}
           {menuVista === "lista" ? renderMenuLista() : renderMenuDetail(menuVista)}
           {menuVista === "lista" && renderMenuFooter()}
@@ -5665,6 +5678,9 @@ function App() {
           display: "flex", flexDirection: "column", overflow: "hidden",
           fontFamily: "Roboto, sans-serif",
         }}>
+          <div style={{ position: "absolute", top: 50 * uiScale, right: 28 * uiScale, transform: "translateY(-50%)", zIndex: 1 }}>
+            {renderBottoneAccount()}
+          </div>
           <div style={{ flex: 1, overflowY: "auto", padding: `${116 * uiScale}px ${28 * uiScale}px ${32 * uiScale}px` }}>
             {menuVista === "lista" && renderMenuHeader()}
             {menuVista === "lista" ? renderMenuLista() : renderMenuDetail(menuVista)}

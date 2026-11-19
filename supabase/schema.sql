@@ -23,10 +23,14 @@
 create table if not exists public.profili (
   id          uuid primary key references auth.users (id) on delete cascade,
   nome        text not null default '' check (char_length(nome) <= 60),
+  cognome     text not null default '' check (char_length(cognome) <= 60),
   punti       integer not null default 0,
   ruolo       text not null default 'utente' check (ruolo in ('utente', 'admin')),
   creato_il   timestamptz not null default now()
 );
+
+-- Aggiunta successiva: per i progetti creati prima che esistesse la colonna.
+alter table public.profili add column if not exists cognome text not null default '' check (char_length(cognome) <= 60);
 
 alter table public.profili enable row level security;
 
@@ -40,17 +44,26 @@ drop policy if exists "profilo modificabile dal proprietario" on public.profili;
 create policy "profilo modificabile dal proprietario" on public.profili
   for update using (auth.uid() = id) with check (auth.uid() = id);
 
--- ...e solo il nome: punti e ruolo non sono scrivibili dal browser.
+-- ...e solo nome e cognome: punti e ruolo non sono scrivibili dal browser.
 revoke update on public.profili from anon, authenticated;
-grant update (nome) on public.profili to authenticated;
+grant update (nome, cognome) on public.profili to authenticated;
 
--- Profilo creato automaticamente alla registrazione. Il nome arriva dai
--- metadati passati da supabase.auth.signUp({ options: { data: { nome } } }).
+-- Profilo creato automaticamente alla registrazione. Nome e cognome arrivano
+-- dai metadati: dal modulo del sito (signUp con data: { nome, cognome }) oppure
+-- da Google/Apple (given_name / family_name, o full_name come ultima risorsa).
 create or replace function public.crea_profilo()
 returns trigger language plpgsql security definer set search_path = public as $$
+declare
+  m jsonb := coalesce(new.raw_user_meta_data, '{}'::jsonb);
+  nome_completo text := coalesce(m ->> 'full_name', m ->> 'name', '');
 begin
-  insert into public.profili (id, nome)
-  values (new.id, coalesce(left(new.raw_user_meta_data ->> 'nome', 60), ''))
+  insert into public.profili (id, nome, cognome)
+  values (
+    new.id,
+    left(coalesce(nullif(m ->> 'nome', ''), nullif(m ->> 'given_name', ''), split_part(nome_completo, ' ', 1)), 60),
+    left(coalesce(nullif(m ->> 'cognome', ''), nullif(m ->> 'family_name', ''),
+      trim(substr(nome_completo, length(split_part(nome_completo, ' ', 1)) + 1))), 60)
+  )
   on conflict (id) do nothing;
   return new;
 end $$;
@@ -244,7 +257,7 @@ grant execute on function public.rifiuta_contributo(bigint, text) to authenticat
 revoke all on public.profili, public.preferiti, public.contributi, public.movimenti_punti, public.regole_punti from anon, authenticated;
 grant usage on schema public to anon, authenticated;
 grant select on public.profili, public.regole_punti to anon, authenticated;
-grant update (nome) on public.profili to authenticated;
+grant update (nome, cognome) on public.profili to authenticated;
 grant select, insert, delete on public.preferiti to authenticated;
 grant select, insert on public.contributi to authenticated;
 grant select on public.movimenti_punti to authenticated;

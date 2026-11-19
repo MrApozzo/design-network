@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react"
 import { messaggioErrore } from "./testi-account.js"
+import { nomeCompleto } from "./supabase.js"
 
 // Stili condivisi con il resto del menu (vedi renderContribuisciBody in App.jsx).
 const FONT = "Roboto, sans-serif"
@@ -16,10 +17,52 @@ function Messaggio({ testo, errore }) {
   return <div role={errore ? "alert" : "status"} style={{ color: errore ? "#c0392b" : "#2a8a4a", fontSize: 11, fontFamily: FONT, lineHeight: 1.5 }}>{testo}</div>
 }
 
+// Campo password con "occhio" per mostrare/nascondere il testo.
+function CampoPassword({ value, onChange, placeholder, autoComplete, ta }) {
+  const [visibile, setVisibile] = useState(false)
+  return (
+    <div style={{ position: "relative" }}>
+      <input type={visibile ? "text" : "password"} required minLength={8} autoComplete={autoComplete}
+        value={value} onChange={onChange} placeholder={placeholder} aria-label={placeholder}
+        style={{ ...stileInput, paddingRight: 38 }} />
+      <button type="button" onClick={() => setVisibile((v) => !v)}
+        aria-label={visibile ? ta.nascondiPassword : ta.mostraPassword} title={visibile ? ta.nascondiPassword : ta.mostraPassword}
+        style={{ position: "absolute", right: 4, top: "50%", transform: "translateY(-50%)", background: "none", border: "none", cursor: "pointer", padding: 6, lineHeight: 0 }}>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#999" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+          <path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z" />
+          <circle cx="12" cy="12" r="3" />
+          {visibile && <path d="M4 20 20 4" />}
+        </svg>
+      </button>
+    </div>
+  )
+}
+
+function IconaGoogle() {
+  return (
+    <svg width="16" height="16" viewBox="0 0 48 48" aria-hidden="true">
+      <path fill="#FFC107" d="M43.6 20.5H42V20H24v8h11.3C33.7 32.7 29.2 36 24 36c-6.6 0-12-5.4-12-12s5.4-12 12-12c3.1 0 5.8 1.2 7.9 3.1l5.7-5.7C34 6.1 29.3 4 24 4 12.9 4 4 12.9 4 24s8.9 20 20 20 20-8.9 20-20c0-1.3-.1-2.4-.4-3.5z" />
+      <path fill="#FF3D00" d="m6.3 14.7 6.6 4.8C14.7 15.1 19 12 24 12c3.1 0 5.8 1.2 7.9 3.1l5.7-5.7C34 6.1 29.3 4 24 4 16.3 4 9.7 8.3 6.3 14.7z" />
+      <path fill="#4CAF50" d="M24 44c5.2 0 9.9-2 13.4-5.2l-6.2-5.2C29.2 35.1 26.7 36 24 36c-5.2 0-9.6-3.3-11.3-8l-6.5 5C9.5 39.6 16.2 44 24 44z" />
+      <path fill="#1976D2" d="M43.6 20.5H42V20H24v8h11.3c-.8 2.2-2.2 4.2-4.1 5.6l6.2 5.2C36.9 39.2 44 34 44 24c0-1.3-.1-2.4-.4-3.5z" />
+    </svg>
+  )
+}
+
+function IconaApple() {
+  return (
+    <svg width="15" height="15" viewBox="0 0 24 24" aria-hidden="true">
+      <path fill="#1a1a1a" d="M16.4 12.6c0-2.4 2-3.6 2.1-3.7-1.1-1.7-2.9-1.9-3.5-1.9-1.5-.2-2.9.9-3.7.9-.8 0-1.9-.9-3.2-.8-1.6 0-3.2 1-4 2.5-1.7 3-.4 7.4 1.2 9.8.8 1.2 1.8 2.5 3.1 2.4 1.2 0 1.7-.8 3.2-.8s1.9.8 3.2.8c1.3 0 2.2-1.2 3-2.4.9-1.4 1.3-2.7 1.3-2.8 0 0-2.7-1-2.7-4zM14 5.4c.7-.8 1.1-1.9 1-3-1 0-2.1.7-2.8 1.5-.6.7-1.2 1.8-1 2.9 1 .1 2.1-.6 2.8-1.4z" />
+    </svg>
+  )
+}
+
 function ModuloAccesso({ account, ta }) {
   const [modo, setModo] = useState("accedi") // accedi | registrati | recupero
   const [nome, setNome] = useState("")
+  const [cognome, setCognome] = useState("")
   const [email, setEmail] = useState("")
+  const [email2, setEmail2] = useState("")
   const [password, setPassword] = useState("")
   const [invio, setInvio] = useState(false)
   const [messaggio, setMessaggio] = useState(null)
@@ -32,12 +75,19 @@ function ModuloAccesso({ account, ta }) {
     return r
   }
 
+  const emailDiverse = modo === "registrati" && email2 !== "" && email.trim().toLowerCase() !== email2.trim().toLowerCase()
+
   const invia = (e) => {
     e.preventDefault()
     if (modo === "accedi") esegui(() => account.accedi(email, password))
-    else if (modo === "registrati") esegui(() => account.registrati(email, password, nome), ta.confermaEmail)
+    else if (modo === "registrati") {
+      if (email.trim().toLowerCase() !== email2.trim().toLowerCase()) { setMessaggio({ testo: ta.errori.email_diverse, errore: true }); return }
+      esegui(() => account.registrati(email.trim(), password, nome, cognome), ta.confermaEmail)
+    }
     else esegui(() => account.recuperaPassword(email), ta.controllaEmail)
   }
+
+  const esterni = [account.provider?.google && "google", account.provider?.apple && "apple"].filter(Boolean)
 
   return (
     <form onSubmit={invia} style={{ display: "flex", flexDirection: "column", gap: 12 }}>
@@ -52,18 +102,43 @@ function ModuloAccesso({ account, ta }) {
           ))}
         </div>
       )}
+      {modo !== "recupero" && esterni.length > 0 && (
+        <>
+          {esterni.map((p) => (
+            <button key={p} type="button" disabled={invio} onClick={() => esegui(() => account.accediCon(p))}
+              style={{ ...stileBottone, background: "#fff", color: "#1a1a1a", border: "1px solid #ddd", display: "flex", alignItems: "center", justifyContent: "center", gap: 8, fontWeight: 400 }}>
+              {p === "google" ? <IconaGoogle /> : <IconaApple />}
+              {p === "google" ? ta.continuaGoogle : ta.continuaApple}
+            </button>
+          ))}
+          <div style={{ display: "flex", alignItems: "center", gap: 10, color: "#bbb", fontFamily: FONT, fontSize: 10 }}>
+            <span style={{ flex: 1, height: 1, background: "#eee" }} />{ta.oppure}<span style={{ flex: 1, height: 1, background: "#eee" }} />
+          </div>
+        </>
+      )}
       {modo === "registrati" && (
-        <input type="text" required maxLength={60} autoComplete="nickname" value={nome} onChange={(e) => setNome(e.target.value)} placeholder={ta.nome} aria-label={ta.nome} style={stileInput} />
+        <div style={{ display: "flex", gap: 8 }}>
+          <input type="text" required maxLength={60} autoComplete="given-name" value={nome} onChange={(e) => setNome(e.target.value)} placeholder={ta.nome} aria-label={ta.nome} style={stileInput} />
+          <input type="text" required maxLength={60} autoComplete="family-name" value={cognome} onChange={(e) => setCognome(e.target.value)} placeholder={ta.cognome} aria-label={ta.cognome} style={stileInput} />
+        </div>
       )}
       <input type="email" required autoComplete="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder={ta.email} aria-label={ta.email} style={stileInput} />
+      {modo === "registrati" && (
+        <div>
+          <input type="email" required autoComplete="email" value={email2} onChange={(e) => setEmail2(e.target.value)}
+            onPaste={(e) => e.preventDefault()} placeholder={ta.confermaEmailCampo} aria-label={ta.confermaEmailCampo}
+            style={{ ...stileInput, borderColor: emailDiverse ? "#c0392b" : "#ddd" }} />
+          {emailDiverse && <div style={{ fontFamily: FONT, fontSize: 10, color: "#c0392b", marginTop: 4 }}>{ta.errori.email_diverse}</div>}
+        </div>
+      )}
       {modo !== "recupero" && (
         <div>
-          <input type="password" required minLength={8} autoComplete={modo === "registrati" ? "new-password" : "current-password"}
-            value={password} onChange={(e) => setPassword(e.target.value)} placeholder={ta.password} aria-label={ta.password} style={stileInput} />
+          <CampoPassword value={password} onChange={(e) => setPassword(e.target.value)} placeholder={ta.password} ta={ta}
+            autoComplete={modo === "registrati" ? "new-password" : "current-password"} />
           {modo === "registrati" && <div style={{ fontFamily: FONT, fontSize: 10, color: "#aaa", marginTop: 4 }}>{ta.passwordRequisiti}</div>}
         </div>
       )}
-      <button type="submit" disabled={invio} style={{ ...stileBottone, opacity: invio ? 0.6 : 1 }}>
+      <button type="submit" disabled={invio || emailDiverse} style={{ ...stileBottone, opacity: invio || emailDiverse ? 0.6 : 1 }}>
         {invio ? ta.attendi : modo === "accedi" ? ta.entra : modo === "registrati" ? ta.creaAccount : ta.inviaRecupero}
       </button>
       <Messaggio {...(messaggio || {})} />
@@ -92,7 +167,7 @@ function ModuloNuovaPassword({ account, ta }) {
       setInvio(false)
       setMessaggio(r.ok ? { testo: ta.passwordAggiornata } : { testo: messaggioErrore(ta, r.errore), errore: true })
     }}>
-      <input type="password" required minLength={8} autoComplete="new-password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder={ta.passwordNuova} aria-label={ta.passwordNuova} style={stileInput} />
+      <CampoPassword value={password} onChange={(e) => setPassword(e.target.value)} placeholder={ta.passwordNuova} autoComplete="new-password" ta={ta} />
       <button type="submit" disabled={invio} style={stileBottone}>{invio ? ta.attendi : ta.salvaPassword}</button>
       <Messaggio {...(messaggio || {})} />
     </form>
@@ -150,27 +225,29 @@ function Revisione({ account, ta }) {
 function Profilo({ account, ta, onApriElemento }) {
   const [modificaNome, setModificaNome] = useState(false)
   const [nome, setNome] = useState(account.profilo?.nome || "")
+  const [cognome, setCognome] = useState(account.profilo?.cognome || "")
   const preferiti = [...account.preferiti].map((k) => {
     const [tipo, elemento] = k.split("::")
     return { tipo, elemento, nome: elemento.split("|")[0] }
   })
   return (
     <div>
-      <div style={{ display: "flex", alignItems: "baseline", justifyContent: "space-between", gap: 12 }}>
-        {modificaNome ? (
-          <form style={{ display: "flex", gap: 6, flex: 1 }} onSubmit={async (e) => {
-            e.preventDefault(); const r = await account.aggiornaNome(nome); if (r.ok) setModificaNome(false)
-          }}>
-            <input value={nome} maxLength={60} onChange={(e) => setNome(e.target.value)} aria-label={ta.nome} style={stileInput} autoFocus />
-            <button type="submit" style={{ ...stileBottone, padding: "6px 12px" }}>{ta.salva}</button>
-          </form>
-        ) : (
-          <div style={{ fontFamily: SERIF, fontWeight: 500, fontStyle: "italic", fontSize: 16, color: "#1a1a1a" }}>
-            {account.profilo?.nome || account.utente.email}
-            <button type="button" onClick={() => setModificaNome(true)} style={{ ...stileLink, marginLeft: 8, fontStyle: "normal", fontSize: 10 }}>{ta.modifica}</button>
+      {modificaNome ? (
+        <form style={{ display: "flex", flexDirection: "column", gap: 6 }} onSubmit={async (e) => {
+          e.preventDefault(); const r = await account.aggiornaNome(nome, cognome); if (r.ok) setModificaNome(false)
+        }}>
+          <div style={{ display: "flex", gap: 6 }}>
+            <input value={nome} maxLength={60} onChange={(e) => setNome(e.target.value)} placeholder={ta.nome} aria-label={ta.nome} style={stileInput} autoFocus />
+            <input value={cognome} maxLength={60} onChange={(e) => setCognome(e.target.value)} placeholder={ta.cognome} aria-label={ta.cognome} style={stileInput} />
           </div>
-        )}
-      </div>
+          <button type="submit" style={{ ...stileBottone, padding: "6px 12px", alignSelf: "flex-start" }}>{ta.salva}</button>
+        </form>
+      ) : (
+        <div style={{ fontFamily: SERIF, fontWeight: 500, fontStyle: "italic", fontSize: 16, color: "#1a1a1a" }}>
+          {nomeCompleto(account.profilo) || account.utente.email}
+          <button type="button" onClick={() => setModificaNome(true)} style={{ ...stileLink, marginLeft: 8, fontStyle: "normal", fontSize: 10 }}>{ta.modifica}</button>
+        </div>
+      )}
       <div style={{ fontFamily: FONT, fontSize: 11, color: "#aaa", marginTop: 2 }}>{account.utente.email}</div>
 
       <div style={{ marginTop: 16, display: "inline-flex", alignItems: "baseline", gap: 6, background: "#FF0707", color: "#fff", borderRadius: 20, padding: "4px 14px" }}>

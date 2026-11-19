@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from "react"
-import { accountConfigurato, ottieniClient, sessioneProbabile } from "./supabase.js"
+import { accountConfigurato, ottieniClient, sessioneProbabile, providerAttivi } from "./supabase.js"
 
 const TIPI_CONTRIBUTO = ["correzione", "aggiunta", "suggerimento"]
 
@@ -15,6 +15,7 @@ export function useAccount() {
     preferiti: new Set(),
     contributi: [],
     recuperoPassword: false,
+    provider: { google: false, apple: false },
   }))
   const clientRef = useRef(null)
   const avviatoRef = useRef(false)
@@ -27,14 +28,14 @@ export function useAccount() {
       return
     }
     const [profilo, preferiti, contributi] = await Promise.all([
-      client.from("profili").select("id, nome, punti, ruolo").eq("id", utente.id).maybeSingle(),
+      client.from("profili").select("id, nome, cognome, punti, ruolo").eq("id", utente.id).maybeSingle(),
       client.from("preferiti").select("tipo, elemento, creato_il").order("creato_il", { ascending: false }),
       client.from("contributi").select("id, tipo, riferimento_tipo, riferimento, descrizione, stato, punti_assegnati, nota_revisione, creato_il")
         .eq("utente_id", utente.id).order("creato_il", { ascending: false }).limit(50),
     ])
     aggiorna({
       utente,
-      profilo: profilo.data || { id: utente.id, nome: utente.user_metadata?.nome || "", punti: 0, ruolo: "utente" },
+      profilo: profilo.data || { id: utente.id, nome: utente.user_metadata?.nome || "", cognome: utente.user_metadata?.cognome || "", punti: 0, ruolo: "utente" },
       preferiti: new Set((preferiti.data || []).map((p) => `${p.tipo}::${p.elemento}`)),
       contributi: contributi.data || [],
       pronto: true,
@@ -60,6 +61,13 @@ export function useAccount() {
     return client
   }, [caricaDatiUtente])
 
+  // Quali accessi esterni (Google, Apple) sono attivi nel progetto: i pulsanti
+  // compaiono da soli quando un provider viene abilitato su Supabase.
+  useEffect(() => {
+    if (!accountConfigurato) return
+    providerAttivi().then((provider) => aggiorna({ provider }))
+  }, [])
+
   useEffect(() => {
     if (!accountConfigurato) return
     if (sessioneProbabile()) { avvia(); return }
@@ -83,8 +91,9 @@ export function useAccount() {
 
   const ritorno = () => window.location.origin + window.location.pathname
 
-  const registrati = (email, password, nome) => esegui((c) =>
-    c.auth.signUp({ email, password, options: { data: { nome: nome.trim().slice(0, 60) }, emailRedirectTo: ritorno() } }))
+  const registrati = (email, password, nome, cognome) => esegui((c) =>
+    c.auth.signUp({ email, password, options: { data: { nome: nome.trim().slice(0, 60), cognome: cognome.trim().slice(0, 60) }, emailRedirectTo: ritorno() } }))
+  const accediCon = (provider) => esegui((c) => c.auth.signInWithOAuth({ provider, options: { redirectTo: ritorno() } }))
   const accedi = (email, password) => esegui((c) => c.auth.signInWithPassword({ email, password }))
   const linkAccesso = (email) => esegui((c) => c.auth.signInWithOtp({ email, options: { emailRedirectTo: ritorno(), shouldCreateUser: false } }))
   const recuperaPassword = (email) => esegui((c) => c.auth.resetPasswordForEmail(email, { redirectTo: ritorno() }))
@@ -95,9 +104,10 @@ export function useAccount() {
   }
   const esci = () => esegui((c) => c.auth.signOut())
 
-  const aggiornaNome = async (nome) => {
-    const r = await esegui((c) => c.from("profili").update({ nome: nome.trim().slice(0, 60) }).eq("id", stato.utente.id))
-    if (r.ok) aggiorna((s) => ({ profilo: { ...s.profilo, nome: nome.trim().slice(0, 60) } }))
+  const aggiornaNome = async (nome, cognome) => {
+    const valori = { nome: nome.trim().slice(0, 60), cognome: cognome.trim().slice(0, 60) }
+    const r = await esegui((c) => c.from("profili").update(valori).eq("id", stato.utente.id))
+    if (r.ok) aggiorna((s) => ({ profilo: { ...s.profilo, ...valori } }))
     return r
   }
 
@@ -155,7 +165,7 @@ export function useAccount() {
   return {
     ...stato,
     admin: stato.profilo?.ruolo === "admin",
-    avvia, registrati, accedi, linkAccesso, recuperaPassword, nuovaPassword, esci, aggiornaNome,
+    avvia, registrati, accedi, accediCon, linkAccesso, recuperaPassword, nuovaPassword, esci, aggiornaNome,
     ePreferito, togglePreferito, inviaContributo,
     contributiDaRevisionare, urlFoto, approva, rifiuta, regolePunti,
   }

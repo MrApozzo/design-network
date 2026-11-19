@@ -43,6 +43,22 @@ export function sessioneProbabile() {
   return false
 }
 
+// Provider esterni abilitati nel progetto, letti dall'endpoint pubblico di
+// Supabase Auth: non serve caricare la libreria per saperlo.
+export async function providerAttivi() {
+  try {
+    const r = await fetch(`${URL_SUPABASE}/auth/v1/settings`, { headers: { apikey: CHIAVE_SUPABASE } })
+    const esterni = (await r.json()).external || {}
+    return { google: !!esterni.google, apple: !!esterni.apple }
+  } catch {
+    return { google: false, apple: false }
+  }
+}
+
+export function nomeCompleto(profilo) {
+  return [profilo?.nome, profilo?.cognome].filter(Boolean).join(" ")
+}
+
 // Chiave stabile di un elemento nei preferiti. I prodotti possono avere nomi
 // uguali, quindi si aggiunge il file della foto (come per le pagine SEO).
 export function chiaveElemento(tipo, dati) {
