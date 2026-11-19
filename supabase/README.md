@@ -33,16 +33,9 @@ La chiave di Resend resta solo dentro Supabase: il sito non la vede mai.
 
 ## 3. Pubblicazione
 
-GitHub → repository → **Settings → Secrets and variables → Actions →
-Variables** → crea:
-
-| Nome | Valore |
-| --- | --- |
-| `VITE_SUPABASE_URL` | Project URL |
-| `VITE_SUPABASE_ANON_KEY` | Publishable key (o anon key) |
-
-Al prossimo deploy di `main` compare la voce "Accedi" nel menu.
-In locale: copia `.env.example` in `.env.local` con gli stessi valori.
+URL e chiave pubblica del progetto sono in `.env.production` (valori pubblici,
+letti da Vite in build). Per cambiare progetto basta modificare quel file.
+In locale: copia `.env.example` in `.env.local`.
 
 ## 4. Diventare admin
 
