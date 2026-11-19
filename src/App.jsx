@@ -26,6 +26,10 @@ import { percorsoEntitaSeo, SEO_ENTITA } from "./seo-percorsi.js"
 import { FORMSPREE_ENDPOINT, SEZIONI_CREDITS, CATEGORIA_EN, TIPO_RELAZIONE_EN, TESTI } from "./testi.js"
 import { preloadImages } from "./preload-immagini.js"
 import { ListaConScroll } from "./ListaConScroll.jsx"
+import { useAccount } from "./account/useAccount.js"
+import { PannelloAccount, BottonePreferito } from "./account/PannelloAccount.jsx"
+import { TESTI_ACCOUNT, messaggioErrore } from "./account/testi-account.js"
+import { chiaveElemento } from "./account/supabase.js"
 
 const IMMAGINI_ESISTENTI = new Set(immaginiEsistentiArr)
 
@@ -592,6 +596,11 @@ function App() {
   const linguaRef = useRef("it")
   useEffect(() => { linguaRef.current = lingua }, [lingua])
   const t = TESTI[lingua]
+  const ta = TESTI_ACCOUNT[lingua]
+  const account = useAccount()
+  const [contribFonte, setContribFonte] = useState("")
+  const [contribFile, setContribFile] = useState(null)
+  const [contribMessaggio, setContribMessaggio] = useState(null)
 
   // Animazione "macchina da scrivere" della domanda iniziale: prima qualche
   // lampeggio del cursore (come una barra che ci pensa), poi la frase viene
@@ -5023,6 +5032,12 @@ function App() {
     setMenuVista("lista")
   }
 
+  function apriAccount() {
+    if (viewportMobile()) setMenuApertoMobile(true)
+    else setMenuApertoDesktop(true)
+    setMenuVista("account")
+  }
+
   function riapriSchermataIniziale() {
     chiudiMenu()
     setRispostaDesigner("")
@@ -5033,7 +5048,28 @@ function App() {
     setSchermataIniziale(true)
   }
 
+  async function inviaContribuzioneAccount() {
+    setContribMessaggio(null)
+    if (contribDescrizione.trim().length < 10) { setContribStato("errore"); setContribMessaggio(messaggioErrore(ta, "descrizione_breve")); return }
+    if (contribFile && contribFile.size > 5 * 1024 * 1024) { setContribStato("errore"); setContribMessaggio(messaggioErrore(ta, "foto_grande")); return }
+    setContribStato("invio")
+    const indiceCategoria = Math.max(0, t.contribCategorie.indexOf(contribCategoria))
+    const r = await account.inviaContributo({
+      indiceCategoria, riferimento: contribTag, descrizione: contribDescrizione, fonte: contribFonte, file: contribFile,
+    })
+    if (!r.ok) { setContribStato("errore"); setContribMessaggio(messaggioErrore(ta, r.errore)); return }
+    const regole = await account.regolePunti()
+    const valori = Object.fromEntries((regole.dati || []).map((x) => [x.tipo, x.punti]))
+    const tipo = ["correzione", "aggiunta", "suggerimento"][indiceCategoria]
+    const attesi = (valori[tipo] || 0) + (contribFile ? (valori.bonus_foto || 0) : 0)
+    setContribStato("ok")
+    setContribMessaggio(ta.puntiInArrivo(attesi))
+    setContribCategoria(t.contribCategorie[0]); setContribTag(null); setContribRicerca("")
+    setContribDescrizione(""); setContribFonte(""); setContribFile(null)
+  }
+
   function inviaContribuzione() {
+    if (account.configurato) { inviaContribuzioneAccount(); return }
     setContribStato("invio")
     fetch(FORMSPREE_ENDPOINT, {
       method: "POST",
@@ -5109,6 +5145,17 @@ function App() {
             {t.voci.domanda}
           </div>
         </div>
+        {account.configurato && (
+          <div onClick={() => setMenuVista("account")}
+            style={{ borderBottom: "1px solid #eee", padding: "16px 0", cursor: "pointer", display: "flex", justifyContent: "space-between", alignItems: "baseline" }}>
+            <div style={{ fontFamily: "'Roboto Mono', monospace", fontWeight: 400, fontSize: 13, color: "#777" }}>
+              {account.utente ? (account.profilo?.nome || ta.voceConnesso) : ta.voce}
+            </div>
+            {account.utente && (
+              <span style={{ fontFamily: "'Roboto Mono', monospace", fontSize: 10, color: "#FF0707" }}>{account.profilo?.punti ?? 0} pt</span>
+            )}
+          </div>
+        )}
         {["manifesto", "contatti", "credits", "contribuisci"].map((id) => (
           <div key={id} onClick={() => setMenuVista(id)}
             style={{ borderBottom: "1px solid #eee", padding: "16px 0", cursor: "pointer" }}>
@@ -5177,6 +5224,17 @@ function App() {
 
   function renderContribuisciBody() {
     const risultatiTag = contribRicerca.length > 1 ? cercaEntita(contribRicerca) : []
+    if (account.configurato && !account.utente) {
+      return (
+        <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
+          <p style={{ fontFamily: "Roboto, sans-serif", fontWeight: 300, fontSize: 12, color: "#888", lineHeight: 1.6, margin: 0 }}>{ta.accediPerContribuire}</p>
+          <button type="button" onClick={() => setMenuVista("account")}
+            style={{ padding: "10px 16px", borderRadius: 20, border: "none", cursor: "pointer", background: "#1a1a1a", color: "white", fontFamily: "Roboto, sans-serif", fontSize: 12, fontWeight: 500 }}>
+            {ta.vaiAccesso}
+          </button>
+        </div>
+      )
+    }
     return (
       <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
         <select value={contribCategoria} onChange={(e) => setContribCategoria(e.target.value)}
@@ -5222,23 +5280,39 @@ function App() {
           placeholder={t.contribDescrizionePlaceholder} rows={5}
           style={{ width: "100%", boxSizing: "border-box", padding: "10px 12px", borderRadius: 8, border: "1px solid #ddd", fontFamily: "Roboto, sans-serif", fontSize: 12, fontWeight: 300, resize: "vertical" }} />
 
-        <input type="email" value={contribEmail} onChange={(e) => setContribEmail(e.target.value)} placeholder={t.contribEmailPlaceholder}
-          style={{ padding: "8px 12px", borderRadius: 8, border: "1px solid #ddd", fontFamily: "Roboto, sans-serif", fontSize: 12, fontWeight: 300 }} />
+        {account.configurato ? (
+          <>
+            <input type="url" value={contribFonte} onChange={(e) => setContribFonte(e.target.value)} placeholder={ta.fontePlaceholder}
+              style={{ padding: "8px 12px", borderRadius: 8, border: "1px solid #ddd", fontFamily: "Roboto, sans-serif", fontSize: 12, fontWeight: 300 }} />
+            <label style={{ fontFamily: "Roboto, sans-serif", fontSize: 11, fontWeight: 400, color: "#777", display: "flex", flexDirection: "column", gap: 6 }}>
+              {ta.foto}
+              <input type="file" accept="image/jpeg,image/png,image/webp" onChange={(e) => setContribFile(e.target.files?.[0] || null)}
+                style={{ fontFamily: "Roboto, sans-serif", fontSize: 11 }} />
+            </label>
+          </>
+        ) : (
+          <input type="email" value={contribEmail} onChange={(e) => setContribEmail(e.target.value)} placeholder={t.contribEmailPlaceholder}
+            style={{ padding: "8px 12px", borderRadius: 8, border: "1px solid #ddd", fontFamily: "Roboto, sans-serif", fontSize: 12, fontWeight: 300 }} />
+        )}
 
         <button type="button" onClick={inviaContribuzione} disabled={contribStato === "invio"}
           style={{ padding: "10px 16px", borderRadius: 20, border: "none", cursor: "pointer", background: "#1a1a1a", color: "white", fontFamily: "Roboto, sans-serif", fontSize: 12, fontWeight: 500 }}>
           {contribStato === "invio" ? t.invioInCorso : t.invia}
         </button>
-        {contribStato === "ok" && <div style={{ color: "#2a8a4a", fontSize: 11, fontFamily: "Roboto, sans-serif" }}>{t.contribOk}</div>}
-        {contribStato === "errore" && <div style={{ color: "#c0392b", fontSize: 11, fontFamily: "Roboto, sans-serif" }}>{t.contribErrore}</div>}
+        {contribStato === "ok" && <div style={{ color: "#2a8a4a", fontSize: 11, fontFamily: "Roboto, sans-serif" }}>{contribMessaggio || t.contribOk}</div>}
+        {contribStato === "errore" && <div style={{ color: "#c0392b", fontSize: 11, fontFamily: "Roboto, sans-serif" }}>{contribMessaggio || t.contribErrore}</div>}
       </div>
     )
   }
 
   function renderMenuDetail(vista) {
-    const titoli = t.voci
+    const titoli = { ...t.voci, account: account.utente ? ta.voceConnesso : ta.voce }
     const corpo = {
       manifesto: renderManifestoBody, contatti: renderContattiBody, credits: renderCreditsBody, contribuisci: renderContribuisciBody,
+      account: () => (
+        <PannelloAccount account={account} ta={ta}
+          onApriElemento={(tipo, nome) => { chiudiMenu(); selezionaRisultatoRicerca({ tipo, nome }) }} />
+      ),
     }[vista]
     return (
       <>
@@ -5664,10 +5738,13 @@ function App() {
                     {periodo}{az.paese ? ` — ${az.paese}` : ""}
                   </div>
                 </div>
+                <div style={{ display: "flex", alignItems: "center", gap: 2 }}>
+                <BottonePreferito account={account} ta={ta} tipo="azienda" scuro elemento={chiaveElemento("azienda", az)} onRichiediAccesso={apriAccount} />
                 <button onClick={chiudi}
                   style={{ background: "none", border: "none", cursor: "pointer", fontSize: 20, color: "rgba(255,255,255,0.6)", padding: "0 4px", lineHeight: 1 }}>
                   &times;
                 </button>
+                </div>
               </div>
 
               {(az.descrizione || az.descrizione_en) && (
@@ -5767,8 +5844,12 @@ function App() {
                   )
                 })()}
                 <div style={{ flex: 1, display: "flex", flexDirection: "column", justifyContent: "center" }}>
+                  <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between", gap: 6 }}>
                   <div style={{ fontFamily: "'Roboto Serif', serif", fontWeight: 500, fontStyle: "italic", fontSize: 17, color: scuro ? "#fff" : "#1a1a1a", lineHeight: 1.2 }}>
                     {pannelloDesigner.nome}
+                  </div>
+                  <BottonePreferito account={account} ta={ta} tipo={pannelloDesigner._tipo} scuro={scuro} dimensione={16}
+                    elemento={chiaveElemento(pannelloDesigner._tipo, pannelloDesigner)} onRichiediAccesso={apriAccount} />
                   </div>
                   {pannelloDesigner._tipo === "prodotto" && (
                     <div style={{ marginTop: 3 }}>
@@ -5808,10 +5889,14 @@ function App() {
                         </div>
                       )}
                     </div>
+                    <div style={{ display: "flex", alignItems: "center", gap: 2 }}>
+                    <BottonePreferito account={account} ta={ta} tipo={pannelloDesigner._tipo} scuro={scuro}
+                      elemento={chiaveElemento(pannelloDesigner._tipo, pannelloDesigner)} onRichiediAccesso={apriAccount} />
                     <button onClick={() => { setPannelloVisibile(false); setTimeout(() => setPannelloDesigner(null), 350); legameEvidenziatoRef.current = null; setLegameEvidenziato(null); aziendaAttivaRef.current = null; aziendaGlobaleRef.current = false; setAziendaAttiva(null); if (ridisegnaFn) ridisegnaFn() }}
                       style={{ background: "none", border: "none", cursor: "pointer", fontSize: 20, color: scuro ? "#666" : "#aaa", padding: "0 4px", lineHeight: 1 }}>
                       &times;
                     </button>
+                    </div>
                   </div>
                 </div>
                 {(() => {

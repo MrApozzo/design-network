@@ -29,6 +29,10 @@ jobs:
       - run: npm run build
         env:
           GITHUB_ACTIONS: true
+          # Account (Supabase). Valori pubblici: vanno in Settings → Secrets and
+          # variables → Actions → Variables. Se mancano, il sito funziona senza account.
+          VITE_SUPABASE_URL: ${{ vars.VITE_SUPABASE_URL }}
+          VITE_SUPABASE_ANON_KEY: ${{ vars.VITE_SUPABASE_ANON_KEY }}
       - uses: actions/configure-pages@v4
       - uses: actions/upload-pages-artifact@v3
         with:

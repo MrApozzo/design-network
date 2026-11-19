@@ -8,6 +8,14 @@ riassunto più corto) man mano che il lavoro prosegue, così resta la fonte di
 verità aggiornata — non affidarti alla cronologia chat, che su un'altra macchina
 non esiste.
 
+## Prestazioni, divisione del codice e account (2026-11-19)
+
+- Prestazioni overlay: `fattoriTaraturaZoom` e `zoomT()` memorizzati (chiave: ratio camera, limite panoramica, `CAMERA_RATIO_100`, `MIN_CAMERA_RATIO`); valori per-arco calcolati una volta per frame; archi fuori schermo saltati. Le animazioni per frame usano `lerpOverlay`: il loop dell'overlay continua da solo finché raggi, opacità, linee vita e alone cursore non sono assestati, poi si ferma (0 rAF/s a riposo). Prima dipendevano dai ridisegni continui del preload immagini, che ora sono raggruppati (max uno ogni 150 ms). Verificato pixel per pixel contro la versione precedente, desktop e mobile.
+- Bundle diviso in `librerie` / `dati` / codice app (vite.config.js) per cache separate; Supabase in un chunk caricato solo se servono gli account.
+- Estratti da App.jsx: `testi.js`, `seo-percorsi.js`, `preload-immagini.js`, `ListaConScroll.jsx`. Gli script `scripts/verifica-*.mjs` ora prendono il prefisso fino a `function App() {`.
+- Account (Supabase + Resend): `src/account/`, schema e istruzioni in `supabase/`. Attivi solo con `VITE_SUPABASE_URL` e `VITE_SUPABASE_ANON_KEY`; senza, il sito è identico a prima. Preferiti (cuore nei pannelli), contributi dal form esistente (con fonte e foto), punti assegnati solo all'approvazione admin.
+- Nota: `FORMSPREE_ENDPOINT` in `testi.js` è ancora il segnaposto `YOUR_FORM_ID`, quindi senza Supabase il form Contribuisci non invia nulla.
+
 ## Nuova origine verticale comune (2026-09-16, prevale sui tentativi di centratura sotto)
 
 Valido desktop e mobile. La fascia 00 e i suoi prodotti salgono di due righe. La macro 01 Aziende viene portata due righe sotto 00 e tutte le successive fasce Aziende ricevono lo stesso shift. La categoria 01 Designer viene collocata esattamente sulla riga della 00 Aziende e l'intero blocco Designer (centri, prodotti orbita/timeline, ancore ed etichette) segue lo stesso shift. Rimossi gli allineamenti basati sulle mediane/inviluppi: la camera e la griglia restano comuni, ma la composizione ora nasce dalla stessa origine superiore esplicita.

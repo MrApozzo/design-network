@@ -14,7 +14,8 @@ export default defineConfig({
         // obbliga a riscaricare React/Sigma e viceversa.
         codeSplitting: {
           groups: [
-            { name: 'librerie', test: /node_modules/ },
+            // Supabase resta fuori: si carica solo quando servono gli account.
+            { name: 'librerie', test: /node_modules[\\/](?!@supabase)/ },
             { name: 'dati', test: /src[\\/]data[\\/]/ },
           ],
         },
