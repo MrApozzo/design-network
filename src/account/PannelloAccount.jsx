@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import { messaggioErrore } from "./testi-account.js"
 import { nomeCompleto } from "./supabase.js"
+import { TabellaIscritti } from "./TabellaIscritti.jsx"
 
 // Stili condivisi con il resto del menu (vedi renderContribuisciBody in App.jsx).
 const FONT = "Roboto, sans-serif"
@@ -219,56 +220,14 @@ function Revisione({ account, ta }) {
 }
 
 function Iscritti({ account, ta }) {
-  const [lista, setLista] = useState(null)
-  const [errore, setErrore] = useState(null)
-  const [daEliminare, setDaEliminare] = useState(null)
-  const [invio, setInvio] = useState(false)
-  const carica = () => account.iscritti().then((r) => {
-    if (r.ok) { setLista(r.dati || []); setErrore(null) } else setErrore(messaggioErrore(ta, r.errore))
-  })
-  useEffect(() => { carica() }, []) // eslint-disable-line react-hooks/exhaustive-deps
-  const data = (d) => d ? new Date(d).toLocaleDateString() : ta.maiAcceduto
-  const elimina = async (id) => {
-    setInvio(true)
-    const r = await account.eliminaUtente(id)
-    setInvio(false); setDaEliminare(null)
-    if (r.ok) setLista((l) => l.filter((u) => u.id !== id)); else setErrore(messaggioErrore(ta, r.errore))
-  }
+  const [aperta, setAperta] = useState(false)
+  const [totale, setTotale] = useState(null)
+  useEffect(() => { account.iscritti().then((r) => { if (r.ok) setTotale((r.dati || []).length) }) }, [aperta]) // eslint-disable-line react-hooks/exhaustive-deps
   return (
     <>
-      <div style={{ ...stileTitolo, display: "flex", justifyContent: "space-between" }}>
-        <span>{ta.iscritti}{lista ? ` (${lista.length})` : ""}</span>
-        <button type="button" onClick={carica} style={{ ...stileLink, fontSize: 10, textTransform: "none", letterSpacing: 0 }}>{ta.aggiornaLista}</button>
-      </div>
-      <Messaggio testo={errore} errore />
-      {lista && lista.length === 0 && <p style={stileTesto}>{ta.nessunIscritto}</p>}
-      {lista && lista.map((u) => {
-        const nome = [u.nome, u.cognome].filter(Boolean).join(" ")
-        const proprio = u.id === account.utente.id
-        return (
-          <div key={u.id} style={{ borderBottom: "1px solid #eee", padding: "9px 0", display: "flex", flexDirection: "column", gap: 3 }}>
-            <div style={{ display: "flex", justifyContent: "space-between", gap: 8, alignItems: "baseline" }}>
-              <span style={{ fontFamily: FONT, fontSize: 12, color: "#1a1a1a" }}>{nome || "—"}{u.ruolo === "admin" ? " · admin" : ""}</span>
-              {!proprio && daEliminare !== u.id && (
-                <button type="button" onClick={() => setDaEliminare(u.id)} style={{ ...stileLink, fontSize: 10 }}>{ta.elimina}</button>
-              )}
-            </div>
-            <div style={{ fontFamily: FONT, fontSize: 11, color: "#888", wordBreak: "break-all" }}>{u.email}</div>
-            <div style={{ fontFamily: MONO, fontSize: 10, color: "#aaa" }}>
-              {ta.iscrittoIl} {data(u.creato_il)} · {ta.ultimoAccesso} {data(u.ultimo_accesso)} · {(u.metodi || []).join(", ")}{u.confermato ? "" : ` · ${ta.nonConfermato}`} · {u.punti} pt
-            </div>
-            {daEliminare === u.id && (
-              <div style={{ display: "flex", flexDirection: "column", gap: 6, marginTop: 4 }}>
-                <span style={{ ...stileTesto, color: "#c0392b" }}>{ta.confermaEliminaUtente(nome || u.email)}</span>
-                <div style={{ display: "flex", gap: 8 }}>
-                  <button type="button" disabled={invio} onClick={() => elimina(u.id)} style={{ ...stileBottone, padding: "6px 12px", fontSize: 11, background: "#c0392b" }}>{invio ? ta.attendi : ta.eliminaDefinitivamente}</button>
-                  <button type="button" onClick={() => setDaEliminare(null)} style={{ ...stileBottone, padding: "6px 12px", fontSize: 11, background: "#eee", color: "#555" }}>{ta.annulla}</button>
-                </div>
-              </div>
-            )}
-          </div>
-        )
-      })}
+      <div style={stileTitolo}>{ta.iscritti}{totale != null ? ` (${totale})` : ""}</div>
+      <button type="button" onClick={() => setAperta(true)} style={{ ...stileBottone, padding: "7px 14px", fontSize: 11 }}>{ta.apriIscritti}</button>
+      {aperta && <TabellaIscritti account={account} ta={ta} onChiudi={() => setAperta(false)} />}
     </>
   )
 }
