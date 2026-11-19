@@ -132,6 +132,11 @@ function ModuloAccesso({ account, ta }) {
         {invio ? ta.attendi : modo === "accedi" ? ta.entra : modo === "registrati" ? ta.creaAccount : ta.inviaRecupero}
       </button>
       <Messaggio {...(messaggio || {})} />
+      {modo !== "recupero" && (
+        <p style={{ ...stileTesto, fontSize: 10, color: "#aaa" }}>
+          {ta.privacyPrima}<a href={ta.privacyHref} target="_blank" rel="noopener" style={{ color: "inherit", textUnderlineOffset: 2 }}>{ta.privacyLink}</a>.
+        </p>
+      )}
       {modo === "accedi" && (
         <>
           <button type="button" style={stileLink} disabled={invio || !email}
