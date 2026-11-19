@@ -8,6 +8,23 @@ riassunto più corto) man mano che il lavoro prosegue, così resta la fonte di
 verità aggiornata — non affidarti alla cronologia chat, che su un'altra macchina
 non esiste.
 
+## Stato account in produzione (2026-11-19, leggere per primo)
+
+Branch di lavoro della sessione cloud: `claude/exciting-newton-pcjerf`. Prima di iniziare: `git fetch && git pull` e, se si lavora su un altro branch, unire questo.
+
+Configurato e funzionante:
+- Supabase: progetto `nlmoiynzvbxaijjfutxv` ("Encyclopedie Visuelle's Project", org encyclopedie-visuelle, regione eu-west-1). Schema `supabase/schema.sql` installato (rieseguibile; contiene anche colonna `cognome` e permessi minimi). Site URL `https://design.encyclopedie-visuelle.com`, redirect `https://design.encyclopedie-visuelle.com/**` e `http://localhost:5173/**`, password minima 8, email in italiano/inglese.
+- Resend: dominio `encyclopedie-visuelle.com` verificato (regione eu-west-1). Record su Aruba: TXT `resend._domainkey`, TXT `send`, MX `send` (aggiunto con "Aggiungi su sottodominio": NON sostituire gli MX Aruba, servono alla posta), CNAME `rsend`. DMARC già presente. Supabase invia via SMTP `smtp.resend.com` da `accesso@encyclopedie-visuelle.com` con una chiave Resend di solo invio ("supabase-smtp-encyclopedie").
+- Sito: URL e chiave pubblica Supabase in `.env.production`. Pubblicato su main con account, preferiti, contributi e punti.
+
+Da fare:
+- Rendere admin Jacopo (profilo id `647b0afd-5868-4aa3-9f7a-49b0aff41d89`): nel SQL Editor `update public.profili set ruolo = 'admin' where id = '647b0afd-5868-4aa3-9f7a-49b0aff41d89';`
+- Accesso con Google (serve Chrome sul PC): Google Cloud Console, progetto "encyclopedie-visuelle"; Google Auth Platform → Branding (nome "Design — encyclopédie visuelle", dominio autorizzato encyclopedie-visuelle.com), Audience External + Publish; client OAuth "Web application" con origine `https://design.encyclopedie-visuelle.com` e redirect `https://nlmoiynzvbxaijjfutxv.supabase.co/auth/v1/callback`; poi Supabase → Authentication → Sign In / Providers → Google con Client ID e secret. Il pulsante sul sito compare da solo quando il provider è attivo (letto da `/auth/v1/settings`).
+- Apple: possibile solo con Apple Developer Program (99 €/anno), non avviato.
+- Informativa privacy e casella di consenso in registrazione: non ancora presenti.
+- Ultime modifiche alla registrazione (nome+cognome, conferma email, occhio password, pulsante account in alto a destra nella barra laterale) sono sul branch: pubblicarle su main se non già fatto.
+- A fine configurazione revocare il token Supabase usato dalla sessione cloud e la chiave Resend "claude-setup" (Full access). La chiave di solo invio va lasciata.
+
 ## Prestazioni, divisione del codice e account (2026-11-19)
 
 - Prestazioni overlay: `fattoriTaraturaZoom` e `zoomT()` memorizzati (chiave: ratio camera, limite panoramica, `CAMERA_RATIO_100`, `MIN_CAMERA_RATIO`); valori per-arco calcolati una volta per frame; archi fuori schermo saltati. Le animazioni per frame usano `lerpOverlay`: il loop dell'overlay continua da solo finché raggi, opacità, linee vita e alone cursore non sono assestati, poi si ferma (0 rAF/s a riposo). Prima dipendevano dai ridisegni continui del preload immagini, che ora sono raggruppati (max uno ogni 150 ms). Verificato pixel per pixel contro la versione precedente, desktop e mobile.
