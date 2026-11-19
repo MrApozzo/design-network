@@ -15,7 +15,7 @@ export function useAccount() {
     preferiti: new Set(),
     contributi: [],
     recuperoPassword: false,
-    provider: { google: false, apple: false },
+    provider: { google: false },
   }))
   const clientRef = useRef(null)
   const avviatoRef = useRef(false)
@@ -61,7 +61,7 @@ export function useAccount() {
     return client
   }, [caricaDatiUtente])
 
-  // Quali accessi esterni (Google, Apple) sono attivi nel progetto: i pulsanti
+  // Quali accessi esterni (per ora solo Google) sono attivi nel progetto: i pulsanti
   // compaiono da soli quando un provider viene abilitato su Supabase.
   useEffect(() => {
     if (!accountConfigurato) return

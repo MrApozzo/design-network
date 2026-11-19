@@ -20,7 +20,7 @@ Configurato e funzionante:
 Da fare:
 - Rendere admin Jacopo (profilo id `647b0afd-5868-4aa3-9f7a-49b0aff41d89`): nel SQL Editor `update public.profili set ruolo = 'admin' where id = '647b0afd-5868-4aa3-9f7a-49b0aff41d89';`
 - Accesso con Google (serve Chrome sul PC): Google Cloud Console, progetto "encyclopedie-visuelle"; Google Auth Platform → Branding (nome "Design — encyclopédie visuelle", dominio autorizzato encyclopedie-visuelle.com), Audience External + Publish; client OAuth "Web application" con origine `https://design.encyclopedie-visuelle.com` e redirect `https://nlmoiynzvbxaijjfutxv.supabase.co/auth/v1/callback`; poi Supabase → Authentication → Sign In / Providers → Google con Client ID e secret. Il pulsante sul sito compare da solo quando il provider è attivo (letto da `/auth/v1/settings`).
-- Apple: possibile solo con Apple Developer Program (99 €/anno), non avviato.
+- Apple: escluso per scelta (2026-11-19), resta solo Google.
 - Informativa privacy e casella di consenso in registrazione: non ancora presenti.
 - Ultime modifiche alla registrazione (nome+cognome, conferma email, occhio password, pulsante account in alto a destra nella barra laterale) sono sul branch: pubblicarle su main se non già fatto.
 - A fine configurazione revocare il token Supabase usato dalla sessione cloud e la chiave Resend "claude-setup" (Full access). La chiave di solo invio va lasciata.

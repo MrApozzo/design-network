@@ -49,9 +49,9 @@ export async function providerAttivi() {
   try {
     const r = await fetch(`${URL_SUPABASE}/auth/v1/settings`, { headers: { apikey: CHIAVE_SUPABASE } })
     const esterni = (await r.json()).external || {}
-    return { google: !!esterni.google, apple: !!esterni.apple }
+    return { google: !!esterni.google }
   } catch {
-    return { google: false, apple: false }
+    return { google: false }
   }
 }
 
