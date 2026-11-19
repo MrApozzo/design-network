@@ -27,6 +27,13 @@ Da fare:
 - Ultime modifiche alla registrazione (nome+cognome, conferma email, occhio password, pulsante account in alto a destra nella barra laterale) sono sul branch: pubblicarle su main se non già fatto.
 - A fine configurazione revocare il token Supabase usato dalla sessione cloud e la chiave Resend "claude-setup" (Full access). La chiave di solo invio va lasciata.
 
+## Filtri "Mostre e luoghi" (2026-11-19)
+
+- Dati in `src/data/filtri.json`: `id` (usato nel link `?filtro=<id>`), `tipo` (mostra/luogo), nome, sottotitoli IT/EN, luogo, date, descrizioni, `url`, `fonti`, `prodotti` come `"<nome>|<foto>"` (stessa chiave dei preferiti), `non_in_catalogo`.
+- Attivi: `italy-the-new-domestic-landscape` (46 oggetti, dal catalogo MoMA 1972) e `seth-and-mannis-ibiza` (4; manca Rossella di Zanini, non in catalogo). Nel catalogo il "Joe" attribuito a Joe Colombo (ICF, 1965, tavolo) sembra un errore di dati: il Joe della mostra è il divano di De Pas, D'Urbino, Lomazzi.
+- In `App.jsx`: `filtroAttivoRef` (nodi e aziende accesi) letto a ogni frame; chi è fuori va a `ALPHA_FUORI_FILTRO` (trasparenza, non grigio, pensata per i futuri sfondi colorati dell'export Instagram). `inquadraNodi` inquadra con la tecnica a differenze finite. Sezione nella barra laterale (`renderMenuFiltri`), etichetta in basso (`renderFiltroAttivo`).
+- Prossimo passo discusso: modalità immagine per Instagram (colori di sfondo/font/pallini, formati 1080×1080/1350/1920, export PNG), partendo dal filtro attivo; da decidere se cambia anche la mappa o solo l'export.
+
 ## Prestazioni, divisione del codice e account (2026-11-19)
 
 - Prestazioni overlay: `fattoriTaraturaZoom` e `zoomT()` memorizzati (chiave: ratio camera, limite panoramica, `CAMERA_RATIO_100`, `MIN_CAMERA_RATIO`); valori per-arco calcolati una volta per frame; archi fuori schermo saltati. Le animazioni per frame usano `lerpOverlay`: il loop dell'overlay continua da solo finché raggi, opacità, linee vita e alone cursore non sono assestati, poi si ferma (0 rAF/s a riposo). Prima dipendevano dai ridisegni continui del preload immagini, che ora sono raggruppati (max uno ogni 150 ms). Verificato pixel per pixel contro la versione precedente, desktop e mobile.
