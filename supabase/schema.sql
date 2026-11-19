@@ -34,10 +34,13 @@ alter table public.profili add column if not exists cognome text not null defaul
 
 alter table public.profili enable row level security;
 
--- Profili leggibili da tutti (servono per una futura classifica community).
+-- Profili privati: ognuno vede solo il proprio, gli admin vedono tutti.
+-- (Prima erano leggibili da chiunque per una futura classifica: tolto il
+-- 2026-11-19, nome e cognome non devono essere pubblici.)
 drop policy if exists "profili leggibili da tutti" on public.profili;
-create policy "profili leggibili da tutti" on public.profili
-  for select using (true);
+drop policy if exists "profilo visibile al proprietario e agli admin" on public.profili;
+create policy "profilo visibile al proprietario e agli admin" on public.profili
+  for select using (auth.uid() = id or public.is_admin());
 
 -- Ognuno modifica solo il proprio profilo...
 drop policy if exists "profilo modificabile dal proprietario" on public.profili;
@@ -256,7 +259,8 @@ grant execute on function public.rifiuta_contributo(bigint, text) to authenticat
 -- TRUNCATE…), poi si concede solo il minimo necessario.
 revoke all on public.profili, public.preferiti, public.contributi, public.movimenti_punti, public.regole_punti from anon, authenticated;
 grant usage on schema public to anon, authenticated;
-grant select on public.profili, public.regole_punti to anon, authenticated;
+grant select on public.regole_punti to anon, authenticated;
+grant select on public.profili to authenticated;
 grant update (nome, cognome) on public.profili to authenticated;
 grant select, insert, delete on public.preferiti to authenticated;
 grant select, insert on public.contributi to authenticated;
@@ -282,6 +286,69 @@ drop policy if exists "foto visibili al proprietario e agli admin" on storage.ob
 create policy "foto visibili al proprietario e agli admin" on storage.objects
   for select to authenticated
   using (bucket_id = 'contributi' and ((storage.foldername(name))[1] = auth.uid()::text or public.is_admin()));
+
+drop policy if exists "foto eliminabili dal proprietario e dagli admin" on storage.objects;
+create policy "foto eliminabili dal proprietario e dagli admin" on storage.objects
+  for delete to authenticated
+  using (bucket_id = 'contributi' and ((storage.foldername(name))[1] = auth.uid()::text or public.is_admin()));
+
+-- ---------------------------------------------------------------------
+-- Cancellazione degli account
+-- ---------------------------------------------------------------------
+-- Cancellare la riga in auth.users elimina a cascata profilo, preferiti,
+-- contributi e movimenti punti. Le foto nello Storage non si possono
+-- cancellare da SQL: il sito le rimuove con l'API Storage prima di chiamare
+-- queste funzioni (vedi src/account/useAccount.js).
+
+-- Un admin cancellato non deve bloccare la cancellazione: le revisioni che
+-- aveva fatto restano, senza autore.
+alter table public.contributi drop constraint if exists contributi_revisionato_da_fkey;
+alter table public.contributi add constraint contributi_revisionato_da_fkey
+  foreign key (revisionato_da) references auth.users (id) on delete set null;
+
+-- Dal proprio account: "Elimina account".
+create or replace function public.elimina_mio_account()
+returns void language plpgsql security definer set search_path = public as $$
+begin
+  if auth.uid() is null then raise exception 'Accesso richiesto'; end if;
+  delete from auth.users where id = auth.uid();
+end $$;
+
+-- Dal pannello admin, per le richieste arrivate via email.
+create or replace function public.elimina_utente(utente uuid)
+returns void language plpgsql security definer set search_path = public as $$
+begin
+  if not public.is_admin() then raise exception 'Solo gli admin possono eliminare account'; end if;
+  delete from auth.users where id = utente;
+  if not found then raise exception 'Utente inesistente'; end if;
+end $$;
+
+-- ---------------------------------------------------------------------
+-- Iscritti (solo admin)
+-- ---------------------------------------------------------------------
+create or replace function public.elenco_iscritti()
+returns table (
+  id uuid, email text, nome text, cognome text, metodi text[],
+  creato_il timestamptz, ultimo_accesso timestamptz, confermato boolean, punti integer, ruolo text
+) language plpgsql stable security definer set search_path = public as $$
+begin
+  if not public.is_admin() then raise exception 'Solo gli admin possono vedere gli iscritti'; end if;
+  return query
+    select u.id, u.email::text, coalesce(p.nome, ''), coalesce(p.cognome, ''),
+           coalesce(array(select jsonb_array_elements_text(u.raw_app_meta_data -> 'providers')), array[]::text[]),
+           u.created_at, u.last_sign_in_at, u.email_confirmed_at is not null,
+           coalesce(p.punti, 0), coalesce(p.ruolo, 'utente')
+      from auth.users u
+      left join public.profili p on p.id = u.id
+     order by u.created_at desc;
+end $$;
+
+revoke execute on function public.elimina_mio_account() from public, anon;
+revoke execute on function public.elimina_utente(uuid) from public, anon;
+revoke execute on function public.elenco_iscritti() from public, anon;
+grant execute on function public.elimina_mio_account() to authenticated;
+grant execute on function public.elimina_utente(uuid) to authenticated;
+grant execute on function public.elenco_iscritti() to authenticated;
 
 -- ---------------------------------------------------------------------
 -- Diventare admin

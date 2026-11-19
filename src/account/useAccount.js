@@ -161,12 +161,44 @@ export function useAccount() {
   const approva = (id, punti) => esegui((c) => c.rpc("approva_contributo", { contributo: id, punti_override: punti ?? null }))
   const rifiuta = (id, nota) => esegui((c) => c.rpc("rifiuta_contributo", { contributo: id, nota: nota || null }))
   const regolePunti = () => esegui((c) => c.from("regole_punti").select("tipo, punti"))
+  const iscritti = () => esegui((c) => c.rpc("elenco_iscritti"))
+
+  // --- Cancellazione account ---
+  // Le foto dei contributi vanno tolte dallo Storage con la sua API (SQL non
+  // può farlo); poi la funzione SQL cancella l'utente e, a cascata, tutto il resto.
+  const rimuoviFoto = async (client, utenteId) => {
+    const elenco = await client.storage.from("contributi").list(utenteId, { limit: 1000 })
+    if (elenco.error) return elenco
+    const file = (elenco.data || []).filter((o) => o.id).map((o) => `${utenteId}/${o.name}`)
+    if (file.length === 0) return {}
+    return client.storage.from("contributi").remove(file)
+  }
+  const eliminaMioAccount = async () => {
+    if (!stato.utente) return { ok: false, errore: "non_autenticato" }
+    const id = stato.utente.id
+    const r = await esegui(async (c) => {
+      const foto = await rimuoviFoto(c, id)
+      if (foto?.error) return foto
+      return c.rpc("elimina_mio_account")
+    })
+    if (r.ok) {
+      const client = await avvia()
+      await client.auth.signOut({ scope: "local" })
+      aggiorna({ utente: null, profilo: null, preferiti: new Set(), contributi: [], eliminato: true })
+    }
+    return r
+  }
+  const eliminaUtente = (utenteId) => esegui(async (c) => {
+    const foto = await rimuoviFoto(c, utenteId)
+    if (foto?.error) return foto
+    return c.rpc("elimina_utente", { utente: utenteId })
+  })
 
   return {
     ...stato,
     admin: stato.profilo?.ruolo === "admin",
     avvia, registrati, accedi, accediCon, linkAccesso, recuperaPassword, nuovaPassword, esci, aggiornaNome,
     ePreferito, togglePreferito, inviaContributo,
-    contributiDaRevisionare, urlFoto, approva, rifiuta, regolePunti,
+    contributiDaRevisionare, urlFoto, approva, rifiuta, regolePunti, iscritti, eliminaUtente, eliminaMioAccount,
   }
 }

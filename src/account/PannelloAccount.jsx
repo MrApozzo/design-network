@@ -81,6 +81,7 @@ function ModuloAccesso({ account, ta }) {
 
   return (
     <form onSubmit={invia} style={{ display: "flex", flexDirection: "column", gap: 12 }}>
+      {account.eliminato && <Messaggio testo={ta.accountEliminato} />}
       <p style={stileTesto}>{ta.perche}</p>
       {modo !== "recupero" && (
         <div style={{ display: "flex", gap: 2, background: "#ececec", borderRadius: 14, padding: 2, alignSelf: "flex-start" }}>
@@ -217,6 +218,83 @@ function Revisione({ account, ta }) {
   )
 }
 
+function Iscritti({ account, ta }) {
+  const [lista, setLista] = useState(null)
+  const [errore, setErrore] = useState(null)
+  const [daEliminare, setDaEliminare] = useState(null)
+  const [invio, setInvio] = useState(false)
+  const carica = () => account.iscritti().then((r) => {
+    if (r.ok) { setLista(r.dati || []); setErrore(null) } else setErrore(messaggioErrore(ta, r.errore))
+  })
+  useEffect(() => { carica() }, []) // eslint-disable-line react-hooks/exhaustive-deps
+  const data = (d) => d ? new Date(d).toLocaleDateString() : ta.maiAcceduto
+  const elimina = async (id) => {
+    setInvio(true)
+    const r = await account.eliminaUtente(id)
+    setInvio(false); setDaEliminare(null)
+    if (r.ok) setLista((l) => l.filter((u) => u.id !== id)); else setErrore(messaggioErrore(ta, r.errore))
+  }
+  return (
+    <>
+      <div style={{ ...stileTitolo, display: "flex", justifyContent: "space-between" }}>
+        <span>{ta.iscritti}{lista ? ` (${lista.length})` : ""}</span>
+        <button type="button" onClick={carica} style={{ ...stileLink, fontSize: 10, textTransform: "none", letterSpacing: 0 }}>{ta.aggiornaLista}</button>
+      </div>
+      <Messaggio testo={errore} errore />
+      {lista && lista.length === 0 && <p style={stileTesto}>{ta.nessunIscritto}</p>}
+      {lista && lista.map((u) => {
+        const nome = [u.nome, u.cognome].filter(Boolean).join(" ")
+        const proprio = u.id === account.utente.id
+        return (
+          <div key={u.id} style={{ borderBottom: "1px solid #eee", padding: "9px 0", display: "flex", flexDirection: "column", gap: 3 }}>
+            <div style={{ display: "flex", justifyContent: "space-between", gap: 8, alignItems: "baseline" }}>
+              <span style={{ fontFamily: FONT, fontSize: 12, color: "#1a1a1a" }}>{nome || "—"}{u.ruolo === "admin" ? " · admin" : ""}</span>
+              {!proprio && daEliminare !== u.id && (
+                <button type="button" onClick={() => setDaEliminare(u.id)} style={{ ...stileLink, fontSize: 10 }}>{ta.elimina}</button>
+              )}
+            </div>
+            <div style={{ fontFamily: FONT, fontSize: 11, color: "#888", wordBreak: "break-all" }}>{u.email}</div>
+            <div style={{ fontFamily: MONO, fontSize: 10, color: "#aaa" }}>
+              {ta.iscrittoIl} {data(u.creato_il)} · {ta.ultimoAccesso} {data(u.ultimo_accesso)} · {(u.metodi || []).join(", ")}{u.confermato ? "" : ` · ${ta.nonConfermato}`} · {u.punti} pt
+            </div>
+            {daEliminare === u.id && (
+              <div style={{ display: "flex", flexDirection: "column", gap: 6, marginTop: 4 }}>
+                <span style={{ ...stileTesto, color: "#c0392b" }}>{ta.confermaEliminaUtente(nome || u.email)}</span>
+                <div style={{ display: "flex", gap: 8 }}>
+                  <button type="button" disabled={invio} onClick={() => elimina(u.id)} style={{ ...stileBottone, padding: "6px 12px", fontSize: 11, background: "#c0392b" }}>{invio ? ta.attendi : ta.eliminaDefinitivamente}</button>
+                  <button type="button" onClick={() => setDaEliminare(null)} style={{ ...stileBottone, padding: "6px 12px", fontSize: 11, background: "#eee", color: "#555" }}>{ta.annulla}</button>
+                </div>
+              </div>
+            )}
+          </div>
+        )
+      })}
+    </>
+  )
+}
+
+function EliminaAccount({ account, ta }) {
+  const [aperto, setAperto] = useState(false)
+  const [invio, setInvio] = useState(false)
+  const [errore, setErrore] = useState(null)
+  if (!aperto) return <button type="button" onClick={() => setAperto(true)} style={{ ...stileLink, marginTop: 14, display: "block", color: "#aaa" }}>{ta.eliminaAccount}</button>
+  return (
+    <div style={{ marginTop: 14, display: "flex", flexDirection: "column", gap: 8 }}>
+      <p style={{ ...stileTesto, color: "#c0392b" }}>{ta.eliminaAccountTesto}</p>
+      <div style={{ display: "flex", gap: 8 }}>
+        <button type="button" disabled={invio} onClick={async () => {
+          setInvio(true)
+          const r = await account.eliminaMioAccount()
+          setInvio(false)
+          if (!r.ok) setErrore(messaggioErrore(ta, r.errore))
+        }} style={{ ...stileBottone, padding: "6px 12px", fontSize: 11, background: "#c0392b" }}>{invio ? ta.attendi : ta.eliminaDefinitivamente}</button>
+        <button type="button" onClick={() => setAperto(false)} style={{ ...stileBottone, padding: "6px 12px", fontSize: 11, background: "#eee", color: "#555" }}>{ta.annulla}</button>
+      </div>
+      <Messaggio testo={errore} errore />
+    </div>
+  )
+}
+
 function Profilo({ account, ta, onApriElemento }) {
   const [modificaNome, setModificaNome] = useState(false)
   const [nome, setNome] = useState(account.profilo?.nome || "")
@@ -276,8 +354,10 @@ function Profilo({ account, ta, onApriElemento }) {
       ))}
 
       {account.admin && <Revisione account={account} ta={ta} />}
+      {account.admin && <Iscritti account={account} ta={ta} />}
 
       <button type="button" onClick={() => account.esci()} style={{ ...stileBottone, marginTop: 24, background: "#eee", color: "#555" }}>{ta.esci}</button>
+      <EliminaAccount account={account} ta={ta} />
     </div>
   )
 }
