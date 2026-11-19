@@ -20,11 +20,9 @@ Configurato e funzionante:
 - App Google **in produzione** (2026-11-19): Branding con link privacy `https://design.encyclopedie-visuelle.com/privacy/`, nessun logo (caricarne uno richiederebbe la verifica Google), solo ambiti email/profilo, nessuna verifica necessaria.
 - Informativa privacy (2026-11-19): `public/privacy/index.html`, IT + EN (`#en`), titolare Jacopo Maletti, contatto `privacy@encyclopedie-visuelle.com`. Il modulo di accesso/registrazione mostra sotto il pulsante un avviso con link (`privacyPrima`/`privacyLink`/`privacyHref` in `src/account/testi-account.js`); nessuna casella di consenso, perché la base giuridica è il contratto. Se cambiano fornitori o dati raccolti, aggiornare pagina e data.
 - Casella `privacy@encyclopedie-visuelle.com` creata su Aruba da Jacopo (2026-11-19): è il contatto per le richieste privacy indicato nell'informativa.
+- Account (2026-11-19, `supabase/schema.sql` già eseguito in produzione): profili privati (policy `profilo visibile al proprietario e agli admin`, nessun accesso anon). "Elimina account" nel profilo: il sito rimuove le foto da Storage (`contributi/<id>/`), poi `elimina_mio_account()` cancella l'utente e a cascata profilo, preferiti, contributi e punti. Jacopo è admin: nel suo profilo vede "Iscritti" (`elenco_iscritti()`: nome, email, date, metodi d'accesso, punti) con "Elimina" per le richieste via email (`elimina_utente()`). Funzioni admin e cancellazione non eseguibili da anon (verificato). Non testata end-to-end la cancellazione: serve un account di prova.
 
 Da fare:
-- Rendere admin Jacopo (profilo id `647b0afd-5868-4aa3-9f7a-49b0aff41d89`): nel SQL Editor `update public.profili set ruolo = 'admin' where id = '647b0afd-5868-4aa3-9f7a-49b0aff41d89';`
-- Cancellazione account: nel sito non c'è un comando; l'informativa promette la cancellazione entro 30 giorni su richiesta via email (da eseguire a mano in Supabase → Authentication → Users).
-- Profili: la policy `profili leggibili da tutti` rende nome, cognome e punti leggibili pubblicamente via API; l'informativa lo dichiara. Se non serve una classifica, restringerla.
 - Apple: escluso per scelta (2026-11-19), resta solo Google.
 - Ultime modifiche alla registrazione (nome+cognome, conferma email, occhio password, pulsante account in alto a destra nella barra laterale) sono sul branch: pubblicarle su main se non già fatto.
 - A fine configurazione revocare il token Supabase usato dalla sessione cloud e la chiave Resend "claude-setup" (Full access). La chiave di solo invio va lasciata.
