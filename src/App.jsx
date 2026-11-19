@@ -20,6 +20,7 @@ function viewportMobile() {
 }
 import relazioni from "./data/relazioni.json"
 import aziendeData from "./data/aziende.json"
+import FILTRI from "./data/filtri.json"
 import immaginiEsistentiArr from "./data/immagini_esistenti.json"
 import coloriImmaginiPrecalcolati from "./data/colori_immagini.json"
 import { percorsoEntitaSeo, SEO_ENTITA } from "./seo-percorsi.js"
@@ -70,6 +71,10 @@ const CLASSIFICA_AZIENDE = aziendeData.map(a => {
 const AZIENDE_PRINCIPALI = new Set(CLASSIFICA_AZIENDE.slice(0, 20).map(a => a.nome))
 
 const SOGLIA_DESIGNER_SECONDARIO = 2
+// Opacità di ciò che resta fuori da un filtro "Mostre e luoghi": trasparenza
+// e non un grigio fisso, così funziona anche su sfondi colorati.
+const ALPHA_FUORI_FILTRO = 0.1
+
 // Scala uniforme aggiuntiva solo mobile: nodi e relative etichette +50% a ogni livello di zoom.
 
 const STILE = {
@@ -530,6 +535,9 @@ function App() {
   // nuova navigazione (URL digitato, link, nuova tab) -> mostrarla.
   const [mostraIntroAllAvvio] = useState(() => {
     try {
+      if (new URLSearchParams(window.location.search).get("filtro")) return false
+    } catch { /* URL non leggibile: si procede come una visita normale */ }
+    try {
       const navigazione = performance.getEntriesByType?.("navigation")?.[0]
       if (navigazione?.type) return navigazione.type !== "reload"
       if (performance.navigation) return performance.navigation.type !== 1
@@ -696,6 +704,17 @@ function App() {
   const [legameEvidenziato, setLegameEvidenziato] = useState(null)
   const legameEvidenziatoRef = useRef(null)
   const [centraFn, setCentraFn] = useState(null)
+  // Filtri "Mostre e luoghi": id del filtro attivo (per l'interfaccia) e, nel
+  // ref, i nodi e le aziende da lasciare accesi (letti a ogni frame).
+  const [filtroAttivo, setFiltroAttivo] = useState(() => {
+    try {
+      const id = new URLSearchParams(window.location.search).get("filtro")
+      return FILTRI.some((f) => f.id === id) ? id : null
+    } catch { return null }
+  })
+  const filtroAttivoRef = useRef(null)
+  const [applicaFiltroFn, setApplicaFiltroFn] = useState(null)
+  const filtroInizialeGestitoRef = useRef(false)
   const hashInizialeGestitoRef = useRef(false)
   const [evidenziaLegameFn, setEvidenziaLegameFn] = useState(null)
   const [resetVistaFn, setResetVistaFn] = useState(null)
@@ -3110,6 +3129,8 @@ function App() {
         }
         if (categoriaAttiva) alphaTarget = nodiCategoriaAttiva.has(node) ? 1 : 0.2
         if (categoriaAttivaAz) alphaTarget = nomiAziendeCategoriaAttivaAz.has(attr.dati?.azienda) ? 1 : 0.2
+        // Filtro attivo: trasparenza (non grigio), così si adatta a qualsiasi sfondo.
+        if (filtroAttivoRef.current && !filtroAttivoRef.current.nodi.has(node)) alphaTarget = Math.min(alphaTarget, ALPHA_FUORI_FILTRO)
         animated[node].r = lerpOverlay(animated[node].r, rTarget, STILE.lerp_velocita)
         animated[node].alpha = lerpOverlay(animated[node].alpha, alphaTarget, STILE.lerp_velocita)
       })
@@ -3165,7 +3186,7 @@ function App() {
           if (designerAlphaAnimata < 0.01 && !azUnicaPos) return
           let edgeColor = edgeColorFrame
           let edgeWidth = edgeWidthFrame
-          let edgeAlpha = 1
+          let edgeAlpha = filtroAttivoRef.current && !filtroAttivoRef.current.nodi.has(target) ? ALPHA_FUORI_FILTRO * 0.5 : 1
           const prodottoInEvidenza = prodottoCliccato || prodottoHoverAttivo
           if (legameEvidenziatoRef.current) {
             const { a, b } = legameEvidenziatoRef.current
@@ -3427,6 +3448,7 @@ function App() {
           const haImgAz = imgAz && imgAz.complete && imgAz.naturalWidth > 0
           // Isolamento categoria su hover/click: stesso 1/0.2 della vista designer.
           const alphaAz = aziendaAlphaAnimata * alphaComparsaEtichetteNodi * (categoriaAttivaAz && !nomiAziendeCategoriaAttivaAz.has(nome) ? 0.2 : 1)
+            * (filtroAttivoRef.current && !filtroAttivoRef.current.aziende.has(nome) ? ALPHA_FUORI_FILTRO : 1)
           const alphaEtichettaAz = alphaAz
 
           ctx.globalAlpha = alphaAz
@@ -4231,6 +4253,78 @@ function App() {
 
     setAnimaTransizioneFn(() => animaTransizione)
     setRidisegnaFn(() => () => richiediDisegnoOverlay(18))
+    // Inquadra un insieme di nodi: stessa tecnica a differenze finite di
+    // centraFn (Sigma normalizza entrambi gli assi sul lato lungo del bbox),
+    // con due passaggi per il rapporto perché le orbite cambiano con lo zoom.
+    function inquadraNodi(lista, durata = 700) {
+      if (!lista.length) return
+      const cRect = container.getBoundingClientRect()
+      const sState = camera.getState()
+      const sinistra = isMobile ? 0 : Math.max(20, 240 * uiScaleInterno - 180)
+      const alto = isMobile && topBarRef.current ? topBarRef.current.getBoundingClientRect().height : 0
+      const areaW = (cRect.width - sinistra) * (isMobile ? 0.7 : 0.74)
+      const areaH = (cRect.height - alto) * (isMobile ? 0.58 : 0.72)
+      const misura = (stato) => {
+        camera.setState(stato)
+        renderer.refresh()
+        let x0 = Infinity, x1 = -Infinity, y0 = Infinity, y1 = -Infinity
+        lista.forEach((n) => {
+          const p = posizioneVisivaNodo(n, graph.getNodeAttributes(n))
+          x0 = Math.min(x0, p.x); x1 = Math.max(x1, p.x); y0 = Math.min(y0, p.y); y1 = Math.max(y1, p.y)
+        })
+        return { x0, x1, y0, y1, cx: (x0 + x1) / 2, cy: (y0 + y1) / 2 }
+      }
+      const ratioMin = ratioDaT(0.92)
+      const ratioMax = ratioDaT(0)
+      clamping = true
+      let ratio = sState.ratio
+      for (let i = 0; i < 3; i++) {
+        const b = misura({ ...sState, ratio })
+        const scala = Math.max((b.x1 - b.x0) / areaW, (b.y1 - b.y0) / areaH, 0.0001)
+        ratio = Math.min(ratioMax, Math.max(ratioMin, ratio * scala))
+      }
+      const b0 = misura({ ...sState, ratio })
+      const bX = misura({ ...sState, ratio, x: sState.x + 0.01 })
+      const bY = misura({ ...sState, ratio, y: sState.y + 0.01 })
+      const ppuX = (b0.cx - bX.cx) / 0.01
+      const ppuY = (b0.cy - bY.cy) / 0.01
+      const centroX = sinistra + (cRect.width - sinistra) / 2
+      const centroY = alto + (cRect.height - alto) / 2
+      const tX = sState.x + (ppuX ? (b0.cx - centroX) / ppuX : 0)
+      const tY = sState.y + (ppuY ? (b0.cy - centroY) / ppuY : 0)
+      camera.setState(sState)
+      renderer.refresh()
+      clamping = false
+      animaCamera({ ratio, x: tX, y: tY }, durata)
+    }
+
+    setApplicaFiltroFn(() => (filtro) => {
+      prodottoHoverAttivo = null; nodoHoverAttivo = null
+      designerCliccato = null; prodottoCliccato = null
+      nodoEvidenziatoRef.current = null; setNodoEvidenziato(null)
+      legameEvidenziatoRef.current = null; setLegameEvidenziato(null)
+      aziendaAttivaRef.current = null; setAziendaAttiva(null); aziendaGlobaleRef.current = false
+      graph.forEachEdge((edge, eAttr) => { if (eAttr.tipo === "relazione") graph.setEdgeAttribute(edge, "attivo", false) })
+      if (!filtro) {
+        filtroAttivoRef.current = null
+        richiediDisegnoOverlay(18)
+        return
+      }
+      const chiavi = new Set(filtro.prodotti)
+      const nodi = new Set()
+      const aziende = new Set()
+      graph.forEachNode((node, a) => {
+        if (a.tipo !== "prodotto" || !a.dati || !chiavi.has(`${a.dati.nome}|${a.dati.foto}`)) return
+        nodi.add(node)
+        graph.forEachNeighbor(node, (vicino, va) => { if (va.tipo === "designer") nodi.add(vicino) })
+        getAziende(a.dati).forEach((az) => aziende.add(az))
+      })
+      filtroAttivoRef.current = { id: filtro.id, nodi, aziende }
+      // In vista Designer contano anche i designer; nelle altre sono nascosti.
+      inquadraNodi([...nodi].filter((n) => vistaCorrenteRef.current === "designer" || graph.getNodeAttribute(n, "tipo") === "prodotto"))
+      richiediDisegnoOverlay(18)
+    })
+
     setCentraFn(() => (cercaNome, tipo, opzioni) => {
       const apriPannello = !opzioni || opzioni.apriPannello !== false
       const tPercent = opzioni && typeof opzioni.tPercent === "number" ? opzioni.tPercent : (tipo === "prodotto" ? 0.95 : tipo === "designer" ? 1 : 0.75)
@@ -5018,6 +5112,28 @@ function App() {
     return () => clearTimeout(id)
   }, [centraFn])
 
+  // Link condivisibili: ?filtro=<id> apre la mappa già filtrata.
+  useEffect(() => {
+    if (!applicaFiltroFn || filtroInizialeGestitoRef.current) return
+    const filtro = filtroAttivo && FILTRI.find((f) => f.id === filtroAttivo)
+    if (!filtro) return
+    // La guardia si attiva solo quando il filtro è applicato davvero: in
+    // sviluppo React monta gli effetti due volte e annulla il primo timer.
+    const timer = setTimeout(() => { filtroInizialeGestitoRef.current = true; applicaFiltroFn(filtro) }, 700)
+    return () => clearTimeout(timer)
+  }, [applicaFiltroFn]) // eslint-disable-line react-hooks/exhaustive-deps
+
+  function applicaFiltro(id) {
+    const filtro = id ? FILTRI.find((f) => f.id === id) : null
+    setFiltroAttivo(filtro ? filtro.id : null)
+    if (applicaFiltroFn) applicaFiltroFn(filtro || null)
+    try {
+      const url = new URL(window.location.href)
+      if (filtro) url.searchParams.set("filtro", filtro.id); else url.searchParams.delete("filtro")
+      window.history.replaceState(window.history.state, "", url.pathname + url.search + url.hash)
+    } catch { /* senza History API il filtro funziona lo stesso, solo senza link */ }
+  }
+
   // Selezionare un risultato di ricerca porta sempre alla vista giusta per
   // vederlo: un designer non è visibile in vista aziende (e viceversa), quindi
   // invece di limitare cosa si può cercare in base alla vista corrente, si
@@ -5185,7 +5301,62 @@ function App() {
             </div>
           </div>
         ))}
+        {FILTRI.length > 0 && renderMenuFiltri()}
       </>
+    )
+  }
+
+  function renderMenuFiltri() {
+    return (
+      <>
+        <div style={{ fontFamily: "Roboto, sans-serif", fontSize: 10, fontWeight: 600, color: "#aaa", letterSpacing: 1.5, textTransform: "uppercase", margin: "30px 0 4px" }}>
+          {t.filtriTitolo}
+        </div>
+        <div style={{ fontFamily: "Roboto, sans-serif", fontWeight: 300, fontSize: 11, color: "#aaa", lineHeight: 1.5, marginBottom: 6 }}>
+          {t.filtriIntro}
+        </div>
+        {FILTRI.map((f) => {
+          const attivo = filtroAttivo === f.id
+          return (
+            <button key={f.id} type="button" aria-pressed={attivo}
+              onClick={() => { applicaFiltro(attivo ? null : f.id); chiudiMenu() }}
+              style={{ display: "flex", width: "100%", alignItems: "flex-start", gap: 10, background: "none", border: "none", borderBottom: "1px solid #eee", padding: "14px 0", cursor: "pointer", textAlign: "left" }}>
+              <span aria-hidden="true" style={{ width: 7, height: 7, borderRadius: "50%", marginTop: 6, flexShrink: 0, background: attivo ? "#FF0707" : "transparent", border: attivo ? "none" : "1px solid #ccc" }} />
+              <span style={{ display: "flex", flexDirection: "column", gap: 3, minWidth: 0 }}>
+                <span style={{ fontFamily: "'Roboto Serif', serif", fontStyle: "italic", fontWeight: 500, fontSize: 13, color: "#1a1a1a" }}>{f.nome}</span>
+                <span style={{ fontFamily: "'Roboto Mono', monospace", fontSize: 10, color: "#aaa" }}>
+                  {(lingua === "en" ? f.sottotitolo_en : f.sottotitolo) || f.sottotitolo} · {t.filtroOggetti(f.prodotti.length)}
+                </span>
+              </span>
+            </button>
+          )
+        })}
+      </>
+    )
+  }
+
+  // Etichetta del filtro attivo in basso al centro, con la × per toglierlo.
+  function renderFiltroAttivo() {
+    const f = filtroAttivo && FILTRI.find((x) => x.id === filtroAttivo)
+    if (!f || schermataIniziale) return null
+    if (viewportMobile() && pannelloDesigner) return null
+    return (
+      <div role="status" style={{
+        position: "fixed", left: "50%", bottom: viewportMobile() ? 74 : 28, transform: "translateX(-50%)", zIndex: 25,
+        display: "flex", alignItems: "center", gap: 10, maxWidth: "calc(100vw - 32px)", boxSizing: "border-box",
+        background: "#1a1a1a", color: "#fff", borderRadius: 22, padding: "6px 6px 6px 14px",
+        boxShadow: "0 4px 20px rgba(0,0,0,0.18)", fontFamily: "'Roboto Mono', monospace", fontSize: 11,
+      }}>
+        <span aria-hidden="true" style={{ width: 7, height: 7, borderRadius: "50%", background: "#FF0707", flexShrink: 0 }} />
+        <span style={{ display: "flex", flexDirection: "column", minWidth: 0, lineHeight: 1.35 }}>
+          <span style={{ fontFamily: "'Roboto Serif', serif", fontStyle: "italic", fontWeight: 500, fontSize: 12, whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>{f.nome}</span>
+          <span style={{ fontSize: 9.5, color: "#aaa", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>
+            {(lingua === "en" ? f.sottotitolo_en : f.sottotitolo) || f.sottotitolo} · {t.filtroOggetti(f.prodotti.length)}
+          </span>
+        </span>
+        <button type="button" onClick={() => applicaFiltro(null)} aria-label={t.rimuoviFiltro} title={t.rimuoviFiltro}
+          style={{ width: 28, height: 28, flexShrink: 0, borderRadius: "50%", border: "none", cursor: "pointer", background: "rgba(255,255,255,0.14)", color: "#fff", fontSize: 15, lineHeight: "28px", padding: 0 }}>×</button>
+      </div>
     )
   }
 
@@ -5367,6 +5538,7 @@ function App() {
         .dn-scroll-hidden { scrollbar-width: none; }
         .dn-scroll-hidden::-webkit-scrollbar { display: none; }
       `}</style>
+      {renderFiltroAttivo()}
       {schermataIniziale && (
         <div style={{
           position: "fixed", inset: 0, zIndex: 1000,

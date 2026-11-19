@@ -1,0 +1,92 @@
+[
+  {
+    "id": "italy-the-new-domestic-landscape",
+    "tipo": "mostra",
+    "nome": "Italy: The New Domestic Landscape",
+    "sottotitolo": "MoMA, New York · 1972",
+    "sottotitolo_en": "MoMA, New York · 1972",
+    "luogo": "The Museum of Modern Art, New York",
+    "dal": "1972-05-26",
+    "al": "1972-09-11",
+    "descrizione": "La mostra curata da Emilio Ambasz che presentò al mondo il design italiano: 180 oggetti e 11 ambienti di oltre 100 progettisti. Qui gli oggetti esposti presenti nella mappa.",
+    "descrizione_en": "The exhibition curated by Emilio Ambasz that introduced Italian design to the world: 180 objects and 11 environments by more than 100 designers. Shown here: the exhibited objects that are on the map.",
+    "url": "https://www.moma.org/calendar/exhibitions/1783",
+    "fonti": [
+      "https://www.moma.org/documents/moma_catalogue_1783_300062429.pdf"
+    ],
+    "prodotti": [
+      "Arco|castiglioni-arco.jpg",
+      "Toio|castiglioni-toio.jpg",
+      "Mezzadro|castiglioni-mezzadro.jpg",
+      "Valentine|sottsass-valentine.jpg",
+      "Selene|magistretti-selene.jpg",
+      "Eclisse|magistretti-eclisse.jpg",
+      "Lambda|zanuso-lambda.jpg",
+      "Grillo|zanuso-grillo.jpg",
+      "Tube Chair|colombo-tube-chair.jpg",
+      "Spider|colombo-spider.jpg",
+      "Pipistrello|aulenti-pipistrello.jpg",
+      "April|aulenti-april.jpg",
+      "Sacco|gatti-sacco.jpg",
+      "Superonda|branzi-superonda.jpg",
+      "Mies|branzi-mies.jpg",
+      "TS 502|zanuso-ts502.jpg",
+      "Boalum|castiglioni-boalum.jpg",
+      "Camaleonda|bellini-camaleonda.jpg",
+      "Plia|piretti-plia.jpg",
+      "Serpentone|boeri-serpentone.jpg",
+      "Plona|piretti-plona.jpg",
+      "4801|colombo-4801.jpg",
+      "Vicario|magistretti-vicario.jpg",
+      "Sfericlock|bonetto-sfericlock.jpg",
+      "Boomerang|bonetto-boomerang.jpg",
+      "Melaina|bonetto-melaina.jpg",
+      "Minikitchen|colombo-minikitchen.jpg",
+      "Additional System|colombo-additional-system.jpg",
+      "Poker|colombo-poker.jpg",
+      "Square Plastic System|colombo-square-plastic-system.jpg",
+      "Moloch|pesce-moloch.jpg",
+      "Uno sull'altro|lapietra-uno-sull-altro.jpg",
+      "Bobolungo|boeri-bobolungo.jpg",
+      "Bambù|mari-bambu.jpg",
+      "Utopia|vigo-utopia.jpg",
+      "Asteroide|sottsass-asteroide.jpg",
+      "Yantra|sottsass-yantra.jpg",
+      "Safari|branzi-safari.jpg",
+      "Sanremo|branzi-sanremo.jpg",
+      "925|scarpa-925.jpg",
+      "Ciprea|scarpa-ciprea.jpg",
+      "Pratone|ceretti-pratone.jpg",
+      "Center Line|sambonet-centerline.jpg",
+      "UP5_6 (La Mamma)|pesce-up5-6-la-mamma.jpg",
+      "Universale 4860|colombo-universale-4860.jpg",
+      "Soriana Armchair|scarpa-soriana-armchair.jpg"
+    ]
+  },
+  {
+    "id": "seth-and-mannis-ibiza",
+    "tipo": "luogo",
+    "nome": "Seth & Manni's",
+    "sottotitolo": "Bar Memphis · Ibiza",
+    "sottotitolo_en": "Memphis bar · Ibiza",
+    "luogo": "Marina Botafoch, Ibiza",
+    "dal": "2026-09",
+    "descrizione": "Il bar e ristorante di Seth Troxler e Manfredi Romano (DJ Tennis), arredato da Toby Gauley con Memphis Milano.",
+    "descrizione_en": "Seth Troxler and Manfredi Romano's (DJ Tennis) bar and restaurant, furnished by Toby Gauley with Memphis Milano.",
+    "url": "https://www.yatzer.com/sethandmannis-ibiza-memphis-style",
+    "fonti": [
+      "https://www.yatzer.com/sethandmannis-ibiza-memphis-style",
+      "https://www.collater.al/en/memphis-comes-to-ibiza-with-seth-mannis-music-dj-bar/",
+      "https://www.nachodorado.com/blog-es/seth-mannis-ibiza-musica-gastronomia-diseno-memphis"
+    ],
+    "prodotti": [
+      "Carlton|sottsass-carlton.jpg",
+      "Casablanca|sottsass-casablanca.jpg",
+      "First|delucchi-first.jpg",
+      "Diva|sottsass-diva.jpg"
+    ],
+    "non_in_catalogo": [
+      "Rossella (Marco Zanini, 1985)"
+    ]
+  }
+]
