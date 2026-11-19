@@ -1,4 +1,4 @@
-# Design Network
+# Design — encyclopédie visuelle
 
 Mappa interattiva del design, realizzata con React, Vite, Sigma.js e graphology.
 

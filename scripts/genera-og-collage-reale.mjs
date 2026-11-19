@@ -2,7 +2,7 @@ import { chromium } from 'playwright'
 import sharp from 'sharp'
 
 const sourceUrl = process.env.OG_SOURCE_URL || 'https://design.encyclopedie-visuelle.com/'
-const output = process.env.OG_OUTPUT || 'public/og-design-network.png'
+const output = process.env.OG_OUTPUT || 'public/og-encyclopedie-visuelle.png'
 const width = 1200
 const height = 630
 const gutter = 10

@@ -6,7 +6,7 @@ const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..')
 const DIST = join(ROOT, 'dist')
 const DATA = join(ROOT, 'src', 'data')
 const ORIGIN = 'https://design.encyclopedie-visuelle.com'
-const SITE_NAME = 'Design Network'
+const SITE_NAME = 'Design — encyclopédie visuelle'
 const DEFAULT_DESCRIPTION = 'Esplora designer, oggetti, aziende e correnti attraverso una mappa interattiva della storia del design.'
 
 const load = async (name) => JSON.parse(await readFile(join(DATA, `${name}.json`), 'utf8'))
@@ -33,7 +33,7 @@ const slugBase = (value) => {
 const asList = (value) => Array.isArray(value) ? value : value ? [value] : []
 const yearRange = (start, end) => [start, end].filter(Boolean).join('–')
 const url = (path) => `${ORIGIN}${path}`
-const imageUrl = (file) => file && availableImages.has(file) ? url(`/immagini/${encodeURIComponent(file)}`) : url('/og-design-network.png')
+const imageUrl = (file) => file && availableImages.has(file) ? url(`/immagini/${encodeURIComponent(file)}`) : url('/og-encyclopedie-visuelle.png')
 
 function assignSlugs(items) {
   const used = new Map()
@@ -74,9 +74,9 @@ function jsonLd(data) {
 }
 
 function layout({ title, description, canonical, type, image, body, schema }) {
-  const fullTitle = title === SITE_NAME ? `${SITE_NAME} — Mappa interattiva della storia del design` : `${title} | ${SITE_NAME}`
+  const fullTitle = title === SITE_NAME ? `${SITE_NAME} · Mappa interattiva della storia del design` : `${title} | ${SITE_NAME}`
   const safeDescription = shorten(description || DEFAULT_DESCRIPTION)
-  const imageAbsolute = image || url('/og-design-network.png')
+  const imageAbsolute = image || url('/og-encyclopedie-visuelle.png')
   return `<!doctype html>
 <html lang="it"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>${esc(fullTitle)}</title><meta name="description" content="${esc(safeDescription)}"><meta name="robots" content="index, follow, max-image-preview:large">
@@ -85,9 +85,9 @@ function layout({ title, description, canonical, type, image, body, schema }) {
 <meta property="og:title" content="${esc(fullTitle)}"><meta property="og:description" content="${esc(safeDescription)}"><meta property="og:url" content="${esc(canonical)}"><meta property="og:image" content="${esc(imageAbsolute)}">
 <meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="${esc(fullTitle)}"><meta name="twitter:description" content="${esc(safeDescription)}"><meta name="twitter:image" content="${esc(imageAbsolute)}">
 <style>${css}</style><script type="application/ld+json">${jsonLd(schema)}</script></head>
-<body><header><a class="brand" href="/">Design Network</a><a class="map-link" href="/">Apri la mappa interattiva</a></header>
+<body><header><a class="brand" href="/">${SITE_NAME}</a><a class="map-link" href="/">Apri la mappa interattiva</a></header>
 <main><div class="eyebrow">${esc(type)}</div>${body}</main>
-<footer>Design Network — Archivio visuale della storia del design</footer></body></html>`
+<footer>${SITE_NAME} · Archivio visuale della storia del design</footer></body></html>`
 }
 
 const cards = (items) => items.length ? `<ul class="grid">${items.map(({ href, title, note }) => `<li><a href="${esc(href)}">${esc(title)}${note ? `<small>${esc(note)}</small>` : ''}</a></li>`).join('')}</ul>` : ''
@@ -158,5 +158,5 @@ const sitemapPaths = ['/', ...pages.map(({ path }) => path)]
 const sitemap = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${sitemapPaths.map((path) => `  <url><loc>${esc(url(path))}</loc><lastmod>${today}</lastmod></url>`).join('\n')}\n</urlset>\n`
 await writeFile(join(DIST, 'sitemap.xml'), sitemap, 'utf8')
 await writeFile(join(DIST, 'robots.txt'), `User-agent: *\nAllow: /\n\nSitemap: ${url('/sitemap.xml')}\n`, 'utf8')
-await copyFile(join(ROOT, 'public', 'og-design-network.png'), join(DIST, 'og-design-network.png'))
+await copyFile(join(ROOT, 'public', 'og-encyclopedie-visuelle.png'), join(DIST, 'og-encyclopedie-visuelle.png'))
 console.log(`SEO: generate ${pages.length} pagine indicizzabili e sitemap con ${sitemapPaths.length} URL.`)

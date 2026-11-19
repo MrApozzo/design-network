@@ -3,160 +3,412 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Informativa privacy — Design Network</title>
-  <meta name="description" content="Come Design Network tratta i dati personali di chi visita il sito e di chi crea un account." />
+  <title>Informativa privacy e cookie · Design — encyclopédie visuelle</title>
+  <meta name="description" content="Quali dati personali raccoglie Design — encyclopédie visuelle, perché, per quanto tempo, quali cookie usa e come esercitare i tuoi diritti." />
   <link rel="canonical" href="https://design.encyclopedie-visuelle.com/privacy/" />
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <style>
     :root{color-scheme:light;font-family:Roboto,Arial,sans-serif;background:#e8e8e8;color:#171717}
     *{box-sizing:border-box}
     body{margin:0;line-height:1.65;font-weight:300}
-    header,main,footer{width:min(760px,calc(100% - 32px));margin:auto}
+    header,main,footer{width:min(780px,calc(100% - 32px));margin:auto}
     header{padding:28px 0 8px;display:flex;justify-content:space-between;align-items:baseline;gap:16px;flex-wrap:wrap}
-    header a{font-family:"Roboto Mono",ui-monospace,monospace;font-size:12px;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;color:#555}
+    header a,.mono{font-family:"Roboto Mono",ui-monospace,monospace}
+    header a{font-size:12px;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;color:#555}
     header a:hover{color:#171717}
     nav a+a{margin-left:14px}
     h1{font-size:30px;font-weight:600;line-height:1.2;margin:28px 0 6px}
     h2{font-size:17px;font-weight:600;margin:34px 0 8px}
-    p,li{font-size:15px}
+    h3{font-size:15px;font-weight:600;margin:20px 0 4px}
+    p,li,td,th{font-size:15px}
     ul{padding-left:20px}
     li{margin:4px 0}
     a{color:inherit;text-underline-offset:2px}
-    .data{font-family:"Roboto Mono",ui-monospace,monospace;font-size:12px;color:#666;margin:0 0 20px}
+    code{font-family:"Roboto Mono",ui-monospace,monospace;font-size:12.5px;background:#f1f1f1;padding:1px 5px;border-radius:4px;overflow-wrap:anywhere}
+    .data{font-size:12px;color:#666;margin:0 0 20px}
+    .sintesi{background:#171717;color:#f4f4f4;border-radius:14px;padding:6px 24px 16px;margin:0 0 22px}
+    .sintesi h2{color:#fff}
     section{background:#fff;border-radius:14px;padding:6px 24px 22px;margin:0 0 22px}
+    .tabella{overflow-x:auto;margin:10px 0}
+    table{border-collapse:collapse;width:100%;min-width:520px}
+    th,td{text-align:left;vertical-align:top;padding:8px 10px;border-bottom:1px solid #e6e6e6}
+    th{font-weight:600;font-size:13px;color:#555}
+    td{font-size:14px}
+    ol.indice{columns:2;column-gap:28px;padding-left:22px;margin:8px 0 0}
+    ol.indice li{font-size:14px;break-inside:avoid}
     hr{border:none;border-top:1px solid #d6d6d6;margin:48px 0}
     footer{padding:10px 0 48px;font-size:13px;color:#666}
-    @media (max-width:520px){section{padding:4px 16px 18px}h1{font-size:25px}}
+    @media (max-width:560px){section,.sintesi{padding:4px 16px 18px}h1{font-size:25px}ol.indice{columns:1}}
   </style>
 </head>
 <body>
   <header>
-    <a href="/">← Design Network</a>
+    <a href="/">← Design — encyclopédie visuelle</a>
     <nav><a href="#it">Italiano</a><a href="#en">English</a></nav>
   </header>
 
   <main>
+    <!-- ========================= ITALIANO ========================= -->
     <article id="it" lang="it">
-      <h1>Informativa privacy</h1>
-      <p class="data">Ultimo aggiornamento: 19 novembre 2026</p>
+      <h1>Informativa privacy e cookie</h1>
+      <p class="data mono">Ultimo aggiornamento: 19 novembre 2026</p>
+
+      <div class="sintesi">
+        <h2>In breve</h2>
+        <ul>
+          <li>Puoi esplorare tutto il sito senza account: in quel caso non raccogliamo dati che ti identificano.</li>
+          <li>Il sito <strong>non usa cookie</strong> di profilazione, pubblicitari o di statistica. Per questo non trovi alcun banner dei cookie.</li>
+          <li>Se crei un account trattiamo solo i dati necessari: nome, cognome, email, preferiti, contributi e punti.</li>
+          <li>Non vendiamo i dati, non facciamo pubblicità e non costruiamo profili.</li>
+          <li>Puoi chiedere in qualsiasi momento di vedere, correggere o cancellare i tuoi dati.</li>
+        </ul>
+      </div>
+
       <section>
-        <h2>Chi tratta i dati</h2>
-        <p>Titolare del trattamento è Jacopo Maletti, curatore di Design Network (design.encyclopedie-visuelle.com). Per qualsiasi domanda o richiesta sui tuoi dati scrivi a <a href="mailto:privacy@encyclopedie-visuelle.com">privacy@encyclopedie-visuelle.com</a>.</p>
+        <h2>Indice</h2>
+        <ol class="indice">
+          <li><a href="#it-ambito">A cosa si applica</a></li>
+          <li><a href="#it-visitatori">Dati di chi visita il sito</a></li>
+          <li><a href="#it-account">Dati di chi crea un account</a></li>
+          <li><a href="#it-finalita">Finalità e basi giuridiche</a></li>
+          <li><a href="#it-cookie">Cookie e memoria del browser</a></li>
+          <li><a href="#it-obbligo">Dati obbligatori e facoltativi</a></li>
+          <li><a href="#it-visibilita">Cosa vedono gli altri</a></li>
+          <li><a href="#it-sicurezza">Come proteggiamo i dati</a></li>
+          <li><a href="#it-fornitori">Fornitori</a></li>
+          <li><a href="#it-trasferimenti">Trasferimenti fuori dall'UE</a></li>
+          <li><a href="#it-conservazione">Per quanto tempo</a></li>
+          <li><a href="#it-diritti">I tuoi diritti</a></li>
+          <li><a href="#it-minori">Minori</a></li>
+          <li><a href="#it-automatizzate">Decisioni automatizzate</a></li>
+          <li><a href="#it-modifiche">Modifiche</a></li>
+          <li><a href="#it-titolare">Titolare e contatti</a></li>
+        </ol>
+      </section>
 
-        <h2>Se visiti il sito senza account</h2>
+      <section>
+        <h2 id="it-ambito">1. A cosa si applica</h2>
+        <p>Questa informativa, scritta ai sensi degli articoli 13 e 14 del Regolamento (UE) 2016/679 («GDPR») e del Codice privacy italiano (d.lgs. 196/2003), descrive come vengono trattati i dati personali di chi visita <strong>design.encyclopedie-visuelle.com</strong>, una mappa interattiva della storia del design, e di chi vi crea un account. Non si applica ai siti esterni a cui il sito rimanda (per esempio le fonti delle immagini o le pagine dei produttori), che hanno proprie informative.</p>
+
+        <h2 id="it-visitatori">2. Dati di chi visita il sito</h2>
+        <h3>Statistiche di visita</h3>
+        <p>Per sapere quante persone usano il sito e quali pagine guardano usiamo <strong>Umami</strong>, un servizio di statistiche rispettoso della privacy. Umami non usa cookie, non salva il tuo indirizzo IP e non ti segue su altri siti: registra in forma aggregata la pagina visitata, il sito di provenienza, il tipo di dispositivo e di browser, la lingua e il paese approssimativo. Non è possibile risalire a te da questi dati.</p>
+        <h3>Dati tecnici di connessione</h3>
+        <p>Come succede per qualsiasi sito, quando apri una pagina il tuo browser comunica automaticamente alcune informazioni: indirizzo IP, data e ora della richiesta, pagina richiesta, browser e sistema operativo. Il servizio che ospita il sito (GitHub Pages) le registra nei propri log per garantire funzionamento e sicurezza. Non le usiamo per identificarti.</p>
+        <h3>Caratteri tipografici</h3>
+        <p>I caratteri Roboto e Roboto Mono vengono caricati da <strong>Google Fonts</strong>. Per consegnarli, i server di Google ricevono il tuo indirizzo IP e i dati tecnici del browser. Google dichiara di non usare questi dati per profilarti e di non impostare cookie per questo servizio.</p>
+        <h3>Modulo «Contribuisci»</h3>
+        <p>Se segnali una correzione o un'aggiunta, trattiamo il testo che scrivi, l'eventuale link alla fonte e l'eventuale fotografia. Oggi questa funzione richiede un account (vedi sezione 3).</p>
+
+        <h2 id="it-account">3. Dati di chi crea un account</h2>
+        <h3>Registrazione con email</h3>
+        <p>Ti chiediamo nome, cognome, indirizzo email e una password. La password non viene mai salvata in chiaro: ne conserviamo solo una versione cifrata in modo irreversibile (hash), che nemmeno noi possiamo leggere.</p>
+        <h3>Accesso con Google</h3>
+        <p>Se scegli «Continua con Google», Google ci comunica il tuo nome, cognome, indirizzo email e l'immagine del profilo, e conferma che l'email è verificata. Non riceviamo la tua password Google né accediamo ad altri dati del tuo account Google (contatti, email, documenti). Se usi lo stesso indirizzo email con cui ti eri già registrato, i due metodi di accesso vengono collegati allo stesso profilo.</p>
+        <h3>Uso del sito con l'account</h3>
         <ul>
-          <li><strong>Statistiche di visita</strong>: usiamo Umami, che conta le pagine viste in forma aggregata senza cookie e senza identificarti.</li>
-          <li><strong>Dati tecnici</strong>: come ogni sito, il servizio di hosting (GitHub Pages) registra indirizzo IP e dati del browser nei log del server, per sicurezza e funzionamento. I caratteri tipografici sono caricati da Google Fonts, che riceve il tuo indirizzo IP.</li>
-          <li><strong>Memoria del browser</strong>: salviamo nel tuo browser (localStorage) solo preferenze di navigazione, come la vista scelta e la posizione della mappa. Non sono cookie di profilazione e non lasciano il tuo dispositivo.</li>
+          <li><strong>Preferiti</strong>: designer, prodotti e aziende che salvi con il cuore.</li>
+          <li><strong>Contributi</strong>: tipo di contributo, elemento a cui si riferisce, descrizione, link alla fonte, fotografia facoltativa (massimo 5 MB), stato della revisione, eventuale nota del revisore, date di invio e revisione.</li>
+          <li><strong>Punti community</strong>: il saldo e lo storico dei punti, assegnati solo quando un contributo viene approvato.</li>
+          <li><strong>Dati di accesso</strong>: data di registrazione, data dell'ultimo accesso e dati tecnici registrati dal servizio di autenticazione (per esempio l'indirizzo IP del tentativo di accesso), usati per sicurezza e per prevenire abusi.</li>
+        </ul>
+        <h3>Email di servizio</h3>
+        <p>Ti scriviamo solo per motivi legati all'account: conferma della registrazione, link di accesso senza password, reimpostazione della password e, se necessario, comunicazioni importanti su questa informativa o sul servizio. Non inviamo newsletter né messaggi promozionali.</p>
+        <h3>Se ci scrivi</h3>
+        <p>Se ci contatti via email trattiamo il tuo indirizzo e il contenuto del messaggio per risponderti.</p>
+
+        <h2 id="it-finalita">4. Finalità e basi giuridiche</h2>
+        <div class="tabella"><table>
+          <thead><tr><th>Perché</th><th>Quali dati</th><th>Base giuridica</th></tr></thead>
+          <tbody>
+            <tr><td>Mostrarti il sito e farlo funzionare</td><td>Dati tecnici di connessione, preferenze salvate nel browser</td><td>Legittimo interesse a offrire un sito funzionante (art. 6.1.f)</td></tr>
+            <tr><td>Capire come viene usato il sito, in forma anonima</td><td>Statistiche aggregate di Umami</td><td>Legittimo interesse a migliorare il sito (art. 6.1.f)</td></tr>
+            <tr><td>Creare e gestire l'account, farti accedere</td><td>Nome, cognome, email, password cifrata, dati da Google</td><td>Esecuzione del servizio che richiedi (art. 6.1.b)</td></tr>
+            <tr><td>Salvare preferiti, ricevere e revisionare contributi, assegnare punti</td><td>Preferiti, contributi, fotografie, punti</td><td>Esecuzione del servizio che richiedi (art. 6.1.b)</td></tr>
+            <tr><td>Inviarti le email di servizio</td><td>Email, nome</td><td>Esecuzione del servizio che richiedi (art. 6.1.b)</td></tr>
+            <tr><td>Sicurezza, prevenzione di abusi e frodi</td><td>Dati di accesso, log tecnici</td><td>Legittimo interesse alla sicurezza (art. 6.1.f)</td></tr>
+            <tr><td>Rispondere ai tuoi messaggi e alle richieste privacy</td><td>Email, contenuto del messaggio</td><td>Esecuzione di misure richieste da te (art. 6.1.b) e obbligo di legge (art. 6.1.c)</td></tr>
+            <tr><td>Difendere i nostri diritti in caso di contestazioni</td><td>I dati strettamente necessari</td><td>Legittimo interesse (art. 6.1.f)</td></tr>
+          </tbody>
+        </table></div>
+        <p>Quando la base è il legittimo interesse abbiamo verificato che non prevalga sui tuoi diritti: si tratta di trattamenti minimi, attesi da chi usa un sito web e, dove possibile, anonimi.</p>
+
+        <h2 id="it-cookie">5. Cookie e memoria del browser</h2>
+        <p>I cookie sono piccoli file che un sito salva nel tuo browser. <strong>Questo sito non installa cookie</strong>: né tecnici, né di statistica, né di profilazione, né di terze parti. Lo abbiamo verificato sulle risposte del sito e dei servizi che carica (Google Fonts e Umami).</p>
+        <p>Il sito usa invece la <strong>memoria locale del browser</strong> (localStorage), che resta sul tuo dispositivo e non viene inviata a noi a ogni visita. La usa solo per ciò che è strettamente necessario al funzionamento richiesto da te, per cui la legge non richiede il consenso:</p>
+        <div class="tabella"><table>
+          <thead><tr><th>Nome</th><th>A cosa serve</th><th>Durata</th></tr></thead>
+          <tbody>
+            <tr><td><code>dn-vista</code></td><td>Ricorda la vista scelta (Designer, Aziende, Prodotti)</td><td>Finché non cancelli i dati del sito</td></tr>
+            <tr><td><code>dn-timeline</code></td><td>Ricorda se la linea del tempo è attiva</td><td>Finché non cancelli i dati del sito</td></tr>
+            <tr><td><code>dn-camera</code></td><td>Ricorda la posizione e lo zoom della mappa</td><td>Finché non cancelli i dati del sito</td></tr>
+            <tr><td><code>sb-…-auth-token</code></td><td>Solo se accedi: mantiene aperta la tua sessione</td><td>Fino a quando esci dall'account</td></tr>
+          </tbody>
+        </table></div>
+        <p>Puoi cancellare questi dati in qualsiasi momento dalle impostazioni del browser («Cancella dati dei siti»). Il sito continuerà a funzionare: ripartirà dalla vista iniziale e, se avevi un account, ti chiederà di accedere di nuovo.</p>
+        <p><strong>Accesso con Google.</strong> Se scegli di accedere con Google, la pagina di accesso è mostrata da Google sul proprio dominio (accounts.google.com) e può usare i cookie di Google, secondo l'<a href="https://policies.google.com/technologies/cookies?hl=it">informativa sui cookie di Google</a>. Questo avviene solo se lo scegli tu.</p>
+        <p>Se in futuro introducessimo cookie non necessari, ti chiederemmo prima il consenso con un apposito avviso.</p>
+
+        <h2 id="it-obbligo">6. Dati obbligatori e facoltativi</h2>
+        <p>Per creare un account sono necessari nome, cognome, email e password (oppure un account Google): senza di essi non possiamo offrirti l'account. Link alla fonte e fotografia nei contributi sono facoltativi. Navigare il sito non richiede alcun dato.</p>
+
+        <h2 id="it-visibilita">7. Cosa vedono gli altri</h2>
+        <ul>
+          <li><strong>Nome, cognome e punti community</strong> possono essere visibili ad altri utenti, per esempio in una futura classifica della community. Se preferisci, puoi modificare nome e cognome dal tuo account (per esempio usando solo l'iniziale del cognome).</li>
+          <li><strong>Email, preferiti, contributi, fotografie e storico dei punti</strong> sono visibili solo a te e alle persone incaricate di revisionare i contributi.</li>
+          <li>Quando un contributo viene approvato, l'informazione che hai proposto può essere integrata nei contenuti pubblici dell'enciclopedia, senza indicare il tuo nome.</li>
         </ul>
 
-        <h2>Se crei un account</h2>
+        <h2 id="it-sicurezza">8. Come proteggiamo i dati</h2>
         <ul>
-          <li><strong>Dati dell'account</strong>: nome, cognome, email e password (conservata solo in forma cifrata). Se accedi con Google riceviamo da Google nome, cognome, email e immagine del profilo; non riceviamo la tua password Google.</li>
-          <li><strong>Attività</strong>: i preferiti che salvi, i contributi che invii (testo, link alla fonte e foto facoltativa), il loro stato di revisione e i punti community.</li>
-          <li><strong>Sessione</strong>: un token di accesso salvato nel browser per mantenerti connesso.</li>
-          <li><strong>Visibilità</strong>: nome, cognome e punti community possono essere visibili ad altri utenti (per esempio in una classifica). Email, preferiti, contributi e foto restano visibili solo a te e a chi revisiona i contributi.</li>
+          <li>Tutte le comunicazioni con il sito e con i servizi di account sono cifrate (HTTPS).</li>
+          <li>Le password sono salvate solo come hash e non sono mai visibili, nemmeno a noi.</li>
+          <li>Il database applica regole di accesso riga per riga: ogni utente può leggere e modificare solo i propri preferiti e contributi, e i punti possono essere assegnati solo da un revisore.</li>
+          <li>Le fotografie caricate sono in un archivio privato, accessibile solo a chi le ha inviate e ai revisori.</li>
+          <li>L'accesso amministrativo ai servizi è limitato alle persone che gestiscono il sito.</li>
         </ul>
+        <p>Nessun sistema è sicuro al 100%: se dovesse verificarsi una violazione che mette a rischio i tuoi dati, la notificheremo al Garante e, quando richiesto, a te.</p>
 
-        <h2>Perché e su quale base</h2>
+        <h2 id="it-fornitori">9. Fornitori</h2>
+        <p>Per far funzionare il sito ci affidiamo ad alcuni fornitori, che trattano i dati per nostro conto come responsabili del trattamento e solo per le finalità indicate:</p>
+        <div class="tabella"><table>
+          <thead><tr><th>Fornitore</th><th>Cosa fa</th><th>Dove</th></tr></thead>
+          <tbody>
+            <tr><td><a href="https://supabase.com/privacy">Supabase</a></td><td>Database, account, autenticazione, archivio delle fotografie</td><td>Server nell'UE (Irlanda)</td></tr>
+            <tr><td><a href="https://resend.com/legal/privacy-policy">Resend</a></td><td>Invio delle email di servizio</td><td>Invio dall'UE (Irlanda); società negli USA</td></tr>
+            <tr><td><a href="https://policies.google.com/privacy?hl=it">Google</a></td><td>Accesso con Google (solo se lo scegli) e caratteri tipografici</td><td>UE e USA</td></tr>
+            <tr><td><a href="https://docs.github.com/it/site-policy/privacy-policies/github-general-privacy-statement">GitHub</a></td><td>Hosting del sito (GitHub Pages)</td><td>USA</td></tr>
+            <tr><td><a href="https://umami.is/privacy">Umami</a></td><td>Statistiche di visita anonime</td><td>UE e USA</td></tr>
+          </tbody>
+        </table></div>
+        <p>I dati non vengono comunicati ad altri soggetti, salvo quando lo impone la legge o un'autorità.</p>
+
+        <h2 id="it-trasferimenti">10. Trasferimenti fuori dall'UE</h2>
+        <p>Alcuni fornitori hanno sede negli Stati Uniti o possono trattare dati da lì. In questi casi il trasferimento avviene solo con le garanzie previste dal GDPR: l'adesione del fornitore all'<em>EU-U.S. Data Privacy Framework</em> (decisione di adeguatezza della Commissione europea del 10 luglio 2023) oppure le clausole contrattuali standard approvate dalla Commissione europea.</p>
+
+        <h2 id="it-conservazione">11. Per quanto tempo</h2>
+        <div class="tabella"><table>
+          <thead><tr><th>Dati</th><th>Conservazione</th></tr></thead>
+          <tbody>
+            <tr><td>Account, preferiti e punti</td><td>Finché l'account esiste. Se chiedi di cancellarlo, li eliminiamo entro 30 giorni.</td></tr>
+            <tr><td>Contributi e fotografie</td><td>Finché l'account esiste; cancellati insieme all'account. Le informazioni approvate possono restare nell'enciclopedia senza il tuo nome.</td></tr>
+            <tr><td>Account mai confermati</td><td>Possono essere eliminati dopo alcuni mesi senza conferma.</td></tr>
+            <tr><td>Log tecnici e di accesso</td><td>Per il tempo previsto dai fornitori, in genere da pochi giorni a qualche mese.</td></tr>
+            <tr><td>Statistiche di Umami</td><td>Solo in forma aggregata e anonima.</td></tr>
+            <tr><td>Messaggi e richieste privacy</td><td>Il tempo necessario a gestirli e fino a 2 anni per dimostrare di averli gestiti.</td></tr>
+          </tbody>
+        </table></div>
+
+        <h2 id="it-diritti">12. I tuoi diritti</h2>
+        <p>In qualsiasi momento, gratuitamente, puoi chiedere di:</p>
         <ul>
-          <li>Creare e gestire l'account, salvare preferiti, ricevere e revisionare contributi, assegnare punti: per fornirti il servizio che richiedi (art. 6.1.b GDPR).</li>
-          <li>Email di servizio (conferma della registrazione, link di accesso, reimpostazione della password): stessa base. Non inviamo newsletter né pubblicità.</li>
-          <li>Sicurezza, prevenzione degli abusi e statistiche aggregate: legittimo interesse a mantenere il sito sicuro e a capire come viene usato (art. 6.1.f GDPR).</li>
+          <li><strong>accedere</strong> ai tuoi dati e riceverne una copia (art. 15);</li>
+          <li><strong>rettificarli</strong> se sono inesatti o incompleti (art. 16): nome e cognome li puoi modificare anche direttamente dal tuo account;</li>
+          <li><strong>cancellarli</strong>, compreso l'intero account (art. 17);</li>
+          <li><strong>limitarne</strong> il trattamento (art. 18);</li>
+          <li><strong>riceverli</strong> in un formato strutturato e leggibile da computer, per portarli altrove (art. 20);</li>
+          <li><strong>opporti</strong> ai trattamenti basati sul legittimo interesse (art. 21).</li>
         </ul>
-        <p>Non vendiamo i dati, non li usiamo per pubblicità e non facciamo profilazione.</p>
+        <p>Scrivi all'indirizzo indicato nella <a href="#it-titolare">sezione 16</a>, possibilmente dall'email collegata all'account, così da poter verificare che la richiesta venga davvero da te. Rispondiamo entro un mese; in casi complessi il termine può essere esteso di altri due mesi, e in quel caso te lo diciamo.</p>
+        <p>Se ritieni che il trattamento violi la normativa, puoi presentare reclamo al <strong>Garante per la protezione dei dati personali</strong> (<a href="https://www.garanteprivacy.it">garanteprivacy.it</a>) o all'autorità di controllo del Paese europeo in cui vivi o lavori.</p>
 
-        <h2>A chi li affidiamo</h2>
-        <p>I dati sono trattati per nostro conto da fornitori che agiscono come responsabili del trattamento:</p>
-        <ul>
-          <li><strong>Supabase</strong>: database e autenticazione, con server nell'Unione Europea (Irlanda).</li>
-          <li><strong>Resend</strong>: invio delle email di servizio.</li>
-          <li><strong>Google</strong>: accesso con Google (solo se lo scegli) e Google Fonts.</li>
-          <li><strong>GitHub</strong> (GitHub Pages): hosting del sito.</li>
-          <li><strong>Umami</strong>: statistiche di visita anonime.</li>
-        </ul>
-        <p>Alcuni di questi fornitori hanno sede negli Stati Uniti: in quel caso il trasferimento avviene sulla base dell'EU-U.S. Data Privacy Framework o delle clausole contrattuali standard approvate dalla Commissione europea.</p>
+        <h2 id="it-minori">13. Minori</h2>
+        <p>Il sito può essere consultato da chiunque, ma per creare un account devi avere almeno 14 anni, l'età prevista in Italia per acconsentire da soli ai servizi online. Se scopriamo che un account appartiene a una persona più giovane, lo cancelliamo.</p>
 
-        <h2>Per quanto tempo</h2>
-        <ul>
-          <li>I dati dell'account, i preferiti e i punti restano finché l'account esiste; se chiedi di cancellarlo, li eliminiamo entro 30 giorni.</li>
-          <li>Le informazioni che hai proposto e che sono state approvate possono restare nell'enciclopedia, senza il tuo nome.</li>
-          <li>I log tecnici sono conservati per il tempo previsto dai fornitori, di norma pochi giorni o settimane.</li>
-        </ul>
+        <h2 id="it-automatizzate">14. Decisioni automatizzate</h2>
+        <p>Non prendiamo decisioni basate unicamente su trattamenti automatizzati, profilazione compresa. Ogni contributo viene approvato o rifiutato da una persona.</p>
 
-        <h2>I tuoi diritti</h2>
-        <p>Puoi chiedere in qualsiasi momento di accedere ai tuoi dati, correggerli, cancellarli (compreso l'intero account), limitarne il trattamento, riceverli in un formato portabile od opporti al trattamento basato sul legittimo interesse. Nome e cognome puoi modificarli direttamente dal tuo account; per tutto il resto scrivi a <a href="mailto:privacy@encyclopedie-visuelle.com">privacy@encyclopedie-visuelle.com</a>. Hai anche il diritto di presentare reclamo al Garante per la protezione dei dati personali (<a href="https://www.garanteprivacy.it">garanteprivacy.it</a>).</p>
+        <h2 id="it-modifiche">15. Modifiche</h2>
+        <p>Potremo aggiornare questa informativa se cambiano i servizi, i fornitori o la normativa. La data in alto indica l'ultima versione; per cambiamenti importanti avviseremo per email chi ha un account.</p>
 
-        <h2>Età minima</h2>
-        <p>Per creare un account devi avere almeno 14 anni.</p>
-
-        <h2>Modifiche</h2>
-        <p>Se questa informativa cambia, aggiorneremo la data in alto; per cambiamenti importanti avviseremo chi ha un account.</p>
+        <h2 id="it-titolare">16. Titolare e contatti</h2>
+        <p>Il titolare del trattamento è <strong>Jacopo Maletti</strong>, che cura e gestisce Design — encyclopédie visuelle.</p>
+        <p>Per domande su questa informativa o per esercitare i tuoi diritti scrivi a <a href="mailto:privacy@encyclopedie-visuelle.com">privacy@encyclopedie-visuelle.com</a>.</p>
       </section>
     </article>
 
     <hr />
 
+    <!-- ========================= ENGLISH ========================= -->
     <article id="en" lang="en">
-      <h1>Privacy notice</h1>
-      <p class="data">Last updated: 19 November 2026</p>
+      <h1>Privacy and cookie notice</h1>
+      <p class="data mono">Last updated: 19 November 2026</p>
+
+      <div class="sintesi">
+        <h2>In short</h2>
+        <ul>
+          <li>You can explore the whole site without an account; in that case we collect nothing that identifies you.</li>
+          <li>The site <strong>uses no cookies</strong> for tracking, advertising or statistics, which is why there is no cookie banner.</li>
+          <li>If you create an account, we only process what is needed: name, email, favourites, contributions and points.</li>
+          <li>We do not sell data, show ads or build profiles.</li>
+          <li>You can ask at any time to see, correct or delete your data.</li>
+        </ul>
+      </div>
+
       <section>
-        <h2>Who handles your data</h2>
-        <p>The data controller is Jacopo Maletti, curator of Design Network (design.encyclopedie-visuelle.com). For any question or request about your data, write to <a href="mailto:privacy@encyclopedie-visuelle.com">privacy@encyclopedie-visuelle.com</a>.</p>
+        <h2>Contents</h2>
+        <ol class="indice">
+          <li><a href="#en-scope">What this covers</a></li>
+          <li><a href="#en-visitors">Data about visitors</a></li>
+          <li><a href="#en-account">Data about account holders</a></li>
+          <li><a href="#en-purposes">Purposes and legal bases</a></li>
+          <li><a href="#en-cookies">Cookies and browser storage</a></li>
+          <li><a href="#en-required">Required and optional data</a></li>
+          <li><a href="#en-visibility">What others can see</a></li>
+          <li><a href="#en-security">How we protect data</a></li>
+          <li><a href="#en-providers">Providers</a></li>
+          <li><a href="#en-transfers">Transfers outside the EU</a></li>
+          <li><a href="#en-retention">How long we keep it</a></li>
+          <li><a href="#en-rights">Your rights</a></li>
+          <li><a href="#en-minors">Children</a></li>
+          <li><a href="#en-automated">Automated decisions</a></li>
+          <li><a href="#en-changes">Changes</a></li>
+          <li><a href="#en-controller">Controller and contact</a></li>
+        </ol>
+      </section>
 
-        <h2>If you visit without an account</h2>
+      <section>
+        <h2 id="en-scope">1. What this covers</h2>
+        <p>This notice, written under Articles 13 and 14 of Regulation (EU) 2016/679 ("GDPR") and the Italian Privacy Code (Legislative Decree 196/2003), explains how personal data is processed for people who visit <strong>design.encyclopedie-visuelle.com</strong>, an interactive map of design history, and for people who create an account there. It does not cover external websites the site links to (such as image sources or manufacturers' pages), which have their own notices.</p>
+
+        <h2 id="en-visitors">2. Data about visitors</h2>
+        <h3>Visit statistics</h3>
+        <p>To know how many people use the site and which pages they look at, we use <strong>Umami</strong>, a privacy-friendly analytics service. Umami uses no cookies, does not store your IP address and does not follow you across other sites: it records, in aggregate, the page visited, the referring site, device and browser type, language and approximate country. These figures cannot be traced back to you.</p>
+        <h3>Technical connection data</h3>
+        <p>As with any website, when you open a page your browser automatically sends some information: IP address, date and time of the request, the page requested, browser and operating system. The service hosting the site (GitHub Pages) records it in its logs to keep the site running and secure. We do not use it to identify you.</p>
+        <h3>Fonts</h3>
+        <p>The Roboto and Roboto Mono fonts are loaded from <strong>Google Fonts</strong>. To deliver them, Google's servers receive your IP address and technical browser data. Google states that it does not use this data to profile you and sets no cookies for this service.</p>
+        <h3>"Contribute" form</h3>
+        <p>If you suggest a correction or addition, we process the text you write, the optional source link and the optional photograph. This feature currently requires an account (see section 3).</p>
+
+        <h2 id="en-account">3. Data about account holders</h2>
+        <h3>Signing up with email</h3>
+        <p>We ask for your first name, last name, email address and a password. The password is never stored in plain text: we keep only an irreversibly hashed version that even we cannot read.</p>
+        <h3>Signing in with Google</h3>
+        <p>If you choose "Continue with Google", Google shares your name, email address and profile picture with us and confirms that the email is verified. We never receive your Google password, and we do not access any other data in your Google account (contacts, email, documents). If you use the same email address you had already signed up with, both sign-in methods are linked to the same profile.</p>
+        <h3>Using the site with an account</h3>
         <ul>
-          <li><strong>Visit statistics</strong>: we use Umami, which counts page views in aggregate, without cookies and without identifying you.</li>
-          <li><strong>Technical data</strong>: like any website, the hosting service (GitHub Pages) records your IP address and browser details in server logs for security and operation. Fonts are loaded from Google Fonts, which receives your IP address.</li>
-          <li><strong>Browser storage</strong>: we store only browsing preferences in your browser (localStorage), such as the chosen view and the map position. These are not tracking cookies and never leave your device.</li>
+          <li><strong>Favourites</strong>: the designers, products and companies you save with the heart.</li>
+          <li><strong>Contributions</strong>: type, the item it refers to, description, source link, optional photograph (up to 5 MB), review status, any reviewer note, submission and review dates.</li>
+          <li><strong>Community points</strong>: your balance and points history, awarded only when a contribution is approved.</li>
+          <li><strong>Sign-in data</strong>: sign-up date, last sign-in date and technical data recorded by the authentication service (such as the IP address of a sign-in attempt), used for security and abuse prevention.</li>
+        </ul>
+        <h3>Service emails</h3>
+        <p>We only email you about your account: sign-up confirmation, passwordless sign-in links, password resets and, where needed, important notices about this policy or the service. We send no newsletters or promotional messages.</p>
+        <h3>If you write to us</h3>
+        <p>If you contact us by email, we process your address and the content of your message in order to reply.</p>
+
+        <h2 id="en-purposes">4. Purposes and legal bases</h2>
+        <div class="tabella"><table>
+          <thead><tr><th>Why</th><th>What data</th><th>Legal basis</th></tr></thead>
+          <tbody>
+            <tr><td>Showing you the site and making it work</td><td>Technical connection data, preferences saved in the browser</td><td>Legitimate interest in running a working website (Art. 6(1)(f))</td></tr>
+            <tr><td>Understanding how the site is used, anonymously</td><td>Aggregate Umami statistics</td><td>Legitimate interest in improving the site (Art. 6(1)(f))</td></tr>
+            <tr><td>Creating and running your account, signing you in</td><td>Name, email, hashed password, data from Google</td><td>Providing the service you request (Art. 6(1)(b))</td></tr>
+            <tr><td>Saving favourites, receiving and reviewing contributions, awarding points</td><td>Favourites, contributions, photographs, points</td><td>Providing the service you request (Art. 6(1)(b))</td></tr>
+            <tr><td>Sending service emails</td><td>Email, name</td><td>Providing the service you request (Art. 6(1)(b))</td></tr>
+            <tr><td>Security, abuse and fraud prevention</td><td>Sign-in data, technical logs</td><td>Legitimate interest in security (Art. 6(1)(f))</td></tr>
+            <tr><td>Answering your messages and privacy requests</td><td>Email, message content</td><td>Steps you request (Art. 6(1)(b)) and legal obligation (Art. 6(1)(c))</td></tr>
+            <tr><td>Defending our rights in case of disputes</td><td>Only the data strictly needed</td><td>Legitimate interest (Art. 6(1)(f))</td></tr>
+          </tbody>
+        </table></div>
+        <p>Where we rely on legitimate interest, we have checked that it does not override your rights: the processing is minimal, expected by anyone using a website and, where possible, anonymous.</p>
+
+        <h2 id="en-cookies">5. Cookies and browser storage</h2>
+        <p>Cookies are small files a website saves in your browser. <strong>This site sets no cookies</strong>: no technical, analytics, tracking or third-party cookies. We checked this on the responses from the site and from the services it loads (Google Fonts and Umami).</p>
+        <p>Instead, the site uses your <strong>browser's local storage</strong> (localStorage), which stays on your device and is not sent to us with each visit. It is used only for what is strictly necessary to provide what you ask for, so no consent is legally required:</p>
+        <div class="tabella"><table>
+          <thead><tr><th>Name</th><th>Purpose</th><th>Duration</th></tr></thead>
+          <tbody>
+            <tr><td><code>dn-vista</code></td><td>Remembers the chosen view (Designers, Companies, Products)</td><td>Until you clear site data</td></tr>
+            <tr><td><code>dn-timeline</code></td><td>Remembers whether the timeline is on</td><td>Until you clear site data</td></tr>
+            <tr><td><code>dn-camera</code></td><td>Remembers the map position and zoom</td><td>Until you clear site data</td></tr>
+            <tr><td><code>sb-…-auth-token</code></td><td>Only if you sign in: keeps your session open</td><td>Until you sign out</td></tr>
+          </tbody>
+        </table></div>
+        <p>You can clear this data at any time from your browser settings ("Clear site data"). The site keeps working: it starts again from the default view and, if you had an account, asks you to sign in again.</p>
+        <p><strong>Sign in with Google.</strong> If you choose to sign in with Google, the sign-in page is shown by Google on its own domain (accounts.google.com) and may use Google's cookies, under <a href="https://policies.google.com/technologies/cookies?hl=en">Google's cookie policy</a>. This only happens if you choose it.</p>
+        <p>If we ever introduce non-essential cookies, we will ask for your consent first through a dedicated notice.</p>
+
+        <h2 id="en-required">6. Required and optional data</h2>
+        <p>To create an account, your name, email and password (or a Google account) are required; without them we cannot provide an account. The source link and photograph in contributions are optional. Browsing the site requires no data at all.</p>
+
+        <h2 id="en-visibility">7. What others can see</h2>
+        <ul>
+          <li><strong>Your name and community points</strong> may be visible to other users, for example on a future community leaderboard. If you prefer, you can change your name in your account (for example, keeping only your last name's initial).</li>
+          <li><strong>Your email, favourites, contributions, photographs and points history</strong> are visible only to you and to the people who review contributions.</li>
+          <li>When a contribution is approved, the information you proposed may be added to the encyclopedia's public content, without your name.</li>
         </ul>
 
-        <h2>If you create an account</h2>
+        <h2 id="en-security">8. How we protect data</h2>
         <ul>
-          <li><strong>Account data</strong>: first name, last name, email and password (stored only in hashed form). If you sign in with Google, we receive your name, email and profile picture from Google; we never receive your Google password.</li>
-          <li><strong>Activity</strong>: the favourites you save, the contributions you submit (text, source link and optional photo), their review status and your community points.</li>
-          <li><strong>Session</strong>: a sign-in token stored in your browser to keep you signed in.</li>
-          <li><strong>Visibility</strong>: your name and community points may be visible to other users (for example on a leaderboard). Your email, favourites, contributions and photos are visible only to you and to the people who review contributions.</li>
+          <li>All traffic to the site and to the account services is encrypted (HTTPS).</li>
+          <li>Passwords are stored only as hashes and are never visible, not even to us.</li>
+          <li>The database enforces row-level access rules: each user can only read and change their own favourites and contributions, and points can only be awarded by a reviewer.</li>
+          <li>Uploaded photographs are kept in private storage, accessible only to the person who sent them and to reviewers.</li>
+          <li>Administrative access to the services is limited to the people who run the site.</li>
         </ul>
+        <p>No system is 100% secure: if a breach ever put your data at risk, we would notify the Italian data protection authority and, where required, you.</p>
 
-        <h2>Why, and on what legal basis</h2>
+        <h2 id="en-providers">9. Providers</h2>
+        <p>To run the site we rely on a few providers, which process data on our behalf as data processors and only for the purposes described:</p>
+        <div class="tabella"><table>
+          <thead><tr><th>Provider</th><th>What it does</th><th>Where</th></tr></thead>
+          <tbody>
+            <tr><td><a href="https://supabase.com/privacy">Supabase</a></td><td>Database, accounts, authentication, photograph storage</td><td>Servers in the EU (Ireland)</td></tr>
+            <tr><td><a href="https://resend.com/legal/privacy-policy">Resend</a></td><td>Sending service emails</td><td>Sent from the EU (Ireland); US company</td></tr>
+            <tr><td><a href="https://policies.google.com/privacy?hl=en">Google</a></td><td>Sign in with Google (only if you choose it) and fonts</td><td>EU and US</td></tr>
+            <tr><td><a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement">GitHub</a></td><td>Website hosting (GitHub Pages)</td><td>US</td></tr>
+            <tr><td><a href="https://umami.is/privacy">Umami</a></td><td>Anonymous visit statistics</td><td>EU and US</td></tr>
+          </tbody>
+        </table></div>
+        <p>Data is not disclosed to anyone else, except where required by law or by an authority.</p>
+
+        <h2 id="en-transfers">10. Transfers outside the EU</h2>
+        <p>Some providers are based in, or may process data from, the United States. In those cases transfers take place only with the safeguards required by the GDPR: the provider's certification under the <em>EU-U.S. Data Privacy Framework</em> (European Commission adequacy decision of 10 July 2023) or the European Commission's standard contractual clauses.</p>
+
+        <h2 id="en-retention">11. How long we keep it</h2>
+        <div class="tabella"><table>
+          <thead><tr><th>Data</th><th>Retention</th></tr></thead>
+          <tbody>
+            <tr><td>Account, favourites and points</td><td>For as long as your account exists. If you ask us to delete it, we erase them within 30 days.</td></tr>
+            <tr><td>Contributions and photographs</td><td>For as long as your account exists; deleted with it. Approved information may remain in the encyclopedia without your name.</td></tr>
+            <tr><td>Accounts never confirmed</td><td>May be deleted after a few months without confirmation.</td></tr>
+            <tr><td>Technical and sign-in logs</td><td>For as long as each provider specifies, typically from a few days to a few months.</td></tr>
+            <tr><td>Umami statistics</td><td>Only in aggregate, anonymous form.</td></tr>
+            <tr><td>Messages and privacy requests</td><td>As long as needed to handle them, and up to 2 years to show they were handled.</td></tr>
+          </tbody>
+        </table></div>
+
+        <h2 id="en-rights">12. Your rights</h2>
+        <p>At any time and free of charge, you can ask to:</p>
         <ul>
-          <li>Creating and running your account, saving favourites, receiving and reviewing contributions and awarding points: to provide the service you ask for (Art. 6(1)(b) GDPR).</li>
-          <li>Service emails (sign-up confirmation, sign-in links, password resets): same basis. We send no newsletters or advertising.</li>
-          <li>Security, abuse prevention and aggregate statistics: our legitimate interest in keeping the site safe and understanding how it is used (Art. 6(1)(f) GDPR).</li>
+          <li><strong>access</strong> your data and get a copy (Art. 15);</li>
+          <li><strong>correct</strong> it if it is inaccurate or incomplete (Art. 16): you can also edit your name directly in your account;</li>
+          <li><strong>delete</strong> it, including your whole account (Art. 17);</li>
+          <li><strong>restrict</strong> its processing (Art. 18);</li>
+          <li><strong>receive</strong> it in a structured, machine-readable format to take elsewhere (Art. 20);</li>
+          <li><strong>object</strong> to processing based on legitimate interest (Art. 21).</li>
         </ul>
-        <p>We do not sell your data, use it for advertising or build profiles.</p>
+        <p>Write to the address in <a href="#en-controller">section 16</a>, ideally from the email linked to your account so that we can check the request really comes from you. We reply within one month; for complex requests this may be extended by two further months, in which case we will tell you.</p>
+        <p>If you believe the processing breaks the law, you can lodge a complaint with the Italian data protection authority, the <strong>Garante per la protezione dei dati personali</strong> (<a href="https://www.garanteprivacy.it">garanteprivacy.it</a>), or with the supervisory authority of the European country where you live or work.</p>
 
-        <h2>Who processes it for us</h2>
-        <p>Your data is processed on our behalf by these providers, acting as data processors:</p>
-        <ul>
-          <li><strong>Supabase</strong>: database and authentication, with servers in the European Union (Ireland).</li>
-          <li><strong>Resend</strong>: sending service emails.</li>
-          <li><strong>Google</strong>: Sign in with Google (only if you choose it) and Google Fonts.</li>
-          <li><strong>GitHub</strong> (GitHub Pages): website hosting.</li>
-          <li><strong>Umami</strong>: anonymous visit statistics.</li>
-        </ul>
-        <p>Some of these providers are based in the United States; where that applies, transfers rely on the EU-U.S. Data Privacy Framework or on the European Commission's standard contractual clauses.</p>
+        <h2 id="en-minors">13. Children</h2>
+        <p>Anyone can browse the site, but you must be at least 14 years old to create an account, the age at which Italian law lets people consent to online services on their own. If we learn that an account belongs to someone younger, we delete it.</p>
 
-        <h2>How long we keep it</h2>
-        <ul>
-          <li>Account data, favourites and points are kept for as long as your account exists; if you ask us to delete it, we erase them within 30 days.</li>
-          <li>Information you proposed that was approved may remain in the encyclopedia, without your name.</li>
-          <li>Technical logs are kept for as long as each provider specifies, usually a few days or weeks.</li>
-        </ul>
+        <h2 id="en-automated">14. Automated decisions</h2>
+        <p>We make no decisions based solely on automated processing, including profiling. Every contribution is approved or rejected by a person.</p>
 
-        <h2>Your rights</h2>
-        <p>At any time you can ask to access, correct or delete your data (including your whole account), restrict its processing, receive it in a portable format, or object to processing based on legitimate interest. You can edit your name directly in your account; for anything else, write to <a href="mailto:privacy@encyclopedie-visuelle.com">privacy@encyclopedie-visuelle.com</a>. You also have the right to lodge a complaint with the Italian data protection authority, the Garante per la protezione dei dati personali (<a href="https://www.garanteprivacy.it">garanteprivacy.it</a>), or with the authority where you live.</p>
+        <h2 id="en-changes">15. Changes</h2>
+        <p>We may update this notice if the services, providers or law change. The date at the top shows the latest version; for significant changes we will email account holders.</p>
 
-        <h2>Minimum age</h2>
-        <p>You must be at least 14 years old to create an account.</p>
-
-        <h2>Changes</h2>
-        <p>If this notice changes we will update the date above; for significant changes we will notify account holders.</p>
+        <h2 id="en-controller">16. Controller and contact</h2>
+        <p>The data controller is <strong>Jacopo Maletti</strong>, who curates and runs Design — encyclopédie visuelle.</p>
+        <p>For questions about this notice or to exercise your rights, write to <a href="mailto:privacy@encyclopedie-visuelle.com">privacy@encyclopedie-visuelle.com</a>.</p>
       </section>
     </article>
   </main>
 
-  <footer>Design Network — encyclopédie visuelle</footer>
+  <footer>Design — encyclopédie visuelle</footer>
 </body>
 </html>

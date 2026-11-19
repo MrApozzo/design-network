@@ -541,18 +541,18 @@ function App() {
   // vista designer, mai da quella salvata in una sessione precedente.
   const [vistaCorrente, setVistaCorrente] = useState(() => {
     if (mostraIntroAllAvvio) {
-      try { localStorage.setItem("designNetwork:vista", "designer") } catch {}
+      try { localStorage.setItem("dn-vista", "designer") } catch {}
       return "designer"
     }
-    try { return localStorage.getItem("designNetwork:vista") || "designer" } catch { return "designer" }
+    try { return localStorage.getItem("dn-vista") || "designer" } catch { return "designer" }
   })
   const vistaCorrenteRef = useRef(vistaCorrente)
   const [timelineAttiva, setTimelineAttiva] = useState(() => {
     if (mostraIntroAllAvvio) {
-      try { localStorage.setItem("designNetwork:timeline", "0") } catch {}
+      try { localStorage.setItem("dn-timeline", "0") } catch {}
       return false
     }
-    try { return localStorage.getItem("designNetwork:timeline") === "1" } catch { return false }
+    try { return localStorage.getItem("dn-timeline") === "1" } catch { return false }
   })
   const timelineAttivaRef = useRef(timelineAttiva)
   const [animaTransizioneFn, setAnimaTransizioneFn] = useState(null)
@@ -4987,11 +4987,11 @@ function App() {
     if (modello === "prodotti" && timelineAttivaRef.current) {
       setTimelineAttiva(false)
       timelineAttivaRef.current = false
-      try { localStorage.setItem("designNetwork:timeline", "0") } catch {}
+      try { localStorage.setItem("dn-timeline", "0") } catch {}
     }
     setVistaCorrente(modello)
     vistaCorrenteRef.current = modello
-    try { localStorage.setItem("designNetwork:vista", modello) } catch {}
+    try { localStorage.setItem("dn-vista", modello) } catch {}
     if (animaTransizioneFn) animaTransizioneFn(modello, timelineDestinazione)
   }
 
@@ -5033,7 +5033,7 @@ function App() {
     const nuova = !timelineAttivaRef.current
     setTimelineAttiva(nuova)
     timelineAttivaRef.current = nuova
-    try { localStorage.setItem("designNetwork:timeline", nuova ? "1" : "0") } catch {}
+    try { localStorage.setItem("dn-timeline", nuova ? "1" : "0") } catch {}
     if (animaTransizioneFn) animaTransizioneFn(vistaCorrenteRef.current, nuova)
   }
 
