@@ -1106,6 +1106,7 @@ function preloadImages(paths, concorrenza = 6, onDone, sogliaPronte, onSoglia, o
       return src
     }
     let scelta = null, distanzaMigliore = Infinity
+    ottieniDistanza.prepara?.()
     for (const src of rimanenti) {
       const d = ottieniDistanza(src)
       if (d < distanzaMigliore) { distanzaMigliore = d; scelta = src }
@@ -2823,14 +2824,20 @@ function App() {
     // Riletta ad ogni scelta (non solo all'apertura): fa sì che, se l'utente si
     // sposta prima che il preload iniziale finisca, le immagini vicine a dove sta
     // guardando ORA scavalchino quelle rimaste in coda dal punto di partenza.
+    let centroCameraPreload = { x: 0, y: 0 }
     function distanzaDaCameraAttuale(src) {
       const p = posizioneDiSrc.get(src)
       if (!p) return Infinity
-      const stato = renderer.getCamera().getState()
-      const cx = (X_MIN - MARGINE_X) + stato.x * ((X_MAX + MARGINE_X) - (X_MIN - MARGINE_X))
-      const cy = bboxYMin + stato.y * (bboxYMax - bboxYMin)
-      const dx = p.x - cx, dy = p.y - cy
+      const dx = p.x - centroCameraPreload.x, dy = p.y - centroCameraPreload.y
       return dx * dx + dy * dy
+    }
+    // Chiamata da preloadImages una volta per scelta, non per ogni candidata.
+    distanzaDaCameraAttuale.prepara = () => {
+      const stato = renderer.getCamera().getState()
+      centroCameraPreload = {
+        x: (X_MIN - MARGINE_X) + stato.x * ((X_MAX + MARGINE_X) - (X_MIN - MARGINE_X)),
+        y: bboxYMin + stato.y * (bboxYMax - bboxYMin),
+      }
     }
 
     const campionaColore = (src, img) => {
@@ -2911,7 +2918,21 @@ function App() {
       return s
     }
 
+    // zoomT() viene chiamato migliaia di volte per frame (per nodo e per
+    // arco): il valore dipende solo dal ratio corrente e dal limite della
+    // panoramica, quindi si riusa finché questi non cambiano.
+    // Anche CAMERA_RATIO_100 e MIN_CAMERA_RATIO fanno parte della chiave:
+    // vengono ricalcolati dopo il layout e a ogni resize.
+    let zoomTCache = { ratio: NaN, ratioMax: NaN, ratio100: NaN, ratioMin: NaN, valore: 0 }
     function zoomT() {
+      const ratioMaxCorrente = ratioPanoramicaAttuale()
+      const c = zoomTCache
+      if (c.ratio === cameraRatio && c.ratioMax === ratioMaxCorrente && c.ratio100 === CAMERA_RATIO_100 && c.ratioMin === MIN_CAMERA_RATIO) return c.valore
+      const valore = calcolaZoomT()
+      zoomTCache = { ratio: cameraRatio, ratioMax: ratioMaxCorrente, ratio100: CAMERA_RATIO_100, ratioMin: MIN_CAMERA_RATIO, valore }
+      return valore
+    }
+    function calcolaZoomT() {
       // 0→100 conserva esattamente la scala storica. Su mobile, il solo tratto
       // CAMERA_RATIO_100→MIN_CAMERA_RATIO viene esposto come 100→120.
       const ratioMax = ratioPanoramicaAttuale()
@@ -3730,7 +3751,22 @@ function App() {
         animated[node].alpha = lerp(animated[node].alpha, alphaTarget, STILE.lerp_velocita)
       })
 
+      // Valori uguali per tutti gli archi del frame: calcolati una volta sola.
+      const edgeWidthFrame = STILE.edge_prodotto_size * taraturaZoom().edgeWidth
+      const tEdgeMobileFrame = isMobile ? Math.max(0, Math.min(1, zoomT() / 0.5)) : 1
+      const easeEdgeMobileFrame = tEdgeMobileFrame * tEdgeMobileFrame * (3 - 2 * tEdgeMobileFrame)
+      const grigioEdgeMobileFrame = Math.round(184 + (204 - 184) * easeEdgeMobileFrame)
+      const edgeColorFrame = isMobile ? `rgb(${grigioEdgeMobileFrame}, ${grigioEdgeMobileFrame}, ${grigioEdgeMobileFrame})` : STILE.edge_prodotto_colore
+      // Un arco (retta o curva di Bézier orizzontale) resta sempre dentro il
+      // rettangolo dei suoi estremi: se quel rettangolo è fuori dallo schermo
+      // non c'è nulla da disegnare.
+      const MARGINE_ARCHI = 4
+      const fuoriSchermo = (a, b) =>
+        Math.max(a.x, b.x) < -MARGINE_ARCHI || Math.min(a.x, b.x) > w + MARGINE_ARCHI ||
+        Math.max(a.y, b.y) < -MARGINE_ARCHI || Math.min(a.y, b.y) > h + MARGINE_ARCHI
       graph.forEachEdge((edge, attr, source, target) => {
+        if (attr.tipo !== "relazione" && attr.tipo !== "prodotto") return
+        if (attr.tipo === "relazione" && !(attr.attivo && designerAlphaAnimata >= 0.01)) return
         const posS = renderer.graphToViewport({ x: graph.getNodeAttribute(source, "x"), y: graph.getNodeAttribute(source, "y") })
         const posT = posizioneVisivaNodo(target, graph.getNodeAttributes(target))
 
@@ -3739,7 +3775,7 @@ function App() {
           // da prima di cambiare vista non deve restare visibile, altrimenti la
           // linea punta a coordinate di un designer mai aggiornate per questa
           // vista (scala completamente diversa da quella delle fasce azienda).
-          if (attr.attivo && designerAlphaAnimata >= 0.01) {
+          if (attr.attivo && designerAlphaAnimata >= 0.01 && !fuoriSchermo(posS, posT)) {
             ctx.globalAlpha = designerAlphaAnimata
             ctx.beginPath()
             ctx.moveTo(posS.x, posS.y)
@@ -3764,11 +3800,8 @@ function App() {
           const azUnica = aziendaUnicaPerProdotto[target]
           const azUnicaPos = azUnica ? aziendePosizioniMap[azUnica] : null
           if (designerAlphaAnimata < 0.01 && !azUnicaPos) return
-          const tEdgeMobile = isMobile ? Math.max(0, Math.min(1, zoomT() / 0.5)) : 1
-          const easeEdgeMobile = tEdgeMobile * tEdgeMobile * (3 - 2 * tEdgeMobile)
-          const grigioEdgeMobile = Math.round(184 + (204 - 184) * easeEdgeMobile)
-          let edgeColor = isMobile ? `rgb(${grigioEdgeMobile}, ${grigioEdgeMobile}, ${grigioEdgeMobile})` : STILE.edge_prodotto_colore
-          let edgeWidth = STILE.edge_prodotto_size * taraturaZoom().edgeWidth
+          let edgeColor = edgeColorFrame
+          let edgeWidth = edgeWidthFrame
           let edgeAlpha = 1
           const prodottoInEvidenza = prodottoCliccato || prodottoHoverAttivo
           if (legameEvidenziatoRef.current) {
@@ -3796,7 +3829,9 @@ function App() {
             }
             alphaVista = Math.max(designerAlphaAnimata, aziendaAlphaAnimata)
           }
-          ctx.globalAlpha = edgeAlpha * alphaVista * alphaComparsaEtichetteNodi * alphaCollegamentiTimeline
+          const alphaArco = edgeAlpha * alphaVista * alphaComparsaEtichetteNodi * alphaCollegamentiTimeline
+          if (alphaArco <= 0 || fuoriSchermo(posSEffettivo, posT)) return
+          ctx.globalAlpha = alphaArco
           ctx.beginPath()
           ctx.moveTo(posSEffettivo.x, posSEffettivo.y)
           const midX = (posSEffettivo.x + posT.x) / 2
