@@ -7,7 +7,7 @@ import { classificaProdotto, confrontaProdottiClassificati } from '../src/produc
 const source = readFileSync('src/App.jsx', 'utf8').replace(/\r\n/g, '\n')
 const data = name => JSON.parse(readFileSync(`src/data/${name}.json`, 'utf8'))
 export function run(width, height, transform = source => source) {
-  let prefix = source.slice(0, source.indexOf('function preloadImages')).replace(/^import .*\n/gm, '')
+  let prefix = source.slice(0, source.indexOf('function App() {')).replace(/^import .*\n/gm, '')
   let layout = source.slice(source.indexOf('    const prodottiPerDesigner = {}'), source.indexOf('    // Se la vista ripristinata'))
   layout = transform(layout)
   const graph = new Graph()

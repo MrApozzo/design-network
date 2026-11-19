@@ -11,7 +11,7 @@ const {createNormalizationFunction:normalize,getCorrectionRatio:correction}=requ
 const root=new URL('../',import.meta.url)
 const source=fs.readFileSync(process.env.DESIGN_NETWORK_APP_SOURCE||new URL('src/App.jsx',root),'utf8').replace(/\r\n/g,'\n')
 const data=n=>JSON.parse(fs.readFileSync(new URL('src/data/'+n+'.json',root),'utf8'))
-const prefix=source.slice(0,source.indexOf('function preloadImages')).replace(/^import .*\n/gm,'')
+const prefix=source.slice(0,source.indexOf('function App() {')).replace(/^import .*\n/gm,'')
 const layout=source.slice(source.indexOf('    const prodottiPerDesigner = {}'),source.indexOf('    const renderer = new Sigma'))
 const bboxStart=source.indexOf('    // Il layout può superare')
 const bboxEnd=source.indexOf('    impostaBBoxCondiviso()',bboxStart)+'    impostaBBoxCondiviso()'.length
