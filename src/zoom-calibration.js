@@ -25,8 +25,22 @@ export const PUNTI_ZOOM_MOBILE = [
 ]
 
 // Interpolazione cubica comune: continua anche nella derivata ai punti manuali.
+// La funzione è pura e viene chiamata migliaia di volte per frame (una o più
+// per nodo) quasi sempre con gli stessi argomenti: si memorizza l'ultimo
+// risultato per combinazione attiva/mobile. Il risultato è condiviso e
+// congelato, quindi i chiamanti non devono modificarlo.
+const NEUTRI = Object.freeze({ orbit: 1, center: 1, product: 1, label: 1, categoryLabel: 1, designerLabel: 1, productLabelAlpha: 1, categoryLine: 1, gridDot: 1, edgeWidth: 1, topLabel: 1 })
+const ultimiZoom = [NaN, NaN], ultimiRisultati = [null, null]
 export function fattoriTaraturaZoom(zoom, attiva = true, mobile = false) {
-  if (!attiva) return { orbit: 1, center: 1, product: 1, label: 1, categoryLabel: 1, designerLabel: 1, productLabelAlpha: 1, categoryLine: 1, gridDot: 1, edgeWidth: 1, topLabel: 1 }
+  if (!attiva) return NEUTRI
+  const slot = mobile ? 1 : 0
+  if (ultimiZoom[slot] === zoom) return ultimiRisultati[slot]
+  const risultato = Object.freeze(calcolaFattori(zoom, mobile))
+  ultimiZoom[slot] = zoom; ultimiRisultati[slot] = risultato
+  return risultato
+}
+
+function calcolaFattori(zoom, mobile) {
   const t = Math.max(0, Math.min(1, zoom))
   const punti = mobile ? PUNTI_ZOOM_MOBILE : PUNTI_ZOOM
   const i = punti.findIndex((p, i) => i > 0 && t <= p.zoom)
