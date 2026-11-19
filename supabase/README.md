@@ -14,7 +14,8 @@ Senza configurazione il sito funziona esattamente come prima e la voce
    - Site URL: `https://design.encyclopedie-visuelle.com`
    - Redirect URLs: `https://design.encyclopedie-visuelle.com/**` e, per lo
      sviluppo, `http://localhost:5173/**`
-4. **Project Settings → API**: copia *Project URL* e *anon public key*.
+4. **Project Settings → API Keys**: copia *Project URL* e la chiave pubblica
+   (*Publishable key* `sb_publishable_…`, oppure la vecchia *anon public key*).
 
 ## 2. Email con Resend
 
@@ -38,7 +39,7 @@ Variables** → crea:
 | Nome | Valore |
 | --- | --- |
 | `VITE_SUPABASE_URL` | Project URL |
-| `VITE_SUPABASE_ANON_KEY` | anon public key |
+| `VITE_SUPABASE_ANON_KEY` | Publishable key (o anon key) |
 
 Al prossimo deploy di `main` compare la voce "Accedi" nel menu.
 In locale: copia `.env.example` in `.env.local` con gli stessi valori.

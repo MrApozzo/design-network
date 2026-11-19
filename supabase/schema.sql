@@ -234,6 +234,21 @@ grant execute on function public.approva_contributo(bigint, integer, text) to au
 grant execute on function public.rifiuta_contributo(bigint, text) to authenticated;
 
 -- ---------------------------------------------------------------------
+-- Permessi delle tabelle per la Data API
+-- ---------------------------------------------------------------------
+-- Espliciti, così lo schema funziona anche con "Grant API access to new
+-- tables automatically" disattivato. Cosa si vede davvero lo decidono
+-- comunque le policy RLS qui sopra.
+grant usage on schema public to anon, authenticated;
+grant select on public.profili, public.regole_punti to anon, authenticated;
+grant update (nome) on public.profili to authenticated;
+grant select, insert, delete on public.preferiti to authenticated;
+grant select, insert on public.contributi to authenticated;
+grant select on public.movimenti_punti to authenticated;
+grant insert, update, delete on public.regole_punti to authenticated;
+grant execute on function public.is_admin() to anon, authenticated;
+
+-- ---------------------------------------------------------------------
 -- Foto dei contributi (Storage)
 -- ---------------------------------------------------------------------
 -- Bucket privato: ogni utente carica solo nella cartella col proprio id
