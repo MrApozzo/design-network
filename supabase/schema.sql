@@ -239,6 +239,9 @@ grant execute on function public.rifiuta_contributo(bigint, text) to authenticat
 -- Espliciti, così lo schema funziona anche con "Grant API access to new
 -- tables automatically" disattivato. Cosa si vede davvero lo decidono
 -- comunque le policy RLS qui sopra.
+-- Prima si tolgono i permessi ampi che Supabase concede di default (DELETE,
+-- TRUNCATE…), poi si concede solo il minimo necessario.
+revoke all on public.profili, public.preferiti, public.contributi, public.movimenti_punti, public.regole_punti from anon, authenticated;
 grant usage on schema public to anon, authenticated;
 grant select on public.profili, public.regole_punti to anon, authenticated;
 grant update (nome) on public.profili to authenticated;
