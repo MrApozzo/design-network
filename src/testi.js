@@ -430,6 +430,7 @@ export const TIPO_RELAZIONE_EN = {
   stesso_studio: "same studio", mentore: "mentor", amicizia: "friendship", stesso_settore: "same field",
   successione: "succession", coniugi: "spouses", "fondatori studio BBPR": "BBPR studio founders",
   "padre-figlio": "father-son", "fondatori Azucena": "Azucena founders", "studio condiviso": "shared studio",
+  "Scuola CIAM di Venezia": "CIAM School in Venice",
 }
 
 export const TESTI = {

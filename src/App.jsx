@@ -999,8 +999,10 @@ function App() {
     // designer già adiacenti nell'ordine finale: nessuna transitività, nessun riordino.
     // Testato: la chiusura transitiva su relazioni (come per scuole/collettivi) arriva
     // a spostare 150+ designer su 165, un mega-gruppo che rompe la diagonale.
+    // I legami deboli restano consultabili, senza influire neppure sulla distanza.
     const legamiDiretti = new Set()
     relazioni.forEach((r) => {
+      if (r.forza === "debole") return
       legamiDiretti.add(`${r.designer_a}|${r.designer_b}`)
       legamiDiretti.add(`${r.designer_b}|${r.designer_a}`)
     })
@@ -2900,13 +2902,22 @@ function App() {
         const xRiga = vistaProdotti ? lx : lx - 4 * f
         return { f, lx, lyTesto, fontCategoria, numero, metricheNumero, xRiga, yAltoRiga, yBassoRiga }
       }
-      const disegnaSoloRigaVerticale = (et, scalaEtichetta = 1, estensioneBarra = 1, vistaProdotti = false) => {
+      const disegnaSoloRigaVerticale = (et, scalaEtichetta = 1, estensioneBarra = 1, vistaProdotti = false, limitaCorrenteDesktop = false) => {
         const { f, xRiga, yAltoRiga, yBassoRiga } = geometriaEtichettaVerticale(et, scalaEtichetta, estensioneBarra, vistaProdotti)
         ctx.beginPath()
         ctx.moveTo(xRiga, yAltoRiga)
         ctx.lineTo(xRiga, yBassoRiga)
         ctx.strokeStyle = COLORE_CATEGORIE
-        ctx.lineWidth = f * spessoreRigheCategoria * (vistaProdotti ? FATTORE_SPESSORE_RIGA_PRODOTTI : 1)
+        const spessoreBase = f * spessoreRigheCategoria * (vistaProdotti ? FATTORE_SPESSORE_RIGA_PRODOTTI : 1)
+        // Desktop, correnti Designer: oltre il 60% la scala delle etichette
+        // faceva crescere la barra fino a circa 2–2,5 px. La raccordiamo tra
+        // 55% e 65% e poi la manteniamo a un massimo di 1 px. Mobile e barre
+        // della vista Prodotti conservano esattamente il comportamento attuale.
+        const tLimite = limitaCorrenteDesktop && !isMobile
+          ? Math.max(0, Math.min(1, (zoomT() - 0.55) / 0.1))
+          : 0
+        const easeLimite = tLimite * tLimite * (3 - 2 * tLimite)
+        ctx.lineWidth = lerp(spessoreBase, Math.min(spessoreBase, 1), easeLimite)
         ctx.stroke()
       }
       const disegnaEtichettaVerticale = (et, numero, scalaEtichetta = 1, estensioneBarra = 1, vistaProdotti = false) => {
@@ -2936,7 +2947,7 @@ function App() {
       if (etichetteDesignerAlphaAnimata >= 0.01) {
         etichetteCorrentiDesigner.forEach((et) => {
           ctx.globalAlpha = etichetteDesignerAlphaAnimata * (categoriaAttiva && et !== categoriaAttiva ? 0.2 : 1)
-          disegnaSoloRigaVerticale({ ...et, numero: String(et.numero).padStart(2, "0") })
+          disegnaSoloRigaVerticale({ ...et, numero: String(et.numero).padStart(2, "0") }, 1, 1, false, true)
         })
       }
       if (etichetteProdottiAlpha >= 0.01) {

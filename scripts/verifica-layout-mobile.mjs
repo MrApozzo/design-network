@@ -32,6 +32,18 @@ for (const [width, height] of [[844, 390], [768, 1024], [1920, 1080]]) {
 const mobile = run(390, 844)
 assert.deepEqual(run(640, 800), mobile, 'Geometria mobile diversa fra viewport')
 assert.ok(mobile.spanX < desktop.spanX, 'L asse cronologico mobile deve essere piu compatto')
+// Anche tra designer adiacenti, un legame debole deve lasciare intatta la geometria.
+for (const [width, height, reference] of [[1440, 800, desktop], [390, 844, mobile]]) {
+  const withWeakLinks = run(width, height, layout => layout.replace(
+    '    const legamiDiretti = new Set()',
+    `    ordinato.slice(1).forEach((d, i) => relazioni.push({
+      designer_a: ordinato[i].nome, designer_b: d.nome, forza: 'debole',
+    }))
+    const legamiDiretti = new Set()`,
+  ))
+  assert.deepEqual(withWeakLinks, reference, `I legami deboli modificano le posizioni a ${width}x${height}`)
+}
+console.log('Legami deboli: nessun effetto sulle posizioni, anche tra designer adiacenti, su desktop e mobile.')
 console.log(`Layout stabile per classe viewport: ${desktop.nodes.length} nodi, ${desktop.companies.length} aziende; asse cronologico mobile piu compatto.`)
 const height = rows => Math.max(...rows.map(p => p[2])) - Math.min(...rows.map(p => p[2]))
 const relativeHeight = height(desktop.companies) / height(desktop.designers)

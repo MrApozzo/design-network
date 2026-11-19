@@ -360,6 +360,33 @@
     "descrizione_en": "Rizzatto founded Luceplan in 1978, carrying forward the legacy of Gino Sarfatti's Arteluce"
   },
   {
+    "designer_a": "Franco Albini",
+    "designer_b": "Ernesto Nathan Rogers",
+    "tipo": "Scuola CIAM di Venezia",
+    "categoria": "professionale",
+    "forza": "debole",
+    "descrizione": "Ritratti insieme alla Scuola CIAM di Venezia nel 1955, in un contesto di scambio, dialogo e collaborazione tra progettisti documentato dalla Fondazione Franco Albini.",
+    "descrizione_en": "Pictured together at the CIAM School in Venice in 1955, in a setting of exchange, dialogue and collaboration among designers documented by the Fondazione Franco Albini."
+  },
+  {
+    "designer_a": "Franco Albini",
+    "designer_b": "Ignazio Gardella",
+    "tipo": "Scuola CIAM di Venezia",
+    "categoria": "professionale",
+    "forza": "debole",
+    "descrizione": "Ritratti insieme alla Scuola CIAM di Venezia nel 1955, in un contesto di scambio, dialogo e collaborazione tra progettisti documentato dalla Fondazione Franco Albini.",
+    "descrizione_en": "Pictured together at the CIAM School in Venice in 1955, in a setting of exchange, dialogue and collaboration among designers documented by the Fondazione Franco Albini."
+  },
+  {
+    "designer_a": "Ernesto Nathan Rogers",
+    "designer_b": "Ignazio Gardella",
+    "tipo": "Scuola CIAM di Venezia",
+    "categoria": "professionale",
+    "forza": "debole",
+    "descrizione": "Ritratti insieme alla Scuola CIAM di Venezia nel 1955, in un contesto di scambio, dialogo e collaborazione tra progettisti documentato dalla Fondazione Franco Albini.",
+    "descrizione_en": "Pictured together at the CIAM School in Venice in 1955, in a setting of exchange, dialogue and collaboration among designers documented by the Fondazione Franco Albini."
+  },
+  {
     "designer_a": "Aino Aalto",
     "designer_b": "Alvar Aalto",
     "tipo": "collaborazione",
