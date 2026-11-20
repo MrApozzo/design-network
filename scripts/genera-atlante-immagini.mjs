@@ -5,7 +5,7 @@ import sharp from "sharp"
 
 // Atlante delle miniature: tutte le foto dei pallini (designer, prodotti,
 // loghi delle aziende) impacchettate in pochi fogli WebP, così la mappa le
-// carica con 4 richieste invece di ~1500. Ogni cella è un quadrato ritagliato
+// carica con poche richieste invece di migliaia. Ogni cella è un quadrato ritagliato
 // al centro ("cover"), esattamente come il pallino rotondo ritaglia la foto.
 // Le celle bastano per i pallini piccoli e medi; quando un pallino diventa più
 // grande della cella, la mappa carica solo per lui la miniatura singola da
@@ -15,19 +15,29 @@ const DIR_THUMB = path.join(RADICE, "public", "immagini_thumb")
 const DIR_OUT = path.join(RADICE, "public", "atlante")
 const FILE_MAPPA = path.join(RADICE, "src", "data", "atlante.json")
 const CELLA = 96
-const FOGLI = 4
+// Fogli a dimensione fissa (21×21 celle = 2016 px di lato, ~440 foto):
+// quando le foto aumentano cresce il numero dei fogli, non la loro misura,
+// così restano leggeri da decodificare anche sui telefoni.
+const COLONNE = 21
+const PER_FOGLIO = COLONNE * COLONNE
 const QUALITA = 72
 
 async function main() {
   const file = fs.readdirSync(DIR_THUMB).filter((f) => /\.(jpe?g|png|webp)$/i.test(f)).sort()
-  const perFoglio = Math.ceil(file.length / FOGLI)
-  const colonne = Math.ceil(Math.sqrt(perFoglio))
+  const colonne = COLONNE
+  const numeroFogli = Math.ceil(file.length / PER_FOGLIO)
+  // Distribuite in parti uguali: fogli di misura simile.
+  const perFoglio = Math.ceil(file.length / numeroFogli)
 
-  // Il nome del foglio contiene un hash del contenuto: cambia solo quando
-  // cambiano le foto, quindi il browser può tenerlo in cache a lungo.
-  const hash = crypto.createHash("sha1")
-  for (const f of file) hash.update(f).update(String(fs.statSync(path.join(DIR_THUMB, f)).size))
-  const versione = hash.digest("hex").slice(0, 10)
+  // Impronta di un gruppo di foto (nomi e dimensioni). Ogni foglio ha nel nome
+  // la propria: cambia solo se cambiano le sue foto, così il browser tiene in
+  // cache gli altri.
+  const impronta = (gruppo) => {
+    const hash = crypto.createHash("sha1")
+    for (const f of gruppo) hash.update(f).update(String(fs.statSync(path.join(DIR_THUMB, f)).size))
+    return hash.digest("hex").slice(0, 10)
+  }
+  const versione = impronta(file) + "-" + COLONNE
 
   const precedente = fs.existsSync(FILE_MAPPA) ? JSON.parse(fs.readFileSync(FILE_MAPPA, "utf8")) : null
   if (precedente?.versione === versione && precedente.fogli.every((f) => fs.existsSync(path.join(RADICE, "public", f)))) {
@@ -41,7 +51,7 @@ async function main() {
   const celle = {}
   const fogli = []
   let byteTotali = 0
-  for (let s = 0; s < FOGLI; s++) {
+  for (let s = 0; s < numeroFogli; s++) {
     const gruppo = file.slice(s * perFoglio, (s + 1) * perFoglio)
     if (gruppo.length === 0) break
     const righe = Math.ceil(gruppo.length / colonne)
@@ -55,7 +65,7 @@ async function main() {
         .toBuffer()
       return { input, left: x, top: y }
     }))
-    const nomeFoglio = `atlante/atlante-${versione}-${s}.webp`
+    const nomeFoglio = `atlante/atlante-${s}-${impronta(gruppo)}.webp`
     const buffer = await sharp({ create: { width: colonne * CELLA, height: righe * CELLA, channels: 3, background: "#ffffff" } })
       .composite(composizione)
       .webp({ quality: QUALITA, effort: 5 })
