@@ -1,0 +1,38 @@
+{
+  "date": "2026-11-20",
+  "batch": "ritratti-mendini-rossi",
+  "policy": "Ritratti da Wikimedia Commons con licenza libera; solo ritaglio quadrato, colori originali.",
+  "images": [
+    {
+      "name": "Alessandro Mendini",
+      "file": "mendini.jpg",
+      "source": "Wikimedia Commons",
+      "page": "https://commons.wikimedia.org/wiki/File:AlessandroMendini.jpg",
+      "author": "Atelier Mendini",
+      "license": "CC BY-SA 4.0",
+      "original": "originali/mendini-commons-1280px.jpg (versione Commons 1280x1918 dell originale 1335x2000)",
+      "crop": [
+        0,
+        60,
+        1280,
+        1280
+      ],
+      "note": "Scelto dall utente fra i ritratti proposti; ridimensionato a 1100x1100"
+    },
+    {
+      "name": "Aldo Rossi",
+      "file": "aldorossi.jpg",
+      "source": "Wikimedia Commons",
+      "page": "https://commons.wikimedia.org/wiki/File:AldoRossi.jpg",
+      "author": "sconosciuto (circa 1980)",
+      "license": "Pubblico dominio",
+      "original": "originali/aldorossi-commons.jpg (187x263)",
+      "crop": [
+        0,
+        0,
+        187,
+        187
+      ]
+    }
+  ]
+}
