@@ -80,7 +80,7 @@ function layout({ title, description, canonical, type, image, body, schema }) {
   return `<!doctype html>
 <html lang="it"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>${esc(fullTitle)}</title><meta name="description" content="${esc(safeDescription)}"><meta name="robots" content="index, follow, max-image-preview:large">
-<link rel="canonical" href="${esc(canonical)}"><link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="canonical" href="${esc(canonical)}"><link rel="icon" href="/favicon.svg" type="image/svg+xml"><link rel="icon" type="image/png" sizes="96x96" href="/favicon-96.png"><link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <meta property="og:type" content="article"><meta property="og:locale" content="it_IT"><meta property="og:site_name" content="${SITE_NAME}">
 <meta property="og:title" content="${esc(fullTitle)}"><meta property="og:description" content="${esc(safeDescription)}"><meta property="og:url" content="${esc(canonical)}"><meta property="og:image" content="${esc(imageAbsolute)}">
 <meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="${esc(fullTitle)}"><meta name="twitter:description" content="${esc(safeDescription)}"><meta name="twitter:image" content="${esc(imageAbsolute)}">
