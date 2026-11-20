@@ -33,6 +33,21 @@
         187,
         187
       ]
+    },
+    {
+      "name": "Michele De Lucchi",
+      "file": "delucchi.jpg",
+      "source": "Wikimedia Commons",
+      "page": "https://commons.wikimedia.org/wiki/File:Michele_de_Lucchi-67622.jpg",
+      "author": "Harald Krichel",
+      "license": "CC BY-SA 4.0",
+      "original": "originali/delucchi-commons-1280px.jpg (versione Commons 1280x1280 dell originale 3550x3550)",
+      "crop": [
+        100,
+        20,
+        960,
+        960
+      ]
     }
   ]
 }

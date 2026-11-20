@@ -194,7 +194,7 @@ export const SEZIONI_CREDITS = [
       { nome: "sfmoma.org", url: "https://www.sfmoma.org/" },
       { nome: "braun-audio.com", url: "https://www.braun-audio.com/" },
       { nome: "verner-panton.com", url: "https://www.verner-panton.com/" },
-      { nome: "Wikimedia Commons: ritratto di Alessandro Mendini, foto Atelier Mendini (CC BY-SA 4.0); ritratto di Aldo Rossi (pubblico dominio)", url: "https://commons.wikimedia.org/wiki/File:AlessandroMendini.jpg" },
+      { nome: "Wikimedia Commons: ritratto di Alessandro Mendini, foto Atelier Mendini (CC BY-SA 4.0); ritratto di Aldo Rossi (pubblico dominio); ritratto di Michele De Lucchi, foto Harald Krichel (CC BY-SA 4.0)", url: "https://commons.wikimedia.org/wiki/File:AlessandroMendini.jpg" },
     ],
   },
   {
