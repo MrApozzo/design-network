@@ -2160,6 +2160,7 @@ function App() {
       img.src = `${import.meta.env.BASE_URL}${percorso}`
       return img
     })
+    const MINIATURA_LATO = 240 // lato di public/immagini_thumb (genera-thumbnail-immagini.mjs)
     const nomeFileImmagine = (src) => (src ? src.split("/").pop() : "")
     const cellaAtlante = (src) => ATLANTE.celle[nomeFileImmagine(src)]
     // Miniature singole, solo per i pallini più grandi della cella: poche alla volta.
@@ -2187,14 +2188,24 @@ function App() {
     function immagineNodo(src, r) {
       const cella = cellaAtlante(src)
       if (!cella) return null
-      if (r * 2 * dpr > ATLANTE.cella * 1.15) {
-        const singola = imgCache[src]
-        if (singola && singola.complete && singola.naturalWidth > 0) {
-          const iw = singola.naturalWidth, ih = singola.naturalHeight
+      const pxSchermo = r * 2 * dpr
+      if (pxSchermo > ATLANTE.cella * 1.15) {
+        const ritaglio = (img) => {
+          const iw = img.naturalWidth, ih = img.naturalHeight
           const lato = Math.min(iw, ih)
-          return { img: singola, sx: (iw - lato) / 2, sy: (ih - lato) / 2, lato }
+          return { img, sx: (iw - lato) / 2, sy: (ih - lato) / 2, lato }
         }
-        richiediSingola(src)
+        const pronta = (img) => img && img.complete && img.naturalWidth > 0
+        // Oltre la miniatura da 240 px (pallini molto grandi, schermi ad alta
+        // densità) si passa alla foto originale, per non sgranare.
+        if (pxSchermo > MINIATURA_LATO * 1.1) {
+          const originale = src.replace("/immagini_thumb/", "/immagini/")
+          if (pronta(imgCache[originale])) return ritaglio(imgCache[originale])
+          richiediSingola(originale)
+        } else {
+          richiediSingola(src)
+        }
+        if (pronta(imgCache[src])) return ritaglio(imgCache[src])
       }
       const foglio = fogliAtlante[cella[0]]
       if (!foglio || !foglio.complete || foglio.naturalWidth === 0) return null
