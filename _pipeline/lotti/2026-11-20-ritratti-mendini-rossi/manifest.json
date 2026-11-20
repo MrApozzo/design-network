@@ -37,15 +37,16 @@
     {
       "name": "Michele De Lucchi",
       "file": "delucchi.jpg",
-      "source": "fornita dall utente (INSTAGRAM/michele de lucchi.jpg), fonte originale da indicare",
-      "license": "da verificare",
+      "source": "Interni (internionline.it)",
+      "license": "non specificata; fonte citata nei Credits",
       "original": "originali/delucchi-fornita-utente.jpg (794x795)",
       "crop": [
         163,
         48,
         524,
         524
-      ]
+      ],
+      "page": "https://www.internionline.it/it/collections/michele-de-lucchi?i=3"
     }
   ]
 }

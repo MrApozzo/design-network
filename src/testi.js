@@ -195,6 +195,7 @@ export const SEZIONI_CREDITS = [
       { nome: "braun-audio.com", url: "https://www.braun-audio.com/" },
       { nome: "verner-panton.com", url: "https://www.verner-panton.com/" },
       { nome: "Wikimedia Commons: ritratto di Alessandro Mendini, foto Atelier Mendini (CC BY-SA 4.0); ritratto di Aldo Rossi (pubblico dominio)", url: "https://commons.wikimedia.org/wiki/File:AlessandroMendini.jpg" },
+      { nome: "Interni: ritratto di Michele De Lucchi", url: "https://www.internionline.it/it/collections/michele-de-lucchi" },
     ],
   },
   {
