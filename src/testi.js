@@ -439,7 +439,7 @@ export const TESTI = {
     paragrafo1: "Questa mappa rappresenta un secolo di design occidentale — i suoi protagonisti, le loro opere e i legami invisibili che li uniscono. Ogni nodo è un designer o un oggetto; ogni connessione, una relazione di collaborazione, influenza o formazione.",
     paragrafo2: "La posizione orizzontale segue una cronologia rigorosa, dal 1880 al 1980. Esplorando la mappa si scoprono le grandi concentrazioni del movimento moderno, le filiazioni tra maestri e allievi, e le convergenze tra discipline e nazionalità.",
     cerca: "Cerca...",
-    benvenutoDomanda: "Quale designer ha disegnato il mondo in cui vorresti vivere?",
+    benvenutoDomanda: "Quale designer ha progettato il mondo in cui vorresti vivere?",
     benvenutoConferma: "Entra",
     benvenutoCercaLabel: "cerca",
     aziendeToggle: "Aziende",
