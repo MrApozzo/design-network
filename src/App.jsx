@@ -2223,12 +2223,17 @@ function App() {
     }
 
     const overlayCanvas = document.createElement("canvas")
-    overlayCanvas.style.cssText = "position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:10;"
     container.appendChild(overlayCanvas)
-
+    // L'area di lavoro (container) parte a destra della banda del titolo, ma
+    // il disegno continua anche sotto la banda: il canvas sporge a sinistra di
+    // estSx px, e il disegno resta nelle coordinate del container (x negative
+    // = sotto la banda). Il testo della banda resta sopra (z-index 20).
+    let estSx = 0
     function ridimensionaOverlay() {
       const rect = container.getBoundingClientRect()
-      overlayCanvas.width = Math.max(1, Math.round(rect.width * dpr))
+      estSx = Math.max(0, Math.round(rect.left))
+      overlayCanvas.style.cssText = `position:absolute;top:0;bottom:0;left:${-estSx}px;width:calc(100% + ${estSx}px);height:100%;pointer-events:none;z-index:10;`
+      overlayCanvas.width = Math.max(1, Math.round((rect.width + estSx) * dpr))
       overlayCanvas.height = Math.max(1, Math.round(rect.height * dpr))
       viewportMin = Math.min(rect.width, rect.height)
     }
@@ -2563,8 +2568,8 @@ function App() {
       const ctx = overlayCanvas.getContext("2d")
       ctx.setTransform(1, 0, 0, 1, 0, 0)
       ctx.clearRect(0, 0, overlayCanvas.width, overlayCanvas.height)
-      ctx.setTransform(dpr, 0, 0, dpr, 0, 0)
-      const w = overlayCanvas.width / dpr
+      ctx.setTransform(dpr, 0, 0, dpr, estSx * dpr, 0)
+      const w = overlayCanvas.width / dpr - estSx
       const h = overlayCanvas.height / dpr
 
       const t = zoomT()
@@ -2643,7 +2648,7 @@ function App() {
                 x: xInizioGrigliaProdotti + gx * PASSO_GRIGLIA_PRODOTTI,
                 y: -gy * PASSO_GRIGLIA_PRODOTTI,
               })
-              if (p.x < -2 || p.x > w + 2 || p.y < -2 || p.y > h + 2) continue
+              if (p.x < -estSx - 2 || p.x > w + 2 || p.y < -2 || p.y > h + 2) continue
               ctx.beginPath()
               ctx.arc(p.x, p.y, grigliaRaggio, 0, Math.PI * 2)
               ctx.fillStyle = STILE.griglia_pallino_colore
@@ -2666,7 +2671,7 @@ function App() {
           for (let k = 0; k <= nIntermediG; k++) {
             const annoPunto = anno + (passoAnnoG * k) / (nIntermediG + 1)
             const screenX = renderer.graphToViewport({ x: annoToX(annoPunto), y: 0 }).x
-            if (screenX >= -2 && screenX <= w + 2) colonneX.push(screenX)
+            if (screenX >= -estSx - 2 && screenX <= w + 2) colonneX.push(screenX)
           }
         }
         const angoloTLg = renderer.viewportToGraph({ x: 0, y: 0 })
@@ -2702,7 +2707,8 @@ function App() {
 
       ctx.save()
       ctx.beginPath()
-      ctx.rect(padSinistra, padSopra, Math.max(0, w - padSinistra - padLati), Math.max(0, h - padSopra - padBasso))
+      // A sinistra nessun taglio: i nodi continuano sotto la banda del titolo.
+      ctx.rect(-estSx, padSopra, Math.max(0, w + estSx - padLati), Math.max(0, h - padSopra - padBasso))
       ctx.clip()
 
 
@@ -3244,7 +3250,7 @@ function App() {
       if (aziendaAlphaAnimata >= 0.01) {
         Object.entries(aziendePosizioniMap).forEach(([nome, pos]) => {
           const screen = renderer.graphToViewport({ x: pos.x, y: pos.y })
-          if (screen.x < -60 || screen.x > w + 60 || screen.y < -60 || screen.y > h + 60) return
+          if (screen.x < -estSx - 60 || screen.x > w + 60 || screen.y < -60 || screen.y > h + 60) return
           nodiAziende.push({ nome, pos, screen, principale: AZIENDE_PRINCIPALI.has(nome) })
         })
         // Stesso principio dei designer: le aziende principali sopra le altre.
@@ -3261,7 +3267,7 @@ function App() {
         const alpha = (animated[node]?.alpha ?? 1) * (attr.tipo === "designer" ? designerAlphaAnimata * alphaComparsaEtichetteNodi : 1)
         if (alpha < 0.01) return
 
-        if (pos.x < -r || pos.x > w + r || pos.y < -r || pos.y > h + r) return
+        if (pos.x < -estSx - r || pos.x > w + r || pos.y < -r || pos.y > h + r) return
 
         ctx.globalAlpha = alpha
         const sogliaImg = attr.tipo === "designer" ? 0 : (isMobile ? 6 : 12)
@@ -5816,7 +5822,7 @@ function App() {
       {!viewportMobile() && (
         <div style={{
           position: "fixed", top: 0, left: 0, bottom: 0, width: 340 * uiScale,
-          background: "#ffffff", zIndex: 150, boxShadow: "4px 0 32px rgba(0,0,0,0.12)",
+          background: "#ffffff", zIndex: 150, boxShadow: menuApertoDesktop ? "4px 0 32px rgba(0,0,0,0.12)" : "none",
           transform: menuApertoDesktop ? "translateX(0)" : "translateX(-100%)",
           transition: "transform 0.35s cubic-bezier(0.4, 0, 0.2, 1)",
           display: "flex", flexDirection: "column", overflow: "hidden",
