@@ -4,9 +4,9 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "predev": "node scripts/sync-foto-dettaglio.js && node scripts/ottimizza-immagini.mjs && node scripts/genera-thumbnail-immagini.mjs && node scripts/genera-colori-immagini.mjs && node scripts/genera-manifest-immagini.mjs",
+    "predev": "node scripts/sync-foto-dettaglio.js && node scripts/ottimizza-immagini.mjs && node scripts/genera-thumbnail-immagini.mjs && node scripts/genera-atlante-immagini.mjs && node scripts/genera-colori-immagini.mjs && node scripts/genera-manifest-immagini.mjs",
     "dev": "vite",
-    "prebuild": "node scripts/sync-foto-dettaglio.js && node scripts/ottimizza-immagini.mjs && node scripts/genera-thumbnail-immagini.mjs && node scripts/genera-colori-immagini.mjs && node scripts/genera-manifest-immagini.mjs",
+    "prebuild": "node scripts/sync-foto-dettaglio.js && node scripts/ottimizza-immagini.mjs && node scripts/genera-thumbnail-immagini.mjs && node scripts/genera-atlante-immagini.mjs && node scripts/genera-colori-immagini.mjs && node scripts/genera-manifest-immagini.mjs",
     "build": "vite build && node scripts/genera-seo.mjs",
     "build:seo": "node scripts/genera-seo.mjs",
     "og:collage": "node scripts/genera-og-collage-reale.mjs",

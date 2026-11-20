@@ -23,9 +23,9 @@ import aziendeData from "./data/aziende.json"
 import FILTRI from "./data/filtri.json"
 import immaginiEsistentiArr from "./data/immagini_esistenti.json"
 import coloriImmaginiPrecalcolati from "./data/colori_immagini.json"
+import ATLANTE from "./data/atlante.json"
 import { percorsoEntitaSeo, SEO_ENTITA } from "./seo-percorsi.js"
 import { FORMSPREE_ENDPOINT, SEZIONI_CREDITS, CATEGORIA_EN, TIPO_RELAZIONE_EN, TESTI } from "./testi.js"
-import { preloadImages } from "./preload-immagini.js"
 import { ListaConScroll } from "./ListaConScroll.jsx"
 import { useAccount } from "./account/useAccount.js"
 import { PannelloAccount, BottonePreferito } from "./account/PannelloAccount.jsx"
@@ -2136,83 +2136,15 @@ function App() {
     }
     impostaBBoxCondiviso()
 
-    // Precarichiamo le immagini SOLO ora che ogni nodo ha una posizione
-    // definitiva, dando priorità a quelle vicine al punto in cui l'utente si
-    // troverà appena aperta la mappa (la camera salvata, o il designer di
-    // default alla primissima visita), invece di scaricarle tutte insieme
-    // nell'ordine arbitrario del json. Chi è vicino al centro iniziale è
-    // pronto prima, chi è lontano (zoom out o angoli mai visitati) arriva dopo.
-    let rifX = 0, rifY = 0
-    let hoRiferimento = false
-    try {
-      const saved = JSON.parse(localStorage.getItem("dn-camera"))
-      if (saved) {
-        rifX = (X_MIN - MARGINE_X) + saved.x * ((X_MAX + MARGINE_X) - (X_MIN - MARGINE_X))
-        rifY = bboxYMin + saved.y * (bboxYMax - bboxYMin)
-        hoRiferimento = true
-      }
-    } catch {}
-    if (!hoRiferimento && graph.hasNode("Achille Castiglioni")) {
-      const cAttr = graph.getNodeAttributes("Achille Castiglioni")
-      rifX = cAttr.x; rifY = cAttr.y
-    }
-    const vistiSrc = new Set()
-    const nodiConDistanza = []
-    const posizioneDiSrc = new Map()
-    graph.forEachNode((node, attr) => {
-      if (vistiSrc.has(attr.imgSrc)) return
-      vistiSrc.add(attr.imgSrc)
-      posizioneDiSrc.set(attr.imgSrc, { x: attr.x, y: attr.y })
-      const dx = attr.x - rifX, dy = attr.y - rifY
-      nodiConDistanza.push({ src: attr.imgSrc, d2: dx * dx + dy * dy })
-    })
-    nodiConDistanza.sort((a, b) => a.d2 - b.d2)
-    const imgPaths = nodiConDistanza.map((n) => n.src)
-
-    // Riletta ad ogni scelta (non solo all'apertura): fa sì che, se l'utente si
-    // sposta prima che il preload iniziale finisca, le immagini vicine a dove sta
-    // guardando ORA scavalchino quelle rimaste in coda dal punto di partenza.
-    let centroCameraPreload = { x: 0, y: 0 }
-    function distanzaDaCameraAttuale(src) {
-      const p = posizioneDiSrc.get(src)
-      if (!p) return Infinity
-      const dx = p.x - centroCameraPreload.x, dy = p.y - centroCameraPreload.y
-      return dx * dx + dy * dy
-    }
-    // Chiamata da preloadImages una volta per scelta, non per ogni candidata.
-    distanzaDaCameraAttuale.prepara = () => {
-      const stato = renderer.getCamera().getState()
-      centroCameraPreload = {
-        x: (X_MIN - MARGINE_X) + stato.x * ((X_MAX + MARGINE_X) - (X_MIN - MARGINE_X)),
-        y: bboxYMin + stato.y * (bboxYMax - bboxYMin),
-      }
-    }
-
-    const campionaColore = (src, img) => {
-      try {
-        const dim = 24
-        const c = document.createElement("canvas")
-        c.width = dim; c.height = dim
-        const cx = c.getContext("2d")
-        cx.drawImage(img, 0, 0, dim, dim)
-        const dati = cx.getImageData(0, 0, dim, dim).data
-        let r = 0, g = 0, b = 0, conteggio = 0
-        for (let i = 0; i < dati.length; i += 4) {
-          const pr = dati[i], pg = dati[i + 1], pb = dati[i + 2]
-          if (pr > 240 && pg > 240 && pb > 240) continue // ignora il bianco di sfondo
-          r += pr; g += pg; b += pb; conteggio++
-        }
-        if (conteggio === 0) { r = 255; g = 255; b = 255; conteggio = 1 }
-        imgColori[src] = `rgb(${Math.round(r / conteggio)},${Math.round(g / conteggio)},${Math.round(b / conteggio)})`
-      } catch {}
-    }
-    // Il preload resta completamente indipendente dall'intro: le immagini vicine
-    // alla camera arrivano per prime e il resto continua in background, ma il
-    // completamento del primo lotto non può più far entrare automaticamente nella mappa.
-    // Le immagini del preload arrivano a decine al secondo: invece di un
-    // ridisegno completo per ognuna, se ne fa al massimo uno ogni 150 ms.
-    // Le animazioni non ne risentono: il loop dell'overlay prosegue da solo
-    // finché non sono assestate (vedi lerpOverlay).
+    // Miniature dei pallini: invece di ~1500 richieste, 4 fogli (atlante) con
+    // tutte le foto già ritagliate a quadrato (scripts/genera-atlante-immagini.mjs).
+    // Bastano finché il pallino è più piccolo della cella; oltre, per quel solo
+    // pallino si carica la miniatura singola (vedi immagineNodo). Le foto che non
+    // esistono non sono nell'atlante: nessuna richiesta, resta il colore medio.
+    // Le immagini arrivano a gruppi: invece di un ridisegno completo per
+    // ognuna, se ne fa al massimo uno ogni 150 ms. Le animazioni non ne
+    // risentono: il loop dell'overlay prosegue da solo finché non sono
+    // assestate (vedi lerpOverlay).
     let ridisegnoImmaginiProgrammato = null
     const ridisegnaPerImmagine = () => {
       if (ridisegnoImmaginiProgrammato !== null) return
@@ -2221,15 +2153,58 @@ function App() {
         richiediDisegnoOverlay(2)
       }, 150)
     }
-    imgCache = preloadImages(imgPaths, 6, undefined, undefined, undefined, ridisegnaPerImmagine, distanzaDaCameraAttuale)
-    Object.entries(imgCache).forEach(([src, img]) => {
-      // Il colore medio è precalcolato in pipeline (scripts/genera-colori-immagini.mjs):
-      // niente più canvas/getImageData per ~1250 immagini ad ogni caricamento della
-      // pagina, il colore non cambia mai una volta generata la thumbnail.
-      const precalcolato = coloriImmaginiPrecalcolati[src.split("/").pop()]
-      if (precalcolato) { imgColori[src] = precalcolato; return }
-      if (img.complete && img.naturalWidth > 0) campionaColore(src, img)
-      else img.addEventListener("load", () => campionaColore(src, img), { once: true })
+    const fogliAtlante = ATLANTE.fogli.map((percorso) => {
+      const img = new Image()
+      img.decoding = "async"
+      img.addEventListener("load", ridisegnaPerImmagine, { once: true })
+      img.src = `${import.meta.env.BASE_URL}${percorso}`
+      return img
+    })
+    const nomeFileImmagine = (src) => (src ? src.split("/").pop() : "")
+    const cellaAtlante = (src) => ATLANTE.celle[nomeFileImmagine(src)]
+    // Miniature singole, solo per i pallini più grandi della cella: poche alla volta.
+    const codaSingole = []
+    let singoleAttive = 0
+    function avviaSingole() {
+      while (singoleAttive < 4 && codaSingole.length) {
+        const src = codaSingole.shift()
+        const img = imgCache[src]
+        singoleAttive++
+        const fatto = () => { singoleAttive--; ridisegnaPerImmagine(); avviaSingole() }
+        img.addEventListener("load", fatto, { once: true })
+        img.addEventListener("error", fatto, { once: true })
+        img.src = src
+      }
+    }
+    function richiediSingola(src) {
+      if (!src || imgCache[src] || !cellaAtlante(src)) return
+      imgCache[src] = new Image()
+      codaSingole.push(src)
+      avviaSingole()
+    }
+    // Cosa disegnare per un pallino di raggio r (px CSS): ritaglio quadrato
+    // { img, sx, sy, lato } da stendere sul diametro, oppure null (colore medio).
+    function immagineNodo(src, r) {
+      const cella = cellaAtlante(src)
+      if (!cella) return null
+      if (r * 2 * dpr > ATLANTE.cella * 1.15) {
+        const singola = imgCache[src]
+        if (singola && singola.complete && singola.naturalWidth > 0) {
+          const iw = singola.naturalWidth, ih = singola.naturalHeight
+          const lato = Math.min(iw, ih)
+          return { img: singola, sx: (iw - lato) / 2, sy: (ih - lato) / 2, lato }
+        }
+        richiediSingola(src)
+      }
+      const foglio = fogliAtlante[cella[0]]
+      if (!foglio || !foglio.complete || foglio.naturalWidth === 0) return null
+      return { img: foglio, sx: cella[1], sy: cella[2], lato: ATLANTE.cella }
+    }
+    // Colore medio precalcolato (scripts/genera-colori-immagini.mjs): è il
+    // segnaposto finché la foto non è pronta.
+    graph.forEachNode((node, attr) => {
+      const colore = coloriImmaginiPrecalcolati[nomeFileImmagine(attr.imgSrc)]
+      if (colore) imgColori[attr.imgSrc] = colore
     })
 
     // Quando si apre il pannello di un designer, "salta la coda" del preload
@@ -2243,12 +2218,7 @@ function App() {
         .map((r) => (r.designer_a === nomeDesigner ? r.designer_b : r.designer_a))
         .forEach((nome) => {
           if (!graph.hasNode(nome)) return
-          const src = graph.getNodeAttribute(nome, "imgSrc")
-          if (!src || (imgCache[src] && imgCache[src].complete)) return
-          const img = new Image()
-          img.addEventListener("load", () => { campionaColore(src, img); richiediDisegnoOverlay(2) }, { once: true })
-          imgCache[src] = img
-          img.src = src
+          richiediSingola(graph.getNodeAttribute(nome, "imgSrc"))
         })
     }
 
@@ -3294,9 +3264,9 @@ function App() {
         if (pos.x < -r || pos.x > w + r || pos.y < -r || pos.y > h + r) return
 
         ctx.globalAlpha = alpha
-        const img = imgCache[attr.imgSrc]
         const sogliaImg = attr.tipo === "designer" ? 0 : (isMobile ? 6 : 12)
-        const haImg = r > sogliaImg && img && img.complete && img.naturalWidth > 0
+        const foto = r > sogliaImg ? immagineNodo(attr.imgSrc, r) : null
+        const haImg = !!foto
 
         if (!haImg) {
           ctx.beginPath()
@@ -3310,10 +3280,7 @@ function App() {
           ctx.beginPath()
           ctx.arc(pos.x, pos.y, r, 0, Math.PI * 2)
           ctx.clip()
-          const iw = img.naturalWidth, ih = img.naturalHeight
-          const scale = Math.max(r * 2 / iw, r * 2 / ih)
-          const sw = iw * scale, sh = ih * scale
-          ctx.drawImage(img, pos.x - sw / 2, pos.y - sh / 2, sw, sh)
+          ctx.drawImage(foto.img, foto.sx, foto.sy, foto.lato, foto.lato, pos.x - r, pos.y - r, r * 2, r * 2)
           ctx.restore()
         }
 
@@ -3975,12 +3942,6 @@ function App() {
     })
     resizeObserver.observe(container)
 
-    Object.values(imgCache).forEach((img) => {
-      if (!img.complete) {
-        img.addEventListener("load", () => richiediDisegnoOverlay(2), { once: true })
-        img.addEventListener("error", () => richiediDisegnoOverlay(1), { once: true })
-      }
-    })
 
     // Primo render: ora l'overlay esiste già e l'evento afterRender è collegato.
     renderer.refresh()

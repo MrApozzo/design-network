@@ -66,7 +66,7 @@ for(const [width,height,mobile]of[[1440,900,false],[1366,768,false],[1920,1080,f
   context.container={getBoundingClientRect:()=>({...viewport,top:0}),get clientWidth(){return viewport.width},get clientHeight(){return viewport.height}}
   context.ResizeObserver=class{constructor(cb){resizeCallback=cb}observe(){}}
   context.impostaStileContainer=()=>{};context.ridimensionaOverlay=()=>{};context.richiediDisegnoOverlay=()=>{}
-  vm.runInContext(between('    let dimensioneMinPrecedente =','    Object.values(imgCache)'),sandbox)
+  vm.runInContext(between('    let dimensioneMinPrecedente =','    // Primo render: ora'),sandbox)
   viewport.width+=150;viewport.height-=80;context.window.innerWidth=viewport.width;context.window.innerHeight=viewport.height
   resizeCallback()
   const resizedFit=vm.runInContext('cameraCompleta()',sandbox)
